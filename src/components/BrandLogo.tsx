@@ -8,7 +8,7 @@ export default function BrandLogo({ variant = 'header' }: BrandLogoProps) {
   const isFooter = variant === 'footer';
 
   const iconDisplayWidth = isFooter ? 48 : 64;
-  const iconDisplayHeight = iconDisplayWidth * 50 / 84;
+  const iconDisplayHeight = (iconDisplayWidth * 50) / 84;
   const textFontSize = isFooter ? 22 : 28;
 
   return (
@@ -33,31 +33,24 @@ export default function BrandLogo({ variant = 'header' }: BrandLogoProps) {
             maxWidth: 'none',
           }}
         />
-        {/* 3D gradient lighting overlay — shape-preserving */}
+        {/* 精緻立體光澤圖層 — Shape-preserving, clean background */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-85 mix-blend-soft-light"
+          className="pointer-events-none absolute inset-0 mix-blend-overlay opacity-90"
           style={{
+            // 使用純白色的光照漸層，完全移除深色邊緣
             background:
-              'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 40%, rgba(4,27,62,0.35) 100%)',
+              'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.3) 100%)',
           }}
         />
       </span>
 
-      {/* Wordmark — real text in serif font, sized to match the icon */}
+      {/* Wordmark — clean serif text, ensuring no shadow/gradient artifacts */}
       <span
         className="font-serif-tc font-bold tracking-[0.12em] leading-none select-none"
         style={{
           fontSize: textFontSize,
-          background:
-            'linear-gradient(180deg, #3a6da6 0%, #24528b 45%, #163e6b 100%)',
-          WebkitBackgroundClip: 'text',
-          backgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          color: 'transparent',
-          filter: isFooter
-            ? 'brightness(1.8) saturate(0.9)'
-            : 'none',
+          color: isFooter ? '#64748b' : '#1e3a8a', // 頁首：深藍色；頁尾：優雅灰
         }}
       >
         寶慈生命事業
