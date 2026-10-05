@@ -2,7 +2,7 @@ type BrandLogoProps = {
   variant?: 'header' | 'footer';
 };
 
-const logoSource = '/images/螢幕擷取畫面_2026-08-28_141654.png';
+const logoSource = '/寶慈LOGO.png';
 
 export default function BrandLogo({ variant = 'header' }: BrandLogoProps) {
   const isFooter = variant === 'footer';
