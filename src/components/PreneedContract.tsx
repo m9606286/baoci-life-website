@@ -1,0 +1,108 @@
+import { useReveal } from '@/hooks/useReveal';
+import { preneedAdvantages } from '@/data/content';
+import { Check, FileText, TrendingUp, ShieldCheck, Heart } from 'lucide-react';
+
+const handsImage =
+  'https://images.pexels.com/photos/31585123/pexels-photo-31585123.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1500';
+
+const features = [
+  {
+    icon: FileText,
+    title: '一定會發生的事情，先做好準備',
+    text: '一定會發生的事，等發生了才規劃，花費往往會超出預期，生前契約可以保障壽險理賠真正留給所愛的家人。',
+  },
+  {
+    icon: TrendingUp,
+    title: '享受預約優惠價，鎖定價格抗通膨',
+    text: '台灣平均一場喪葬費用為35萬，並隨著通膨逐年增加，生前契約是用現在的價格，幫您鎖住未來一定會發生的支出。',
+  },
+  {
+    icon: Heart,
+    title: '給親愛的家人留愛不留債',
+    text: '生前契約也是資產配置的一環，可以利用儲蓄的方式，如同保險一樣，提早準備規劃好自己想要的安排，避免未來留給家人負擔。',
+  },
+  {
+    icon: ShieldCheck,
+    title: '保證75%信託，永續經營有保障',
+    text: '寶慈生命事業所發行之合法生前契約，契約款項依規定提撥75%交付京城銀行辦理信託保管，以確保資金安全與專款專用。寶慈生命事業為寶碩（股票代號5210）轉投資之關係企業，依循公司治理原則運作，強化營運穩定性與長期服務承諾。',
+  },
+];
+
+export default function PreneedContract() {
+  const ref = useReveal<HTMLDivElement>();
+
+  return (
+    <section id="preneed" className="py-24 lg:py-32 bg-gradient-to-b from-ink-900 to-ink-950 relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent" />
+
+      <div ref={ref} className="mx-auto max-w-8xl px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-gold-400 text-sm tracking-[0.3em] uppercase reveal">Preneed Contract</p>
+          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ivory-50 font-bold mt-3 reveal reveal-delay-1">
+            什麼是生前契約？
+          </h2>
+          <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
+          <p className="mt-6 text-ivory-200/70 text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
+            生前契約是給家人的最後一道保障，也可明確記錄您對於身後事的安排和意願。
+          </p>
+        </div>
+
+        {/* Image + intro */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
+          <div className="relative reveal">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={handsImage}
+                alt="家人溫暖牽手"
+                className="w-full h-[420px] lg:h-[500px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 to-transparent" />
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-serif-tc text-2xl lg:text-3xl text-ivory-50 font-bold mb-6 reveal reveal-delay-1">
+              主要優勢
+            </h3>
+            <ul className="space-y-4">
+              {preneedAdvantages.map((adv, idx) => (
+                <li
+                  key={idx}
+                  className={`reveal reveal-delay-${Math.min(idx + 1, 5)} flex items-start gap-3`}
+                >
+                  <div className="w-6 h-6 rounded-full bg-gold-400/15 border border-gold-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3.5 h-3.5 text-gold-400" />
+                  </div>
+                  <span className="text-ivory-200/80 text-sm lg:text-base leading-relaxed">{adv.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Feature cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {features.map((feature, idx) => (
+            <div
+              key={idx}
+              className={`reveal reveal-delay-${(idx % 2) + 1} group bg-ink-800/50 backdrop-blur-sm rounded-2xl p-8 border border-ink-700/50 hover:border-gold-400/30 transition-all duration-500 hover:bg-ink-800/80`}
+            >
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-400/20 transition-colors">
+                  <feature.icon className="w-7 h-7 text-gold-400" />
+                </div>
+                <div>
+                  <h3 className="font-serif-tc text-lg lg:text-xl text-ivory-50 font-bold mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-ivory-200/60 text-sm leading-relaxed">{feature.text}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

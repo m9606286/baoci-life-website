@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: theme('fontFamily.sans');
+    background-color: theme('colors.ivory.100');
+    color: theme('colors.ink.800');
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background-color: theme('colors.gold.200');
+    color: theme('colors.ink.900');
+  }
+}
+
+@layer utilities {
+  .font-serif-tc {
+    font-family: theme('fontFamily.serif');
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Reveal-on-scroll: elements start hidden, animate in when .is-visible is added */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.24s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+  .reveal-delay-4 { transition-delay: 0.48s; }
+  .reveal-delay-5 { transition-delay: 0.6s; }
+
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      theme('colors.gold.400'),
+      transparent
+    );
+  }
+
+  .gold-text-gradient {
+    background: linear-gradient(
+      135deg,
+      theme('colors.gold.300'),
+      theme('colors.gold.500'),
+      theme('colors.gold.300')
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Thin custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: theme('colors.ivory.200'); }
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.gold.300');
+    border-radius: 9999px;
+    border: 2px solid theme('colors.ivory.200');
+  }
+  ::-webkit-scrollbar-thumb:hover { background: theme('colors.gold.400'); }
+}
