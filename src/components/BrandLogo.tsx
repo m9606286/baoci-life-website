@@ -3,7 +3,7 @@ type BrandLogoProps = {
 };
 
 // 使用根目錄下的圖檔（建議確認 GitHub public/ 目錄下存有寶慈LOGO.png，或改為英文檔名）
-const logoSource = '/寶慈LOGO.png';
+const logoSource = '/logo.png';
 
 export default function BrandLogo({ variant = 'header' }: BrandLogoProps) {
   const isFooter = variant === 'footer';
