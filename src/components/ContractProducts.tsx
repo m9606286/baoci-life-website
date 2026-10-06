@@ -2,6 +2,10 @@ import { useReveal } from '@/hooks/useReveal';
 import { contractProducts } from '@/data/content';
 import { FileText, Phone, Building2, ArrowRight, CheckCircle2 } from 'lucide-react';
 
+const approvalDocs = [
+  { title: '生前契約與晨暉、天勤銷售核可函', url: '/生前契約與晨暉、天勤銷售核可函.pdf' },
+];
+
 export default function ContractProducts() {
   const ref = useReveal<HTMLDivElement>();
 
@@ -99,6 +103,24 @@ export default function ContractProducts() {
               </div>
             );
           })}
+        </div>
+
+        {/* Approval Documents (Clickable Links) */}
+        <div className="mt-12 text-center reveal reveal-delay-4">
+          <div className="flex justify-center items-center">
+            {approvalDocs.map((doc, idx) => (
+              <a
+                key={idx}
+                href={doc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/80 hover:bg-white border border-ink-200/80 hover:border-gold-500/50 text-ink-700 hover:text-gold-700 text-sm font-medium transition-all shadow-sm hover:shadow group"
+              >
+                <FileText className="w-4 h-4 text-gold-600 group-hover:scale-110 transition-transform" />
+                <span>{doc.title}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
