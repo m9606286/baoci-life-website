@@ -1,9 +1,42 @@
 import { useReveal } from '@/hooks/useReveal';
-import { ShieldCheck, Scale } from 'lucide-react';
+import { History, Heart, Eye } from 'lucide-react';
 
-const values = [
-  { icon: ShieldCheck, title: '專業保障', text: '擁有豐富與專業的行業經驗，確保應有之服務品質。' },
-  { icon: Scale, title: '法規遵循', text: '依據內政部《殯葬管理條例》規範，簽訂生前契約後依法保障消費者權益。' },
+const aboutSections = [
+  {
+    icon: History,
+    title: '我們的故事',
+    content: (
+      <div className="space-y-3">
+        <p>
+          寶慈生命事業(原永慈事業)成立於 2002 年，為合法經營之殯葬禮儀服務業者，經臺南市民政局核准發行生前契約，並於2026年5月正式由寶碩集團併購接手經營，源於創辦人對於禮儀服務的深刻理解和對家庭關懷的執著，我們見證了無數家庭在失去親人時的悲傷，也看到了專業禮儀服務如何能夠幫助人們度過這個困難的時期，因此決定讓可永續經營之集團接續，讓會員權益更有保障。
+        </p>
+        <p className="font-semibold text-ink-800 pt-1">
+          從最初的小型禮儀社，到如今成為寶碩集團的一分子，我們始終堅持一個信念：
+          <span className="block gold-text-gradient font-bold mt-1">
+            每一個生命都值得被尊重，每一個家庭都應該得到最好的照顧。
+          </span>
+        </p>
+      </div>
+    ),
+  },
+  {
+    icon: Heart,
+    title: '我們的使命',
+    content: (
+      <p>
+        提供專業、溫暖與尊重的禮儀服務，是我們始終堅持的使命。透過生前契約的預先規劃，讓個人意願得以被尊重，也讓家人在面對離別時，能夠減少徬徨與壓力，以從容的心情陪伴摯愛走完人生最後一程。
+      </p>
+    ),
+  },
+  {
+    icon: Eye,
+    title: '我們的願景',
+    content: (
+      <p>
+        我們以成為台灣最受信任的禮儀服務品牌為願景，持續推動生前契約理念，結合人文關懷與專業服務，為每一個家庭提供值得信賴且具尊嚴的生命紀念服務。
+      </p>
+    ),
+  },
 ];
 
 const aboutImage =
@@ -17,14 +50,14 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gold-100/40 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Image */}
-          <div className="relative reveal">
+          <div className="lg:col-span-5 relative reveal sticky top-28">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src={aboutImage}
                 alt="溫暖的禮儀服務"
-                className="w-full h-[480px] lg:h-[580px] object-cover"
+                className="w-full h-[480px] lg:h-[620px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 to-transparent" />
             </div>
@@ -35,38 +68,30 @@ export default function About() {
             </div>
           </div>
 
-          {/* Text */}
-          <div>
+          {/* Content */}
+          <div className="lg:col-span-7">
             <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">About Us</p>
             <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-800 font-bold mt-3 reveal reveal-delay-1 leading-tight">
-              專業的禮儀服務
-              <span className="block gold-text-gradient mt-2">溫暖的人文關懷</span>
+              關於我們
+              <span className="block gold-text-gradient mt-2 text-2xl lg:text-3xl">溫暖的人文關懷</span>
             </h2>
-            <div className="gold-divider w-32 mt-6 reveal reveal-delay-2" />
-            <p className="mt-8 text-ink-600 text-lg leading-relaxed reveal reveal-delay-2">
-              寶慈生命事業股份有限公司，用愛心規劃，讓家人安心。
-              我們協助您提早規劃人生最後旅程，以專業、透明、溫暖的服務，
-              為每一個生命留下永恆的尊嚴與紀念。
-            </p>
-            <p className="mt-4 text-ink-500 leading-relaxed reveal reveal-delay-3">
-              依殯葬管理條例規範，契約款項依規定提撥75%交付京城銀行辦理信託保管，
-              確保資金安全與專款專用。寶慈生命事業為寶碩（股票代號5210）轉投資之關係企業，
-              依循公司治理原則運作，強化營運穩定性與長期服務承諾。
-            </p>
+            <div className="gold-divider w-32 mt-6 mb-10 reveal reveal-delay-2" />
 
-            {/* Values */}
-            <div className="mt-10 space-y-5">
-              {values.map((value, idx) => (
+            {/* Stories / Mission / Vision List */}
+            <div className="space-y-6">
+              {aboutSections.map((item, idx) => (
                 <div
-                  key={value.title}
-                  className={`reveal reveal-delay-${idx + 1} flex items-start gap-4 p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow`}
+                  key={item.title}
+                  className={`reveal reveal-delay-${idx + 1} p-6 sm:p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-ivory-300/60`}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center flex-shrink-0">
-                    <value.icon className="w-6 h-6 text-gold-500" />
+                  <div className="flex items-center gap-3.5 mb-4">
+                    <div className="w-11 h-11 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center flex-shrink-0">
+                      <item.icon className="w-5 h-5 text-gold-600" />
+                    </div>
+                    <h3 className="text-ink-800 font-serif-tc font-bold text-xl">{item.title}</h3>
                   </div>
-                  <div>
-                    <h3 className="text-ink-800 font-serif-tc font-bold text-lg">{value.title}</h3>
-                    <p className="text-ink-500 text-sm mt-1 leading-relaxed">{value.text}</p>
+                  <div className="text-ink-600 text-sm sm:text-base leading-relaxed pl-0 sm:pl-2">
+                    {item.content}
                   </div>
                 </div>
               ))}
