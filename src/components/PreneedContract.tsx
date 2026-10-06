@@ -3,7 +3,7 @@ import { Check, FileText, TrendingUp, ShieldCheck, Heart } from 'lucide-react';
 
 // 靜謐高雅白百合花藝圖源
 const preneedImage =
-  'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1200&q=80';
+  'https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=1200&q=80';
 
 // 主要優勢清單（直接寫在此處，避免外部檔案引用錯誤）
 const preneedAdvantages = [
