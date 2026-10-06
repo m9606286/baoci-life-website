@@ -40,12 +40,6 @@ const contractComparison = [
     baofuHighlight: true,
   },
   {
-    feature: '追思光碟 (西式)',
-    baofu: '包含追思光碟製作與現場播放設備',
-    baohui: '無此項目',
-    baofuHighlight: true,
-  },
-  {
     feature: '場地與花藝佈置',
     baofu: '大型鮮花主花台、外牌、燈光音響、走道花及羅馬柱等完整會場佈置',
     baohui: '僅提供基本拜祭供品、桌花與收賻處擺設',
