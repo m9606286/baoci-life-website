@@ -1,6 +1,6 @@
 import { useReveal } from '@/hooks/useReveal';
 import { companyInfo } from '@/data/content';
-import { Landmark, FileCheck, Scale, ShieldCheck } from 'lucide-react';
+import { Landmark, FileCheck, Scale, ShieldCheck, ExternalLink } from 'lucide-react';
 
 const trustItems = [
   { icon: FileCheck, title: '京城銀行信託契約', text: '依殯葬管理條例第51條規定，本公司預收之生前契約款項，已將75%交由京城銀行信託管理，專款專用。' },
@@ -40,10 +40,24 @@ export default function Trust() {
             <p className="font-serif-tc text-2xl lg:text-3xl text-ivory-50 font-bold mb-3">
               保證 {companyInfo.trustRatio} 信託
             </p>
-            <p className="text-ivory-200/70 text-sm lg:text-base leading-relaxed max-w-2xl mx-auto">
+            <p className="text-ivory-200/70 text-sm lg:text-base leading-relaxed max-w-2xl mx-auto mb-6">
               依殯葬管理條例第51條規定，本公司預收之生前契約款項，已將{companyInfo.trustRatio}交由「{companyInfo.trustBank}」信託管理，專款專用。
             </p>
-            <div className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink-800/50 border border-ink-700/50">
+
+            {/* 前往信託查詢系統按鈕 */}
+            <div className="mb-6">
+              <a
+                href="https://customer.ktb.com.tw/new/personal/agreement"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gold-400/20 hover:bg-gold-400/30 border border-gold-400/40 text-gold-300 hover:text-gold-200 font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-gold-400/10"
+              >
+                <span>前往信託查詢系統</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
+
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink-800/50 border border-ink-700/50">
               <ShieldCheck className="w-4 h-4 text-sage-400" />
               <span className="text-ivory-200/80 text-sm">{companyInfo.parentCompany}</span>
             </div>
