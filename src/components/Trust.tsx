@@ -9,9 +9,9 @@ const trustItems = [
 ];
 
 const annualReports = [
-  '112年度信託財產結算報告',
-  '113年度信託財產結算報告',
-  '114年度信託財產結算報告',
+  { title: '112年度信託財產結算報告', url: '/112年度信託財產結算報告.pdf' },
+  { title: '113年度信託財產結算報告', url: '/113年度信託財產結算報告.pdf' },
+  { title: '114年度信託財產結算報告', url: '/114年度信託財產結算報告.pdf' },
 ];
 
 export default function Trust() {
@@ -71,15 +71,17 @@ export default function Trust() {
           <div className="bg-ink-800/30 rounded-2xl p-6 lg:p-8 border border-ink-700/30">
             <h3 className="font-serif-tc text-lg text-ivory-50 font-bold mb-5 text-center">信託財產結算報告</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {annualReports.map((report) => (
+              {annualReports.map((report, idx) => (
                 <a
-                  key={report}
-                  href="#contact"
+                  key={idx}
+                  href={report.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 p-4 rounded-xl bg-ink-900/50 border border-ink-700/50 hover:border-gold-400/30 hover:bg-ink-900/80 transition-all group"
                 >
                   <FileCheck className="w-5 h-5 text-gold-400 flex-shrink-0" />
                   <span className="text-ivory-200/70 text-sm group-hover:text-gold-300 transition-colors">
-                    {report}
+                    {report.title}
                   </span>
                 </a>
               ))}
