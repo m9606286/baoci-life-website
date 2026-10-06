@@ -75,7 +75,7 @@ export const contractProducts: ContractProduct[] = [
     type: '標準型流程',
     channel: '晨暉資產股份有限公司',
     phone: '02-2514-7758',
-    documentUrl: 'https://www.apexbaoci.com.tw/document/寶富-合約內容(1150825確認版)過備查.pdf',
+    documentUrl: '/寶富生前契約書.pdf',
     flowType: 'standard',
   },
   {
@@ -83,7 +83,7 @@ export const contractProducts: ContractProduct[] = [
     type: '標準型流程',
     channel: '天勤生命文創股份有限公司',
     phone: '04-2322-0208',
-    documentUrl: 'https://www.apexbaoci.com.tw/document/天勤寶慈福益生前契約書(1150820確認版)-雙方關防.pdf',
+    documentUrl: '/福益生前契約書.pdf',
     flowType: 'standard',
   },
   {
@@ -91,7 +91,7 @@ export const contractProducts: ContractProduct[] = [
     type: '簡約型流程',
     channel: '晨暉資產股份有限公司',
     phone: '02-2514-7758',
-    documentUrl: 'https://www.apexbaoci.com.tw/document/寶暉生前契約書(1150820確認版)過備查.pdf',
+    documentUrl: '/寶暉生前契約書.pdf',
     flowType: 'simple',
   },
   {
@@ -99,7 +99,7 @@ export const contractProducts: ContractProduct[] = [
     type: '簡約型流程',
     channel: '天勤生命文創股份有限公司',
     phone: '04-2322-0208',
-    documentUrl: 'https://www.apexbaoci.com.tw/document/天勤寶慈璞瑜生前契約書(1150820確認版)-雙方關防.pdf',
+    documentUrl: '/璞瑜生前契約書.pdf',
     flowType: 'simple',
   },
 ];
