@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useReveal } from '@/hooks/useReveal';
 import { supabase } from '@/lib/supabase';
+import emailjs from '@emailjs/browser';
 import { Phone, Clock, FileText, Send, CheckCircle2, Loader2 } from 'lucide-react';
 
 const serviceOptions = [
@@ -11,6 +12,11 @@ const serviceOptions = [
   '其他諮詢',
 ];
 
+// 📧 EmailJS 設定參數
+const EMAILJS_SERVICE_ID = 'service_zf9uh61'; // 您的 Service ID[cite: 6]
+const EMAILJS_TEMPLATE_ID = 'template_es3ajzo'; // 請替換為您在 EmailJS 建立的 Template ID
+const EMAILJS_PUBLIC_KEY = 'JrnA1g4s1JSwiropU';   // 請替換為 Account 頁面取得的 Public Key
+
 export default function Contact() {
   const ref = useReveal<HTMLDivElement>();
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -20,18 +26,37 @@ export default function Contact() {
     e.preventDefault();
     if (!form.name.trim() || !form.phone.trim()) return;
     setStatus('loading');
+
     try {
-      const { error } = await supabase.from('consultation_requests').insert({
+      // 1. 同步寫入 Supabase 資料庫
+      const { error: dbError } = await supabase.from('consultation_requests').insert({
         name: form.name.trim(),
         phone: form.phone.trim(),
         service_type: form.serviceType || null,
         message: form.message.trim() || null,
       });
-      if (error) throw error;
+
+      if (dbError) throw dbError;
+
+      // 2. 同步透過 EmailJS 寄出 Email 到 jerry@mail.apex.com.tw
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: form.name.trim(),            // 對應範本中的 {{name}}
+          phone: form.phone.trim(),          // 對應範本中的 {{phone}}
+          service_type: form.serviceType || '未指定', // 對應範本中的 {{service_type}}
+          message: form.message.trim() || '無額外需求說明', // 對應範本中的 {{message}}
+          to_email: 'jerry@mail.apex.com.tw',
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
       setStatus('success');
       setForm({ name: '', phone: '', serviceType: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
-    } catch {
+    } catch (err) {
+      console.error('表單送出錯誤：', err);
       setStatus('error');
     }
   };
