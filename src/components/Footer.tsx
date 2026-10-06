@@ -73,7 +73,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
-                  <span>寶碩（股票代號5210）轉投資關係企業</span>
+                  <span>寶碩（股票代號5210）全資子公司</span>
                 </li>
               </ul>
             </div>
