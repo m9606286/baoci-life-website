@@ -1,10 +1,20 @@
 import { useReveal } from '@/hooks/useReveal';
-import { preneedAdvantages } from '@/data/content';
 import { Check, FileText, TrendingUp, ShieldCheck, Heart } from 'lucide-react';
 
-// 替換為靜謐高雅的白百合花藝圖源，傳遞尊嚴、安心與圓滿，避免與上方牽手圖片重複
+// 靜謐高雅白百合花藝圖源
 const preneedImage =
   'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1200&q=80';
+
+// 主要優勢清單（直接寫在此處，避免外部檔案引用錯誤）
+const preneedAdvantages = [
+  { text: '一定會發生的事情，提早做好規劃，減輕家人的壓力。' },
+  { text: '確保按照自己的意願進行禮儀安排。' },
+  { text: '獲得透明的價格和完整的服務保障。' },
+  { text: '享受優惠的付款方案，鎖定價格抗通膨。' },
+  { text: '為親愛的家人留下清晰的指引，留愛不留債。' },
+  { text: '保障75%信託，選擇永續經營公司，更有保障。' },
+  { text: '可自由轉讓，契約持有者可指定使用人，不受限於自己或家人使用。' },
+];
 
 const features = [
   {
@@ -87,4 +97,23 @@ export default function PreneedContract() {
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className={`reveal reveal-delay-${(idx % 2) + 1} group bg-ink-800/50 backdrop-blur-sm rounded-2xl p-8 border border-ink
+              className={`reveal reveal-delay-${(idx % 2) + 1} group bg-ink-800/50 backdrop-blur-sm rounded-2xl p-8 border border-ink-700/50 hover:border-gold-400/30 transition-all duration-500 hover:bg-ink-800/80`}
+            >
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-400/20 transition-colors">
+                  <feature.icon className="w-7 h-7 text-gold-400" />
+                </div>
+                <div>
+                  <h3 className="font-serif-tc text-lg lg:text-xl text-ivory-50 font-bold mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-ivory-200/60 text-sm leading-relaxed">{feature.text}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
