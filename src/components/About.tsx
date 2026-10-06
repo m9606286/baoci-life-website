@@ -53,19 +53,24 @@ export default function About() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
           
-          {/* 左側：圖片區塊 (加上 h-full 讓它自動延伸對齊右側卡片高度) */}
+          {/* 左側：圖片區塊 (Hover 懸停時圖片變深，並在圖片下方展開金色線條) */}
           <div className="lg:col-span-5 relative reveal flex flex-col h-full min-h-[550px] lg:min-h-[700px]">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group cursor-pointer border border-ivory-300/80">
               <img
                 src={aboutImage}
                 alt="溫暖陪伴與專業禮儀服務"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-90"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-ink-950/10 to-transparent" />
+              
+              {/* 暗色遮罩：Hover 時加深圖片 */}
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/20 to-transparent group-hover:bg-ink-950/60 transition-colors duration-500" />
+
+              {/* 圖片正下方的動態金色線條 */}
+              <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out z-10" />
             </div>
             
             {/* 左下角懸浮浮水印標籤 */}
-            <div className="absolute bottom-6 right-6 lg:-right-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 border border-white/60">
+            <div className="absolute bottom-6 right-6 lg:-right-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 border border-white/60 z-20">
               <p className="font-serif-tc text-3xl font-bold gold-text-gradient">75%</p>
               <p className="text-xs font-semibold text-ink-700 mt-0.5">信託保障</p>
               <p className="text-[11px] text-ink-400 mt-0.5">專款專用 履約保障</p>
