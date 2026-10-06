@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useReveal } from '@/hooks/useReveal';
 import { supabase } from '@/lib/supabase';
 import emailjs from '@emailjs/browser';
-import { Phone, Clock, FileText, Send, CheckCircle2, Loader2 } from 'lucide-react';
+import { Phone, Clock,MapPin, FileText, Send, CheckCircle2, Loader2 } from 'lucide-react';
 
 const serviceOptions = [
   '生前契約規劃',
@@ -97,11 +97,11 @@ export default function Contact() {
 
               <div className="reveal reveal-delay-1 flex items-center gap-4 p-6 bg-white rounded-xl shadow-md">
                 <div className="w-12 h-12 rounded-full bg-ink-900 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-5 h-5 text-gold-400" />
+                  <MapPin className="w-5 h-5 text-gold-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-ink-400">服務時間</p>
-                  <p className="text-ink-800 font-medium">24 小時 · 全年無休</p>
+                  <p className="text-xs text-ink-400">地址</p>
+                  <p className="text-ink-800 font-medium">台北市內湖區新湖二路329號5樓</p>
                 </div>
               </div>
 
@@ -118,7 +118,7 @@ export default function Contact() {
               <div className="reveal reveal-delay-3 p-6 bg-ink-900 rounded-xl shadow-md">
                 <p className="text-gold-400 text-xs tracking-widest uppercase mb-2">寶慈生命事業股份有限公司</p>
                 <p className="text-ivory-200/70 text-sm leading-relaxed">
-                  臨終關懷諮詢或須啟動接體服務，皆直接撥打 24小時服務專線。
+                  臨終關懷諮詢或須啟動接體服務，請直接撥打 24小時服務專線。
                 </p>
               </div>
             </div>
