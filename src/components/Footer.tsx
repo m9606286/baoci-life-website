@@ -1,4 +1,4 @@
-import { Phone, FileText, ArrowUp } from 'lucide-react';
+import { Phone, MapPin, ArrowUp } from 'lucide-react';
 import { companyInfo } from '@/data/content';
 import BrandLogo from '@/components/BrandLogo';
 
@@ -55,12 +55,12 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-gold-500 flex-shrink-0" />
                 <a href="tel:0800-600-603" className="hover:text-gold-400 transition-colors">
-                  0800-600-603
+                  24 小時服務專線 0800-600-603
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <FileText className="w-4 h-4 text-gold-500 flex-shrink-0" />
-                <span>24 小時服務專線 · 全年無休</span>
+                <MapPin className="w-4 h-4 text-gold-500 flex-shrink-0" />
+                <span>地址：台北市內湖區新湖二路329號5樓</span>
               </li>
             </ul>
 
