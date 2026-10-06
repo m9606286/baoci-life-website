@@ -149,8 +149,6 @@ export default function Services() {
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
                 生前契約主要商品差異
               </h3>
-              <p className="text-ink-500 text-sm mt-2">寶富生前契約與寶暉生前契約（家用型）規格對照</p>
-              <div className="w-16 h-0.5 bg-gold-400 mx-auto mt-4" />
             </div>
 
             {/* 對照表格 */}
