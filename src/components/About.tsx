@@ -52,6 +52,7 @@ export default function About() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
           
+          {/* 左側：圖片區塊 */}
           <div className="lg:col-span-5 relative reveal flex flex-col h-full min-h-[550px] lg:min-h-[700px]">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group cursor-pointer border border-ivory-300/80">
               <img
@@ -63,6 +64,7 @@ export default function About() {
               <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out z-10" />
             </div>
             
+            {/* 左下角 75% 信託保障浮水印標籤 */}
             <div className="absolute bottom-6 right-6 lg:-right-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 border border-white/60 z-20">
               <p className="font-serif-tc text-3xl font-bold gold-text-gradient">75%</p>
               <p className="text-xs font-semibold text-ink-700 mt-1">信託保障</p>
@@ -70,6 +72,7 @@ export default function About() {
             </div>
           </div>
 
+          {/* 右側：三個卡片區塊 */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             {aboutSections.map((section, idx) => {
               const Icon = section.icon;
@@ -80,4 +83,25 @@ export default function About() {
                 >
                   <div className="flex items-center gap-4 mb-4">
                     <div className="p-3 rounded-xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-colors duration-300">
-                      <Icon className="w
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <h3 className="font-serif-tc text-2xl font-bold text-ink-900">
+                      {section.title}
+                    </h3>
+                  </div>
+                  <div className="text-ink-700 leading-relaxed text-base">
+                    {section.content}
+                  </div>
+
+                  {/* 卡片底部的金色指示線：滑鼠移入出現，移出消失 */}
+                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out" />
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
