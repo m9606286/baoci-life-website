@@ -64,55 +64,7 @@ export default function About() {
               <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out z-10" />
             </div>
             
-            {/* 左下角浮水印 */}
+            {/* 左下角 75% 信託保障浮水印標籤 */}
             <div className="absolute bottom-6 right-6 lg:-right-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 border border-white/60 z-20">
               <p className="font-serif-tc text-3xl font-bold gold-text-gradient">75%</p>
-              <p className="text-xs font-semibold text-ink-700 mt-0.5">信託保障</p>
-              <p className="text-[11px] text-ink-400 mt-0.5">專款專用 履約保障</p>
-            </div>
-          </div>
-
-          {/* 右側：文字內容與卡片 */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
-            <div>
-              <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">About Us</p>
-              <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-800 font-bold mt-3 reveal reveal-delay-1 leading-tight">
-                關於我們
-                <span className="block gold-text-gradient mt-2 text-2xl lg:text-3xl">溫暖的人文關懷</span>
-              </h2>
-              <div className="gold-divider w-32 mt-6 mb-8 reveal reveal-delay-2" />
-            </div>
-
-            {/* 三個卡片列表：套用核心價值的 Hover 浮起 + 底部金線效果 */}
-            <div className="space-y-6">
-              {aboutSections.map((item, idx) => (
-                <div
-                  key={item.title}
-                  className={`reveal reveal-delay-${idx + 1} group relative p-6 sm:p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 -translate-y-0 hover:-translate-y-1.5 border border-ivory-300/70 overflow-hidden cursor-pointer`}
-                >
-                  <div className="flex items-center gap-3.5 mb-4">
-                    {/* 圖示底色 */}
-                    <div className="w-12 h-12 rounded-2xl bg-gold-50/80 border border-gold-200/60 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-100 group-hover:border-gold-300 transition-colors">
-                      <item.icon className="w-6 h-6 text-gold-600" />
-                    </div>
-                    <h3 className="text-ink-800 font-serif-tc font-bold text-xl group-hover:text-gold-700 transition-colors">
-                      {item.title}
-                    </h3>
-                  </div>
-
-                  <div className="text-ink-600 text-sm sm:text-base leading-relaxed">
-                    {item.content}
-                  </div>
-
-                  {/* 底部金線效果（與核心價值卡片完全一致） */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-300 via-gold-500 to-gold-400 opacity-80 group-hover:opacity-100 transition-opacity" />
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-}
+              <p className="text-xs font-semibold text-ink
