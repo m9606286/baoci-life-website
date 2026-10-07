@@ -67,4 +67,40 @@ export default function About() {
             {/* 左下角 75% 信託保障浮水印標籤 */}
             <div className="absolute bottom-6 right-6 lg:-right-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 border border-white/60 z-20">
               <p className="font-serif-tc text-3xl font-bold gold-text-gradient">75%</p>
-              <p className="text-xs font-semibold text-ink
+              <p className="text-xs font-semibold text-ink-700 mt-1">信託保障</p>
+              <p className="text-[10px] text-ink-500">專款專用 履約保障</p>
+            </div>
+          </div>
+
+          {/* 右側：三個卡片區塊（滑鼠移入出現 opacity-0 -> hover:opacity-100） */}
+          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+            {aboutSections.map((section, idx) => {
+              const Icon = section.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-sm border border-ivory-300/80 
+                             opacity-0 hover:opacity-100 hover:shadow-xl hover:-translate-y-1
+                             transition-all duration-500 ease-in-out cursor-pointer group"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 rounded-xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-colors duration-300">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <h3 className="font-serif-tc text-2xl font-bold text-ink-900">
+                      {section.title}
+                    </h3>
+                  </div>
+                  <div className="text-ink-700 leading-relaxed text-base">
+                    {section.content}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
