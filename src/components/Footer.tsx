@@ -26,7 +26,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-ink-950 text-ivory-200/60">
+    <footer className="bg-ink-950 text-white">
       {/* Main */}
       <div className="mx-auto max-w-8xl px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -35,24 +35,24 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-5">
               <BrandLogo variant="footer" />
             </div>
-            <p className="text-sm leading-relaxed mb-4">
+            <p className="text-sm leading-relaxed mb-4 text-white/90">
               專業的禮儀服務，溫暖的人文關懷。
             </p>
-            <p className="text-sm text-ivory-200/40">
+            <p className="text-sm text-white/70">
               統一編號：{companyInfo.taxId}
             </p>
           </div>
 
           {/* Quick links */}
           <div>
-            <h3 className="text-ivory-50 font-medium text-sm mb-5 tracking-wide">快速連結</h3>
+            <h3 className="text-white font-semibold text-base mb-5 tracking-wide">快速連結</h3>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link)}
-                    className="text-sm hover:text-gold-400 transition-colors"
+                    className="text-sm text-white/80 hover:text-gold-400 transition-colors"
                   >
                     {link.label}
                   </a>
@@ -63,22 +63,22 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-ivory-50 font-medium text-sm mb-5 tracking-wide">聯絡方式</h3>
-            <ul className="space-y-3.5 text-sm">
+            <h3 className="text-white font-semibold text-base mb-5 tracking-wide">聯絡方式</h3>
+            <ul className="space-y-3.5 text-sm text-white/90">
               <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-gold-500 flex-shrink-0" />
+                <Phone className="w-4 h-4 text-gold-400 flex-shrink-0" />
                 <a href="tel:0800-600-603" className="hover:text-gold-400 transition-colors">
                   24 小時服務專線 0800-600-603
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-gold-500 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-gold-400 flex-shrink-0" />
                 <a href="mailto:service@apexbaoci.com.tw" className="hover:text-gold-400 transition-colors">
                   Email：service@apexbaoci.com.tw
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <MapPin className="w-4 h-4 text-gold-500 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-gold-400 flex-shrink-0" />
                 <span>地址：台北市內湖區新湖二路329號5樓</span>
               </li>
             </ul>
@@ -89,16 +89,16 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-ink-800">
         <div className="mx-auto max-w-8xl px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-ivory-200/40">
+          <p className="text-xs text-white/60">
             © 2026 寶慈生命事業股份有限公司 · 版權所有
           </p>
           <a
             href="#top"
             onClick={scrollToTop}
-            className="flex items-center gap-2 text-xs text-ivory-200/60 hover:text-gold-400 transition-colors group"
+            className="flex items-center gap-2 text-xs text-white/80 hover:text-gold-400 transition-colors group"
           >
             <span>回到頂部</span>
-            <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-1 transition-transform" />
+            <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-1 transition-transform text-gold-400" />
           </a>
         </div>
       </div>
