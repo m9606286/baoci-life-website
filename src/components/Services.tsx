@@ -292,7 +292,7 @@ export default function Services() {
             <div className="text-center mb-10">
               <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Service Process</p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
-                禮儀 12 大服務流程
+                12 大禮儀服務流程
               </h3>
               <p className="text-ink-500 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
                 從臨終關懷到晉塔安葬與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
