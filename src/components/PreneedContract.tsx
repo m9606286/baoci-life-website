@@ -114,3 +114,27 @@ export default function PreNeed() {
 
         {/* 下方四個特色卡片區塊 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {features.map((feature, idx) => (
+            <div
+              key={idx}
+              className={`reveal reveal-delay-${(idx % 2) + 1} group bg-ink-900/60 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-gold-400/40 transition-all duration-500 hover:bg-ink-900/90`}
+            >
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center shrink-0 group-hover:bg-gold-400/20 transition-colors">
+                  <feature.icon className="w-7 h-7 text-gold-400" />
+                </div>
+                <div>
+                  <h3 className="font-serif-tc text-lg lg:text-xl text-ivory-50 font-bold mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-ivory-200/70 text-sm leading-relaxed">{feature.text}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
