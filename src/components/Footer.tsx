@@ -43,22 +43,39 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick links - 縮小左右欄間距 (gap-x-12) */}
+          {/* Quick links - 改用 flex 兩欄並排，並用 gap 控管緊湊間距 */}
           <div>
             <h3 className="text-white font-semibold text-base mb-5 tracking-wide">快速連結</h3>
-            <ul className="grid grid-cols-2 gap-x-12 gap-y-2.5 max-w-xs">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link)}
-                    className="text-sm text-white hover:text-gold-400 transition-colors inline-block"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="flex gap-x-8">
+              {/* 左欄 */}
+              <ul className="space-y-2.5">
+                {quickLinks.slice(0, 4).map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleNavClick(e, link)}
+                      className="text-sm text-white hover:text-gold-400 transition-colors inline-block"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              {/* 右欄 */}
+              <ul className="space-y-2.5">
+                {quickLinks.slice(4).map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleNavClick(e, link)}
+                      className="text-sm text-white hover:text-gold-400 transition-colors inline-block"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Contact */}
