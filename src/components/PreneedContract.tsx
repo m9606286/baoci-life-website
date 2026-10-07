@@ -3,9 +3,9 @@ import { FileText, TrendingUp, ShieldCheck, Heart, CheckCircle2 } from 'lucide-r
 
 // 主要圖片圖源
 const advantageImage =
-  'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1200&q=80';
+  'https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=1200&q=80';
 
-// 主要優勢清單
+// 核心保障清單
 const preneedAdvantages = [
   { text: '一定會發生的事情，提早做好規劃，減輕家人的壓力。' },
   { text: '確保按照自己的意願進行禮儀安排。' },
@@ -61,43 +61,43 @@ export default function PreNeed() {
           </p>
         </div>
 
-        {/* 圖片 + 優勢清單 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-20">
+        {/* 圖片 + 核心保障清單（使用 items-stretch 讓左右兩欄長度完美等高） */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch mb-20">
           
-          {/* 左側：圖片區塊（懸停微幅放大） */}
-          <div className="lg:col-span-5 relative reveal">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer border border-white/10">
+          {/* 左側：圖片區塊（自動拉伸 h-full，高度精準契合右側） */}
+          <div className="lg:col-span-5 relative reveal flex flex-col">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer border border-white/10 w-full h-full min-h-[400px]">
               <img
                 src={advantageImage}
-                alt="生前契約主要優勢"
-                className="w-full h-[450px] lg:h-[550px] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                alt="生前契約核心保障"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
 
-          {/* 右側：主要優勢列表（深色主題 Hover 互動） */}
-          <div className="lg:col-span-7 space-y-8">
+          {/* 右側：核心保障列表 */}
+          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             <div>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-white tracking-wide mb-4">
-                主要優勢
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-white tracking-wide mb-3">
+                契約核心保障
               </h3>
-              <div className="w-16 h-1 bg-gold-400 rounded-full mb-8" />
+              <div className="w-16 h-1 bg-gold-400 rounded-full mb-6" />
             </div>
 
-            <div className="space-y-3.5">
+            <div className="space-y-3.5 flex-1 flex flex-col justify-between">
               {preneedAdvantages.map((adv, idx) => (
                 <div
                   key={idx}
-                  className="group flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-gold-400/40 hover:translate-x-1.5 hover:shadow-lg hover:shadow-gold-500/5"
+                  className="group flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-gold-400/40 hover:translate-x-1.5 hover:shadow-lg hover:shadow-gold-500/5"
                 >
-                  {/* 金色勾勾圖示：Hover 時圈圈變滿版金黃、勾勾變深黑 */}
-                  <div className="p-1 rounded-full bg-gold-400/10 text-gold-400 group-hover:bg-gold-400 group-hover:text-ink-950 transition-all duration-300 shrink-0 mt-0.5">
+                  {/* 金色勾勾圖示 */}
+                  <div className="p-1 rounded-full bg-gold-400/10 text-gold-400 group-hover:bg-gold-400 group-hover:text-ink-950 transition-all duration-300 shrink-0">
                     <CheckCircle2 className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                   </div>
 
-                  {/* 優勢文字：Hover 時從灰白轉為純高亮白 */}
-                  <p className="text-white/80 group-hover:text-white text-base leading-relaxed font-medium transition-colors duration-300 pt-0.5">
+                  {/* 保障文字 */}
+                  <p className="text-white/80 group-hover:text-white text-base leading-relaxed font-medium transition-colors duration-300">
                     {adv.text}
                   </p>
                 </div>
