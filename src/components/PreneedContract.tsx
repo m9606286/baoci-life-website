@@ -45,26 +45,34 @@ export default function PreNeed() {
 
   return (
     <section id="preneed" className="py-24 lg:py-32 bg-ink-950 text-white relative overflow-hidden">
-      {/* 頂部裝飾金線 */}
+      {/* 頂部裝飾極細金線 */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
+        
         {/* Header 標題區 */}
         <div className="text-center mb-16">
-          <p className="text-gold-400 text-sm tracking-[0.3em] uppercase reveal">Preneed Contract</p>
+          <p className="text-gold-400 text-xs tracking-[0.35em] uppercase reveal">Preneed Contract</p>
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ivory-50 font-bold mt-3 reveal reveal-delay-1">
             什麼是生前契約？
           </h2>
-          <div className="w-24 h-1 bg-gold-400/80 mx-auto mt-6 rounded-full reveal reveal-delay-2" />
-          <p className="mt-6 text-ivory-200/70 text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
+
+          {/* 優化後的精緻典雅金線分隔符號 */}
+          <div className="flex items-center justify-center gap-3 mt-5 reveal reveal-delay-2">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-gold-400/60" />
+            <div className="w-1.5 h-1.5 rotate-45 bg-gold-400/80 shrink-0" />
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-gold-400/60" />
+          </div>
+
+          <p className="mt-6 text-ivory-200/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
             生前契約是給家人的最後一道保障，也可明確記錄您對於身後事的安排和意願。
           </p>
         </div>
 
-        {/* 圖片 + 核心保障清單（使用 items-stretch 讓左右兩欄長度完美等高） */}
+        {/* 圖片 + 核心保障清單 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch mb-20">
           
-          {/* 左側：圖片區塊（自動拉伸 h-full，高度精準契合右側） */}
+          {/* 左側：圖片區塊 */}
           <div className="lg:col-span-5 relative reveal flex flex-col">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer border border-white/10 w-full h-full min-h-[400px]">
               <img
@@ -78,14 +86,14 @@ export default function PreNeed() {
 
           {/* 右側：核心保障列表 */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            <div>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-white tracking-wide mb-3">
+            <div className="border-l-2 border-gold-400/70 pl-4 py-0.5">
+              <span className="text-gold-400/80 text-xs tracking-widest uppercase font-mono block mb-1">Core Guarantees</span>
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-white tracking-wide">
                 契約核心保障
               </h3>
-              <div className="w-16 h-1 bg-gold-400 rounded-full mb-6" />
             </div>
 
-            <div className="space-y-3.5 flex-1 flex flex-col justify-between">
+            <div className="space-y-3.5 flex-1 flex flex-col justify-between pt-2">
               {preneedAdvantages.map((adv, idx) => (
                 <div
                   key={idx}
