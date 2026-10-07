@@ -52,16 +52,15 @@ export default function About() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
           
-          {/* 左側：圖片區塊 */}
+          {/* 左側：圖片區塊 (已移除底線，移過去不變暗) */}
           <div className="lg:col-span-5 relative reveal flex flex-col h-full min-h-[550px] lg:min-h-[700px]">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group cursor-pointer border border-ivory-300/80">
               <img
                 src={aboutImage}
                 alt="溫暖陪伴與專業禮儀服務"
-                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-90"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/20 to-transparent group-hover:bg-ink-950/60 transition-colors duration-500" />
-              <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent pointer-events-none" />
             </div>
             
             {/* 左下角 75% 信託保障浮水印標籤 */}
@@ -72,7 +71,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* 右側：三個卡片區塊 */}
+          {/* 右側：三個卡片區塊 (保留移入出現金線，移出消失) */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             {aboutSections.map((section, idx) => {
               const Icon = section.icon;
@@ -93,15 +92,4 @@ export default function About() {
                     {section.content}
                   </div>
 
-                  {/* 卡片底部的金色指示線：滑鼠移入出現，移出消失 */}
-                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out" />
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-}
+                  {/* 卡片底部的金色指示線：滑鼠移入出現，移
