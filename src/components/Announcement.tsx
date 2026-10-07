@@ -109,4 +109,55 @@ export default function Announcement() {
                 </ul>
               </div>
 
-              <p className="text-center text-gold-600 font-medium text-xs
+              <p className="text-center text-gold-600 font-medium text-xs sm:text-sm md:text-base py-1">
+                寶慈生命事業將持續守護您的託付，讓每一份對家人的愛與安心都能圓滿延續。
+              </p>
+
+              {/* 聯絡方式卡片 */}
+              <div className="bg-stone-100 p-4 sm:p-5 rounded-xl space-y-3">
+                <h4 className="font-serif-tc text-sm sm:text-base font-bold text-slate-900">聯絡方式</h4>
+                <p className="text-xs sm:text-sm text-slate-600">
+                  若您對本次更名或契約權益有任何疑問，歡迎致電本公司，我們將有專人為您詳細說明。
+                </p>
+                
+                <div className="text-xs sm:text-sm space-y-1.5 pt-3 border-t border-stone-200">
+                  <p><strong>客服專線：</strong></p>
+                  <ul className="pl-4 list-disc text-slate-700 space-y-0.5">
+                    <li>寶慈總部：06-267 8859</li>
+                    <li>天勤（台中）：04-2322 0208</li>
+                    <li>晨暉（台北）：02-2514 7755</li>
+                  </ul>
+                  <div className="pt-2">
+                    <p><strong>24小時服務電話：</strong></p>
+                    <p className="text-sm sm:text-base font-bold text-gold-600">0800-600-603</p>
+                    <p className="text-[11px] text-slate-500">（與之前相同，沒有變更）</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 署名與核准字號 */}
+              <div className="text-center pt-2 space-y-1 pb-2">
+                <p className="text-xs font-semibold text-slate-500">特此公告</p>
+                <p className="font-serif-tc text-base sm:text-lg font-bold text-slate-900">寶慈生命事業股份有限公司</p>
+                <p className="text-xs text-slate-500">（原永慈事業股份有限公司）</p>
+                <p className="text-xs font-serif-tc italic text-slate-400 pt-1">敬啟</p>
+                <div className="pt-3 border-t border-slate-100">
+                  <p className="text-[10px] sm:text-[11px] text-slate-400">台南市政府民政局-核准變更名稱及負責人(受文者寶慈)</p>
+                </div>
+              </div>
+
+              {/* 手機版底部關閉按鈕 */}
+              <button
+                onClick={() => setIsOpen(false)}
+                className="w-full py-2.5 rounded-xl bg-gold-400 hover:bg-gold-500 text-ink-950 font-bold text-sm transition-colors shadow-md mt-2"
+              >
+                我已瞭解
+              </button>
+
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
