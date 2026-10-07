@@ -1,9 +1,9 @@
-import { Phone, MapPin, ArrowUp } from 'lucide-react';
+import { Phone, MapPin, Mail, ArrowUp } from 'lucide-react';
 import { companyInfo } from '@/data/content';
 import BrandLogo from '@/components/BrandLogo';
 
 const quickLinks = [
-  { label: '關於我們', href: '#about' },
+  { label: '關於我們', href: '#top', isTop: true },
   { label: '核心價值', href: '#values' },
   { label: '生前契約', href: '#preneed' },
   { label: '服務項目', href: '#services' },
@@ -13,6 +13,18 @@ const quickLinks = [
 ];
 
 export default function Footer() {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: typeof quickLinks[0]) => {
+    if (link.isTop) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-ink-950 text-ivory-200/60">
       {/* Main */}
@@ -39,6 +51,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
+                    onClick={(e) => handleNavClick(e, link)}
                     className="text-sm hover:text-gold-400 transition-colors"
                   >
                     {link.label}
@@ -59,24 +72,16 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-gold-500 flex-shrink-0" />
+                <a href="mailto:service@apexbaoci.com.tw" className="hover:text-gold-400 transition-colors">
+                  Email：service@apexbaoci.com.tw
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-gold-500 flex-shrink-0" />
                 <span>地址：台北市內湖區新湖二路329號5樓</span>
               </li>
             </ul>
-
-            <div className="mt-6 pt-6 border-t border-ink-800">
-              <h3 className="text-ivory-50 font-medium text-sm mb-4 tracking-wide">信託保障</h3>
-              <ul className="space-y-2.5 text-sm">
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
-                  <span>75% 交付京城銀行信託保管</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
-                  <span>寶碩（股票代號5210）全資子公司</span>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
@@ -89,6 +94,7 @@ export default function Footer() {
           </p>
           <a
             href="#top"
+            onClick={scrollToTop}
             className="flex items-center gap-2 text-xs text-ivory-200/60 hover:text-gold-400 transition-colors group"
           >
             <span>回到頂部</span>
