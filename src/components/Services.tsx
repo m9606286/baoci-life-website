@@ -1,7 +1,26 @@
 import { useState } from 'react';
 import { useReveal } from '@/hooks/useReveal';
 import { services } from '@/data/content';
-import { ClipboardList, HeartHandshake, ArrowRight, X, UserCheck, CheckCircle2, MinusCircle } from 'lucide-react';
+import {
+  ClipboardList,
+  HeartHandshake,
+  ArrowRight,
+  X,
+  UserCheck,
+  CheckCircle2,
+  MinusCircle,
+  PhoneCall,
+  Truck,
+  Flame,
+  FileCheck2,
+  CalendarDays,
+  Sparkles,
+  Users,
+  Footprints,
+  Box,
+  Home,
+  Building2,
+} from 'lucide-react';
 
 const iconMap: Record<string, typeof ClipboardList> = {
   clipboard: ClipboardList,
@@ -31,37 +50,47 @@ const contractComparison = [
     feature: '訃聞形式',
     baofu: '紙本雙折訃聞 100 份 (西式加贈程序表 100 份)',
     baohui: '電子訃聞 (圖檔)',
-    baofuHighlight: true,
   },
   {
     feature: '家公奠禮與儀式',
     baofu: '包含家公奠禮 (中式含司儀1人、禮生2人、俗家法事3人及5人國樂現場伴奏)',
     baohui: '無家公奠禮規格 (僅配置基本服務人員與誦經居士/神職人員，無司儀、禮生及國樂)',
-    baofuHighlight: true,
   },
   {
     feature: '場地與花藝佈置',
     baofu: '大型鮮花主花台、外牌、燈光音響、走道花及羅馬柱等完整會場佈置',
     baohui: '僅提供基本拜祭供品、桌花與收賻處擺設',
-    baofuHighlight: true,
   },
   {
     feature: '答禮毛巾',
     baofu: '50 條',
     baohui: '未提供',
-    baofuHighlight: true,
   },
   {
     feature: '孝服借用數量',
     baofu: '20 件以內',
     baohui: '10 件以內 (黑袍)',
-    baofuHighlight: true,
   },
+];
+
+// 12 道禮儀服務流程資料 (不含禮體淨身)
+const processSteps = [
+  { number: '01', title: '臨終關懷', icon: PhoneCall, desc: '提供 24 小時即時諮詢與臨終指引，第一時間給予家屬溫暖支持與安心陪伴。' },
+  { number: '02', title: '遺體接運', icon: Truck, desc: '專車及專業接體人員協助接運逝者至指定殯儀館或接體地點，並完善冰存安置。' },
+  { number: '03', title: '設立靈堂', icon: Flame, desc: '協助設置安靈拜祭空間、豎靈儀式與牌位安排，提供家屬靜心追思與守靈場合。' },
+  { number: '04', title: '入殮', icon: FileCheck2, desc: '由專業禮儀師引導進行尊榮入殮儀式，為逝者整理容顏、更衣並恭安至壽木中。' },
+  { number: '05', title: '治喪協調', icon: CalendarDays, desc: '與家屬溝通宗教信仰、奠禮流程、擇定吉日吉時及會場風格規劃。' },
+  { number: '06', title: '奠禮準備', icon: Sparkles, desc: '印製訃聞通知親友、佈置典雅告別式會場、協調花藝、燈光音響與各項用品。' },
+  { number: '07', title: '家公奠禮', icon: Users, desc: '專業司儀與禮生引導進行家奠與公奠追思儀式，陪伴親友圓滿表達最後懷念。' },
+  { number: '08', title: '發引', icon: Footprints, desc: '奠禮結束後引導發引辭靈，由靈車護送靈柩前往火化場或安葬地點。' },
+  { number: '09', title: '火化封罐', icon: Box, desc: '陪同家屬至火化場進行火化儀式，並由禮儀師協助撿骨、迎靈與骨灰罐封罐。' },
+  { number: '10', title: '返主除靈', icon: Home, desc: '引導家屬迎請香火牌位返家安靈，並進行除靈與拜祭注意事項說明。' },
+  { number: '11', title: '晉塔安葬', icon: Building2, desc: '選擇吉日良辰將骨灰罐晉塔安座（或進行樹葬/花葬等自然葬），圓滿歸宿。' },
+  { number: '12', title: '後續關懷', icon: HeartHandshake, desc: '提供百日、對年、合爐及各項祭祀節日之提醒與諮詢，關懷陪伴永不間斷。' },
 ];
 
 export default function Services() {
   const ref = useReveal<HTMLDivElement>();
-  // 使用 string 或 null 來控制開啟哪一個 Modal：'funeral' | 'contract' | null
   const [activeModal, setActiveModal] = useState<'funeral' | 'contract' | null>(null);
 
   return (
@@ -108,7 +137,7 @@ export default function Services() {
                   {service.description}
                 </p>
 
-                {/* 按鈕點擊：依據卡片類型開啟對應 Modal */}
+                {/* 按鈕點擊 */}
                 <button
                   type="button"
                   onClick={() => setActiveModal(isFuneralService ? 'funeral' : 'contract')}
@@ -118,7 +147,6 @@ export default function Services() {
                   <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </button>
 
-                {/* Bottom accent */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-300 to-gold-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </div>
             );
@@ -130,7 +158,6 @@ export default function Services() {
       {activeModal === 'contract' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
           <div className="bg-white border border-ivory-200 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 lg:p-12 shadow-2xl relative">
-            
             <button
               onClick={() => setActiveModal(null)}
               className="absolute top-6 right-6 p-2 rounded-full text-ink-400 hover:text-ink-800 hover:bg-ivory-100 transition-all"
@@ -145,7 +172,6 @@ export default function Services() {
               </h3>
             </div>
 
-            {/* 對照表格 */}
             <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-4">
               <table className="w-full text-left border-collapse min-w-[600px]">
                 <thead>
@@ -181,7 +207,6 @@ export default function Services() {
               </table>
             </div>
 
-            {/* 表格下方備註聲明 */}
             <p className="text-xs sm:text-sm text-ink-500 font-medium mb-8 pl-1">
               註：標準型及簡易型均提供骨罐及火化棺。
             </p>
@@ -195,38 +220,38 @@ export default function Services() {
                 諮詢適合您的方案
               </a>
             </div>
-
           </div>
         </div>
       )}
 
-      {/* 2. 禮儀師團隊 Modal 彈窗 */}
+      {/* 2. 禮儀服務 Modal 彈窗（含專業團隊 + 12大服務流程） */}
       {activeModal === 'funeral' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
-          <div className="bg-white border border-ivory-200 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-8 lg:p-12 shadow-2xl relative">
+          <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 lg:p-12 shadow-2xl relative scrollbar-thin scrollbar-thumb-gold-400/30">
             
             <button
               onClick={() => setActiveModal(null)}
-              className="absolute top-6 right-6 p-2 rounded-full text-ink-400 hover:text-ink-800 hover:bg-ivory-100 transition-all"
+              className="absolute top-6 right-6 p-2 rounded-full text-ink-400 hover:text-ink-800 hover:bg-ivory-100 transition-all z-10"
             >
               <X className="w-6 h-6" />
             </button>
 
+            {/* 區塊一：禮儀服務團隊 */}
             <div className="text-center mb-10">
-              <p className="text-gold-600 text-sm tracking-[0.2em] uppercase font-medium">Professional Team</p>
+              <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Professional Team</p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
                 禮儀服務團隊
               </h3>
               <div className="w-16 h-0.5 bg-gold-400 mx-auto mt-4" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
               {teamMembers.map((member, idx) => (
                 <div
                   key={idx}
-                  className="bg-ivory-50 rounded-2xl p-8 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-ivory-50 rounded-2xl p-6 sm:p-8 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="w-36 h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden mb-6 border-4 border-white shadow-lg">
+                  <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden mb-5 border-4 border-white shadow-lg">
                     <img
                       src={member.image}
                       alt={`${member.name} ${member.title}`}
@@ -245,14 +270,68 @@ export default function Services() {
                     </div>
                   )}
 
-                  <p className="text-ink-600 text-sm leading-relaxed mt-2">
+                  <p className="text-ink-600 text-sm leading-relaxed mt-1">
                     {member.desc}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-10 text-center">
+            {/* 分隔分隔線 */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent my-12" />
+
+            {/* 區塊二：12 大禮儀服務流程圖 */}
+            <div className="text-center mb-10">
+              <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Service Process</p>
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
+                生命圓滿禮儀 12 大服務流程
+              </h3>
+              <p className="text-ink-500 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
+                從臨終關懷到晉塔安葬與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
+              </p>
+              <div className="w-16 h-0.5 bg-gold-400 mx-auto mt-4" />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12">
+              {processSteps.map((step) => {
+                const Icon = step.icon;
+                return (
+                  <div
+                    key={step.number}
+                    className="group relative bg-ivory-50/80 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                  >
+                    <span className="absolute -top-2 -right-1 text-4xl font-serif-tc font-bold text-ink-900/5 group-hover:text-gold-500/10 transition-colors pointer-events-none">
+                      {step.number}
+                    </span>
+
+                    <div>
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 rounded-xl bg-ink-900 flex items-center justify-center shrink-0 group-hover:bg-gold-500 transition-colors duration-300">
+                          <Icon className="w-5 h-5 text-gold-400 group-hover:text-ink-950 transition-colors" />
+                        </div>
+                        <div>
+                          <span className="text-gold-600 font-mono text-[11px] font-bold tracking-wider uppercase block">
+                            STEP {step.number}
+                          </span>
+                          <h4 className="font-serif-tc text-base font-bold text-ink-800">
+                            {step.title}
+                          </h4>
+                        </div>
+                      </div>
+
+                      <p className="text-ink-600 text-xs leading-relaxed">
+                        {step.desc}
+                      </p>
+                    </div>
+
+                    <div className="mt-4 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* 底部按鈕 */}
+            <div className="text-center pt-4">
               <a
                 href="#contact"
                 onClick={() => setActiveModal(null)}
