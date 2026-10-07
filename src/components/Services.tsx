@@ -146,7 +146,7 @@ export default function Services() {
             </div>
 
             {/* 對照表格 */}
-            <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-8">
+            <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-4">
               <table className="w-full text-left border-collapse min-w-[600px]">
                 <thead>
                   <tr className="bg-ivory-100 border-b border-ivory-200 text-ink-800 text-sm sm:text-base font-serif-tc">
@@ -180,6 +180,11 @@ export default function Services() {
                 </tbody>
               </table>
             </div>
+
+            {/* 表格下方備註聲明 */}
+            <p className="text-xs sm:text-sm text-ink-500 font-medium mb-8 pl-1">
+              註：標準型及簡易型均提供骨罐及火化棺。
+            </p>
 
             <div className="text-center">
               <a
