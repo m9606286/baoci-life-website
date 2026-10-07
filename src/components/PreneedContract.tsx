@@ -57,8 +57,8 @@ export default function PreNeed() {
             什麼是生前契約？
           </h2>
 
-          {/* 與全站統一的置中金色分隔線 */}
-          <div className="w-24 h-1 bg-gold-400/80 mx-auto mt-6 rounded-full reveal reveal-delay-2" />
+          {/* 與全站相同的漸漸淡出金色細線 (置中版) */}
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400/80 to-transparent mx-auto mt-6 reveal reveal-delay-2" />
 
           <p className="mt-6 text-ivory-200/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
             生前契約是給家人的最後一道保障，也可明確記錄您對於身後事的安排和意願。
@@ -86,8 +86,8 @@ export default function PreNeed() {
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-white tracking-wide mb-4">
                 契約核心保障
               </h3>
-              {/* 與全站統一的靠左金色分隔線 */}
-              <div className="w-16 h-1 bg-gold-400 rounded-full mb-8" />
+              {/* 與全站相同的漸漸淡出金色細線 (靠左版) */}
+              <div className="w-28 h-px bg-gradient-to-r from-gold-400/80 to-transparent mb-8" />
             </div>
 
             <div className="space-y-3.5 flex-1 flex flex-col justify-between">
