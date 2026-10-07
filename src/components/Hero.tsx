@@ -22,7 +22,7 @@ export default function Hero() {
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-6 animate-fade-in" style={{ animationDelay: '0.2s', opacity: 0 }}>
             <Heart className="w-5 h-5 text-gold-300" />
-            <span className="text-gold-300 text-sm tracking-[0.3em] uppercase">Apex Bao Ci Life</span>
+            <span className="text-gold-300 text-sm tracking-[0.3em] uppercase">Apex BaoCi-Life</span>
           </div>
 
           <h1
