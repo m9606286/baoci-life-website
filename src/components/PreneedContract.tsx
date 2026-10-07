@@ -82,12 +82,15 @@ export default function PreNeed() {
 
           {/* 右側：核心保障列表 */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            {/* 靠左的標題容器，內部文字與線條精準置中對齊 */}
+            {/* 標題區塊：加入英文副標題 CORE GUARANTEES，與中文標題及漸層線完美置中對齊 */}
             <div className="w-fit text-center">
+              <p className="text-gold-400 text-xs tracking-[0.35em] uppercase mb-1.5 font-medium">
+                Core Guarantees
+              </p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-white tracking-wide mb-3">
                 契約核心保障
               </h3>
-              {/* 線條精準置中於「契約核心保障」六個字正下方 */}
+              {/* 線條精準置中於文字正下方 */}
               <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400/80 to-transparent mx-auto mb-6" />
             </div>
 
