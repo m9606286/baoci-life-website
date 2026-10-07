@@ -1,117 +1,59 @@
 import { useReveal } from '@/hooks/useReveal';
-import { Check, FileText, TrendingUp, ShieldCheck, Heart } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
+import { advantages } from '@/data/content';
 
-// 靜謐高雅白百合花藝圖源
-const preneedImage =
-  'https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=1200&q=80';
+const advantageImage =
+  'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1200&q=80';
 
-// 主要優勢清單（直接寫在此處，避免外部檔案引用錯誤）
-const preneedAdvantages = [
-  { text: '一定會發生的事情，提早做好規劃，減輕家人的壓力。' },
-  { text: '確保按照自己的意願進行禮儀安排。' },
-  { text: '獲得透明的價格和完整的服務保障。' },
-  { text: '享受優惠的付款方案，鎖定價格抗通膨。' },
-  { text: '為親愛的家人留下清晰的指引，留愛不留債。' },
-  { text: '保障75%信託，選擇永續經營公司，更有保障。' },
-  { text: '可自由轉讓，契約持有者可指定使用人，不受限於自己或家人使用。' },
-];
-
-const features = [
-  {
-    icon: FileText,
-    title: '一定會發生的事情，先做好準備',
-    text: '一定會發生的事，等發生了才規劃，花費往往會超出預期，生前契約可以保障壽險理賠真正留給所愛的家人。',
-  },
-  {
-    icon: TrendingUp,
-    title: '享受預約優惠價，鎖定價格抗通膨',
-    text: '台灣平均一場喪葬費用為35萬，並隨著通膨逐年增加，生前契約是用現在的價格，幫您鎖住未來一定會發生的支出。',
-  },
-  {
-    icon: Heart,
-    title: '給親愛的家人留愛不留債',
-    text: '生前契約也是資產配置的一環，可以利用儲蓄的方式，如同保險一樣，提早準備規劃好自己想要的安排，避免未來留給家人負擔。',
-  },
-  {
-    icon: ShieldCheck,
-    title: '保證75%信託，永續經營有保障',
-    text: '寶慈生命事業所發行之合法生前契約，契約款項依規定提撥75%交付京城銀行辦理信託保管，以確保資金安全與專款專用。寶慈生命事業為寶碩（股票代號5210）轉投資之關係企業，依循公司治理原則運作，強化營運穩定性與長期服務承諾。',
-  },
-];
-
-export default function PreneedContract() {
+export default function PreNeed() {
   const ref = useReveal<HTMLDivElement>();
 
   return (
-    <section id="preneed" className="py-24 lg:py-32 bg-gradient-to-b from-ink-900 to-ink-950 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent" />
-
-      <div ref={ref} className="mx-auto max-w-8xl px-6">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-gold-400 text-sm tracking-[0.3em] uppercase reveal">Preneed Contract</p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ivory-50 font-bold mt-3 reveal reveal-delay-1">
-            什麼是生前契約？
-          </h2>
-          <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
-          <p className="mt-6 text-ivory-200/70 text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
-            生前契約是給家人的最後一道保障，也可明確記錄您對於身後事的安排和意願。
-          </p>
-        </div>
-
-        {/* Image + intro */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
-          <div className="relative reveal">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-ink-700/40">
+    <section id="preneed" className="py-24 lg:py-32 bg-ink-950 text-white relative overflow-hidden">
+      <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* 左側：圖片區塊（懸停微幅放大） */}
+          <div className="lg:col-span-5 relative reveal">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer border border-white/10">
               <img
-                src={preneedImage}
-                alt="典雅平靜之生命紀念意象"
-                className="w-full h-[420px] lg:h-[500px] object-cover"
+                src={advantageImage}
+                alt="生前契約主要優勢"
+                className="w-full h-[450px] lg:h-[550px] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
 
-          <div>
-            <h3 className="font-serif-tc text-2xl lg:text-3xl text-ivory-50 font-bold mb-6 reveal reveal-delay-1">
-              主要優勢
-            </h3>
-            <ul className="space-y-4">
-              {preneedAdvantages.map((adv, idx) => (
-                <li
+          {/* 右側：主要優勢列表（深色主題 Hover 互動） */}
+          <div className="lg:col-span-7 space-y-8">
+            <div>
+              <h2 className="font-serif-tc text-3xl lg:text-4xl font-bold text-white tracking-wide mb-4">
+                主要優勢
+              </h2>
+              <div className="w-16 h-1 bg-gold-400 rounded-full mb-8" />
+            </div>
+
+            <div className="space-y-3.5">
+              {advantages.map((advantage, idx) => (
+                <div
                   key={idx}
-                  className={`reveal reveal-delay-${Math.min(idx + 1, 5)} flex items-start gap-3`}
+                  className="group flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-gold-400/40 hover:translate-x-1.5 hover:shadow-lg hover:shadow-gold-500/5"
                 >
-                  <div className="w-6 h-6 rounded-full bg-gold-400/15 border border-gold-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-3.5 h-3.5 text-gold-400" />
+                  {/* 金色勾勾圖示：Hover 時圈圈變滿版金黃、勾勾變深黑 */}
+                  <div className="p-1 rounded-full bg-gold-400/10 text-gold-400 group-hover:bg-gold-400 group-hover:text-ink-950 transition-all duration-300 shrink-0 mt-0.5">
+                    <CheckCircle2 className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                   </div>
-                  <span className="text-ivory-200/80 text-sm lg:text-base leading-relaxed">{adv.text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
 
-        {/* Feature cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {features.map((feature, idx) => (
-            <div
-              key={idx}
-              className={`reveal reveal-delay-${(idx % 2) + 1} group bg-ink-800/50 backdrop-blur-sm rounded-2xl p-8 border border-ink-700/50 hover:border-gold-400/30 transition-all duration-500 hover:bg-ink-800/80`}
-            >
-              <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-400/20 transition-colors">
-                  <feature.icon className="w-7 h-7 text-gold-400" />
+                  {/* 優勢文字：Hover 時從灰白（text-white/80）轉為純高亮白（text-white），帶淡金色光澤感 */}
+                  <p className="text-white/80 group-hover:text-white text-base leading-relaxed font-medium transition-colors duration-300 pt-0.5">
+                    {advantage}
+                  </p>
                 </div>
-                <div>
-                  <h3 className="font-serif-tc text-lg lg:text-xl text-ivory-50 font-bold mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-ivory-200/60 text-sm leading-relaxed">{feature.text}</p>
-                </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
         </div>
       </div>
     </section>
