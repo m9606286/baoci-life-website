@@ -57,8 +57,8 @@ export default function PreNeed() {
             什麼是生前契約？
           </h2>
 
-          {/* 置中漸漸淡出金色細線 (中間深、左右淡) */}
-          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400/80 to-transparent mx-auto mt-6 reveal reveal-delay-2" />
+          {/* 置中高亮金色漸層細線 */}
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-6 reveal reveal-delay-2" />
 
           <p className="mt-6 text-ivory-200/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
             生前契約是給家人的最後一道保障，也可明確記錄您對於身後事的安排和意願。
@@ -82,16 +82,17 @@ export default function PreNeed() {
 
           {/* 右側：核心保障列表 */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            {/* 標題區塊：加入英文副標題 CORE GUARANTEES，與中文標題及漸層線完美置中對齊 */}
+            
+            {/* 標題區塊：提高亮色彩質感，英文/中文/金線色彩輝度完全同步 */}
             <div className="w-fit text-center">
-              <p className="text-gold-400 text-xs tracking-[0.35em] uppercase mb-1.5 font-medium">
+              <p className="text-gold-300 text-xs tracking-[0.35em] uppercase mb-1.5 font-medium drop-shadow-sm">
                 Core Guarantees
               </p>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-white tracking-wide mb-3">
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ivory-50 tracking-wide mb-3">
                 契約核心保障
               </h3>
-              {/* 線條精準置中於文字正下方 */}
-              <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400/80 to-transparent mx-auto mb-6" />
+              {/* 調亮金線輝度（via-gold-400），確保與上標題金線同輝度 */}
+              <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6" />
             </div>
 
             <div className="space-y-3.5 flex-1 flex flex-col justify-between">
