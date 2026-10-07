@@ -82,12 +82,12 @@ export default function PreNeed() {
 
           {/* 右側：核心保障列表 */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            <div>
+            <div className="text-center">
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-white tracking-wide mb-4">
                 契約核心保障
               </h3>
-              {/* 與全站相同的漸漸淡出金色細線 (靠左版) */}
-              <div className="w-28 h-px bg-gradient-to-r from-gold-400/80 to-transparent mb-8" />
+              {/* 漸漸淡出的置中金色細線 */}
+              <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400/80 to-transparent mx-auto mb-8" />
             </div>
 
             <div className="space-y-3.5 flex-1 flex flex-col justify-between">
