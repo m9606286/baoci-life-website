@@ -36,7 +36,7 @@ const features = [
   {
     icon: ShieldCheck,
     title: '保證75%信託，永續經營有保障',
-    text: '寶慈生命事業所發行之合法生前契約，契約款項依規定提撥75%交付京城銀行辦理信託保管，以確保資金安全與專款專用。寶慈生命事業為寶碩（股票代號5210）轉投資之關係企業，依循公司治理原則運作，強化營運穩定性與長期服務承諾。',
+    text: '寶慈生命事業所發行之合法生前契約，契約款項依規定提撥75%交付京城銀行辦理信託保管，以確保資金安全與專款專用。寶慈生命事業為寶碩（股票代號5210）集團旗下之全資子公司，依循公司治理原則運作，強化營運穩定性與長期服務承諾。',
   },
 ];
 
@@ -89,4 +89,47 @@ export default function PreNeed() {
               {preneedAdvantages.map((adv, idx) => (
                 <div
                   key={idx}
-                  className="group flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-gold-400/40 hover:translate-x-1.5 hover:shadow-lg hover:shadow-
+                  className="group flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-gold-400/40 hover:translate-x-1.5 hover:shadow-lg hover:shadow-gold-500/5"
+                >
+                  {/* 金色勾勾圖示：Hover 時圈圈變滿版金黃、勾勾變深黑 */}
+                  <div className="p-1 rounded-full bg-gold-400/10 text-gold-400 group-hover:bg-gold-400 group-hover:text-ink-950 transition-all duration-300 shrink-0 mt-0.5">
+                    <CheckCircle2 className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                  </div>
+
+                  {/* 優勢文字：Hover 時從灰白轉為純高亮白 */}
+                  <p className="text-white/80 group-hover:text-white text-base leading-relaxed font-medium transition-colors duration-300 pt-0.5">
+                    {adv.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
+        {/* 下方四個特色卡片區塊 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {features.map((feature, idx) => (
+            <div
+              key={idx}
+              className={`reveal reveal-delay-${(idx % 2) + 1} group bg-ink-900/60 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-gold-400/40 transition-all duration-500 hover:bg-ink-900/90`}
+            >
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center shrink-0 group-hover:bg-gold-400/20 transition-colors">
+                  <feature.icon className="w-7 h-7 text-gold-400" />
+                </div>
+                <div>
+                  <h3 className="font-serif-tc text-lg lg:text-xl text-ivory-50 font-bold mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-ivory-200/70 text-sm leading-relaxed">{feature.text}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
