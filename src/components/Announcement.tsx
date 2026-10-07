@@ -110,7 +110,7 @@ export default function Announcement() {
               </div>
 
               <p className="text-center text-gold-600 font-medium text-sm md:text-base py-2">
-                深耕服務，初心不變。寶慈生命事業將持續守護您的託付，讓每一份對家人的愛與安心都能圓滿延續。
+                寶慈生命事業將持續守護您的託付，讓每一份對家人的愛與安心都能圓滿延續。
               </p>
 
               {/* 聯絡方式卡片 */}
