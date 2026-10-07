@@ -116,8 +116,7 @@ export default function Contact() {
               </div>
 
               <div className="reveal reveal-delay-3 p-6 bg-ink-900 rounded-xl shadow-md">
-                <p className="text-gold-400 text-xs tracking-widest uppercase mb-2">寶慈生命事業股份有限公司</p>
-                <p className="text-ivory-200/70 text-sm leading-relaxed">
+                <p className="text-white text-sm leading-relaxed">
                   臨終關懷諮詢或須啟動接體服務，請直接撥打 24小時服務專線。
                 </p>
               </div>
