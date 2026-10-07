@@ -27,7 +27,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-ink-950 text-white">
-      {/* Main - 縮減最大寬度至 max-w-6xl，並減少上下內距 */}
+      {/* Main */}
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {/* Brand */}
@@ -43,16 +43,16 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick links - 改為兩欄橫向排列 */}
+          {/* Quick links - 縮小左右欄間距 (gap-x-12) */}
           <div>
             <h3 className="text-white font-semibold text-base mb-5 tracking-wide">快速連結</h3>
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+            <ul className="grid grid-cols-2 gap-x-12 gap-y-2.5 max-w-xs">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link)}
-                    className="text-sm text-white hover:text-gold-400 transition-colors"
+                    className="text-sm text-white hover:text-gold-400 transition-colors inline-block"
                   >
                     {link.label}
                   </a>
@@ -92,7 +92,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar - 同步縮減容器寬度 */}
+      {/* Bottom bar */}
       <div className="border-t border-ink-800">
         <div className="mx-auto max-w-6xl px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white">
