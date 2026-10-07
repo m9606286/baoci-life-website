@@ -45,7 +45,7 @@ export default function PreNeed() {
 
   return (
     <section id="preneed" className="py-24 lg:py-32 bg-ink-950 text-white relative overflow-hidden">
-      {/* 頂部裝飾極細金線 */}
+      {/* 頂部裝飾線 */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
@@ -57,12 +57,8 @@ export default function PreNeed() {
             什麼是生前契約？
           </h2>
 
-          {/* 優化後的精緻典雅金線分隔符號 */}
-          <div className="flex items-center justify-center gap-3 mt-5 reveal reveal-delay-2">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent to-gold-400/60" />
-            <div className="w-1.5 h-1.5 rotate-45 bg-gold-400/80 shrink-0" />
-            <div className="w-12 h-px bg-gradient-to-l from-transparent to-gold-400/60" />
-          </div>
+          {/* 與全站統一的置中金色分隔線 */}
+          <div className="w-24 h-1 bg-gold-400/80 mx-auto mt-6 rounded-full reveal reveal-delay-2" />
 
           <p className="mt-6 text-ivory-200/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
             生前契約是給家人的最後一道保障，也可明確記錄您對於身後事的安排和意願。
@@ -86,14 +82,15 @@ export default function PreNeed() {
 
           {/* 右側：核心保障列表 */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            <div className="border-l-2 border-gold-400/70 pl-4 py-0.5">
-              <span className="text-gold-400/80 text-xs tracking-widest uppercase font-mono block mb-1">Core Guarantees</span>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-white tracking-wide">
+            <div>
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-white tracking-wide mb-4">
                 契約核心保障
               </h3>
+              {/* 與全站統一的靠左金色分隔線 */}
+              <div className="w-16 h-1 bg-gold-400 rounded-full mb-8" />
             </div>
 
-            <div className="space-y-3.5 flex-1 flex flex-col justify-between pt-2">
+            <div className="space-y-3.5 flex-1 flex flex-col justify-between">
               {preneedAdvantages.map((adv, idx) => (
                 <div
                   key={idx}
@@ -117,27 +114,3 @@ export default function PreNeed() {
 
         {/* 下方四個特色卡片區塊 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {features.map((feature, idx) => (
-            <div
-              key={idx}
-              className={`reveal reveal-delay-${(idx % 2) + 1} group bg-ink-900/60 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-gold-400/40 transition-all duration-500 hover:bg-ink-900/90`}
-            >
-              <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center shrink-0 group-hover:bg-gold-400/20 transition-colors">
-                  <feature.icon className="w-7 h-7 text-gold-400" />
-                </div>
-                <div>
-                  <h3 className="font-serif-tc text-lg lg:text-xl text-ivory-50 font-bold mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-ivory-200/70 text-sm leading-relaxed">{feature.text}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-      </div>
-    </section>
-  );
-}
