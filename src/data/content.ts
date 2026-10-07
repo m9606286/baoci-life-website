@@ -113,5 +113,5 @@ export const companyInfo = {
   hotline: '0800-600-603',
   trustBank: '京城銀行',
   trustRatio: '75%',
-  parentCompany: '寶碩（股票代號5210）轉投資之關係企業',
+  parentCompany: '寶碩（股票代號5210）之全資子公司',
 };
