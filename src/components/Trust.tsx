@@ -26,7 +26,7 @@ export default function Trust() {
         <div className="text-center mb-16">
           <p className="text-gold-400 text-sm tracking-[0.3em] uppercase reveal">Trust & Compliance</p>
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ivory-50 font-bold mt-3 reveal reveal-delay-1">
-            法規與信託公開專區
+            信託公開專區
           </h2>
           <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
         </div>
