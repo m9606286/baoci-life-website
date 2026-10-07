@@ -67,6 +67,12 @@ export default function Footer() {
             <ul className="space-y-3.5 text-sm text-white/90">
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-gold-400 flex-shrink-0" />
+                <a href="tel:062678859" className="hover:text-gold-400 transition-colors">
+                  電話：(06) 2678859
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-gold-400 flex-shrink-0" />
                 <a href="tel:0800-600-603" className="hover:text-gold-400 transition-colors">
                   24 小時服務專線 0800-600-603
                 </a>
