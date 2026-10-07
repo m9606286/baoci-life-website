@@ -57,7 +57,7 @@ export default function PreNeed() {
             什麼是生前契約？
           </h2>
 
-          {/* 置中漸漸淡出金色細線 */}
+          {/* 置中漸漸淡出金色細線 (中間深、左右淡) */}
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400/80 to-transparent mx-auto mt-6 reveal reveal-delay-2" />
 
           <p className="mt-6 text-ivory-200/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
@@ -82,12 +82,12 @@ export default function PreNeed() {
 
           {/* 右側：核心保障列表 */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            <div className="text-left">
+            <div className="text-center">
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-white tracking-wide mb-3">
                 契約核心保障
               </h3>
-              {/* 精簡適中的金色漸隱細線 (靠左對齊，與標題等寬) */}
-              <div className="w-20 h-px bg-gradient-to-r from-gold-400/80 via-gold-400/30 to-transparent mb-6" />
+              {/* 置中漸漸淡出金色細線 (中間深、左右淡，完全同上) */}
+              <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400/80 to-transparent mx-auto mb-6" />
             </div>
 
             <div className="space-y-3.5 flex-1 flex flex-col justify-between">
