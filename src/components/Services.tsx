@@ -158,12 +158,17 @@ export default function Services() {
       {activeModal === 'contract' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
           <div className="bg-white border border-ivory-200 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 lg:p-12 shadow-2xl relative">
-            <button
-              onClick={() => setActiveModal(null)}
-              className="absolute top-6 right-6 p-2 rounded-full text-ink-400 hover:text-ink-800 hover:bg-ivory-100 transition-all"
-            >
-              <X className="w-6 h-6" />
-            </button>
+            
+            {/* 置頂關閉按鈕 */}
+            <div className="sticky top-0 z-20 flex justify-end -mt-2 -mr-2 mb-2">
+              <button
+                onClick={() => setActiveModal(null)}
+                className="p-2.5 rounded-full text-ink-500 bg-ivory-100/90 hover:text-ink-900 hover:bg-gold-400 transition-all shadow-md backdrop-blur-md"
+                aria-label="關閉"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
 
             <div className="text-center mb-8">
               <p className="text-gold-600 text-sm tracking-[0.2em] uppercase font-medium">Product Comparison</p>
@@ -229,20 +234,23 @@ export default function Services() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
           <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 lg:p-12 shadow-2xl relative scrollbar-thin scrollbar-thumb-gold-400/30">
             
-            <button
-              onClick={() => setActiveModal(null)}
-              className="absolute top-6 right-6 p-2 rounded-full text-ink-400 hover:text-ink-800 hover:bg-ivory-100 transition-all z-10"
-            >
-              <X className="w-6 h-6" />
-            </button>
+            {/* 置頂關閉按鈕 */}
+            <div className="sticky top-0 z-30 flex justify-end -mt-2 -mr-2 sm:-mt-4 sm:-mr-4 mb-2">
+              <button
+                onClick={() => setActiveModal(null)}
+                className="p-2.5 rounded-full text-ink-600 bg-ivory-100/90 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md backdrop-blur-md border border-ivory-300"
+                aria-label="關閉"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
 
-            {/* 區塊一：禮儀服務團隊 */}
+            {/* 區塊一：禮儀服務團隊 (已去除下方橫線) */}
             <div className="text-center mb-10">
               <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Professional Team</p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
                 禮儀服務團隊
               </h3>
-              <div className="w-16 h-0.5 bg-gold-400 mx-auto mt-4" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
@@ -277,73 +285,10 @@ export default function Services() {
               ))}
             </div>
 
-            {/* 分隔分隔線 */}
+            {/* 分隔線 */}
             <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent my-12" />
 
-            {/* 區塊二：12 大禮儀服務流程圖 */}
+            {/* 區塊二：12 大禮儀服務流程圖 (已去除「生命圓滿」字樣與下方橫線) */}
             <div className="text-center mb-10">
               <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Service Process</p>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
-                生命圓滿禮儀 12 大服務流程
-              </h3>
-              <p className="text-ink-500 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
-                從臨終關懷到晉塔安葬與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
-              </p>
-              <div className="w-16 h-0.5 bg-gold-400 mx-auto mt-4" />
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12">
-              {processSteps.map((step) => {
-                const Icon = step.icon;
-                return (
-                  <div
-                    key={step.number}
-                    className="group relative bg-ivory-50/80 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex flex-col justify-between overflow-hidden"
-                  >
-                    <span className="absolute -top-2 -right-1 text-4xl font-serif-tc font-bold text-ink-900/5 group-hover:text-gold-500/10 transition-colors pointer-events-none">
-                      {step.number}
-                    </span>
-
-                    <div>
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-xl bg-ink-900 flex items-center justify-center shrink-0 group-hover:bg-gold-500 transition-colors duration-300">
-                          <Icon className="w-5 h-5 text-gold-400 group-hover:text-ink-950 transition-colors" />
-                        </div>
-                        <div>
-                          <span className="text-gold-600 font-mono text-[11px] font-bold tracking-wider uppercase block">
-                            STEP {step.number}
-                          </span>
-                          <h4 className="font-serif-tc text-base font-bold text-ink-800">
-                            {step.title}
-                          </h4>
-                        </div>
-                      </div>
-
-                      <p className="text-ink-600 text-xs leading-relaxed">
-                        {step.desc}
-                      </p>
-                    </div>
-
-                    <div className="mt-4 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* 底部按鈕 */}
-            <div className="text-center pt-4">
-              <a
-                href="#contact"
-                onClick={() => setActiveModal(null)}
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
-              >
-                立即預約諮詢
-              </a>
-            </div>
-
-          </div>
-        </div>
-      )}
-    </section>
-  );
-}
+              <h3 className="font-serif-tc text-2xl
