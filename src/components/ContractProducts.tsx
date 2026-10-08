@@ -68,7 +68,7 @@ export default function ContractProducts() {
           <h2 className="font-serif-tc text-3xl md:text-4xl text-ink-800 font-bold mt-2">
             生前契約商品
           </h2>
-          {/* 原版左右漸細的經典金色分隔線 */}
+          {/* 左右漸細的經典金色分隔線 */}
           <div className="gold-divider w-32 mx-auto mt-6" />
         </div>
 
@@ -83,44 +83,35 @@ export default function ContractProducts() {
               {/* 漸層遮罩，提升文字閱讀清晰度 */}
               <div className="absolute inset-0 bg-gradient-to-b from-ink-950/20 via-transparent to-ink-950/90 pointer-events-none" />
 
-              {/* 下方資訊區塊 */}
-              <div className="relative z-10 text-white space-y-4 flex flex-col items-end">
+              {/* 下方資訊區塊 (統一為靠左對齊，使各列首字齊平) */}
+              <div className="relative z-10 text-white space-y-4 flex flex-col items-start text-left">
                 
-                {/* 銷售通路與聯絡電話 (左邊字體起始點完全對齊，字體大小統一) */}
-                <div className="space-y-3 flex flex-col items-start w-fit text-left">
+                {/* 銷售通路與聯絡電話 (單行呈現，首字完全對齊) */}
+                <div className="space-y-2 text-sm sm:text-base font-medium">
                   
-                  {/* 銷售通路 */}
-                  <div>
-                    <div className="flex items-center gap-1.5 text-white font-medium text-sm sm:text-base">
-                      <Building2 className="w-4 h-4 text-white shrink-0" />
-                      <span>銷售通路</span>
-                    </div>
-                    <p className="font-medium text-white/95 text-sm sm:text-base mt-0.5">
-                      {product.channel.name}
-                    </p>
+                  {/* 銷售通路：公司名稱 */}
+                  <div className="flex items-center gap-1.5 text-white">
+                    <Building2 className="w-4 h-4 text-white shrink-0" />
+                    <span>銷售通路：{product.channel.name}</span>
                   </div>
 
-                  {/* 聯絡電話 (對齊銷售通路，字體大小相同) */}
-                  <div>
-                    <div className="flex items-center gap-1.5 text-white font-medium text-sm sm:text-base">
-                      <Phone className="w-4 h-4 text-white shrink-0" />
-                      <span>聯絡電話</span>
-                    </div>
-                    <p className="font-mono text-white/95 text-sm sm:text-base font-semibold mt-0.5">
-                      {product.channel.phone}
-                    </p>
+                  {/* 聯絡電話：電話號碼 */}
+                  <div className="flex items-center gap-1.5 text-white">
+                    <Phone className="w-4 h-4 text-white shrink-0" />
+                    <span className="font-mono">聯絡電話：{product.channel.phone}</span>
                   </div>
 
                 </div>
 
-                {/* 底部按鈕區：服務類型標籤（左） + 生前契約書下載按鈕（右） */}
-                <div className="pt-2 flex items-center justify-end gap-2.5 w-full flex-wrap">
-                  {/* 服務型態標籤 (置於下載按鈕左側) */}
-                  <span className="inline-flex items-center px-4 py-2.5 rounded-xl bg-ink-900/90 text-white text-xs sm:text-sm font-medium border border-gold-400/40 backdrop-blur-sm shadow-md">
+                {/* 底部按鈕區：服務型態標籤（左） + 生前契約書下載按鈕（右，首字與上方齊平） */}
+                <div className="pt-2 flex items-center gap-2.5 w-full flex-wrap">
+                  
+                  {/* 服務型態標籤 (懸停時出現黃底黑字 hover 效果) */}
+                  <span className="inline-flex items-center px-4 py-2.5 rounded-xl bg-ink-900/90 hover:bg-gold-500 text-white hover:text-ink-950 font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/40 backdrop-blur-sm shadow-md cursor-default">
                     {product.typeTag}
                   </span>
 
-                  {/* 生前契約書下載按鈕 */}
+                  {/* 生前契約書下載按鈕 (黃底黑字 hover 效果) */}
                   <a
                     href={product.pdfUrl}
                     target="_blank"
@@ -130,6 +121,7 @@ export default function ContractProducts() {
                     <span>生前契約書</span>
                     <Download className="w-4 h-4" />
                   </a>
+
                 </div>
 
               </div>
