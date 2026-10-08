@@ -20,6 +20,7 @@ import {
   Box,
   Home,
   Building2,
+  User
 } from 'lucide-react';
 
 const iconMap: Record<string, typeof ClipboardList> = {
@@ -27,42 +28,42 @@ const iconMap: Record<string, typeof ClipboardList> = {
   hands: HeartHandshake,
 };
 
-// 5 位專業禮儀師團隊資料
+// 5 位專業禮儀師團隊資料 (已去除介紹文字 desc)
 const teamMembers = [
   {
     name: '張晉旗',
     title: '禮儀師',
     image: '/張晉旗.png',
+    fallbackImage: '/張晉旗.jpg',
     certId: '1040071129',
-    desc: '持有內政部專業禮儀師證書，秉持專業與同理心，貼心陪伴家屬完成人生圓滿告別。',
   },
   {
     name: '謝淑娟',
     title: '禮儀師',
     image: '/謝淑娟.png',
+    fallbackImage: '/謝淑娟.jpg',
     certId: '1040033800',
-    desc: '持有內政部專業禮儀師證書，以細緻微小的關懷與專業引導，給予家屬最堅實的陪伴。',
   },
   {
     name: '曾志忠',
     title: '禮儀師',
     image: '/曾志忠.png',
+    fallbackImage: '/曾志忠.jpg',
     certId: '1040073107',
-    desc: '持有內政部專業禮儀師證書，嚴謹把關每道禮儀環節，尊重逝者、膚慰生者。',
   },
   {
     name: '王立中',
     title: '禮儀師',
     image: '/王立中.png',
+    fallbackImage: '/王立中.jpg',
     certId: '1050068290',
-    desc: '持有內政部專業禮儀師證書，專注於個性化與莊重的奠禮規劃，圓滿每一份託付。',
   },
   {
     name: '杜美慧',
     title: '禮儀師',
     image: '/杜美慧.png',
+    fallbackImage: '/杜美慧.jpg',
     certId: '1090053809',
-    desc: '持有內政部專業禮儀師證書，以溫暖包容的心傾聽家屬需求，提供尊榮圓滿服務。',
   },
 ];
 
@@ -181,7 +182,7 @@ export default function Services() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
           <div className="bg-white border border-ivory-200 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 lg:p-12 shadow-2xl relative">
             
-            {/* 置頂關閉按鈕 (固定右上方不擋卡片) */}
+            {/* 置頂關閉按鈕 */}
             <button
               onClick={() => setActiveModal(null)}
               className="absolute top-6 right-6 z-30 p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300"
@@ -190,7 +191,7 @@ export default function Services() {
               <X className="w-6 h-6" />
             </button>
 
-            <div className="text-center mb-8 pt-2">
+            <div className="text-center mb-8 pt-4">
               <p className="text-gold-600 text-sm tracking-[0.2em] uppercase font-medium">Product Comparison</p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
                 生前契約主要商品差異
@@ -252,9 +253,9 @@ export default function Services() {
       {/* 2. 禮儀服務 Modal 彈窗（含 5 位專業禮儀師團隊 + 12 大服務流程） */}
       {activeModal === 'funeral' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
-          <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 lg:p-12 shadow-2xl relative scrollbar-thin scrollbar-thumb-gold-400/30">
+          <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 lg:p-12 pt-16 relative scrollbar-thin scrollbar-thumb-gold-400/30">
             
-            {/* 置頂關閉按鈕 (改為 absolute 固定於 Modal 右上方，完全不蓋卡片) */}
+            {/* 置頂關閉按鈕 (固定右上角不蓋內容) */}
             <button
               onClick={() => setActiveModal(null)}
               className="absolute top-6 right-6 z-40 p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300"
@@ -264,25 +265,34 @@ export default function Services() {
             </button>
 
             {/* 區塊一：禮儀服務團隊 */}
-            <div className="text-center mb-10 pt-2">
+            <div className="text-center mb-10">
               <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Professional Team</p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
                 禮儀服務團隊
               </h3>
             </div>
 
-            {/* 5 位禮儀師卡片網格 */}
+            {/* 5 位禮儀師卡片網格 (簡化無文字介紹) */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {teamMembers.map((member, idx) => (
                 <div
                   key={idx}
                   className="bg-ivory-50 rounded-2xl p-6 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-ivory-200">
+                  <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-ivory-200 flex items-center justify-center">
                     <img
                       src={member.image}
                       alt={`${member.name} ${member.title}`}
                       className="w-full h-full object-cover object-top"
+                      onError={(e) => {
+                        // 如果 .png 載入失敗，試嘗試以 .jpg 載入，或顯示預設圖示
+                        const target = e.currentTarget;
+                        if (target.src.endsWith('.png')) {
+                          target.src = member.fallbackImage;
+                        } else {
+                          target.style.display = 'none';
+                        }
+                      }}
                     />
                   </div>
 
@@ -291,14 +301,10 @@ export default function Services() {
                   </h4>
 
                   {/* 內政部禮儀師證書(證號) */}
-                  <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-gold-900 text-xs font-medium mb-3">
+                  <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-gold-900 text-xs font-medium">
                     <UserCheck className="w-3.5 h-3.5 shrink-0 text-gold-700" />
                     <span>內政部禮儀師證書({member.certId})</span>
                   </div>
-
-                  <p className="text-ink-600 text-xs leading-relaxed mt-1">
-                    {member.desc}
-                  </p>
                 </div>
               ))}
             </div>
