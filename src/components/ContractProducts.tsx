@@ -21,7 +21,7 @@ const contractProducts: ContractProduct[] = [
       name: '晨暉資產股份有限公司',
       phone: '02-2514-7758',
     },
-    pdfUrl: '/pdf/寶富生前契約書.pdf',
+    pdfUrl: '/寶富生前契約書.pdf',
   },
   {
     id: 'fuyi',
@@ -31,7 +31,7 @@ const contractProducts: ContractProduct[] = [
       name: '天勤生命文創股份有限公司',
       phone: '04-2322-0208',
     },
-    pdfUrl: '/pdf/福益生前契約書.pdf',
+    pdfUrl: '/福益生前契約書.pdf',
   },
   {
     id: 'baohui',
@@ -41,7 +41,7 @@ const contractProducts: ContractProduct[] = [
       name: '晨暉資產股份有限公司',
       phone: '02-2514-7758',
     },
-    pdfUrl: '/pdf/寶暉生前契約書.pdf',
+    pdfUrl: '/寶暉生前契約書.pdf',
   },
   {
     id: 'puyu',
@@ -51,7 +51,7 @@ const contractProducts: ContractProduct[] = [
       name: '天勤生命文創股份有限公司',
       phone: '04-2322-0208',
     },
-    pdfUrl: '/pdf/璞瑜生前契約書.pdf',
+    pdfUrl: '/璞瑜生前契約書.pdf',
   },
 ];
 
