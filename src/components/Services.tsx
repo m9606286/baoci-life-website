@@ -20,7 +20,6 @@ import {
   Box,
   Home,
   Building2,
-  User
 } from 'lucide-react';
 
 const iconMap: Record<string, typeof ClipboardList> = {
@@ -28,50 +27,43 @@ const iconMap: Record<string, typeof ClipboardList> = {
   hands: HeartHandshake,
 };
 
-// 5 位專業禮儀師團隊資料 (已去除介紹文字 desc)
+// 5 位專業禮儀師團隊資料
 const teamMembers = [
-    {
+  {
     name: '張晉旗',
     title: '禮儀師',
     image: '/張晉旗.png',
-    fallbackImage: '/林柏宏.png',
+    fallbackImage: '/張晉旗.jpg',
     certId: '1040071129',
   },
   {
     name: '謝淑娟',
     title: '禮儀師',
     image: '/謝淑娟.png',
-    fallbackImage: '/林柏宏.png',
+    fallbackImage: '/謝淑娟.jpg',
     certId: '1040033800',
   },
   {
     name: '曾志忠',
     title: '禮儀師',
     image: '/曾志忠.png',
-    fallbackImage: '/林柏宏.png',
+    fallbackImage: '/曾志忠.jpg',
     certId: '1040073107',
   },
   {
     name: '王立中',
     title: '禮儀師',
     image: '/王立中.png',
-    fallbackImage: '/林柏宏.png',
+    fallbackImage: '/王立中.jpg',
     certId: '1050068290',
   },
   {
     name: '杜美慧',
     title: '禮儀師',
     image: '/杜美慧.png',
-    fallbackImage: '/林柏宏.png',
+    fallbackImage: '/杜美慧.jpg',
     certId: '1090053809',
   },
-  {
-    name: '林柏宏',
-    title: '禮儀師',
-    image: '/林柏宏.png',
-    fallbackImage: '/林柏宏.png',
-    certId: '1050079874',
-  },  
 ];
 
 // 生前契約商品差異對照表資料
@@ -262,7 +254,7 @@ export default function Services() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
           <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 lg:p-12 pt-16 relative scrollbar-thin scrollbar-thumb-gold-400/30">
             
-            {/* 置頂關閉按鈕 (固定右上角不蓋內容) */}
+            {/* 置頂關閉按鈕 */}
             <button
               onClick={() => setActiveModal(null)}
               className="absolute top-6 right-6 z-40 p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300"
@@ -279,109 +271,12 @@ export default function Services() {
               </h3>
             </div>
 
-            {/* 5 位禮儀師卡片網格 (簡化無文字介紹) */}
+            {/* 5 位禮儀師卡片網格 (背景統一純白效果) */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {teamMembers.map((member, idx) => (
                 <div
                   key={idx}
                   className="bg-ivory-50 rounded-2xl p-6 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-ivory-200 flex items-center justify-center">
-                    <img
-                      src={member.image}
-                      alt={`${member.name} ${member.title}`}
-                      className="w-full h-full object-cover object-top"
-                      onError={(e) => {
-                        // 如果 .png 載入失敗，試嘗試以 .jpg 載入，或顯示預設圖示
-                        const target = e.currentTarget;
-                        if (target.src.endsWith('.png')) {
-                          target.src = member.fallbackImage;
-                        } else {
-                          target.style.display = 'none';
-                        }
-                      }}
-                    />
-                  </div>
-
-                  <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-2">
-                    {member.name} <span className="text-gold-700 font-semibold text-sm"> {member.title}</span>
-                  </h4>
-
-                  {/* 內政部禮儀師證書(證號) */}
-                  <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-gold-900 text-xs font-medium">
-                    <UserCheck className="w-3.5 h-3.5 shrink-0 text-gold-700" />
-                    <span>內政部禮儀師證書({member.certId})</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* 分隔線 */}
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent my-12" />
-
-            {/* 區塊二：12 大禮儀服務流程圖 */}
-            <div className="text-center mb-10">
-              <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Service Process</p>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
-                12 大禮儀服務流程
-              </h3>
-              <p className="text-ink-500 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
-                從臨終關懷到晉塔安葬與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12">
-              {processSteps.map((step) => {
-                const Icon = step.icon;
-                return (
-                  <div
-                    key={step.number}
-                    className="group relative bg-ivory-50/80 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex flex-col justify-between overflow-hidden"
-                  >
-                    <span className="absolute -top-2 -right-1 text-4xl font-serif-tc font-bold text-ink-900/5 group-hover:text-gold-500/10 transition-colors pointer-events-none">
-                      {step.number}
-                    </span>
-
-                    <div>
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-xl bg-ink-900 flex items-center justify-center shrink-0 group-hover:bg-gold-500 transition-colors duration-300">
-                          <Icon className="w-5 h-5 text-gold-400 group-hover:text-ink-950 transition-colors" />
-                        </div>
-                        <div>
-                          <span className="text-gold-600 font-mono text-[11px] font-bold tracking-wider uppercase block">
-                            STEP {step.number}
-                          </span>
-                          <h4 className="font-serif-tc text-base font-bold text-ink-800">
-                            {step.title}
-                          </h4>
-                        </div>
-                      </div>
-
-                      <p className="text-ink-600 text-xs leading-relaxed">
-                        {step.desc}
-                      </p>
-                    </div>
-
-                    <div className="mt-4 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* 底部按鈕 */}
-            <div className="text-center pt-4">
-              <a
-                href="#contact"
-                onClick={() => setActiveModal(null)}
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
-              >
-                立即預約諮詢
-              </a>
-            </div>
-
-          </div>
-        </div>
-      )}
-    </section>
-  );
-}
+                  {/* 大頭照外框：設為純白背景 bg-white 並對圖片套用 mix-blend-multiply 自動去微灰背景 */}
+                  <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border
