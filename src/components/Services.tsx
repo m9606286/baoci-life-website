@@ -69,7 +69,7 @@ const teamMembers = [
     title: '禮儀師',
     image: '/林柏宏.png',
     fallbackImage: '/林柏宏.png',
-    certId: '1090053809',
+    certId: '1050079874',
   },
 ];
 
