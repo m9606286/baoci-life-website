@@ -34,29 +34,36 @@ const teamMembers = [
     name: '張晉旗',
     title: '禮儀師',
     image: '/張晉旗.png',
-    fallbackImage: '/張晉旗.png',
+    fallbackImage: '/林柏宏.png',
     certId: '1040071129',
   },
   {
     name: '謝淑娟',
     title: '禮儀師',
     image: '/謝淑娟.png',
-    fallbackImage: '/謝淑娟.png',
+    fallbackImage: '/林柏宏.png',
     certId: '1040033800',
   },
   {
     name: '曾志忠',
     title: '禮儀師',
     image: '/曾志忠.png',
-    fallbackImage: '/曾志忠.png',
+    fallbackImage: '/林柏宏.png',
     certId: '1040073107',
   },
   {
     name: '王立中',
     title: '禮儀師',
     image: '/王立中.png',
-    fallbackImage: '/王立中.png',
+    fallbackImage: '/林柏宏.png',
     certId: '1050068290',
+  },
+  {
+    name: '杜美慧',
+    title: '禮儀師',
+    image: '/杜美慧.png',
+    fallbackImage: '/林柏宏.png',
+    certId: '1090053809',
   },
   {
     name: '林柏宏',
@@ -64,15 +71,7 @@ const teamMembers = [
     image: '/林柏宏.png',
     fallbackImage: '/林柏宏.png',
     certId: '1050079874',
-  },
-  {
-    name: '杜美慧',
-    title: '禮儀師',
-    image: '/杜美慧.png',
-    fallbackImage: '/杜美慧.png',
-    certId: '1090053809',
-  },
-  
+  },  
 ];
 
 // 生前契約商品差異對照表資料
