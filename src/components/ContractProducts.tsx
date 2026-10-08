@@ -16,7 +16,7 @@ const contractProducts: ContractProduct[] = [
   {
     id: 'baofu',
     typeTag: '標準型禮儀服務',
-    bgImage: '/images/contracts/baofu.jpg',
+    bgImage: '/寶富契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
       phone: '02-2514-7758',
@@ -25,8 +25,8 @@ const contractProducts: ContractProduct[] = [
   },
   {
     id: 'fuyi',
-    typeTag: '簡約型禮儀服務',
-    bgImage: '/images/contracts/fuyi.jpg',
+    typeTag: '標準型禮儀服務',
+    bgImage: '/福益契約書封面.png',
     channel: {
       name: '天勤生命文創股份有限公司',
       phone: '04-2322-0208',
@@ -35,8 +35,8 @@ const contractProducts: ContractProduct[] = [
   },
   {
     id: 'baohui',
-    typeTag: '標準型禮儀服務',
-    bgImage: '/images/contracts/baohui.jpg',
+    typeTag: '簡約型禮儀服務',
+    bgImage: '/寶暉契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
       phone: '02-2514-7758',
@@ -46,7 +46,7 @@ const contractProducts: ContractProduct[] = [
   {
     id: 'puyu',
     typeTag: '簡約型禮儀服務',
-    bgImage: '/images/contracts/puyu.jpg',
+    bgImage: '/璞瑜契約書封面.png',
     channel: {
       name: '天勤生命文創股份有限公司',
       phone: '04-2322-0208',
