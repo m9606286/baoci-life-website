@@ -3,7 +3,7 @@ import { Download, Building2, Phone } from 'lucide-react';
 
 interface ContractProduct {
   id: string;
-  typeTag: string; // 右上角：標準型禮儀服務 / 簡約型禮儀服務
+  typeTag: '標準型禮儀服務' | '簡約型禮儀服務'; // 生前契約書下載上方標籤
   bgImage: string; // 契約書封面背景路徑
   channel: {
     name: string;
@@ -68,7 +68,8 @@ export default function ContractProducts() {
           <h2 className="font-serif-tc text-3xl md:text-4xl text-ink-800 font-bold mt-2">
             生前契約商品
           </h2>
-          <div className="w-20 h-0.5 bg-gold-400 mx-auto mt-4" />
+          {/* 恢復原版左右漸細的經典金色分隔線 */}
+          <div className="gold-divider w-32 mx-auto mt-6" />
         </div>
 
         {/* 4 個商品格子（比例 3:4 契合契約書封面尺寸） */}
@@ -76,41 +77,49 @@ export default function ContractProducts() {
           {contractProducts.map((product) => (
             <div
               key={product.id}
-              className="relative rounded-2xl overflow-hidden shadow-lg border border-ivory-300 aspect-[3/4] bg-cover bg-center flex flex-col justify-between p-6 sm:p-8 group hover:shadow-2xl transition-all duration-300"
+              className="relative rounded-2xl overflow-hidden shadow-lg border border-ivory-300 aspect-[3/4] bg-cover bg-center flex flex-col justify-end p-6 sm:p-8 group hover:shadow-2xl transition-all duration-300"
               style={{ backgroundImage: `url(${product.bgImage})` }}
             >
-              {/* 漸層遮罩，提升文字閱讀清晰度（上與下柔和黑漸層） */}
-              <div className="absolute inset-0 bg-gradient-to-b from-ink-950/40 via-transparent to-ink-950/85 pointer-events-none" />
+              {/* 漸層遮罩，提升文字閱讀清晰度 */}
+              <div className="absolute inset-0 bg-gradient-to-b from-ink-950/20 via-transparent to-ink-950/90 pointer-events-none" />
 
-              {/* 右上角：禮儀服務類型標籤（改為黑底白字，設計同下載按鈕） */}
-              <div className="w-full flex justify-end relative z-10">
-                <span className="inline-flex items-center px-4 py-2 rounded-xl bg-ink-900/90 text-white text-xs sm:text-sm font-medium border border-gold-400/40 backdrop-blur-sm shadow-md">
-                  {product.typeTag}
-                </span>
-              </div>
-
-              {/* 右下角：銷售通路、聯絡電話、生前契約書下載（全數至右） */}
+              {/* 右下角區塊：銷售通路、聯絡電話、服務型態標籤、生前契約書下載 */}
               <div className="relative z-10 text-white space-y-4 flex flex-col items-end text-right">
-                <div className="space-y-2 text-xs sm:text-sm flex flex-col items-end">
-                  <div className="flex items-center gap-1.5 text-white font-medium justify-end">
-                    <Building2 className="w-3.5 h-3.5 text-white" />
-                    <span>銷售通路</span>
+                
+                {/* 銷售通路與聯絡電話 (左字對齊) */}
+                <div className="space-y-3 text-xs sm:text-sm flex flex-col items-end">
+                  
+                  {/* 銷售通路 */}
+                  <div className="flex flex-col items-start w-fit text-left">
+                    <div className="flex items-center gap-1.5 text-white font-medium text-sm sm:text-base">
+                      <Building2 className="w-4 h-4 text-white shrink-0" />
+                      <span>銷售通路</span>
+                    </div>
+                    <p className="font-medium text-white/95 text-sm sm:text-base mt-0.5">
+                      {product.channel.name}
+                    </p>
                   </div>
-                  <p className="font-medium text-white/95 text-sm sm:text-base">
-                    {product.channel.name}
-                  </p>
 
-                  <div className="flex items-center gap-1.5 text-white font-medium pt-1 justify-end">
-                    <Phone className="w-3.5 h-3.5 text-white" />
-                    <span>聯絡電話</span>
+                  {/* 聯絡電話 */}
+                  <div className="flex flex-col items-start w-fit text-left">
+                    <div className="flex items-center gap-1.5 text-white font-medium">
+                      <Phone className="w-3.5 h-3.5 text-white shrink-0" />
+                      <span>聯絡電話</span>
+                    </div>
+                    <p className="font-mono text-white/90 text-sm sm:text-base font-semibold mt-0.5">
+                      {product.channel.phone}
+                    </p>
                   </div>
-                  <p className="font-mono text-white/90 text-sm sm:text-base font-semibold">
-                    {product.channel.phone}
-                  </p>
+
                 </div>
 
-                {/* 生前契約書下載按鈕（靠右） */}
-                <div className="pt-2">
+                {/* 服務型態標籤 (置於下載按鈕上方，樣式同下載按鈕黑底金邊) */}
+                <div className="pt-2 flex flex-col items-end gap-2">
+                  <span className="inline-flex items-center px-4 py-2 rounded-xl bg-ink-900/90 text-white text-xs sm:text-sm font-medium border border-gold-400/40 backdrop-blur-sm shadow-md">
+                    {product.typeTag}
+                  </span>
+
+                  {/* 生前契約書下載按鈕 */}
                   <a
                     href={product.pdfUrl}
                     target="_blank"
@@ -121,6 +130,7 @@ export default function ContractProducts() {
                     <Download className="w-4 h-4" />
                   </a>
                 </div>
+
               </div>
 
             </div>
