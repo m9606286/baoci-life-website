@@ -3,7 +3,7 @@ import { Download, Building2, Phone } from 'lucide-react';
 
 interface ContractProduct {
   id: string;
-  typeTag: string; // 左上角：標準型禮儀服務 / 簡約型禮儀服務
+  typeTag: string; // 右上角：標準型禮儀服務 / 簡約型禮儀服務
   bgImage: string; // 契約書封面背景路徑
   channel: {
     name: string;
@@ -82,8 +82,8 @@ export default function ContractProducts() {
               {/* 漸層遮罩，提升文字閱讀清晰度（上與下柔和黑漸層） */}
               <div className="absolute inset-0 bg-gradient-to-b from-ink-950/40 via-transparent to-ink-950/85 pointer-events-none" />
 
-              {/* 左上角：禮儀服務類型標籤 */}
-              <div className="relative z-10 flex justify-start">
+              {/* 右上角：禮儀服務類型標籤 */}
+              <div className="relative z-10 flex justify-end">
                 <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-ink-900 text-xs sm:text-sm font-medium border border-gold-300/60 shadow-sm">
                   {product.typeTag}
                 </span>
@@ -92,16 +92,16 @@ export default function ContractProducts() {
               {/* 左下角：銷售通路、聯絡電話、生前契約書下載 */}
               <div className="relative z-10 text-white space-y-4">
                 <div className="space-y-2 text-xs sm:text-sm">
-                  <div className="flex items-center gap-1.5 text-gold-300/90 font-medium">
-                    <Building2 className="w-3.5 h-3.5" />
+                  <div className="flex items-center gap-1.5 text-white font-medium">
+                    <Building2 className="w-3.5 h-3.5 text-white" />
                     <span>銷售通路</span>
                   </div>
                   <p className="font-medium text-white/95 text-sm sm:text-base pl-5">
                     {product.channel.name}
                   </p>
 
-                  <div className="flex items-center gap-1.5 text-gold-300/90 font-medium pt-1">
-                    <Phone className="w-3.5 h-3.5" />
+                  <div className="flex items-center gap-1.5 text-white font-medium pt-1">
+                    <Phone className="w-3.5 h-3.5 text-white" />
                     <span>聯絡電話</span>
                   </div>
                   <p className="font-mono text-white/90 text-xs sm:text-sm pl-5">
