@@ -30,41 +30,49 @@ const iconMap: Record<string, typeof ClipboardList> = {
 
 // 5 位專業禮儀師團隊資料 (已去除介紹文字 desc)
 const teamMembers = [
-  {
+    {
     name: '張晉旗',
     title: '禮儀師',
     image: '/張晉旗.png',
-    fallbackImage: '/張晉旗.jpg',
+    fallbackImage: '/張晉旗.png',
     certId: '1040071129',
   },
   {
     name: '謝淑娟',
     title: '禮儀師',
     image: '/謝淑娟.png',
-    fallbackImage: '/謝淑娟.jpg',
+    fallbackImage: '/謝淑娟.png',
     certId: '1040033800',
   },
   {
     name: '曾志忠',
     title: '禮儀師',
     image: '/曾志忠.png',
-    fallbackImage: '/曾志忠.jpg',
+    fallbackImage: '/曾志忠.png',
     certId: '1040073107',
   },
   {
     name: '王立中',
     title: '禮儀師',
     image: '/王立中.png',
-    fallbackImage: '/王立中.jpg',
+    fallbackImage: '/王立中.png',
     certId: '1050068290',
+  },
+  {
+    name: '林柏宏',
+    title: '禮儀師',
+    image: '/杜美慧.png',
+    fallbackImage: '/杜美慧.png',
+    certId: '1050079874',
   },
   {
     name: '杜美慧',
     title: '禮儀師',
     image: '/杜美慧.png',
-    fallbackImage: '/杜美慧.jpg',
+    fallbackImage: '/杜美慧.png',
     certId: '1090053809',
   },
+  
 ];
 
 // 生前契約商品差異對照表資料
