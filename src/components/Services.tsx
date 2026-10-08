@@ -27,20 +27,49 @@ const iconMap: Record<string, typeof ClipboardList> = {
   hands: HeartHandshake,
 };
 
-// 禮儀師團隊資料
+// 6 位專業禮儀師團隊資料
 const teamMembers = [
   {
-    name: '王室悰',
-    title: '服務總監',
-    image: '/王室悰.png',
-    desc: '擁有 15 年的客戶服務經驗，確保每位客戶都能獲得最溫暖和專業的照顧。',
+    name: '張晉旗',
+    title: '禮儀師',
+    image: '/張晉旗.png',
+    certId: '1040071129',
+    desc: '持有內政部專業禮儀師證書，秉持專業與同理心，貼心陪伴家屬完成人生圓滿告別。',
+  },
+  {
+    name: '謝淑娟',
+    title: '禮儀師',
+    image: '/謝淑娟.png',
+    certId: '1040033800',
+    desc: '持有內政部專業禮儀師證書，以細緻微小的關懷與專業引導，給予家屬最堅實的陪伴。',
+  },
+  {
+    name: '曾志忠',
+    title: '禮儀師',
+    image: '/曾志忠.png',
+    certId: '1040073107',
+    desc: '持有內政部專業禮儀師證書，嚴謹把關每道禮儀環節，尊重逝者、膚慰生者。',
+  },
+  {
+    name: '王立中',
+    title: '禮儀師',
+    image: '/王立中.png',
+    certId: '1050079874',
+    desc: '持有內政部專業禮儀師證書，專注於個性化與莊重的奠禮規劃，圓滿每一份託付。',
+  },
+  {
+    name: '杜美慧',
+    title: '禮儀師',
+    image: '/杜美慧.png',
+    certId: '1090053809',
+    desc: '持有內政部專業禮儀師證書，以溫暖包容的心傾聽家屬需求，提供尊榮圓滿服務。',
   },
   {
     name: '林柏宏',
     title: '禮儀師',
     image: '/林柏宏.png',
     certId: '1050079874',
-    desc: '持有國家級喪禮服務技術士證照，以專業與細心全程陪伴家屬度過告別時刻。',
+    desc: '持有內政部專業禮儀師證書，以溫暖包容的心傾聽家屬需求，提供尊榮圓滿服務。',
   },
 ];
 
@@ -229,7 +258,7 @@ export default function Services() {
         </div>
       )}
 
-      {/* 2. 禮儀服務 Modal 彈窗（含專業團隊 + 12大服務流程） */}
+      {/* 2. 禮儀服務 Modal 彈窗（含 5 位專業禮儀師團隊 + 12 大服務流程） */}
       {activeModal === 'funeral' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
           <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 lg:p-12 shadow-2xl relative scrollbar-thin scrollbar-thumb-gold-400/30">
@@ -245,7 +274,7 @@ export default function Services() {
               </button>
             </div>
 
-            {/* 區塊一：禮儀服務團隊 (已去除下方橫線) */}
+            {/* 區塊一：禮儀服務團隊 */}
             <div className="text-center mb-10">
               <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Professional Team</p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
@@ -253,13 +282,14 @@ export default function Services() {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+            {/* 5 位禮儀師卡片網格 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {teamMembers.map((member, idx) => (
                 <div
                   key={idx}
-                  className="bg-ivory-50 rounded-2xl p-6 sm:p-8 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-ivory-50 rounded-2xl p-6 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden mb-5 border-4 border-white shadow-lg">
+                  <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-ivory-200">
                     <img
                       src={member.image}
                       alt={`${member.name} ${member.title}`}
@@ -267,18 +297,17 @@ export default function Services() {
                     />
                   </div>
 
-                  <h4 className="font-serif-tc text-xl font-bold text-ink-800 mb-2">
-                    {member.name} <span className="text-gold-600 text-base font-normal"> - {member.title}</span>
+                  <h4 className="font-serif-tc text-lg font-bold text-ink-800 mb-2">
+                    {member.name} <span className="text-gold-600 text-sm font-normal"> {member.title}</span>
                   </h4>
 
-                  {member.certId && (
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-100/60 border border-gold-200 text-gold-800 text-xs font-medium mb-3">
-                      <UserCheck className="w-3.5 h-3.5" />
-                      <span>技術證號：{member.certId}</span>
-                    </div>
-                  )}
+                  {/* 內政部禮儀師證書(證號) */}
+                  <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gold-100/60 border border-gold-200 text-gold-800 text-xs font-medium mb-3">
+                    <UserCheck className="w-3.5 h-3.5 shrink-0 text-gold-700" />
+                    <span>內政部禮儀師證書({member.certId})</span>
+                  </div>
 
-                  <p className="text-ink-600 text-sm leading-relaxed mt-1">
+                  <p className="text-ink-600 text-xs leading-relaxed mt-1">
                     {member.desc}
                   </p>
                 </div>
@@ -288,7 +317,7 @@ export default function Services() {
             {/* 分隔線 */}
             <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent my-12" />
 
-            {/* 區塊二：12 大禮儀服務流程圖 (已去除「生命圓滿」字樣與下方橫線) */}
+            {/* 區塊二：12 大禮儀服務流程圖 */}
             <div className="text-center mb-10">
               <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Service Process</p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
