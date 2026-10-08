@@ -61,8 +61,8 @@ const teamMembers = [
   {
     name: '林柏宏',
     title: '禮儀師',
-    image: '/杜美慧.png',
-    fallbackImage: '/杜美慧.png',
+    image: '/林柏宏.png',
+    fallbackImage: '/林柏宏.png',
     certId: '1050079874',
   },
   {
