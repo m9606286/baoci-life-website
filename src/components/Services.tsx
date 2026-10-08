@@ -65,10 +65,10 @@ const teamMembers = [
     certId: '1090053809',
   },
   {
-    name: '杜柏宏',
+    name: '林柏宏',
     title: '禮儀師',
-    image: '/杜柏宏.png',
-    fallbackImage: '/杜柏宏.png',
+    image: '/林柏宏.png',
+    fallbackImage: '/林柏宏.png',
     certId: '1090053809',
   },
 ];
