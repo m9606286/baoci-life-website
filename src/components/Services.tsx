@@ -27,7 +27,7 @@ const iconMap: Record<string, typeof ClipboardList> = {
   hands: HeartHandshake,
 };
 
-// 6 位專業禮儀師團隊資料
+// 5 位專業禮儀師團隊資料
 const teamMembers = [
   {
     name: '張晉旗',
@@ -54,7 +54,7 @@ const teamMembers = [
     name: '王立中',
     title: '禮儀師',
     image: '/王立中.png',
-    certId: '1050079874',
+    certId: '1050068290',
     desc: '持有內政部專業禮儀師證書，專注於個性化與莊重的奠禮規劃，圓滿每一份託付。',
   },
   {
@@ -62,13 +62,6 @@ const teamMembers = [
     title: '禮儀師',
     image: '/杜美慧.png',
     certId: '1090053809',
-    desc: '持有內政部專業禮儀師證書，以溫暖包容的心傾聽家屬需求，提供尊榮圓滿服務。',
-  },
-  {
-    name: '林柏宏',
-    title: '禮儀師',
-    image: '/林柏宏.png',
-    certId: '1050079874',
     desc: '持有內政部專業禮儀師證書，以溫暖包容的心傾聽家屬需求，提供尊榮圓滿服務。',
   },
 ];
@@ -102,7 +95,7 @@ const contractComparison = [
   },
 ];
 
-// 12 道禮儀服務流程資料 (不含禮體淨身)
+// 12 道禮儀服務流程資料
 const processSteps = [
   { number: '01', title: '臨終關懷', icon: PhoneCall, desc: '提供 24 小時即時諮詢與臨終指引，第一時間給予家屬溫暖支持與安心陪伴。' },
   { number: '02', title: '遺體接運', icon: Truck, desc: '專車及專業接體人員協助接運逝者至指定殯儀館或接體地點，並完善冰存安置。' },
@@ -188,18 +181,16 @@ export default function Services() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
           <div className="bg-white border border-ivory-200 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 lg:p-12 shadow-2xl relative">
             
-            {/* 置頂關閉按鈕 */}
-            <div className="sticky top-0 z-20 flex justify-end -mt-2 -mr-2 mb-2">
-              <button
-                onClick={() => setActiveModal(null)}
-                className="p-2.5 rounded-full text-ink-500 bg-ivory-100/90 hover:text-ink-900 hover:bg-gold-400 transition-all shadow-md backdrop-blur-md"
-                aria-label="關閉"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+            {/* 置頂關閉按鈕 (固定右上方不擋卡片) */}
+            <button
+              onClick={() => setActiveModal(null)}
+              className="absolute top-6 right-6 z-30 p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300"
+              aria-label="關閉"
+            >
+              <X className="w-6 h-6" />
+            </button>
 
-            <div className="text-center mb-8">
+            <div className="text-center mb-8 pt-2">
               <p className="text-gold-600 text-sm tracking-[0.2em] uppercase font-medium">Product Comparison</p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
                 生前契約主要商品差異
@@ -263,19 +254,17 @@ export default function Services() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
           <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 lg:p-12 shadow-2xl relative scrollbar-thin scrollbar-thumb-gold-400/30">
             
-            {/* 置頂關閉按鈕 */}
-            <div className="sticky top-0 z-30 flex justify-end -mt-2 -mr-2 sm:-mt-4 sm:-mr-4 mb-2">
-              <button
-                onClick={() => setActiveModal(null)}
-                className="p-2.5 rounded-full text-ink-600 bg-ivory-100/90 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md backdrop-blur-md border border-ivory-300"
-                aria-label="關閉"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+            {/* 置頂關閉按鈕 (改為 absolute 固定於 Modal 右上方，完全不蓋卡片) */}
+            <button
+              onClick={() => setActiveModal(null)}
+              className="absolute top-6 right-6 z-40 p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300"
+              aria-label="關閉"
+            >
+              <X className="w-6 h-6" />
+            </button>
 
             {/* 區塊一：禮儀服務團隊 */}
-            <div className="text-center mb-10">
+            <div className="text-center mb-10 pt-2">
               <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Professional Team</p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
                 禮儀服務團隊
@@ -297,12 +286,12 @@ export default function Services() {
                     />
                   </div>
 
-                  <h4 className="font-serif-tc text-lg font-bold text-ink-800 mb-2">
-                    {member.name} <span className="text-gold-600 text-sm font-normal"> {member.title}</span>
+                  <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-2">
+                    {member.name} <span className="text-gold-700 font-semibold text-sm"> {member.title}</span>
                   </h4>
 
                   {/* 內政部禮儀師證書(證號) */}
-                  <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gold-100/60 border border-gold-200 text-gold-800 text-xs font-medium mb-3">
+                  <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-gold-900 text-xs font-medium mb-3">
                     <UserCheck className="w-3.5 h-3.5 shrink-0 text-gold-700" />
                     <span>內政部禮儀師證書({member.certId})</span>
                   </div>
