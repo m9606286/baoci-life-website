@@ -30,7 +30,7 @@ const iconMap: Record<string, typeof ClipboardList> = {
 // 禮儀師團隊資料
 const teamMembers = [
   {
-    name: '王室惇',
+    name: '王室悰',
     title: '服務總監',
     image: '/王室悰.png',
     desc: '擁有 15 年的客戶服務經驗，確保每位客戶都能獲得最溫暖和專業的照顧。',
