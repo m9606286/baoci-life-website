@@ -82,34 +82,34 @@ export default function ContractProducts() {
               {/* 漸層遮罩，提升文字閱讀清晰度（上與下柔和黑漸層） */}
               <div className="absolute inset-0 bg-gradient-to-b from-ink-950/40 via-transparent to-ink-950/85 pointer-events-none" />
 
-              {/* 右上角：禮儀服務類型標籤 */}
-              <div className="relative z-10 flex justify-end">
-                <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-ink-900 text-xs sm:text-sm font-medium border border-gold-300/60 shadow-sm">
+              {/* 右上角：禮儀服務類型標籤（改為黑底白字，設計同下載按鈕） */}
+              <div className="w-full flex justify-end relative z-10">
+                <span className="inline-flex items-center px-4 py-2 rounded-xl bg-ink-900/90 text-white text-xs sm:text-sm font-medium border border-gold-400/40 backdrop-blur-sm shadow-md">
                   {product.typeTag}
                 </span>
               </div>
 
-              {/* 左下角：銷售通路、聯絡電話、生前契約書下載 */}
-              <div className="relative z-10 text-white space-y-4">
-                <div className="space-y-2 text-xs sm:text-sm">
-                  <div className="flex items-center gap-1.5 text-white font-medium">
+              {/* 右下角：銷售通路、聯絡電話、生前契約書下載（全數至右） */}
+              <div className="relative z-10 text-white space-y-4 flex flex-col items-end text-right">
+                <div className="space-y-2 text-xs sm:text-sm flex flex-col items-end">
+                  <div className="flex items-center gap-1.5 text-white font-medium justify-end">
                     <Building2 className="w-3.5 h-3.5 text-white" />
                     <span>銷售通路</span>
                   </div>
-                  <p className="font-medium text-white/95 text-sm sm:text-base pl-5">
+                  <p className="font-medium text-white/95 text-sm sm:text-base">
                     {product.channel.name}
                   </p>
 
-                  <div className="flex items-center gap-1.5 text-white font-medium pt-1">
+                  <div className="flex items-center gap-1.5 text-white font-medium pt-1 justify-end">
                     <Phone className="w-3.5 h-3.5 text-white" />
                     <span>聯絡電話</span>
                   </div>
-                  <p className="font-mono text-white/90 text-xs sm:text-sm pl-5">
+                  <p className="font-mono text-white/90 text-sm sm:text-base font-semibold">
                     {product.channel.phone}
                   </p>
                 </div>
 
-                {/* 生前契約書下載按鈕 */}
+                {/* 生前契約書下載按鈕（靠右） */}
                 <div className="pt-2">
                   <a
                     href={product.pdfUrl}
