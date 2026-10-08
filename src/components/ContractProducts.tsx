@@ -1,127 +1,132 @@
-import { useReveal } from '@/hooks/useReveal';
-import { contractProducts } from '@/data/content';
-import { FileText, Phone, Building2, ArrowRight, CheckCircle2 } from 'lucide-react';
+import React from 'react';
+import { Download, Building2, Phone } from 'lucide-react';
 
-const approvalDocs = [
-  { title: '生前契約與晨暉、天勤銷售核可函', url: '/生前契約與晨暉、天勤銷售核可函.pdf' },
+interface ContractProduct {
+  id: string;
+  typeTag: string; // 左上角：標準型禮儀服務 / 簡約型禮儀服務
+  bgImage: string; // 契約書封面背景路徑
+  channel: {
+    name: string;
+    phone: string;
+  };
+  pdfUrl: string;
+}
+
+const contractProducts: ContractProduct[] = [
+  {
+    id: 'baofu',
+    typeTag: '標準型禮儀服務',
+    bgImage: '/images/contracts/baofu.jpg',
+    channel: {
+      name: '晨暉資產股份有限公司',
+      phone: '02-2514-7758',
+    },
+    pdfUrl: '/pdf/寶富生前契約書.pdf',
+  },
+  {
+    id: 'fuyi',
+    typeTag: '簡約型禮儀服務',
+    bgImage: '/images/contracts/fuyi.jpg',
+    channel: {
+      name: '天勤生命文創股份有限公司',
+      phone: '04-2322-0208',
+    },
+    pdfUrl: '/pdf/福益生前契約書.pdf',
+  },
+  {
+    id: 'baohui',
+    typeTag: '標準型禮儀服務',
+    bgImage: '/images/contracts/baohui.jpg',
+    channel: {
+      name: '晨暉資產股份有限公司',
+      phone: '02-2514-7758',
+    },
+    pdfUrl: '/pdf/寶暉生前契約書.pdf',
+  },
+  {
+    id: 'puyu',
+    typeTag: '簡約型禮儀服務',
+    bgImage: '/images/contracts/puyu.jpg',
+    channel: {
+      name: '天勤生命文創股份有限公司',
+      phone: '04-2322-0208',
+    },
+    pdfUrl: '/pdf/璞瑜生前契約書.pdf',
+  },
 ];
 
 export default function ContractProducts() {
-  const ref = useReveal<HTMLDivElement>();
-
   return (
-    <section id="products" className="py-24 lg:py-32 bg-gradient-to-b from-ivory-200 to-ivory-100">
-      <div ref={ref} className="mx-auto max-w-8xl px-6">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">Products</p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-800 font-bold mt-3 reveal reveal-delay-1">
+    <section id="products" className="py-20 bg-ivory-100/60 relative">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* 標題區 */}
+        <div className="text-center mb-14">
+          <p className="text-gold-600 text-xs sm:text-sm tracking-[0.25em] uppercase font-medium">
+            Contract Products
+          </p>
+          <h2 className="font-serif-tc text-3xl md:text-4xl text-ink-800 font-bold mt-2">
             生前契約商品
           </h2>
-          <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
-          <p className="mt-6 text-ink-500 text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
-            我們提供標準型與簡約型兩種流程，依不同需求提供最適合的規劃方案。
-          </p>
+          <div className="w-20 h-0.5 bg-gold-400 mx-auto mt-4" />
         </div>
 
-        {/* Flow type labels */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12 reveal reveal-delay-3">
-          <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink-900 text-ivory-50 text-sm">
-            <span className="w-2 h-2 rounded-full bg-gold-400" />
-            <span>標準型流程</span>
-          </div>
-          <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-sage-600 text-ivory-50 text-sm">
-            <span className="w-2 h-2 rounded-full bg-ivory-50" />
-            <span>簡約型流程</span>
-          </div>
-        </div>
+        {/* 4 個商品格子（比例 3:4 契合契約書封面尺寸） */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
+          {contractProducts.map((product) => (
+            <div
+              key={product.id}
+              className="relative rounded-2xl overflow-hidden shadow-lg border border-ivory-300 aspect-[3/4] bg-cover bg-center flex flex-col justify-between p-6 sm:p-8 group hover:shadow-2xl transition-all duration-300"
+              style={{ backgroundImage: `url(${product.bgImage})` }}
+            >
+              {/* 漸層遮罩，提升文字閱讀清晰度（上與下柔和黑漸層） */}
+              <div className="absolute inset-0 bg-gradient-to-b from-ink-950/40 via-transparent to-ink-950/85 pointer-events-none" />
 
-        {/* Product cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
-          {contractProducts.map((product, idx) => {
-            const isStandard = product.flowType === 'standard';
-            return (
-              <div
-                key={product.name}
-                className={`reveal reveal-delay-${(idx % 2) + 1} group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-ink-900/10 transition-all duration-500 hover:-translate-y-2`}
-              >
-                {/* Top accent bar */}
-                <div className={`h-1.5 ${isStandard ? 'bg-gradient-to-r from-gold-400 to-gold-600' : 'bg-gradient-to-r from-sage-400 to-sage-600'}`} />
+              {/* 左上角：禮儀服務類型標籤 */}
+              <div className="relative z-10 flex justify-start">
+                <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-ink-900 text-xs sm:text-sm font-medium border border-gold-300/60 shadow-sm">
+                  {product.typeTag}
+                </span>
+              </div>
 
-                <div className="p-8 lg:p-10">
-                  {/* Badge */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium ${isStandard ? 'bg-gold-100 text-gold-700' : 'bg-sage-100 text-sage-700'}`}>
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      <span>{product.type}</span>
-                    </div>
-                    {/* Product name circle */}
-                    <div className={`w-16 h-16 rounded-full flex items-center justify-center font-serif-tc text-2xl font-bold ${isStandard ? 'bg-ink-900 text-gold-400' : 'bg-sage-700 text-ivory-50'}`}>
-                      {product.name}
-                    </div>
+              {/* 左下角：銷售通路、聯絡電話、生前契約書下載 */}
+              <div className="relative z-10 text-white space-y-4">
+                <div className="space-y-2 text-xs sm:text-sm">
+                  <div className="flex items-center gap-1.5 text-gold-300/90 font-medium">
+                    <Building2 className="w-3.5 h-3.5" />
+                    <span>銷售通路</span>
                   </div>
+                  <p className="font-medium text-white/95 text-sm sm:text-base pl-5">
+                    {product.channel.name}
+                  </p>
 
-                  {/* Product name */}
-                  <h3 className="font-serif-tc text-3xl text-ink-800 font-bold mb-6">
-                    {product.name}
-                  </h3>
-
-                  {/* Details */}
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-start gap-3">
-                      <Building2 className="w-5 h-5 text-ink-400 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-xs text-ink-400">銷售通路</p>
-                        <p className="text-ink-700 font-medium">{product.channel}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Phone className="w-5 h-5 text-ink-400 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-xs text-ink-400">聯絡電話</p>
-                        <p className="text-ink-700 font-medium">{product.phone}</p>
-                      </div>
-                    </div>
+                  <div className="flex items-center gap-1.5 text-gold-300/90 font-medium pt-1">
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>聯絡電話</span>
                   </div>
+                  <p className="font-mono text-white/90 text-xs sm:text-sm pl-5">
+                    {product.channel.phone}
+                  </p>
+                </div>
 
-                  {/* Document link */}
+                {/* 生前契約書下載按鈕 */}
+                <div className="pt-2">
                   <a
-                    href={product.documentUrl}
+                    href={product.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium text-sm transition-all group/btn ${
-                      isStandard
-                        ? 'bg-ink-900 text-ivory-50 hover:bg-ink-800'
-                        : 'bg-sage-700 text-ivory-50 hover:bg-sage-600'
-                    }`}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ink-900/90 hover:bg-gold-500 text-white hover:text-ink-950 font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/40 backdrop-blur-sm shadow-md"
                   >
-                    <FileText className="w-4 h-4 text-gold-400" />
                     <span>生前契約書</span>
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    <Download className="w-4 h-4" />
                   </a>
                 </div>
               </div>
-            );
-          })}
+
+            </div>
+          ))}
         </div>
 
-        {/* Approval Documents (Clickable Links) */}
-        <div className="mt-12 text-center reveal reveal-delay-4">
-          <div className="flex justify-center items-center">
-            {approvalDocs.map((doc, idx) => (
-              <a
-                key={idx}
-                href={doc.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/80 hover:bg-white border border-ink-200/80 hover:border-gold-500/50 text-ink-700 hover:text-gold-700 text-sm font-medium transition-all shadow-sm hover:shadow group"
-              >
-                <FileText className="w-4 h-4 text-gold-600 group-hover:scale-110 transition-transform" />
-                <span>{doc.title}</span>
-              </a>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
