@@ -95,11 +95,16 @@ export default function ContractProducts() {
                     <span>銷售通路：{product.channel.name}</span>
                   </div>
 
-                  {/* 聯絡電話：電話號碼 */}
-                  <div className="flex items-center gap-1.5 text-white">
-                    <Phone className="w-4 h-4 text-white shrink-0" />
-                    <span className="font-mono">聯絡電話：{product.channel.phone}</span>
-                  </div>
+                  {/* 聯絡電話：可點擊撥號連結 */}
+                  <a
+                    href={`tel:${product.channel.phone}`}
+                    className="flex items-center gap-1.5 text-white hover:text-gold-300 transition-colors duration-200 group/phone"
+                  >
+                    <Phone className="w-4 h-4 text-white group-hover/phone:text-gold-300 shrink-0 transition-colors duration-200" />
+                    <span className="font-mono group-hover/phone:underline underline-offset-4">
+                      聯絡電話：{product.channel.phone}
+                    </span>
+                  </a>
 
                 </div>
 
