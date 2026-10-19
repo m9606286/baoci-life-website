@@ -79,23 +79,30 @@ const teamMembers = [
     image: '/嚴宏偉.png',
     fallbackImage: '/嚴宏偉.jpg',
   },
-  {
-    name: '劉建和',
-    title: '禮儀顧問',
-    image: '/劉建和.png',
-    fallbackImage: '/劉建和.jpg',
-  },
-  {
+ {
     name: '廖秋月',
     title: '禮儀顧問',
     image: '/廖秋月.png',
     fallbackImage: '/廖秋月.jpg',
   },
   {
+    name: '劉建和',
+    title: '禮儀顧問',
+    image: '/劉建和.png',
+    fallbackImage: '/劉建和.jpg',
+  },
+
+  {
     name: '賴豐升',
     title: '禮儀顧問',
     image: '/賴豐升.png',
     fallbackImage: '/賴豐升.jpg',
+  },
+ {
+    name: '黃竹君',
+    title: '禮儀顧問',
+    image: '/黃竹君.png',
+    fallbackImage: '/黃竹君.jpg',
   },
   {
     name: '莊至誠',
@@ -103,12 +110,7 @@ const teamMembers = [
     image: '/莊至誠.png',
     fallbackImage: '/莊至誠.jpg',
   },
-  {
-    name: '黃竹君',
-    title: '禮儀顧問',
-    image: '/黃竹君.png',
-    fallbackImage: '/黃竹君.jpg',
-  },
+ 
   {
     name: '李承融',
     title: '禮儀顧問',
