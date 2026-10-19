@@ -229,7 +229,7 @@ const processSteps = [
   {
     number: '03',
     title: '設立靈堂',
-    icon: ShrineIcon, // 已更新：靈堂圖示
+    icon: ShrineIcon,
     desc: '協助設置安靈拜祭空間、豎靈儀式與牌位安排，提供家屬靜心追思與守靈場合。',
     image: '/設立靈堂.jpg',
     fallbackImage: '/設立靈堂.png',
@@ -237,7 +237,7 @@ const processSteps = [
   {
     number: '04',
     title: '入殮',
-    icon: CoffinIcon, // 已更新：無十字棺木圖示
+    icon: CoffinIcon,
     desc: '由專業禮儀師引導進行尊榮入殮儀式，為逝者整理容顏、更衣並恭安至壽木中。',
     image: '/入殮.jpg',
     fallbackImage: '/入殮.png',
@@ -253,7 +253,7 @@ const processSteps = [
   {
     number: '06',
     title: '奠禮準備',
-    icon: Flower2, // 花朵圖示
+    icon: Flower2,
     desc: '印製訃聞通知親友、佈置典雅告別式會場、協調花藝、燈光音響與各項用品。',
     image: '/奠禮準備.jpg',
     fallbackImage: '/奠禮準備.png',
@@ -277,7 +277,7 @@ const processSteps = [
   {
     number: '09',
     title: '火化封罐',
-    icon: UrnIcon, // 骨罐圖示
+    icon: UrnIcon,
     desc: '陪同家屬至火化場進行火化儀式，並由禮儀師協助撿骨、迎靈與骨灰罐封罐。',
     image: '/火化封罐.jpg',
     fallbackImage: '/火化封罐.png',
@@ -378,16 +378,18 @@ export default function Services() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
           <div className="bg-white border border-ivory-200 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 lg:p-12 shadow-2xl relative">
             
-            {/* 置頂關閉按鈕 */}
-            <button
-              onClick={() => setActiveModal(null)}
-              className="absolute top-6 right-6 z-30 p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300"
-              aria-label="關閉"
-            >
-              <X className="w-6 h-6" />
-            </button>
+            {/* 凍結固定於右上角的關閉按鈕 */}
+            <div className="sticky top-0 z-50 flex justify-end pb-2">
+              <button
+                onClick={() => setActiveModal(null)}
+                className="p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300"
+                aria-label="關閉"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
 
-            <div className="text-center mb-8 pt-4">
+            <div className="text-center mb-8 pt-2">
               <p className="text-gold-600 text-sm tracking-[0.2em] uppercase font-medium">Product Comparison</p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
                 生前契約主要商品差異
@@ -449,34 +451,36 @@ export default function Services() {
       {/* 2. 禮儀服務 Modal 彈窗（含 禮儀服務團隊 + 12 大服務流程） */}
       {activeModal === 'funeral' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
-          <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 lg:p-12 pt-16 relative scrollbar-thin scrollbar-thumb-gold-400/30">
+          <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 lg:p-12 relative scrollbar-thin scrollbar-thumb-gold-400/30">
             
-            {/* 置頂關閉按鈕 */}
-            <button
-              onClick={() => setActiveModal(null)}
-              className="absolute top-6 right-6 z-40 p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300"
-              aria-label="關閉"
-            >
-              <X className="w-6 h-6" />
-            </button>
+            {/* 凍結固定於右上角的關閉按鈕 */}
+            <div className="sticky top-0 z-50 flex justify-end pb-2 bg-white/80 backdrop-blur-sm -mx-6 -mt-6 sm:-mx-10 sm:-mt-10 lg:-mx-12 lg:-mt-12 p-4 sm:p-6">
+              <button
+                onClick={() => setActiveModal(null)}
+                className="p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300"
+                aria-label="關閉"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
 
             {/* 區塊一：禮儀服務團隊 */}
-            <div className="text-center mb-10">
+            <div className="text-center mb-10 pt-4">
               <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Professional Team</p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
                 禮儀服務團隊
               </h3>
             </div>
 
-            {/* 禮儀團隊卡片網格 (懸停時照片放大) */}
+            {/* 禮儀團隊卡片網格 (照片放大至 w-40 h-40) */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {teamMembers.map((member, idx) => (
                 <div
                   key={idx}
                   className="group bg-ivory-50 rounded-2xl p-6 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300"
                 >
-                  {/* 大頭照外框 */}
-                  <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-white flex items-center justify-center relative">
+                  {/* 大頭照外框放大為 w-40 h-40 */}
+                  <div className="w-40 h-40 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-white flex items-center justify-center relative">
                     <img
                       src={member.image}
                       alt={`${member.name} ${member.title}`}
