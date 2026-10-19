@@ -12,15 +12,49 @@ import {
   PhoneCall,
   Truck,
   Flame,
-  FileCheck2,
   CalendarDays,
-  Sparkles,
+  Flower2, // 奠禮準備：花朵小圖
   Users,
   Footprints,
-  Box,
   Home,
   Building2,
 } from 'lucide-react';
+
+// 自訂 SVG 圖示：棺木 Icon (入殮 STEP 04)
+const CoffinIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M8 2h8l4 6-4 14H8L4 8l4-6z" />
+    <path d="M12 6v8" />
+    <path d="M9 9h6" />
+  </svg>
+);
+
+// 自訂 SVG 圖示：骨罐 Icon (火化封罐 STEP 09)
+const UrnIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M8 4h8" />
+    <path d="M6 7h12" />
+    <path d="M5 7c0 5 2 7 2 12h10c0-5 2-7 2-12H5z" />
+    <path d="M9 22h6" />
+    <path d="M12 2v2" />
+  </svg>
+);
 
 const iconMap: Record<string, typeof ClipboardList> = {
   clipboard: ClipboardList,
@@ -158,7 +192,7 @@ const contractComparison = [
   },
 ];
 
-// 12 道禮儀服務流程資料（含示意圖路徑與備用圖）
+// 12 道禮儀服務流程資料（含指定修正小圖示）
 const processSteps = [
   {
     number: '01',
@@ -187,7 +221,7 @@ const processSteps = [
   {
     number: '04',
     title: '入殮',
-    icon: FileCheck2,
+    icon: CoffinIcon, // 已修改：棺木小圖
     desc: '由專業禮儀師引導進行尊榮入殮儀式，為逝者整理容顏、更衣並恭安至壽木中。',
     image: '/入殮.jpg',
     fallbackImage: '/入殮.png',
@@ -203,7 +237,7 @@ const processSteps = [
   {
     number: '06',
     title: '奠禮準備',
-    icon: Sparkles,
+    icon: Flower2, // 已修改：花朵小圖
     desc: '印製訃聞通知親友、佈置典雅告別式會場、協調花藝、燈光音響與各項用品。',
     image: '/奠禮準備.jpg',
     fallbackImage: '/奠禮準備.png',
@@ -227,7 +261,7 @@ const processSteps = [
   {
     number: '09',
     title: '火化封罐',
-    icon: Box,
+    icon: UrnIcon, // 已修改：骨罐小圖
     desc: '陪同家屬至火化場進行火化儀式，並由禮儀師協助撿骨、迎靈與骨灰罐封罐。',
     image: '/火化封罐.jpg',
     fallbackImage: '/火化封罐.png',
@@ -467,82 +501,4 @@ export default function Services() {
                 12 大禮儀服務流程
               </h3>
               <p className="text-ink-500 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
-                從臨終關懷到晉塔安葬與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
-              </p>
-            </div>
-
-            {/* 12 大禮儀流程卡片：改為 左側示意圖 + 右側文字 結構 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-              {processSteps.map((step) => {
-                const Icon = step.icon;
-                return (
-                  <div
-                    key={step.number}
-                    className="group relative bg-ivory-50/90 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex items-center gap-5 overflow-hidden"
-                  >
-                    {/* 左側：流程示意圖容器 */}
-                    <div className="w-28 sm:w-32 h-28 sm:h-32 rounded-xl overflow-hidden shrink-0 border border-ivory-300 shadow-sm bg-white relative">
-                      <img
-                        src={step.image}
-                        alt={`${step.title}示意圖`}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        onError={(e) => {
-                          const target = e.currentTarget;
-                          if (step.fallbackImage && !target.src.endsWith(step.fallbackImage)) {
-                            target.src = step.fallbackImage;
-                          } else {
-                            target.style.display = 'none';
-                          }
-                        }}
-                      />
-                    </div>
-
-                    {/* 右側：文字內容資訊 */}
-                    <div className="flex-1 flex flex-col justify-between h-full py-1">
-                      <div>
-                        {/* 步驟編號與圖示 */}
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <span className="text-gold-600 font-mono text-xs font-bold tracking-wider uppercase">
-                            STEP {step.number}
-                          </span>
-                          <div className="w-5 h-5 rounded-md bg-ink-900/10 flex items-center justify-center">
-                            <Icon className="w-3 h-3 text-gold-700" />
-                          </div>
-                        </div>
-
-                        {/* 步驟標題 */}
-                        <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-1.5">
-                          {step.title}
-                        </h4>
-
-                        {/* 步驟描述 */}
-                        <p className="text-ink-600 text-xs sm:text-sm leading-relaxed">
-                          {step.desc}
-                        </p>
-                      </div>
-
-                      {/* 卡片底線亮起效果 */}
-                      <div className="mt-3 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* 底部按鈕 */}
-            <div className="text-center pt-4">
-              <a
-                href="#contact"
-                onClick={() => setActiveModal(null)}
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
-              >
-                立即預約諮詢
-              </a>
-            </div>
-
-          </div>
-        </div>
-      )}
-    </section>
-  );
-}
+                從臨終關懷到晉
