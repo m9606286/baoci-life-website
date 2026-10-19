@@ -376,72 +376,77 @@ export default function Services() {
       {/* 1. 生前契約商品差異對照 Modal */}
       {activeModal === 'contract' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
-          <div className="bg-white border border-ivory-200 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 lg:p-12 shadow-2xl relative">
+          {/* 外層容器加上 relative，讓內部絕對定位的 X 按鈕能對齊彈窗右上角 */}
+          <div className="bg-white border border-ivory-200 rounded-3xl max-w-4xl w-full max-h-[90vh] shadow-2xl relative flex flex-col overflow-hidden">
             
-            {/* 絕對定位凍結於右上角（絕不隨內容滾動而重疊） */}
+            {/* 絕對定位釘選於彈窗右上角（不受內部捲動影響、永遠可見） */}
             <button
               onClick={() => setActiveModal(null)}
-              className="absolute top-6 right-6 z-50 p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300 cursor-pointer"
+              className="absolute top-6 right-6 z-[100] p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300 cursor-pointer"
               aria-label="關閉"
             >
               <X className="w-6 h-6" />
             </button>
 
-            <div className="text-center mb-8 pt-4">
-              <p className="text-gold-600 text-sm tracking-[0.2em] uppercase font-medium">Product Comparison</p>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
-                生前契約主要商品差異
-              </h3>
-            </div>
+            {/* 內部可捲動內容區（預留右側空間避免標題壓到關閉按鈕） */}
+            <div className="p-6 sm:p-8 lg:p-12 overflow-y-auto flex-1 pr-12 sm:pr-16">
+              <div className="text-center mb-8 pt-2">
+                <p className="text-gold-600 text-sm tracking-[0.2em] uppercase font-medium">Product Comparison</p>
+                <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
+                  生前契約主要商品差異
+                </h3>
+              </div>
 
-            <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-4">
-              <table className="w-full text-left border-collapse min-w-[600px]">
-                <thead>
-                  <tr className="bg-ivory-100 border-b border-ivory-200 text-ink-800 text-sm sm:text-base font-serif-tc">
-                    <th className="p-4 w-1/4 font-bold">比較項目</th>
-                    <th className="p-4 w-3/8 font-bold text-gold-700 bg-gold-50/50">寶富、福益生前契約（標準型）</th>
-                    <th className="p-4 w-3/8 font-bold text-ink-700">寶暉、璞瑜生前契約（簡易型）</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-ivory-200 text-xs sm:text-sm text-ink-700">
-                  {contractComparison.map((item, idx) => (
-                    <tr key={idx} className="hover:bg-ivory-50/60 transition-colors">
-                      <td className="p-4 font-semibold text-ink-900 bg-ivory-50/30">{item.feature}</td>
-                      <td className="p-4 bg-gold-50/20 leading-relaxed font-medium text-ink-900">
-                        <div className="flex items-start gap-1.5">
-                          <CheckCircle2 className="w-4 h-4 text-gold-600 shrink-0 mt-0.5" />
-                          <span>{item.baofu}</span>
-                        </div>
-                      </td>
-                      <td className="p-4 leading-relaxed text-ink-600">
-                        <div className="flex items-start gap-1.5">
-                          {item.baohui.includes('無') || item.baohui.includes('未提供') ? (
-                            <MinusCircle className="w-4 h-4 text-ink-400 shrink-0 mt-0.5" />
-                          ) : (
-                            <span className="w-1.5 h-1.5 rounded-full bg-ink-400 shrink-0 mt-2 mr-1" />
-                          )}
-                          <span>{item.baohui}</span>
-                        </div>
-                      </td>
+              <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-4">
+                <table className="w-full text-left border-collapse min-w-[600px]">
+                  <thead>
+                    <tr className="bg-ivory-100 border-b border-ivory-200 text-ink-800 text-sm sm:text-base font-serif-tc">
+                      <th className="p-4 w-1/4 font-bold">比較項目</th>
+                      <th className="p-4 w-3/8 font-bold text-gold-700 bg-gold-50/50">寶富、福益生前契約（標準型）</th>
+                      <th className="p-4 w-3/8 font-bold text-ink-700">寶暉、璞瑜生前契約（簡易型）</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-ivory-200 text-xs sm:text-sm text-ink-700">
+                    {contractComparison.map((item, idx) => (
+                      <tr key={idx} className="hover:bg-ivory-50/60 transition-colors">
+                        <td className="p-4 font-semibold text-ink-900 bg-ivory-50/30">{item.feature}</td>
+                        <td className="p-4 bg-gold-50/20 leading-relaxed font-medium text-ink-900">
+                          <div className="flex items-start gap-1.5">
+                            <CheckCircle2 className="w-4 h-4 text-gold-600 shrink-0 mt-0.5" />
+                            <span>{item.baofu}</span>
+                          </div>
+                        </td>
+                        <td className="p-4 leading-relaxed text-ink-600">
+                          <div className="flex items-start gap-1.5">
+                            {item.baohui.includes('無') || item.baohui.includes('未提供') ? (
+                              <MinusCircle className="w-4 h-4 text-ink-400 shrink-0 mt-0.5" />
+                            ) : (
+                              <span className="w-1.5 h-1.5 rounded-full bg-ink-400 shrink-0 mt-2 mr-1" />
+                            )}
+                            <span>{item.baohui}</span>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="text-xs sm:text-sm text-ink-500 font-medium mb-8 pl-1">
+                註：標準型及簡易型均提供骨罐及火化棺。
+              </p>
+
+              <div className="text-center">
+                <a
+                  href="#contact"
+                  onClick={() => setActiveModal(null)}
+                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
+                >
+                  諮詢適合您的方案
+                </a>
+              </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-ink-500 font-medium mb-8 pl-1">
-              註：標準型及簡易型均提供骨罐及火化棺。
-            </p>
-
-            <div className="text-center">
-              <a
-                href="#contact"
-                onClick={() => setActiveModal(null)}
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
-              >
-                諮詢適合您的方案
-              </a>
-            </div>
           </div>
         </div>
       )}
@@ -449,97 +454,45 @@ export default function Services() {
       {/* 2. 禮儀服務 Modal 彈窗（含 禮儀服務團隊 + 12 大服務流程） */}
       {activeModal === 'funeral' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
-          <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 lg:p-12 relative scrollbar-thin scrollbar-thumb-gold-400/30">
+          {/* 外層容器加上 relative，讓內部絕對定位的 X 按鈕能對齊彈窗右上角 */}
+          <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] shadow-2xl relative flex flex-col overflow-hidden">
             
-            {/* 絕對定位凍結於右上角（絕不隨內容滾動而重疊） */}
+            {/* 絕對定位釘選於彈窗右上角（不受內部捲動影響、永遠可見） */}
             <button
               onClick={() => setActiveModal(null)}
-              className="absolute top-6 right-6 z-50 p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300 cursor-pointer"
+              className="absolute top-6 right-6 z-[100] p-2.5 rounded-full text-ink-600 bg-ivory-100 hover:text-ink-950 hover:bg-gold-400 transition-all shadow-md border border-ivory-300 cursor-pointer"
               aria-label="關閉"
             >
               <X className="w-6 h-6" />
             </button>
 
-            {/* 區塊一：禮儀服務團隊 */}
-            <div className="text-center mb-10 pt-4">
-              <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Professional Team</p>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
-                禮儀服務團隊
-              </h3>
-            </div>
+            {/* 內部可捲動內容區（預留右側空間避免標題壓到關閉按鈕） */}
+            <div className="p-6 sm:p-10 lg:p-12 overflow-y-auto flex-1 pr-12 sm:pr-16 scrollbar-thin scrollbar-thumb-gold-400/30">
+              {/* 區塊一：禮儀服務團隊 */}
+              <div className="text-center mb-10 pt-2">
+                <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Professional Team</p>
+                <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
+                  禮儀服務團隊
+                </h3>
+              </div>
 
-            {/* 禮儀團隊卡片網格 (大頭照 w-40 h-40) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-              {teamMembers.map((member, idx) => (
-                <div
-                  key={idx}
-                  className="group bg-ivory-50 rounded-2xl p-6 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300"
-                >
-                  {/* 大頭照外框 */}
-                  <div className="w-40 h-40 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-white flex items-center justify-center relative">
-                    <img
-                      src={member.image}
-                      alt={`${member.name} ${member.title}`}
-                      className="w-full h-full object-cover object-top mix-blend-multiply bg-white transition-transform duration-300 group-hover:scale-110"
-                      onError={(e) => {
-                        const target = e.currentTarget;
-                        if (target.src.endsWith('.png')) {
-                          target.src = member.fallbackImage;
-                        } else {
-                          target.style.display = 'none';
-                        }
-                      }}
-                    />
-                  </div>
-
-                  <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-2">
-                    {member.name} <span className="text-gold-700 font-semibold text-sm"> {member.title}</span>
-                  </h4>
-
-                  {/* 禮儀師顯示內政部證號，禮儀顧問免顯示 */}
-                  {member.certId && (
-                    <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-gold-900 text-xs font-medium">
-                      <UserCheck className="w-3.5 h-3.5 shrink-0 text-gold-700" />
-                      <span>內政部禮儀師證書({member.certId})</span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* 分隔線 */}
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent my-12" />
-
-            {/* 區塊二：12 大禮儀服務流程圖 */}
-            <div className="text-center mb-10">
-              <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Service Process</p>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
-                12 大禮儀服務流程
-              </h3>
-              <p className="text-ink-500 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
-                從臨終關懷到晉塔安葬與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
-              </p>
-            </div>
-
-            {/* 12 大禮儀流程卡片：左側示意圖 + 右側文字 結構 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-              {processSteps.map((step) => {
-                const Icon = step.icon;
-                return (
+              {/* 禮儀團隊卡片網格 (大頭照 w-40 h-40) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                {teamMembers.map((member, idx) => (
                   <div
-                    key={step.number}
-                    className="group relative bg-ivory-50/90 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex items-center gap-5 overflow-hidden"
+                    key={idx}
+                    className="group bg-ivory-50 rounded-2xl p-6 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300"
                   >
-                    {/* 左側：流程示意圖容器 */}
-                    <div className="w-28 sm:w-32 h-28 sm:h-32 rounded-xl overflow-hidden shrink-0 border border-ivory-300 shadow-sm bg-white relative">
+                    {/* 大頭照外框 */}
+                    <div className="w-40 h-40 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-white flex items-center justify-center relative">
                       <img
-                        src={step.image}
-                        alt={`${step.title}示意圖`}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        src={member.image}
+                        alt={`${member.name} ${member.title}`}
+                        className="w-full h-full object-cover object-top mix-blend-multiply bg-white transition-transform duration-300 group-hover:scale-110"
                         onError={(e) => {
                           const target = e.currentTarget;
-                          if (step.fallbackImage && !target.src.endsWith(step.fallbackImage)) {
-                            target.src = step.fallbackImage;
+                          if (target.src.endsWith('.png')) {
+                            target.src = member.fallbackImage;
                           } else {
                             target.style.display = 'none';
                           }
@@ -547,47 +500,103 @@ export default function Services() {
                       />
                     </div>
 
-                    {/* 右側：文字內容資訊 */}
-                    <div className="flex-1 flex flex-col justify-between h-full py-1">
-                      <div>
-                        {/* 步驟編號與圖示：Hover 時顯示深金色背景與白色線條圖示 */}
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <span className="text-gold-600 font-mono text-xs font-bold tracking-wider uppercase">
-                            STEP {step.number}
-                          </span>
-                          <div className="w-6 h-6 rounded-md bg-ink-900/10 group-hover:bg-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
-                            <Icon className="w-3.5 h-3.5 text-gold-700 group-hover:text-white transition-colors duration-300" />
-                          </div>
-                        </div>
+                    <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-2">
+                      {member.name} <span className="text-gold-700 font-semibold text-sm"> {member.title}</span>
+                    </h4>
 
-                        {/* 步驟標題 */}
-                        <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-1.5">
-                          {step.title}
-                        </h4>
+                    {/* 禮儀師顯示內政部證號，禮儀顧問免顯示 */}
+                    {member.certId && (
+                      <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-gold-900 text-xs font-medium">
+                        <UserCheck className="w-3.5 h-3.5 shrink-0 text-gold-700" />
+                        <span>內政部禮儀師證書({member.certId})</span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
 
-                        {/* 步驟描述 */}
-                        <p className="text-ink-600 text-xs sm:text-sm leading-relaxed">
-                          {step.desc}
-                        </p>
+              {/* 分隔線 */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent my-12" />
+
+              {/* 區塊二：12 大禮儀服務流程圖 */}
+              <div className="text-center mb-10">
+                <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Service Process</p>
+                <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
+                  12 大禮儀服務流程
+                </h3>
+                <p className="text-ink-500 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
+                  從臨終關懷到晉塔安葬與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
+                </p>
+              </div>
+
+              {/* 12 大禮儀流程卡片：左側示意圖 + 右側文字 結構 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                {processSteps.map((step) => {
+                  const Icon = step.icon;
+                  return (
+                    <div
+                      key={step.number}
+                      className="group relative bg-ivory-50/90 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex items-center gap-5 overflow-hidden"
+                    >
+                      {/* 左側：流程示意圖容器 */}
+                      <div className="w-28 sm:w-32 h-28 sm:h-32 rounded-xl overflow-hidden shrink-0 border border-ivory-300 shadow-sm bg-white relative">
+                        <img
+                          src={step.image}
+                          alt={`${step.title}示意圖`}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          onError={(e) => {
+                            const target = e.currentTarget;
+                            if (step.fallbackImage && !target.src.endsWith(step.fallbackImage)) {
+                              target.src = step.fallbackImage;
+                            } else {
+                              target.style.display = 'none';
+                            }
+                          }}
+                        />
                       </div>
 
-                      {/* 卡片底線亮起效果 */}
-                      <div className="mt-3 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                      {/* 右側：文字內容資訊 */}
+                      <div className="flex-1 flex flex-col justify-between h-full py-1">
+                        <div>
+                          {/* 步驟編號與圖示：Hover 時顯示深金色背景與白色線條圖示 */}
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <span className="text-gold-600 font-mono text-xs font-bold tracking-wider uppercase">
+                              STEP {step.number}
+                            </span>
+                            <div className="w-6 h-6 rounded-md bg-ink-900/10 group-hover:bg-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                              <Icon className="w-3.5 h-3.5 text-gold-700 group-hover:text-white transition-colors duration-300" />
+                            </div>
+                          </div>
 
-            {/* 底部按鈕 */}
-            <div className="text-center pt-4">
-              <a
-                href="#contact"
-                onClick={() => setActiveModal(null)}
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
-              >
-                立即預約諮詢
-              </a>
+                          {/* 步驟標題 */}
+                          <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-1.5">
+                            {step.title}
+                          </h4>
+
+                          {/* 步驟描述 */}
+                          <p className="text-ink-600 text-xs sm:text-sm leading-relaxed">
+                            {step.desc}
+                          </p>
+                        </div>
+
+                        {/* 卡片底線亮起效果 */}
+                        <div className="mt-3 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* 底部按鈕 */}
+              <div className="text-center pt-4">
+                <a
+                  href="#contact"
+                  onClick={() => setActiveModal(null)}
+                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
+                >
+                  立即預約諮詢
+                </a>
+              </div>
             </div>
 
           </div>
