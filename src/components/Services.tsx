@@ -525,7 +525,7 @@ export default function Services() {
                   12 大禮儀服務流程
                 </h3>
                 <p className="text-ink-500 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
-                  從臨終關懷到晉塔安葬與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
+                  從臨終關懷到擇吉安奉與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
                 </p>
               </div>
 
