@@ -121,6 +121,12 @@ const teamMembers = [
     image: '/王建偉.png',
     fallbackImage: '/王建偉.jpg',
   },
+  {
+    name: '王室悰',
+    title: '禮儀顧問',
+    image: '/王室悰.png',
+    fallbackImage: '/王室悰.jpg',
+  },
 ];
 
 // 生前契約商品差異對照表資料
