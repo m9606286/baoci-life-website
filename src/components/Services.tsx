@@ -242,11 +242,11 @@ const processSteps = [
   },
   {
     number: '11',
-    title: '晉塔安葬',
+    title: '擇吉安奉',
     icon: Building2,
     desc: '選擇吉日良辰將骨灰罐晉塔安座（或進行樹葬/花葬等自然葬），圓滿歸宿。',
-    image: '/晉塔安葬.jpg',
-    fallbackImage: '/晉塔安葬.png',
+    image: '/擇吉安奉.jpg',
+    fallbackImage: '/擇吉安奉.png',
   },
   {
     number: '12',
