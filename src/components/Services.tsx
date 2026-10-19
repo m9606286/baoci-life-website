@@ -508,4 +508,91 @@ export default function Services() {
             </div>
 
             {/* 分隔線 */}
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent my-12" />
+
+            {/* 區塊二：12 大禮儀服務流程圖 */}
+            <div className="text-center mb-10">
+              <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Service Process</p>
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
+                12 大禮儀服務流程
+              </h3>
+              <p className="text-ink-500 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
+                從臨終關懷到晉塔安葬與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
+              </p>
+            </div>
+
+            {/* 12 大禮儀流程卡片：左側示意圖 + 右側文字 結構 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              {processSteps.map((step) => {
+                const Icon = step.icon;
+                return (
+                  <div
+                    key={step.number}
+                    className="group relative bg-ivory-50/90 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex items-center gap-5 overflow-hidden"
+                  >
+                    {/* 左側：流程示意圖容器 */}
+                    <div className="w-28 sm:w-32 h-28 sm:h-32 rounded-xl overflow-hidden shrink-0 border border-ivory-300 shadow-sm bg-white relative">
+                      <img
+                        src={step.image}
+                        alt={`${step.title}示意圖`}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          if (step.fallbackImage && !target.src.endsWith(step.fallbackImage)) {
+                            target.src = step.fallbackImage;
+                          } else {
+                            target.style.display = 'none';
+                          }
+                        }}
+                      />
+                    </div>
+
+                    {/* 右側：文字內容資訊 */}
+                    <div className="flex-1 flex flex-col justify-between h-full py-1">
+                      <div>
+                        {/* 步驟編號與圖示：Hover 時顯示深金色背景與白色線條圖示 */}
+                        <div className="flex items-center gap-2 mb-1.5">
+                          <span className="text-gold-600 font-mono text-xs font-bold tracking-wider uppercase">
+                            STEP {step.number}
+                          </span>
+                          <div className="w-6 h-6 rounded-md bg-ink-900/10 group-hover:bg-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                            <Icon className="w-3.5 h-3.5 text-gold-700 group-hover:text-white transition-colors duration-300" />
+                          </div>
+                        </div>
+
+                        {/* 步驟標題 */}
+                        <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-1.5">
+                          {step.title}
+                        </h4>
+
+                        {/* 步驟描述 */}
+                        <p className="text-ink-600 text-xs sm:text-sm leading-relaxed">
+                          {step.desc}
+                        </p>
+                      </div>
+
+                      {/* 卡片底線亮起效果 */}
+                      <div className="mt-3 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* 底部按鈕 */}
+            <div className="text-center pt-4">
+              <a
+                href="#contact"
+                onClick={() => setActiveModal(null)}
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
+              >
+                立即預約諮詢
+              </a>
+            </div>
+
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
