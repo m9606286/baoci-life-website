@@ -27,13 +27,14 @@ const iconMap: Record<string, typeof ClipboardList> = {
   hands: HeartHandshake,
 };
 
-// 5 位專業禮儀師團隊資料
+// 團隊成員資料：包含 5 位禮儀師 + 8 位禮儀顧問
 const teamMembers = [
+  // --- 禮儀師 ---
   {
     name: '張晉旗',
     title: '禮儀師',
     image: '/張晉旗.png',
-    fallbackImage: '/張晉旗.png',
+    fallbackImage: '/張晉旗.jpg',
     certId: '1040071129',
   },
   {
@@ -47,21 +48,21 @@ const teamMembers = [
     name: '曾志忠',
     title: '禮儀師',
     image: '/曾志忠.png',
-    fallbackImage: '/曾志忠.png',
+    fallbackImage: '/曾志忠.jpg',
     certId: '1040073107',
   },
   {
     name: '王立中',
     title: '禮儀師',
     image: '/王立中.png',
-    fallbackImage: '/王立中.png',
+    fallbackImage: '/王立中.jpg',
     certId: '1050068290',
   },
   {
     name: '杜美慧',
     title: '禮儀師',
     image: '/杜美慧.png',
-    fallbackImage: '/杜美慧.png',
+    fallbackImage: '/杜美慧.jpg',
     certId: '1090053809',
   },
   {
@@ -70,6 +71,55 @@ const teamMembers = [
     image: '/林柏宏.png',
     fallbackImage: '/林柏宏.png',
     certId: '1050079874',
+  },
+  // --- 禮儀顧問 ---
+  {
+    name: '嚴宏偉',
+    title: '禮儀顧問',
+    image: '/嚴宏偉.png',
+    fallbackImage: '/嚴宏偉.jpg',
+  },
+  {
+    name: '劉建和',
+    title: '禮儀顧問',
+    image: '/劉建和.png',
+    fallbackImage: '/劉建和.jpg',
+  },
+  {
+    name: '廖秋月',
+    title: '禮儀顧問',
+    image: '/廖秋月.png',
+    fallbackImage: '/廖秋月.jpg',
+  },
+  {
+    name: '賴豐升',
+    title: '禮儀顧問',
+    image: '/賴豐升.png',
+    fallbackImage: '/賴豐升.jpg',
+  },
+  {
+    name: '莊至誠',
+    title: '禮儀顧問',
+    image: '/莊至誠.png',
+    fallbackImage: '/莊至誠.jpg',
+  },
+  {
+    name: '黃竹君',
+    title: '禮儀顧問',
+    image: '/黃竹君.png',
+    fallbackImage: '/黃竹君.jpg',
+  },
+  {
+    name: '李承融',
+    title: '禮儀顧問',
+    image: '/李承融.png',
+    fallbackImage: '/李承融.jpg',
+  },
+  {
+    name: '王建偉',
+    title: '禮儀顧問',
+    image: '/王建偉.png',
+    fallbackImage: '/王建偉.jpg',
   },
 ];
 
@@ -256,7 +306,7 @@ export default function Services() {
         </div>
       )}
 
-      {/* 2. 禮儀服務 Modal 彈窗（含 5 位專業禮儀師團隊 + 12 大服務流程） */}
+      {/* 2. 禮儀服務 Modal 彈窗（含 禮儀服務團隊 + 12 大服務流程） */}
       {activeModal === 'funeral' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/80 backdrop-blur-md animate-fadeIn">
           <div className="bg-white border border-ivory-200 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 lg:p-12 pt-16 relative scrollbar-thin scrollbar-thumb-gold-400/30">
@@ -278,19 +328,19 @@ export default function Services() {
               </h3>
             </div>
 
-            {/* 5 位禮儀師卡片網格 (背景統一純白效果) */}
+            {/* 禮儀團隊卡片網格 (懸停時照片放大) */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {teamMembers.map((member, idx) => (
                 <div
                   key={idx}
-                  className="bg-ivory-50 rounded-2xl p-6 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
+                  className="group bg-ivory-50 rounded-2xl p-6 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300"
                 >
-                  {/* 大頭照外框：設為純白背景 bg-white 並對圖片套用 mix-blend-multiply 自動去微灰背景 */}
+                  {/* 大頭照外框：滑鼠移入時內部照片放大 110% (scale-110) */}
                   <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-white flex items-center justify-center relative">
                     <img
                       src={member.image}
                       alt={`${member.name} ${member.title}`}
-                      className="w-full h-full object-cover object-top mix-blend-multiply bg-white"
+                      className="w-full h-full object-cover object-top mix-blend-multiply bg-white transition-transform duration-300 group-hover:scale-110"
                       onError={(e) => {
                         const target = e.currentTarget;
                         if (target.src.endsWith('.png')) {
@@ -306,11 +356,13 @@ export default function Services() {
                     {member.name} <span className="text-gold-700 font-semibold text-sm"> {member.title}</span>
                   </h4>
 
-                  {/* 內政部禮儀師證書(證號) */}
-                  <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-gold-900 text-xs font-medium">
-                    <UserCheck className="w-3.5 h-3.5 shrink-0 text-gold-700" />
-                    <span>內政部禮儀師證書({member.certId})</span>
-                  </div>
+                  {/* 禮儀師顯示內政部證號，禮儀顧問免顯示 */}
+                  {member.certId && (
+                    <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-gold-900 text-xs font-medium">
+                      <UserCheck className="w-3.5 h-3.5 shrink-0 text-gold-700" />
+                      <span>內政部禮儀師證書({member.certId})</span>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
