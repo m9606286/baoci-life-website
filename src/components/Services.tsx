@@ -27,7 +27,7 @@ const iconMap: Record<string, typeof ClipboardList> = {
   hands: HeartHandshake,
 };
 
-// 團隊成員資料：包含 5 位禮儀師 + 8 位禮儀顧問
+// 團隊成員資料：包含 6 位禮儀師 + 9 位禮儀顧問
 const teamMembers = [
   // --- 禮儀師 ---
   {
@@ -79,7 +79,7 @@ const teamMembers = [
     image: '/嚴宏偉.png',
     fallbackImage: '/嚴宏偉.jpg',
   },
- {
+  {
     name: '廖秋月',
     title: '禮儀顧問',
     image: '/廖秋月.png',
@@ -91,14 +91,13 @@ const teamMembers = [
     image: '/劉建和.png',
     fallbackImage: '/劉建和.jpg',
   },
-
   {
     name: '賴豐升',
     title: '禮儀顧問',
     image: '/賴豐升.png',
     fallbackImage: '/賴豐升.jpg',
   },
- {
+  {
     name: '黃竹君',
     title: '禮儀顧問',
     image: '/黃竹君.png',
@@ -110,7 +109,6 @@ const teamMembers = [
     image: '/莊至誠.png',
     fallbackImage: '/莊至誠.jpg',
   },
- 
   {
     name: '李承融',
     title: '禮儀顧問',
@@ -160,20 +158,104 @@ const contractComparison = [
   },
 ];
 
-// 12 道禮儀服務流程資料
+// 12 道禮儀服務流程資料（含示意圖路徑與備用圖）
 const processSteps = [
-  { number: '01', title: '臨終關懷', icon: PhoneCall, desc: '提供 24 小時即時諮詢與臨終指引，第一時間給予家屬溫暖支持與安心陪伴。' },
-  { number: '02', title: '遺體接運', icon: Truck, desc: '專車及專業接體人員協助接運逝者至指定殯儀館或接體地點，並完善冰存安置。' },
-  { number: '03', title: '設立靈堂', icon: Flame, desc: '協助設置安靈拜祭空間、豎靈儀式與牌位安排，提供家屬靜心追思與守靈場合。' },
-  { number: '04', title: '入殮', icon: FileCheck2, desc: '由專業禮儀師引導進行尊榮入殮儀式，為逝者整理容顏、更衣並恭安至壽木中。' },
-  { number: '05', title: '治喪協調', icon: CalendarDays, desc: '與家屬溝通宗教信仰、奠禮流程、擇定吉日吉時及會場風格規劃。' },
-  { number: '06', title: '奠禮準備', icon: Sparkles, desc: '印製訃聞通知親友、佈置典雅告別式會場、協調花藝、燈光音響與各項用品。' },
-  { number: '07', title: '家公奠禮', icon: Users, desc: '專業司儀與禮生引導進行家奠與公奠追思儀式，陪伴親友圓滿表達最後懷念。' },
-  { number: '08', title: '發引', icon: Footprints, desc: '奠禮結束後引導發引辭靈，由靈車護送靈柩前往火化場或安葬地點。' },
-  { number: '09', title: '火化封罐', icon: Box, desc: '陪同家屬至火化場進行火化儀式，並由禮儀師協助撿骨、迎靈與骨灰罐封罐。' },
-  { number: '10', title: '返主除靈', icon: Home, desc: '引導家屬迎請香火牌位返家安靈，並進行除靈與拜祭注意事項說明。' },
-  { number: '11', title: '晉塔安葬', icon: Building2, desc: '選擇吉日良辰將骨灰罐晉塔安座（或進行樹葬/花葬等自然葬），圓滿歸宿。' },
-  { number: '12', title: '後續關懷', icon: HeartHandshake, desc: '提供百日、對年、合爐及各項祭祀節日之提醒與諮詢，關懷陪伴永不間斷。' },
+  {
+    number: '01',
+    title: '臨終關懷',
+    icon: PhoneCall,
+    desc: '提供 24 小時即時諮詢與臨終指引，第一時間給予家屬溫暖支持與安心陪伴。',
+    image: '/臨終關懷.jpg',
+    fallbackImage: '/臨終關懷.png',
+  },
+  {
+    number: '02',
+    title: '遺體接運',
+    icon: Truck,
+    desc: '專車及專業接體人員協助接運逝者至指定殯儀館或接體地點，並完善冰存安置。',
+    image: '/遺體接運.jpg',
+    fallbackImage: '/遺體接運.png',
+  },
+  {
+    number: '03',
+    title: '設立靈堂',
+    icon: Flame,
+    desc: '協助設置安靈拜祭空間、豎靈儀式與牌位安排，提供家屬靜心追思與守靈場合。',
+    image: '/設立靈堂.jpg',
+    fallbackImage: '/設立靈堂.png',
+  },
+  {
+    number: '04',
+    title: '入殮',
+    icon: FileCheck2,
+    desc: '由專業禮儀師引導進行尊榮入殮儀式，為逝者整理容顏、更衣並恭安至壽木中。',
+    image: '/入殮.jpg',
+    fallbackImage: '/入殮.png',
+  },
+  {
+    number: '05',
+    title: '治喪協調',
+    icon: CalendarDays,
+    desc: '與家屬溝通宗教信仰、奠禮流程、擇定吉日吉時及會場風格規劃。',
+    image: '/治喪協調.jpg',
+    fallbackImage: '/治喪協調.png',
+  },
+  {
+    number: '06',
+    title: '奠禮準備',
+    icon: Sparkles,
+    desc: '印製訃聞通知親友、佈置典雅告別式會場、協調花藝、燈光音響與各項用品。',
+    image: '/奠禮準備.jpg',
+    fallbackImage: '/奠禮準備.png',
+  },
+  {
+    number: '07',
+    title: '家公奠禮',
+    icon: Users,
+    desc: '專業司儀與禮生引導進行家奠與公奠追思儀式，陪伴親友圓滿表達最後懷念。',
+    image: '/家公奠禮.jpg',
+    fallbackImage: '/家公奠禮.png',
+  },
+  {
+    number: '08',
+    title: '發引',
+    icon: Footprints,
+    desc: '奠禮結束後引導發引辭靈，由靈車護送靈柩前往火化場或安葬地點。',
+    image: '/發引.jpg',
+    fallbackImage: '/發引.png',
+  },
+  {
+    number: '09',
+    title: '火化封罐',
+    icon: Box,
+    desc: '陪同家屬至火化場進行火化儀式，並由禮儀師協助撿骨、迎靈與骨灰罐封罐。',
+    image: '/火化封罐.jpg',
+    fallbackImage: '/火化封罐.png',
+  },
+  {
+    number: '10',
+    title: '返主除靈',
+    icon: Home,
+    desc: '引導家屬迎請香火牌位返家安靈，並進行除靈與拜祭注意事項說明。',
+    image: '/返主除靈.jpg',
+    fallbackImage: '/返主除靈.png',
+  },
+  {
+    number: '11',
+    title: '晉塔安葬',
+    icon: Building2,
+    desc: '選擇吉日良辰將骨灰罐晉塔安座（或進行樹葬/花葬等自然葬），圓滿歸宿。',
+    image: '/晉塔安葬.jpg',
+    fallbackImage: '/晉塔安葬.png',
+  },
+  {
+    number: '12',
+    title: '後續關懷',
+    icon: HeartHandshake,
+    desc: '提供百日、對年、合爐及各項祭祀節日之提醒與諮詢，關懷陪伴永不間斷。',
+    image: '/後續關懷.jpg',
+    fallbackImage: '/後續關懷.png',
+  },
 ];
 
 export default function Services() {
@@ -343,7 +425,7 @@ export default function Services() {
                   key={idx}
                   className="group bg-ivory-50 rounded-2xl p-6 border border-ivory-200 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300"
                 >
-                  {/* 大頭照外框：滑鼠移入時內部照片放大 110% (scale-110) */}
+                  {/* 大頭照外框 */}
                   <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-white flex items-center justify-center relative">
                     <img
                       src={member.image}
@@ -389,39 +471,59 @@ export default function Services() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12">
+            {/* 12 大禮儀流程卡片：改為 左側示意圖 + 右側文字 結構 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
               {processSteps.map((step) => {
                 const Icon = step.icon;
                 return (
                   <div
                     key={step.number}
-                    className="group relative bg-ivory-50/80 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                    className="group relative bg-ivory-50/90 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex items-center gap-5 overflow-hidden"
                   >
-                    <span className="absolute -top-2 -right-1 text-4xl font-serif-tc font-bold text-ink-900/5 group-hover:text-gold-500/10 transition-colors pointer-events-none">
-                      {step.number}
-                    </span>
-
-                    <div>
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-xl bg-ink-900 flex items-center justify-center shrink-0 group-hover:bg-gold-500 transition-colors duration-300">
-                          <Icon className="w-5 h-5 text-gold-400 group-hover:text-ink-950 transition-colors" />
-                        </div>
-                        <div>
-                          <span className="text-gold-600 font-mono text-[11px] font-bold tracking-wider uppercase block">
-                            STEP {step.number}
-                          </span>
-                          <h4 className="font-serif-tc text-base font-bold text-ink-800">
-                            {step.title}
-                          </h4>
-                        </div>
-                      </div>
-
-                      <p className="text-ink-600 text-xs leading-relaxed">
-                        {step.desc}
-                      </p>
+                    {/* 左側：流程示意圖容器 */}
+                    <div className="w-28 sm:w-32 h-28 sm:h-32 rounded-xl overflow-hidden shrink-0 border border-ivory-300 shadow-sm bg-white relative">
+                      <img
+                        src={step.image}
+                        alt={`${step.title}示意圖`}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          if (step.fallbackImage && !target.src.endsWith(step.fallbackImage)) {
+                            target.src = step.fallbackImage;
+                          } else {
+                            target.style.display = 'none';
+                          }
+                        }}
+                      />
                     </div>
 
-                    <div className="mt-4 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
+                    {/* 右側：文字內容資訊 */}
+                    <div className="flex-1 flex flex-col justify-between h-full py-1">
+                      <div>
+                        {/* 步驟編號與圖示 */}
+                        <div className="flex items-center gap-2 mb-1.5">
+                          <span className="text-gold-600 font-mono text-xs font-bold tracking-wider uppercase">
+                            STEP {step.number}
+                          </span>
+                          <div className="w-5 h-5 rounded-md bg-ink-900/10 flex items-center justify-center">
+                            <Icon className="w-3 h-3 text-gold-700" />
+                          </div>
+                        </div>
+
+                        {/* 步驟標題 */}
+                        <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-1.5">
+                          {step.title}
+                        </h4>
+
+                        {/* 步驟描述 */}
+                        <p className="text-ink-600 text-xs sm:text-sm leading-relaxed">
+                          {step.desc}
+                        </p>
+                      </div>
+
+                      {/* 卡片底線亮起效果 */}
+                      <div className="mt-3 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
+                    </div>
                   </div>
                 );
               })}
