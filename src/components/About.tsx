@@ -1,5 +1,5 @@
 import { useReveal } from '@/hooks/useReveal';
-import { History, Heart, Eye } from 'lucide-react';
+import { History, Heart, Eye, Milestone } from 'lucide-react';
 
 const aboutSections = [
   {
@@ -39,6 +39,31 @@ const aboutSections = [
   },
 ];
 
+// 發展歷程資料
+const milestones = [
+  {
+    year: '2002年',
+    text: '公司正式成立後，投入傳統禮儀服務領域。創業初期逐步累積服務經驗，為後續企業發展奠定極固基礎。',
+  },
+  {
+    year: '2014年',
+    text: '為了更聚焦於生命產業與人本關懷，更名為「永慈事業股份有限公司」。同時將資本額擴充至新台幣 3,000 萬元，展現深耕殯葬禮儀服務市場的決心。',
+    highlight: true, // 可選：標註集團資本擴充或重要變革
+  },
+  {
+    year: '2016年',
+    text: '經臺南市政府民政局核准（南市民生字第1050157780號函），正式取得販售「生前殯葬服務契約」的合法資格。為嚴格保障客戶權益，公司依殯葬管理條例規定，將生前契約款項依法交付「京城銀行」辦理信託專戶管理，確保資金安全透明，落實對每一位家屬安心承諾。',
+  },
+  {
+    year: '2025年',
+    text: '本公司迎來經營團隊與經營團隊重組，內部積極推動行政系統整合與流程優化，以持續提供專業且可靠之生前契約與生命禮儀服務。',
+  },
+  {
+    year: '2026年',
+    text: '「寶碩財務科技股份有限公司（5210）」加入，正式更名為「寶慈生命事業股份有限公司」，秉持人本關懷的使命，更加深保障客戶權益的堅持，確保公司永續經營。',
+  },
+];
+
 const aboutImage =
   'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80';
 
@@ -50,11 +75,11 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gold-100/40 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch mb-24">
           
           {/* 左側：圖片區塊 */}
           <div className="lg:col-span-5 relative reveal flex flex-col h-full min-h-[550px] lg:min-h-[700px]">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group cursor-pointer border border-ivory-300/80">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group cursor-pointer border border-ivory-300/85">
               <img
                 src={aboutImage}
                 alt="溫暖陪伴與專業禮儀服務"
@@ -64,14 +89,14 @@ export default function About() {
             </div>
             
             {/* 左下角 75% 信託保障浮水印標籤 */}
-            <div className="absolute bottom-6 right-6 lg:-right-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 border border-white/60 z-20">
+            <div className="absolute bottom-6 right-6 lg:-right-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 border border-white/60 z-25">
               <p className="font-serif-tc text-3xl font-bold gold-text-gradient">75%</p>
               <p className="text-xs font-semibold text-ink-700 mt-1">信託保障</p>
               <p className="text-[10px] text-ink-500">專款專用 履約保障</p>
             </div>
           </div>
 
-          {/* 右側：三個卡片區塊 */}
+          {/* 右側：三個卡片區塊 (故事、使命、願景) */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             {aboutSections.map((section, idx) => {
               const Icon = section.icon;
@@ -100,6 +125,44 @@ export default function About() {
           </div>
 
         </div>
+
+        {/* 發展歷程 (Milestones) 區塊：置於願景下方 */}
+        <div className="mt-20 lg:mt-28 max-w-4xl mx-auto bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 lg:p-16 border border-ivory-300 shadow-xl relative overflow-hidden">
+          
+          {/* 頂部標題 */}
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-gold-100/70 text-gold-700 mb-3 shadow-inner">
+              <Milestone className="w-6 h-6" />
+            </div>
+            <h3 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900">
+              發展歷程
+            </h3>
+            <div className="gold-divider w-24 mx-auto mt-4" />
+          </div>
+
+          {/* 時間軸列表 */}
+          <div className="relative border-l-2 border-gold-400/50 ml-4 sm:ml-8 space-y-12 pl-6 sm:pl-10">
+            {milestones.map((item, index) => (
+              <div key={index} className="relative group">
+                
+                {/* 時間軸節點圓點 */}
+                <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-gold-500 shadow-md group-hover:scale-125 transition-transform duration-300" />
+
+                {/* 年份標題 */}
+                <h4 className="font-serif-tc text-2xl font-bold text-gold-700 mb-2 tracking-wide">
+                  {item.year}
+                </h4>
+
+                {/* 歷程內文 */}
+                <p className="text-ink-700 text-sm sm:text-base leading-relaxed">
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
       </div>
     </section>
   );
