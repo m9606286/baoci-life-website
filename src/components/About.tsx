@@ -51,7 +51,7 @@ const milestones = [
   },
   {
     year: '2016年',
-    text: '經臺南市政府民政局核准（南市民生字第1050157780號函），正式取得販售「生前殯葬服務契約」的合法資格。為嚴格保障客戶權益，公司依殯葬管理條例規定，將生前契約款項依法交付「京城銀行」辦理信託專戶管理，確保資金安全透明，落實對每一位家屬安心承諾。',
+    text: '經臺南市政府民政局核準（南市民生字第1050157780號函），正式取得販售「生前殯葬服務契約」的合法資格。為嚴格保障客戶權益，公司依殯葬管理條例規定，將生前契約款項依法交付「京城銀行」辦理信託專戶管理，確保資金安全透明，落實對每一位家屬安心承諾。',
   },
   {
     year: '2025年',
@@ -125,12 +125,13 @@ export default function About() {
 
         </div>
 
-        {/* 發展歷程 (Milestones) 區塊：加上 group/milestone，滑鼠移入整體區域時日曆圖示自動切換深土金色背景與白字 */}
+        {/* 發展歷程 (Milestones) 區塊：滑鼠移入整體大方框 (group/milestone) 時，日曆圖示切換為與「我們的願景」相同的土金底白字 */}
         <div className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 lg:p-16 border border-ivory-300 shadow-xl relative overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
           
-          {/* 頂部標題與日曆圖示 (滑鼠進入發展歷程大方框範圍時自動切換為深土金色背景與白字) */}
+          {/* 頂部標題與日曆圖示 */}
           <div className="text-center mb-14">
-            <div className="inline-flex items-center justify-center p-3.5 rounded-2xl bg-ivory-100 text-gold-700 group-hover/milestone:bg-[#8B6508] group-hover/milestone:text-white transition-colors duration-300 shadow-sm mb-3">
+            {/* 使用與上方卡片相同的 group-hover/milestone:bg-gold-500 */}
+            <div className="inline-flex items-center justify-center p-3.5 rounded-2xl bg-ivory-100 text-gold-700 group-hover/milestone:bg-gold-500 group-hover/milestone:text-white transition-colors duration-300 shadow-sm mb-3">
               <Calendar className="w-6 h-6 transition-transform duration-300 group-hover/milestone:scale-110" />
             </div>
             <h3 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900">
