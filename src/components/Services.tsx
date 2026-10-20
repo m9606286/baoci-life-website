@@ -294,7 +294,7 @@ const processSteps = [
     number: '11',
     title: '擇吉安奉',
     icon: Building2,
-    desc: '選擇吉日良辰將骨灰罐晉塔安座（或進行樹葬/花葬等自然葬），圓滿歸宿。',
+    desc: '擇吉日良辰，舉行莊嚴安葬儀式，圓滿人生最後一程。',
     image: '/擇吉安奉.jpg',
     fallbackImage: '/擇吉安奉.png',
   },
