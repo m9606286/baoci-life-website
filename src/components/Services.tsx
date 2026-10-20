@@ -204,7 +204,7 @@ const contractComparison = [
   {
     feature: '孝服借用數量',
     baofu: '20 件以內',
-    baohui: '10 件以內 (黑袍)',
+    baohui: '10 件以內',
   },
 ];
 
