@@ -32,7 +32,7 @@ export interface PreneedAdvantage {
 }
 
 export const preneedAdvantages: PreneedAdvantage[] = [
-  { text: '一定會發生的事情，提早做好規劃，減輕家人的壓力。' },
+  { text: '提前規劃，讓愛更周全。' },
   { text: '確保按照自己的意願進行禮儀安排。' },
   { text: '獲得透明的價格和完整的服務保障。' },
   { text: '享受優惠的付款方案，鎖定價格抗通膨。' },
