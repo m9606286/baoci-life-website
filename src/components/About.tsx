@@ -156,4 +156,16 @@ export default function About() {
                 </h4>
 
                 {/* 歷程內文 (保持舒適清晰的墨黑色不變) */}
-                <p className
+                <p className="text-ink-700 text-sm sm:text-base leading-relaxed">
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+}
