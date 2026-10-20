@@ -41,7 +41,7 @@ export default function Trust() {
               保證 {companyInfo.trustRatio} 信託
             </p>
             <p className="text-ivory-200/70 text-sm lg:text-base leading-relaxed max-w-2xl mx-auto mb-6">
-              依殯葬管理條例第51條規定，本公司預收之生前契約款項，已將{companyInfo.trustRatio}交由「{companyInfo.trustBank}」信託管理，專款專用。
+              依殯葬管理條例第51條規定，本公司預收之生前契約款項，依法{companyInfo.trustRatio}交由「{companyInfo.trustBank}」信託管理，專款專用。
             </p>
 
             {/* 前往信託查詢系統按鈕 */}
