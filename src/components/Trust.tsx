@@ -3,7 +3,7 @@ import { companyInfo } from '@/data/content';
 import { Landmark, FileCheck, Scale, ShieldCheck, ExternalLink } from 'lucide-react';
 
 const trustItems = [
-  { icon: FileCheck, title: '京城銀行信託契約', text: '依殯葬管理條例第51條規定，本公司預收之生前契約款項，已將75%交由京城銀行信託管理，專款專用。' },
+  { icon: FileCheck, title: '京城銀行信託契約', text: '依殯葬管理條例第51條規定，本公司預收之生前契約款項，依法75%交由京城銀行信託管理，專款專用。' },
   { icon: Scale, title: '信託財產目錄與收支計算表', text: '定期公開信託財產結算報告，確保資金透明、安全、可查詢。' },
   { icon: ShieldCheck, title: '永續經營保障', text: '寶慈生命事業為寶碩（股票代號5210）全資子公司，依循公司治理原則運作，強化營運穩定性與長期服務承諾。' },
 ];
