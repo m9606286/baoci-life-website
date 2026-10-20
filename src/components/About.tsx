@@ -125,13 +125,13 @@ export default function About() {
 
         </div>
 
-        {/* 發展歷程 (Milestones) 區塊：置於願景下方 */}
-        <div className="mt-20 lg:mt-28 max-w-4xl mx-auto bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 lg:p-16 border border-ivory-300 shadow-xl relative overflow-hidden">
+        {/* 發展歷程 (Milestones) 區塊：加上 group/milestone，滑鼠移入整體區域時日曆圖示自動切換深底白字 */}
+        <div className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 lg:p-16 border border-ivory-300 shadow-xl relative overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
           
-          {/* 頂部標題與日曆圖示 (懸停顯示深底白字) */}
+          {/* 頂部標題與日曆圖示 (滑鼠進入發展歷程區塊時變深底白字) */}
           <div className="text-center mb-14">
-            <div className="inline-flex items-center justify-center p-3.5 rounded-2xl bg-ivory-100 text-gold-700 hover:bg-ink-800 hover:text-white transition-colors duration-300 shadow-sm cursor-pointer mb-3 group/icon">
-              <Calendar className="w-6 h-6 transition-transform duration-300 group-hover/icon:scale-110" />
+            <div className="inline-flex items-center justify-center p-3.5 rounded-2xl bg-ivory-100 text-gold-700 group-hover/milestone:bg-ink-800 group-hover/milestone:text-white transition-colors duration-300 shadow-sm mb-3">
+              <Calendar className="w-6 h-6 transition-transform duration-300 group-hover/milestone:scale-110" />
             </div>
             <h3 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900">
               發展歷程
@@ -139,7 +139,7 @@ export default function About() {
             <div className="gold-divider w-24 mx-auto mt-4" />
           </div>
 
-          {/* 時間軸列表：滑鼠移入該年度區塊時，年份與內文黑色字體皆變為金黃色 */}
+          {/* 時間軸列表 */}
           <div className="relative border-l-2 border-gold-400/50 ml-4 sm:ml-8 space-y-12 pl-6 sm:pl-10">
             {milestones.map((item, index) => (
               <div 
@@ -147,7 +147,7 @@ export default function About() {
                 className="relative group/timeline cursor-pointer p-2 rounded-xl transition-all duration-300 hover:translate-x-1.5"
               >
                 
-                {/* 時間軸節點圓點 (Hover 時放大發光) */}
+                {/* 時間軸節點圓點 */}
                 <div className="absolute -left-[31px] sm:-left-[47px] top-3.5 w-4 h-4 rounded-full bg-white border-4 border-gold-500 shadow-md group-hover/timeline:scale-150 group-hover/timeline:border-gold-600 group-hover/timeline:shadow-gold-500/50 transition-all duration-300" />
 
                 {/* 年份標題 (Hover 時文字微幅放大並變亮金色) */}
@@ -155,17 +155,5 @@ export default function About() {
                   {item.year}
                 </h4>
 
-                {/* 歷程內文 (Hover 時字體變換為尊榮金黃色) */}
-                <p className="text-ink-700 group-hover/timeline:text-gold-600 text-sm sm:text-base leading-relaxed transition-colors duration-300 font-medium">
-                  {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-  );
-}
+                {/* 歷程內文 (保持舒適清晰的墨黑色不變) */}
+                <p className
