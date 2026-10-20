@@ -21,7 +21,7 @@ const features = [
   {
     icon: FileText,
     title: '提前規劃，讓愛更周全',
-    text: '人生的重要時刻，值得提前做好安排。透過生前契約妥善規劃禮儀服務與相關事宜，讓未來多一份從容，讓家人在面對離別時，能安心陪伴、從容道別，將愛與心意延續。。',
+    text: '人生的重要時刻，值得提前做好安排。透過生前契約妥善規劃禮儀服務與相關事宜，讓未來多一份從容，讓家人在面對離別時，能安心陪伴、從容道別，將愛與心意延續。',
   },
   {
     icon: TrendingUp,
@@ -83,7 +83,7 @@ export default function PreNeed() {
           {/* 右側：核心保障列表 */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             
-            {/* 標題區塊：提高亮色彩質感，英文/中文/金線色彩輝度完全同步 */}
+            {/* 標題區塊 */}
             <div className="w-fit text-center">
               <p className="text-gold-300 text-xs tracking-[0.35em] uppercase mb-1.5 font-medium drop-shadow-sm">
                 Core Guarantees
@@ -91,7 +91,6 @@ export default function PreNeed() {
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ivory-50 tracking-wide mb-3">
                 契約核心保障
               </h3>
-              {/* 調亮金線輝度（via-gold-400），確保與上標題金線同輝度 */}
               <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6" />
             </div>
 
@@ -129,10 +128,13 @@ export default function PreNeed() {
                   <feature.icon className="w-7 h-7 text-gold-400" />
                 </div>
                 <div>
-                  <h3 className="font-serif-tc text-lg lg:text-xl text-ivory-50 font-bold mb-3">
+                  <h3 className="font-serif-tc text-xl lg:text-2xl text-ivory-50 font-bold mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-ivory-200/70 text-sm leading-relaxed">{feature.text}</p>
+                  {/* 將 text 的字體放大至 text-base sm:text-lg */}
+                  <p className="text-ivory-200/90 text-base sm:text-lg leading-relaxed">
+                    {feature.text}
+                  </p>
                 </div>
               </div>
             </div>
