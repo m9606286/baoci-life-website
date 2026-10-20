@@ -1,5 +1,5 @@
 import { useReveal } from '@/hooks/useReveal';
-import { History, Heart, Eye, Milestone } from 'lucide-react';
+import { History, Heart, Eye, Calendar } from 'lucide-react';
 
 const aboutSections = [
   {
@@ -8,7 +8,7 @@ const aboutSections = [
     content: (
       <div className="space-y-3">
         <p>
-          寶慈生命事業(原永慈事業)成立於 2002 年，為合法經營之殯葬禮儀服務業者，經臺南市民政局核准發行生前契約，並於2026年5月正式由寶碩集團併購接手經營，源於創辦人對於禮儀服務的深刻理解和對家庭關懷的執著，我們見證了無數家庭在失去親人時的悲傷，也看到了專業禮儀服務如何能夠幫助人們度過這個困難的時期，因此決定讓可永續經營之集團接續，讓會員權益更有保障。
+          寶慈生命事業(原永慈事業)成立於 2002 年，為合法經營之殯葬禮儀服務業者，經臺南市民政局核準發行生前契約，並於2026年5月正式由寶碩集團併購接手經營，源於創辦人對於禮儀服務的深刻理解和對家庭關懷的執著，我們見證了無數家庭在失去親人時的悲傷，也看到了專業禮儀服務如何能夠幫助人們度過這個困難的時期，因此決定讓可永續經營之集團接續，讓會員權益更有保障。
         </p>
         <p className="font-semibold text-ink-800 pt-1 border-t border-ivory-200/80">
           從最初的小型禮儀社，到如今成為寶碩集團的一分子，我們始終堅持一個信念：
@@ -48,7 +48,6 @@ const milestones = [
   {
     year: '2014年',
     text: '為了更聚焦於生命產業與人本關懷，更名為「永慈事業股份有限公司」。同時將資本額擴充至新台幣 3,000 萬元，展現深耕殯葬禮儀服務市場的決心。',
-    highlight: true, // 可選：標註集團資本擴充或重要變革
   },
   {
     year: '2016年',
@@ -117,7 +116,7 @@ export default function About() {
                     {section.content}
                   </div>
 
-                  {/* 卡片底部的金色指示線：滑鼠移入出現，移出消失 */}
+                  {/* 卡片底部的金色指示線 */}
                   <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out" />
                 </div>
               );
@@ -129,10 +128,10 @@ export default function About() {
         {/* 發展歷程 (Milestones) 區塊：置於願景下方 */}
         <div className="mt-20 lg:mt-28 max-w-4xl mx-auto bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 lg:p-16 border border-ivory-300 shadow-xl relative overflow-hidden">
           
-          {/* 頂部標題 */}
+          {/* 頂部標題與改為日曆圖示 (懸停顯示深底白字) */}
           <div className="text-center mb-14">
-            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-gold-100/70 text-gold-700 mb-3 shadow-inner">
-              <Milestone className="w-6 h-6" />
+            <div className="inline-flex items-center justify-center p-3.5 rounded-2xl bg-ivory-100 text-gold-700 hover:bg-ink-800 hover:text-white transition-colors duration-300 shadow-sm cursor-pointer mb-3 group/icon">
+              <Calendar className="w-6 h-6 transition-transform duration-300 group-hover/icon:scale-110" />
             </div>
             <h3 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900">
               發展歷程
@@ -140,21 +139,24 @@ export default function About() {
             <div className="gold-divider w-24 mx-auto mt-4" />
           </div>
 
-          {/* 時間軸列表 */}
+          {/* 時間軸列表：滑鼠移入該年度區塊時字體與圖示會有生動互動 */}
           <div className="relative border-l-2 border-gold-400/50 ml-4 sm:ml-8 space-y-12 pl-6 sm:pl-10">
             {milestones.map((item, index) => (
-              <div key={index} className="relative group">
+              <div 
+                key={index} 
+                className="relative group/timeline cursor-pointer p-2 rounded-xl transition-all duration-300 hover:translate-x-1.5"
+              >
                 
-                {/* 時間軸節點圓點 */}
-                <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-gold-500 shadow-md group-hover:scale-125 transition-transform duration-300" />
+                {/* 時間軸節點圓點 (Hover 時放大發光) */}
+                <div className="absolute -left-[31px] sm:-left-[47px] top-3.5 w-4 h-4 rounded-full bg-white border-4 border-gold-500 shadow-md group-hover/timeline:scale-150 group-hover/timeline:border-gold-600 group-hover/timeline:shadow-gold-500/50 transition-all duration-300" />
 
-                {/* 年份標題 */}
-                <h4 className="font-serif-tc text-2xl font-bold text-gold-700 mb-2 tracking-wide">
+                {/* 年份標題 (Hover 時文字微幅放大並變亮金色) */}
+                <h4 className="font-serif-tc text-2xl font-bold text-gold-700 group-hover/timeline:text-gold-500 group-hover/timeline:scale-105 origin-left transition-all duration-300 mb-2 tracking-wide">
                   {item.year}
                 </h4>
 
-                {/* 歷程內文 */}
-                <p className="text-ink-700 text-sm sm:text-base leading-relaxed">
+                {/* 歷程內文 (Hover 時字色加深提升閱讀清晰度) */}
+                <p className="text-ink-700 group-hover/timeline:text-ink-950 text-sm sm:text-base leading-relaxed transition-colors duration-300">
                   {item.text}
                 </p>
               </div>
