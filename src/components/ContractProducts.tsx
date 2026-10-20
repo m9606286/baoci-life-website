@@ -77,11 +77,19 @@ export default function ContractProducts() {
           {contractProducts.map((product) => (
             <div
               key={product.id}
-              className="relative rounded-2xl overflow-hidden shadow-lg border border-ivory-300 aspect-[3/4] bg-cover bg-center flex flex-col justify-end p-6 sm:p-8 group hover:shadow-2xl transition-all duration-300"
-              style={{ backgroundImage: `url(${product.bgImage})` }}
+              className="group relative rounded-2xl overflow-hidden shadow-lg border border-ivory-300 aspect-[3/4] flex flex-col justify-end p-6 sm:p-8 hover:shadow-2xl transition-all duration-500"
             >
+              {/* 背景圖片（獨立為 img 標籤，滑鼠移入時會平滑放大 108%） */}
+              <div className="absolute inset-0 overflow-hidden bg-ivory-200">
+                <img
+                  src={product.bgImage}
+                  alt={product.typeTag}
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
+                />
+              </div>
+
               {/* 漸層遮罩，提升文字閱讀清晰度 */}
-              <div className="absolute inset-0 bg-gradient-to-b from-ink-950/20 via-transparent to-ink-950/90 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-b from-ink-950/10 via-transparent to-ink-950/90 pointer-events-none transition-opacity duration-500 group-hover:opacity-95" />
 
               {/* 下方資訊區塊 (統一為靠左對齊，使各列首字齊平) */}
               <div className="relative z-10 text-white space-y-4 flex flex-col items-start text-left">
@@ -108,7 +116,7 @@ export default function ContractProducts() {
 
                 </div>
 
-                {/* 底部按鈕區：服務型態標籤（左） + 生前契約書下載按鈕（右，首字與上方齊平） */}
+                {/* 底部按鈕區：服務型態標籤（左） + 生前契約書下載按鈕（右） */}
                 <div className="pt-2 flex items-center gap-2.5 w-full flex-wrap">
                   
                   {/* 服務型態標籤 (懸停時出現黃底黑字 hover 效果) */}
