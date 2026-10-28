@@ -5,7 +5,6 @@ import BrandLogo from '@/components/BrandLogo';
 
 const navLinks = [
   { label: '關於我們', en: 'ABOUT', href: '#top', isTop: true },
-  { label: '核心價值', en: 'VALUES', href: '#values' },
   { label: '生前契約', en: 'CONTRACT', href: '#preneed' },
   { label: '服務項目', en: 'SERVICES', href: '#services' },
   { label: '契約商品', en: 'PRODUCTS', href: '#products' },
