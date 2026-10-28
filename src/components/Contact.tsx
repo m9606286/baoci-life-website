@@ -1,231 +1,213 @@
-import { useState } from 'react';
-import { useReveal } from '@/hooks/useReveal';
-import { supabase } from '@/lib/supabase';
-import emailjs from '@emailjs/browser';
-import { Phone, Clock,MapPin, FileText, Send, CheckCircle2, Loader2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapPin, Send, CheckCircle2 } from 'lucide-react';
 
-const serviceOptions = [
-  '生前契約規劃',
-  '禮儀服務',
-  '臨終關懷諮詢',
-  '接體服務',
-  '其他諮詢',
+const taiwanLocations = [
+  '基隆市', '台北市', '新北市', '桃園市', '新竹市', '新竹縣',
+  '苗栗縣', '台中市', '彰化縣', '南投縣', '雲林縣', '嘉義市',
+  '嘉義縣', '台南市', '高雄市', '屏東縣', '宜蘭縣', '花蓮縣',
+  '台東縣', '澎湖縣', '金門縣', '連江縣'
 ];
 
-// 📧 EmailJS 設定參數
-const EMAILJS_SERVICE_ID = 'service_zf9uh61'; // 您的 Service ID[cite: 6]
-const EMAILJS_TEMPLATE_ID = 'template_es3ajzo'; // 請替換為您在 EmailJS 建立的 Template ID
-const EMAILJS_PUBLIC_KEY = 'JrnA1g4s1JSwiropU';   // 請替換為 Account 頁面取得的 Public Key
+const serviceOptions = [
+  '商品諮詢',
+  '手續查詢',
+  '繳款查詢',
+  '禮儀服務',
+  '陵園服務',
+  '意見反映'
+];
 
 export default function Contact() {
-  const ref = useReveal<HTMLDivElement>();
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [form, setForm] = useState({ name: '', phone: '', serviceType: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '', // 電子郵件 (選填)
+    location: '', // 居住地點 (無預設)
+    service: '商品諮詢',
+    message: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  // ⚠️ 請將引號內的網址替換為您剛剛複製的 GAS 網址
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBIEBCjy4KlujkBQeROvmFJblaeKucJCGuUUe4HL7p_7h6f_bC4xhEqdER6dtjQxVb/exec';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.phone.trim()) return;
-    setStatus('loading');
+
+    if (!formData.location) {
+      alert('請選擇您的居住地點！');
+      return;
+    }
+
+    setLoading(true);
 
     try {
-      // 1. 同步寫入 Supabase 資料庫
-      const { error: dbError } = await supabase.from('consultation_requests').insert({
-        name: form.name.trim(),
-        phone: form.phone.trim(),
-        service_type: form.serviceType || null,
-        message: form.message.trim() || null,
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(formData),
       });
 
-      if (dbError) throw dbError;
-
-      // 2. 同步透過 EmailJS 寄出 Email 到 jerry@mail.apex.com.tw
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          name: form.name.trim(),            // 對應範本中的 {{name}}
-          phone: form.phone.trim(),          // 對應範本中的 {{phone}}
-          service_type: form.serviceType || '未指定', // 對應範本中的 {{service_type}}
-          message: form.message.trim() || '無額外需求說明', // 對應範本中的 {{message}}
-          to_email: 'jerry@mail.apex.com.tw',
-        },
-        EMAILJS_PUBLIC_KEY
-      );
-
-      setStatus('success');
-      setForm({ name: '', phone: '', serviceType: '', message: '' });
-      setTimeout(() => setStatus('idle'), 5000);
-    } catch (err) {
-      console.error('表單送出錯誤：', err);
-      setStatus('error');
+      const result = await response.json();
+      if (result.result === 'success') {
+        setSubmitted(true);
+      } else {
+        alert('表單送出失敗，請稍後再試或直接撥打免付費專線！');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('網路連線異常，請稍後再試！');
+    } finally {
+      setLoading(false);
     }
   };
 
+  if (submitted) {
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-16 text-center">
+        <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8 shadow-sm">
+          <CheckCircle2 className="w-16 h-16 text-gold-600 mx-auto mb-4" />
+          <h3 className="text-2xl font-serif-tc font-bold text-ink-900 mb-2">感謝您的填寫</h3>
+          <p className="text-ink-600 mb-6">我們已收到您的諮詢需求，將會盡快由專人與您聯繫。</p>
+          <button
+            onClick={() => {
+              setSubmitted(false);
+              setFormData({ name: '', phone: '', email: '', location: '', service: '商品諮詢', message: '' });
+            }}
+            className="bg-ink-900 text-stone-100 px-6 py-2.5 rounded-full text-sm font-medium hover:bg-ink-800 transition-colors"
+          >
+            填寫其他諮詢
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-gradient-to-b from-ivory-200 to-ivory-100 relative overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-gold-100/40 to-transparent pointer-events-none" />
-
-      <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">Contact</p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-800 font-bold mt-3 reveal reveal-delay-1">
-            準備好了解更多嗎？
-          </h2>
-          <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
-          <p className="mt-6 text-ink-500 text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
-            我們的專業團隊隨時準備為您提供諮詢和協助。
-          </p>
+    <section className="py-16 bg-stone-50">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-serif-tc font-bold text-ink-900 mb-3">聯絡我們</h2>
+          <p className="text-ink-600">填寫下方表單，將有專人為您提供尊榮、溫暖的諮詢服務。</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-          {/* Left: info */}
-          <div className="lg:col-span-2">
-            <div className="space-y-5">
-              <a
-                href="tel:0800-600-603"
-                className="reveal flex items-center gap-4 p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all group"
-              >
-                <div className="w-12 h-12 rounded-full bg-ink-900 flex items-center justify-center flex-shrink-0 group-hover:bg-ink-800 transition-colors">
-                  <Phone className="w-5 h-5 text-gold-400" />
-                </div>
-                <div>
-                  <p className="text-xs text-ink-400">24小時服務專線</p>
-                  <p className="font-serif-tc text-xl text-ink-800 font-bold">0800-600-603</p>
-                </div>
-              </a>
+        <form onSubmit={handleSubmit} className="bg-white border border-stone-200/80 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* 姓名 */}
+            <div>
+              <label className="block text-sm font-medium text-ink-700 mb-2">您的姓名 *</label>
+              <input
+                type="text"
+                required
+                placeholder="請輸入姓名"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all"
+              />
+            </div>
 
-              <div className="reveal reveal-delay-1 flex items-center gap-4 p-6 bg-white rounded-xl shadow-md">
-                <div className="w-12 h-12 rounded-full bg-ink-900 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-gold-400" />
-                </div>
-                <div>
-                  <p className="text-xs text-ink-400">地址</p>
-                  <p className="text-ink-800 font-medium">台北市內湖區新湖二路329號5樓</p>
-                </div>
-              </div>
-
-              <div className="reveal reveal-delay-2 flex items-center gap-4 p-6 bg-white rounded-xl shadow-md">
-                <div className="w-12 h-12 rounded-full bg-ink-900 flex items-center justify-center flex-shrink-0">
-                  <FileText className="w-5 h-5 text-gold-400" />
-                </div>
-                <div>
-                  <p className="text-xs text-ink-400">統一編號</p>
-                  <p className="text-ink-800 font-medium">13024413</p>
-                </div>
-              </div>
-
-              <div className="reveal reveal-delay-3 p-6 bg-ink-900 rounded-xl shadow-md">
-                <p className="text-white text-sm leading-relaxed">
-                  臨終關懷諮詢或須啟動接體服務，請直接撥打 24小時服務專線。
-                </p>
-              </div>
+            {/* 電話 */}
+            <div>
+              <label className="block text-sm font-medium text-ink-700 mb-2">聯絡電話 *</label>
+              <input
+                type="tel"
+                required
+                placeholder="請輸入電話號碼"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all"
+              />
             </div>
           </div>
 
-          {/* Right: form */}
-          <div className="lg:col-span-3 reveal reveal-delay-2">
-            <div className="bg-white rounded-3xl shadow-xl p-8 lg:p-10">
-              <h3 className="font-serif-tc text-2xl text-ink-800 font-bold mb-2">填寫諮詢表單</h3>
-              <p className="text-ink-400 text-sm mb-8">我們將於收到表單後儘速與您聯繫</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* 電子郵件 (選填) */}
+            <div>
+              <label className="block text-sm font-medium text-ink-700 mb-2">
+                電子郵件 <span className="text-stone-400 font-normal">(選填)</span>
+              </label>
+              <input
+                type="email"
+                placeholder="example@email.com"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all"
+              />
+            </div>
 
-              {status === 'success' && (
-                <div className="mb-6 p-4 rounded-xl bg-sage-50 border border-sage-200 flex items-center gap-3 animate-fade-in">
-                  <CheckCircle2 className="w-5 h-5 text-sage-600 flex-shrink-0" />
-                  <p className="text-sage-700 text-sm">
-                    感謝您的來信，我們已收到您的諮詢需求，將儘速與您聯繫。
-                  </p>
-                </div>
-              )}
-
-              {status === 'error' && (
-                <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 flex items-center gap-3">
-                  <p className="text-red-700 text-sm">
-                    送出失敗，請稍後再試或直接來電 0800-600-603，謝謝。
-                  </p>
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium text-ink-700 mb-2">
-                      姓名 <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-ivory-300 bg-ivory-50 text-ink-800 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent transition-all"
-                      placeholder="請輸入您的姓名"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-ink-700 mb-2">
-                      聯絡電話 <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-ivory-300 bg-ivory-50 text-ink-800 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent transition-all"
-                      placeholder="請輸入聯絡電話"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-ink-700 mb-2">
-                    需求服務類型
-                  </label>
-                  <select
-                    value={form.serviceType}
-                    onChange={(e) => setForm({ ...form, serviceType: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-ivory-300 bg-ivory-50 text-ink-800 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent transition-all"
-                  >
-                    <option value="">請選擇服務類型</option>
-                    {serviceOptions.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-ink-700 mb-2">
-                    需求說明
-                  </label>
-                  <textarea
-                    rows={4}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-ivory-300 bg-ivory-50 text-ink-800 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent transition-all resize-none"
-                    placeholder="請簡述您的需求或問題..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={status === 'loading'}
-                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-ink-900 text-ivory-50 font-medium hover:bg-ink-800 transition-all hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed group"
+            {/* 居住地點 (必填，無預設) */}
+            <div>
+              <label className="block text-sm font-medium text-ink-700 mb-2">居住地點 *</label>
+              <div className="relative">
+                <select
+                  required
+                  value={formData.location}
+                  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                  className={`w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all bg-white appearance-none cursor-pointer ${
+                    !formData.location ? 'text-stone-400' : 'text-ink-900'
+                  }`}
                 >
-                  {status === 'loading' ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>送出中...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5 text-gold-400 group-hover:translate-x-0.5 transition-transform" />
-                      <span>送出諮詢</span>
-                    </>
-                  )}
-                </button>
-              </form>
+                  <option value="" disabled hidden>
+                    -- 請選擇縣市 --
+                  </option>
+                  {taiwanLocations.map((loc) => (
+                    <option key={loc} value={loc} className="text-ink-900">
+                      {loc}
+                    </option>
+                  ))}
+                </select>
+                <MapPin className="w-5 h-5 text-stone-400 absolute right-4 top-3.5 pointer-events-none" />
+              </div>
             </div>
           </div>
-        </div>
+
+          {/* 需求服務類型 */}
+          <div>
+            <label className="block text-sm font-medium text-ink-700 mb-2">需求服務類型 *</label>
+            <select
+              value={formData.service}
+              onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+              className="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all bg-white cursor-pointer"
+            >
+              {serviceOptions.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* 留言內容 */}
+          <div>
+            <label className="block text-sm font-medium text-ink-700 mb-2">諮詢內容 / 需求留言</label>
+            <textarea
+              rows={4}
+              placeholder="請簡述您的需求或想詢問的問題..."
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all resize-none"
+            />
+          </div>
+
+          {/* 送出按鈕 */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-ink-900 hover:bg-ink-800 text-stone-100 py-3.5 rounded-xl font-medium transition-all shadow-sm hover:shadow flex items-center justify-center space-x-2 disabled:opacity-50"
+          >
+            {loading ? (
+              <span>送出中...</span>
+            ) : (
+              <>
+                <Send className="w-4 h-4 text-gold-400" />
+                <span>確認送出諮詢</span>
+              </>
+            )}
+          </button>
+        </form>
       </div>
     </section>
   );
