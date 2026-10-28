@@ -1,5 +1,5 @@
 import { Phone, ChevronDown, Heart } from 'lucide-react';
-import heroImage from '../public/hero.png';
+import heroImage from '/hero.png';
 export default function Hero() {
   return (
     <section id="top" className="relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden">
