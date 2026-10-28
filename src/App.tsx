@@ -1,35 +1,53 @@
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import Announcement from '@/components/Announcement';
-import About from '@/components/About';
-import CoreValues from '@/components/CoreValues';
-import PreneedContract from '@/components/PreneedContract';
-import Services from '@/components/Services';
-import ContractProducts from '@/components/ContractProducts';
-import Trust from '@/components/Trust';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import FloatingCTA from '@/components/FloatingCTA';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="min-h-screen bg-ivory-100 font-sans">
-      <Header />
-      <main>
-        <Hero />
-        <Announcement />
-        <About />
-        <CoreValues />
-        <PreneedContract />
-        <Services />
-        <ContractProducts />
-        <Trust />
-        <Contact />
-      </main>
-      <Footer />
-      <FloatingCTA />
-    </div>
-  );
+// 載入頁面 (Pages)
+import HomePage from './pages/HomePage';
+import ValuesPage from './pages/ValuesPage';
+import PreneedPage from './pages/PreneedPage';
+import ServicesPage from './pages/ServicesPage';
+import ProductsPage from './pages/ProductsPage';
+import TrustPage from './pages/TrustPage';
+import ContactPage from './pages/ContactPage';
+
+// 載入全站通用元件 (Components)
+import Header from './components/Header';
+import Footer from './components/Footer';
+import FloatingCTA from './components/FloatingCTA';
+
+// 切換頁面時自動滾動回頂部的組件
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <div className="min-h-screen flex flex-col bg-stone-50">
+        <Header />
+        
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/values" element={<ValuesPage />} />
+            <Route path="/preneed" element={<PreneedPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/trust" element={<TrustPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </main>
+
+        <Footer />
+        <FloatingCTA />
+      </div>
+    </Router>
+  );
+}
