@@ -13,36 +13,39 @@ export default function Announcement() {
         <div ref={ref} className="mx-auto max-w-8xl px-6">
           <div
             onClick={() => setIsOpen(true)}
-            className="reveal relative bg-gradient-to-r from-ink-900 to-ink-800 rounded-2xl p-6 lg:p-8 overflow-hidden shadow-xl cursor-pointer hover:shadow-2xl transition-all duration-300 border border-gold-400/20 group"
+            className="reveal relative bg-gradient-to-r from-ivory-50 via-ivory-100 to-amber-50/40 rounded-2xl p-6 lg:p-8 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gold-400/30 cursor-pointer group"
           >
-            {/* Decorative element */}
-            <div className="absolute top-0 right-0 w-64 h-full opacity-10 pointer-events-none">
+            {/* 質感金色光澤裝飾 */}
+            <div className="absolute top-0 right-0 w-80 h-full opacity-30 pointer-events-none">
               <div
                 className="w-full h-full"
                 style={{
                   backgroundImage:
-                    'radial-gradient(circle at 70% 50%, rgba(212,167,73,0.4) 0%, transparent 60%)',
+                    'radial-gradient(circle at 80% 50%, rgba(212, 167, 73, 0.25) 0%, transparent 65%)',
                 }}
               />
             </div>
 
             <div className="relative flex items-center justify-between gap-4 lg:gap-6">
               <div className="flex items-center gap-4 lg:gap-6">
-                <div className="flex-shrink-0 w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-gold-400/15 border border-gold-400/30 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <Megaphone className="w-7 h-7 lg:w-8 lg:h-8 text-gold-400" />
+                {/* 喇叭圖示 - 淺色調高質感金邊 */}
+                <div className="flex-shrink-0 w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-gold-400/15 border border-gold-400/40 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-sm">
+                  <Megaphone className="w-7 h-7 lg:w-8 lg:h-8 text-gold-600" />
                 </div>
                 <div>
-                  <p className="text-gold-400 text-xs tracking-[0.25em] uppercase mb-2">重要公告</p>
-                  <p className="font-serif-tc text-base lg:text-xl text-ivory-50 leading-relaxed font-medium">
+                  <p className="text-gold-600 font-semibold text-xs tracking-[0.25em] uppercase mb-1.5">
+                    重要公告
+                  </p>
+                  <p className="font-serif-tc text-base lg:text-xl text-ink-900 leading-relaxed font-bold">
                     {announcement}
                   </p>
                 </div>
               </div>
 
               {/* 右側詳細內容提示按鈕 */}
-              <div className="hidden sm:flex items-center gap-1 text-sm font-medium text-gold-400 group-hover:translate-x-1.5 transition-transform duration-300 shrink-0">
+              <div className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-gold-400/10 border border-gold-400/30 text-sm font-semibold text-gold-700 group-hover:bg-gold-400 group-hover:text-ink-950 transition-all duration-300 shrink-0">
                 <span>詳細內容</span>
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </div>
             </div>
           </div>
@@ -66,7 +69,7 @@ export default function Announcement() {
               </button>
             </div>
 
-            {/* 彈窗內文（優化手機版滾動體驗） */}
+            {/* 彈窗內文 */}
             <div className="p-4 sm:p-6 md:p-8 overflow-y-auto space-y-5 sm:space-y-6 text-slate-700 scrollbar-thin scrollbar-thumb-gold-400/30">
               <div className="text-center pb-3 border-b border-gold-300/60">
                 <h2 className="font-serif-tc text-xl sm:text-2xl md:text-3xl font-bold text-gold-600 tracking-wide">
