@@ -43,25 +43,24 @@ const features = [
 
 export default function PreneedContract() {
   const revealResult = useReveal<HTMLDivElement>();
-  // 相容 Hook 可能回傳 [ref] 或單一 ref 物件的情況
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   return (
-    <section id="preneed" className="py-24 lg:py-32 bg-ink-950 text-white relative overflow-hidden">
+    <section id="preneed" className="py-24 lg:py-32 bg-ivory-100 text-slate-800 relative overflow-hidden">
       {/* 頂部裝飾線 */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         {/* Header 標題區 */}
         <div className="text-center mb-16">
-          <p className="text-gold-400 text-xs tracking-[0.35em] uppercase reveal">Preneed Contract</p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ivory-50 font-bold mt-3 reveal reveal-delay-1">
+          <p className="text-gold-600 text-xs tracking-[0.35em] uppercase font-semibold reveal">Preneed Contract</p>
+          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-950 font-bold mt-3 reveal reveal-delay-1">
             什麼是生前契約？
           </h2>
 
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-6 reveal reveal-delay-2" />
 
-          <p className="mt-6 text-ivory-200/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
+          <p className="mt-6 text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
             生前契約是給家人的最後一道保障，也可明確記錄您對於身後事的安排和意願。
           </p>
         </div>
@@ -70,39 +69,39 @@ export default function PreneedContract() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch mb-20">
           {/* 左側：圖片區塊 */}
           <div className="lg:col-span-5 relative reveal flex flex-col">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer border border-white/10 w-full h-full min-h-[400px]">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer border border-gold-400/30 w-full h-full min-h-[400px]">
               <img
                 src={advantageImage}
                 alt="生前契約核心保障"
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/30 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
 
           {/* 右側：核心保障列表 */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            <div className="w-fit text-center">
-              <p className="text-gold-300 text-xs tracking-[0.35em] uppercase mb-1.5 font-medium drop-shadow-sm">
+            <div className="w-fit text-center lg:text-left">
+              <p className="text-gold-600 text-xs tracking-[0.35em] uppercase mb-1.5 font-bold">
                 Core Guarantees
               </p>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ivory-50 tracking-wide mb-3">
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-950 tracking-wide mb-3">
                 契約核心保障
               </h3>
-              <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6" />
+              <div className="w-32 h-px bg-gradient-to-r from-gold-400/60 to-transparent mb-6" />
             </div>
 
             <div className="space-y-3.5 flex-1 flex flex-col justify-between">
               {preneedAdvantages.map((adv, idx) => (
                 <div
                   key={idx}
-                  className="group flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-gold-400/40 hover:translate-x-1.5 hover:shadow-lg hover:shadow-gold-500/5"
+                  className="group flex items-center gap-4 p-4 rounded-xl bg-white/80 border border-gold-400/20 cursor-pointer transition-all duration-300 hover:bg-white hover:border-gold-400/60 hover:translate-x-1.5 hover:shadow-md hover:shadow-gold-500/5"
                 >
-                  <div className="p-1 rounded-full bg-gold-400/10 text-gold-400 group-hover:bg-gold-400 group-hover:text-ink-950 transition-all duration-300 shrink-0">
+                  <div className="p-1 rounded-full bg-gold-400/15 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300 shrink-0">
                     <CheckCircle2 className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                   </div>
 
-                  <p className="text-white/80 group-hover:text-white text-base leading-relaxed font-medium transition-colors duration-300">
+                  <p className="text-slate-700 group-hover:text-slate-900 text-base leading-relaxed font-medium transition-colors duration-300">
                     {adv.text}
                   </p>
                 </div>
@@ -114,22 +113,21 @@ export default function PreneedContract() {
         {/* 特色卡片區塊 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {features.map((feature, idx) => {
-            // 將圖示指派給大寫開頭的變數 Icon，符合 React 組件渲染規範
             const Icon = feature.icon;
             return (
               <div
                 key={idx}
-                className={`reveal reveal-delay-${(idx % 2) + 1} group bg-ink-900/60 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-gold-400/40 transition-all duration-500 hover:bg-ink-900/90`}
+                className={`reveal reveal-delay-${(idx % 2) + 1} group bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gold-400/20 hover:border-gold-400/60 transition-all duration-500 hover:shadow-lg hover:bg-white`}
               >
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center shrink-0 group-hover:bg-gold-400/20 transition-colors">
-                    <Icon className="w-7 h-7 text-gold-400" />
+                  <div className="w-14 h-14 rounded-xl bg-gold-400/15 border border-gold-400/30 flex items-center justify-center shrink-0 group-hover:bg-gold-400/25 transition-colors">
+                    <Icon className="w-7 h-7 text-gold-600" />
                   </div>
                   <div>
-                    <h3 className="font-serif-tc text-lg lg:text-xl text-ivory-50 font-bold mb-3">
+                    <h3 className="font-serif-tc text-lg lg:text-xl text-ink-950 font-bold mb-3">
                       {feature.title}
                     </h3>
-                    <p className="text-ivory-200/70 text-sm leading-relaxed">{feature.text}</p>
+                    <p className="text-slate-600 text-sm leading-relaxed">{feature.text}</p>
                   </div>
                 </div>
               </div>
