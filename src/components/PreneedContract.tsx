@@ -55,8 +55,8 @@ export default function PreneedContract() {
             什麼是生前契約？
           </h2>
 
-          {/* 質感線：寬度 w-32，水平置中 */}
-          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
+          {/* 質感線：寬度 w-50，水平置中 */}
+          <div className="w-50 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
 
           <p className="mt-4 text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
             生前契約是給家人的最後一道保障，也可明確記錄您對於身後事的安排和意願。
