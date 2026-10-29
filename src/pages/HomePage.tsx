@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <div>
       <Hero />
-      <Announcement />
+     //<Announcement />
       <About />
       <CoreValues />
     </div>
