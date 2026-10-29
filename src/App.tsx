@@ -11,7 +11,7 @@ import ContactPage from './pages/ContactPage';
 
 // 載入全站通用元件 (Components)
 import Header from './components/Header';
-import Footer from './components/Footer';
+import Footer from './pages/../components/Footer';
 import FloatingCTA from './components/FloatingCTA';
 
 // 切換頁面時自動滾動回頂部的組件
@@ -29,9 +29,11 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col bg-stone-50">
+      {/* 配合全站色系將 bg-stone-50 改為 bg-ivory-100 */}
+      <div className="min-h-screen flex flex-col bg-ivory-100">
         <Header />
         
+        {/* 移除原本可能隱含的 pt-間距，讓各頁面組件自行控制與 Header 的距離 */}
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
