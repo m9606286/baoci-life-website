@@ -337,7 +337,7 @@ export default function Services() {
             <h3 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-3">
               12 大禮儀服務流程
             </h3>
-            <p className="text-ink-500 text-sm sm:text-base mt-3 max-w-lg mx-auto">
+            <p className="text-ink-500 text-sm sm:text-base mt-3 mx-auto whitespace-nowrap overflow-x-auto">
               從臨終關懷到擇吉安奉與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
             </p>
             <div className="gold-divider w-32 mx-auto mt-6" />
