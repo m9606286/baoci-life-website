@@ -229,12 +229,12 @@ export default function Services() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         {/* 區塊一：禮儀服務團隊 */}
         <div className="text-center mb-16 pt-4">
-          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase">Professional Team</p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-3">
+          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">Professional Team</p>
+          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-3 reveal reveal-delay-1">
             禮儀服務團隊
           </h2>
-          <div className="gold-divider w-32 mx-auto mt-6" />
-          <p className="text-ink-500 text-sm sm:text-base mt-4 mx-auto">
+          <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
+          <p className="text-ink-500 text-sm sm:text-base mt-4 mx-auto reveal reveal-delay-3">
             專業團隊全程守護與陪伴，讓您與家人在人生最重要的告別時刻，完成一場充滿愛與祝福的人生畢業典禮。
           </p>
         </div>
@@ -244,7 +244,7 @@ export default function Services() {
           {teamMembers.map((member, idx) => (
             <div
               key={idx}
-              className="group bg-white/60 rounded-2xl p-6 border border-ivory-200/80 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300"
+              className={`reveal reveal-delay-${(idx % 3) + 1} group bg-white/60 rounded-2xl p-6 border border-ivory-200/80 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300`}
             >
               {/* 大頭照外框 */}
               <div className="w-40 h-40 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-white flex items-center justify-center relative">
@@ -279,28 +279,28 @@ export default function Services() {
         </div>
 
         {/* 分隔線 */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent my-16" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent my-16 reveal" />
 
         {/* 區塊二：12 大禮儀服務流程圖 */}
         <div className="text-center mb-16">
-          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase">Service Process</p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-3">
+          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">Service Process</p>
+          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-3 reveal reveal-delay-1">
             12 大禮儀服務流程
           </h2>
-          <div className="gold-divider w-32 mx-auto mt-6" />
-          <p className="text-ink-500 text-sm sm:text-base mt-4 mx-auto">
+          <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
+          <p className="text-ink-500 text-sm sm:text-base mt-4 mx-auto reveal reveal-delay-3">
             從臨終關懷到擇吉安奉與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
           </p>
         </div>
 
         {/* 12 大禮儀流程卡片 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {processSteps.map((step) => {
+          {processSteps.map((step, idx) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.number}
-                className="group relative bg-white/80 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex items-center gap-5 overflow-hidden"
+                className={`reveal reveal-delay-${(idx % 2) + 1} group relative bg-white/80 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex items-center gap-5 overflow-hidden`}
               >
                 {/* 左側：流程示意圖容器 */}
                 <div className="w-28 sm:w-32 h-28 sm:h-32 rounded-xl overflow-hidden shrink-0 border border-ivory-300 shadow-sm bg-white relative">
@@ -352,7 +352,7 @@ export default function Services() {
         </div>
 
         {/* 底部按鈕 */}
-        <div className="text-center pt-4">
+        <div className="text-center pt-4 reveal">
           <a
             href="#contact"
             className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
