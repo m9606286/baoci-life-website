@@ -290,4 +290,80 @@ export default function Services() {
               12 大禮儀服務流程
             </h3>
             <div className="gold-divider w-32 mx-auto mt-6" />
-            <p className="text-
+            <p className="text-ink-500 text-sm sm:text-base mt-4 mx-auto whitespace-nowrap overflow-x-auto">
+              從臨終關懷到擇吉安奉與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
+            </p>
+          </div>
+
+          {/* 12 大禮儀流程卡片：左側示意圖 + 右側文字 結構 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            {processSteps.map((step) => {
+              const Icon = step.icon;
+              return (
+                <div
+                  key={step.number}
+                  className="group relative bg-ivory-50/90 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex items-center gap-5 overflow-hidden"
+                >
+                  {/* 左側：流程示意圖容器 */}
+                  <div className="w-28 sm:w-32 h-28 sm:h-32 rounded-xl overflow-hidden shrink-0 border border-ivory-300 shadow-sm bg-white relative">
+                    <img
+                      src={step.image}
+                      alt={`${step.title}示意圖`}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (step.fallbackImage && !target.src.endsWith(step.fallbackImage)) {
+                          target.src = step.fallbackImage;
+                        } else {
+                          target.style.display = 'none';
+                        }
+                      }}
+                    />
+                  </div>
+
+                  {/* 右側：文字內容資訊 */}
+                  <div className="flex-1 flex flex-col justify-between h-full py-1">
+                    <div>
+                      {/* 步驟編號與圖示 */}
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className="text-gold-600 font-mono text-xs font-bold tracking-wider uppercase">
+                          STEP {step.number}
+                        </span>
+                        <div className="w-6 h-6 rounded-md bg-ink-900/10 group-hover:bg-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                          <Icon className="w-3.5 h-3.5 text-gold-700 group-hover:text-white transition-colors duration-300" />
+                        </div>
+                      </div>
+
+                      {/* 步驟標題 */}
+                      <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-1.5">
+                        {step.title}
+                      </h4>
+
+                      {/* 步驟描述 */}
+                      <p className="text-ink-600 text-xs sm:text-sm leading-relaxed">
+                        {step.desc}
+                      </p>
+                    </div>
+
+                    {/* 卡片底線亮起效果 */}
+                    <div className="mt-3 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* 底部按鈕 */}
+          <div className="text-center pt-4">
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
+            >
+              立即預約諮詢
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
