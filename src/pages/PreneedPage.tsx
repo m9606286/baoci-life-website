@@ -1,5 +1,5 @@
 import React from 'react';
-import Contract from '../components/PreneedContract';
+import PreneedContract from '../components/PreneedContract';
 
 export default function PreneedPage() {
   return (
