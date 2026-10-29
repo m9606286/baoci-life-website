@@ -5,14 +5,13 @@ import heroImage from '/hero.png';
 export default function Hero() {
   return (
     <section id="top" className="relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden">
-      {/* Background image with slow zoom (調亮背景圖遮罩，營造溫暖明亮感) */}
+      {/* Background image with slow zoom */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
           alt="家人彼此陪伴"
           className="w-full h-full object-cover animate-slow-zoom"
         />
-        {/* 降低深色遮罩濃度，讓底圖更明亮 */}
         <div className="absolute inset-0 bg-gradient-to-b from-ink-950/20 via-ink-900/15 to-ink-900/35" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink-950/30 to-transparent" />
       </div>
@@ -46,12 +45,13 @@ export default function Hero() {
             className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up"
             style={{ animationDelay: '1s', opacity: 0 }}
           >
+            {/* 瞭解生前契約按鈕：改為白色字體與質感深底搭配 */}
             <Link
               to="/preneed"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gold-400 text-ink-950 font-semibold hover:bg-gold-300 transition-all hover:shadow-2xl hover:shadow-gold-500/20 group"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-ink-900 text-white font-semibold hover:bg-ink-800 transition-all hover:shadow-2xl hover:shadow-gold-500/10 border border-gold-400/40 group"
             >
               <span>瞭解生前契約</span>
-              <ChevronDown className="w-4 h-4 ml-2 group-hover:translate-y-0.5 transition-transform" />
+              <ChevronDown className="w-4 h-4 ml-2 text-gold-400 group-hover:translate-y-0.5 transition-transform" />
             </Link>
             <Link
               to="/contact"
