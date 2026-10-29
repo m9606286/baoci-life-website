@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import HomePage from './pages/HomePage';
 import PreneedPage from './pages/PreneedPage';
 import ServicesPage from './pages/ServicesPage';
-//import ProductsPage from './pages/ProductsPage';
 import TrustPage from './pages/TrustPage';
 import ContactPage from './pages/ContactPage';
 
@@ -41,7 +40,6 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/preneed" element={<PreneedPage />} />
             <Route path="/services" element={<ServicesPage />} />
-            <Route path="/products" element={<ProductsPage />} />
             <Route path="/trust" element={<TrustPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
