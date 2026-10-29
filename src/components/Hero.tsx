@@ -12,16 +12,17 @@ export default function Hero() {
           alt="家人彼此陪伴"
           className="w-full h-full object-cover animate-slow-zoom"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/20 via-ink-900/15 to-ink-900/35" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/30 to-transparent" />
+        {/* 水藍色質感漸層遮罩 (Sky/Slate-Blue overlay) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-950/40 via-slate-900/30 to-slate-950/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-sky-900/50 via-sky-900/20 to-transparent" />
       </div>
 
       {/* Content */}
       <div className="relative h-full mx-auto max-w-8xl px-6 flex flex-col justify-center">
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-6 animate-fade-in" style={{ animationDelay: '0.2s', opacity: 0 }}>
-            <Heart className="w-5 h-5 text-gold-400 drop-shadow" />
-            <span className="text-gold-400 text-sm tracking-[0.3em] uppercase font-medium drop-shadow">Apex BaoCi-Life</span>
+            <Heart className="w-5 h-5 text-gold-300 drop-shadow" />
+            <span className="text-gold-300 text-sm tracking-[0.3em] uppercase font-medium drop-shadow">Apex BaoCi-Life</span>
           </div>
 
           <h1
@@ -33,7 +34,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="mt-8 text-lg md:text-xl text-ivory-100/95 leading-relaxed max-w-2xl animate-fade-up font-medium drop-shadow"
+            className="mt-8 text-lg md:text-xl text-sky-50/95 leading-relaxed max-w-2xl animate-fade-up font-medium drop-shadow"
             style={{ animationDelay: '0.7s', opacity: 0 }}
           >
             幫助您提早規劃，讓生命的每一刻
@@ -45,7 +46,6 @@ export default function Hero() {
             className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up"
             style={{ animationDelay: '1s', opacity: 0 }}
           >
-            {/* 瞭解生前契約：改為透明底、白框與毛玻璃質感 */}
             <Link
               to="/preneed"
               className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
@@ -53,8 +53,6 @@ export default function Hero() {
               <span>瞭解生前契約</span>
               <ChevronDown className="w-4 h-4 ml-2 text-gold-300 group-hover:translate-y-0.5 transition-transform" />
             </Link>
-
-            {/* 聯絡我們 */}
             <Link
               to="/contact"
               className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
