@@ -51,7 +51,7 @@ export default function Trust() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase font-semibold reveal">Trust</p>
+          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">Trust</p>
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-950 font-bold mt-3 reveal reveal-delay-1">
             信託公開
           </h2>
@@ -61,7 +61,7 @@ export default function Trust() {
         {/* Highlight banner */}
         <div className="reveal reveal-delay-2 mb-12 max-w-4xl mx-auto">
           <div className="bg-gradient-to-r from-white/90 via-ivory-50 to-amber-50/40 border border-gold-400/30 rounded-2xl p-8 lg:p-10 text-center shadow-md">
-            {/* 上方大圖示：加上 group 與 hover 效果，移到時顯示深金底白線條 */}
+            {/* 上方大圖示：移到時顯示深金底白線條 */}
             <div className="group w-16 h-16 rounded-full bg-gold-400/15 border border-gold-400/30 flex items-center justify-center mx-auto mb-6 shadow-sm transition-colors duration-300 hover:bg-gold-600 hover:border-gold-600 cursor-pointer">
               <Landmark className="w-8 h-8 text-gold-600 transition-colors duration-300 group-hover:text-white" />
             </div>
@@ -73,7 +73,7 @@ export default function Trust() {
               依殯葬管理條例第51條，預收之生前契約款項，依法{companyInfo.trustRatio}交由「{companyInfo.trustBank}」信託管理。
             </p>
 
-            {/* 前往信託查詢系統按鈕：淺色系，移到時出現深金背景與白字 */}
+            {/* 前往信託查詢系統按鈕 */}
             <div className="mt-6">
               <a
                 href="https://customer.ktb.com.tw/new/personal/agreement"
