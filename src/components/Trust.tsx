@@ -61,9 +61,11 @@ export default function Trust() {
         {/* Highlight banner */}
         <div className="reveal reveal-delay-2 mb-12 max-w-4xl mx-auto">
           <div className="bg-gradient-to-r from-white/90 via-ivory-50 to-amber-50/40 border border-gold-400/30 rounded-2xl p-8 lg:p-10 text-center shadow-md">
-            <div className="w-16 h-16 rounded-full bg-gold-400/15 border border-gold-400/30 flex items-center justify-center mx-auto mb-6 shadow-sm">
-              <Landmark className="w-8 h-8 text-gold-600" />
+            {/* 上方大圖示：加上 group 與 hover 效果，移到時顯示深金底白線條 */}
+            <div className="group w-16 h-16 rounded-full bg-gold-400/15 border border-gold-400/30 flex items-center justify-center mx-auto mb-6 shadow-sm transition-colors duration-300 hover:bg-gold-600 hover:border-gold-600 cursor-pointer">
+              <Landmark className="w-8 h-8 text-gold-600 transition-colors duration-300 group-hover:text-white" />
             </div>
+
             <p className="font-serif-tc text-2xl lg:text-3xl text-ink-950 font-bold mb-3">
               保證 {companyInfo.trustRatio} 信託
             </p>
@@ -93,7 +95,7 @@ export default function Trust() {
               key={idx}
               className={`reveal reveal-delay-${idx + 1} group bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gold-400/20 hover:border-gold-400/60 transition-all duration-500 shadow-sm hover:shadow-md`}
             >
-              {/* 圖示：移到時顯示深金底白線條 (group-hover:bg-gold-600) */}
+              {/* 圖示：移到時顯示深金底白線條 */}
               <div className="w-14 h-14 rounded-xl bg-gold-400/15 border border-gold-400/30 flex items-center justify-center mb-5 transition-colors duration-300 group-hover:bg-gold-600 group-hover:border-gold-600">
                 <item.icon className="w-7 h-7 text-gold-600 transition-colors duration-300 group-hover:text-white" />
               </div>
