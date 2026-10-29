@@ -11,7 +11,7 @@ import ContactPage from './pages/ContactPage';
 
 // 載入全站通用元件 (Components)
 import Header from './components/Header';
-import Footer from './pages/../components/Footer';
+import Footer from './components/Footer';
 import FloatingCTA from './components/FloatingCTA';
 
 // 切換頁面時自動滾動回頂部的組件
@@ -29,12 +29,14 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      {/* 配合全站色系將 bg-stone-50 改為 bg-ivory-100 */}
       <div className="min-h-screen flex flex-col bg-ivory-100">
         <Header />
         
-        {/* 移除原本可能隱含的 pt-間距，讓各頁面組件自行控制與 Header 的距離 */}
-        <main className="flex-grow">
+        {/* 主要內容區塊：加入 relative 與全站頂部金色漸層質感線 */}
+        <main className="flex-grow relative">
+          {/* 全站統一頂部金色漸層裝飾線 */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-gold-400/50 to-transparent pointer-events-none z-10" />
+
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/preneed" element={<PreneedPage />} />
