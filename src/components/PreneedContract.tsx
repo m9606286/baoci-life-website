@@ -46,14 +46,13 @@ export default function PreneedContract() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   return (
-    /* 調整頂部 padding (pt-10 lg:pt-12)，讓標題與區塊向上拉高 */
-    <section id="preneed" className="pt-10 pb-20 lg:pt-14 lg:pb-28 bg-ivory-100 text-slate-800 relative overflow-hidden">
+    <section id="preneed" className="pt-6 pb-20 lg:pt-8 lg:pb-28 bg-ivory-100 text-slate-800 relative overflow-hidden">
       {/* 頂部裝飾線 */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         {/* Header 標題區 */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-center mb-10 lg:mb-12">
           <p className="text-gold-600 text-xs tracking-[0.35em] uppercase font-semibold reveal">Preneed Contract</p>
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-950 font-bold mt-2 reveal reveal-delay-1">
             什麼是生前契約？
@@ -68,7 +67,7 @@ export default function PreneedContract() {
 
         {/* 圖片 + 核心保障清單 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch mb-20">
-          {/* 左側：圖片區塊（設定 relative 填滿高度，完美對齊右側） */}
+          {/* 左側：圖片區塊 */}
           <div className="lg:col-span-5 relative reveal flex flex-col">
             <div className="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer border border-gold-400/30 w-full flex-1 min-h-[400px] lg:min-h-full">
               <img
