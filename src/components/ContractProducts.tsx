@@ -174,7 +174,7 @@ export default function ContractProducts() {
         {/* 生前契約商品差異對照表（移至此處下方顯示） */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-12 shadow-md max-w-5xl mx-auto">
           <div className="text-center mb-8 pt-2">
-            <p className="text-gold-600 text-sm tracking-[0.3em] uppercase font-medium">Product Comparison</p>
+            <p className="text-gold-600 text-sm tracking-[0.3em] uppercase">Product Comparison</p>
             <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
               生前契約主要商品差異
             </h3>
