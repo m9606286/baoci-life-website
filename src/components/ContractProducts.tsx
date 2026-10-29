@@ -90,11 +90,11 @@ export default function ContractProducts() {
         
         {/* 標題區 */}
         <div className="text-center mb-14">
-          <p className="text-gold-600 text-xs sm:text-sm tracking-[0.25em] uppercase font-medium">
+          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase">
             Contract Products
           </p>
           <h2 className="font-serif-tc text-3xl md:text-4xl text-ink-800 font-bold mt-2">
-            生前契約商品
+            契約商品
           </h2>
           {/* 左右漸細的經典金色分隔線 */}
           <div className="gold-divider w-32 mx-auto mt-6" />
@@ -174,7 +174,7 @@ export default function ContractProducts() {
         {/* 生前契約商品差異對照表（移至此處下方顯示） */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-12 shadow-md max-w-5xl mx-auto">
           <div className="text-center mb-8 pt-2">
-            <p className="text-gold-600 text-sm tracking-[0.2em] uppercase font-medium">Product Comparison</p>
+            <p className="text-gold-600 text-sm tracking-[0.3em] uppercase font-medium">Product Comparison</p>
             <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
               生前契約主要商品差異
             </h3>
