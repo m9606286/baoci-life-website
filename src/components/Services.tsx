@@ -61,7 +61,7 @@ const UrnIcon = ({ className }: { className?: string }) => (
   >
     <path d="M8 4h8" />
     <path d="M6 7h12" />
-    <path d="M5 7c0 5 2 7 2 12h10c0-5 2-7 2-12H5z" />
+    <path d="M5 7c0 5 2 7 2 12H5z" />
     <path d="M9 22h6" />
     <path d="M12 2v2" />
   </svg>
@@ -332,14 +332,15 @@ export default function Services() {
           <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent my-12" />
 
           {/* 區塊二：12 大禮儀服務流程圖 */}
-          <div className="text-center mb-10">
-            <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Service Process</p>
-            <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
+          <div className="text-center mb-12">
+            <p className="text-gold-600 text-sm tracking-[0.3em] uppercase">Service Process</p>
+            <h3 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-3">
               12 大禮儀服務流程
             </h3>
-            <p className="text-ink-500 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
+            <p className="text-ink-500 text-sm sm:text-base mt-3 max-w-lg mx-auto">
               從臨終關懷到擇吉安奉與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
             </p>
+            <div className="gold-divider w-32 mx-auto mt-6" />
           </div>
 
           {/* 12 大禮儀流程卡片：左側示意圖 + 右側文字 結構 */}
