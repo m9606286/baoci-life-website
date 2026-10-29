@@ -23,16 +23,6 @@ const contractProducts: ContractProduct[] = [
     pdfUrl: '/寶富生前契約書.pdf',
   },
   {
-    id: 'fuyi',
-    typeTag: '標準型禮儀服務',
-    bgImage: '/福益契約書封面.png',
-    channel: {
-      name: '天勤生命文創股份有限公司',
-      phone: '04-2322-0208',
-    },
-    pdfUrl: '/福益生前契約書.pdf',
-  },
-  {
     id: 'baohui',
     typeTag: '簡約型禮儀服務',
     bgImage: '/寶暉契約書封面.png',
@@ -41,16 +31,6 @@ const contractProducts: ContractProduct[] = [
       phone: '02-2514-7758',
     },
     pdfUrl: '/寶暉生前契約書.pdf',
-  },
-  {
-    id: 'puyu',
-    typeTag: '簡約型禮儀服務',
-    bgImage: '/璞瑜契約書封面.png',
-    channel: {
-      name: '天勤生命文創股份有限公司',
-      phone: '04-2322-0208',
-    },
-    pdfUrl: '/璞瑜生前契約書.pdf',
   },
 ];
 
