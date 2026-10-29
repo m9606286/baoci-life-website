@@ -46,34 +46,35 @@ export default function PreneedContract() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   return (
-    <section id="preneed" className="py-24 lg:py-32 bg-ivory-100 text-slate-800 relative overflow-hidden">
+    /* 調整頂部 padding (pt-10 lg:pt-12)，讓標題與區塊向上拉高 */
+    <section id="preneed" className="pt-10 pb-20 lg:pt-14 lg:pb-28 bg-ivory-100 text-slate-800 relative overflow-hidden">
       {/* 頂部裝飾線 */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         {/* Header 標題區 */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 lg:mb-16">
           <p className="text-gold-600 text-xs tracking-[0.35em] uppercase font-semibold reveal">Preneed Contract</p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-950 font-bold mt-3 reveal reveal-delay-1">
+          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-950 font-bold mt-2 reveal reveal-delay-1">
             什麼是生前契約？
           </h2>
 
-          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-6 reveal reveal-delay-2" />
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
 
-          <p className="mt-6 text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
+          <p className="mt-4 text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
             生前契約是給家人的最後一道保障，也可明確記錄您對於身後事的安排和意願。
           </p>
         </div>
 
         {/* 圖片 + 核心保障清單 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch mb-20">
-          {/* 左側：圖片區塊 */}
+          {/* 左側：圖片區塊（設定 relative 填滿高度，完美對齊右側） */}
           <div className="lg:col-span-5 relative reveal flex flex-col">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer border border-gold-400/30 w-full h-full min-h-[400px]">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer border border-gold-400/30 w-full flex-1 min-h-[400px] lg:min-h-full">
               <img
                 src={advantageImage}
                 alt="生前契約核心保障"
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/30 via-transparent to-transparent pointer-events-none" />
             </div>
