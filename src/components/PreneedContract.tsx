@@ -82,7 +82,7 @@ const features = [
 
 
 
-export default function PreNeed() {
+export default function PreneedContract() {
 
   const ref = useReveal<HTMLDivElement>();
 
