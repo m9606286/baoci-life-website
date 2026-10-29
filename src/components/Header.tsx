@@ -7,7 +7,7 @@ import BrandLogo from '@/components/BrandLogo';
 const navLinks = [
   { label: '關於我們', en: 'ABOUT', path: '/' },
   { label: '生前契約', en: 'CONTRACT', path: '/preneed' },
-  { label: '服務項目', en: 'SERVICES', path: '/services' },
+  { label: '禮儀服務', en: 'SERVICES', path: '/services' },
   { label: '契約商品', en: 'PRODUCTS', path: '/products' },
   { label: '信託公開', en: 'TRUST', path: '/trust' },
   { label: '聯絡我們', en: 'CONTACT', path: '/contact' },
