@@ -1,7 +1,5 @@
 import { useReveal } from '@/hooks/useReveal';
-import { services } from '@/data/content';
 import {
-  ClipboardList,
   HeartHandshake,
   UserCheck,
   PhoneCall,
@@ -66,11 +64,6 @@ const UrnIcon = ({ className }: { className?: string }) => (
     <path d="M12 2v2" />
   </svg>
 );
-
-const iconMap: Record<string, typeof ClipboardList> = {
-  clipboard: ClipboardList,
-  hands: HeartHandshake,
-};
 
 // 團隊成員資料：包含 6 位禮儀師 + 9 位禮儀顧問
 const teamMembers = [
@@ -234,50 +227,6 @@ export default function Services() {
       <div className="absolute top-1/3 right-0 w-96 h-96 rounded-full bg-gold-100/30 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">Services</p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-800 font-bold mt-3 reveal reveal-delay-1">
-            我們的服務
-          </h2>
-          <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
-        </div>
-
-        {/* Service cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto mb-24">
-          {services.map((service, idx) => {
-            const Icon = iconMap[service.icon] || ClipboardList;
-
-            return (
-              <div
-                key={service.title}
-                className={`reveal reveal-delay-${idx + 1} group relative bg-white rounded-3xl p-10 shadow-md hover:shadow-2xl hover:shadow-ink-900/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden`}
-              >
-                {/* Large watermark icon */}
-                <div className="absolute -top-6 -right-6 opacity-5 pointer-events-none">
-                  <Icon className="w-48 h-48 text-ink-800" />
-                </div>
-
-                {/* Icon */}
-                <div className="relative mb-8">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-ink-800 to-ink-950 flex items-center justify-center group-hover:from-gold-500 group-hover:to-gold-600 transition-all duration-500 shadow-lg">
-                    <Icon className="w-10 h-10 text-gold-400 group-hover:text-ivory-50 transition-colors" />
-                  </div>
-                </div>
-
-                <h3 className="font-serif-tc text-2xl lg:text-3xl text-ink-800 font-bold mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-ink-500 text-base leading-relaxed mb-4">
-                  {service.description}
-                </p>
-
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-300 to-gold-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              </div>
-            );
-          })}
-        </div>
-
         {/* 禮儀服務團隊 + 12 大服務流程 區塊 */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-md">
           {/* 區塊一：禮儀服務團隊 */}
@@ -287,6 +236,9 @@ export default function Services() {
               禮儀服務團隊
             </h3>
             <div className="gold-divider w-32 mx-auto mt-6" />
+            <p className="text-ink-500 text-sm sm:text-base mt-4 mx-auto whitespace-nowrap overflow-x-auto">
+              專業團隊全程守護與陪伴，讓您與家人在人生最重要的告別時刻，完成一場充滿愛與祝福的人生畢業典禮。
+            </p>
           </div>
 
           {/* 禮儀團隊卡片網格 (大頭照 w-40 h-40) */}
@@ -337,81 +289,5 @@ export default function Services() {
             <h3 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-3">
               12 大禮儀服務流程
             </h3>
-            <p className="text-ink-500 text-sm sm:text-base mt-3 mx-auto whitespace-nowrap overflow-x-auto">
-              從臨終關懷到擇吉安奉與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
-            </p>
             <div className="gold-divider w-32 mx-auto mt-6" />
-          </div>
-
-          {/* 12 大禮儀流程卡片：左側示意圖 + 右側文字 結構 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            {processSteps.map((step) => {
-              const Icon = step.icon;
-              return (
-                <div
-                  key={step.number}
-                  className="group relative bg-ivory-50/90 rounded-2xl p-5 border border-ivory-200 shadow-sm hover:shadow-md hover:border-gold-400/60 transition-all duration-300 flex items-center gap-5 overflow-hidden"
-                >
-                  {/* 左側：流程示意圖容器 */}
-                  <div className="w-28 sm:w-32 h-28 sm:h-32 rounded-xl overflow-hidden shrink-0 border border-ivory-300 shadow-sm bg-white relative">
-                    <img
-                      src={step.image}
-                      alt={`${step.title}示意圖`}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      onError={(e) => {
-                        const target = e.currentTarget;
-                        if (step.fallbackImage && !target.src.endsWith(step.fallbackImage)) {
-                          target.src = step.fallbackImage;
-                        } else {
-                          target.style.display = 'none';
-                        }
-                      }}
-                    />
-                  </div>
-
-                  {/* 右側：文字內容資訊 */}
-                  <div className="flex-1 flex flex-col justify-between h-full py-1">
-                    <div>
-                      {/* 步驟編號與圖示 */}
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className="text-gold-600 font-mono text-xs font-bold tracking-wider uppercase">
-                          STEP {step.number}
-                        </span>
-                        <div className="w-6 h-6 rounded-md bg-ink-900/10 group-hover:bg-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
-                          <Icon className="w-3.5 h-3.5 text-gold-700 group-hover:text-white transition-colors duration-300" />
-                        </div>
-                      </div>
-
-                      {/* 步驟標題 */}
-                      <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-1.5">
-                        {step.title}
-                      </h4>
-
-                      {/* 步驟描述 */}
-                      <p className="text-ink-600 text-xs sm:text-sm leading-relaxed">
-                        {step.desc}
-                      </p>
-                    </div>
-
-                    {/* 卡片底線亮起效果 */}
-                    <div className="mt-3 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* 底部按鈕 */}
-          <div className="text-center pt-4">
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
-            >
-              立即預約諮詢
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+            <p className="text-
