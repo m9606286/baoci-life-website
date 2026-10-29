@@ -281,11 +281,12 @@ export default function Services() {
         {/* 禮儀服務團隊 + 12 大服務流程 區塊 */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-md">
           {/* 區塊一：禮儀服務團隊 */}
-          <div className="text-center mb-10 pt-2">
-            <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium">Professional Team</p>
-            <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
+          <div className="text-center mb-12 pt-2">
+            <p className="text-gold-600 text-sm tracking-[0.3em] uppercase">Professional Team</p>
+            <h3 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-3">
               禮儀服務團隊
             </h3>
+            <div className="gold-divider w-32 mx-auto mt-6" />
           </div>
 
           {/* 禮儀團隊卡片網格 (大頭照 w-40 h-40) */}
