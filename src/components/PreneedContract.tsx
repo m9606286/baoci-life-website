@@ -46,10 +46,8 @@ export default function PreneedContract() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   return (
-    <section id="preneed" className="pt-6 pb-20 lg:pt-8 lg:pb-28 bg-ivory-100 text-slate-800 relative overflow-hidden">
-      {/* 頂部裝飾線 */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
-
+    /* 移除多餘頂部間距，讓標題緊貼導覽列下方 */
+    <section id="preneed" className="pt-2 pb-20 lg:pt-4 lg:pb-28 bg-ivory-100 text-slate-800 relative overflow-hidden">
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         {/* Header 標題區 */}
         <div className="text-center mb-10 lg:mb-12">
