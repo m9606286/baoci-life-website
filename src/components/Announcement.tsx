@@ -29,12 +29,13 @@ export default function Announcement() {
 
             <div className="relative flex items-center justify-between gap-4 lg:gap-6">
               <div className="flex items-center gap-4 lg:gap-6">
-                {/* 喇叭圖示 - 淺色調高質感金邊 */}
+                {/* 喇叭圖示 */}
                 <div className="flex-shrink-0 w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-gold-400/15 border border-gold-400/40 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-sm">
                   <Megaphone className="w-7 h-7 lg:w-8 lg:h-8 text-gold-600" />
                 </div>
                 <div>
-                  <p className="text-gold-600 font-semibold text-xs tracking-[0.25em] uppercase mb-1.5">
+                  {/* 重要公告字體放大 */}
+                  <p className="text-gold-600 text-sm lg:text-base font-bold tracking-[0.25em] uppercase mb-1.5">
                     重要公告
                   </p>
                   <p className="font-serif-tc text-base lg:text-xl text-ink-900 leading-relaxed font-bold">
@@ -43,8 +44,8 @@ export default function Announcement() {
                 </div>
               </div>
 
-              {/* 右側詳細內容提示按鈕 */}
-              <div className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-gold-400/10 border border-gold-400/30 text-sm font-semibold text-gold-700 group-hover:bg-gold-400 group-hover:text-ink-950 transition-all duration-300 shrink-0">
+              {/* 右側詳細內容提示按鈕：移上去時文字（及箭頭）顯示為白色 */}
+              <div className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-gold-400/10 border border-gold-400/30 text-sm font-semibold text-gold-700 group-hover:bg-gold-400 group-hover:text-white transition-all duration-300 shrink-0">
                 <span>詳細內容</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </div>
