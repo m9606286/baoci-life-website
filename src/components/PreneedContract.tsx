@@ -46,7 +46,6 @@ export default function PreneedContract() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   return (
-    /* 使用 negative margin (-mt-6 lg:-mt-10) 將整個內容區塊整體大幅往上拉高 */
     <section id="preneed" className="pt-2 pb-20 lg:pt-4 lg:pb-28 bg-ivory-100 text-slate-800 relative overflow-hidden -mt-6 lg:-mt-10">
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         {/* Header 標題區 */}
@@ -56,8 +55,8 @@ export default function PreneedContract() {
             什麼是生前契約？
           </h2>
 
-          {/* 質感線：拉長至 w-3/4 max-w-md */}
-          <div className="w-3/4 max-w-md h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
+          {/* 質感線：回復原本的精緻寬度 (w-32) */}
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
 
           <p className="mt-4 text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed reveal reveal-delay-3">
             生前契約是給家人的最後一道保障，也可明確記錄您對於身後事的安排和意願。
@@ -80,7 +79,8 @@ export default function PreneedContract() {
 
           {/* 右側：核心保障列表 */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            <div className="w-full text-center">
+            {/* 保持原本的位置 (靠左對齊 text-left) */}
+            <div className="w-full text-left">
               <p className="text-gold-600 text-xs tracking-[0.35em] uppercase mb-1.5 font-bold">
                 Core Guarantees
               </p>
@@ -88,8 +88,8 @@ export default function PreneedContract() {
                 契約核心保障
               </h3>
               
-              {/* 質感線：同「什麼是生前契約」拉長規格並強制 mx-auto 置中 */}
-              <div className="w-3/4 max-w-md h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6" />
+              {/* 長度維持原本 (w-32)，改為 mx-auto 水平置中 */}
+              <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6" />
             </div>
 
             <div className="space-y-3.5 flex-1 flex flex-col justify-between">
