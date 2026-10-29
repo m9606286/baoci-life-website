@@ -57,9 +57,13 @@ export default function Header() {
                     <span className="text-sm font-medium tracking-wide mt-0.5">
                       {link.label}
                     </span>
+                    
+                    {/* 金色底線：當前頁面顯示；若滑鼠懸停其他項目時，該項目展開底線 */}
                     <span
                       className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-gold-400 transition-all duration-300 ${
-                        isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4'
+                        isActive
+                          ? 'w-3/4 opacity-100'
+                          : 'w-0 opacity-0 group-hover:w-3/4 group-hover:opacity-100'
                       }`}
                     />
                   </>
@@ -68,13 +72,22 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Phone CTA (desktop) */}
+          {/* Phone CTA (desktop) - 增加 24小時服務專線標籤 */}
           <a
             href="tel:0800-600-603"
-            className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink-900 text-ivory-50 hover:bg-ink-800 transition-all hover:shadow-lg group"
+            className="hidden lg:flex items-center gap-3 px-5 py-2 rounded-full bg-ink-900 text-ivory-50 hover:bg-ink-800 transition-all hover:shadow-lg group"
           >
-            <Phone className="w-4 h-4 text-gold-400 group-hover:scale-110 transition-transform" />
-            <span className="text-sm font-medium">0800-600-603</span>
+            <div className="p-1.5 rounded-full bg-gold-400/20 text-gold-400 group-hover:bg-gold-400 group-hover:text-ink-950 transition-colors">
+              <Phone className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="text-[10px] text-gold-400 font-medium tracking-wider leading-none">
+                24小時服務專線
+              </span>
+              <span className="text-sm font-semibold tracking-wide mt-0.5 leading-tight">
+                0800-600-603
+              </span>
+            </div>
           </a>
 
           {/* Mobile menu button */}
@@ -105,10 +118,13 @@ export default function Header() {
             ))}
             <a
               href="tel:0800-600-603"
-              className="mt-4 flex items-center justify-center gap-2 py-3 rounded-full bg-ink-900 text-ivory-50"
+              className="mt-4 flex items-center justify-center gap-3 py-3 rounded-full bg-ink-900 text-ivory-50"
             >
               <Phone className="w-4 h-4 text-gold-400" />
-              <span className="font-medium">0800-600-603</span>
+              <div className="flex flex-col items-start">
+                <span className="text-[10px] text-gold-400 leading-none">24小時服務專線</span>
+                <span className="font-semibold text-sm leading-tight">0800-600-603</span>
+              </div>
             </a>
           </nav>
         </div>
