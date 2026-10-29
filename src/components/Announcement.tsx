@@ -1,3 +1,4 @@
+//重要公告
 import { useState } from 'react';
 import { useReveal } from '@/hooks/useReveal';
 import { Megaphone, ChevronRight, X } from 'lucide-react';
