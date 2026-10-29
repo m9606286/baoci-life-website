@@ -81,7 +81,7 @@ export default function PreneedContract() {
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             {/* 使用 w-fit 限制標題外框寬度，讓 mx-auto 的質感線精準置中於「契約核心保障」正下方 */}
             <div className="w-fit text-center">
-              <p className="text-gold-600 text-sm tracking-[0.3em] uppercase mb-1.5 font-bold">
+              <p className="text-gold-600 text-sm tracking-[0.3em] uppercase mb-1.5">
                 Core Guarantees
               </p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-950 tracking-wide mb-3">
