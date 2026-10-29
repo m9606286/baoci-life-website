@@ -10,8 +10,9 @@
   }
   body {
     font-family: theme('fontFamily.sans');
-    background-color: theme('colors.ivory.100');
-    color: theme('colors.ink.800');
+    /* 將背景改為典雅淡藍色底色 (#f0f4f8)，字體顏色改為沉穩藍灰色 */
+    background-color: #f0f4f8;
+    color: #1e293b;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -69,13 +70,13 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Thin custom scrollbar */
+  /* 捲軸同步適應淡藍色調 */
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: theme('colors.ivory.200'); }
+  ::-webkit-scrollbar-track { background: #e2e8f0; }
   ::-webkit-scrollbar-thumb {
     background: theme('colors.gold.300');
     border-radius: 9999px;
-    border: 2px solid theme('colors.ivory.200');
+    border: 2px solid #e2e8f0;
   }
   ::-webkit-scrollbar-thumb:hover { background: theme('colors.gold.400'); }
 }
