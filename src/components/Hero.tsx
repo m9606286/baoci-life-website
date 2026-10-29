@@ -45,14 +45,16 @@ export default function Hero() {
             className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up"
             style={{ animationDelay: '1s', opacity: 0 }}
           >
-            {/* 瞭解生前契約按鈕：改為白色字體與質感深底搭配 */}
+            {/* 瞭解生前契約：改為透明底、白框與毛玻璃質感 */}
             <Link
               to="/preneed"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-ink-900 text-white font-semibold hover:bg-ink-800 transition-all hover:shadow-2xl hover:shadow-gold-500/10 border border-gold-400/40 group"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
             >
               <span>瞭解生前契約</span>
-              <ChevronDown className="w-4 h-4 ml-2 text-gold-400 group-hover:translate-y-0.5 transition-transform" />
+              <ChevronDown className="w-4 h-4 ml-2 text-gold-300 group-hover:translate-y-0.5 transition-transform" />
             </Link>
+
+            {/* 聯絡我們 */}
             <Link
               to="/contact"
               className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
