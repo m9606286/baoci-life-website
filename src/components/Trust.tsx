@@ -4,9 +4,34 @@ import { companyInfo } from '@/data/content';
 import { Landmark, FileCheck, Scale, ShieldCheck, ExternalLink } from 'lucide-react';
 
 const trustItems = [
-  { icon: FileCheck, title: '京城銀行信託契約', text: '依殯葬管理條例第51條，預收之生前契約款項，依法75%交由「京城銀行」信託管理。' },
-  { icon: Scale, title: '信託財產結算報告公開', text: '定期公開信託財產結算報告(如下)，確保資金透明、安全、可查詢。' },
-  { icon: ShieldCheck, title: '永續經營保障', text: '寶慈生命事業依循公司治理原則運作，強化營運穩定性與長期服務承諾。' },
+  { 
+    icon: FileCheck, 
+    title: '京城銀行信託契約', 
+    text: '依殯葬管理條例第51條，預收之生前契約款項，依法75%交由「京城銀行」信託管理。' 
+  },
+  { 
+    icon: Scale, 
+    title: '信託財產結算報告公開', 
+    text: '定期公開信託財產結算報告(如下)，確保資金透明、安全、可查詢。' 
+  },
+  { 
+    icon: ShieldCheck, 
+    title: '永續經營保障', 
+    text: (
+      <>
+        寶慈生命事業為
+        <a
+          href="https://www.apex.com.tw/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gold-700 hover:text-gold-500 font-semibold underline underline-offset-4 transition-colors mx-1"
+        >
+          寶碩（股票代號5210）
+        </a>
+        全資子公司，依循公司治理原則運作，強化營運穩定性與長期服務承諾。
+      </>
+    ) 
+  },
 ];
 
 const annualReports = [
@@ -42,12 +67,12 @@ export default function Trust() {
             <p className="font-serif-tc text-2xl lg:text-3xl text-ink-950 font-bold mb-3">
               保證 {companyInfo.trustRatio} 信託
             </p>
-            <p className="text-slate-600 text-sm lg:text-base leading-relaxed max-w-2xl mx-auto mb-6">
+            <p className="text-slate-600 text-sm lg:text-base leading-relaxed max-w-2xl mx-auto">
               依殯葬管理條例第51條，預收之生前契約款項，依法{companyInfo.trustRatio}交由「{companyInfo.trustBank}」信託管理。
             </p>
 
-            {/* 前往信託查詢系統按鈕：改為淺色系，移到時才出現深金背景與白字 */}
-            <div className="mb-6">
+            {/* 前往信託查詢系統按鈕：淺色系，移到時出現深金背景與白字 */}
+            <div className="mt-6">
               <a
                 href="https://customer.ktb.com.tw/new/personal/agreement"
                 target="_blank"
@@ -57,11 +82,6 @@ export default function Trust() {
                 <span>前往信託查詢系統</span>
                 <ExternalLink className="w-4 h-4" />
               </a>
-            </div>
-
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/80 border border-gold-400/20 shadow-sm">
-              <ShieldCheck className="w-4 h-4 text-gold-600" />
-              <span className="text-slate-700 text-sm font-medium">{companyInfo.parentCompany}</span>
             </div>
           </div>
         </div>
@@ -73,8 +93,8 @@ export default function Trust() {
               key={idx}
               className={`reveal reveal-delay-${idx + 1} group bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gold-400/20 hover:border-gold-400/60 transition-all duration-500 shadow-sm hover:shadow-md`}
             >
-              {/* 圖示：移到時會顯示深底白線條 */}
-              <div className="w-14 h-14 rounded-xl bg-gold-400/15 border border-gold-400/30 flex items-center justify-center mb-5 transition-colors duration-300 group-hover:bg-ink-900 group-hover:border-ink-900">
+              {/* 圖示：移到時顯示深金底白線條 (group-hover:bg-gold-600) */}
+              <div className="w-14 h-14 rounded-xl bg-gold-400/15 border border-gold-400/30 flex items-center justify-center mb-5 transition-colors duration-300 group-hover:bg-gold-600 group-hover:border-gold-600">
                 <item.icon className="w-7 h-7 text-gold-600 transition-colors duration-300 group-hover:text-white" />
               </div>
               <h3 className="font-serif-tc text-lg text-ink-950 font-bold mb-3">{item.title}</h3>
