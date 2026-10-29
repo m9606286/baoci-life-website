@@ -50,7 +50,7 @@ export default function PreneedContract() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         {/* Header 標題區 */}
         <div className="text-center mb-10 lg:mb-12">
-          <p className="text-gold-600 text-xs tracking-[0.35em] uppercase font-semibold reveal">Preneed Contract</p>
+          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">Preneed Contract</p>
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-950 font-bold mt-2 reveal reveal-delay-1">
             什麼是生前契約？
           </h2>
@@ -81,7 +81,7 @@ export default function PreneedContract() {
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             {/* 使用 w-fit 限制標題外框寬度，讓 mx-auto 的質感線精準置中於「契約核心保障」正下方 */}
             <div className="w-fit text-center">
-              <p className="text-gold-600 text-xs tracking-[0.35em] uppercase mb-1.5 font-bold">
+              <p className="text-gold-600 text-sm tracking-[0.3em] uppercase mb-1.5 font-bold">
                 Core Guarantees
               </p>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-950 tracking-wide mb-3">
