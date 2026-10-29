@@ -1,28 +1,21 @@
 import { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { Phone, Menu, X } from 'lucide-react';
 import { useScrolled } from '@/hooks/useReveal';
 import BrandLogo from '@/components/BrandLogo';
 
 const navLinks = [
-  { label: '關於我們', en: 'ABOUT', href: '#top', isTop: true },
-  { label: '生前契約', en: 'CONTRACT', href: '#preneed' },
-  { label: '服務項目', en: 'SERVICES', href: '#services' },
-  { label: '契約商品', en: 'PRODUCTS', href: '#products' },
-  { label: '信託公開', en: 'TRUST', href: '#trust' },
-  { label: '聯絡我們', en: 'CONTACT', href: '#contact' },
+  { label: '關於我們', en: 'ABOUT', path: '/' },
+  { label: '生前契約', en: 'CONTRACT', path: '/preneed' },
+  { label: '服務項目', en: 'SERVICES', path: '/services' },
+  { label: '契約商品', en: 'PRODUCTS', path: '/products' },
+  { label: '信託公開', en: 'TRUST', path: '/trust' },
+  { label: '聯絡我們', en: 'CONTACT', path: '/contact' },
 ];
 
 export default function Header() {
   const scrolled = useScrolled(60);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: typeof navLinks[0]) => {
-    setMenuOpen(false);
-    if (link.isTop) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
 
   return (
     <header
@@ -34,36 +27,44 @@ export default function Header() {
     >
       <div className="mx-auto max-w-8xl px-6">
         <div className="flex items-center justify-between h-20 lg:h-24">
-          {/* Logo */}
-          <a
-            href="#top"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+          {/* Logo 切換回首頁路由 */}
+          <Link
+            to="/"
             className="flex items-center gap-3 group"
             aria-label="寶慈生命事業首頁"
+            onClick={() => setMenuOpen(false)}
           >
             <BrandLogo />
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link)}
-                className="group relative px-4 py-2 flex flex-col items-center text-ink-600 hover:text-ink-900 transition-colors"
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) =>
+                  `group relative px-4 py-2 flex flex-col items-center text-ink-600 hover:text-ink-900 transition-colors ${
+                    isActive ? 'text-ink-900 font-semibold' : ''
+                  }`
+                }
               >
-                <span className="text-[10px] tracking-[0.25em] text-gold-500/70 group-hover:text-gold-500 transition-colors">
-                  {link.en}
-                </span>
-                <span className="text-sm font-medium tracking-wide mt-0.5">
-                  {link.label}
-                </span>
-                <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-px bg-gold-400 group-hover:w-3/4 transition-all duration-300" />
-              </a>
+                {({ isActive }) => (
+                  <>
+                    <span className="text-[10px] tracking-[0.25em] text-gold-500/70 group-hover:text-gold-500 transition-colors">
+                      {link.en}
+                    </span>
+                    <span className="text-sm font-medium tracking-wide mt-0.5">
+                      {link.label}
+                    </span>
+                    <span
+                      className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-gold-400 transition-all duration-300 ${
+                        isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4'
+                      }`}
+                    />
+                  </>
+                )}
+              </NavLink>
             ))}
           </nav>
 
@@ -92,15 +93,15 @@ export default function Header() {
         <div className="lg:hidden bg-ivory-50 border-t border-ivory-300 animate-fade-in">
           <nav className="flex flex-col px-6 py-4">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link)}
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setMenuOpen(false)}
                 className="py-3 border-b border-ivory-200 flex items-center justify-between group"
               >
                 <span className="text-ink-700 font-medium">{link.label}</span>
                 <span className="text-[10px] tracking-widest text-gold-500">{link.en}</span>
-              </a>
+              </Link>
             ))}
             <a
               href="tel:0800-600-603"
