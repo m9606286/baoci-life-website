@@ -35,7 +35,6 @@ export default function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/values" element={<ValuesPage />} />
             <Route path="/preneed" element={<PreneedPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/products" element={<ProductsPage />} />
