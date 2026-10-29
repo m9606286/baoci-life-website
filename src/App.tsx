@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 
 // 載入頁面 (Pages)
 import HomePage from './pages/HomePage';
-import ValuesPage from './pages/ValuesPage';
 import PreneedPage from './pages/PreneedPage';
 import ServicesPage from './pages/ServicesPage';
 import ProductsPage from './pages/ProductsPage';
