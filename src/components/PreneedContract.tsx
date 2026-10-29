@@ -37,7 +37,7 @@ const features = [
   {
     icon: ShieldCheck,
     title: '保證75%信託，永續經營有保障',
-    text: '寶慈生命事業所發行之合法生前契約，契約款項依規定提撥75%交付京城銀行辦理信託保管，以確保資金安全與專款專用。寶慈生命事業為寶碩（股票代號5210）集團旗下之全資子公司，依循公司治理原則運作，強化營運穩定性與長期服務承諾。',
+    text: '寶慈生命事業所發行之合法生前契約，契約款項依規定提撥75%交付京城銀行辦理信託保管，以確保資金安全與專款專用。寶慈生命事業為寶碩集團（股票代號5210）之全資子公司，依循公司治理原則運作，強化營運穩定性與長期服務承諾。',
   },
 ];
 
@@ -79,7 +79,6 @@ export default function PreneedContract() {
 
           {/* 右側：核心保障列表 */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            {/* 使用 w-fit 限制標題外框寬度，讓 mx-auto 的質感線精準置中於「契約核心保障」正下方 */}
             <div className="w-fit text-center">
               <p className="text-gold-600 text-sm tracking-[0.3em] uppercase mb-1.5">
                 Core Guarantees
@@ -88,7 +87,6 @@ export default function PreneedContract() {
                 契約核心保障
               </h3>
               
-              {/* 質感線：維持原本長度 (w-32)，置中於標題下方 */}
               <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6" />
             </div>
 
@@ -121,8 +119,9 @@ export default function PreneedContract() {
                 className={`reveal reveal-delay-${(idx % 2) + 1} group bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gold-400/20 hover:border-gold-400/60 transition-all duration-500 hover:shadow-lg hover:bg-white`}
               >
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-xl bg-gold-400/15 border border-gold-400/30 flex items-center justify-center shrink-0 group-hover:bg-gold-400/25 transition-colors">
-                    <Icon className="w-7 h-7 text-gold-600" />
+                  {/* 小圖示容器：預設淺金底金字，hover 時變為深金底 (bg-gold-500) 與白字 (text-white) */}
+                  <div className="w-14 h-14 rounded-xl bg-gold-400/15 border border-gold-400/30 flex items-center justify-center shrink-0 group-hover:bg-gold-500 group-hover:border-gold-500 transition-all duration-300">
+                    <Icon className="w-7 h-7 text-gold-600 group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
                     <h3 className="font-serif-tc text-lg lg:text-xl text-ink-950 font-bold mb-3">
