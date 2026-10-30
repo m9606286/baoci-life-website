@@ -120,19 +120,19 @@ export default function ContractProducts() {
                   </a>
                 </div>
 
-                {/* 底部按鈕區 */}
+                {/* 底部按鈕區（已改為透明背景，移入時顯示深金底白字） */}
                 <div className="pt-2 flex items-center gap-2.5 w-full flex-wrap">
-                  {/* 服務型態標籤 */}
-                  <span className="inline-flex items-center px-4 py-2.5 rounded-xl bg-ink-900/90 hover:bg-gold-500 text-white hover:text-ink-950 font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/40 backdrop-blur-sm shadow-md cursor-default">
+                  {/* 服務型態標籤 (透明背景) */}
+                  <span className="inline-flex items-center px-4 py-2.5 rounded-xl bg-transparent hover:bg-gold-600 text-white hover:text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm cursor-default">
                     {product.typeTag}
                   </span>
 
-                  {/* 生前契約書下載按鈕 */}
+                  {/* 生前契約書下載按鈕 (透明背景) */}
                   <a
                     href={product.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ink-900/90 hover:bg-gold-500 text-white hover:text-ink-950 font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/40 backdrop-blur-sm shadow-md"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-transparent hover:bg-gold-600 text-white hover:text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm"
                   >
                     <span>生前契約書</span>
                     <Download className="w-4 h-4" />
@@ -145,16 +145,16 @@ export default function ContractProducts() {
           ))}
         </div>
 
-        {/* 獨立區塊：台南市民政局生前契約銷售及代銷商最新核准函（位於契約書與對照表之間） */}
+        {/* 獨立區塊：台南市民政局生前契約銷售及代銷商最新核准函（未移到時為質感淺色） */}
         <div className="max-w-5xl mx-auto mb-16 text-center">
           <a
             href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ink-900/90 hover:bg-gold-600 text-white font-medium text-sm sm:text-base transition-all duration-300 border border-gold-400/40 backdrop-blur-sm shadow-lg group hover:shadow-xl hover:-translate-y-0.5"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white font-medium text-sm sm:text-base transition-all duration-300 border border-gold-400/50 shadow-sm hover:shadow-md group"
           >
-            <FileText className="w-5 h-5 text-gold-400 group-hover:text-white transition-colors shrink-0" />
-            <span>台南市民政局生前契約銷售及代銷商最新核准函</span>
+            <FileText className="w-5 h-5 text-gold-600 group-hover:text-white transition-colors shrink-0" />
+            <span>台南市民政局生前契約銷售及代銷商最新核准函下載</span>
             <Download className="w-4 h-4 shrink-0" />
           </a>
         </div>
@@ -169,31 +169,32 @@ export default function ContractProducts() {
             <div className="gold-divider w-24 mx-auto mt-4" />
           </div>
 
+          {/* 表格內容字體已加大 (sm md) */}
           <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-4">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
-                <tr className="bg-ivory-100 border-b border-ivory-200 text-ink-800 text-sm sm:text-base font-serif-tc">
+                <tr className="bg-ivory-100 border-b border-ivory-200 text-ink-800 text-sm md:text-base font-serif-tc">
                   <th className="p-4 w-1/4 font-bold">比較項目</th>
                   <th className="p-4 w-3/8 font-bold text-gold-700 bg-gold-50/50">寶富、福益生前契約（標準型）</th>
                   <th className="p-4 w-3/8 font-bold text-ink-700">寶暉、璞瑜生前契約（簡易型）</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-ivory-200 text-xs sm:text-sm text-ink-700">
+              <tbody className="divide-y divide-ivory-200 text-sm md:text-base text-ink-700">
                 {contractComparison.map((item, idx) => (
                   <tr key={idx} className="hover:bg-ivory-50/60 transition-colors">
                     <td className="p-4 font-semibold text-ink-900 bg-ivory-50/30">{item.feature}</td>
                     <td className="p-4 bg-gold-50/20 leading-relaxed font-medium text-ink-900">
                       <div className="flex items-start gap-1.5">
-                        <CheckCircle2 className="w-4 h-4 text-gold-600 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-5 h-5 text-gold-600 shrink-0 mt-0.5" />
                         <span>{item.baofu}</span>
                       </div>
                     </td>
                     <td className="p-4 leading-relaxed text-ink-600">
                       <div className="flex items-start gap-1.5">
                         {item.baohui.includes('無') || item.baohui.includes('未提供') ? (
-                          <MinusCircle className="w-4 h-4 text-ink-400 shrink-0 mt-0.5" />
+                          <MinusCircle className="w-5 h-5 text-ink-400 shrink-0 mt-0.5" />
                         ) : (
-                          <span className="w-1.5 h-1.5 rounded-full bg-ink-400 shrink-0 mt-2 mr-1" />
+                          <span className="w-2 h-2 rounded-full bg-ink-400 shrink-0 mt-2.5 mr-1" />
                         )}
                         <span>{item.baohui}</span>
                       </div>
@@ -204,14 +205,15 @@ export default function ContractProducts() {
             </table>
           </div>
 
-          <p className="text-xs sm:text-sm text-ink-500 font-medium mb-8 pl-1">
+          <p className="text-sm text-ink-600 font-medium mb-8 pl-1">
             註：標準型及簡易型均提供骨罐及火化棺。
           </p>
 
+          {/* 諮詢適合您的方案按鈕（未移到時為質感淺色，點擊連到聯絡我們） */}
           <div className="text-center">
             <a
               href="#contact"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 font-medium text-sm sm:text-base transition-all shadow-sm hover:shadow-md"
             >
               諮詢適合您的方案
             </a>
