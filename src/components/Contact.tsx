@@ -281,4 +281,29 @@ export default function Contact() {
                 placeholder="請簡述您的需求或想詢問的問題..."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py
+                className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all resize-none text-ink-900 shadow-sm"
+              />
+            </div>
+
+            {/* 送出按鈕 */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 py-3.5 rounded-xl font-medium transition-all shadow-sm hover:shadow-md flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer group"
+            >
+              {loading ? (
+                <span>送出中...</span>
+              ) : (
+                <>
+                  <Send className="w-4 h-4 text-gold-600 group-hover:text-white transition-colors" />
+                  <span>確認送出諮詢</span>
+                </>
+              )}
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  );
+}
