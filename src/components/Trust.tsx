@@ -39,7 +39,7 @@ export default function Trust() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             {/* 左側：生前契約履約保障信託契約書下載 */}
             <a
-              href="/trust-agreement.pdf"
+              href="/生前契約履約保障信託契約書.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 font-medium text-sm transition-all shadow-sm hover:shadow-md cursor-pointer group/btn"
