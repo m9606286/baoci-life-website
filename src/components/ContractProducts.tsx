@@ -145,7 +145,7 @@ export default function ContractProducts() {
           ))}
         </div>
 
-        {/* 獨立區塊：生前契約75%履約保障信託契約書（位於契約書與對照表之間，懸停深金底白字） */}
+        {/* 獨立區塊：生前契約履約保障信託契約書（位於契約書與對照表之間，懸停深金底白字） */}
         <div className="max-w-5xl mx-auto mb-16 text-center">
           <a
             href="/生前契約履約保障信託契約書.pdf"
