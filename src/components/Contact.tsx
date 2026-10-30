@@ -78,7 +78,7 @@ export default function Contact() {
                 setSubmitted(false);
                 setFormData({ name: '', phone: '', email: '', location: '', service: '商品諮詢', message: '' });
               }}
-              className="bg-ink-900 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-gold-600 transition-colors shadow-md"
+              className="bg-ink-900 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-gold-600 transition-colors shadow-md cursor-pointer"
             >
               填寫其他諮詢
             </button>
@@ -89,7 +89,6 @@ export default function Contact() {
   }
 
   return (
-    /* 高度拉高對齊 (-mt-6 lg:-mt-10) 與相同象牙白背景 (bg-ivory-100) */
     <section className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative -mt-6 lg:-mt-10">
       <div className="max-w-4xl mx-auto px-6">
         
@@ -101,189 +100,181 @@ export default function Contact() {
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2">
             聯絡我們
           </h2>
-          {/* 質感金色漸層線 */}
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4" />
-          <p className="mt-4 text-slate-600 text-sm sm:text-base">
-            填寫下方表單，將有專人為您提供尊榮、溫暖的諮詢服務。
-          </p>
         </div>
 
-        {/* 1. 表單上方公司資訊卡片（方格顯示，懸停切換為深金底白字） */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          
-          {/* 總公司：寶慈生命事業 */}
-          <div className="group bg-white/90 rounded-2xl p-6 border border-gold-400/30 shadow-md hover:bg-gold-600 hover:border-gold-500 transition-all duration-300 flex flex-col justify-between">
+        {/* 總公司資訊卡片（滑鼠移入深金底白字，點擊可直接撥號/開地圖/發信） */}
+        <div className="max-w-2xl mx-auto mb-12">
+          <div className="group bg-white/90 rounded-2xl p-6 sm:p-8 border border-gold-400/30 shadow-md hover:bg-gold-600 hover:border-gold-500 transition-all duration-300 flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-2 mb-4">
                 <Building2 className="w-5 h-5 text-gold-600 group-hover:text-white transition-colors shrink-0" />
-                <h3 className="font-serif-tc text-lg font-bold text-ink-950 group-hover:text-white transition-colors">
+                <h3 className="font-serif-tc text-xl font-bold text-ink-950 group-hover:text-white transition-colors">
                   寶慈生命事業 (總公司)
                 </h3>
               </div>
 
-              <div className="space-y-2 text-sm text-slate-600 group-hover:text-white/90 transition-colors">
+              <div className="space-y-3 text-sm sm:text-base text-slate-600 group-hover:text-white/90 transition-colors">
                 <div className="flex items-start gap-2">
-                  <Phone className="w-4 h-4 mt-0.5 shrink-0 text-gold-600 group-hover:text-white transition-colors" />
-                  <div className="flex flex-wrap gap-x-3 gap-y-1">
-                    <span>電話：(06) 2678859</span>
-                    <span className="font-semibold">24 小時專線：0800-600-603</span>
+                  <Phone className="w-4 h-4 mt-1 shrink-0 text-gold-600 group-hover:text-white transition-colors" />
+                  <div className="flex flex-wrap gap-x-4 gap-y-1">
+                    <span>電話：<a href="tel:062678859" className="hover:underline font-mono"> (06) 2678859</a></span>
+                    <span className="font-semibold">24 小時專線：<a href="tel:0800600603" className="hover:underline font-mono">0800-600-603</a></span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-gold-600 group-hover:text-white transition-colors" />
-                  <span>地址：台北市內湖區新湖二路329號5樓</span>
+                  <MapPin className="w-4 h-4 mt-1 shrink-0 text-gold-600 group-hover:text-white transition-colors" />
+                  <span>
+                    地址：
+                    <a 
+                      href="https://maps.google.com/?q=台北市內湖區新湖二路329號5樓" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="hover:underline underline-offset-4"
+                    >
+                      台北市內湖區新湖二路329號5樓
+                    </a>
+                  </span>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 shrink-0 text-gold-600 group-hover:text-white transition-colors" />
-                  <span>Email：service@apexbaoci.com.tw</span>
+                  <span>
+                    Email：
+                    <a href="mailto:service@apexbaoci.com.tw" className="hover:underline">
+                      service@apexbaoci.com.tw
+                    </a>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* 銷售通路：晨暉 */}
-          <div className="group bg-white/90 rounded-2xl p-6 border border-gold-400/30 shadow-md hover:bg-gold-600 hover:border-gold-500 transition-all duration-300 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <Building2 className="w-5 h-5 text-gold-600 group-hover:text-white transition-colors shrink-0" />
-                <h3 className="font-serif-tc text-lg font-bold text-ink-950 group-hover:text-white transition-colors">
-                  晨暉 (銷售通路)
-                </h3>
-              </div>
-
-              <div className="space-y-2 text-sm text-slate-600 group-hover:text-white/90 transition-colors">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 shrink-0 text-gold-600 group-hover:text-white transition-colors" />
-                  <span>聯絡電話：02-2514-7758</span>
-                </div>
-
-                <div className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-gold-600 group-hover:text-white transition-colors" />
-                  <span>地址：台北市松山區復興北路361巷14號1樓</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
 
-        {/* 2. 表單區塊（已移除外層 bg-white 卡片與白色背景，融於背景色中） */}
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* 姓名 */}
-            <div>
-              <label className="block text-sm font-medium text-ink-900 mb-2">您的姓名 *</label>
-              <input
-                type="text"
-                required
-                placeholder="請輸入姓名"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 bg-white/80 border border-gold-400/30 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900"
-              />
-            </div>
-
-            {/* 電話 */}
-            <div>
-              <label className="block text-sm font-medium text-ink-900 mb-2">聯絡電話 *</label>
-              <input
-                type="tel"
-                required
-                placeholder="請輸入電話號碼"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-3 bg-white/80 border border-gold-400/30 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900"
-              />
-            </div>
+        {/* 表單區塊：上方加入提示文字，並加上質感外框 */}
+        <div className="bg-white/80 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-6 sm:p-10 shadow-lg">
+          <div className="text-center mb-8">
+            <p className="text-slate-600 text-sm sm:text-base">
+              填寫下方表單，將有專人為您提供尊榮、溫暖的諮詢服務。
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* 電子郵件 (選填) */}
-            <div>
-              <label className="block text-sm font-medium text-ink-900 mb-2">
-                電子郵件 <span className="text-slate-500 font-normal">(選填)</span>
-              </label>
-              <input
-                type="email"
-                placeholder="example@email.com"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-white/80 border border-gold-400/30 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900"
-              />
-            </div>
-
-            {/* 居住地點 (必填，無預設) */}
-            <div>
-              <label className="block text-sm font-medium text-ink-900 mb-2">居住地點 *</label>
-              <div className="relative">
-                <select
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* 姓名 */}
+              <div>
+                <label className="block text-sm font-medium text-ink-900 mb-2">您的姓名</label>
+                <input
+                  type="text"
                   required
-                  value={formData.location}
-                  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                  className={`w-full px-4 py-3 bg-white/80 border border-gold-400/30 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all appearance-none cursor-pointer ${
-                    !formData.location ? 'text-slate-400' : 'text-ink-900'
-                  }`}
-                >
-                  <option value="" disabled hidden>
-                    -- 請選擇縣市 --
-                  </option>
-                  {taiwanLocations.map((loc) => (
-                    <option key={loc} value={loc} className="text-ink-900">
-                      {loc}
-                    </option>
-                  ))}
-                </select>
-                <MapPin className="w-5 h-5 text-slate-400 absolute right-4 top-3.5 pointer-events-none" />
+                  placeholder="請輸入姓名"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900 shadow-sm"
+                />
+              </div>
+
+              {/* 電話 */}
+              <div>
+                <label className="block text-sm font-medium text-ink-900 mb-2">聯絡電話</label>
+                <input
+                  type="tel"
+                  required
+                  placeholder="請輸入電話號碼"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900 shadow-sm"
+                />
               </div>
             </div>
-          </div>
 
-          {/* 需求服務類型 */}
-          <div>
-            <label className="block text-sm font-medium text-ink-900 mb-2">需求服務類型 *</label>
-            <select
-              value={formData.service}
-              onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-              className="w-full px-4 py-3 bg-white/80 border border-gold-400/30 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all cursor-pointer text-ink-900"
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* 電子郵件 (選填) */}
+              <div>
+                <label className="block text-sm font-medium text-ink-900 mb-2">
+                  電子郵件 <span className="text-stone-400 font-normal">(選填)</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="example@email.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900 shadow-sm"
+                />
+              </div>
+
+              {/* 居住地點 */}
+              <div>
+                <label className="block text-sm font-medium text-ink-900 mb-2">居住地點</label>
+                <div className="relative">
+                  <select
+                    required
+                    value={formData.location}
+                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                    className={`w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all appearance-none cursor-pointer shadow-sm ${
+                      !formData.location ? 'text-stone-400' : 'text-ink-900'
+                    }`}
+                  >
+                    <option value="" disabled hidden>
+                      -- 請選擇縣市 --
+                    </option>
+                    {taiwanLocations.map((loc) => (
+                      <option key={loc} value={loc} className="text-ink-900">
+                        {loc}
+                      </option>
+                    ))}
+                  </select>
+                  <MapPin className="w-5 h-5 text-stone-400 absolute right-4 top-3.5 pointer-events-none" />
+                </div>
+              </div>
+            </div>
+
+            {/* 需求服務類型 */}
+            <div>
+              <label className="block text-sm font-medium text-ink-900 mb-2">需求服務類型</label>
+              <select
+                value={formData.service}
+                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all cursor-pointer text-ink-900 shadow-sm"
+              >
+                {serviceOptions.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* 留言內容 */}
+            <div>
+              <label className="block text-sm font-medium text-ink-900 mb-2">諮詢內容 / 需求留言</label>
+              <textarea
+                rows={4}
+                placeholder="請簡述您的需求或想詢問的問題..."
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all resize-none text-ink-900 shadow-sm"
+              />
+            </div>
+
+            {/* 送出按鈕：預設淺色系，移入才顯示深金底白字 */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 py-3.5 rounded-xl font-medium transition-all shadow-sm hover:shadow-md flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
             >
-              {serviceOptions.map((opt) => (
-                <option key={opt} value={opt}>
-                  {opt}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* 留言內容 */}
-          <div>
-            <label className="block text-sm font-medium text-ink-900 mb-2">諮詢內容 / 需求留言</label>
-            <textarea
-              rows={4}
-              placeholder="請簡述您的需求或想詢問的問題..."
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full px-4 py-3 bg-white/80 border border-gold-400/30 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all resize-none text-ink-900"
-            />
-          </div>
-
-          {/* 送出按鈕 */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-ink-950 hover:bg-gold-600 text-white py-3.5 rounded-xl font-medium transition-all shadow-md hover:shadow-lg flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
-          >
-            {loading ? (
-              <span>送出中...</span>
-            ) : (
-              <>
-                <Send className="w-4 h-4 text-gold-400" />
-                <span>確認送出諮詢</span>
-              </>
-            )}
-          </button>
-        </form>
+              {loading ? (
+                <span>送出中...</span>
+              ) : (
+                <>
+                  <Send className="w-4 h-4 text-gold-600 group-hover:text-white" />
+                  <span>確認送出諮詢</span>
+                </>
+              )}
+            </button>
+          </form>
+        </div>
 
       </div>
     </section>
