@@ -154,7 +154,7 @@ export default function ContractProducts() {
             className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white font-medium text-sm sm:text-base transition-all duration-300 border border-gold-400/50 shadow-sm hover:shadow-md group"
           >
             <FileText className="w-5 h-5 text-gold-600 group-hover:text-white transition-colors shrink-0" />
-            <span>台南市民政局生前契約銷售及代銷商最新核准函下載</span>
+            <span>台南市民政局生前契約銷售及代銷商最新核准函</span>
             <Download className="w-4 h-4 shrink-0" />
           </a>
         </div>
@@ -175,8 +175,8 @@ export default function ContractProducts() {
               <thead>
                 <tr className="bg-ivory-100 border-b border-ivory-200 text-ink-800 text-sm md:text-base font-serif-tc">
                   <th className="p-4 w-1/4 font-bold">比較項目</th>
-                  <th className="p-4 w-3/8 font-bold text-gold-700 bg-gold-50/50">寶富、福益生前契約（標準型）</th>
-                  <th className="p-4 w-3/8 font-bold text-ink-700">寶暉、璞瑜生前契約（簡易型）</th>
+                  <th className="p-4 w-3/8 font-bold text-gold-700 bg-gold-50/50">寶富生前契約（標準型）</th>
+                  <th className="p-4 w-3/8 font-bold text-ink-700">寶暉生前契約（簡易型）</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-ivory-200 text-sm md:text-base text-ink-700">
