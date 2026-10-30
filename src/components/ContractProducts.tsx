@@ -1,4 +1,4 @@
-import { Download, Building2, Phone, CheckCircle2, MinusCircle, ShieldCheck } from 'lucide-react';
+import { Download, Building2, Phone, CheckCircle2, MinusCircle } from 'lucide-react';
 
 interface ContractProduct {
   id: string;
@@ -81,7 +81,7 @@ export default function ContractProducts() {
         </div>
 
         {/* 商品格子區塊 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto mb-20">
           {contractProducts.map((product) => (
             <div
               key={product.id}
@@ -143,20 +143,6 @@ export default function ContractProducts() {
 
             </div>
           ))}
-        </div>
-
-        {/* 獨立區塊：生前契約履約保障信託契約書（位於契約書與對照表之間，懸停深金底白字） */}
-        <div className="max-w-5xl mx-auto mb-16 text-center">
-          <a
-            href="/生前契約履約保障信託契約書.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ink-900/90 hover:bg-gold-600 text-white font-medium text-sm sm:text-base transition-all duration-300 border border-gold-400/40 backdrop-blur-sm shadow-lg group hover:shadow-xl hover:-translate-y-0.5"
-          >
-            <ShieldCheck className="w-5 h-5 text-gold-400 group-hover:text-white transition-colors shrink-0" />
-            <span>生前契約履約保障信託契約書</span>
-            <Download className="w-4 h-4 shrink-0" />
-          </a>
         </div>
 
         {/* 生前契約商品差異對照表 */}
