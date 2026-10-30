@@ -138,7 +138,7 @@ export default function Contact() {
                       </a>
                     </span>
                     <span>
-                      24 小時專線：
+                      24 小時服務專線：
                       <a href="tel:0800600603" className="hover:text-gold-700 hover:underline font-semibold font-mono transition-colors">
                         0800-600-603
                       </a>
