@@ -1,4 +1,4 @@
-import { Download, Building2, Phone, CheckCircle2, MinusCircle } from 'lucide-react';
+import { Download, Building2, Phone, CheckCircle2, MinusCircle, ShieldCheck } from 'lucide-react';
 
 interface ContractProduct {
   id: string;
@@ -80,14 +80,14 @@ export default function ContractProducts() {
           <div className="gold-divider w-32 mx-auto mt-6" />
         </div>
 
-        {/* 4 個商品格子（比例 3:4 契合契約書封面尺寸） */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto mb-20">
+        {/* 商品格子區塊 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto mb-12">
           {contractProducts.map((product) => (
             <div
               key={product.id}
               className="group relative rounded-2xl overflow-hidden shadow-lg border border-ivory-300 aspect-[3/4] flex flex-col justify-end p-6 sm:p-8 hover:shadow-2xl transition-all duration-500"
             >
-              {/* 背景圖片（獨立為 img 標籤，滑鼠移入時會平滑放大 108%） */}
+              {/* 背景圖片 */}
               <div className="absolute inset-0 overflow-hidden bg-ivory-200">
                 <img
                   src={product.bgImage}
@@ -96,22 +96,19 @@ export default function ContractProducts() {
                 />
               </div>
 
-              {/* 漸層遮罩，提升文字閱讀清晰度 */}
+              {/* 漸層遮罩 */}
               <div className="absolute inset-0 bg-gradient-to-b from-ink-950/10 via-transparent to-ink-950/90 pointer-events-none transition-opacity duration-500 group-hover:opacity-95" />
 
-              {/* 下方資訊區塊 (統一為靠左對齊，使各列首字齊平) */}
+              {/* 下方資訊區塊 */}
               <div className="relative z-10 text-white space-y-4 flex flex-col items-start text-left">
                 
-                {/* 銷售通路與聯絡電話 (單行呈現，首字完全對齊) */}
+                {/* 銷售通路與聯絡電話 */}
                 <div className="space-y-2 text-sm sm:text-base font-medium">
-                  
-                  {/* 銷售通路：公司名稱 */}
                   <div className="flex items-center gap-1.5 text-white">
                     <Building2 className="w-4 h-4 text-white shrink-0" />
                     <span>銷售通路：{product.channel.name}</span>
                   </div>
 
-                  {/* 聯絡電話：可點擊撥號連結 */}
                   <a
                     href={`tel:${product.channel.phone}`}
                     className="flex items-center gap-1.5 text-white hover:text-gold-300 transition-colors duration-200 group/phone"
@@ -121,18 +118,16 @@ export default function ContractProducts() {
                       聯絡電話：{product.channel.phone}
                     </span>
                   </a>
-
                 </div>
 
-                {/* 底部按鈕區：服務型態標籤（左） + 生前契約書下載按鈕（右） */}
+                {/* 底部按鈕區 */}
                 <div className="pt-2 flex items-center gap-2.5 w-full flex-wrap">
-                  
-                  {/* 服務型態標籤 (懸停時出現黃底黑字 hover 效果) */}
+                  {/* 服務型態標籤 */}
                   <span className="inline-flex items-center px-4 py-2.5 rounded-xl bg-ink-900/90 hover:bg-gold-500 text-white hover:text-ink-950 font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/40 backdrop-blur-sm shadow-md cursor-default">
                     {product.typeTag}
                   </span>
 
-                  {/* 生前契約書下載按鈕 (黃底黑字 hover 效果) */}
+                  {/* 生前契約書下載按鈕 */}
                   <a
                     href={product.pdfUrl}
                     target="_blank"
@@ -142,7 +137,6 @@ export default function ContractProducts() {
                     <span>生前契約書</span>
                     <Download className="w-4 h-4" />
                   </a>
-
                 </div>
 
               </div>
@@ -151,7 +145,21 @@ export default function ContractProducts() {
           ))}
         </div>
 
-        {/* 生前契約商品差異對照表（移至此處下方顯示） */}
+        {/* 獨立區塊：生前契約75%履約保障信託契約書（位於契約書與對照表之間，懸停深金底白字） */}
+        <div className="max-w-5xl mx-auto mb-16 text-center">
+          <a
+            href="/生前契約75%履約保障信託契約書.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ink-900/90 hover:bg-gold-600 text-white font-medium text-sm sm:text-base transition-all duration-300 border border-gold-400/40 backdrop-blur-sm shadow-lg group hover:shadow-xl hover:-translate-y-0.5"
+          >
+            <ShieldCheck className="w-5 h-5 text-gold-400 group-hover:text-white transition-colors shrink-0" />
+            <span>生前契約75%履約保障信託契約書下載</span>
+            <Download className="w-4 h-4 shrink-0" />
+          </a>
+        </div>
+
+        {/* 生前契約商品差異對照表 */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-12 shadow-md max-w-5xl mx-auto">
           <div className="text-center mb-8 pt-2">
             <p className="text-gold-600 text-sm tracking-[0.3em] uppercase">Product Comparison</p>
