@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useReveal } from '@/hooks/useReveal';
 import { MapPin, Send, CheckCircle2, Building2, Phone, Mail } from 'lucide-react';
 
 const taiwanLocations = [
@@ -18,12 +19,15 @@ const serviceOptions = [
 ];
 
 export default function Contact() {
+  const revealResult = useReveal<HTMLDivElement>();
+  const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '', // 電子郵件 (選填)
     location: '', // 居住地點 (無預設)
-    service: '商品諮詢',
+    service: '', // 需求服務類型 (無預設)
     message: ''
   });
   const [loading, setLoading] = useState(false);
@@ -37,6 +41,11 @@ export default function Contact() {
 
     if (!formData.location) {
       alert('請選擇您的居住地點！');
+      return;
+    }
+
+    if (!formData.service) {
+      alert('請選擇您的需求服務類型！');
       return;
     }
 
@@ -76,7 +85,7 @@ export default function Contact() {
             <button
               onClick={() => {
                 setSubmitted(false);
-                setFormData({ name: '', phone: '', email: '', location: '', service: '商品諮詢', message: '' });
+                setFormData({ name: '', phone: '', email: '', location: '', service: '', message: '' });
               }}
               className="bg-ink-900 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-gold-600 transition-colors shadow-md cursor-pointer"
             >
@@ -89,60 +98,69 @@ export default function Contact() {
   }
 
   return (
-    <section className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative -mt-6 lg:-mt-10">
-      <div className="max-w-4xl mx-auto px-6">
+    <section className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative -mt-6 lg:-mt-10 overflow-hidden">
+      <div ref={ref} className="max-w-4xl mx-auto px-6 relative">
         
         {/* 標題區 */}
         <div className="text-center mb-10">
-          <p className="text-gold-600 text-xs sm:text-sm tracking-[0.3em] uppercase font-semibold">
-            Contact Us
+          <p className="text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-mono font-medium reveal">
+            CONTACT US
           </p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2">
+          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
             聯絡我們
           </h2>
-          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4" />
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
         </div>
 
-        {/* 總公司資訊卡片（滑鼠移入深金底白字，點擊可直接撥號/開地圖/發信） */}
-        <div className="max-w-2xl mx-auto mb-12">
-          <div className="group bg-white/90 rounded-2xl p-6 sm:p-8 border border-gold-400/30 shadow-md hover:bg-gold-600 hover:border-gold-500 transition-all duration-300 flex flex-col justify-between">
+        {/* 總公司資訊卡片 */}
+        <div className="max-w-2xl mx-auto mb-12 reveal reveal-delay-3">
+          <div className="group bg-white/90 rounded-2xl p-6 sm:p-8 border border-gold-400/30 shadow-md transition-all duration-300 flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Building2 className="w-5 h-5 text-gold-600 group-hover:text-white transition-colors shrink-0" />
-                <h3 className="font-serif-tc text-xl font-bold text-ink-950 group-hover:text-white transition-colors">
+              <div className="flex items-center gap-3 mb-4">
+                {/* 放大 Icon，當滑鼠移入整個方格範圍時切換為深金底白線條 */}
+                <div className="p-2 rounded-xl bg-gold-400/15 group-hover:bg-gold-600 transition-colors duration-300 shrink-0">
+                  <Building2 className="w-6 h-6 text-gold-600 group-hover:text-white transition-colors duration-300" />
+                </div>
+                <h3 className="font-serif-tc text-xl font-bold text-ink-950">
                   寶慈生命事業 (總公司)
                 </h3>
               </div>
 
-              <div className="space-y-3 text-sm sm:text-base text-slate-600 group-hover:text-white/90 transition-colors">
+              {/* 電話、地址、Email 改為移到該處才出現深金色白字 (hover:text-gold-700) */}
+              <div className="space-y-3 text-sm sm:text-base text-slate-600">
                 <div className="flex items-start gap-2">
-                  <Phone className="w-4 h-4 mt-1 shrink-0 text-gold-600 group-hover:text-white transition-colors" />
+                  <Phone className="w-4 h-4 mt-1 shrink-0 text-gold-600" />
                   <div className="flex flex-wrap gap-x-4 gap-y-1">
-                    <span>電話：<a href="tel:062678859" className="hover:underline font-mono"> (06) 2678859</a></span>
-                    <span className="font-semibold">24 小時專線：<a href="tel:0800600603" className="hover:underline font-mono">0800-600-603</a></span>
+                    <span>
+                      電話：
+                      <a href="tel:062678859" className="hover:text-gold-700 hover:underline font-mono transition-colors">
+                        (06) 2678859
+                      </a>
+                    </span>
+                    <span>
+                      24 小時專線：
+                      <a href="tel:0800600603" className="hover:text-gold-700 hover:underline font-semibold font-mono transition-colors">
+                        0800-600-603
+                      </a>
+                    </span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 mt-1 shrink-0 text-gold-600 group-hover:text-white transition-colors" />
+                  <MapPin className="w-4 h-4 mt-1 shrink-0 text-gold-600" />
                   <span>
                     地址：
-                    <a 
-                      href="https://maps.google.com/?q=台北市內湖區新湖二路329號5樓" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="hover:underline underline-offset-4"
-                    >
+                    <span className="hover:text-gold-700 hover:underline transition-colors cursor-default">
                       台北市內湖區新湖二路329號5樓
-                    </a>
+                    </span>
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 shrink-0 text-gold-600 group-hover:text-white transition-colors" />
+                  <Mail className="w-4 h-4 shrink-0 text-gold-600" />
                   <span>
                     Email：
-                    <a href="mailto:service@apexbaoci.com.tw" className="hover:underline">
+                    <a href="mailto:service@apexbaoci.com.tw" className="hover:text-gold-700 hover:underline transition-colors">
                       service@apexbaoci.com.tw
                     </a>
                   </span>
@@ -152,11 +170,14 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* 表單區塊：上方加入提示文字，並加上質感外框 */}
-        <div className="bg-white/80 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-6 sm:p-10 shadow-lg">
-          <div className="text-center mb-8">
-            <p className="text-slate-600 text-sm sm:text-base">
+        {/* 表單區塊 */}
+        <div className="bg-white/80 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-6 sm:p-10 shadow-lg reveal reveal-delay-4">
+          <div className="text-center mb-8 space-y-2">
+            <p className="text-slate-700 text-sm sm:text-base font-medium">
               填寫下方表單，將有專人為您提供尊榮、溫暖的諮詢服務。
+            </p>
+            <p className="text-gold-700 font-bold text-sm sm:text-base">
+              臨終接體服務請直接撥打24小時服務專線 <a href="tel:0800600603" className="underline font-mono">0800-600-603</a>
             </p>
           </div>
 
@@ -230,16 +251,22 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* 需求服務類型 */}
+            {/* 需求服務類型 (取消預設值) */}
             <div>
               <label className="block text-sm font-medium text-ink-900 mb-2">需求服務類型</label>
               <select
+                required
                 value={formData.service}
                 onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all cursor-pointer text-ink-900 shadow-sm"
+                className={`w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all appearance-none cursor-pointer shadow-sm ${
+                  !formData.service ? 'text-stone-400' : 'text-ink-900'
+                }`}
               >
+                <option value="" disabled hidden>
+                  -- 請選擇服務類型 --
+                </option>
                 {serviceOptions.map((opt) => (
-                  <option key={opt} value={opt}>
+                  <option key={opt} value={opt} className="text-ink-900">
                     {opt}
                   </option>
                 ))}
@@ -254,29 +281,4 @@ export default function Contact() {
                 placeholder="請簡述您的需求或想詢問的問題..."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all resize-none text-ink-900 shadow-sm"
-              />
-            </div>
-
-            {/* 送出按鈕：預設淺色系，移入才顯示深金底白字 */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 py-3.5 rounded-xl font-medium transition-all shadow-sm hover:shadow-md flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
-            >
-              {loading ? (
-                <span>送出中...</span>
-              ) : (
-                <>
-                  <Send className="w-4 h-4 text-gold-600 group-hover:text-white" />
-                  <span>確認送出諮詢</span>
-                </>
-              )}
-            </button>
-          </form>
-        </div>
-
-      </div>
-    </section>
-  );
-}
+                className="w-full px-4 py
