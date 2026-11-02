@@ -43,9 +43,9 @@ export default function PreneedConcept() {
     <section className="pt-2 pb-16 lg:pt-4 lg:pb-24 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
       <div ref={ref} className="max-w-6xl mx-auto px-6 relative">
         
-        {/* 1. 頁頭標題 */}
+        {/* 1. 頁頭標題 (PRENEED CONTRACT 已改為 font-serif-tc 字型) */}
         <div className="text-center mb-12">
-          <p className="text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-mono font-medium reveal">
+          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
             PRENEED CONTRACT
           </p>
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
@@ -57,7 +57,7 @@ export default function PreneedConcept() {
           </p>
         </div>
 
-        {/* 2. 左圖右文：4 大核心保障 (方格內文字體已放大) */}
+        {/* 2. 左圖右文：4 大核心保障 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12 reveal reveal-delay-3">
           
           {/* 左側照片 */}
@@ -88,11 +88,11 @@ export default function PreneedConcept() {
                     <div className="inline-flex items-center justify-center p-3 rounded-xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-colors duration-300 shadow-sm mb-3">
                       <Icon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
                     </div>
-                    {/* 放大標題字體 */}
+                    {/* 標題字體 */}
                     <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 mb-2">
                       {item.title}
                     </h3>
-                    {/* 放大內文字體 */}
+                    {/* 內文字體 */}
                     <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                       {item.desc}
                     </p>
@@ -107,7 +107,7 @@ export default function PreneedConcept() {
 
         </div>
 
-        {/* 3. 底部優勢條列 (標題置中、間距收緊、移入微微上移) */}
+        {/* 3. 底部優勢條列 */}
         <div className="bg-white/70 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-6 sm:p-8 shadow-lg reveal reveal-delay-4">
           <h4 className="font-serif-tc text-xl font-bold text-ink-950 mb-6 text-center">
             生前契約更多權益與特點
