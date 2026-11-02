@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReveal } from '@/hooks/useReveal';
-import { FileText, Download, CheckCircle2, Clock, ChevronRight, HelpCircle } from 'lucide-react';
+import { FileText, Download, CheckCircle2, Clock, ChevronRight } from 'lucide-react';
 
 // 手續服務項目清單與對應內容
 const procedureCategories = [
@@ -11,11 +11,10 @@ const procedureCategories = [
     days: '15 天',
     desc: '新購生前契約所需檢附之文件與申辦規範。',
     items: [
-      { name: '客戶基本資料表', note: '✓ 必備' },
+      { name: '客戶基本資料表', note: '未曾購買' },
       { name: '契約書正本', note: '✓ 必備' },
       { name: '繳款證明', note: '✓ 必備' },
       { name: 'ACH 自動扣款申請單', note: '分期件必填' },
-      { name: '填寫委託書 (附件一) 及委託人身分證明文件', note: '不可委託' },
     ],
   },
   {
@@ -25,13 +24,13 @@ const procedureCategories = [
     desc: '契約權利轉讓予他人時所需之文件。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
-      { name: '客戶服務申請表', note: '✓ 必備 (可至下方下載)' },
+      { name: '客戶服務申請表', note: '✓ 必備' },
       { name: '填寫讓渡申請 (於客戶服務申請表內)', note: '✓ 必填' },
       { name: '出讓人雙證件及印章', note: '✓ 必備' },
       { name: '受讓人雙證件及印章', note: '✓ 必備' },
       { name: '繳款證明', note: '手續費 1,000 元' },
       { name: 'ACH 自動扣款申請單', note: '不可分期' },
-      { name: '填寫委託書 (附件一) 及委託人身分證明文件', note: '若有受託需檢附' },
+      { name: '填寫客戶服務申請表之附件一、委託書及委託人身分證明文件', note: '若有受託需檢附' },
     ],
   },
   {
@@ -41,12 +40,11 @@ const procedureCategories = [
     desc: '原契約持有人身故後，辦理繼承變更所需文件。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
-      { name: '客戶服務申請表', note: '✓ 必備 (可至下方下載)' },
+      { name: '客戶服務申請表', note: '✓ 必備' },
       { name: '繼承切結書 (附件三)', note: '✓ 必備' },
       { name: '填寫讓渡申請 (於客戶服務申請表內)', note: '✓ 必填' },
       { name: '繼承人雙證件及印章', note: '✓ 必備' },
       { name: 'ACH 自動扣款申請單', note: '若繼續分期需檢附' },
-      { name: '填寫委託書 (附件一)', note: '不可委託' },
       { name: '死亡證明或除戶證明', note: '✓ 必備' },
       { name: '3 個月內現戶現況全戶戶籍謄本', note: '✓ 必備 (非法定繼承人需提具官方證明)' },
     ],
@@ -66,7 +64,7 @@ const procedureCategories = [
       { name: '死亡證明或除戶證明', note: '✓ 必備' },
       { name: '火化許可', note: '✓ 必備' },
       { name: '殯儀服務完成確認書 (契約書中附件)', note: '✓ 必備' },
-      { name: '填寫委託書 (附件一)', note: '若有受託需檢附' },
+      { name: '填寫客戶服務申請表之附件一、委託書及委託人身分證明文件', note: '若有受託需檢附' },
     ],
   },
   {
@@ -76,10 +74,10 @@ const procedureCategories = [
     desc: '辦理契約終止與退款所需檢附文件。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
-      { name: '客戶服務申請表', note: '✓ 必備 (可至下方下載)' },
+      { name: '客戶服務申請表', note: '✓ 必備' },
       { name: '填寫解約申請書 (附件四)', note: '✓ 必填' },
       { name: '持有人雙證件及印章', note: '✓ 必備' },
-      { name: '填寫委託書 (附件一)', note: '若有受託需檢附' },
+      { name: '填寫客戶服務申請表之附件一、委託書及委託人身分證明文件', note: '若有受託需檢附' },
     ],
   },
   {
@@ -89,12 +87,12 @@ const procedureCategories = [
     desc: '分期契約申請緩繳後辦理恢復效力所需文件。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
-      { name: '客戶服務申請表', note: '✓ 必備 (可至下方下載)' },
+      { name: '客戶服務申請表', note: '✓ 必備' },
       { name: '填寫緩繳復效申請 (於客戶服務申請表內)', note: '✓ 必填' },
       { name: '持有人雙證件及印章', note: '✓ 必備' },
       { name: '繳款證明', note: '利息與首期款項' },
       { name: 'ACH 自動扣款申請單', note: '✓ 必填' },
-      { name: '填寫委託書 (附件一)', note: '若有受託需檢附' },
+      { name: '填寫客戶服務申請表之附件一、委託書及委託人身分證明文件', note: '若有受託需檢附' },
     ],
   },
   {
@@ -104,12 +102,12 @@ const procedureCategories = [
     desc: '變更聯絡地址、電話、姓名或補發契約等所需文件。',
     items: [
       { name: '客戶基本資料表', note: '✓ 必備' },
-      { name: '客戶服務申請表', note: '✓ 必備 (可至下方下載)' },
+      { name: '客戶服務申請表', note: '✓ 必備' },
       { name: '契約書正本', note: '辦理更名時需檢附' },
       { name: '遺失切結書 (附件二)', note: '辦理遺失補發時需檢附' },
       { name: '持有人雙證件及印章', note: '✓ 必備' },
       { name: '3 個月內現戶現況全戶戶籍謄本', note: '辦理更名須出具' },
-      { name: '填寫委託書 (附件一)', note: '若有受託需檢附 (註：遺失補發不可委託)' },
+      { name: '填寫客戶服務申請表之附件一、委託書及委託人身分證明文件', note: '若有受託需檢附 (註：遺失補發不可委託)' },
     ],
   },
 ];
@@ -119,7 +117,6 @@ export default function Procedures() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
   const navigate = useNavigate();
 
-  // 預設選中第一個「新購手續」
   const [activeTab, setActiveTab] = useState(procedureCategories[0].id);
 
   const currentCategory = procedureCategories.find((cat) => cat.id === activeTab) || procedureCategories[0];
@@ -150,7 +147,6 @@ export default function Procedures() {
 
         {/* 下拉選單與標籤切換列 */}
         <div className="mb-10 reveal">
-          {/* 行動裝置下拉選單 */}
           <div className="block md:hidden mb-4">
             <label htmlFor="procedure-select" className="block text-sm font-medium text-ink-700 mb-2">
               選擇申辦項目：
@@ -169,7 +165,6 @@ export default function Procedures() {
             </select>
           </div>
 
-          {/* 桌面版按鈕標籤列 */}
           <div className="hidden md:flex flex-wrap justify-center gap-2.5">
             {procedureCategories.map((cat) => {
               const isActive = activeTab === cat.id;
@@ -194,7 +189,7 @@ export default function Procedures() {
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-ivory-200 gap-4">
             <div>
-              <span className="text-xs tracking-wider uppercase font-bold text-gold-600 bg-gold-50 px-3 py-1 rounded-full border border-gold-200 inline-block mb-2">
+              <span className="text-xs tracking-wider uppercase font-bold text-white bg-gold-600 px-3 py-1 rounded-full inline-block mb-2 shadow-sm">
                 申辦項目詳情
               </span>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
@@ -215,7 +210,7 @@ export default function Procedures() {
             <span>必備與檢附文件清單：</span>
           </h4>
 
-          {/* 文件清單列表 */}
+          {/* 文件清單列表（標籤全面改為深金底白字 bg-gold-600 text-white） */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 mb-8">
             {currentCategory.items.map((item, idx) => (
               <div
@@ -226,7 +221,7 @@ export default function Procedures() {
                   <CheckCircle2 className="w-5 h-5 text-gold-600 shrink-0 mt-0.5" />
                   <span className="text-sm sm:text-base font-medium text-ink-900">{item.name}</span>
                 </div>
-                <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100/70 text-gold-900 font-medium shrink-0 ml-2">
+                <span className="text-xs px-2.5 py-1 rounded-md bg-gold-600 text-white font-medium shrink-0 ml-2 shadow-sm">
                   {item.note}
                 </span>
               </div>
@@ -236,12 +231,12 @@ export default function Procedures() {
           {/* 下載專區快捷按鈕 */}
           <div className="bg-ivory-100/80 rounded-2xl p-5 border border-ivory-300/80 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gold-600 text-white flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-gold-600 text-white flex items-center justify-center shrink-0 shadow-sm">
                 <Download className="w-5 h-5" />
               </div>
               <div>
                 <p className="text-sm font-bold text-ink-900">需要下載相關申請表格嗎？</p>
-                <p className="text-xs text-ink-600">請至下方下載「客戶服務申請表」或查看核准函。</p>
+                <p className="text-xs text-ink-600">請點擊右側下載「寶慈客戶服務申請表」。</p>
               </div>
             </div>
             <a
@@ -250,14 +245,14 @@ export default function Procedures() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ink-900 hover:bg-gold-600 text-white text-xs sm:text-sm font-medium transition-colors shadow-sm shrink-0"
             >
-              <span>下載客戶服務申請表 (PDF)</span>
+              <span>下載寶慈客戶服務申請表 (PDF)</span>
               <Download className="w-4 h-4" />
             </a>
           </div>
         </div>
 
-        {/* 常用文件與核准函下載區塊 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16 reveal">
+        {/* 常用文件下載區塊（僅保留客戶服務申請表下載，檔名對應 寶慈客戶服務申請表.pdf） */}
+        <div className="max-w-xl mx-auto mb-16 reveal">
           <a
             href="/document/寶慈客戶服務申請表.pdf"
             target="_blank"
@@ -273,29 +268,12 @@ export default function Procedures() {
               <ChevronRight className="w-4 h-4" />
             </div>
           </a>
-
-          <a
-            href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between p-5 rounded-2xl bg-white border border-ivory-200 hover:border-gold-400 shadow-sm transition-all group"
-          >
-            <div className="flex items-center gap-3">
-              <FileText className="w-6 h-6 text-gold-600" />
-              <span className="font-serif-tc font-bold text-ink-900 text-base">台南市民政局最新核准函</span>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-gold-700 font-medium group-hover:underline">
-              <span>查看文件</span>
-              <ChevronRight className="w-4 h-4" />
-            </div>
-          </a>
         </div>
 
-        {/* 申辦注意事項與備註說明 */}
+        {/* 申辦注意事項與備註說明（已移除 📌） */}
         <div className="bg-white/80 border border-ivory-200 rounded-3xl p-6 sm:p-8 mb-16 shadow-sm reveal">
           <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-4 flex items-center gap-2">
-            <HelpCircle className="w-5 h-5 text-gold-600" />
-            <span>📌 申辦注意事項與備註說明</span>
+            <span>申辦注意事項與備註說明</span>
           </h4>
           <ol className="space-y-3 text-sm text-ink-700 list-decimal pl-5">
             <li><strong>喪葬證明申請</strong>：履約服務完成後如有申請證明之需要，可提出申請喪葬證明。</li>
