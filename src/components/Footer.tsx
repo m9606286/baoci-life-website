@@ -1,27 +1,45 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Phone, MapPin, Mail, ArrowUp, ExternalLink } from 'lucide-react';
 import { companyInfo } from '@/data/content';
 import BrandLogo from '@/components/BrandLogo';
 
 const quickLinks = [
-  { label: '關於我們', href: '#top' },
-  { label: '生前契約', href: '#preneed' },
-  { label: '禮儀服務', href: '#services' },
-  { label: '信託公開', href: '#trust' },
-  { label: '手續服務', href: '#procedures' },
-  { label: '聯絡我們', href: '#contact' },
+  { label: '關於我們', path: '/', hash: '#top' },
+  { label: '生前契約', path: '/preneed', hash: '#preneed' },
+  { label: '禮儀服務', path: '/services', hash: '#services' },
+  { label: '信託公開', path: '/trust', hash: '#trust' },
+  { label: '手續服務', path: '/procedures', hash: '#procedures' },
+  { label: '聯絡我們', path: '/contact', hash: '#contact' },
 ];
 
 export default function Footer() {
-  // 統一處理平滑捲動導航
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string, hash: string) => {
     e.preventDefault();
-    if (href === '#top') {
+
+    if (hash === '#top') {
+      if (location.pathname !== '/') {
+        navigate('/');
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (location.pathname !== '/') {
+      navigate(path);
+      setTimeout(() => {
+        const targetElement = document.getElementById(hash.replace('#', ''));
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     } else {
-      const targetElement = document.querySelector(href);
+      const targetElement = document.getElementById(hash.replace('#', ''));
       if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
   };
@@ -54,10 +72,10 @@ export default function Footer() {
               {/* 左欄 */}
               <ul className="space-y-2.5">
                 {quickLinks.slice(0, 4).map((link) => (
-                  <li key={link.href}>
+                  <li key={link.path}>
                     <a
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href)}
+                      href={link.path}
+                      onClick={(e) => handleNavClick(e, link.path, link.hash)}
                       className="text-sm text-slate-100 hover:text-gold-400 font-normal transition-colors inline-block cursor-pointer"
                     >
                       {link.label}
@@ -68,10 +86,10 @@ export default function Footer() {
               {/* 右欄 */}
               <ul className="space-y-2.5">
                 {quickLinks.slice(4).map((link) => (
-                  <li key={link.href}>
+                  <li key={link.path}>
                     <a
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href)}
+                      href={link.path}
+                      onClick={(e) => handleNavClick(e, link.path, link.hash)}
                       className="text-sm text-slate-100 hover:text-gold-400 font-normal transition-colors inline-block cursor-pointer"
                     >
                       {link.label}
@@ -124,16 +142,16 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar (已改為清爽的同色系階梯色，完全移除黑色) */}
-      <div className="border-t border-slate-700/60 bg-[#0f172a]">
+      {/* Bottom bar (改為與主體相同的背景色與精緻分隔線) */}
+      <div className="border-t border-slate-700/50 bg-[#1e293b]">
         <div className="mx-auto max-w-6xl px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-300">
             © 2026 寶慈生命事業股份有限公司 · 版權所有
           </p>
           <a
             href="#top"
-            onClick={(e) => handleNavClick(e, '#top')}
-            className="flex items-center gap-2 text-xs text-slate-200 hover:text-gold-400 transition-colors font-normal group cursor-pointer"
+            onClick={(e) => handleNavClick(e, '/', '#top')}
+            className="flex items-center gap-2 text-xs text-slate-200 hover:text-gold-400 transition-colors font-medium group cursor-pointer"
           >
             <span>回到頂部</span>
             <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-1 transition-transform text-gold-400" />
