@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Download, Building2, Phone, CheckCircle2, MinusCircle, FileText } from 'lucide-react';
 
 interface ContractProduct {
@@ -64,6 +65,15 @@ const contractComparison = [
 ];
 
 export default function ContractProducts() {
+  const navigate = useNavigate();
+
+  // 點擊後切換至聯絡我們頁面並置頂
+  const handleConsultClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    navigate('/contact');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <section id="products" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100/60 relative -mt-6 lg:-mt-10">
       <div className="max-w-7xl mx-auto px-6">
@@ -114,7 +124,7 @@ export default function ContractProducts() {
                     className="flex items-center gap-1.5 text-white hover:text-gold-300 transition-colors duration-200 group/phone"
                   >
                     <Phone className="w-4 h-4 text-white group-hover/phone:text-gold-300 shrink-0 transition-colors duration-200" />
-                    <span className="font-mono group-hover/phone:underline underline-offset-4">
+                    <span className="font-mono group-hover/phone:underline underline-offset-4 font-['Microsoft_JhengHei']">
                       聯絡電話：{product.channel.phone}
                     </span>
                   </a>
@@ -209,11 +219,12 @@ export default function ContractProducts() {
             註：標準型及簡易型均提供骨罐及火化棺。
           </p>
 
-          {/* 諮詢適合您的方案按鈕（點擊後平滑連結到 #contact 聯絡我們） */}
+          {/* 諮詢適合您的方案按鈕（點擊後透過 React Router 切換至聯絡我們頁面） */}
           <div className="text-center">
             <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 font-medium text-sm sm:text-base transition-all shadow-sm hover:shadow-md"
+              href="/contact"
+              onClick={handleConsultClick}
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 font-medium text-sm sm:text-base transition-all shadow-sm hover:shadow-md cursor-pointer"
             >
               諮詢適合您的方案
             </a>
