@@ -42,6 +42,7 @@ export default function App() {
             <Route path="/preneed" element={<PreneedPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/trust" element={<TrustPage />} />
+            <Route path="/trust" element={<ProceduresPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>
