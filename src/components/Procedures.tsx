@@ -229,7 +229,7 @@ export default function Procedures() {
           {/* 下載按鈕（保留在左側） */}
           <div className="mt-6 flex items-center">
             <a
-              href="/document/寶慈客戶服務申請表.pdf"
+              href="/寶慈客戶服務申請表.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gold-600 hover:bg-gold-700 text-white text-sm sm:text-base font-medium transition-colors shadow-sm"
