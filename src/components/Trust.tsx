@@ -9,9 +9,9 @@ export default function Trust() {
   return (
     <section id="trust" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
       <div ref={ref} className="max-w-4xl mx-auto px-6 relative text-center">
-        {/* Header 標題區 */}
+        {/* Header 標題區：TRUST 已套用 font-serif-tc 字型 */}
         <div className="mb-12">
-          <p className="text-gold-600 text-xs sm:text-sm tracking-[0.2em] uppercase font-medium reveal">
+          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
             TRUST
           </p>
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
