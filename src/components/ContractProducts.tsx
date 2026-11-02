@@ -120,14 +120,14 @@ export default function ContractProducts() {
                   </a>
                 </div>
 
-                {/* 底部按鈕區（已改為透明背景，移入時顯示深金底白字） */}
+                {/* 底部按鈕區（透明背景，移入時顯示深金底白字） */}
                 <div className="pt-2 flex items-center gap-2.5 w-full flex-wrap">
-                  {/* 服務型態標籤 (透明背景) */}
+                  {/* 服務型態標籤 */}
                   <span className="inline-flex items-center px-4 py-2.5 rounded-xl bg-transparent hover:bg-gold-600 text-white hover:text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm cursor-default">
                     {product.typeTag}
                   </span>
 
-                  {/* 生前契約書下載按鈕 (透明背景) */}
+                  {/* 生前契約書下載按鈕 */}
                   <a
                     href={product.pdfUrl}
                     target="_blank"
@@ -145,7 +145,7 @@ export default function ContractProducts() {
           ))}
         </div>
 
-        {/* 獨立區塊：台南市民政局生前契約銷售及代銷商最新核准函（未移到時為質感淺色） */}
+        {/* 獨立區塊：台南市民政局生前契約銷售及代銷商最新核准函 */}
         <div className="max-w-5xl mx-auto mb-16 text-center">
           <a
             href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf"
@@ -169,7 +169,7 @@ export default function ContractProducts() {
             <div className="gold-divider w-24 mx-auto mt-4" />
           </div>
 
-          {/* 表格內容字體已加大 (sm md) */}
+          {/* 表格內容 */}
           <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-4">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
@@ -209,7 +209,7 @@ export default function ContractProducts() {
             註：標準型及簡易型均提供骨罐及火化棺。
           </p>
 
-          {/* 諮詢適合您的方案按鈕（未移到時為質感淺色，點擊連到聯絡我們） */}
+          {/* 諮詢適合您的方案按鈕（點擊後平滑連結到 #contact 聯絡我們） */}
           <div className="text-center">
             <a
               href="#contact"
