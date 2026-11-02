@@ -170,7 +170,7 @@ export default function Procedures() {
           </h1>
           <div className="gold-divider w-32 mx-auto mt-4 reveal reveal-delay-2" />
           <p className="text-ink-500 text-sm sm:text-base mt-4 max-w-2xl mx-auto reveal reveal-delay-3">
-            請於下方選擇您欲辦理的手續項目，即可快速查詢所需檢附的文件資料與辦理天數。
+            請於下方選擇您欲辦理的手續項目，即可快速查詢所需檢附的文件資料與所需工作天數。
           </p>
         </div>
 
