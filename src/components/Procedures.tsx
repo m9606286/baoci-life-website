@@ -136,7 +136,7 @@ const notices = [
     desc: '新購、客戶資料變更及遺失補發手續，須由本人親自申辦；繼承手續須由全體繼承人共同辦理，不得委託代理人代辦。其餘項目如委由代理人辦理，須檢附授權委託書正本及委託人、受託人雙方有效身分證件。',
   },
   {
-    title: '款項與手續費',
+    title: '手續費與分期付款',
     desc: '轉讓手續需繳納手續費新台幣 1,000 元整；轉讓件與履約件不適用分期付款。',
   },
 ];
@@ -278,27 +278,29 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 申辦注意事項（改為與上方檔案清單一致的勾勾格子風格，支援放大字體與 hover 變色） */}
+        {/* 申辦注意事項（改為與截圖中權利特點一致的 2x2 左右對稱網格排版，支援 hover 變色） */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
-          <h4 className="font-serif-tc text-lg lg:text-xl font-bold text-ink-900 mb-6 flex items-center gap-2">
-            <FileText className="w-5 h-5 text-gold-600" />
-            <span>申辦注意事項</span>
-          </h4>
-          <div className="grid grid-cols-1 gap-4">
+          <div className="text-center mb-8">
+            <h4 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
+              申辦注意事項
+            </h4>
+            <div className="gold-divider w-24 mx-auto mt-3" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {notices.map((notice, idx) => (
               <div
                 key={idx}
-                className="group flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-5 rounded-xl bg-ivory-50/60 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-4"
+                className="group h-full flex items-start p-5 rounded-2xl bg-ivory-50/60 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3.5"
               >
-                <div className="flex items-start sm:items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-gold-600 group-hover:text-ivory-100 shrink-0 mt-0.5 sm:mt-0 transition-colors" />
-                  <span className="text-base sm:text-lg font-serif-tc font-bold tracking-wide">
+                <CheckCircle2 className="w-5 h-5 text-gold-600 group-hover:text-ivory-100 shrink-0 mt-1 transition-colors" />
+                <div>
+                  <h5 className="font-serif-tc text-base sm:text-lg font-bold mb-1.5 transition-colors">
                     {notice.title}
-                  </span>
+                  </h5>
+                  <p className="text-sm sm:text-base text-ink-600 group-hover:text-ivory-100 leading-relaxed text-left transition-colors font-['Microsoft_JhengHei']">
+                    {notice.desc}
+                  </p>
                 </div>
-                <p className="text-sm sm:text-base text-ink-600 group-hover:text-ivory-100 leading-relaxed max-w-2xl transition-colors font-['Microsoft_JhengHei']">
-                  {notice.desc}
-                </p>
               </div>
             ))}
           </div>
