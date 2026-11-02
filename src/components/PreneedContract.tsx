@@ -1,7 +1,7 @@
 import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
 import { Shield, Clock, TrendingUp, HeartHandshake, CheckCircle2 } from 'lucide-react';
-import familyImage from '/core.jpg'; // 或您專用的生前契約情境圖
+import familyImage from '/hero.png';
 
 // 上方 4 大核心保障
 const coreHighlights = [
@@ -27,10 +27,10 @@ const coreHighlights = [
   },
 ];
 
-// 下方其他實用優勢列表 (補充條列，不重複上面的文字)
+// 下方 4 點實用優勢列表
 const additionalFeatures = [
   '獲得透明公開的服務規格與價格保障',
-  '提供彈性優惠的付款方案，減減分期壓力',
+  '提供彈性優惠的付款方案，減輕分期壓力',
   '契約可自由轉讓，持有人可指定使用對象（不限本人或家人）',
   '專人全程協助導引，為親友留下清晰明瞭的後事指引',
 ];
@@ -57,43 +57,47 @@ export default function PreneedConcept() {
           </p>
         </div>
 
-        {/* 2. 左圖右文：4 大核心保障 (將內容整合於此，避免上下重複) */}
+        {/* 2. 左圖右文：4 大核心保障 (方格互動與關於我們一致，底部帶漸層線) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch mb-16 reveal reveal-delay-3">
           
-          {/* 左側照片 */}
+          {/* 左側照片：遮罩調淺，質感更明亮清晰 */}
           <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-xl border border-gold-400/30 min-h-[350px] lg:min-h-full group">
             <img
               src={familyImage}
               alt="溫暖陪伴"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
             <div className="absolute bottom-6 left-6 right-6 text-white">
-              <p className="font-serif-tc text-xl font-bold">預先安排，圓滿無遺憾</p>
-              <p className="text-xs text-ivory-100/90 mt-1">給家人最深沉的愛與體貼</p>
+              <p className="font-serif-tc text-xl font-bold drop-shadow">預先安排，圓滿無遺憾</p>
+              <p className="text-xs text-ivory-100/90 mt-1 drop-shadow">給家人最深沉的愛與體貼</p>
             </div>
           </div>
 
           {/* 右側：4 大核心保障卡片 */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
             {coreHighlights.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <div
                   key={idx}
-                  className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gold-400/30 shadow-sm hover:shadow-md hover:bg-gold-600 group transition-all duration-300 flex flex-col justify-between"
+                  className="group relative rounded-2xl p-7 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-gold-400/15 group-hover:bg-white/20 transition-colors flex items-center justify-center mb-3">
-                      <Icon className="w-5 h-5 text-gold-600 group-hover:text-white transition-colors" />
+                    {/* 小圖示：移入時切換為深金底白字 */}
+                    <div className="inline-flex items-center justify-center p-3 rounded-xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-colors duration-300 shadow-sm mb-4">
+                      <Icon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
                     </div>
-                    <h3 className="font-serif-tc text-base font-bold text-ink-950 group-hover:text-white transition-colors mb-2">
+                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 group-hover:text-white/90 leading-relaxed transition-colors">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
+
+                  {/* 卡片底部的金色指示線 (對齊關於我們) */}
+                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out" />
                 </div>
               );
             })}
@@ -101,16 +105,24 @@ export default function PreneedConcept() {
 
         </div>
 
-        {/* 3. 底部優勢條列 (補充其他實用特點，單純條列呈現) */}
-        <div className="bg-white/60 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-6 sm:p-8 shadow-md reveal reveal-delay-4">
-          <h4 className="font-serif-tc text-lg font-bold text-ink-950 mb-4 text-center sm:text-left">
+        {/* 3. 底部優勢條列 (4點權益：移入時微微放大，勾勾變深金底白字) */}
+        <div className="bg-white/70 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-6 sm:p-10 shadow-lg reveal reveal-delay-4">
+          <h4 className="font-serif-tc text-xl font-bold text-ink-950 mb-6 text-center sm:text-left">
             生前契約更多權益與特點
           </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {additionalFeatures.map((feat, idx) => (
-              <div key={idx} className="flex items-center gap-2 text-sm text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-gold-600 shrink-0" />
-                <span>{feat}</span>
+              <div 
+                key={idx} 
+                className="group/item flex items-center gap-3 p-3 rounded-xl transition-all duration-300 hover:translate-x-1.5 hover:bg-gold-50/50 cursor-pointer"
+              >
+                {/* 勾勾圖示：移入時變為深金底白字 */}
+                <div className="w-7 h-7 rounded-lg bg-gold-100/70 text-gold-700 group-hover/item:bg-gold-600 group-hover/item:text-white flex items-center justify-center shrink-0 transition-colors duration-300 shadow-sm">
+                  <CheckCircle2 className="w-4 h-4" />
+                </div>
+                <span className="text-sm sm:text-base text-slate-700 font-medium group-hover/item:text-ink-950 transition-colors">
+                  {feat}
+                </span>
               </div>
             ))}
           </div>
