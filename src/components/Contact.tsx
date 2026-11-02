@@ -18,7 +18,7 @@ const serviceOptions = [
   '意見反映'
 ];
 
-// 銷售通路據點列表 (僅保留晨暉資產)
+// 銷售通路據點列表 (晨暉資產)
 const salesChannels = [
   {
     name: '晨暉資產股份有限公司',
@@ -34,7 +34,7 @@ export default function Contact() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   // 切換據點/表單 Tab: 'headquarter' | 'channel' | 'form'
-  const [activeTab, setActiveTab] = useState<'headquarter' | 'channel' | 'form'>('form');
+  const [activeTab, setActiveTab] = useState<'headquarter' | 'channel' | 'form'>('channel');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -92,7 +92,7 @@ export default function Contact() {
       <section className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative -mt-6 lg:-mt-10">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <div className="bg-white/90 border border-gold-400/40 rounded-3xl p-10 shadow-xl backdrop-blur-md">
-            <CheckCircle2 className="w-16 h-16 text-gold-600 mx-auto mb-4 animate-bounce" />
+            <CheckCircle2 className="w-16 h-16 text-gold-600 mx-auto mb-4" />
             <h3 className="text-2xl font-serif-tc font-bold text-ink-950 mb-2">感謝您的填寫</h3>
             <p className="text-slate-600 mb-6">我們已收到您的諮詢需求，將會盡快由專人與您聯繫。</p>
             <button
@@ -100,7 +100,7 @@ export default function Contact() {
                 setSubmitted(false);
                 setFormData({ name: '', phone: '', email: '', location: '', service: '', message: '' });
               }}
-              className="bg-ink-900 text-white px-8 py-3.5 rounded-full text-sm font-medium hover:bg-gold-600 transition-all shadow-md cursor-pointer hover:scale-105"
+              className="bg-ink-900 text-white px-8 py-3.5 rounded-full text-sm font-medium hover:bg-gold-600 transition-all shadow-md cursor-pointer"
             >
               填寫其他諮詢
             </button>
@@ -112,23 +112,24 @@ export default function Contact() {
 
   return (
     <section id="contact" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative -mt-6 lg:-mt-10 overflow-hidden">
-      <div ref={ref} className="max-w-4xl mx-auto px-6 relative">
+      <div ref={ref} className="max-w-4xl mx-auto px-6 relative z-10">
         
         {/* 標題區 */}
         <div className="text-center mb-10">
-          <p className="text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-mono font-medium reveal">
+          <p className="text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-mono font-medium">
             CONTACT US
           </p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
+          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2">
             聯絡我們
           </h2>
-          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4" />
         </div>
 
-        {/* 頂部切換頁籤：總公司 vs 銷售通路 vs 表單填寫 (高級按鈕質感升級) */}
-        <div className="flex justify-center mb-12 reveal reveal-delay-3">
+        {/* 頂部切換頁籤：總公司 vs 銷售通路 vs 表單填寫 (加上 relative z-30 確保完全可點擊) */}
+        <div className="flex justify-center mb-12 relative z-30">
           <div className="inline-flex rounded-2xl bg-white/90 p-1.5 border border-gold-400/40 shadow-lg backdrop-blur-md">
             <button
+              type="button"
               onClick={() => setActiveTab('headquarter')}
               className={`flex items-center gap-2 px-5 sm:px-7 py-3 rounded-xl font-medium text-sm sm:text-base transition-all duration-300 cursor-pointer ${
                 activeTab === 'headquarter'
@@ -136,11 +137,12 @@ export default function Contact() {
                   : 'text-slate-700 hover:text-gold-700 hover:bg-gold-50/60'
               }`}
             >
-              <Building2 className="w-4 h-4" />
-              <span>總公司</span>
+              <Building2 className="w-4 h-4 pointer-events-none" />
+              <span className="pointer-events-none">總公司</span>
             </button>
 
             <button
+              type="button"
               onClick={() => setActiveTab('channel')}
               className={`flex items-center gap-2 px-5 sm:px-7 py-3 rounded-xl font-medium text-sm sm:text-base transition-all duration-300 cursor-pointer ${
                 activeTab === 'channel'
@@ -148,11 +150,12 @@ export default function Contact() {
                   : 'text-slate-700 hover:text-gold-700 hover:bg-gold-50/60'
               }`}
             >
-              <Store className="w-4 h-4" />
-              <span>銷售通路</span>
+              <Store className="w-4 h-4 pointer-events-none" />
+              <span className="pointer-events-none">銷售通路</span>
             </button>
 
             <button
+              type="button"
               onClick={() => setActiveTab('form')}
               className={`flex items-center gap-2 px-5 sm:px-7 py-3 rounded-xl font-medium text-sm sm:text-base transition-all duration-300 cursor-pointer ${
                 activeTab === 'form'
@@ -160,16 +163,16 @@ export default function Contact() {
                   : 'text-slate-700 hover:text-gold-700 hover:bg-gold-50/60'
               }`}
             >
-              <FileEdit className="w-4 h-4" />
-              <span>線上諮詢表單</span>
+              <FileEdit className="w-4 h-4 pointer-events-none" />
+              <span className="pointer-events-none">線上諮詢表單</span>
             </button>
           </div>
         </div>
 
         {/* 據點卡片 (總公司 / 銷售通路) */}
         {activeTab === 'headquarter' && (
-          <div className="max-w-2xl mx-auto mb-12 reveal reveal-delay-3">
-            <div className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 overflow-hidden">
+          <div className="max-w-2xl mx-auto mb-12 animate-fade-in">
+            <div className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-500 hover:shadow-2xl overflow-hidden">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-ivory-100 to-gold-100/70 text-gold-600 group-hover:bg-gold-500 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm shrink-0">
                   <Building2 className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
@@ -198,7 +201,6 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* 地址連結 Google 地圖 */}
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
                   <span>
@@ -226,18 +228,17 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* 底部裝飾金色指示線 */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
             </div>
           </div>
         )}
 
         {activeTab === 'channel' && (
-          <div className="max-w-2xl mx-auto mb-12 reveal reveal-delay-3 space-y-5">
+          <div className="max-w-2xl mx-auto mb-12 space-y-5 animate-fade-in">
             {salesChannels.map((channel, idx) => (
               <div
                 key={idx}
-                className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 overflow-hidden"
+                className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-500 hover:shadow-2xl overflow-hidden"
               >
                 <div className="flex items-center gap-4 mb-5">
                   <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-ivory-100 to-gold-100/70 text-gold-600 group-hover:bg-gold-500 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm shrink-0">
@@ -249,7 +250,6 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-4 text-sm sm:text-base text-slate-700">
-                  {/* 地址點擊可跳轉至 Google 地圖 */}
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
                     <span>
@@ -277,7 +277,6 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* 底部裝飾金色指示線 */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </div>
             ))}
@@ -286,7 +285,7 @@ export default function Contact() {
 
         {/* 諮詢表單區塊 (當選擇線上諮詢表單時展示) */}
         {activeTab === 'form' && (
-          <div className="bg-white/90 backdrop-blur-md border border-gold-400/35 rounded-3xl p-6 sm:p-10 shadow-xl reveal reveal-delay-4">
+          <div className="bg-white/90 backdrop-blur-md border border-gold-400/35 rounded-3xl p-6 sm:p-10 shadow-xl animate-fade-in">
             <div className="text-center mb-8 space-y-2">
               <p className="text-slate-700 text-sm sm:text-base font-medium">
                 填寫下方表單，將有專人為您提供尊榮、溫暖的諮詢服務。
