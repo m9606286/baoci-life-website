@@ -278,34 +278,33 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 申辦注意事項（改為三張獨立卡片並支援 hover 互動與放大字體） */}
-        <div className="mb-16 reveal">
-          <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-6 text-center">
+        {/* 申辦注意事項（改為與上方檔案清單一致的勾勾格子風格，支援放大字體與 hover 變色） */}
+        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
+          <h4 className="font-serif-tc text-lg lg:text-xl font-bold text-ink-900 mb-6 flex items-center gap-2">
+            <FileText className="w-5 h-5 text-gold-600" />
             <span>申辦注意事項</span>
           </h4>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-4">
             {notices.map((notice, idx) => (
               <div
                 key={idx}
-                className="group h-full flex flex-col justify-between p-6 rounded-3xl bg-white hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300"
+                className="group flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-5 rounded-xl bg-ivory-50/60 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-4"
               >
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-gold-600 group-hover:text-ivory-200 mb-2 block transition-colors">
-                    NOTICE 0{idx + 1}
-                  </span>
-                  <h5 className="font-serif-tc text-base sm:text-lg font-bold mb-3 transition-colors">
+                <div className="flex items-start sm:items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-gold-600 group-hover:text-ivory-100 shrink-0 mt-0.5 sm:mt-0 transition-colors" />
+                  <span className="text-base sm:text-lg font-serif-tc font-bold tracking-wide">
                     {notice.title}
-                  </h5>
-                  <p className="text-sm sm:text-base text-ink-600 group-hover:text-ivory-100 leading-relaxed transition-colors font-['Microsoft_JhengHei']">
-                    {notice.desc}
-                  </p>
+                  </span>
                 </div>
+                <p className="text-sm sm:text-base text-ink-600 group-hover:text-ivory-100 leading-relaxed max-w-2xl transition-colors font-['Microsoft_JhengHei']">
+                  {notice.desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* 底部諮詢引導（按鈕改為平時淺色、移過去變深金底白字） */}
+        {/* 底部諮詢引導 */}
         <div className="text-center reveal">
           <p className="text-ink-600 text-sm mb-4">手續申辦上有任何疑問，或需要專人協助核對文件嗎？</p>
           <a
