@@ -1,7 +1,7 @@
 import { useReveal } from '@/hooks/useReveal';
 import { Heart, ShieldCheck, Gem, Sparkles } from 'lucide-react';
 
-// 直接將核心價值內容寫在組件內部
+// 核心價值內容
 const coreValues = [
   {
     icon: Heart,
@@ -32,10 +32,10 @@ export default function CoreValues() {
   return (
     <section id="values" className="py-24 lg:py-32 bg-ivory-100">
       <div ref={ref} className="mx-auto max-w-8xl px-6">
-        {/* Header */}
+        {/* Header (標題大小已調整與發展歷程一致) */}
         <div className="text-center mb-16">
           <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">Core Values</p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl text-ink-800 font-bold mt-3 reveal reveal-delay-1">
+          <h2 className="font-serif-tc text-3xl md:text-4xl text-ink-900 font-bold mt-3 reveal reveal-delay-1">
             我們的核心價值
           </h2>
           <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
