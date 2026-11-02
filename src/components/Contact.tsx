@@ -11,8 +11,8 @@ const taiwanLocations = [
 
 const serviceOptions = [
   '商品諮詢',
-  '手續查詢',
-  '繳款查詢',
+  '手續諮詢',
+  '繳款諮詢',
   '禮儀服務',
   '陵園服務',
   '意見反映'
