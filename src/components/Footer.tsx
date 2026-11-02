@@ -27,7 +27,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#0b1329] text-white border-t border-gold-400/40 transition-colors duration-300">
+    <footer className="bg-[#1e293b] text-white border-t border-gold-400/40 transition-colors duration-300">
       {/* Main */}
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -58,7 +58,7 @@ export default function Footer() {
                     <a
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
-                      className="text-sm text-white hover:text-gold-400 font-normal transition-colors inline-block cursor-pointer"
+                      className="text-sm text-slate-100 hover:text-gold-400 font-normal transition-colors inline-block cursor-pointer"
                     >
                       {link.label}
                     </a>
@@ -72,7 +72,7 @@ export default function Footer() {
                     <a
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
-                      className="text-sm text-white hover:text-gold-400 font-normal transition-colors inline-block cursor-pointer"
+                      className="text-sm text-slate-100 hover:text-gold-400 font-normal transition-colors inline-block cursor-pointer"
                     >
                       {link.label}
                     </a>
@@ -124,8 +124,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-slate-800/80 bg-black/30">
+      {/* Bottom bar (已改為清爽的同色系階梯色，完全移除黑色) */}
+      <div className="border-t border-slate-700/60 bg-[#0f172a]">
         <div className="mx-auto max-w-6xl px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-300">
             © 2026 寶慈生命事業股份有限公司 · 版權所有
