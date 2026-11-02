@@ -229,11 +229,13 @@ export default function Services() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         {/* 區塊一：禮儀服務團隊 */}
         <div className="text-center mb-16 pt-4">
-          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">Professional Team</p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-3 reveal reveal-delay-1">
+          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
+            PROFESSIONAL TEAM
+          </p>
+          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-2 reveal reveal-delay-1">
             禮儀服務團隊
           </h2>
-          <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
+          <div className="gold-divider w-32 mx-auto mt-4 reveal reveal-delay-2" />
           <p className="text-ink-500 text-sm sm:text-base mt-4 mx-auto reveal reveal-delay-3">
             專業團隊全程守護與陪伴，讓您與家人在人生最重要的告別時刻，完成一場充滿愛與祝福的人生畢業典禮。
           </p>
@@ -283,11 +285,13 @@ export default function Services() {
 
         {/* 區塊二：12 大禮儀服務流程圖 */}
         <div className="text-center mb-16">
-          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase reveal">Service Process</p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-3 reveal reveal-delay-1">
+          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
+            SERVICE PROCESS
+          </p>
+          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-2 reveal reveal-delay-1">
             12 大禮儀服務流程
           </h2>
-          <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
+          <div className="gold-divider w-32 mx-auto mt-4 reveal reveal-delay-2" />
           <p className="text-ink-500 text-sm sm:text-base mt-4 mx-auto reveal reveal-delay-3">
             從臨終關懷到擇吉安奉與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
           </p>
