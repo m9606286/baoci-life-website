@@ -25,7 +25,7 @@ const procedureCategories = [
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
-      { name: '填寫讓渡申請 (於客戶服務申請表內)', note: '✓ 必填' },
+      { name: '填寫客戶服務申請表之讓渡申請', note: '✓ 必填' },
       { name: '出讓人雙證件及印章', note: '✓ 必備' },
       { name: '受讓人雙證件及印章', note: '✓ 必備' },
       { name: '繳款證明', note: '手續費 1,000 元' },
