@@ -208,40 +208,34 @@ export default function Procedures() {
             <span>必備與檢附文件清單：</span>
           </h4>
 
-          {/* 文件清單列表（全面統一為深金底白字 bg-gold-600 text-white） */}
+          {/* 文件清單列表（整張項目卡片均為深金底白字） */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 mb-8">
             {currentCategory.items.map((item, idx) => (
               <div
                 key={idx}
-                className="flex items-start justify-between p-3.5 rounded-xl bg-ivory-50/60 border border-ivory-200/70"
+                className="flex items-start justify-between p-4 rounded-xl bg-gold-600 text-white shadow-md gap-3 border border-gold-500"
               >
                 <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-5 h-5 text-gold-600 shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base font-medium text-ink-900">{item.name}</span>
+                  <CheckCircle2 className="w-5 h-5 text-ivory-100 shrink-0 mt-0.5" />
+                  <span className="text-sm sm:text-base font-medium leading-relaxed">{item.name}</span>
                 </div>
-                <span className="text-xs px-2.5 py-1 rounded-md bg-gold-600 text-white font-medium shrink-0 ml-2 shadow-sm">
+                <span className="text-xs px-2.5 py-1 rounded-md bg-white/20 text-white font-medium shrink-0 shadow-sm text-right whitespace-normal max-w-[200px] leading-snug">
                   {item.note}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* 下載專區快捷按鈕（無提示文字，僅保留下載按鈕與深金底白字標籤） */}
-          <div className="bg-ivory-100/80 rounded-2xl p-5 border border-ivory-300/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gold-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-                <Download className="w-5 h-5" />
-              </div>
-              <span className="text-sm font-bold text-ink-900 font-serif-tc">下載寶慈客戶服務申請表</span>
-            </div>
+          {/* 下載按鈕（保留在左側，無「下載」二字） */}
+          <div className="mt-6 flex items-center">
             <a
               href="/document/寶慈客戶服務申請表.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gold-600 hover:bg-gold-700 text-white text-xs sm:text-sm font-medium transition-colors shadow-sm shrink-0"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gold-600 hover:bg-gold-700 text-white text-sm sm:text-base font-medium transition-colors shadow-sm"
             >
-              <span>下載寶慈客戶服務申請表</span>
-              <Download className="w-4 h-4" />
+              <Download className="w-5 h-5" />
+              <span>寶慈客戶服務申請表</span>
             </a>
           </div>
         </div>
