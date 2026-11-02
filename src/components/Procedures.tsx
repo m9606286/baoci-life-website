@@ -278,7 +278,7 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 申辦注意事項（改為與截圖中權利特點一致的 2x2 左右對稱網格排版，支援 hover 變色） */}
+        {/* 申辦注意事項（卡片維持淺色，僅左側勾勾移入時變為深金底白字） */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
           <div className="text-center mb-8">
             <h4 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
@@ -290,14 +290,16 @@ export default function Procedures() {
             {notices.map((notice, idx) => (
               <div
                 key={idx}
-                className="group h-full flex items-start p-5 rounded-2xl bg-ivory-50/60 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3.5"
+                className="group h-full flex items-start p-5 rounded-2xl bg-ivory-50/60 border border-ivory-200 shadow-sm transition-all duration-300 gap-3.5"
               >
-                <CheckCircle2 className="w-5 h-5 text-gold-600 group-hover:text-ivory-100 shrink-0 mt-1 transition-colors" />
+                <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 mt-0.5 transition-colors shadow-sm">
+                  <CheckCircle2 className="w-5 h-5" />
+                </div>
                 <div>
-                  <h5 className="font-serif-tc text-base sm:text-lg font-bold mb-1.5 transition-colors">
+                  <h5 className="font-serif-tc text-base sm:text-lg font-bold mb-1.5 text-ink-900">
                     {notice.title}
                   </h5>
-                  <p className="text-sm sm:text-base text-ink-600 group-hover:text-ivory-100 leading-relaxed text-left transition-colors font-['Microsoft_JhengHei']">
+                  <p className="text-sm sm:text-base text-ink-600 leading-relaxed text-left font-['Microsoft_JhengHei']">
                     {notice.desc}
                   </p>
                 </div>
