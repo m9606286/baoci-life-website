@@ -126,6 +126,21 @@ const procedureCategories = [
   },
 ];
 
+const notices = [
+  {
+    title: '喪葬證明申請',
+    desc: '履約服務完成後如有申請證明之需要，可提出申請喪葬證明。',
+  },
+  {
+    title: '委託代辦規範',
+    desc: '新購、客戶資料變更及遺失補發手續，須由本人親自申辦；繼承手續須由全體繼承人共同辦理，不得委託代理人代辦。其餘項目如委由代理人辦理，須檢附授權委託書正本及委託人、受託人雙方有效身分證件。',
+  },
+  {
+    title: '款項與手續費',
+    desc: '轉讓手續需繳納手續費新台幣 1,000 元整；轉讓件與履約件不適用分期付款。',
+  },
+];
+
 export default function Procedures() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
@@ -263,25 +278,40 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 申辦注意事項與備註說明 */}
-        <div className="bg-white/80 border border-ivory-200 rounded-3xl p-6 sm:p-8 mb-16 shadow-sm reveal">
-          <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-4">
-            <span>申辦注意事項與備註說明</span>
+        {/* 申辦注意事項（改為三張獨立卡片並支援 hover 互動與放大字體） */}
+        <div className="mb-16 reveal">
+          <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-6 text-center">
+            <span>申辦注意事項</span>
           </h4>
-          <ol className="space-y-3 text-sm text-ink-700 list-decimal pl-5">
-            <li><strong>喪葬證明申請</strong>：履約服務完成後如有申請證明之需要，可提出申請喪葬證明。</li>
-            <li><strong>委託代辦規範</strong>：新購、客戶資料變更及遺失補發手續，須由本人親自申辦；繼承手續須由全體繼承人共同辦理，不得委託代理人代辦。其餘項目如委由代理人辦理，須檢附授權委託書正本及委託人、受託人雙方有效身分證件。</li>
-            <li><strong>款項與手續費</strong>：轉讓手續需繳納手續費新台幣 1,000 元整；轉讓件與履約件不適用分期付款。</li>
-          </ol>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {notices.map((notice, idx) => (
+              <div
+                key={idx}
+                className="group h-full flex flex-col justify-between p-6 rounded-3xl bg-white hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300"
+              >
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-gold-600 group-hover:text-ivory-200 mb-2 block transition-colors">
+                    NOTICE 0{idx + 1}
+                  </span>
+                  <h5 className="font-serif-tc text-base sm:text-lg font-bold mb-3 transition-colors">
+                    {notice.title}
+                  </h5>
+                  <p className="text-sm sm:text-base text-ink-600 group-hover:text-ivory-100 leading-relaxed transition-colors font-['Microsoft_JhengHei']">
+                    {notice.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* 底部諮詢引導 */}
+        {/* 底部諮詢引導（按鈕改為平時淺色、移過去變深金底白字） */}
         <div className="text-center reveal">
           <p className="text-ink-600 text-sm mb-4">手續申辦上有任何疑問，或需要專人協助核對文件嗎？</p>
           <a
             href="/contact"
             onClick={handleContactClick}
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-900 hover:bg-gold-600 text-ivory-50 font-medium text-sm sm:text-base transition-all shadow-md cursor-pointer"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm cursor-pointer"
           >
             聯絡我們與專人諮詢
           </a>
