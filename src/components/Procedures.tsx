@@ -239,7 +239,7 @@ export default function Procedures() {
             <span>必備與檢附文件清單：</span>
           </h4>
 
-          {/* 文件清單列表（改回雙欄網格排版，維持移入時外框金線、勾勾變深金底白字） */}
+          {/* 文件清單列表（雙欄網格排版，右側必備標籤固定不變色） */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {currentCategory.items.map((item: any, idx: number) => (
               <div
@@ -253,11 +253,11 @@ export default function Procedures() {
                   <span className="text-sm sm:text-base font-medium text-ink-900 leading-snug">{item.name}</span>
                 </div>
                 <div className="flex flex-col items-end shrink-0 text-right">
-                  <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 group-hover:bg-white/20 text-gold-900 group-hover:text-white font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug transition-colors">
+                  <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
                     {item.note}
                   </span>
                   {item.subNote && (
-                    <span className="text-[11px] mt-1 text-gold-700 group-hover:text-ivory-200 font-medium whitespace-normal max-w-[180px] leading-tight transition-colors">
+                    <span className="text-[11px] mt-1 text-gold-700 font-medium whitespace-normal max-w-[180px] leading-tight">
                       {item.subNote}
                     </span>
                   )}
