@@ -1,7 +1,7 @@
 import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
 import { Shield, Clock, TrendingUp, HeartHandshake, CheckCircle2 } from 'lucide-react';
-import familyImage from '/core.png'; // 或您專用的生前契約情境圖
+import familyImage from '/core.jpg'; // 或您專用的生前契約情境圖
 
 // 上方 4 大核心保障
 const coreHighlights = [
