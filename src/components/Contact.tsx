@@ -89,18 +89,18 @@ export default function Contact() {
 
   if (submitted) {
     return (
-      <section className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative -mt-6 lg:-mt-10 font-sans">
+      <section className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative -mt-6 lg:-mt-10">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <div className="bg-white/90 border border-gold-400/40 rounded-3xl p-10 shadow-xl backdrop-blur-md">
             <CheckCircle2 className="w-16 h-16 text-gold-600 mx-auto mb-4" />
             <h3 className="text-2xl font-serif-tc font-bold text-ink-950 mb-2">感謝您的填寫</h3>
-            <p className="text-slate-700 font-bold mb-6">我們已收到您的諮詢需求，將會盡快由專人與您聯繫。</p>
+            <p className="text-slate-700 font-medium mb-6">我們已收到您的諮詢需求，將會盡快由專人與您聯繫。</p>
             <button
               onClick={() => {
                 setSubmitted(false);
                 setFormData({ name: '', phone: '', email: '', location: '', service: '', message: '' });
               }}
-              className="bg-ink-900 text-white px-8 py-3.5 rounded-full text-sm font-bold hover:bg-gold-600 transition-all shadow-md cursor-pointer"
+              className="bg-ink-900 text-white px-8 py-3.5 rounded-full text-sm font-medium hover:bg-gold-600 transition-all shadow-md cursor-pointer"
             >
               填寫其他諮詢
             </button>
@@ -111,12 +111,12 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative -mt-6 lg:-mt-10 overflow-hidden font-sans">
+    <section id="contact" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative -mt-6 lg:-mt-10 overflow-hidden">
       <div ref={ref} className="max-w-4xl mx-auto px-6 relative z-10">
         
-        {/* 標題區 */}
+        {/* 標題區：CONTACT US 改為 font-serif-tc 字型 */}
         <div className="text-center mb-10">
-          <p className="text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
+          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
             CONTACT US
           </p>
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
@@ -125,13 +125,13 @@ export default function Contact() {
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
         </div>
 
-        {/* 頂部切換頁籤 */}
+        {/* 頂部切換頁籤：字型統一為 font-serif-tc */}
         <div className="flex justify-center mb-12 relative z-30 reveal reveal-delay-3">
           <div className="inline-flex rounded-2xl bg-white/90 p-1.5 border border-gold-400/40 shadow-lg backdrop-blur-md">
             <button
               type="button"
               onClick={() => setActiveTab('headquarter')}
-              className={`flex items-center gap-2 px-5 sm:px-7 py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-200 cursor-pointer ${
+              className={`flex items-center gap-2 px-5 sm:px-7 py-3 rounded-xl font-serif-tc font-bold text-sm sm:text-base transition-all duration-200 cursor-pointer ${
                 activeTab === 'headquarter'
                   ? 'bg-gradient-to-r from-gold-600 to-gold-500 text-white shadow-md'
                   : 'text-slate-800 hover:text-gold-700 hover:bg-gold-50/60'
@@ -144,7 +144,7 @@ export default function Contact() {
             <button
               type="button"
               onClick={() => setActiveTab('channel')}
-              className={`flex items-center gap-2 px-5 sm:px-7 py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-200 cursor-pointer ${
+              className={`flex items-center gap-2 px-5 sm:px-7 py-3 rounded-xl font-serif-tc font-bold text-sm sm:text-base transition-all duration-200 cursor-pointer ${
                 activeTab === 'channel'
                   ? 'bg-gradient-to-r from-gold-600 to-gold-500 text-white shadow-md'
                   : 'text-slate-800 hover:text-gold-700 hover:bg-gold-50/60'
@@ -157,7 +157,7 @@ export default function Contact() {
             <button
               type="button"
               onClick={() => setActiveTab('form')}
-              className={`flex items-center gap-2 px-5 sm:px-7 py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-200 cursor-pointer ${
+              className={`flex items-center gap-2 px-5 sm:px-7 py-3 rounded-xl font-serif-tc font-bold text-sm sm:text-base transition-all duration-200 cursor-pointer ${
                 activeTab === 'form'
                   ? 'bg-gradient-to-r from-gold-600 to-gold-500 text-white shadow-md'
                   : 'text-slate-800 hover:text-gold-700 hover:bg-gold-50/60'
@@ -169,7 +169,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* 總公司卡片 (強效 hover 變為深金底白字) */}
+        {/* 總公司卡片 (電話/地址等取消粗體) */}
         {activeTab === 'headquarter' && (
           <div className="max-w-2xl mx-auto mb-12 transition-all duration-300">
             <div className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl overflow-hidden">
@@ -182,7 +182,7 @@ export default function Contact() {
                 </h3>
               </div>
 
-              <div className="space-y-4 text-sm sm:text-base text-slate-800 font-bold">
+              <div className="space-y-4 text-sm sm:text-base text-slate-700 font-normal">
                 <div className="flex items-start gap-3">
                   <Phone className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
                   <div className="flex flex-wrap gap-x-6 gap-y-1">
@@ -220,7 +220,7 @@ export default function Contact() {
           </div>
         )}
 
-        {/* 銷售通路卡片 (強效 hover 變為深金底白字) */}
+        {/* 銷售通路卡片 (電話/地址等取消粗體) */}
         {activeTab === 'channel' && (
           <div className="max-w-2xl mx-auto mb-12 space-y-5 transition-all duration-300">
             {salesChannels.map((channel, idx) => (
@@ -237,7 +237,7 @@ export default function Contact() {
                   </h3>
                 </div>
 
-                <div className="space-y-4 text-sm sm:text-base text-slate-800 font-bold">
+                <div className="space-y-4 text-sm sm:text-base text-slate-700 font-normal">
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
                     <a
@@ -264,11 +264,11 @@ export default function Contact() {
           </div>
         )}
 
-        {/* 線上諮詢表單區塊 (填寫資料改為一般字重 font-normal) */}
+        {/* 線上諮詢表單區塊 (表單標題字體放大至 text-base) */}
         {activeTab === 'form' && (
           <div className="bg-white/90 backdrop-blur-md border border-gold-400/35 rounded-3xl p-6 sm:p-10 shadow-xl transition-all duration-300">
             <div className="text-center mb-8 space-y-2">
-              <p className="text-slate-800 text-sm sm:text-base font-bold">
+              <p className="text-slate-800 text-sm sm:text-base font-medium">
                 填寫下方表單，將有專人為您提供尊榮、溫暖的諮詢服務。
               </p>
               <p className="text-gold-700 font-bold text-sm sm:text-base">
@@ -279,9 +279,9 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 
-                {/* 姓名 */}
+                {/* 姓名 (標題放大至 text-base) */}
                 <div className="group">
-                  <label className="flex items-center gap-2 text-sm font-bold text-ink-900 mb-2">
+                  <label className="flex items-center gap-2 text-base font-bold text-ink-900 mb-2">
                     <div className="w-7 h-7 rounded-lg bg-ivory-200 text-gold-600 group-hover:!bg-gold-600 group-hover:!text-white flex items-center justify-center transition-colors duration-300 shadow-xs">
                       <User className="w-4 h-4" />
                     </div>
@@ -293,13 +293,13 @@ export default function Contact() {
                     placeholder="請輸入姓名"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900 shadow-sm font-normal"
+                    className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900 text-base shadow-sm font-normal"
                   />
                 </div>
 
-                {/* 電話 */}
+                {/* 電話 (標題放大至 text-base) */}
                 <div className="group">
-                  <label className="flex items-center gap-2 text-sm font-bold text-ink-900 mb-2">
+                  <label className="flex items-center gap-2 text-base font-bold text-ink-900 mb-2">
                     <div className="w-7 h-7 rounded-lg bg-ivory-200 text-gold-600 group-hover:!bg-gold-600 group-hover:!text-white flex items-center justify-center transition-colors duration-300 shadow-xs">
                       <Phone className="w-4 h-4" />
                     </div>
@@ -311,16 +311,16 @@ export default function Contact() {
                     placeholder="請輸入電話號碼"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900 shadow-sm font-normal"
+                    className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900 text-base shadow-sm font-normal"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 
-                {/* 電子郵件 */}
+                {/* 電子郵件 (標題放大至 text-base) */}
                 <div className="group">
-                  <label className="flex items-center gap-2 text-sm font-bold text-ink-900 mb-2">
+                  <label className="flex items-center gap-2 text-base font-bold text-ink-900 mb-2">
                     <div className="w-7 h-7 rounded-lg bg-ivory-200 text-gold-600 group-hover:!bg-gold-600 group-hover:!text-white flex items-center justify-center transition-colors duration-300 shadow-xs">
                       <Mail className="w-4 h-4" />
                     </div>
@@ -331,13 +331,13 @@ export default function Contact() {
                     placeholder="example@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900 shadow-sm font-normal"
+                    className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all text-ink-900 text-base shadow-sm font-normal"
                   />
                 </div>
 
-                {/* 居住地點 */}
+                {/* 居住地點 (標題放大至 text-base) */}
                 <div className="group">
-                  <label className="flex items-center gap-2 text-sm font-bold text-ink-900 mb-2">
+                  <label className="flex items-center gap-2 text-base font-bold text-ink-900 mb-2">
                     <div className="w-7 h-7 rounded-lg bg-ivory-200 text-gold-600 group-hover:!bg-gold-600 group-hover:!text-white flex items-center justify-center transition-colors duration-300 shadow-xs">
                       <MapPin className="w-4 h-4" />
                     </div>
@@ -348,7 +348,7 @@ export default function Contact() {
                       required
                       value={formData.location}
                       onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                      className={`w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all appearance-none cursor-pointer shadow-sm font-normal ${
+                      className={`w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all appearance-none cursor-pointer text-base shadow-sm font-normal ${
                         !formData.location ? 'text-stone-400' : 'text-ink-900'
                       }`}
                     >
@@ -366,9 +366,9 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* 需求服務類型 */}
+              {/* 需求服務類型 (標題放大至 text-base) */}
               <div className="group">
-                <label className="flex items-center gap-2 text-sm font-bold text-ink-900 mb-2">
+                <label className="flex items-center gap-2 text-base font-bold text-ink-900 mb-2">
                   <div className="w-7 h-7 rounded-lg bg-ivory-200 text-gold-600 group-hover:!bg-gold-600 group-hover:!text-white flex items-center justify-center transition-colors duration-300 shadow-xs">
                     <HelpCircle className="w-4 h-4" />
                   </div>
@@ -378,7 +378,7 @@ export default function Contact() {
                   required
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className={`w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all appearance-none cursor-pointer shadow-sm font-normal ${
+                  className={`w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all appearance-none cursor-pointer text-base shadow-sm font-normal ${
                     !formData.service ? 'text-stone-400' : 'text-ink-900'
                   }`}
                 >
@@ -393,9 +393,9 @@ export default function Contact() {
                 </select>
               </div>
 
-              {/* 留言內容 */}
+              {/* 留言內容 (標題放大至 text-base) */}
               <div className="group">
-                <label className="flex items-center gap-2 text-sm font-bold text-ink-900 mb-2">
+                <label className="flex items-center gap-2 text-base font-bold text-ink-900 mb-2">
                   <div className="w-7 h-7 rounded-lg bg-ivory-200 text-gold-600 group-hover:!bg-gold-600 group-hover:!text-white flex items-center justify-center transition-colors duration-300 shadow-xs">
                     <MessageSquare className="w-4 h-4" />
                   </div>
@@ -406,7 +406,7 @@ export default function Contact() {
                   placeholder="請簡述您的需求或想詢問的問題..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all resize-none text-ink-900 shadow-sm font-normal"
+                  className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-gold-500 outline-none transition-all resize-none text-ink-900 text-base shadow-sm font-normal"
                 />
               </div>
 
