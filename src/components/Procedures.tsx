@@ -239,23 +239,25 @@ export default function Procedures() {
             <span>必備與檢附文件清單：</span>
           </h4>
 
-          {/* 文件清單列表 */}
+          {/* 文件清單列表（改回雙欄網格排版，維持移入時外框金線、勾勾變深金底白字） */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {currentCategory.items.map((item: any, idx: number) => (
               <div
                 key={idx}
-                className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/60 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
+                className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
               >
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-5 h-5 text-gold-600 group-hover:text-ivory-100 shrink-0 transition-colors" />
-                  <span className="text-sm sm:text-base font-medium leading-snug">{item.name}</span>
+                  <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <span className="text-sm sm:text-base font-medium text-ink-900 leading-snug">{item.name}</span>
                 </div>
                 <div className="flex flex-col items-end shrink-0 text-right">
-                  <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 group-hover:bg-white/20 text-gold-900 group-hover:text-white font-medium shadow-sm whitespace-normal max-w-[200px] leading-snug transition-colors">
+                  <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 group-hover:bg-white/20 text-gold-900 group-hover:text-white font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug transition-colors">
                     {item.note}
                   </span>
                   {item.subNote && (
-                    <span className="text-[11px] mt-1 text-gold-700 group-hover:text-ivory-200 font-medium whitespace-normal max-w-[200px] leading-tight transition-colors">
+                    <span className="text-[11px] mt-1 text-gold-700 group-hover:text-ivory-200 font-medium whitespace-normal max-w-[180px] leading-tight transition-colors">
                       {item.subNote}
                     </span>
                   )}
@@ -278,7 +280,7 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 申辦注意事項（縮短標題與內文間距，使用 flex-col sm:flex-row 與緊湊間距） */}
+        {/* 申辦注意事項（單欄整列顯示） */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
           <div className="text-center mb-8">
             <h4 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
