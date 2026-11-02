@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReveal } from '@/hooks/useReveal';
-import { FileText, Download, CheckCircle2, Clock, ChevronRight } from 'lucide-react';
+import { FileText, Download, CheckCircle2, Clock } from 'lucide-react';
 
 // 手續服務項目清單與對應內容
 const procedureCategories = [
@@ -29,8 +29,7 @@ const procedureCategories = [
       { name: '出讓人雙證件及印章', note: '✓ 必備' },
       { name: '受讓人雙證件及印章', note: '✓ 必備' },
       { name: '繳款證明', note: '手續費 1,000 元' },
-      { name: 'ACH 自動扣款申請單', note: '不可分期' },
-      { name: '填寫客戶服務申請表之附件一、委託書及委託人身分證明文件', note: '若有受託需檢附' },
+      { name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', note: '若有受託需檢附' },
     ],
   },
   {
@@ -41,12 +40,12 @@ const procedureCategories = [
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
-      { name: '繼承切結書 (附件三)', note: '✓ 必備' },
+      { name: '客戶服務申請表之【附件三】繼承殯葬商品所有權切結書', note: '✓ 必備' },
       { name: '填寫讓渡申請 (於客戶服務申請表內)', note: '✓ 必填' },
       { name: '繼承人雙證件及印章', note: '✓ 必備' },
       { name: 'ACH 自動扣款申請單', note: '若繼續分期需檢附' },
       { name: '死亡證明或除戶證明', note: '✓ 必備' },
-      { name: '3 個月內現戶現況全戶戶籍謄本', note: '✓ 必備 (非法定繼承人需提具官方證明)' },
+      { name: '3 個月內現戶現況全戶戶籍謄本', note: '✓ 必備 (非法定繼承人另須檢附足以證明繼承或權利取得資格之相關證明文件)' },
     ],
   },
   {
@@ -57,14 +56,13 @@ const procedureCategories = [
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '持有人雙證件及印章', note: '✓ 必備' },
-      { name: '繳款證明', note: '餘額或更添款項' },
-      { name: 'ACH 自動扣款申請單', note: '不可分期' },
+      { name: '繳款證明', note: '契約剩餘價款與更添款項' },
       { name: '指定使用申請書 (契約書中附件)', note: '✓ 必備' },
       { name: '遺體接運切結書 (契約書中附件)', note: '✓ 必備' },
       { name: '死亡證明或除戶證明', note: '✓ 必備' },
       { name: '火化許可', note: '✓ 必備' },
       { name: '殯儀服務完成確認書 (契約書中附件)', note: '✓ 必備' },
-      { name: '填寫客戶服務申請表之附件一、委託書及委託人身分證明文件', note: '若有受託需檢附' },
+      { name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', note: '若有受託需檢附' },
     ],
   },
   {
@@ -75,9 +73,9 @@ const procedureCategories = [
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
-      { name: '填寫解約申請書 (附件四)', note: '✓ 必填' },
+      { name: '填寫客戶服務申請表之【附件四】生前殯葬服務契約解約申請書', note: '✓ 必填' },
       { name: '持有人雙證件及印章', note: '✓ 必備' },
-      { name: '填寫客戶服務申請表之附件一、委託書及委託人身分證明文件', note: '若有受託需檢附' },
+      { name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', note: '若有受託需檢附' },
     ],
   },
   {
@@ -88,11 +86,11 @@ const procedureCategories = [
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
-      { name: '填寫緩繳復效申請 (於客戶服務申請表內)', note: '✓ 必填' },
+      { name: '填寫客戶服務申請表之緩繳復效申請', note: '✓ 必填' },
       { name: '持有人雙證件及印章', note: '✓ 必備' },
-      { name: '繳款證明', note: '利息與首期款項' },
+      { name: '繳款證明', note: '滯納金與復效首期款項' },
       { name: 'ACH 自動扣款申請單', note: '✓ 必填' },
-      { name: '填寫客戶服務申請表之附件一、委託書及委託人身分證明文件', note: '若有受託需檢附' },
+      { name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', note: '若有受託需檢附' },
     ],
   },
   {
@@ -104,10 +102,10 @@ const procedureCategories = [
       { name: '客戶基本資料表', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
       { name: '契約書正本', note: '辦理更名時需檢附' },
-      { name: '遺失切結書 (附件二)', note: '辦理遺失補發時需檢附' },
+      { name: '客戶服務申請表之【附件二】遺失切結書(補發申請書)', note: '辦理遺失補發時需檢附' },
       { name: '持有人雙證件及印章', note: '✓ 必備' },
       { name: '3 個月內現戶現況全戶戶籍謄本', note: '辦理更名須出具' },
-      { name: '填寫客戶服務申請表之附件一、委託書及委託人身分證明文件', note: '若有受託需檢附 (註：遺失補發不可委託)' },
+      { name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', note: '若有受託需檢附 (註：遺失補發不可委託)' },
     ],
   },
 ];
@@ -210,7 +208,7 @@ export default function Procedures() {
             <span>必備與檢附文件清單：</span>
           </h4>
 
-          {/* 文件清單列表（標籤全面改為深金底白字 bg-gold-600 text-white） */}
+          {/* 文件清單列表（全面統一為深金底白字 bg-gold-600 text-white） */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 mb-8">
             {currentCategory.items.map((item, idx) => (
               <div
@@ -228,56 +226,34 @@ export default function Procedures() {
             ))}
           </div>
 
-          {/* 下載專區快捷按鈕 */}
+          {/* 下載專區快捷按鈕（無提示文字，僅保留下載按鈕與深金底白字標籤） */}
           <div className="bg-ivory-100/80 rounded-2xl p-5 border border-ivory-300/80 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gold-600 text-white flex items-center justify-center shrink-0 shadow-sm">
                 <Download className="w-5 h-5" />
               </div>
-              <div>
-                <p className="text-sm font-bold text-ink-900">需要下載相關申請表格嗎？</p>
-                <p className="text-xs text-ink-600">請點擊右側下載「寶慈客戶服務申請表」。</p>
-              </div>
+              <span className="text-sm font-bold text-ink-900 font-serif-tc">下載寶慈客戶服務申請表</span>
             </div>
             <a
               href="/document/寶慈客戶服務申請表.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ink-900 hover:bg-gold-600 text-white text-xs sm:text-sm font-medium transition-colors shadow-sm shrink-0"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gold-600 hover:bg-gold-700 text-white text-xs sm:text-sm font-medium transition-colors shadow-sm shrink-0"
             >
-              <span>下載寶慈客戶服務申請表 (PDF)</span>
+              <span>下載寶慈客戶服務申請表</span>
               <Download className="w-4 h-4" />
             </a>
           </div>
         </div>
 
-        {/* 常用文件下載區塊（僅保留客戶服務申請表下載，檔名對應 寶慈客戶服務申請表.pdf） */}
-        <div className="max-w-xl mx-auto mb-16 reveal">
-          <a
-            href="/document/寶慈客戶服務申請表.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between p-5 rounded-2xl bg-white border border-ivory-200 hover:border-gold-400 shadow-sm transition-all group"
-          >
-            <div className="flex items-center gap-3">
-              <FileText className="w-6 h-6 text-gold-600" />
-              <span className="font-serif-tc font-bold text-ink-900 text-base">寶慈客戶服務申請表</span>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-gold-700 font-medium group-hover:underline">
-              <span>下載 PDF</span>
-              <ChevronRight className="w-4 h-4" />
-            </div>
-          </a>
-        </div>
-
-        {/* 申辦注意事項與備註說明（已移除 📌） */}
+        {/* 申辦注意事項與備註說明 */}
         <div className="bg-white/80 border border-ivory-200 rounded-3xl p-6 sm:p-8 mb-16 shadow-sm reveal">
-          <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-4 flex items-center gap-2">
+          <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-4">
             <span>申辦注意事項與備註說明</span>
           </h4>
           <ol className="space-y-3 text-sm text-ink-700 list-decimal pl-5">
             <li><strong>喪葬證明申請</strong>：履約服務完成後如有申請證明之需要，可提出申請喪葬證明。</li>
-            <li><strong>委託代辦規範</strong>：新購、繼承及客資變更之遺失補發手續<strong>不可委託</strong>辦理，需由本人或全體繼承人親自申辦；其餘項目若由代理人辦理，須出具授權委託書正本及雙方有效身分證件。</li>
+            <li><strong>委託代辦規範</strong>：新購、客戶資料變更及遺失補發手續，須由本人親自申辦；繼承手續須由全體繼承人共同辦理，不得委託代理人代辦。其餘項目如委由代理人辦理，須檢附授權委託書正本及委託人、受託人雙方有效身分證件。</li>
             <li><strong>款項與手續費</strong>：轉讓手續需繳納手續費新台幣 1,000 元整；轉讓件與履約件不適用分期付款。</li>
           </ol>
         </div>
