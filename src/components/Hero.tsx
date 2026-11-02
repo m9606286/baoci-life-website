@@ -4,32 +4,35 @@ import heroImage from '/hero.png';
 
 export default function Hero() {
   return (
-    <section id="top" className="relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden">
-      {/* Background image with slow zoom */}
-      <div className="absolute inset-0">
+    <section id="top" className="group/hero relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden">
+      {/* Background image with bright overlay and hover zoom */}
+      <div className="absolute inset-0 overflow-hidden">
         <img
           src={heroImage}
           alt="家人彼此陪伴"
-          className="w-full h-full object-cover animate-slow-zoom"
+          className="w-full h-full object-cover animate-slow-zoom group-hover/hero:scale-105 transition-transform duration-1000 ease-out"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/20 via-ink-900/15 to-ink-900/35" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/30 to-transparent" />
+        {/* 降低遮罩深度，使圖片更明亮清晰 */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
       </div>
 
       {/* Content */}
       <div className="relative h-full mx-auto max-w-8xl px-6 flex flex-col justify-center">
         <div className="max-w-3xl">
+          {/* 愛心圖示與 Apex BaoCi-Life 改為純白 */}
           <div className="flex items-center gap-3 mb-6 animate-fade-in" style={{ animationDelay: '0.2s', opacity: 0 }}>
-            <Heart className="w-5 h-5 text-gold-400 drop-shadow" />
-            <span className="text-gold-400 text-sm tracking-[0.3em] uppercase font-medium drop-shadow">Apex BaoCi-Life</span>
+            <Heart className="w-5 h-5 text-white drop-shadow" />
+            <span className="text-white text-sm tracking-[0.3em] uppercase font-medium drop-shadow">Apex BaoCi-Life</span>
           </div>
 
+          {/* 讓家人安心改為純白 */}
           <h1
             className="font-serif-tc text-4xl md:text-5xl lg:text-6xl text-white leading-[1.2] font-bold animate-fade-up drop-shadow-md"
             style={{ animationDelay: '0.4s', opacity: 0 }}
           >
             用愛心規劃
-            <span className="block gold-text-gradient mt-2 drop-shadow">讓家人安心</span>
+            <span className="block text-white mt-2 drop-shadow">讓家人安心</span>
           </h1>
 
           <p
@@ -45,21 +48,21 @@ export default function Hero() {
             className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up"
             style={{ animationDelay: '1s', opacity: 0 }}
           >
-            {/* 瞭解生前契約：改為透明底、白框與毛玻璃質感 */}
+            {/* 瞭解生前契約：圖案小圖改為白色 text-white */}
             <Link
               to="/preneed"
               className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
             >
               <span>瞭解生前契約</span>
-              <ChevronDown className="w-4 h-4 ml-2 text-gold-300 group-hover:translate-y-0.5 transition-transform" />
+              <ChevronDown className="w-4 h-4 ml-2 text-white group-hover:translate-y-0.5 transition-transform" />
             </Link>
 
-            {/* 聯絡我們 */}
+            {/* 聯絡我們：圖案小圖改為白色 text-white */}
             <Link
               to="/contact"
               className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
             >
-              <Phone className="w-4 h-4 mr-2 text-gold-300 group-hover:scale-110 transition-transform" />
+              <Phone className="w-4 h-4 mr-2 text-white group-hover:scale-110 transition-transform" />
               <span>聯絡我們</span>
             </Link>
           </div>
@@ -73,7 +76,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-stone-50 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory-100 to-transparent" />
     </section>
   );
 }
