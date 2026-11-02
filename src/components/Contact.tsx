@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useReveal } from '@/hooks/useReveal';
-import { MapPin, Send, CheckCircle2, Building2, Phone, Mail, Store, FileEdit, ExternalLink } from 'lucide-react';
+import { MapPin, Send, CheckCircle2, Building2, Phone, Mail, Building, FileEdit, ExternalLink } from 'lucide-react';
 
 const taiwanLocations = [
   '基隆市', '台北市', '新北市', '桃園市', '新竹市', '新竹縣',
@@ -33,8 +33,7 @@ export default function Contact() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
-  // 切換據點/表單 Tab: 'headquarter' | 'channel' | 'form'
-  const [activeTab, setActiveTab] = useState<'headquarter' | 'channel' | 'form'>('channel');
+  const [activeTab, setActiveTab] = useState<'headquarter' | 'channel' | 'form'>('form');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -125,7 +124,7 @@ export default function Contact() {
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4" />
         </div>
 
-        {/* 頂部切換頁籤：總公司 vs 銷售通路 vs 表單填寫 (加上 relative z-30 確保完全可點擊) */}
+        {/* 頂部切換頁籤：總公司 vs 銷售通路 vs 表單填寫 */}
         <div className="flex justify-center mb-12 relative z-30">
           <div className="inline-flex rounded-2xl bg-white/90 p-1.5 border border-gold-400/40 shadow-lg backdrop-blur-md">
             <button
@@ -150,7 +149,7 @@ export default function Contact() {
                   : 'text-slate-700 hover:text-gold-700 hover:bg-gold-50/60'
               }`}
             >
-              <Store className="w-4 h-4 pointer-events-none" />
+              <Building className="w-4 h-4 pointer-events-none" />
               <span className="pointer-events-none">銷售通路</span>
             </button>
 
@@ -169,62 +168,57 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* 據點卡片 (總公司 / 銷售通路) */}
+        {/* 總公司卡片 */}
         {activeTab === 'headquarter' && (
           <div className="max-w-2xl mx-auto mb-12 animate-fade-in">
             <div className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-500 hover:shadow-2xl overflow-hidden">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-ivory-100 to-gold-100/70 text-gold-600 group-hover:bg-gold-500 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm shrink-0">
+                {/* 小圖示：移入卡片時變為深金底白線條 */}
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-ivory-100 to-gold-100/70 text-gold-600 group-hover:bg-gold-600 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm shrink-0">
                   <Building2 className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 <h3 className="font-serif-tc text-2xl font-bold text-ink-950">
-                  寶慈生命事業 (總公司)
+                  寶慈生命事業股份有限公司
                 </h3>
               </div>
 
               <div className="space-y-4 text-sm sm:text-base text-slate-700">
+                {/* 電話群組：整行懸停觸發連結 */}
                 <div className="flex items-start gap-3">
                   <Phone className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
-                  <div className="flex flex-wrap gap-x-4 gap-y-1">
-                    <span>
-                      電話：
-                      <a href="tel:062678859" className="hover:text-gold-700 hover:underline font-mono font-medium transition-colors">
-                        (06) 2678859
-                      </a>
-                    </span>
-                    <span>
-                      24 小時服務專線：
-                      <a href="tel:0800600603" className="hover:text-gold-700 hover:underline font-bold font-mono transition-colors">
-                        0800-600-603
-                      </a>
-                    </span>
+                  <div className="flex flex-wrap gap-x-6 gap-y-1">
+                    <a href="tel:062678859" className="hover:text-gold-700 transition-colors group/tel">
+                      電話：<span className="font-mono font-medium group-hover/tel:underline">(06) 2678859</span>
+                    </a>
+                    <a href="tel:0800600603" className="hover:text-gold-700 transition-colors group/hotline">
+                      24 小時服務專線：<span className="font-bold font-mono group-hover/hotline:underline">0800-600-603</span>
+                    </a>
                   </div>
                 </div>
 
+                {/* 地址：整行懸停觸發連結與底線 */}
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
-                  <span>
-                    地址：
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=台北市內湖區新湖二路329號5樓"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gold-700 hover:text-gold-500 font-semibold underline underline-offset-4 transition-colors inline-flex items-center gap-1.5"
-                    >
-                      <span>台北市內湖區新湖二路329號5樓</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  </span>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=台北市內湖區新湖二路329號5樓"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gold-700 transition-colors group/address inline-flex items-center gap-1.5"
+                  >
+                    <span>地址：</span>
+                    <span className="font-semibold group-hover/address:underline underline-offset-4">
+                      台北市內湖區新湖二路329號5樓
+                    </span>
+                    <ExternalLink className="w-3.5 h-3.5 opacity-70 group-hover/address:opacity-100" />
+                  </a>
                 </div>
 
+                {/* Email：整行懸停觸發連結 */}
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 shrink-0 text-gold-600" />
-                  <span>
-                    Email：
-                    <a href="mailto:service@apexbaoci.com.tw" className="hover:text-gold-700 hover:underline transition-colors font-medium">
-                      service@apexbaoci.com.tw
-                    </a>
-                  </span>
+                  <a href="mailto:service@apexbaoci.com.tw" className="hover:text-gold-700 transition-colors group/mail">
+                    Email：<span className="font-medium group-hover/mail:underline">service@apexbaoci.com.tw</span>
+                  </a>
                 </div>
               </div>
 
@@ -233,6 +227,7 @@ export default function Contact() {
           </div>
         )}
 
+        {/* 銷售通路卡片 */}
         {activeTab === 'channel' && (
           <div className="max-w-2xl mx-auto mb-12 space-y-5 animate-fade-in">
             {salesChannels.map((channel, idx) => (
@@ -241,8 +236,9 @@ export default function Contact() {
                 className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-500 hover:shadow-2xl overflow-hidden"
               >
                 <div className="flex items-center gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-ivory-100 to-gold-100/70 text-gold-600 group-hover:bg-gold-500 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm shrink-0">
-                    <Store className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
+                  {/* 小圖示：使用高質感 Building 並且移入時變為深金底白線條 */}
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-ivory-100 to-gold-100/70 text-gold-600 group-hover:bg-gold-600 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm shrink-0">
+                    <Building className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
                   </div>
                   <h3 className="font-serif-tc text-2xl font-bold text-ink-950">
                     {channel.name}
@@ -250,30 +246,29 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-4 text-sm sm:text-base text-slate-700">
+                  {/* 地址：整行懸停觸發地圖連結與底線 */}
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
-                    <span>
-                      地址：
-                      <a
-                        href={channel.mapUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gold-700 hover:text-gold-500 font-semibold underline underline-offset-4 transition-colors inline-flex items-center gap-1.5"
-                      >
-                        <span>{channel.address}</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    </span>
+                    <a
+                      href={channel.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-gold-700 transition-colors group/address inline-flex items-center gap-1.5"
+                    >
+                      <span>地址：</span>
+                      <span className="font-semibold group-hover/address:underline underline-offset-4">
+                        {channel.address}
+                      </span>
+                      <ExternalLink className="w-3.5 h-3.5 opacity-70 group-hover/address:opacity-100" />
+                    </a>
                   </div>
 
+                  {/* 電話：整行懸停觸發撥號連結 */}
                   <div className="flex items-center gap-3">
                     <Phone className="w-5 h-5 shrink-0 text-gold-600" />
-                    <span>
-                      電話：
-                      <a href={`tel:${channel.phoneTel}`} className="hover:text-gold-700 hover:underline font-mono font-medium transition-colors">
-                        {channel.phone}
-                      </a>
-                    </span>
+                    <a href={`tel:${channel.phoneTel}`} className="hover:text-gold-700 transition-colors group/tel">
+                      電話：<span className="font-mono font-medium group-hover/tel:underline">{channel.phone}</span>
+                    </a>
                   </div>
                 </div>
 
@@ -283,7 +278,7 @@ export default function Contact() {
           </div>
         )}
 
-        {/* 諮詢表單區塊 (當選擇線上諮詢表單時展示) */}
+        {/* 線上諮詢表單區塊 */}
         {activeTab === 'form' && (
           <div className="bg-white/90 backdrop-blur-md border border-gold-400/35 rounded-3xl p-6 sm:p-10 shadow-xl animate-fade-in">
             <div className="text-center mb-8 space-y-2">
@@ -297,7 +292,6 @@ export default function Contact() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {/* 姓名 */}
                 <div>
                   <label className="block text-sm font-medium text-ink-900 mb-2">您的姓名</label>
                   <input
@@ -310,7 +304,6 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* 電話 */}
                 <div>
                   <label className="block text-sm font-medium text-ink-900 mb-2">聯絡電話</label>
                   <input
@@ -325,7 +318,6 @@ export default function Contact() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {/* 電子郵件 (選填) */}
                 <div>
                   <label className="block text-sm font-medium text-ink-900 mb-2">
                     電子郵件 <span className="text-stone-400 font-normal">(選填)</span>
@@ -339,7 +331,6 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* 居住地點 */}
                 <div>
                   <label className="block text-sm font-medium text-ink-900 mb-2">居住地點</label>
                   <div className="relative">
@@ -365,7 +356,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* 需求服務類型 */}
               <div>
                 <label className="block text-sm font-medium text-ink-900 mb-2">需求服務類型</label>
                 <select
@@ -387,7 +377,6 @@ export default function Contact() {
                 </select>
               </div>
 
-              {/* 留言內容 */}
               <div>
                 <label className="block text-sm font-medium text-ink-900 mb-2">諮詢內容 / 需求留言</label>
                 <textarea
@@ -399,7 +388,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* 送出按鈕 */}
               <button
                 type="submit"
                 disabled={loading}
