@@ -17,7 +17,7 @@ export default function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // 正確處理 React Router 頁面切換與置頂捲動
+  // 處理 React Router 頁面切換與置頂捲動
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     e.preventDefault();
 
@@ -41,7 +41,8 @@ export default function Footer() {
             <p className="text-sm leading-relaxed mb-4 text-slate-200 font-normal">
               專業的禮儀服務，溫暖的人文關懷。
             </p>
-            <p className="text-sm text-slate-300 font-mono">
+            {/* 統編：設定為微軟正黑體 */}
+            <p className="text-sm text-slate-300 font-['Microsoft_JhengHei']">
               統一編號：{companyInfo.taxId}
             </p>
           </div>
@@ -89,15 +90,16 @@ export default function Footer() {
               聯絡方式
             </h3>
             <ul className="space-y-3.5 text-sm text-white">
+              {/* 電話與專線：設定為微軟正黑體 */}
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <a href="tel:062678859" className="hover:text-gold-400 transition-colors">
+                <a href="tel:062678859" className="hover:text-gold-400 transition-colors font-['Microsoft_JhengHei']">
                   電話：(06) 2678859
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <a href="tel:0800600603" className="hover:text-gold-400 transition-colors">
+                <a href="tel:0800600603" className="hover:text-gold-400 transition-colors font-['Microsoft_JhengHei']">
                   24 小時服務專線：0800-600-603
                 </a>
               </li>
@@ -128,7 +130,8 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-slate-700/50 bg-[#1e293b]">
         <div className="mx-auto max-w-6xl px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-slate-300">
+          {/* 版權宣告：字體放大至 text-sm，與「關於我們」相同 */}
+          <p className="text-sm text-slate-100 font-normal">
             © 2026 寶慈生命事業股份有限公司 · 版權所有
           </p>
           <a
