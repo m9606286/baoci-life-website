@@ -37,7 +37,7 @@ export default function Header() {
             <BrandLogo />
           </Link>
 
-          {/* Desktop nav (字體縮小、恢復 medium 常態細緻字重) */}
+          {/* Desktop nav (同步採用 font-serif-tc 襯線體) */}
           <nav className="hidden lg:flex items-center gap-1.5 font-medium">
             {navLinks.map((link) => (
               <NavLink
@@ -51,12 +51,12 @@ export default function Header() {
               >
                 {({ isActive }) => (
                   <>
-                    {/* 英文小標題：調小至 text-[11px] */}
-                    <span className="text-[11px] tracking-[0.2em] text-gold-600/80 group-hover:text-gold-600 transition-colors font-medium">
+                    {/* 英文小標題：使用 font-serif-tc 襯線體 */}
+                    <span className="font-serif-tc text-[11px] tracking-[0.25em] text-gold-600 group-hover:text-gold-600 transition-colors font-bold uppercase">
                       {link.en}
                     </span>
-                    {/* 中文標題：調小至 text-sm sm:text-base */}
-                    <span className="text-sm sm:text-base font-medium tracking-wide mt-0.5">
+                    {/* 中文標題：使用 font-serif-tc 襯線體 */}
+                    <span className="font-serif-tc text-sm sm:text-base font-bold tracking-wide mt-0.5">
                       {link.label}
                     </span>
                     
@@ -86,7 +86,7 @@ export default function Header() {
               <span className="text-[10px] text-gold-400 group-hover:text-white font-medium tracking-wider leading-none transition-colors">
                 24小時服務專線
               </span>
-              <span className="text-sm font-semibold tracking-wide mt-0.5 leading-tight">
+              <span className="text-sm font-semibold tracking-wide mt-0.5 leading-tight font-['Microsoft_JhengHei']">
                 0800-600-603
               </span>
             </div>
@@ -114,8 +114,8 @@ export default function Header() {
                 onClick={() => setMenuOpen(false)}
                 className="py-3 border-b border-ivory-200 flex items-center justify-between group"
               >
-                <span className="text-ink-800 text-base font-medium group-hover:text-gold-600 transition-colors">{link.label}</span>
-                <span className="text-[11px] tracking-widest text-gold-600 font-medium">{link.en}</span>
+                <span className="font-serif-tc text-ink-800 text-base font-bold group-hover:text-gold-600 transition-colors">{link.label}</span>
+                <span className="font-serif-tc text-[11px] tracking-widest text-gold-600 font-bold uppercase">{link.en}</span>
               </Link>
             ))}
             <a
@@ -125,7 +125,7 @@ export default function Header() {
               <Phone className="w-4 h-4 text-gold-400" />
               <div className="flex flex-col items-start">
                 <span className="text-[10px] text-gold-400 font-medium leading-none">24小時服務專線</span>
-                <span className="font-semibold text-sm leading-tight mt-0.5">0800-600-603</span>
+                <span className="font-semibold text-sm leading-tight mt-0.5 font-['Microsoft_JhengHei']">0800-600-603</span>
               </div>
             </a>
           </nav>
