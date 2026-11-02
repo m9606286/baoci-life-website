@@ -5,43 +5,26 @@ import { companyInfo } from '@/data/content';
 import BrandLogo from '@/components/BrandLogo';
 
 const quickLinks = [
-  { label: '關於我們', path: '/', hash: '#top' },
-  { label: '生前契約', path: '/preneed', hash: '#preneed' },
-  { label: '禮儀服務', path: '/services', hash: '#services' },
-  { label: '信託公開', path: '/trust', hash: '#trust' },
-  { label: '手續服務', path: '/procedures', hash: '#procedures' },
-  { label: '聯絡我們', path: '/contact', hash: '#contact' },
+  { label: '關於我們', path: '/' },
+  { label: '生前契約', path: '/preneed' },
+  { label: '禮儀服務', path: '/services' },
+  { label: '信託公開', path: '/trust' },
+  { label: '手續服務', path: '/procedures' },
+  { label: '聯絡我們', path: '/contact' },
 ];
 
 export default function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string, hash: string) => {
+  // 正確處理 React Router 頁面切換與置頂捲動
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     e.preventDefault();
 
-    if (hash === '#top') {
-      if (location.pathname !== '/') {
-        navigate('/');
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
-    if (location.pathname !== '/') {
+    if (location.pathname !== path) {
       navigate(path);
-      setTimeout(() => {
-        const targetElement = document.getElementById(hash.replace('#', ''));
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    } else {
-      const targetElement = document.getElementById(hash.replace('#', ''));
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -75,7 +58,7 @@ export default function Footer() {
                   <li key={link.path}>
                     <a
                       href={link.path}
-                      onClick={(e) => handleNavClick(e, link.path, link.hash)}
+                      onClick={(e) => handleNavClick(e, link.path)}
                       className="text-sm text-slate-100 hover:text-gold-400 font-normal transition-colors inline-block cursor-pointer"
                     >
                       {link.label}
@@ -89,7 +72,7 @@ export default function Footer() {
                   <li key={link.path}>
                     <a
                       href={link.path}
-                      onClick={(e) => handleNavClick(e, link.path, link.hash)}
+                      onClick={(e) => handleNavClick(e, link.path)}
                       className="text-sm text-slate-100 hover:text-gold-400 font-normal transition-colors inline-block cursor-pointer"
                     >
                       {link.label}
@@ -142,15 +125,15 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar (改為與主體相同的背景色與精緻分隔線) */}
+      {/* Bottom bar */}
       <div className="border-t border-slate-700/50 bg-[#1e293b]">
         <div className="mx-auto max-w-6xl px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-300">
             © 2026 寶慈生命事業股份有限公司 · 版權所有
           </p>
           <a
-            href="#top"
-            onClick={(e) => handleNavClick(e, '/', '#top')}
+            href="/"
+            onClick={(e) => handleNavClick(e, '/')}
             className="flex items-center gap-2 text-xs text-slate-200 hover:text-gold-400 transition-colors font-medium group cursor-pointer"
           >
             <span>回到頂部</span>
