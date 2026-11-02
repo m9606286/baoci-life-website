@@ -131,7 +131,7 @@ const processSteps = [
   },
   {
     number: '02',
-    title: '遺體接運',
+    title: '尊體接運',
     icon: Truck,
     desc: '專車及專業接體人員協助接運逝者至指定殯儀館或接體地點，並完善冰存安置。',
     image: '/遺體接運.jpg',
