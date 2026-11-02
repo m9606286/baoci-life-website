@@ -133,7 +133,7 @@ const notices = [
   },
   {
     title: '委託代辦規範',
-    desc: '新購、客戶資料變更及遺失補發手續，須由本人親自申辦；繼承手續須由全體繼承人共同辦理，不得委託代理人代辦。其餘項目如委由代理人辦理，須檢附授權委託書正本及委託人、受託人雙方有效身分證件。',
+    desc: '新購, 客戶資料變更及遺失補發手續，須由本人親自申辦；繼承手續須由全體繼承人共同辦理，不得委託代理人代辦。其餘項目如委由代理人辦理，須檢附授權委託書正本及委託人、受託人雙方有效身分證件。',
   },
   {
     title: '手續費與分期付款',
@@ -278,7 +278,7 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 申辦注意事項（卡片維持淺色，僅左側勾勾移入時變為深金底白字） */}
+        {/* 申辦注意事項（單欄整列顯示，移入時外框呈現質感金線、勾勾變為深金底白字） */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
           <div className="text-center mb-8">
             <h4 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
@@ -286,23 +286,23 @@ export default function Procedures() {
             </h4>
             <div className="gold-divider w-24 mx-auto mt-3" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             {notices.map((notice, idx) => (
               <div
                 key={idx}
-                className="group h-full flex items-start p-5 rounded-2xl bg-ivory-50/60 border border-ivory-200 shadow-sm transition-all duration-300 gap-3.5"
+                className="group flex flex-col sm:flex-row sm:items-center justify-between p-5 rounded-2xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-4"
               >
-                <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 mt-0.5 transition-colors shadow-sm">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <div>
-                  <h5 className="font-serif-tc text-base sm:text-lg font-bold mb-1.5 text-ink-900">
+                <div className="flex items-center gap-3.5 shrink-0 sm:w-1/3">
+                  <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <h5 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900">
                     {notice.title}
                   </h5>
-                  <p className="text-sm sm:text-base text-ink-600 leading-relaxed text-left font-['Microsoft_JhengHei']">
-                    {notice.desc}
-                  </p>
                 </div>
+                <p className="text-sm sm:text-base text-ink-600 leading-relaxed sm:w-2/3 text-left font-['Microsoft_JhengHei']">
+                  {notice.desc}
+                </p>
               </div>
             ))}
           </div>
