@@ -39,7 +39,19 @@ const aboutSections = [
   },
 ];
 
-// 發展歷程資料
+// 寶碩官網超連結元件
+const ApexLink = () => (
+  <a
+    href="https://www.apex.com.tw/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gold-700 hover:text-gold-500 font-semibold underline underline-offset-4 transition-colors"
+  >
+    寶碩財務科技股份有限公司（股票代號5210）
+  </a>
+);
+
+// 發展歷程資料 (以 React Node 呈現含超連結之內文)
 const milestones = [
   {
     year: '2002年',
@@ -58,8 +70,20 @@ const milestones = [
     text: '本公司迎來經營團隊與經營團隊重組，內部積極推動行政系統整合與流程優化，以持續提供專業且可靠之生前契約與生命禮儀服務。',
   },
   {
+    year: '2026年4月',
+    text: (
+      <>
+        「<ApexLink />」加入，秉持人本關懷的服務使命，持續深化客戶權益保障，落實誠信經營與服務品質，致力於提供安心、完善的生命服務，確保企業穩健發展與永續經營。
+      </>
+    ),
+  },
+  {
     year: '2026年',
-    text: '「寶碩財務科技股份有限公司（股票代號5210）」加入，正式更名為「寶慈生命事業股份有限公司」，秉持人本關懷的使命，更加深保障客戶權益的堅持，確保公司永續經營。',
+    text: (
+      <>
+        <ApexLink />加入後，進一步擴充資本額至新臺幣6,000萬元，秉持人本關懷的服務使命，持續深化客戶權益保障，落實誠信經營與服務品質，致力於提供安心、完善的生命服務，並以穩健經營為基礎，確保企業永續發展。
+      </>
+    ),
   },
 ];
 
@@ -125,12 +149,11 @@ export default function About() {
 
         </div>
 
-        {/* 發展歷程 (Milestones) 區塊：滑鼠移入整體大方框 (group/milestone) 時，日曆圖示切換為與「我們的願景」相同的土金底白字 */}
+        {/* 發展歷程 (Milestones) 區塊 */}
         <div className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 lg:p-16 border border-ivory-300 shadow-xl relative overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
           
           {/* 頂部標題與日曆圖示 */}
           <div className="text-center mb-14">
-            {/* 使用與上方卡片相同的 group-hover/milestone:bg-gold-500 */}
             <div className="inline-flex items-center justify-center p-3.5 rounded-2xl bg-ivory-100 text-gold-700 group-hover/milestone:bg-gold-500 group-hover/milestone:text-white transition-colors duration-300 shadow-sm mb-3">
               <Calendar className="w-6 h-6 transition-transform duration-300 group-hover/milestone:scale-110" />
             </div>
@@ -157,9 +180,9 @@ export default function About() {
                 </h4>
 
                 {/* 歷程內文 */}
-                <p className="text-ink-700 text-sm sm:text-base leading-relaxed">
+                <div className="text-ink-700 text-sm sm:text-base leading-relaxed">
                   {item.text}
-                </p>
+                </div>
               </div>
             ))}
           </div>
