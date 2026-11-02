@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import PreneedPage from './pages/PreneedPage';
 import ServicesPage from './pages/ServicesPage';
 import TrustPage from './pages/TrustPage';
+import ProceduresPage from './pages/TrustPage';
 import ContactPage from './pages/ContactPage';
 
 // 載入全站通用元件 (Components)
