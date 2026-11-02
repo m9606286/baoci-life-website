@@ -1,3 +1,4 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Download, Building2, Phone, CheckCircle2, MinusCircle, FileText } from 'lucide-react';
 
@@ -78,10 +79,10 @@ export default function ContractProducts() {
     <section id="products" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100/60 relative -mt-6 lg:-mt-10">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* 標題區 */}
+        {/* 標題區 (英文字型、字距與大小已調整與 PRENEED CONTRACT 完全一致) */}
         <div className="text-center mb-14">
-          <p className="text-gold-600 text-sm tracking-[0.3em] uppercase">
-            Contract Products
+          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+            CONTRACT PRODUCTS
           </p>
           <h2 className="font-serif-tc text-3xl md:text-4xl text-ink-800 font-bold mt-2">
             契約商品
@@ -172,7 +173,9 @@ export default function ContractProducts() {
         {/* 生前契約商品差異對照表 */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-12 shadow-md max-w-5xl mx-auto">
           <div className="text-center mb-8 pt-2">
-            <p className="text-gold-600 text-sm tracking-[0.3em] uppercase">Product Comparison</p>
+            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+              PRODUCT COMPARISON
+            </p>
             <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
               生前契約主要商品差異
             </h3>
