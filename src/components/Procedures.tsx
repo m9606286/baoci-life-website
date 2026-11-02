@@ -29,7 +29,10 @@ const procedureCategories = [
       { name: '出讓人雙證件及印章', note: '✓ 必備' },
       { name: '受讓人雙證件及印章', note: '✓ 必備' },
       { name: '繳款證明', note: '手續費 1,000 元' },
-      { name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', note: '若有受託需檢附' },
+      { 
+        name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', 
+        note: '若有受託需檢附' 
+      },
     ],
   },
   {
@@ -62,7 +65,10 @@ const procedureCategories = [
       { name: '死亡證明或除戶證明', note: '✓ 必備' },
       { name: '火化許可', note: '✓ 必備' },
       { name: '殯儀服務完成確認書 (契約書中附件)', note: '✓ 必備' },
-      { name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', note: '若有受託需檢附' },
+      { 
+        name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', 
+        note: '若有受託需檢附' 
+      },
     ],
   },
   {
@@ -75,7 +81,10 @@ const procedureCategories = [
       { name: '客戶服務申請表', note: '✓ 必備' },
       { name: '填寫客戶服務申請表之【附件四】生前殯葬服務契約解約申請書', note: '✓ 必填' },
       { name: '持有人雙證件及印章', note: '✓ 必備' },
-      { name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', note: '若有受託需檢附' },
+      { 
+        name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', 
+        note: '若有受託需檢附' 
+      },
     ],
   },
   {
@@ -90,7 +99,10 @@ const procedureCategories = [
       { name: '持有人雙證件及印章', note: '✓ 必備' },
       { name: '繳款證明', note: '滯納金與復效首期款項' },
       { name: 'ACH 自動扣款申請單', note: '✓ 必填' },
-      { name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', note: '若有受託需檢附' },
+      { 
+        name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', 
+        note: '若有受託需檢附' 
+      },
     ],
   },
   {
@@ -105,7 +117,11 @@ const procedureCategories = [
       { name: '客戶服務申請表之【附件二】遺失切結書(補發申請書)', note: '辦理遺失補發時需檢附' },
       { name: '持有人雙證件及印章', note: '✓ 必備' },
       { name: '3 個月內現戶現況全戶戶籍謄本', note: '辦理更名須出具' },
-      { name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', note: '若有受託需檢附 (註：遺失補發不可委託)' },
+      { 
+        name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', 
+        note: '若有受託需檢附',
+        subNote: '遺失補發不可委託' 
+      },
     ],
   },
 ];
@@ -208,9 +224,9 @@ export default function Procedures() {
             <span>必備與檢附文件清單：</span>
           </h4>
 
-          {/* 文件清單列表（設定 h-full 確保每個格子高度一致、固定排版） */}
+          {/* 文件清單列表 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            {currentCategory.items.map((item, idx) => (
+            {currentCategory.items.map((item: any, idx: number) => (
               <div
                 key={idx}
                 className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/60 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
@@ -219,14 +235,21 @@ export default function Procedures() {
                   <CheckCircle2 className="w-5 h-5 text-gold-600 group-hover:text-ivory-100 shrink-0 transition-colors" />
                   <span className="text-sm sm:text-base font-medium leading-snug">{item.name}</span>
                 </div>
-                <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 group-hover:bg-white/20 text-gold-900 group-hover:text-white font-medium shrink-0 shadow-sm text-right whitespace-normal max-w-[200px] leading-snug transition-colors">
-                  {item.note}
-                </span>
+                <div className="flex flex-col items-end shrink-0 text-right">
+                  <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 group-hover:bg-white/20 text-gold-900 group-hover:text-white font-medium shadow-sm whitespace-normal max-w-[200px] leading-snug transition-colors">
+                    {item.note}
+                  </span>
+                  {item.subNote && (
+                    <span className="text-[11px] mt-1 text-gold-700 group-hover:text-ivory-200 font-medium whitespace-normal max-w-[200px] leading-tight transition-colors">
+                      {item.subNote}
+                    </span>
+                  )}
+                </div>
               </div>
             ))}
           </div>
 
-          {/* 下載按鈕（平常淺色，滑鼠移入時才變深金底白字） */}
+          {/* 下載按鈕 */}
           <div className="mt-6 flex items-center">
             <a
               href="/寶慈客戶服務申請表.pdf"
