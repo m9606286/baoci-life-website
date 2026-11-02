@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage';
 import PreneedPage from './pages/PreneedPage';
 import ServicesPage from './pages/ServicesPage';
 import TrustPage from './pages/TrustPage';
-import ProceduresPage from './pages/TrustPage';
+import ProceduresPage from './pages/ProceduresPage';
 import ContactPage from './pages/ContactPage';
 
 // 載入全站通用元件 (Components)
@@ -42,7 +42,7 @@ export default function App() {
             <Route path="/preneed" element={<PreneedPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/trust" element={<TrustPage />} />
-            <Route path="/trust" element={<ProceduresPage />} />
+            <Route path="/procedures" element={<ProceduresPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>
