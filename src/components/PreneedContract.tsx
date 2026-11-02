@@ -40,11 +40,11 @@ export default function PreneedConcept() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   return (
-    <section className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
+    <section className="pt-2 pb-16 lg:pt-4 lg:pb-24 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
       <div ref={ref} className="max-w-6xl mx-auto px-6 relative">
         
         {/* 1. 頁頭標題 */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-12">
           <p className="text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-mono font-medium reveal">
             PRENEED CONTRACT
           </p>
@@ -57,10 +57,10 @@ export default function PreneedConcept() {
           </p>
         </div>
 
-        {/* 2. 左圖右文：4 大核心保障 (方格互動與關於我們一致，底部帶漸層線) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch mb-16 reveal reveal-delay-3">
+        {/* 2. 左圖右文：4 大核心保障 (方格內文字體已放大) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12 reveal reveal-delay-3">
           
-          {/* 左側照片：遮罩調淺，質感更明亮清晰 */}
+          {/* 左側照片 */}
           <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-xl border border-gold-400/30 min-h-[350px] lg:min-h-full group">
             <img
               src={familyImage}
@@ -81,22 +81,24 @@ export default function PreneedConcept() {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-2xl p-7 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                  className="group relative rounded-2xl p-6 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   <div>
                     {/* 小圖示：移入時切換為深金底白字 */}
-                    <div className="inline-flex items-center justify-center p-3 rounded-xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-colors duration-300 shadow-sm mb-4">
+                    <div className="inline-flex items-center justify-center p-3 rounded-xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-colors duration-300 shadow-sm mb-3">
                       <Icon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
                     </div>
+                    {/* 放大標題字體 */}
                     <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    {/* 放大內文字體 */}
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
 
-                  {/* 卡片底部的金色指示線 (對齊關於我們) */}
+                  {/* 卡片底部的金色指示線 */}
                   <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out" />
                 </div>
               );
@@ -105,16 +107,16 @@ export default function PreneedConcept() {
 
         </div>
 
-        {/* 3. 底部優勢條列 (4點權益：移入時微微放大，勾勾變深金底白字) */}
-        <div className="bg-white/70 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-6 sm:p-10 shadow-lg reveal reveal-delay-4">
-          <h4 className="font-serif-tc text-xl font-bold text-ink-950 mb-6 text-center sm:text-left">
+        {/* 3. 底部優勢條列 (標題置中、間距收緊、移入微微上移) */}
+        <div className="bg-white/70 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-6 sm:p-8 shadow-lg reveal reveal-delay-4">
+          <h4 className="font-serif-tc text-xl font-bold text-ink-950 mb-6 text-center">
             生前契約更多權益與特點
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {additionalFeatures.map((feat, idx) => (
               <div 
                 key={idx} 
-                className="group/item flex items-center gap-3 p-3 rounded-xl transition-all duration-300 hover:translate-x-1.5 hover:bg-gold-50/50 cursor-pointer"
+                className="group/item flex items-center gap-3 p-3.5 rounded-xl transition-all duration-300 -translate-y-0 hover:-translate-y-1 hover:bg-gold-50/60 cursor-pointer shadow-xs border border-transparent hover:border-gold-400/30"
               >
                 {/* 勾勾圖示：移入時變為深金底白字 */}
                 <div className="w-7 h-7 rounded-lg bg-gold-100/70 text-gold-700 group-hover/item:bg-gold-600 group-hover/item:text-white flex items-center justify-center shrink-0 transition-colors duration-300 shadow-sm">
