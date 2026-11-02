@@ -114,7 +114,7 @@ export default function Contact() {
     <section id="contact" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative -mt-6 lg:-mt-10 overflow-hidden">
       <div ref={ref} className="max-w-4xl mx-auto px-6 relative z-10">
         
-        {/* 標題區：CONTACT US 改為 font-serif-tc 字型 */}
+        {/* 標題區：CONTACT US */}
         <div className="text-center mb-10">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
             CONTACT US
@@ -125,8 +125,8 @@ export default function Contact() {
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
         </div>
 
-        {/* 頂部切換頁籤：字型統一為 font-serif-tc */}
-        <div className="flex justify-center mb-12 relative z-30 reveal reveal-delay-3">
+        {/* 頂部切換頁籤：改為 reveal-delay-1 與標題同步浮現 */}
+        <div className="flex justify-center mb-12 relative z-30 reveal reveal-delay-1">
           <div className="inline-flex rounded-2xl bg-white/90 p-1.5 border border-gold-400/40 shadow-lg backdrop-blur-md">
             <button
               type="button"
@@ -169,7 +169,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* 總公司卡片 (電話/地址等取消粗體) */}
+        {/* 總公司卡片 */}
         {activeTab === 'headquarter' && (
           <div className="max-w-2xl mx-auto mb-12 transition-all duration-300">
             <div className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl overflow-hidden">
@@ -220,7 +220,7 @@ export default function Contact() {
           </div>
         )}
 
-        {/* 銷售通路卡片 (電話/地址等取消粗體) */}
+        {/* 銷售通路卡片 */}
         {activeTab === 'channel' && (
           <div className="max-w-2xl mx-auto mb-12 space-y-5 transition-all duration-300">
             {salesChannels.map((channel, idx) => (
@@ -264,7 +264,7 @@ export default function Contact() {
           </div>
         )}
 
-        {/* 線上諮詢表單區塊 (表單標題改為 font-normal) */}
+        {/* 線上諮詢表單區塊 */}
         {activeTab === 'form' && (
           <div className="bg-white/90 backdrop-blur-md border border-gold-400/35 rounded-3xl p-6 sm:p-10 shadow-xl transition-all duration-300">
             <div className="text-center mb-8 space-y-2">
