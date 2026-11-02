@@ -39,13 +39,13 @@ const aboutSections = [
   },
 ];
 
-// 寶碩官網超連結元件
+// 寶碩官網超連結元件（已移除底線 underline 相關屬性）
 const ApexLink = () => (
   <a
     href="https://www.apex.com.tw/"
     target="_blank"
     rel="noopener noreferrer"
-    className="text-gold-700 hover:text-gold-500 font-semibold underline underline-offset-4 transition-colors"
+    className="text-gold-700 hover:text-gold-500 font-semibold no-underline transition-colors"
   >
     寶碩財務科技股份有限公司（股票代號5210）
   </a>
