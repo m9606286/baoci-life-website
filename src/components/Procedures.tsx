@@ -208,25 +208,25 @@ export default function Procedures() {
             <span>必備與檢附文件清單：</span>
           </h4>
 
-          {/* 文件清單列表（整張項目卡片均為深金底白字） */}
+          {/* 文件清單列表（預設為淺色背景邊框，滑鼠移入 hover 時才變成深金底白字） */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 mb-8">
             {currentCategory.items.map((item, idx) => (
               <div
                 key={idx}
-                className="flex items-start justify-between p-4 rounded-xl bg-gold-600 text-white shadow-md gap-3 border border-gold-500"
+                className="group flex items-start justify-between p-4 rounded-xl bg-ivory-50/60 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
               >
                 <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-5 h-5 text-ivory-100 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-gold-600 group-hover:text-ivory-100 shrink-0 mt-0.5 transition-colors" />
                   <span className="text-sm sm:text-base font-medium leading-relaxed">{item.name}</span>
                 </div>
-                <span className="text-xs px-2.5 py-1 rounded-md bg-white/20 text-white font-medium shrink-0 shadow-sm text-right whitespace-normal max-w-[200px] leading-snug">
+                <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 group-hover:bg-white/20 text-gold-900 group-hover:text-white font-medium shrink-0 shadow-sm text-right whitespace-normal max-w-[200px] leading-snug transition-colors">
                   {item.note}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* 下載按鈕（保留在左側，無「下載」二字） */}
+          {/* 下載按鈕（保留在左側） */}
           <div className="mt-6 flex items-center">
             <a
               href="/document/寶慈客戶服務申請表.pdf"
