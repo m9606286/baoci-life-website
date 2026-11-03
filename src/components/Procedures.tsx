@@ -239,7 +239,7 @@ export default function Procedures() {
             <span>必備與檢附文件清單：</span>
           </h4>
 
-          {/* 文件清單列表（雙欄網格排版，右側必備標籤固定不變色） */}
+          {/* 文件清單列表 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {currentCategory.items.map((item: any, idx: number) => (
               <div
@@ -280,11 +280,14 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 申辦注意事項（單欄整列顯示） */}
+        {/* 注意事項（單欄整列顯示，上方加入英文 NOTICES） */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
           <div className="text-center mb-8">
-            <h4 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
-              申辦注意事項
+            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+              NOTICES
+            </p>
+            <h4 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900 mt-2">
+              注意事項
             </h4>
             <div className="gold-divider w-24 mx-auto mt-3" />
           </div>
