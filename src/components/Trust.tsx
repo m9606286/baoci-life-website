@@ -6,7 +6,7 @@ export default function Trust() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
-  // 信託報告與目錄檔案清單（文字已精簡為最適長度）
+  // 信託報告與目錄檔案清單
   const trustReports = [
     {
       title: '財產目錄與收支計算表',
@@ -58,25 +58,23 @@ export default function Trust() {
             依殯葬管理條例第51條，預收之生前契約款項，依法75%交由「京城銀行」信託管理。
           </p>
 
-          {/* 主要按鈕組合區 */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10">
-            {/* 左側：生前契約履約保障信託契約書下載 */}
+          {/* 上方主要按鈕區 */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
             <a
               href="/生前契約履約保障信託契約書.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-between sm:justify-center gap-2 px-6 py-3.5 rounded-2xl bg-ivory-50/70 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-ivory-50/70 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn w-full sm:w-auto"
             >
-              <span>生前契約履約保障信託契約書</span>
+              <span>履約保障信託契約書</span>
               <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
             </a>
 
-            {/* 右側：前往信託查詢系統 */}
             <a
               href="https://www.ktb.com.tw/funeral/query"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-between sm:justify-center gap-2 px-6 py-3.5 rounded-2xl bg-ivory-50/70 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-ivory-50/70 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn w-full sm:w-auto"
             >
               <span>前往信託查詢系統</span>
               <ExternalLink className="w-4 h-4 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
@@ -86,23 +84,23 @@ export default function Trust() {
           {/* 分隔線 */}
           <div className="w-full h-px bg-ivory-200 mb-10" />
 
-          {/* 信託財產目錄與收支計算表與信託財產結算報告下載區塊（標題置中） */}
+          {/* 下方四個報告按鈕（限制最大寬度 max-w-xl 讓按鈕變短，內容 justify-center 置中） */}
           <div>
             <h4 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 mb-6 flex items-center justify-center gap-2">
               <FileText className="w-5 h-5 text-gold-600" />
               <span>信託財產目錄與收支計算表與信託財產結算報告</span>
             </h4>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-xl mx-auto">
               {trustReports.map((report, idx) => (
                 <a
                   key={idx}
                   href={report.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-between px-6 py-3.5 rounded-2xl bg-ivory-50/70 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md group/report cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl bg-ivory-50/70 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md group/report cursor-pointer text-center"
                 >
-                  <span className="truncate mr-2">{report.title}</span>
+                  <span>{report.title}</span>
                   <Download className="w-4 h-4 text-gold-600 group-hover/report:text-white shrink-0 transition-colors" />
                 </a>
               ))}
