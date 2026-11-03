@@ -266,18 +266,20 @@ export default function Procedures() {
             ))}
           </div>
 
-          {/* 下載按鈕 */}
-          <div className="mt-6 flex items-center">
-            <a
-              href="/寶慈客戶服務申請表.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm"
-            >
-              <Download className="w-5 h-5 text-gold-600 group-hover:text-white" />
-              <span>客戶服務申請表</span>
-            </a>
-          </div>
+          {/* 下載按鈕（若為新購手續則隱藏） */}
+          {activeTab !== 'new' && (
+            <div className="mt-6 flex items-center">
+              <a
+                href="/寶慈客戶服務申請表.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm"
+              >
+                <Download className="w-5 h-5 text-gold-600 group-hover:text-white" />
+                <span>客戶服務申請表</span>
+              </a>
+            </div>
+          )}
         </div>
 
         {/* 注意事項（單欄整列顯示，上方加入英文 NOTICES） */}
