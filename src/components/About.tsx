@@ -1,5 +1,5 @@
 import { useReveal } from '@/hooks/useReveal';
-import { History, Heart, Eye, Calendar } from 'lucide-react';
+import { History, Heart, Eye } from 'lucide-react';
 
 const aboutSections = [
   {
@@ -144,12 +144,12 @@ export default function About() {
         {/* 發展歷程 (Milestones) 區塊 */}
         <div className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 lg:p-16 border border-ivory-300 shadow-xl relative overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
           
-          {/* 頂部標題與日曆圖示 */}
+          {/* 頂部標題區（已將小圖示改為英文 MILESTONES 且字型與 CORE VALUES 完全一致） */}
           <div className="text-center mb-14">
-            <div className="inline-flex items-center justify-center p-3.5 rounded-2xl bg-ivory-100 text-gold-700 group-hover/milestone:bg-gold-500 group-hover/milestone:text-white transition-colors duration-300 shadow-sm mb-3">
-              <Calendar className="w-6 h-6 transition-transform duration-300 group-hover/milestone:scale-110" />
-            </div>
-            <h3 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900">
+            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
+              MILESTONES
+            </p>
+            <h3 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
               發展歷程
             </h3>
             <div className="gold-divider w-24 mx-auto mt-4" />
