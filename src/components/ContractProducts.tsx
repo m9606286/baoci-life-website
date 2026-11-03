@@ -84,7 +84,7 @@ export default function ContractProducts() {
     <section id="products" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100/60 relative -mt-6 lg:-mt-10">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* 標題區 (英文字型、字距與大小已調整與 PRENEED CONTRACT 完全一致) */}
+        {/* 標題區 */}
         <div className="text-center mb-14">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTRACT PRODUCTS
@@ -136,19 +136,17 @@ export default function ContractProducts() {
                   </a>
                 </div>
 
-                {/* 底部按鈕區（透明背景，移入時顯示深金底白字） */}
+                {/* 底部按鈕區 */}
                 <div className="pt-2 flex items-center gap-2.5 w-full flex-wrap">
-                  {/* 服務型態標籤 */}
-                  <span className="inline-flex items-center px-4 py-2.5 rounded-xl bg-transparent hover:bg-gold-600 text-white hover:text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm cursor-default">
+                  <span className="inline-flex items-center px-4 py-2.5 rounded-xl bg-transparent hover:bg-gold-600 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm cursor-default">
                     {product.typeTag}
                   </span>
 
-                  {/* 生前契約書下載按鈕 */}
                   <a
                     href={product.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-transparent hover:bg-gold-600 text-white hover:text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-transparent hover:bg-gold-600 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm"
                   >
                     <span>生前契約書</span>
                     <Download className="w-4 h-4" />
@@ -187,7 +185,7 @@ export default function ContractProducts() {
             <div className="gold-divider w-24 mx-auto mt-4" />
           </div>
 
-          {/* 表格內容 */}
+          {/* 表格內容（維持原本版型，並在滑鼠移入時呈現明顯的色差反映） */}
           <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-4">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
@@ -199,7 +197,7 @@ export default function ContractProducts() {
               </thead>
               <tbody className="divide-y divide-ivory-200 text-sm md:text-base text-ink-700">
                 {contractComparison.map((item, idx) => (
-                  <tr key={idx} className="hover:bg-ivory-50/60 transition-colors">
+                  <tr key={idx} className="hover:bg-gold-100/50 transition-colors">
                     <td className="p-4 font-semibold text-ink-900 bg-ivory-50/30">{item.feature}</td>
                     <td className="p-4 bg-gold-50/20 leading-relaxed font-medium text-ink-900">
                       <div className="flex items-start gap-1.5">
@@ -227,7 +225,7 @@ export default function ContractProducts() {
             註：標準型及簡易型均提供骨罐及火化棺。
           </p>
 
-          {/* 諮詢適合您的方案按鈕（點擊後透過 React Router 切換至聯絡我們頁面） */}
+          {/* 諮詢適合您的方案按鈕 */}
           <div className="text-center">
             <a
               href="/contact"
