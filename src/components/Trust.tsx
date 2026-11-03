@@ -6,7 +6,7 @@ export default function Trust() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
-  // 新增的信託報告與目錄檔案清單
+  // 信託報告與目錄檔案清單
   const trustReports = [
     {
       title: '信託財產目錄與收支計算表',
@@ -55,17 +55,17 @@ export default function Trust() {
             依殯葬管理條例第51條，預收之生前契約款項，依法75%交由「京城銀行」信託管理。
           </p>
 
-          {/* 主要按鈕組合區（字體已加大為 text-base sm:text-lg） */}
+          {/* 主要按鈕組合區（字體與樣式已調整為同信託財產按鈕一致大小） */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12">
             {/* 左側：生前契約履約保障信託契約書下載 */}
             <a
               href="/生前契約履約保障信託契約書.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 font-bold text-base sm:text-lg transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
+              className="inline-flex items-center justify-between sm:justify-center gap-2 px-6 py-3.5 rounded-2xl bg-ivory-50/70 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn w-full sm:w-auto"
             >
               <span>生前契約履約保障信託契約書</span>
-              <Download className="w-5 h-5 shrink-0" />
+              <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
             </a>
 
             {/* 右側：前往信託查詢系統 */}
@@ -73,21 +73,21 @@ export default function Trust() {
               href="https://www.ktb.com.tw/funeral/query"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 font-bold text-base sm:text-lg transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
+              className="inline-flex items-center justify-between sm:justify-center gap-2 px-6 py-3.5 rounded-2xl bg-ivory-50/70 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn w-full sm:w-auto"
             >
               <span>前往信託查詢系統</span>
-              <ExternalLink className="w-5 h-5 shrink-0" />
+              <ExternalLink className="w-4 h-4 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
             </a>
           </div>
 
           {/* 分隔線 */}
           <div className="w-full h-px bg-ivory-200 mb-10" />
 
-          {/* 新增區塊：信託財產報告與公告下載 */}
+          {/* 信託財產目錄與收支計算表與信託財產結算報告下載區塊 */}
           <div>
             <h4 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 mb-6 flex items-center justify-center gap-2">
               <FileText className="w-5 h-5 text-gold-600" />
-              <span>信託財產報告與公告下載</span>
+              <span>信託財產目錄與收支計算表與信託財產結算報告</span>
             </h4>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
