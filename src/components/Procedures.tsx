@@ -275,7 +275,7 @@ export default function Procedures() {
               className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm"
             >
               <Download className="w-5 h-5 text-gold-600 group-hover:text-white" />
-              <span>寶慈客戶服務申請表</span>
+              <span>客戶服務申請表</span>
             </a>
           </div>
         </div>
