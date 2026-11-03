@@ -185,7 +185,7 @@ export default function ContractProducts() {
             <div className="gold-divider w-24 mx-auto mt-4" />
           </div>
 
-          {/* 表格內容（維持原本版型，並在滑鼠移入時呈現明顯的色差反映） */}
+          {/* 表格內容（寶富內文已改為一般字重，無粗體） */}
           <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-4">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
@@ -199,7 +199,7 @@ export default function ContractProducts() {
                 {contractComparison.map((item, idx) => (
                   <tr key={idx} className="hover:bg-gold-100/50 transition-colors">
                     <td className="p-4 font-semibold text-ink-900 bg-ivory-50/30">{item.feature}</td>
-                    <td className="p-4 bg-gold-50/20 leading-relaxed font-medium text-ink-900">
+                    <td className="p-4 bg-gold-50/20 leading-relaxed text-ink-900">
                       <div className="flex items-start gap-1.5">
                         <CheckCircle2 className="w-5 h-5 text-gold-600 shrink-0 mt-0.5" />
                         <span>{item.baofu}</span>
