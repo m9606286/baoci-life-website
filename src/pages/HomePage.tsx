@@ -8,8 +8,8 @@ export default function HomePage() {
   return (
     <div>
       <Hero />
-      <CoreValues />
-      <About />      
+      <About />     
+       <CoreValues />
     </div>
   );
 }
