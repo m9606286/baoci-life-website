@@ -67,7 +67,7 @@ const UrnIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// 團隊成員資料：包含 6 位禮儀師 + 9 位禮儀顧問
+// 團隊成員資料：包含 6 位禮儀師 + 1 位禮儀顧問
 const teamMembers = [
   // --- 禮儀師 ---
   {
@@ -224,14 +224,24 @@ const processSteps = [
 export default function Services() {
   const ref = useReveal<HTMLDivElement>();
 
-  // 處理點擊跳轉至「聯絡我們」區塊
+  // 適應多頁面架構的跳轉邏輯
   const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const contactElem = document.getElementById('contact');
-    if (contactElem) {
-      contactElem.scrollIntoView({ behavior: 'smooth' });
+    const targetElement = document.getElementById('contact') || document.getElementById('Contact');
+
+    if (targetElement) {
+      // 若同頁面有聯絡我們區塊，平滑捲動
+      const headerOffset = 80;
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     } else {
-      window.location.hash = 'contact';
+      // 多頁面情境下，直接導向首頁或聯絡頁面的 #contact 錨點
+      window.location.href = '/#contact';
     }
   };
 
@@ -368,10 +378,10 @@ export default function Services() {
           })}
         </div>
 
-        {/* 底部按鈕：已改為淺色風格並加入平滑捲動跳轉功能 */}
+        {/* 底部按鈕：淺色風格並支援多頁面跳轉 */}
         <div className="text-center pt-4 reveal">
           <a
-            href="#contact"
+            href="/#contact"
             onClick={handleScrollToContact}
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-ivory-50/80 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
           >
