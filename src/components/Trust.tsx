@@ -9,7 +9,7 @@ export default function Trust() {
   // 信託報告與目錄檔案清單
   const trustReports = [
     {
-      title: '財產目錄與收支計算表',
+      title: '信託財產目錄與收支計算表',
       url: '/信託財產目錄與收支計算表.pdf',
     },
     {
