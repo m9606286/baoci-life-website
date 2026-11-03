@@ -13,15 +13,15 @@ export default function Trust() {
       url: '/信託財產目錄與收支計算表.pdf',
     },
     {
-      title: '112 年度信託財產結算報告',
+      title: '112 年度結算報告',
       url: '/112年度信託財產結算報告.pdf',
     },
     {
-      title: '113 年度信託財產結算報告',
+      title: '113 年度結算報告',
       url: '/113年度信託財產結算報告.pdf',
     },
     {
-      title: '114 年度信託財產結算報告',
+      title: '114 年度結算報告',
       url: '/114年度信託財產結算報告.pdf',
     },
   ];
@@ -41,22 +41,25 @@ export default function Trust() {
         </div>
 
         {/* 信託說明卡片區塊 */}
-        <div className="group bg-white/80 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-8 sm:p-12 shadow-lg reveal reveal-delay-3 transition-all duration-300">
-          <div className="w-16 h-16 rounded-2xl bg-gold-400/15 border border-gold-400/30 group-hover:bg-gold-600 transition-colors duration-300 flex items-center justify-center mx-auto mb-6">
-            <ShieldCheck className="w-8 h-8 text-gold-600 group-hover:text-white transition-colors duration-300" />
+        <div className="group bg-white/80 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-8 sm:p-12 shadow-lg reveal reveal-delay-3 transition-all duration-300 text-left">
+          
+          {/* 標題與圖示置於左側水平並排 */}
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-12 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover:bg-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-6 h-6 text-gold-600 group-hover:text-white transition-colors duration-300" />
+            </div>
+            <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">
+              保證 75% 信託
+            </h3>
           </div>
 
-          <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950 mb-4">
-            保證 75% 信託
-          </h3>
-
           {/* 說明文字 */}
-          <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-10 whitespace-nowrap overflow-x-auto">
+          <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed mb-8">
             依殯葬管理條例第51條，預收之生前契約款項，依法75%交由「京城銀行」信託管理。
           </p>
 
-          {/* 主要按鈕組合區（字體與樣式已調整為同信託財產按鈕一致大小） */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12">
+          {/* 主要按鈕組合區 */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10">
             {/* 左側：生前契約履約保障信託契約書下載 */}
             <a
               href="/生前契約履約保障信託契約書.pdf"
@@ -85,12 +88,12 @@ export default function Trust() {
 
           {/* 信託財產目錄與收支計算表與信託財產結算報告下載區塊 */}
           <div>
-            <h4 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 mb-6 flex items-center justify-center gap-2">
+            <h4 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 mb-6 flex items-center gap-2">
               <FileText className="w-5 h-5 text-gold-600" />
               <span>信託財產目錄與收支計算表與信託財產結算報告</span>
             </h4>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {trustReports.map((report, idx) => (
                 <a
                   key={idx}
