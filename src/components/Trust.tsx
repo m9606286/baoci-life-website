@@ -6,10 +6,10 @@ export default function Trust() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
-  // 信託報告與目錄檔案清單
+  // 信託報告與目錄檔案清單（文字已精簡為最適長度）
   const trustReports = [
     {
-      title: '信託財產目錄與收支計算表',
+      title: '財產目錄與收支計算表',
       url: '/信託財產目錄與收支計算表.pdf',
     },
     {
@@ -41,10 +41,10 @@ export default function Trust() {
         </div>
 
         {/* 信託說明卡片區塊 */}
-        <div className="group bg-white/80 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-8 sm:p-12 shadow-lg reveal reveal-delay-3 transition-all duration-300 text-left">
+        <div className="group bg-white/80 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-8 sm:p-12 shadow-lg reveal reveal-delay-3 transition-all duration-300 text-center">
           
-          {/* 標題與圖示置於左側水平並排 */}
-          <div className="flex items-center gap-4 mb-4">
+          {/* 圖示與標題置中並排 */}
+          <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-12 h-12 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover:bg-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
               <ShieldCheck className="w-6 h-6 text-gold-600 group-hover:text-white transition-colors duration-300" />
             </div>
@@ -54,7 +54,7 @@ export default function Trust() {
           </div>
 
           {/* 說明文字 */}
-          <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed mb-8">
+          <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-8">
             依殯葬管理條例第51條，預收之生前契約款項，依法75%交由「京城銀行」信託管理。
           </p>
 
@@ -86,14 +86,14 @@ export default function Trust() {
           {/* 分隔線 */}
           <div className="w-full h-px bg-ivory-200 mb-10" />
 
-          {/* 信託財產目錄與收支計算表與信託財產結算報告下載區塊 */}
+          {/* 信託財產目錄與收支計算表與信託財產結算報告下載區塊（標題置中） */}
           <div>
-            <h4 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 mb-6 flex items-center gap-2">
+            <h4 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 mb-6 flex items-center justify-center gap-2">
               <FileText className="w-5 h-5 text-gold-600" />
               <span>信託財產目錄與收支計算表與信託財產結算報告</span>
             </h4>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
               {trustReports.map((report, idx) => (
                 <a
                   key={idx}
