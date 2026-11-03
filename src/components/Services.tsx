@@ -1,3 +1,4 @@
+import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
 import {
   HeartHandshake,
@@ -10,6 +11,7 @@ import {
   Footprints,
   Home,
   Building2,
+  ArrowRight,
 } from 'lucide-react';
 
 // 自訂 SVG 圖示：莊嚴靈堂 Icon (設立靈堂 STEP 03)
@@ -222,6 +224,17 @@ const processSteps = [
 export default function Services() {
   const ref = useReveal<HTMLDivElement>();
 
+  // 處理點擊跳轉至「聯絡我們」區塊
+  const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const contactElem = document.getElementById('contact');
+    if (contactElem) {
+      contactElem.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.hash = 'contact';
+    }
+  };
+
   return (
     <section id="services" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
       <div className="absolute top-1/3 right-0 w-96 h-96 rounded-full bg-gold-100/30 blur-3xl pointer-events-none" />
@@ -355,13 +368,15 @@ export default function Services() {
           })}
         </div>
 
-        {/* 底部按鈕 */}
+        {/* 底部按鈕：已改為淺色風格並加入平滑捲動跳轉功能 */}
         <div className="text-center pt-4 reveal">
           <a
             href="#contact"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ink-800 hover:bg-gold-600 text-white font-medium text-sm transition-all shadow-md"
+            onClick={handleScrollToContact}
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-ivory-50/80 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
           >
-            立即預約諮詢
+            <span>立即預約諮詢</span>
+            <ArrowRight className="w-4 h-4 text-gold-600 group-hover/btn:text-white transition-colors shrink-0" />
           </a>
         </div>
       </div>
