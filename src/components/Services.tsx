@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useReveal } from '@/hooks/useReveal';
 import {
   HeartHandshake,
@@ -223,26 +224,13 @@ const processSteps = [
 
 export default function Services() {
   const ref = useReveal<HTMLDivElement>();
+  const navigate = useNavigate();
 
-  // 適應多頁面架構的跳轉邏輯
-  const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  // 點擊後直接跳轉至「聯絡我們」頁面並滾動至頂部
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const targetElement = document.getElementById('contact') || document.getElementById('Contact');
-
-    if (targetElement) {
-      // 若同頁面有聯絡我們區塊，平滑捲動
-      const headerOffset = 80;
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    } else {
-      // 多頁面情境下，直接導向首頁或聯絡頁面的 #contact 錨點
-      window.location.href = '/#contact';
-    }
+    navigate('/contact');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -378,11 +366,11 @@ export default function Services() {
           })}
         </div>
 
-        {/* 底部按鈕：淺色風格並支援多頁面跳轉 */}
+        {/* 底部按鈕：透過 navigate 導向 /contact 聯絡我們頁面 */}
         <div className="text-center pt-4 reveal">
           <a
-            href="/#contact"
-            onClick={handleScrollToContact}
+            href="/contact"
+            onClick={handleContactClick}
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-ivory-50/80 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
           >
             <span>立即預約諮詢</span>
