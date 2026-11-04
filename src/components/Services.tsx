@@ -338,20 +338,22 @@ export default function Services() {
                 {/* 右側：文字內容資訊 */}
                 <div className="flex-1 flex flex-col justify-between h-full py-1">
                   <div>
-                    {/* 步驟編號與圖示 */}
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span className="text-gold-600 font-mono text-xs font-bold tracking-wider uppercase">
+                    {/* 步驟編號：字型與 SERVICE PROCESS 統一為 font-serif-tc，移入時變深金底白字 */}
+                    <div className="mb-1.5">
+                      <span className="font-serif-tc text-[11px] sm:text-xs font-bold tracking-[0.25em] text-gold-600 px-2.5 py-0.5 rounded-md transition-colors duration-300 group-hover:bg-gold-600 group-hover:text-white inline-block">
                         STEP {step.number}
                       </span>
-                      <div className="w-6 h-6 rounded-md bg-ink-900/10 group-hover:bg-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
-                        <Icon className="w-3.5 h-3.5 text-gold-700 group-hover:text-white transition-colors duration-300" />
-                      </div>
                     </div>
 
-                    {/* 步驟標題 */}
-                    <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-1.5">
-                      {step.title}
-                    </h4>
+                    {/* 步驟標題與小圖示（小圖示移至標題左側，預設無色透明，移入時深金底白字） */}
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <div className="w-6 h-6 rounded-md bg-transparent text-ink-700 transition-colors duration-300 flex items-center justify-center shrink-0 group-hover:bg-gold-600 group-hover:text-white">
+                        <Icon className="w-4 h-4 transition-colors duration-300" />
+                      </div>
+                      <h4 className="font-serif-tc text-lg font-bold text-ink-900">
+                        {step.title}
+                      </h4>
+                    </div>
 
                     {/* 步驟描述 */}
                     <p className="text-ink-600 text-xs sm:text-sm leading-relaxed">
