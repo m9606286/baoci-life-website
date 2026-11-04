@@ -215,9 +215,9 @@ export default function Procedures() {
         </div>
 
         {/* 選中項目的詳細文件內容卡片 */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal text-center">
+        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-ivory-200 gap-4">
-            <div className="text-center sm:text-left">
+            <div className="text-center w-full sm:w-auto sm:text-left">
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
                 {currentCategory.title}
               </h3>
@@ -231,25 +231,25 @@ export default function Procedures() {
             </div>
           </div>
 
-          <h4 className="font-serif-tc text-base font-bold text-ink-800 mb-6 flex items-center justify-center gap-2">
+          <h4 className="font-serif-tc text-base font-bold text-ink-800 mb-6 flex items-center justify-start gap-2">
             <FileText className="w-4 h-4 text-gold-600" />
             <span>必備與檢附文件清單：</span>
           </h4>
 
-          {/* 文件清單列表 */}
+          {/* 文件清單列表（維持靠左對齊） */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {currentCategory.items.map((item: any, idx: number) => (
               <div
                 key={idx}
-                className="group h-full flex flex-col sm:flex-row items-center justify-between p-4 rounded-xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 text-center sm:text-left"
+                className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
               >
-                <div className="flex items-center justify-center sm:justify-start gap-2.5 w-full sm:w-auto">
+                <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
-                  <span className="text-sm sm:text-base font-medium text-ink-900 leading-snug">{item.name}</span>
+                  <span className="text-sm sm:text-base font-medium text-ink-900 leading-snug text-left">{item.name}</span>
                 </div>
-                <div className="flex flex-col items-center sm:items-end shrink-0 w-full sm:w-auto">
+                <div className="flex flex-col items-end shrink-0 text-right">
                   <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
                     {item.note}
                   </span>
@@ -265,7 +265,7 @@ export default function Procedures() {
 
           {/* 下載按鈕（若為新購手續則隱藏） */}
           {activeTab !== 'new' && (
-            <div className="mt-6 flex justify-center">
+            <div className="mt-6 flex justify-start">
               <a
                 href="/寶慈客戶服務申請表.pdf"
                 target="_blank"
@@ -279,9 +279,9 @@ export default function Procedures() {
           )}
         </div>
 
-        {/* 注意事項（單欄整列顯示，文字置中） */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal text-center">
-          <div className="mb-8">
+        {/* 注意事項 */}
+        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
+          <div className="text-center mb-8">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               NOTICES
             </p>
@@ -294,17 +294,17 @@ export default function Procedures() {
             {notices.map((notice, idx) => (
               <div
                 key={idx}
-                className="group flex flex-col items-center p-5 rounded-2xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 text-center"
+                className="group flex flex-col sm:flex-row sm:items-center p-4 sm:p-5 rounded-2xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 sm:gap-6"
               >
-                <div className="flex items-center justify-center gap-3">
+                <div className="flex items-center gap-3 shrink-0 sm:w-auto">
                   <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
-                  <h5 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900">
+                  <h5 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900 whitespace-nowrap">
                     {notice.title}
                   </h5>
                 </div>
-                <p className="text-sm sm:text-base text-ink-600 leading-relaxed font-['Microsoft_JhengHei'] max-w-2xl mx-auto">
+                <p className="text-sm sm:text-base text-ink-600 leading-relaxed text-left font-['Microsoft_JhengHei'] flex-1">
                   {notice.desc}
                 </p>
               </div>
