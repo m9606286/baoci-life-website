@@ -48,7 +48,7 @@ const procedureCategories = [
       { name: '繼承人雙證件及印章', note: '✓ 必備' },
       { name: 'ACH 自動扣款申請單', note: '若繼續分期需檢附' },
       { name: '死亡證明或除戶證明', note: '✓ 必備' },
-      { name: '3 個月內現戶現況全戶戶籍謄本', note: '✓ 必備 (非法定繼承人另須檢附足以證明繼承或權利取得資格之相關證明文件)' },
+      { name: '3 個月內現戶現況全戶戶籍謄本', note: '✓ 必備 (非法定繼承人另須檢附可證明取得繼承資格之文件)' },
     ],
   },
   {
@@ -257,7 +257,7 @@ export default function Procedures() {
                     {item.note}
                   </span>
                   {item.subNote && (
-                    <span className="text-[11px] mt-1 text-gold-700 font-medium whitespace-normal max-w-[180px] leading-tight">
+                    <span className="text-xs px-2.5 py-1 mt-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
                       {item.subNote}
                     </span>
                   )}
