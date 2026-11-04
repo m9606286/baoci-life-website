@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReveal } from '@/hooks/useReveal';
-import { FileText, Download, CheckCircle2, Clock } from 'lucide-react';
+import { FileText, Download, CheckCircle2, Clock, Sparkles } from 'lucide-react';
 
 // 手續服務項目清單與對應內容
 const procedureCategories = [
@@ -158,7 +158,7 @@ export default function Procedures() {
 
   return (
     <section id="procedures" className="pt-10 pb-16 lg:pt-14 lg:pb-24 bg-ivory-100 relative overflow-hidden">
-      <div ref={ref} className="mx-auto max-w-5xl px-6 relative">
+      <div ref={ref} className="mx-auto max-w-7xl px-6 relative">
         
         {/* 標題區 */}
         <div className="text-center mb-12">
@@ -214,73 +214,107 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 選中項目的詳細文件內容卡片 */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-ivory-200 gap-4">
-            <div>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
-                {currentCategory.title}
-              </h3>
-              <p className="text-ink-600 text-sm mt-1">{currentCategory.desc}</p>
-            </div>
-            <div className="flex items-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300 shrink-0">
-              <Clock className="w-4 h-4 text-gold-600" />
-              <span className="text-sm font-medium text-ink-800 font-['Microsoft_JhengHei']">
-                工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
-              </span>
-            </div>
-          </div>
+        {/* 左右分欄卡片主體區塊 */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch reveal mb-12">
+          
+          {/* 左側：攜帶 PROCEDURE.png 背景與當前申辦項目資訊卡片 (5欄) */}
+          <div className="lg:col-span-5 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group border border-gold-400/40 bg-white min-h-[340px]">
+            
+            {/* 背景圖片層（PROCEDURE.png） */}
+            <div 
+              className="absolute inset-0 bg-[url('/PROCEDURE.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 z-0" 
+            />
+            {/* 柔和的亮色漸層遮罩 */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ivory-100/95 via-ivory-100/70 to-ivory-50/40 z-0" />
 
-          <h4 className="font-serif-tc text-base font-bold text-ink-800 mb-4 flex items-center gap-2">
-            <FileText className="w-4 h-4 text-gold-600" />
-            <span>必備與檢附文件清單：</span>
-          </h4>
-
-          {/* 文件清單列表 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            {currentCategory.items.map((item: any, idx: number) => (
-              <div
-                key={idx}
-                className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
-                    <CheckCircle2 className="w-5 h-5" />
-                  </div>
-                  <span className="text-sm sm:text-base font-medium text-ink-900 leading-snug">{item.name}</span>
+            {/* 上半部：申辦項目名稱與簡介 */}
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-4 group/lefttitle">
+                <div className="w-10 h-10 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/lefttitle:bg-gold-600 group-hover/lefttitle:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                  <Sparkles className="w-5 h-5 text-gold-600 group-hover/lefttitle:text-white transition-colors duration-300" />
                 </div>
-                <div className="flex flex-col items-end shrink-0 text-right">
-                  <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
-                    {item.note}
-                  </span>
-                  {item.subNote && (
-                    <span className="text-xs px-2.5 py-1 mt-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
-                      {item.subNote}
-                    </span>
-                  )}
-                </div>
+                <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-900">
+                  {currentCategory.title}
+                </h3>
               </div>
-            ))}
+
+              <p className="text-ink-700 text-base leading-relaxed mb-6 font-['Microsoft_JhengHei']">
+                {currentCategory.desc}
+              </p>
+            </div>
+
+            {/* 下半部：工作天數標示卡片 */}
+            <div className="relative z-10 pt-6 border-t border-gold-300/40">
+              <div className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/90 border border-gold-400/40 shadow-sm group/day cursor-pointer">
+                <div className="w-7 h-7 rounded-lg bg-gold-400/15 border border-gold-400/35 group-hover/day:bg-gold-600 group-hover/day:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                  <Clock className="w-4 h-4 text-gold-600 group-hover/day:text-white transition-colors duration-300" />
+                </div>
+                <span className="text-sm font-medium text-ink-900 font-['Microsoft_JhengHei']">
+                  工作天數：<strong className="text-gold-700 font-bold">{currentCategory.days}</strong>
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* 下載按鈕（若為新購手續則隱藏；圖示移至右側，並加入移入反白效果） */}
-          {activeTab !== 'new' && (
-            <div className="mt-6 flex items-center">
-              <a
-                href="/寶慈客戶服務申請表.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm group/btn cursor-pointer"
-              >
-                <span>客戶服務申請表</span>
-                <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white transition-colors shrink-0" />
-              </a>
+          {/* 右側：文件清單與下載按鈕區塊 (7欄) */}
+          <div className="lg:col-span-7 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between border border-gold-400/40 bg-gradient-to-br from-white/95 via-ivory-50/90 to-gold-100/40 relative overflow-hidden">
+            
+            <div className="relative z-10">
+              <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-6 flex items-center gap-2 group/reporttitle">
+                <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/reporttitle:bg-gold-600 group-hover/reporttitle:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                  <FileText className="w-5 h-5 text-gold-600 group-hover/reporttitle:text-white transition-colors duration-300" />
+                </div>
+                <span>必備與檢附文件清單</span>
+              </h4>
+
+              {/* 文件清單列表 */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                {currentCategory.items.map((item: any, idx: number) => (
+                  <div
+                    key={idx}
+                    className="group h-full flex items-center justify-between p-3.5 rounded-xl bg-white/90 border border-ivory-300 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
+                        <CheckCircle2 className="w-4 h-4" />
+                      </div>
+                      <span className="text-xs sm:text-sm font-medium text-ink-900 leading-snug">{item.name}</span>
+                    </div>
+                    <div className="flex flex-col items-end shrink-0 text-right">
+                      <span className="text-[11px] px-2 py-0.5 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[150px] leading-snug">
+                        {item.note}
+                      </span>
+                      {item.subNote && (
+                        <span className="text-[11px] px-2 py-0.5 mt-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[150px] leading-snug">
+                          {item.subNote}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          )}
+
+            {/* 下載按鈕（若為新購手續則隱藏） */}
+            {activeTab !== 'new' && (
+              <div className="relative z-10 pt-4 border-t border-gold-300/40 flex items-center">
+                <a
+                  href="/寶慈客戶服務申請表.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white/90 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm hover:shadow-md group/btn cursor-pointer"
+                >
+                  <span>下載客戶服務申請表</span>
+                  <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white transition-colors shrink-0" />
+                </a>
+              </div>
+            )}
+          </div>
+
         </div>
 
-        {/* 注意事項（單欄整列顯示，上方加入英文 NOTICES） */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
+        {/* 注意事項（單欄整列顯示） */}
+        <div className="bg-white/90 border border-gold-400/40 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
           <div className="text-center mb-8">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               NOTICES
