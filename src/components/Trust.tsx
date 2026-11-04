@@ -48,27 +48,43 @@ export default function Trust() {
         {/* 左右分欄主體區塊 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch reveal reveal-delay-3">
           
-          {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-white/90 via-ivory-50/80 to-gold-100/30 border border-gold-400/30 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group">
-            {/* 背景裝飾微光 */}
-            <div className="absolute -right-16 -bottom-16 w-64 h-64 rounded-full bg-gold-200/20 blur-3xl pointer-events-none" />
+          {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) - 加入同色調握手線條插圖背景 */}
+          <div className="lg:col-span-5 bg-gradient-to-br from-white/95 via-ivory-50/90 to-gold-100/40 border border-gold-400/30 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group">
+            
+            {/* 背景 SVG 握手線條插圖（採用網站同色調：金/墨色低透明度，呈現優雅浮水印效果） */}
+            <div className="absolute right-[-20px] bottom-[-20px] w-72 h-72 opacity-[0.12] pointer-events-none group-hover:scale-105 transition-transform duration-700 z-0">
+              <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-gold-700 w-full h-full">
+                {/* 雙手握手意象精緻向量線條 */}
+                <path d="M40 120 C 60 100, 80 110, 95 90 C 105 75, 115 60, 130 75 C 145 90, 130 110, 115 125 C 100 140, 80 135, 65 140 Z" fill="currentColor" fillOpacity="0.05" />
+                <path d="M20 140 L 95 90" />
+                <path d="M180 140 L 105 90" />
+                <path d="M60 160 L 95 125" />
+                <path d="M140 160 L 105 125" />
+                <path d="M75 80 Q 90 60 110 75" />
+                <path d="M90 50 Q 110 35 130 55" />
+              </svg>
+            </div>
 
-            <div>
-              <div className="w-12 h-12 rounded-2xl bg-gold-600 text-white flex items-center justify-center shadow-md mb-6">
-                <Landmark className="w-6 h-6" />
+            {/* 背景裝飾微光 */}
+            <div className="absolute -right-16 -bottom-16 w-64 h-64 rounded-full bg-gold-200/20 blur-3xl pointer-events-none z-0" />
+
+            <div className="relative z-10">
+              {/* 小圖移至標題左側，加入 hover 深金底白線條互動 */}
+              <div className="flex items-center gap-3 mb-4 group/lefttitle">
+                <div className="w-10 h-10 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/lefttitle:bg-gold-600 group-hover/lefttitle:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                  <Landmark className="w-5 h-5 text-gold-600 group-hover/lefttitle:text-white transition-colors duration-300" />
+                </div>
+                <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-900">
+                  嚴謹信託 專款專用
+                </h3>
               </div>
-              <span className="text-xs tracking-[0.25em] uppercase font-bold text-gold-600 block mb-2">
-                ASSET PROTECTION
-              </span>
-              <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-900 mb-4">
-                嚴謹信託 專款專用
-              </h3>
+
               <p className="text-ink-600 text-sm sm:text-base leading-relaxed mb-6 font-['Microsoft_JhengHei']">
                 寶慈生命事業秉持最高誠信原則與法規遵循，將每位客戶的託付妥善交付銀行信託管理，確保資產安全與履約承諾。
               </p>
             </div>
 
-            <div className="space-y-4 pt-6 border-t border-ivory-200/80">
+            <div className="relative z-10 space-y-4 pt-6 border-t border-ivory-200/80">
               <div className="flex items-center gap-3 text-ink-800 text-sm font-medium">
                 <div className="w-6 h-6 rounded-full bg-gold-100 text-gold-700 flex items-center justify-center shrink-0">
                   <Lock className="w-3.5 h-3.5" />
@@ -79,7 +95,7 @@ export default function Trust() {
                 <div className="w-6 h-6 rounded-full bg-gold-100 text-gold-700 flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-3.5 h-3.5" />
                 </div>
-                <span>歷年財報透明公開可稽</span>
+                <span>歷年信託透明公開可稽</span>
               </div>
             </div>
           </div>
