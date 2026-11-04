@@ -41,7 +41,7 @@ export default function CoreValues() {
           <h2 className="font-serif-tc text-3xl md:text-4xl text-ink-900 font-bold mt-3 reveal reveal-delay-1">
             我們的核心價值
           </h2>
-          <div className="gold-divider w-32 mx-auto mt-6 reveal reveal-delay-2" />
+          <div className="gold-divider w-60 mx-auto mt-6 reveal reveal-delay-2" />
         </div>
 
         {/* Cards */}
