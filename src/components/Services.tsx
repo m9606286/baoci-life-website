@@ -308,7 +308,7 @@ export default function Services() {
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-2 reveal reveal-delay-1">
             12 大禮儀服務流程
           </h2>
-          <div className="gold-divider w-32 mx-auto mt-4 reveal reveal-delay-2" />
+          <div className="gold-divider w-80 mx-auto mt-4 reveal reveal-delay-2" />
           <p className="text-ink-500 text-sm sm:text-base mt-4 mx-auto reveal reveal-delay-3">
             從臨終關懷到擇吉安奉與後續關懷，寶慈專業團隊全程陪伴，圓滿每一份託付。
           </p>
