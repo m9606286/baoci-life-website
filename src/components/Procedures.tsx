@@ -9,7 +9,7 @@ const procedureCategories = [
     id: 'new',
     title: '新購手續',
     days: '15 天',
-    desc: '購買生前契約所需文件。',
+    desc: '購買生前契約。',
     items: [
       { name: '客戶基本資料表', note: '未曾購買' },
       { name: '契約書正本', note: '✓ 必備' },
@@ -21,7 +21,7 @@ const procedureCategories = [
     id: 'transfer',
     title: '轉讓手續',
     days: '15 天',
-    desc: '契約權利轉讓予他人時所需文件。',
+    desc: '契約權利轉讓予他人。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
@@ -39,7 +39,7 @@ const procedureCategories = [
     id: 'inheritance',
     title: '繼承手續',
     days: '7 天',
-    desc: '原契約持有人身故後，辦理繼承變更所需文件。',
+    desc: '原契約持有人身故後，辦理繼承變更。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
@@ -55,7 +55,7 @@ const procedureCategories = [
     id: 'fulfillment',
     title: '履約手續',
     days: '依約辦理',
-    desc: '生前契約執行禮儀服務時所需文件。',
+    desc: '生前契約執行禮儀服務。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '持有人雙證件及印章', note: '✓ 必備' },
@@ -75,7 +75,7 @@ const procedureCategories = [
     id: 'termination',
     title: '解約手續',
     days: '15 天',
-    desc: '辦理契約解約與退款所需文件。',
+    desc: '辦理契約解約退款。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
@@ -91,7 +91,7 @@ const procedureCategories = [
     id: 'reinstatement',
     title: '緩繳復效手續',
     days: '依約辦理',
-    desc: '分期契約申請緩繳後辦理恢復效力所需文件。',
+    desc: '分期契約申請緩繳後辦理契約恢復效力。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
@@ -109,7 +109,7 @@ const procedureCategories = [
     id: 'customer_update',
     title: '客資變更手續',
     days: '7 天',
-    desc: '變更聯絡地址、電話、姓名或遺失補發等所需文件。',
+    desc: '變更聯絡地址、電話、姓名或遺失補發等。',
     items: [
       { name: '客戶基本資料表', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
