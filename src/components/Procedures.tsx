@@ -250,11 +250,11 @@ export default function Procedures() {
                   <span className="text-sm sm:text-base font-medium text-ink-900 leading-snug">{item.name}</span>
                 </div>
                 <div className="flex flex-col items-end shrink-0 text-right">
-                  <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
+                  <span className="text-sm sm:text-base px-3 py-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[200px] leading-snug">
                     {item.note}
                   </span>
                   {item.subNote && (
-                    <span className="text-xs px-2.5 py-1 mt-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
+                    <span className="text-sm sm:text-base px-3 py-1 mt-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[200px] leading-snug">
                       {item.subNote}
                     </span>
                   )}
