@@ -174,7 +174,7 @@ export default function Procedures() {
           </p>
         </div>
 
-        {/* 下拉選單與標籤切換列 */}
+        {/* 下拉選單與標籤切換列（針對較長名稱如緩繳復效與客資變更拉寬按鈕，確保字體完美呈現） */}
         <div className="mb-10 reveal">
           <div className="block md:hidden mb-4">
             <label htmlFor="procedure-select" className="block text-sm font-medium text-ink-700 mb-2 text-center">
@@ -207,7 +207,7 @@ export default function Procedures() {
                       : 'bg-white/80 hover:bg-ivory-200 text-ink-700 border border-ivory-300'
                   }`}
                 >
-                  <span>{cat.title}</span>
+                  <span className="whitespace-nowrap">{cat.title}</span>
                 </button>
               );
             })}
@@ -218,13 +218,13 @@ export default function Procedures() {
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 relative overflow-hidden reveal">
           <div className="relative pb-6 mb-6 border-b border-ivory-200">
             
-            {/* 標題與說明文字區塊（標題與副標中間加入質感金線） */}
-            <div className="text-center mx-auto max-w-md">
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
+            {/* 標題與說明文字區塊（標題與副標中間加入質感金線，並將容器加寬以完美適應長標題） */}
+            <div className="text-center mx-auto max-w-lg">
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900 tracking-wide">
                 {currentCategory.title}
               </h3>
               {/* 字體中間的精緻質感分隔金線 */}
-              <div className="w-16 h-[2px] bg-gold-400 mx-auto my-2.5 opacity-80" />
+              <div className="w-16 h-[2px] bg-gold-400 mx-auto my-3 opacity-80" />
               <p className="text-ink-600 text-sm">
                 {currentCategory.desc}
               </p>
