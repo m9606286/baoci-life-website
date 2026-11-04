@@ -1,6 +1,6 @@
 import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
-import { ExternalLink, ShieldCheck, Download, FileText, Landmark } from 'lucide-react';
+import { ExternalLink, ShieldCheck, Download, FileText, Landmark, Lock } from 'lucide-react';
 
 export default function Trust() {
   const revealResult = useReveal<HTMLDivElement>();
@@ -48,20 +48,15 @@ export default function Trust() {
         {/* 左右分欄主體區塊 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch reveal reveal-delay-3">
           
-          {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) - 改用絕對定位圖片讓握手圖真正下移 */}
-          <div className="lg:col-span-5 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group border border-gold-400/40 bg-white min-h-[380px]">
+          {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) - 採用 hand.png 背景圖 */}
+          <div className="lg:col-span-5 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group border border-gold-400/40 bg-white">
             
-            {/* 握手圖片下移至底部 */}
-            <div className="absolute -bottom-10 -left-6 right-0 z-0 pointer-events-none opacity-85 transition-transform duration-700 group-hover:scale-105">
-              <img 
-                src="/hand.png" 
-                alt="嚴謹信託" 
-                className="w-full h-auto object-cover translate-y-4"
-              />
-            </div>
-
-            {/* 柔和的亮色漸層遮罩，確保文字清晰 */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ivory-100/90 via-ivory-100/40 to-transparent z-0" />
+            {/* 背景圖片層（hand.png） */}
+            <div 
+              className="absolute inset-0 bg-[url('/hand.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 z-0" 
+            />
+            {/* 柔和的亮色漸層遮罩 */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ivory-100/95 via-ivory-100/70 to-ivory-50/40 z-0" />
 
             {/* 內容區塊 */}
             <div className="relative z-10">
@@ -78,9 +73,26 @@ export default function Trust() {
                 寶慈生命事業秉持最高誠信原則與法規遵循，將每位客戶的託付妥善交付京城銀行信託管理，確保資產安全與履約承諾。
               </p>
             </div>
+
+            {/* 下方承諾點 */}
+            <div className="relative z-10 space-y-4 pt-6 border-t border-gold-300/40">
+              <div className="flex items-center gap-3 text-ink-900 text-sm font-medium group/item1 cursor-pointer">
+                <div className="w-7 h-7 rounded-lg bg-gold-400/15 border border-gold-400/35 group-hover/item1:bg-gold-600 group-hover/item1:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                  <Lock className="w-4 h-4 text-gold-600 group-hover/item1:text-white transition-colors duration-300" />
+                </div>
+                <span>保障信託管理</span>
+              </div>
+
+              <div className="flex items-center gap-3 text-ink-900 text-sm font-medium group/item2 cursor-pointer">
+                <div className="w-7 h-7 rounded-lg bg-gold-400/15 border border-gold-400/35 group-hover/item2:bg-gold-600 group-hover/item2:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-4 h-4 text-gold-600 group-hover/item2:text-white transition-colors duration-300" />
+                </div>
+                <span>信託透明公開</span>
+              </div>
+            </div>
           </div>
 
-          {/* 右側：信託相關文件與查詢按鈕區塊 (7欄) */}
+          {/* 右側：信託相關文件與查詢按鈕區塊 (7欄) - 改為與左側一致的溫潤漸層底色 */}
           <div className="lg:col-span-7 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between border border-gold-400/40 bg-gradient-to-br from-white/95 via-ivory-50/90 to-gold-100/40 relative overflow-hidden">
             
             {/* 內容主體 */}
@@ -131,16 +143,16 @@ export default function Trust() {
                 <span>信託財產目錄與收支計算表、結算報告</span>
               </h4>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {trustReports.map((report, idx) => (
                   <a
                     key={idx}
                     href={report.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-white/90 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md group/report cursor-pointer"
+                    className="inline-flex items-center justify-between px-4 py-3 rounded-xl bg-white/90 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-xs sm:text-sm transition-all duration-300 shadow-sm hover:shadow-md group/report cursor-pointer"
                   >
-                    <span className="truncate">{report.title}</span>
+                    <span className="truncate pr-2">{report.title}</span>
                     <Download className="w-4 h-4 text-gold-600 group-hover/report:text-white shrink-0 transition-colors" />
                   </a>
                 ))}
