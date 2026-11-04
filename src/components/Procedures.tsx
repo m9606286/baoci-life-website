@@ -218,9 +218,6 @@ export default function Procedures() {
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-ivory-200 gap-4">
             <div>
-              <span className="text-xs tracking-wider uppercase font-bold text-white bg-gold-600 px-3 py-1 rounded-full inline-block mb-2 shadow-sm">
-                申辦項目詳情
-              </span>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
                 {currentCategory.title}
               </h3>
