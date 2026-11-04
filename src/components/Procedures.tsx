@@ -91,7 +91,7 @@ const procedureCategories = [
     id: 'reinstatement',
     title: '緩繳復效手續',
     days: '依約辦理',
-    desc: '分期契約申請緩繳後辦理契約恢復效力。',
+    desc: '申請緩繳後辦理契約復效。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
