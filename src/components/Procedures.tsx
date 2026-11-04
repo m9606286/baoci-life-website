@@ -177,14 +177,14 @@ export default function Procedures() {
         {/* 下拉選單與標籤切換列 */}
         <div className="mb-10 reveal">
           <div className="block md:hidden mb-4">
-            <label htmlFor="procedure-select" className="block text-sm font-medium text-ink-700 mb-2">
+            <label htmlFor="procedure-select" className="block text-sm font-medium text-ink-700 mb-2 text-center">
               選擇申辦項目：
             </label>
             <select
               id="procedure-select"
               value={activeTab}
               onChange={(e) => setActiveTab(e.target.value)}
-              className="w-full bg-white border border-ivory-300 rounded-xl px-4 py-3 text-ink-900 text-base font-medium focus:outline-none focus:ring-2 focus:ring-gold-500 shadow-sm font-['Microsoft_JhengHei']"
+              className="w-full bg-white border border-ivory-300 rounded-xl px-4 py-3 text-ink-900 text-base font-medium focus:outline-none focus:ring-2 focus:ring-gold-500 shadow-sm font-['Microsoft_JhengHei'] text-center"
             >
               {procedureCategories.map((cat) => (
                 <option key={cat.id} value={cat.id}>
@@ -201,7 +201,7 @@ export default function Procedures() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveTab(cat.id)}
-                  className={`px-5 py-3 rounded-xl font-serif-tc text-sm font-bold transition-all duration-300 cursor-pointer shadow-sm flex items-center gap-2 ${
+                  className={`px-5 py-3 rounded-xl font-serif-tc text-sm font-bold transition-all duration-300 cursor-pointer shadow-sm flex items-center justify-center gap-2 ${
                     isActive
                       ? 'bg-gold-600 text-white shadow-md scale-105'
                       : 'bg-white/80 hover:bg-ivory-200 text-ink-700 border border-ivory-300'
@@ -214,24 +214,24 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 選中項目的詳細文件內容卡片（單欄設計） */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-ivory-200 gap-4">
+        {/* 選中項目的詳細文件內容卡片（全面置中對齊） */}
+        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal text-center">
+          <div className="flex flex-col items-center justify-center pb-6 mb-6 border-b border-ivory-200 gap-4">
             <div>
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
                 {currentCategory.title}
               </h3>
               <p className="text-ink-600 text-sm mt-1">{currentCategory.desc}</p>
             </div>
-            <div className="flex items-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300 shrink-0">
-              <Clock className="w-4 h-4 text-gold-600" />
+            <div className="inline-flex items-center justify-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300">
+              <Clock className="w-4 h-4 text-gold-600 shrink-0" />
               <span className="text-sm font-medium text-ink-800 font-['Microsoft_JhengHei']">
                 工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
               </span>
             </div>
           </div>
 
-          <h4 className="font-serif-tc text-base font-bold text-ink-800 mb-4 flex items-center gap-2">
+          <h4 className="font-serif-tc text-base font-bold text-ink-800 mb-6 flex items-center justify-center gap-2">
             <FileText className="w-4 h-4 text-gold-600" />
             <span>必備與檢附文件清單：</span>
           </h4>
@@ -241,15 +241,15 @@ export default function Procedures() {
             {currentCategory.items.map((item: any, idx: number) => (
               <div
                 key={idx}
-                className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
+                className="group h-full flex flex-col sm:flex-row items-center justify-between p-4 rounded-xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 text-center sm:text-left"
               >
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center justify-center sm:justify-start gap-2.5 w-full sm:w-auto">
                   <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <span className="text-sm sm:text-base font-medium text-ink-900 leading-snug">{item.name}</span>
                 </div>
-                <div className="flex flex-col items-end shrink-0 text-right">
+                <div className="flex flex-col items-center sm:items-end shrink-0 w-full sm:w-auto">
                   <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
                     {item.note}
                   </span>
@@ -265,7 +265,7 @@ export default function Procedures() {
 
           {/* 下載按鈕（若為新購手續則隱藏） */}
           {activeTab !== 'new' && (
-            <div className="mt-6 flex items-center">
+            <div className="mt-6 flex justify-center">
               <a
                 href="/寶慈客戶服務申請表.pdf"
                 target="_blank"
@@ -279,9 +279,9 @@ export default function Procedures() {
           )}
         </div>
 
-        {/* 注意事項（單欄整列顯示） */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
-          <div className="text-center mb-8">
+        {/* 注意事項（單欄整列顯示，文字置中） */}
+        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal text-center">
+          <div className="mb-8">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               NOTICES
             </p>
@@ -294,17 +294,17 @@ export default function Procedures() {
             {notices.map((notice, idx) => (
               <div
                 key={idx}
-                className="group flex flex-col sm:flex-row sm:items-center p-4 sm:p-5 rounded-2xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 sm:gap-6"
+                className="group flex flex-col items-center p-5 rounded-2xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 text-center"
               >
-                <div className="flex items-center gap-3 shrink-0 sm:w-auto">
+                <div className="flex items-center justify-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
-                  <h5 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900 whitespace-nowrap">
+                  <h5 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900">
                     {notice.title}
                   </h5>
                 </div>
-                <p className="text-sm sm:text-base text-ink-600 leading-relaxed text-left font-['Microsoft_JhengHei'] flex-1">
+                <p className="text-sm sm:text-base text-ink-600 leading-relaxed font-['Microsoft_JhengHei'] max-w-2xl mx-auto">
                   {notice.desc}
                 </p>
               </div>
