@@ -90,7 +90,7 @@ export default function Trust() {
               <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/reporttitle:bg-gold-600 group-hover/reporttitle:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
                 <FileText className="w-5 h-5 text-gold-600 group-hover/reporttitle:text-white transition-colors duration-300" />
               </div>
-              <span>信託財產目錄與收支計算表與信託財產結算報告</span>
+              <span>信託財產目錄與收支計算表、信託財產結算報告</span>
             </h4>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-xl mx-auto">
