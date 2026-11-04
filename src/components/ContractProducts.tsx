@@ -138,7 +138,7 @@ export default function ContractProducts() {
 
                 {/* 底部按鈕區 */}
                 <div className="pt-2 flex items-center gap-2.5 w-full flex-wrap">
-                  <span className="inline-flex items-center px-4 py-2.5 rounded-xl bg-transparent hover:bg-gold-600 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm cursor-default">
+                  <span className="inline-flex items-center px-4 py-2.5 rounded-xl bg-transparent hover:bg-gold-500 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm cursor-default">
                     {product.typeTag}
                   </span>
 
@@ -146,7 +146,7 @@ export default function ContractProducts() {
                     href={product.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-transparent hover:bg-gold-600 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-transparent hover:bg-gold-500 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm"
                   >
                     <span>生前契約書</span>
                     <Download className="w-4 h-4" />
@@ -165,7 +165,7 @@ export default function ContractProducts() {
             href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white font-medium text-sm sm:text-base transition-all duration-300 border border-gold-400/50 shadow-sm hover:shadow-md group"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white font-medium text-sm sm:text-base transition-all duration-300 border border-gold-400/50 shadow-sm hover:shadow-md group"
           >
             <FileText className="w-5 h-5 text-gold-600 group-hover:text-white transition-colors shrink-0" />
             <span>台南市民政局生前契約銷售及代銷商最新核准函</span>
@@ -230,7 +230,7 @@ export default function ContractProducts() {
             <a
               href="/contact"
               onClick={handleConsultClick}
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-400/50 font-medium text-sm sm:text-base transition-all shadow-sm hover:shadow-md cursor-pointer"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white border border-gold-400/50 font-medium text-sm sm:text-base transition-all shadow-sm hover:shadow-md cursor-pointer"
             >
               諮詢適合您的方案
             </a>
