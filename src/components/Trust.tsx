@@ -74,28 +74,29 @@ export default function Trust() {
               </p>
             </div>
 
-            {/* 下方承諾點：各別加入 group 互動，滑鼠移入時變為深金底白線條 */}
+            {/* 下方承諾點 */}
             <div className="relative z-10 space-y-4 pt-6 border-t border-gold-300/40">
               <div className="flex items-center gap-3 text-ink-900 text-sm font-medium group/item1 cursor-pointer">
                 <div className="w-7 h-7 rounded-lg bg-gold-400/15 border border-gold-400/35 group-hover/item1:bg-gold-600 group-hover/item1:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <Lock className="w-4 h-4 text-gold-600 group-hover/item1:text-white transition-colors duration-300" />
                 </div>
-                <span>京城銀行保障信託管理</span>
+                <span>京城銀行安全信託管理</span>
               </div>
 
               <div className="flex items-center gap-3 text-ink-900 text-sm font-medium group/item2 cursor-pointer">
                 <div className="w-7 h-7 rounded-lg bg-gold-400/15 border border-gold-400/35 group-hover/item2:bg-gold-600 group-hover/item2:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-4 h-4 text-gold-600 group-hover/item2:text-white transition-colors duration-300" />
                 </div>
-                <span>信託透明公開</span>
+                <span>歷年信託透明公開可稽</span>
               </div>
             </div>
           </div>
 
-          {/* 右側：信託相關文件與查詢按鈕區塊 (7欄) */}
-          <div className="lg:col-span-7 bg-white/80 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between">
+          {/* 右側：信託相關文件與查詢按鈕區塊 (7欄) - 改為與左側一致的溫潤漸層底色 */}
+          <div className="lg:col-span-7 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between border border-gold-400/40 bg-gradient-to-br from-white/95 via-ivory-50/90 to-gold-100/40 relative overflow-hidden">
             
-            <div>
+            {/* 內容主體 */}
+            <div className="relative z-10">
               {/* 保證 75% 信託標題與小圖示 */}
               <div className="flex items-center gap-3 mb-6 group/icon">
                 <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/icon:bg-gold-600 group-hover/icon:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
@@ -112,7 +113,7 @@ export default function Trust() {
                   href="/生前契約履約保障信託契約書.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-ivory-50/70 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-white/90 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
                 >
                   <span>履約保障信託契約書</span>
                   <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
@@ -122,7 +123,7 @@ export default function Trust() {
                   href="https://www.ktb.com.tw/funeral/query"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-ivory-50/70 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-white/90 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
                 >
                   <span>前往信託查詢系統</span>
                   <ExternalLink className="w-4 h-4 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
@@ -131,10 +132,10 @@ export default function Trust() {
             </div>
 
             {/* 分隔線 */}
-            <div className="w-full h-px bg-ivory-200 my-6" />
+            <div className="w-full h-px bg-gold-300/40 my-6 relative z-10" />
 
             {/* 下方四個報告按鈕 */}
-            <div>
+            <div className="relative z-10">
               <h4 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900 mb-4 flex items-center gap-2 group/reporttitle">
                 <div className="w-8 h-8 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/reporttitle:bg-gold-600 group-hover/reporttitle:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <FileText className="w-4 h-4 text-gold-600 group-hover/reporttitle:text-white transition-colors duration-300" />
@@ -149,7 +150,7 @@ export default function Trust() {
                     href={report.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-between px-4 py-3 rounded-xl bg-ivory-50/70 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-xs sm:text-sm transition-all duration-300 shadow-sm hover:shadow-md group/report cursor-pointer"
+                    className="inline-flex items-center justify-between px-4 py-3 rounded-xl bg-white/90 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-xs sm:text-sm transition-all duration-300 shadow-sm hover:shadow-md group/report cursor-pointer"
                   >
                     <span className="truncate pr-2">{report.title}</span>
                     <Download className="w-4 h-4 text-gold-600 group-hover/report:text-white shrink-0 transition-colors" />
