@@ -157,7 +157,7 @@ export default function Procedures() {
   };
 
   return (
-    <section id="procedures" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
+    <section id="procedures" className="pt-12 pb-24 lg:pt-16 lg:pb-32 bg-ivory-100 relative overflow-hidden">
       <div ref={ref} className="mx-auto max-w-5xl px-6 relative">
         
         {/* 標題區 */}
