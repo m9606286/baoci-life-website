@@ -238,7 +238,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="pt-2 pb-16 lg:pt-4 lg:pb-24 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
+    <section id="services" className="pt-0 pb-16 lg:pt-2 lg:pb-24 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
       <div className="absolute top-1/3 right-0 w-96 h-96 rounded-full bg-gold-100/30 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
