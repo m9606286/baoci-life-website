@@ -38,25 +38,25 @@ export default function Trust() {
             信託公開
           </h2>
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
+          
+          {/* 移至信託公開下方的說明文字 */}
+          <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-6 reveal reveal-delay-3">
+            依殯葬管理條例第51條，預收之生前契約款項，依法75%交由「京城銀行」信託管理。
+          </p>
         </div>
 
         {/* 信託說明卡片區塊 */}
         <div className="group bg-white/80 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-8 sm:p-12 shadow-lg reveal reveal-delay-3 transition-all duration-300 text-center">
           
-          {/* 圖示與標題置中並排 */}
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover:bg-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-6 h-6 text-gold-600 group-hover:text-white transition-colors duration-300" />
+          {/* 保證 75% 信託標題與小圖示（小圖示改為與下方 FileText 相同規格，移入時深金底白線條） */}
+          <div className="flex items-center justify-center gap-3 mb-8 group/icon">
+            <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/icon:bg-gold-600 group-hover/icon:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-5 h-5 text-gold-600 group-hover/icon:text-white transition-colors duration-300" />
             </div>
             <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">
               保證 75% 信託
             </h3>
           </div>
-
-          {/* 說明文字 */}
-          <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-8">
-            依殯葬管理條例第51條，預收之生前契約款項，依法75%交由「京城銀行」信託管理。
-          </p>
 
           {/* 上方主要按鈕區 */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
@@ -84,10 +84,12 @@ export default function Trust() {
           {/* 分隔線 */}
           <div className="w-full h-px bg-ivory-200 mb-10" />
 
-          {/* 下方四個報告按鈕（限制最大寬度 max-w-xl 讓按鈕變短，內容 justify-center 置中） */}
+          {/* 下方四個報告按鈕（區塊標題的小圖示移入時同樣會出現深金底白線條效果） */}
           <div>
-            <h4 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 mb-6 flex items-center justify-center gap-2">
-              <FileText className="w-5 h-5 text-gold-600" />
+            <h4 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 mb-6 flex items-center justify-center gap-2 group/reporttitle">
+              <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/reporttitle:bg-gold-600 group-hover/reporttitle:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                <FileText className="w-5 h-5 text-gold-600 group-hover/reporttitle:text-white transition-colors duration-300" />
+              </div>
               <span>信託財產目錄與收支計算表與信託財產結算報告</span>
             </h4>
 
