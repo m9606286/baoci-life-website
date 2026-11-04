@@ -48,15 +48,20 @@ export default function Trust() {
         {/* 左右分欄主體區塊 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch reveal reveal-delay-3">
           
-          {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) - 背景圖緊貼底部 (bg-bottom) */}
-          <div className="lg:col-span-5 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group border border-gold-400/40 bg-white min-h-[360px]">
+          {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) - 改用絕對定位圖片讓握手圖真正下移 */}
+          <div className="lg:col-span-5 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group border border-gold-400/40 bg-white min-h-[380px]">
             
-            {/* 背景圖片層（hand.png，對齊底部） */}
-            <div 
-              className="absolute inset-0 bg-[url('/hand.png')] bg-cover bg-bottom transition-transform duration-700 group-hover:scale-105 z-0 opacity-85" 
-            />
-            {/* 柔和的亮色漸層遮罩 */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ivory-100/90 via-ivory-100/60 to-ivory-50/20 z-0" />
+            {/* 握手圖片下移至底部 */}
+            <div className="absolute -bottom-10 -left-6 right-0 z-0 pointer-events-none opacity-85 transition-transform duration-700 group-hover:scale-105">
+              <img 
+                src="/hand.png" 
+                alt="嚴謹信託" 
+                className="w-full h-auto object-cover translate-y-4"
+              />
+            </div>
+
+            {/* 柔和的亮色漸層遮罩，確保文字清晰 */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ivory-100/90 via-ivory-100/40 to-transparent z-0" />
 
             {/* 內容區塊 */}
             <div className="relative z-10">
