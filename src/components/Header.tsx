@@ -74,19 +74,19 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Phone CTA (desktop) - 已替換為與 Footer 相同的質感黑 bg-ink-950，並加上金屬邊框 */}
+          {/* Phone CTA (desktop) - 已大幅強化金色質感線條 (border-2 border-gold-400/80 + ring-2) */}
           <a
             href="tel:0800-600-603"
-            className="hidden lg:flex items-center gap-3 px-5 py-2 rounded-full bg-ink-950 text-ivory-50 border border-gold-400/40 ring-1 ring-gold-400/20 hover:border-gold-400 hover:bg-gold-600 transition-all hover:shadow-lg group shrink-0"
+            className="hidden lg:flex items-center gap-3 px-5 py-2.5 rounded-full bg-ink-950 text-ivory-50 border-2 border-gold-400/80 ring-2 ring-gold-400/40 hover:border-gold-300 hover:ring-gold-300/60 hover:bg-gold-600 transition-all hover:shadow-xl group shrink-0"
           >
-            <div className="p-1.5 rounded-full bg-gold-400/20 text-gold-400 group-hover:bg-white group-hover:text-gold-600 transition-colors">
-              <Phone className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+            <div className="p-2 rounded-full bg-gold-400/20 text-gold-400 group-hover:bg-white group-hover:text-gold-600 transition-colors">
+              <Phone className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </div>
             <div className="flex flex-col text-left">
-              <span className="text-[10px] text-gold-400 group-hover:text-white font-medium tracking-wider leading-none transition-colors">
+              <span className="text-xs text-gold-400 group-hover:text-white font-medium tracking-wider leading-none transition-colors">
                 24小時服務專線
               </span>
-              <span className="text-sm font-semibold tracking-wide mt-0.5 leading-tight font-['Microsoft_JhengHei']">
+              <span className="text-base font-bold tracking-wide mt-0.5 leading-tight font-['Microsoft_JhengHei']">
                 0800-600-603
               </span>
             </div>
@@ -120,12 +120,12 @@ export default function Header() {
             ))}
             <a
               href="tel:0800-600-603"
-              className="mt-4 flex items-center justify-center gap-3 py-3 rounded-full bg-ink-950 text-ivory-50 border border-gold-400/40 ring-1 ring-gold-400/20 hover:bg-gold-600 transition-colors"
+              className="mt-4 flex items-center justify-center gap-3 py-3 rounded-full bg-ink-950 text-ivory-50 border-2 border-gold-400/80 ring-2 ring-gold-400/40 hover:bg-gold-600 transition-colors"
             >
               <Phone className="w-4 h-4 text-gold-400" />
               <div className="flex flex-col items-start">
-                <span className="text-[10px] text-gold-400 font-medium leading-none">24小時服務專線</span>
-                <span className="font-semibold text-sm leading-tight mt-0.5 font-['Microsoft_JhengHei']">0800-600-603</span>
+                <span className="text-xs text-gold-400 font-medium leading-none">24小時服務專線</span>
+                <span className="font-bold text-base leading-tight mt-0.5 font-['Microsoft_JhengHei']">0800-600-603</span>
               </div>
             </a>
           </nav>
