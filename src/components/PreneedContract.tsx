@@ -51,7 +51,7 @@ export default function PreneedConcept() {
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
             什麼是生前契約？
           </h2>
-          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
+          <div className="w-48 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
           <p className="mt-4 text-slate-600 text-sm sm:text-base max-w-2xl mx-auto reveal reveal-delay-3">
             生前契約是給家人最後的一道保障，也是為自己預先記錄並落實身後事安排的尊榮選擇。
           </p>
