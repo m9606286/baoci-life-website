@@ -350,12 +350,12 @@ export default function Services() {
                       </span>
                     </div>
 
-                    {/* 小圖示與步驟標題：小圖示移至標題左側，預設黑色，Hover 移入時變深金色，背景皆為透明 */}
+                    {/* 小圖示與步驟標題：標題文字加強 Hover 變深金色 (group-hover:text-gold-600) */}
                     <div className="flex items-center gap-2 mb-1.5">
                       <div className="w-5 h-5 text-ink-900 group-hover:text-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
                         <Icon className="w-4 h-4 transition-colors duration-300" />
                       </div>
-                      <h4 className="font-serif-tc text-lg font-bold text-ink-900">
+                      <h4 className="font-serif-tc text-lg font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300">
                         {step.title}
                       </h4>
                     </div>
