@@ -275,14 +275,17 @@ export default function Services() {
                 />
               </div>
 
-              <h4 className="font-serif-tc text-lg font-bold text-ink-900 mb-2">
-                {member.name} <span className="text-gold-700 font-semibold text-sm"> {member.title}</span>
+              {/* 姓名與職稱：預設黑色，Hover 移入時變為深金色 */}
+              <h4 className="font-serif-tc text-lg font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300 mb-2">
+                {member.name} <span className="text-ink-900 group-hover:text-gold-600 font-semibold text-sm transition-colors duration-300"> {member.title}</span>
               </h4>
 
-              {/* 禮儀師顯示內政部證號：字體加大(text-sm)，無小圖，移入時深金底白字反白 */}
+              {/* 禮儀師證號標籤：背景維持原樣 (bg-gold-100/70)，文字預設黑色 (text-ink-900)，Hover 移入時文字變深金色 */}
               {member.certId && (
-                <div className="px-3.5 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-gold-900 text-sm font-medium transition-all duration-300 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600">
-                  <span>內政部禮儀師證書 {member.certId}</span>
+                <div className="px-3.5 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-ink-900 text-sm font-medium transition-colors duration-300">
+                  <span className="group-hover:text-gold-600 transition-colors duration-300">
+                    內政部禮儀師證書 {member.certId}
+                  </span>
                 </div>
               )}
             </div>
