@@ -48,38 +48,17 @@ export default function Trust() {
         {/* 左右分欄主體區塊 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch reveal reveal-delay-3">
           
-          {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) - 仿照商務握手側邊特寫的精準向量插圖背景 */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-white/95 via-ivory-50/90 to-gold-100/40 border border-gold-400/30 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group">
+          {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) - 採用您上傳的 hand.png 作為精緻背景圖 */}
+          <div className="lg:col-span-5 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group border border-gold-400/40 bg-white">
             
-            {/* 背景 SVG 握手特寫插圖（仿照您提供的側邊商務握手角度：左側手腕、中央交握手掌、右側西裝袖口） */}
-            <div className="absolute right-[-20px] bottom-[-20px] w-80 h-80 opacity-[0.18] pointer-events-none group-hover:scale-105 transition-transform duration-700 z-0">
-              <svg viewBox="0 0 300 300" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-gold-700 w-full h-full">
-                {/* 左側手臂與手腕線條 */}
-                <path d="M10 180 L 110 130" strokeWidth="18" strokeLinecap="round" stroke="currentColor" strokeOpacity="0.1" />
-                <path d="M10 170 L 110 120" />
-                <path d="M20 195 L 115 145" />
+            {/* 背景圖片層（套用您上傳的 hand.png，並加入微微的放大互動與柔和漸層，確保文字清晰） */}
+            <div 
+              className="absolute inset-0 bg-[url('/hand.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 z-0" 
+            />
+            {/* 柔和的亮色漸層遮罩，讓文字清晰好讀又不失圖片質感 */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ivory-100/95 via-ivory-100/70 to-ivory-50/40 z-0" />
 
-                {/* 右側西裝袖口與手臂線條（仿照右側西裝外套與白色襯衫袖口） */}
-                <path d="M290 120 L 175 145" strokeWidth="26" strokeLinecap="round" stroke="currentColor" strokeOpacity="0.12" />
-                <path d="M290 110 L 180 135" />
-                <path d="M290 140 L 185 160" />
-                {/* 西裝袖子上的鈕扣細節 */}
-                <circle cx="240" cy="122" r="2.5" fill="currentColor" />
-                <circle cx="255" cy="120" r="2.5" fill="currentColor" />
-
-                {/* 中央雙手交握特寫主體 */}
-                <path d="M110 120 C 130 100, 150 115, 175 110 C 190 105, 200 125, 185 145 C 170 165, 140 160, 120 155 Z" fill="currentColor" fillOpacity="0.12" />
-                {/* 手指緊扣與拇指交疊線條 */}
-                <path d="M125 105 Q 150 90 170 115" />
-                <path d="M140 130 Q 160 120 180 135" />
-                <path d="M115 140 Q 135 150 155 135" />
-                <path d="M150 155 Q 165 170 185 150" />
-              </svg>
-            </div>
-
-            {/* 背景裝飾微光 */}
-            <div className="absolute -right-16 -bottom-16 w-64 h-64 rounded-full bg-gold-200/20 blur-3xl pointer-events-none z-0" />
-
+            {/* 內容區塊 */}
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-4 group/lefttitle">
                 <div className="w-10 h-10 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/lefttitle:bg-gold-600 group-hover/lefttitle:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
@@ -90,20 +69,20 @@ export default function Trust() {
                 </h3>
               </div>
 
-              <p className="text-ink-600 text-sm sm:text-base leading-relaxed mb-6 font-['Microsoft_JhengHei']">
+              <p className="text-ink-700 text-sm sm:text-base leading-relaxed mb-6 font-['Microsoft_JhengHei']">
                 寶慈生命事業秉持最高誠信原則與法規遵循，將每位客戶的託付妥善交付銀行信託管理，確保資產安全與履約承諾。
               </p>
             </div>
 
-            <div className="relative z-10 space-y-4 pt-6 border-t border-ivory-200/80">
-              <div className="flex items-center gap-3 text-ink-800 text-sm font-medium">
-                <div className="w-6 h-6 rounded-full bg-gold-100 text-gold-700 flex items-center justify-center shrink-0">
+            <div className="relative z-10 space-y-4 pt-6 border-t border-gold-300/40">
+              <div className="flex items-center gap-3 text-ink-900 text-sm font-medium">
+                <div className="w-6 h-6 rounded-full bg-gold-200/60 text-gold-800 flex items-center justify-center shrink-0">
                   <Lock className="w-3.5 h-3.5" />
                 </div>
                 <span>京城銀行安全信託管理</span>
               </div>
-              <div className="flex items-center gap-3 text-ink-800 text-sm font-medium">
-                <div className="w-6 h-6 rounded-full bg-gold-100 text-gold-700 flex items-center justify-center shrink-0">
+              <div className="flex items-center gap-3 text-ink-900 text-sm font-medium">
+                <div className="w-6 h-6 rounded-full bg-gold-200/60 text-gold-800 flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-3.5 h-3.5" />
                 </div>
                 <span>歷年信託透明公開可稽</span>
