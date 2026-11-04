@@ -216,22 +216,30 @@ export default function Procedures() {
 
         {/* 選中項目的詳細文件內容卡片 */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-ivory-200 gap-4">
+          <div className="relative pb-6 mb-6 border-b border-ivory-200">
             
             {/* 強制置中對齊的標題與說明文字區塊 */}
-            <div className="text-center flex flex-col items-center justify-center w-full sm:w-auto sm:items-start sm:text-left">
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900 text-center sm:text-left w-full">
+            <div className="text-center mx-auto">
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
                 {currentCategory.title}
               </h3>
-              <p className="text-ink-600 text-sm mt-1 text-center sm:text-left w-full">
+              <p className="text-ink-600 text-sm mt-1">
                 {currentCategory.desc}
               </p>
             </div>
 
-            {/* 工作天數維持在右上角原位 */}
-            <div className="inline-flex items-center justify-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300 shrink-0 mx-auto sm:mx-0">
+            {/* 工作天數絕對定位在右上角 */}
+            <div className="absolute top-0 right-0 hidden sm:inline-flex items-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300">
               <Clock className="w-4 h-4 text-gold-600 shrink-0" />
               <span className="text-sm font-medium text-ink-800 font-['Microsoft_JhengHei']">
+                工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
+              </span>
+            </div>
+
+            {/* 手機版的工作天數顯示（置中排列於下方） */}
+            <div className="flex sm:hidden items-center justify-center gap-2 bg-ivory-100 px-4 py-2 rounded-xl border border-ivory-300 mt-4 mx-auto max-w-[160px]">
+              <Clock className="w-4 h-4 text-gold-600 shrink-0" />
+              <span className="text-xs font-medium text-ink-800 font-['Microsoft_JhengHei']">
                 工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
               </span>
             </div>
