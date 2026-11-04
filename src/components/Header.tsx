@@ -74,19 +74,19 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Phone CTA (desktop) - 已加入精緻的質感線條外框 */}
+          {/* Phone CTA (desktop) - 已替換為與 Footer 相同的質感黑 bg-ink-950，並加上金屬邊框 */}
           <a
             href="tel:0800-600-603"
-            className="hidden lg:flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/90 border border-gold-400/60 shadow-sm backdrop-blur-sm hover:border-gold-500 hover:shadow-md transition-all group shrink-0"
+            className="hidden lg:flex items-center gap-3 px-5 py-2 rounded-full bg-ink-950 text-ivory-50 border border-gold-400/40 ring-1 ring-gold-400/20 hover:border-gold-400 hover:bg-gold-600 transition-all hover:shadow-lg group shrink-0"
           >
-            <div className="w-8 h-8 rounded-xl bg-gold-100 flex items-center justify-center text-gold-600 group-hover:bg-gold-600 group-hover:text-white transition-colors shadow-sm">
-              <Phone className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            <div className="p-1.5 rounded-full bg-gold-400/20 text-gold-400 group-hover:bg-white group-hover:text-gold-600 transition-colors">
+              <Phone className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
             </div>
             <div className="flex flex-col text-left">
-              <span className="text-[10px] text-ink-500 font-semibold tracking-wider uppercase leading-none">
+              <span className="text-[10px] text-gold-400 group-hover:text-white font-medium tracking-wider leading-none transition-colors">
                 24小時服務專線
               </span>
-              <span className="text-sm font-bold text-gold-700 tracking-wide mt-0.5 leading-tight font-['Microsoft_JhengHei']">
+              <span className="text-sm font-semibold tracking-wide mt-0.5 leading-tight font-['Microsoft_JhengHei']">
                 0800-600-603
               </span>
             </div>
@@ -120,14 +120,12 @@ export default function Header() {
             ))}
             <a
               href="tel:0800-600-603"
-              className="mt-4 flex items-center gap-3 p-3.5 rounded-2xl bg-white/90 border border-gold-400/60 shadow-sm"
+              className="mt-4 flex items-center justify-center gap-3 py-3 rounded-full bg-ink-950 text-ivory-50 border border-gold-400/40 ring-1 ring-gold-400/20 hover:bg-gold-600 transition-colors"
             >
-              <div className="w-9 h-9 rounded-xl bg-gold-100 flex items-center justify-center text-gold-600 shrink-0">
-                <Phone className="w-4 h-4" />
-              </div>
+              <Phone className="w-4 h-4 text-gold-400" />
               <div className="flex flex-col items-start">
-                <span className="text-[10px] text-ink-500 font-semibold uppercase leading-none">24小時服務專線</span>
-                <span className="font-bold text-sm text-gold-700 leading-tight mt-0.5 font-['Microsoft_JhengHei']">0800-600-603</span>
+                <span className="text-[10px] text-gold-400 font-medium leading-none">24小時服務專線</span>
+                <span className="font-semibold text-sm leading-tight mt-0.5 font-['Microsoft_JhengHei']">0800-600-603</span>
               </div>
             </a>
           </nav>
