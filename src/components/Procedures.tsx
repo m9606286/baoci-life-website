@@ -11,7 +11,7 @@ const procedureCategories = [
     days: '15 天',
     desc: '購買生前契約。',
     items: [
-      { name: '客戶基本資料表', note: '未曾購買' },
+      { name: '客戶基本資料表', note: '未曾購買者' },
       { name: '契約書正本', note: '✓ 必備' },
       { name: '繳款證明', note: '✓ 必備' },
       { name: 'ACH 自動扣款申請單', note: '分期件必填' },
