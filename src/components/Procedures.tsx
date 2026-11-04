@@ -218,10 +218,26 @@ export default function Procedures() {
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-ivory-200 gap-4">
             <div>
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
-                {currentCategory.title}
-              </h3>
-              <p className="text-ink-600 text-sm mt-1">{currentCategory.desc}</p>
+              {/* 新購手續標題上方加入英文，中間加入質感線與置中 */}
+              {activeTab === 'new' ? (
+                <div className="text-left sm:text-left">
+                  <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold mb-1">
+                    NEW PURCHASE
+                  </p>
+                  <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
+                    {currentCategory.title}
+                  </h3>
+                  <div className="gold-divider w-16 my-3 mx-0" />
+                  <p className="text-ink-600 text-sm mt-1">{currentCategory.desc}</p>
+                </div>
+              ) : (
+                <>
+                  <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
+                    {currentCategory.title}
+                  </h3>
+                  <p className="text-ink-600 text-sm mt-1">{currentCategory.desc}</p>
+                </>
+              )}
             </div>
             <div className="flex items-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300 shrink-0">
               <Clock className="w-4 h-4 text-gold-600" />
