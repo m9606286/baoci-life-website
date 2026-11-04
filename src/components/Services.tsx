@@ -280,7 +280,7 @@ export default function Services() {
                 {member.name} <span className="text-ink-900 group-hover:text-gold-600 font-semibold text-sm transition-colors duration-300"> {member.title}</span>
               </h4>
 
-              {/* 禮儀師證號標籤：背景改為與網頁背景一致的象牙白 (bg-ivory-100)，預設黑色文字，Hover 移入時文字變為深金色 */}
+              {/* 禮儀師證號標籤：背景象牙白 (bg-ivory-100)，預設黑色文字，Hover 移入時文字變為深金色 */}
               {member.certId && (
                 <div className="px-3.5 py-1.5 rounded-full bg-ivory-100 border border-gold-300/60 text-ink-900 text-sm font-medium transition-colors duration-300">
                   <span className="group-hover:text-gold-600 transition-colors duration-300">
@@ -338,16 +338,16 @@ export default function Services() {
                 {/* 右側：文字內容資訊 */}
                 <div className="flex-1 flex flex-col justify-between h-full py-1">
                   <div>
-                    {/* 步驟編號：字型與 SERVICE PROCESS 統一為 font-serif-tc，移入時變深金底白字 */}
+                    {/* STEP 01：預設黑色文字 (text-ink-900)，Hover 移入時變深金色 (group-hover:text-gold-600) */}
                     <div className="mb-1.5">
-                      <span className="font-serif-tc text-[11px] sm:text-xs font-bold tracking-[0.25em] text-gold-600 px-2.5 py-0.5 rounded-md transition-colors duration-300 group-hover:bg-gold-600 group-hover:text-white inline-block">
+                      <span className="font-serif-tc text-[11px] sm:text-xs font-bold tracking-[0.25em] text-ink-900 group-hover:text-gold-600 transition-colors duration-300 inline-block">
                         STEP {step.number}
                       </span>
                     </div>
 
-                    {/* 步驟標題與小圖示（小圖示移至標題左側，預設無色透明，移入時深金底白字） */}
+                    {/* 小圖示與步驟標題：小圖示移至標題左側，預設黑色，Hover 移入時變深金色，背景皆為透明 */}
                     <div className="flex items-center gap-2 mb-1.5">
-                      <div className="w-6 h-6 rounded-md bg-transparent text-ink-700 transition-colors duration-300 flex items-center justify-center shrink-0 group-hover:bg-gold-600 group-hover:text-white">
+                      <div className="w-5 h-5 text-ink-900 group-hover:text-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
                         <Icon className="w-4 h-4 transition-colors duration-300" />
                       </div>
                       <h4 className="font-serif-tc text-lg font-bold text-ink-900">
