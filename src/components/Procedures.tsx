@@ -9,7 +9,7 @@ const procedureCategories = [
     id: 'new',
     title: '新購手續',
     days: '15 天',
-    desc: '新購生前契約所需檢附之文件與申辦規範。',
+    desc: '購買生前契約所需文件。',
     items: [
       { name: '客戶基本資料表', note: '未曾購買' },
       { name: '契約書正本', note: '✓ 必備' },
@@ -21,7 +21,7 @@ const procedureCategories = [
     id: 'transfer',
     title: '轉讓手續',
     days: '15 天',
-    desc: '契約權利轉讓予他人時所需之文件。',
+    desc: '契約權利轉讓予他人時所需文件。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
@@ -55,7 +55,7 @@ const procedureCategories = [
     id: 'fulfillment',
     title: '履約手續',
     days: '依約辦理',
-    desc: '生前契約轉為實際禮儀服務（辦喪）時所需文件。',
+    desc: '生前契約執行禮儀服務時所需文件。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '持有人雙證件及印章', note: '✓ 必備' },
@@ -75,7 +75,7 @@ const procedureCategories = [
     id: 'termination',
     title: '解約手續',
     days: '15 天',
-    desc: '辦理契約終止與退款所需檢附文件。',
+    desc: '辦理契約解約與退款所需文件。',
     items: [
       { name: '契約書正本', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
@@ -109,7 +109,7 @@ const procedureCategories = [
     id: 'customer_update',
     title: '客資變更手續',
     days: '7 天',
-    desc: '變更聯絡地址、電話、姓名或補發契約等所需文件。',
+    desc: '變更聯絡地址、電話、姓名或遺失補發等所需文件。',
     items: [
       { name: '客戶基本資料表', note: '✓ 必備' },
       { name: '客戶服務申請表', note: '✓ 必備' },
