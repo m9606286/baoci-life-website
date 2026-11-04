@@ -1,6 +1,6 @@
 import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
-import { ExternalLink, ShieldCheck, Download, FileText, Landmark, Scale, HeartHandshake } from 'lucide-react';
+import { ExternalLink, ShieldCheck, Download, FileText, Landmark, Shield, Eye, Scale, HeartHandshake } from 'lucide-react';
 
 export default function Trust() {
   const revealResult = useReveal<HTMLDivElement>();
@@ -49,60 +49,72 @@ export default function Trust() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch reveal reveal-delay-3">
           
           {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) */}
-          <div className="lg:col-span-5 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group border border-gold-400/40 bg-white min-h-[420px]">
+          <div className="lg:col-span-5 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group border border-gold-400/40 bg-white">
             
-            {/* 握手圖片下移至底部 */}
-            <div className="absolute -bottom-10 -left-6 right-0 z-0 pointer-events-none opacity-85 transition-transform duration-700 group-hover:scale-105">
-              <img 
-                src="/hand.png" 
-                alt="嚴謹信託" 
-                className="w-full h-auto object-cover translate-y-4"
-              />
-            </div>
-
+            {/* 背景圖片層（握手圖案保持原本位置與縮放） */}
+            <div 
+              className="absolute inset-0 bg-[url('/hand.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 z-0" 
+            />
             {/* 柔和的亮色漸層遮罩 */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ivory-100/90 via-ivory-100/50 to-transparent z-0" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ivory-100/95 via-ivory-100/70 to-ivory-50/40 z-0" />
 
             {/* 內容區塊 */}
-            <div className="relative z-10 space-y-6">
-              <div>
-                <div className="flex items-center gap-3 mb-4 group/lefttitle">
-                  <div className="w-10 h-10 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/lefttitle:bg-gold-600 group-hover/lefttitle:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
-                    <Landmark className="w-5 h-5 text-gold-600 group-hover/lefttitle:text-white transition-colors duration-300" />
-                  </div>
-                  <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-900">
-                    嚴謹信託 專款專用
-                  </h3>
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-4 group/lefttitle">
+                <div className="w-10 h-10 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/lefttitle:bg-gold-600 group-hover/lefttitle:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                  <Landmark className="w-5 h-5 text-gold-600 group-hover/lefttitle:text-white transition-colors duration-300" />
                 </div>
-
-                <p className="text-ink-700 text-sm sm:text-base leading-relaxed font-['Microsoft_JhengHei']">
-                  寶慈生命事業秉持最高誠信原則與法規遵循，將每位客戶的託付妥善交付京城銀行信託管理，確保資產安全與履約承諾。
-                </p>
+                <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-900">
+                  嚴謹信託 專款專用
+                </h3>
               </div>
 
-              {/* 新增的兩項專業承諾項目（字體放大、圖示質感升級） */}
-              <div className="space-y-4 pt-4 border-t border-gold-300/40">
-                
-                {/* 項目一：法規遵循保障 */}
-                <div className="flex items-center gap-3 text-ink-900 group/item1 cursor-pointer">
-                  <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/item1:bg-gold-600 group-hover/item1:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
-                    <Scale className="w-5 h-5 text-gold-600 group-hover/item1:text-white transition-colors duration-300" />
-                  </div>
-                  <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900">
-                    法規遵循保障
-                  </span>
-                </div>
+              <p className="text-ink-700 text-sm sm:text-base leading-relaxed mb-6 font-['Microsoft_JhengHei']">
+                寶慈生命事業秉持最高誠信原則與法規遵循，將每位客戶的託付妥善交付京城銀行信託管理，確保資產安全與履約承諾。
+              </p>
+            </div>
 
-                {/* 項目二：履約完全保障 */}
-                <div className="flex items-center gap-3 text-ink-900 group/item2 cursor-pointer">
-                  <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/item2:bg-gold-600 group-hover/item2:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
-                    <HeartHandshake className="w-5 h-5 text-gold-600 group-hover/item2:text-white transition-colors duration-300" />
-                  </div>
-                  <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900">
-                    履約完全保障
-                  </span>
+            {/* 下方共 4 項專業承諾點（字型與標題一致並放大） */}
+            <div className="relative z-10 space-y-4 pt-6 border-t border-gold-300/40">
+              
+              {/* 1. 保障信託管理 */}
+              <div className="flex items-center gap-3 text-ink-900 group/item1 cursor-pointer">
+                <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/item1:bg-gold-600 group-hover/item1:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                  <Shield className="w-5 h-5 text-gold-600 group-hover/item1:text-white transition-colors duration-300" />
                 </div>
+                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900">
+                  保障信託管理
+                </span>
+              </div>
 
+              {/* 2. 信託透明公開 */}
+              <div className="flex items-center gap-3 text-ink-900 group/item2 cursor-pointer">
+                <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/item2:bg-gold-600 group-hover/item2:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                  <Eye className="w-5 h-5 text-gold-600 group-hover/item2:text-white transition-colors duration-300" />
+                </div>
+                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900">
+                  信託透明公開
+                </span>
+              </div>
+
+              {/* 3. 法規遵循保障 */}
+              <div className="flex items-center gap-3 text-ink-900 group/item3 cursor-pointer">
+                <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/item3:bg-gold-600 group-hover/item3:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                  <Scale className="w-5 h-5 text-gold-600 group-hover/item3:text-white transition-colors duration-300" />
+                </div>
+                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900">
+                  法規遵循保障
+                </span>
+              </div>
+
+              {/* 4. 履約完全保障 */}
+              <div className="flex items-center gap-3 text-ink-900 group/item4 cursor-pointer">
+                <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/item4:bg-gold-600 group-hover/item4:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
+                  <HeartHandshake className="w-5 h-5 text-gold-600 group-hover/item4:text-white transition-colors duration-300" />
+                </div>
+                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900">
+                  履約完全保障
+                </span>
               </div>
 
             </div>
