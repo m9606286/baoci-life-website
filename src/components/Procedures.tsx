@@ -203,7 +203,7 @@ export default function Procedures() {
                   onClick={() => setActiveTab(cat.id)}
                   className={`px-5 py-3 rounded-xl font-serif-tc text-sm font-bold transition-all duration-300 cursor-pointer shadow-sm flex items-center justify-center gap-2 ${
                     isActive
-                      ? 'bg-gold-600 text-white shadow-md scale-105'
+                      ? 'bg-gold-500 text-white shadow-md scale-105'
                       : 'bg-white/80 hover:bg-ivory-200 text-ink-700 border border-ivory-300'
                   }`}
                 >
@@ -258,7 +258,7 @@ export default function Procedures() {
                 className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
+                  <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-500 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <span className="text-sm sm:text-base font-medium text-ink-900 leading-snug text-left">{item.name}</span>
@@ -284,7 +284,7 @@ export default function Procedures() {
                 href="/寶慈客戶服務申請表.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm group/btn cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm group/btn cursor-pointer"
               >
                 <span>客戶服務申請表</span>
                 <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white transition-colors shrink-0" />
@@ -311,7 +311,7 @@ export default function Procedures() {
                 className="group flex flex-col sm:flex-row sm:items-center p-4 sm:p-5 rounded-2xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 sm:gap-6"
               >
                 <div className="flex items-center gap-3 shrink-0 sm:w-auto">
-                  <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
+                  <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-500 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <h5 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900 whitespace-nowrap">
@@ -332,7 +332,7 @@ export default function Procedures() {
           <a
             href="/contact"
             onClick={handleContactClick}
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm cursor-pointer"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm cursor-pointer"
           >
             聯絡我們與專人諮詢
           </a>
