@@ -168,7 +168,7 @@ export default function Procedures() {
           <h1 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-2 reveal reveal-delay-1">
             手續服務指南
           </h1>
-          <div className="gold-divider w-32 mx-auto mt-4 reveal reveal-delay-2" />
+          <div className="gold-divider w-60 mx-auto mt-4 reveal reveal-delay-2" />
           <p className="text-ink-500 text-sm sm:text-base mt-4 max-w-2xl mx-auto reveal reveal-delay-3">
             請於下方選擇您欲辦理的手續項目，即可快速查詢所需檢附的文件資料與所需工作天數。
           </p>
