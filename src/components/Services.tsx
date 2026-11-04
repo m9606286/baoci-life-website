@@ -48,7 +48,7 @@ const CoffinIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// 自訂 SVG 圖示：骨罐 Icon (火化封罐 STEP 09)
+// 自訂 SVG 圖示：骨罐 Icon (火化封罐 STEP 09 - 已完美修復右側對稱罐身線條)
 const UrnIcon = ({ className }: { className?: string }) => (
   <svg
     className={className}
@@ -59,11 +59,16 @@ const UrnIcon = ({ className }: { className?: string }) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    <path d="M8 4h8" />
-    <path d="M6 7h12" />
-    <path d="M5 7c0 5 2 7 2 12H5z" />
-    <path d="M9 22h6" />
+    {/* 頂部紐鈕 */}
     <path d="M12 2v2" />
+    <path d="M9.5 4h5" />
+    {/* 罐蓋 */}
+    <path d="M6 7h12" />
+    {/* 罐身左右完整圓弧對稱線條 */}
+    <path d="M6 7c0 4 1.5 7 1.5 12h9c0-5 1.5-8 1.5-12" />
+    {/* 罐底底座線條 */}
+    <path d="M7.5 19h9" />
+    <path d="M9 22h6" />
   </svg>
 );
 
