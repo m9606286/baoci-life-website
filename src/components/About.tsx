@@ -121,8 +121,9 @@ export default function About() {
                   className="relative rounded-2xl p-8 bg-white/80 backdrop-blur-sm shadow-sm border border-ivory-300/80 overflow-hidden group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 rounded-xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-colors duration-300">
-                      <Icon className="w-6 h-6" />
+                    {/* 升級：3D 立體金屬光澤小圖示外框 */}
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-gold-500 via-gold-600 to-gold-700 text-white flex items-center justify-center shadow-[0_8px_20px_rgba(184,134,11,0.35)] border border-gold-300/60 ring-2 ring-gold-400/30 group-hover:scale-110 group-hover:-translate-y-1 group-hover:shadow-[0_12px_25px_rgba(184,134,11,0.5)] transition-all duration-300 shrink-0">
+                      <Icon className="w-6 h-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]" />
                     </div>
                     <h3 className="font-serif-tc text-2xl font-bold text-ink-900">
                       {section.title}
@@ -144,7 +145,7 @@ export default function About() {
         {/* 發展歷程 (Milestones) 區塊 */}
         <div className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 lg:p-16 border border-ivory-300 shadow-xl relative overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
           
-          {/* 頂部標題區（已將小圖示改為英文 MILESTONES 且字型與 CORE VALUES 完全一致） */}
+          {/* 頂部標題區 */}
           <div className="text-center mb-14">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
               MILESTONES
