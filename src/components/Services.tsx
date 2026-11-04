@@ -280,9 +280,9 @@ export default function Services() {
                 {member.name} <span className="text-ink-900 group-hover:text-gold-600 font-semibold text-sm transition-colors duration-300"> {member.title}</span>
               </h4>
 
-              {/* 禮儀師證號標籤：背景維持原樣 (bg-gold-100/70)，文字預設黑色 (text-ink-900)，Hover 移入時文字變深金色 */}
+              {/* 禮儀師證號標籤：背景改為與網頁背景一致的象牙白 (bg-ivory-100)，預設黑色文字，Hover 移入時文字變為深金色 */}
               {member.certId && (
-                <div className="px-3.5 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-ink-900 text-sm font-medium transition-colors duration-300">
+                <div className="px-3.5 py-1.5 rounded-full bg-ivory-100 border border-gold-300/60 text-ink-900 text-sm font-medium transition-colors duration-300">
                   <span className="group-hover:text-gold-600 transition-colors duration-300">
                     內政部禮儀師證書 {member.certId}
                   </span>
