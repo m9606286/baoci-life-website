@@ -48,15 +48,15 @@ export default function Trust() {
         {/* 左右分欄主體區塊 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch reveal reveal-delay-3">
           
-          {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) - 採用 hand.png 背景圖並向下微調 */}
-          <div className="lg:col-span-5 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group border border-gold-400/40 bg-white">
+          {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) - 背景圖緊貼底部 (bg-bottom) */}
+          <div className="lg:col-span-5 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group border border-gold-400/40 bg-white min-h-[360px]">
             
-            {/* 背景圖片層（hand.png，背景向下對齊） */}
+            {/* 背景圖片層（hand.png，對齊底部） */}
             <div 
-              className="absolute inset-0 bg-[url('/hand.png')] bg-cover bg-[center_top_65%] transition-transform duration-700 group-hover:scale-105 z-0" 
+              className="absolute inset-0 bg-[url('/hand.png')] bg-cover bg-bottom transition-transform duration-700 group-hover:scale-105 z-0 opacity-85" 
             />
             {/* 柔和的亮色漸層遮罩 */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ivory-100/95 via-ivory-100/70 to-ivory-50/40 z-0" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ivory-100/90 via-ivory-100/60 to-ivory-50/20 z-0" />
 
             {/* 內容區塊 */}
             <div className="relative z-10">
