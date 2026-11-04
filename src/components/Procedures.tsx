@@ -158,7 +158,7 @@ export default function Procedures() {
 
   return (
     <section id="procedures" className="pt-10 pb-16 lg:pt-14 lg:pb-24 bg-ivory-100 relative overflow-hidden">
-      <div ref={ref} className="mx-auto max-w-5xl px-6 relative">
+      <div ref={ref} className="mx-auto max-w-5xl px-6 relative z-10">
         
         {/* 標題區 */}
         <div className="text-center mb-12">
@@ -215,20 +215,22 @@ export default function Procedures() {
         </div>
 
         {/* 選中項目的詳細文件內容卡片 */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
+        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 relative overflow-hidden reveal">
           <div className="relative pb-6 mb-6 border-b border-ivory-200">
             
-            {/* 強制置中對齊的標題與說明文字區塊 */}
-            <div className="text-center mx-auto">
+            {/* 標題與說明文字區塊（標題與副標中間加入質感金線） */}
+            <div className="text-center mx-auto max-w-md">
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
                 {currentCategory.title}
               </h3>
-              <p className="text-ink-600 text-sm mt-1">
+              {/* 字體中間的精緻質感分隔金線 */}
+              <div className="w-16 h-[2px] bg-gold-400 mx-auto my-2.5 opacity-80" />
+              <p className="text-ink-600 text-sm">
                 {currentCategory.desc}
               </p>
             </div>
 
-            {/* 工作天數絕對定位在右上角 */}
+            {/* 工作天數保持在右上角原位 */}
             <div className="absolute top-0 right-0 hidden sm:inline-flex items-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300">
               <Clock className="w-4 h-4 text-gold-600 shrink-0" />
               <span className="text-sm font-medium text-ink-800 font-['Microsoft_JhengHei']">
@@ -236,7 +238,6 @@ export default function Procedures() {
               </span>
             </div>
 
-            {/* 手機版的工作天數顯示（置中排列於下方） */}
             <div className="flex sm:hidden items-center justify-center gap-2 bg-ivory-100 px-4 py-2 rounded-xl border border-ivory-300 mt-4 mx-auto max-w-[160px]">
               <Clock className="w-4 h-4 text-gold-600 shrink-0" />
               <span className="text-xs font-medium text-ink-800 font-['Microsoft_JhengHei']">
@@ -250,7 +251,7 @@ export default function Procedures() {
             <span>必備與檢附文件清單：</span>
           </h4>
 
-          {/* 文件清單列表（維持靠左對齊） */}
+          {/* 文件清單列表 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {currentCategory.items.map((item: any, idx: number) => (
               <div
