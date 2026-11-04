@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useReveal } from '@/hooks/useReveal';
 import {
   HeartHandshake,
-  UserCheck,
   PhoneCall,
   Truck,
   CalendarDays,
@@ -280,11 +279,10 @@ export default function Services() {
                 {member.name} <span className="text-gold-700 font-semibold text-sm"> {member.title}</span>
               </h4>
 
-              {/* 禮儀師顯示內政部證號，禮儀顧問免顯示 */}
+              {/* 禮儀師顯示內政部證號：字體加大(text-sm)，無小圖，移入時深金底白字反白 */}
               {member.certId && (
-                <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-gold-900 text-xs font-medium">
-                  <UserCheck className="w-3.5 h-3.5 shrink-0 text-gold-700" />
-                  <span>內政部禮儀師證書({member.certId})</span>
+                <div className="px-3.5 py-1.5 rounded-full bg-gold-100/70 border border-gold-300/60 text-gold-900 text-sm font-medium transition-all duration-300 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600">
+                  <span>內政部禮儀師證書 {member.certId}</span>
                 </div>
               )}
             </div>
