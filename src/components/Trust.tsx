@@ -51,7 +51,7 @@ export default function Trust() {
           {/* 左側：精緻信賴氛圍與企業承諾欄位 (5欄) */}
           <div className="lg:col-span-5 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between relative overflow-hidden group border border-gold-400/40 bg-white">
             
-            {/* 背景圖片層（握手圖案保持原本位置與縮放） */}
+            {/* 背景圖片層（握手圖案維持原本位置與設定） */}
             <div 
               className="absolute inset-0 bg-[url('/hand.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 z-0" 
             />
@@ -74,7 +74,7 @@ export default function Trust() {
               </p>
             </div>
 
-            {/* 下方共 4 項專業承諾點（字型與標題一致並放大） */}
+            {/* 下方共 4 項專業承諾點 */}
             <div className="relative z-10 space-y-4 pt-6 border-t border-gold-300/40">
               
               {/* 1. 保障信託管理 */}
@@ -107,7 +107,7 @@ export default function Trust() {
                 </span>
               </div>
 
-              {/* 4. 履約完全保障 */}
+              {/* 4. 履約完全保障（已更換為手心捧著愛心圖示） */}
               <div className="flex items-center gap-3 text-ink-900 group/item4 cursor-pointer">
                 <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/item4:bg-gold-600 group-hover/item4:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <HeartHandshake className="w-5 h-5 text-gold-600 group-hover/item4:text-white transition-colors duration-300" />
