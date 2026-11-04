@@ -158,7 +158,15 @@ export default function Procedures() {
 
   return (
     <section id="procedures" className="pt-10 pb-16 lg:pt-14 lg:pb-24 bg-ivory-100 relative overflow-hidden">
-      <div ref={ref} className="mx-auto max-w-5xl px-6 relative">
+      
+      {/* 背景裝飾線條（加粗且調高不透明度，確保肉眼清晰可見） */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-0 left-1/4 w-[1px] h-full bg-gold-500/20" />
+        <div className="absolute top-0 right-1/4 w-[1px] h-full bg-gold-500/20" />
+        <div className="absolute top-28 left-0 w-full h-[1px] bg-gold-500/20" />
+      </div>
+
+      <div ref={ref} className="mx-auto max-w-5xl px-6 relative z-10">
         
         {/* 標題區 */}
         <div className="text-center mb-12">
@@ -214,11 +222,13 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 選中項目的詳細文件內容卡片 */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
-          <div className="relative pb-6 mb-6 border-b border-ivory-200">
-            
-            {/* 強制置中對齊的標題與說明文字區塊 */}
+        {/* 選中項目的詳細文件內容卡片（加入清晰的金邊與裝飾線） */}
+        <div className="bg-white/95 backdrop-blur-sm border-2 border-gold-400/60 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl mb-12 relative overflow-hidden reveal">
+          
+          {/* 卡片頂部精緻金色裝飾橫線 */}
+          <div className="absolute top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-gold-400 via-gold-600 to-gold-400" />
+
+          <div className="relative pb-6 mb-6 border-b border-gold-300/60">
             <div className="text-center mx-auto">
               <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
                 {currentCategory.title}
@@ -228,16 +238,14 @@ export default function Procedures() {
               </p>
             </div>
 
-            {/* 工作天數絕對定位在右上角 */}
-            <div className="absolute top-0 right-0 hidden sm:inline-flex items-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300">
+            <div className="absolute top-0 right-0 hidden sm:inline-flex items-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-gold-300 shadow-sm">
               <Clock className="w-4 h-4 text-gold-600 shrink-0" />
               <span className="text-sm font-medium text-ink-800 font-['Microsoft_JhengHei']">
                 工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
               </span>
             </div>
 
-            {/* 手機版的工作天數顯示（置中排列於下方） */}
-            <div className="flex sm:hidden items-center justify-center gap-2 bg-ivory-100 px-4 py-2 rounded-xl border border-ivory-300 mt-4 mx-auto max-w-[160px]">
+            <div className="flex sm:hidden items-center justify-center gap-2 bg-ivory-100 px-4 py-2 rounded-xl border border-gold-300 mt-4 mx-auto max-w-[160px] shadow-sm">
               <Clock className="w-4 h-4 text-gold-600 shrink-0" />
               <span className="text-xs font-medium text-ink-800 font-['Microsoft_JhengHei']">
                 工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
@@ -250,12 +258,12 @@ export default function Procedures() {
             <span>必備與檢附文件清單：</span>
           </h4>
 
-          {/* 文件清單列表（維持靠左對齊） */}
+          {/* 文件清單列表 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {currentCategory.items.map((item: any, idx: number) => (
               <div
                 key={idx}
-                className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
+                className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/90 border border-gold-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
               >
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
@@ -284,7 +292,7 @@ export default function Procedures() {
                 href="/寶慈客戶服務申請表.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm group/btn cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm group/btn cursor-pointer"
               >
                 <span>客戶服務申請表</span>
                 <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white transition-colors shrink-0" />
@@ -294,7 +302,9 @@ export default function Procedures() {
         </div>
 
         {/* 注意事項 */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
+        <div className="bg-white/95 backdrop-blur-sm border-2 border-gold-400/60 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl mb-16 relative overflow-hidden reveal">
+          <div className="absolute top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-gold-400 via-gold-600 to-gold-400" />
+          
           <div className="text-center mb-8">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               NOTICES
@@ -308,7 +318,7 @@ export default function Procedures() {
             {notices.map((notice, idx) => (
               <div
                 key={idx}
-                className="group flex flex-col sm:flex-row sm:items-center p-4 sm:p-5 rounded-2xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 sm:gap-6"
+                className="group flex flex-col sm:flex-row sm:items-center p-4 sm:p-5 rounded-2xl bg-ivory-50/90 border border-gold-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 sm:gap-6"
               >
                 <div className="flex items-center gap-3 shrink-0 sm:w-auto">
                   <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-600 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
@@ -332,7 +342,7 @@ export default function Procedures() {
           <a
             href="/contact"
             onClick={handleContactClick}
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm cursor-pointer"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-600 text-ink-900 hover:text-white border border-gold-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm cursor-pointer"
           >
             聯絡我們與專人諮詢
           </a>
