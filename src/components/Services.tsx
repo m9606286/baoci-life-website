@@ -250,7 +250,7 @@ export default function Services() {
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-2 reveal reveal-delay-1">
             禮儀服務團隊
           </h2>
-          <div className="gold-divider w-32 mx-auto mt-4 reveal reveal-delay-2" />
+          <div className="gold-divider w-60 mx-auto mt-4 reveal reveal-delay-2" />
           <p className="text-ink-500 text-sm sm:text-base mt-4 mx-auto reveal reveal-delay-3">
             專業團隊全程守護與陪伴，讓您與家人在人生最重要的告別時刻，完成一場充滿愛與祝福的人生畢業典禮。
           </p>
