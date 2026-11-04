@@ -30,17 +30,17 @@ export default function Trust() {
     <section id="trust" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
       <div ref={ref} className="max-w-4xl mx-auto px-6 relative text-center">
         {/* Header 標題區 */}
-        <div className="mb-12">
+        <div className="mb-16">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
             TRUST
           </p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
+          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-2 reveal reveal-delay-1">
             信託公開
           </h2>
-          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
+          <div className="gold-divider w-32 mx-auto mt-4 reveal reveal-delay-2" />
           
-          {/* 移至信託公開下方的說明文字 */}
-          <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-6 reveal reveal-delay-3">
+          {/* 說明文字：字體大小、間距與禮儀服務頁面一致 */}
+          <p className="text-ink-500 text-sm sm:text-base mt-4 mx-auto reveal reveal-delay-3 max-w-2xl leading-relaxed">
             依殯葬管理條例第51條，預收之生前契約款項，依法75%交由「京城銀行」信託管理。
           </p>
         </div>
@@ -48,7 +48,7 @@ export default function Trust() {
         {/* 信託說明卡片區塊 */}
         <div className="group bg-white/80 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-8 sm:p-12 shadow-lg reveal reveal-delay-3 transition-all duration-300 text-center">
           
-          {/* 保證 75% 信託標題與小圖示（小圖示改為與下方 FileText 相同規格，移入時深金底白線條） */}
+          {/* 保證 75% 信託標題與小圖示（小圖示與下方 FileText 相同規格，移入時深金底白線條） */}
           <div className="flex items-center justify-center gap-3 mb-8 group/icon">
             <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/icon:bg-gold-600 group-hover/icon:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
               <ShieldCheck className="w-5 h-5 text-gold-600 group-hover/icon:text-white transition-colors duration-300" />
@@ -90,7 +90,7 @@ export default function Trust() {
               <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/reporttitle:bg-gold-600 group-hover/reporttitle:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
                 <FileText className="w-5 h-5 text-gold-600 group-hover/reporttitle:text-white transition-colors duration-300" />
               </div>
-              <span>信託財產目錄與收支計算表、信託財產結算報告</span>
+              <span>信託財產目錄與收支計算表與信託財產結算報告</span>
             </h4>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-xl mx-auto">
