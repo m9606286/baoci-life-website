@@ -70,7 +70,7 @@ export default function Trust() {
               </div>
 
               <p className="text-ink-700 text-sm sm:text-base leading-relaxed mb-6 font-['Microsoft_JhengHei']">
-                寶慈生命事業秉持最高誠信原則與法規遵循，將每位客戶的託付妥善交付銀行信託管理，確保資產安全與履約承諾。
+                寶慈生命事業秉持最高誠信原則與法規遵循，將每位客戶的託付妥善交付京城銀行信託管理，確保資產安全與履約承諾。
               </p>
             </div>
 
@@ -80,14 +80,14 @@ export default function Trust() {
                 <div className="w-7 h-7 rounded-lg bg-gold-400/15 border border-gold-400/35 group-hover/item1:bg-gold-600 group-hover/item1:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <Lock className="w-4 h-4 text-gold-600 group-hover/item1:text-white transition-colors duration-300" />
                 </div>
-                <span>京城銀行安全信託管理</span>
+                <span>保障信託管理</span>
               </div>
 
               <div className="flex items-center gap-3 text-ink-900 text-sm font-medium group/item2 cursor-pointer">
                 <div className="w-7 h-7 rounded-lg bg-gold-400/15 border border-gold-400/35 group-hover/item2:bg-gold-600 group-hover/item2:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-4 h-4 text-gold-600 group-hover/item2:text-white transition-colors duration-300" />
                 </div>
-                <span>歷年信託透明公開可稽</span>
+                <span>信託透明公開</span>
               </div>
             </div>
           </div>
