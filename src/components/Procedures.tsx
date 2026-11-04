@@ -214,7 +214,7 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 選中項目的詳細文件內容卡片 */}
+        {/* 選中項目的詳細文件內容卡片（單欄設計） */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-ivory-200 gap-4">
             <div>
@@ -263,7 +263,7 @@ export default function Procedures() {
             ))}
           </div>
 
-          {/* 下載按鈕（若為新購手續則隱藏；圖示移至右側，並加入移入反白效果） */}
+          {/* 下載按鈕（若為新購手續則隱藏） */}
           {activeTab !== 'new' && (
             <div className="mt-6 flex items-center">
               <a
@@ -279,7 +279,7 @@ export default function Procedures() {
           )}
         </div>
 
-        {/* 注意事項（單欄整列顯示，上方加入英文 NOTICES） */}
+        {/* 注意事項（單欄整列顯示） */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
           <div className="text-center mb-8">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
