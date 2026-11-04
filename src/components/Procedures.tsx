@@ -217,12 +217,18 @@ export default function Procedures() {
         {/* 選中項目的詳細文件內容卡片 */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-ivory-200 gap-4">
-            <div className="text-center w-full sm:w-auto sm:text-left">
-              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
+            
+            {/* 強制置中對齊的標題與說明文字區塊 */}
+            <div className="text-center flex flex-col items-center justify-center w-full sm:w-auto sm:items-start sm:text-left">
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900 text-center sm:text-left w-full">
                 {currentCategory.title}
               </h3>
-              <p className="text-ink-600 text-sm mt-1">{currentCategory.desc}</p>
+              <p className="text-ink-600 text-sm mt-1 text-center sm:text-left w-full">
+                {currentCategory.desc}
+              </p>
             </div>
+
+            {/* 工作天數維持在右上角原位 */}
             <div className="inline-flex items-center justify-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300 shrink-0 mx-auto sm:mx-0">
               <Clock className="w-4 h-4 text-gold-600 shrink-0" />
               <span className="text-sm font-medium text-ink-800 font-['Microsoft_JhengHei']">
