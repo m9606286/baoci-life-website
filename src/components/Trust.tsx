@@ -92,7 +92,7 @@ export default function Trust() {
             </div>
           </div>
 
-          {/* 右側：信託相關文件與查詢按鈕區塊 (7欄) - 改為與左側一致的溫潤漸層底色 */}
+          {/* 右側：信託相關文件與查詢按鈕區塊 (7欄) */}
           <div className="lg:col-span-7 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between border border-gold-400/40 bg-gradient-to-br from-white/95 via-ivory-50/90 to-gold-100/40 relative overflow-hidden">
             
             {/* 內容主體 */}
@@ -134,7 +134,7 @@ export default function Trust() {
             {/* 分隔線 */}
             <div className="w-full h-px bg-gold-300/40 my-6 relative z-10" />
 
-            {/* 下方四個報告按鈕 */}
+            {/* 下方四個報告按鈕（改為文字置中，大小與上方按鈕一致） */}
             <div className="relative z-10">
               <h4 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900 mb-4 flex items-center gap-2 group/reporttitle">
                 <div className="w-8 h-8 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/reporttitle:bg-gold-600 group-hover/reporttitle:border-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
@@ -143,16 +143,16 @@ export default function Trust() {
                 <span>信託財產目錄與收支計算表、結算報告</span>
               </h4>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {trustReports.map((report, idx) => (
                   <a
                     key={idx}
                     href={report.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-between px-4 py-3 rounded-xl bg-white/90 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-xs sm:text-sm transition-all duration-300 shadow-sm hover:shadow-md group/report cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-white/90 hover:bg-gold-600 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm hover:shadow-md group/report cursor-pointer"
                   >
-                    <span className="truncate pr-2">{report.title}</span>
+                    <span className="truncate">{report.title}</span>
                     <Download className="w-4 h-4 text-gold-600 group-hover/report:text-white shrink-0 transition-colors" />
                   </a>
                 ))}
