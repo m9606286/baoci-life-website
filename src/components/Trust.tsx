@@ -122,7 +122,7 @@ export default function Trust() {
             {/* 內容主體 */}
             <div className="relative z-10 flex flex-col gap-5">
               
-              {/* 1. 上半部：保證信託與圓形比例圖（加粗線條並套用淺深金色漸層） + 兩個專屬按鈕 */}
+              {/* 1. 上半部：保證信託與圓形比例圖 + 兩個專屬按鈕 */}
               <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-5 border-b border-gold-300/40">
                 
                 {/* 左側：保證信託文字 + 75% 圓形比例圖 */}
@@ -131,46 +131,37 @@ export default function Trust() {
                     保證<br />信託
                   </h3>
 
-                  {/* 75% 圓形比例圖 (加粗線條與淺深金漸層) */}
+                  {/* 75% 圓形比例圖 */}
                   <div className="relative w-24 h-24 shrink-0 flex items-center justify-center filter drop-shadow-[0_4px_6px_rgba(212,175,55,0.3)]">
                     <style>{`
                       @keyframes ringProgress {
-                        0% { stroke-dasharray: 0, 251.2; }
-                        100% { stroke-dasharray: 188.4, 251.2; }
+                        0% { stroke-dasharray: 0, 264; }
+                        100% { stroke-dasharray: 198, 264; }
                       }
                       .animated-ring {
                         animation: ringProgress 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
                       }
-                    `}style>
+                    `}</style>
                     <svg className="w-full h-full transform -rotate-90 overflow-visible" viewBox="0 0 100 100">
-                      <defs>
-                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#F3E5AB" />   {/* 淺金 */}
-                          <stop offset="50%" stopColor="#D4AF37" />   {/* 標準金 */}
-                          <stop offset="100%" stopColor="#996515" />  {/* 深金 */}
-                        </linearGradient>
-                      </defs>
-                      {/* 背景底圈：加粗線條 */}
                       <circle
                         cx="50"
                         cy="50"
-                        r="40"
-                        className="text-gold-200/50"
-                        strokeWidth="13"
+                        r="42"
+                        className="text-gold-200/60"
+                        strokeWidth="10"
                         stroke="currentColor"
                         fill="none"
                       />
-                      {/* 75% 進度環：加粗線條並套用淺深金漸層 */}
                       <circle
                         cx="50"
                         cy="50"
-                        r="40"
-                        stroke="url(#goldGradient)"
-                        strokeWidth="13"
+                        r="42"
+                        className="text-gold-600 animated-ring"
+                        strokeWidth="10"
                         strokeLinecap="round"
+                        stroke="currentColor"
                         fill="none"
-                        strokeDasharray="251.2"
-                        className="animated-ring"
+                        strokeDasharray="264"
                       />
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
@@ -210,7 +201,7 @@ export default function Trust() {
 
               </div>
 
-              {/* 2. 中間：信託財產結算報告與 112、113、114 年按鈕 */}
+              {/* 2. 中間：信託財產結算報告與 112、113、114 年按鈕 (改為 4:8 比例，使年份按鈕更靠近標題) */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center pt-1">
                 <div className="sm:col-span-4">
                   <h4 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900">
@@ -237,7 +228,7 @@ export default function Trust() {
                 </div>
               </div>
 
-              {/* 3. 下方：信託財產與收支計算表下載按鈕 */}
+              {/* 3. 下方：信託財產與收支計算表下載按鈕（利用 sm:col-start-5 完美對齊上方 112 年按鈕左緣） */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center pt-1">
                 <div className="sm:col-start-5 sm:col-span-8">
                   <a
