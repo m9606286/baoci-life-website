@@ -120,14 +120,14 @@ export default function About() {
                   key={idx}
                   className="relative rounded-2xl p-8 bg-white/80 backdrop-blur-sm shadow-sm border border-ivory-300/80 overflow-hidden group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
-                  <div className="flex items-center gap-4 mb-4">
-                    {/* 自訂圖片（我們的使命）：無外層陰影背景，放大至與字體同級，Hover動態陰影 */}
+                  <div className="flex items-center gap-2.5 mb-4">
+                    {/* 自訂圖片（我們的使命）：進一步放大，縮短與標題距離，強化 Hover 明顯陰影 */}
                     {section.isCustomImage ? (
                       <div className="flex items-center justify-center shrink-0">
                         <img 
                           src={section.imageSrc} 
                           alt={section.title} 
-                          className="h-7 sm:h-8 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-md" 
+                          className="h-9 sm:h-10 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_8px_12px_rgba(212,175,55,0.45)]" 
                         />
                       </div>
                     ) : (
