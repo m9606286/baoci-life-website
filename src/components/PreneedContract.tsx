@@ -83,7 +83,7 @@ export default function PreneedConcept() {
                       <img 
                         src="/v.jpg" 
                         alt="勾勾" 
-                        className="h-6 sm:h-7 w-auto object-contain shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]"
+                        className="h-5 sm:h-6 w-auto object-contain shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]"
                       />
                       <span>{item.title}</span>
                     </h3>
@@ -119,7 +119,7 @@ export default function PreneedConcept() {
                   <img 
                     src="/v.jpg" 
                     alt="勾勾" 
-                    className="h-6 sm:h-7 w-auto object-contain transition-all duration-300 group-hover/item:scale-110 group-hover/item:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]"
+                    className="h-5 sm:h-6 w-auto object-contain transition-all duration-300 group-hover/item:scale-110 group-hover/item:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]"
                   />
                 </div>
                 <span className="text-sm sm:text-base text-slate-700 font-medium group-hover/item:text-ink-950 transition-colors">
