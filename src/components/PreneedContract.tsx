@@ -78,18 +78,18 @@ export default function PreneedConcept() {
                   className="group relative rounded-2xl p-5 sm:p-6 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   <div>
-                    {/* 標題與勾勾：圖示放大至 h-7 sm:h-8 */}
-                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-start gap-2">
+                    {/* 標題與勾勾：修正頂部垂直對齊（items-start），確保勾勾永遠對齊第一行標題 */}
+                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-start gap-1.5">
                       <img 
                         src="/v.jpg" 
                         alt="勾勾" 
-                        className="h-7 sm:h-8 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]"
+                        className="h-6 sm:h-7 w-auto object-contain shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]"
                       />
                       <span>{item.title}</span>
                     </h3>
 
-                    {/* 內文字體：對齊標題第一個字 */}
-                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed pl-8 sm:pl-9">
+                    {/* 內文字體：精準縮排，與標題第一個字對齊 */}
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-7">
                       {item.desc}
                     </p>
                   </div>
@@ -112,14 +112,14 @@ export default function PreneedConcept() {
             {additionalFeatures.map((feat, idx) => (
               <div 
                 key={idx} 
-                className="group/item flex items-center gap-2.5 p-3.5 rounded-xl transition-all duration-300 -translate-y-0 hover:-translate-y-1 hover:bg-gold-50/60 cursor-pointer shadow-xs border border-transparent hover:border-gold-400/30"
+                className="group/item flex items-center gap-2 p-3.5 rounded-xl transition-all duration-300 -translate-y-0 hover:-translate-y-1 hover:bg-gold-50/60 cursor-pointer shadow-xs border border-transparent hover:border-gold-400/30"
               >
-                {/* 勾勾圖示：同樣放大至 h-7 sm:h-8 */}
+                {/* 勾勾圖示 */}
                 <div className="shrink-0 flex items-center justify-center">
                   <img 
                     src="/v.jpg" 
                     alt="勾勾" 
-                    className="h-7 sm:h-8 w-auto object-contain transition-all duration-300 group-hover/item:scale-110 group-hover/item:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]"
+                    className="h-6 sm:h-7 w-auto object-contain transition-all duration-300 group-hover/item:scale-110 group-hover/item:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]"
                   />
                 </div>
                 <span className="text-sm sm:text-base text-slate-700 font-medium group-hover/item:text-ink-950 transition-colors">
