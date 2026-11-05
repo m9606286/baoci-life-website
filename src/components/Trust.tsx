@@ -6,20 +6,17 @@ export default function Trust() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
-  // 左側：信託財產結算報告 (112, 113, 114)
+  // 112, 113, 114 年結算報告清單
   const settlementReports = [
     {
-      title: '112年度信託財產結算報告',
       year: '112年',
       url: '/112年度信託財產結算報告.pdf',
     },
     {
-      title: '113年度信託財產結算報告',
       year: '113年',
       url: '/113年度信託財產結算報告.pdf',
     },
     {
-      title: '114年度信託財產結算報告',
       year: '114年',
       url: '/114年度信託財產結算報告.pdf',
     },
@@ -125,50 +122,30 @@ export default function Trust() {
             {/* 內容主體 */}
             <div className="relative z-10">
               
-              {/* 上半部：左側文字標題與右側圓型比例圖 */}
+              {/* 上半部：依圖片配置（左側「保證 信託」、中間圓形比例圖、右側兩個按鈕） */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center mb-8">
                 
-                {/* 左側：保證 信託 標題與調短置中的按鈕 */}
-                <div className="sm:col-span-7 flex flex-col gap-3">
-                  <h3 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-950 mb-1">
-                    保證 信託
+                {/* 左側：「保證 信託」文字 */}
+                <div className="sm:col-span-3">
+                  <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950 leading-tight">
+                    保證<br />信託
                   </h3>
-
-                  <a
-                    href="/生前契約履約保障信託契約書.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full sm:w-[220px] px-4 py-2.5 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-400 font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
-                  >
-                    <span className="font-serif-tc font-semibold text-center">履約保障信託契約書</span>
-                    <Download className="w-3.5 h-3.5 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
-                  </a>
-
-                  <a
-                    href="https://www.ktb.com.tw/funeral/query"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full sm:w-[220px] px-4 py-2.5 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-400 font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
-                  >
-                    <span className="font-serif-tc font-semibold text-center">前往信託查詢系統</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
-                  </a>
                 </div>
 
-                {/* 右側：精緻圓形比例圖（具備 0 到 75% 動畫效果與立體圓潤線條） */}
-                <div className="sm:col-span-5 flex justify-center sm:justify-end">
+                {/* 中間：精緻圓形比例圖（已修正 75% 比例與圓潤線條動畫） */}
+                <div className="sm:col-span-3 flex justify-center">
                   <div className="relative w-24 h-24 shrink-0 flex items-center justify-center filter drop-shadow-[0_4px_6px_rgba(212,175,55,0.3)]">
                     <style>{`
                       @keyframes ringProgress {
-                        0% { stroke-dasharray: 0, 314; }
-                        100% { stroke-dasharray: 235.5, 314; }
+                        0% { stroke-dasharray: 0, 264; }
+                        100% { stroke-dasharray: 198, 264; }
                       }
                       .animated-ring {
                         animation: ringProgress 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
                       }
                     `}</style>
                     <svg className="w-full h-full transform -rotate-90 overflow-visible" viewBox="0 0 100 100">
-                      {/* 背景底圈：完美正圓 */}
+                      {/* 背景底圈：完美正圓 (r=42, 周長約 264) */}
                       <circle
                         cx="50"
                         cy="50"
@@ -178,7 +155,7 @@ export default function Trust() {
                         stroke="currentColor"
                         fill="none"
                       />
-                      {/* 75% 立體進度環：完美正圓且帶有 0 到 75% 動畫 */}
+                      {/* 75% 正確比例環形動畫 (198 / 264 = 75%) */}
                       <circle
                         cx="50"
                         cy="50"
@@ -188,7 +165,7 @@ export default function Trust() {
                         strokeLinecap="round"
                         stroke="currentColor"
                         fill="none"
-                        strokeDasharray="314"
+                        strokeDasharray="264"
                       />
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
@@ -197,75 +174,80 @@ export default function Trust() {
                   </div>
                 </div>
 
+                {/* 右側：兩個縮短並置中的按鈕 */}
+                <div className="sm:col-span-6 flex flex-col gap-3">
+                  <a
+                    href="/生前契約履約保障信託契約書.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 rounded-2xl bg-white/90 hover:bg-gold-500 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-400 font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
+                  >
+                    <span className="font-serif-tc font-semibold text-center">履約保障信託契約書</span>
+                    <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
+                  </a>
+
+                  <a
+                    href="https://www.ktb.com.tw/funeral/query"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 rounded-2xl bg-white/90 hover:bg-gold-500 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-400 font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
+                  >
+                    <span className="font-serif-tc font-semibold text-center">前往信託查詢系統</span>
+                    <ExternalLink className="w-4 h-4 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
+                  </a>
+                </div>
+
               </div>
             </div>
 
             {/* 分隔線 */}
             <div className="w-full h-px bg-gold-300/40 my-4 relative z-10" />
 
-            {/* 下方左右對分：左側放信託財產結算報告 (112年、113年、114年)，右側放信託財產與收支計算表 */}
-            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* 下方區塊：照圖片配置（左側標題與 112年、113年、114年方塊並排，下方為財產與收支計算表下載按鈕） */}
+            <div className="relative z-10 flex flex-col gap-5">
               
-              {/* 左側：信託財產結算報告 (112年、113年、114年) */}
-              <div>
-                <h4 className="font-serif-tc text-sm sm:text-base font-bold text-ink-900 mb-3">
-                  信託財產結算報告 112年 113年 114年
-                </h4>
-                <div className="flex flex-col gap-2.5">
+              {/* 第一行：左側「信託財產結算報告」，右側並排 112年、113年、114年 */}
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
+                <div className="sm:col-span-5">
+                  <h4 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900">
+                    信託財產結算報告
+                  </h4>
+                </div>
+
+                <div className="sm:col-span-7 grid grid-cols-3 gap-2.5">
                   {settlementReports.map((report, idx) => (
                     <a
                       key={idx}
                       href={report.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/card relative rounded-xl px-3.5 py-2.5 bg-gradient-to-br from-ivory-50 via-white to-gold-50/60 border border-gold-400/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-between cursor-pointer overflow-hidden"
+                      className="group/card relative rounded-xl py-3 px-2 bg-gradient-to-br from-ivory-50 via-white to-gold-50/60 border border-gold-400/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center cursor-pointer overflow-hidden text-center"
                     >
-                      <div className="flex items-center gap-2.5">
-                        <span className="font-serif-tc text-base sm:text-lg font-bold text-gold-600 group-hover/card:text-gold-700 transition-colors">
-                          {report.year}
-                        </span>
-                        <span className="font-serif-tc text-xs font-semibold text-ink-800 truncate">
-                          {report.title}
-                        </span>
-                      </div>
-                      <Download className="w-3.5 h-3.5 text-gold-600 group-hover/card:text-gold-700 shrink-0 transition-colors" />
+                      <span className="font-serif-tc text-sm sm:text-base font-bold text-gold-600 group-hover/card:text-gold-700 transition-colors">
+                        {report.year}
+                      </span>
                       <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gold-500 group-hover/card:w-full transition-all duration-500 ease-out" />
                     </a>
                   ))}
                 </div>
               </div>
 
-              {/* 右側：信託財產與收支計算表 */}
+              {/* 第二行：「信託財產與收支計算表下載按鈕」 */}
               <div>
-                <h4 className="font-serif-tc text-sm sm:text-base font-bold text-ink-900 mb-3">
-                  信託財產與收支計算表
-                </h4>
-                <div>
-                  <a
-                    href="/信託財產目錄與收支計算表.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/card relative rounded-xl p-4 bg-gradient-to-br from-ivory-50 via-white to-gold-50/60 border border-gold-400/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between cursor-pointer overflow-hidden h-[126px]"
-                  >
-                    <div>
-                      <span className="font-serif-tc text-xs font-bold text-gold-600 tracking-[0.1em] uppercase block mb-1">
-                        檔案下載
-                      </span>
-                      <span className="font-serif-tc text-sm sm:text-base font-bold text-ink-900 group-hover/card:text-gold-700 transition-colors leading-snug line-clamp-2">
-                        信託財產與收支計算表
-                      </span>
-                    </div>
-
-                    <div className="flex items-center justify-between pt-2 border-t border-gold-300/30">
-                      <span className="text-xs text-ink-500">點擊檢視與下載</span>
-                      <div className="w-7 h-7 rounded-lg bg-gold-400/15 text-gold-600 group-hover/card:bg-gold-500 group-hover/card:text-white flex items-center justify-center transition-all">
-                        <Download className="w-3.5 h-3.5" />
-                      </div>
-                    </div>
-
-                    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gold-500 group-hover/card:w-full transition-all duration-500 ease-out" />
-                  </a>
-                </div>
+                <a
+                  href="/信託財產目錄與收支計算表.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/card relative rounded-2xl py-3.5 px-6 bg-gradient-to-br from-ivory-50 via-white to-gold-50/60 border border-gold-400/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-between cursor-pointer overflow-hidden"
+                >
+                  <span className="font-serif-tc text-sm sm:text-base font-bold text-ink-900 group-hover/card:text-gold-700 transition-colors">
+                    信託財產與收支計算表下載按鈕
+                  </span>
+                  <div className="w-8 h-8 rounded-xl bg-gold-400/15 text-gold-600 group-hover/card:bg-gold-500 group-hover/card:text-white flex items-center justify-center transition-all shrink-0">
+                    <Download className="w-4 h-4" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gold-500 group-hover/card:w-full transition-all duration-500 ease-out" />
+                </a>
               </div>
 
             </div>
