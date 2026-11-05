@@ -79,17 +79,15 @@ export default function PreneedConcept() {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-2xl p-6 pt-7 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                  className="group relative rounded-2xl p-6 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
-                  {/* 右上角黑色羅馬數字：Hover 時轉為淺深金 */}
-                  <span className="absolute top-5 right-6 font-serif-tc text-xl sm:text-2xl font-bold text-ink-950 group-hover:text-gold-500 group-hover:scale-110 transition-all duration-300 pointer-events-none">
-                    {romanNumerals[idx]}
-                  </span>
-
                   <div>
-                    {/* 標題字體：Hover 時切換為淺深金 */}
-                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 pr-8">
-                      {item.title}
+                    {/* 標題與前置羅馬數字：Hover 時同步轉為淺深金 */}
+                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-baseline gap-2">
+                      <span className="text-xl sm:text-2xl tracking-tight">
+                        {romanNumerals[idx]}.
+                      </span>
+                      <span>{item.title}</span>
                     </h3>
 
                     {/* 內文字體 */}
