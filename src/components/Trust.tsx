@@ -122,7 +122,7 @@ export default function Trust() {
             {/* 內容主體 */}
             <div className="relative z-10 flex flex-col gap-5">
               
-              {/* 1. 上半部：保證信託與圓形比例圖 + 兩個專屬按鈕（字體與收支計算表一致） */}
+              {/* 1. 上半部：保證信託與圓形比例圖 + 兩個專屬按鈕 */}
               <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-5 border-b border-gold-300/40">
                 
                 {/* 左側：保證信託文字 + 75% 圓形比例圖 */}
@@ -201,9 +201,9 @@ export default function Trust() {
 
               </div>
 
-              {/* 2. 中間：信託財產結算報告與 112、113、114 年按鈕 */}
+              {/* 2. 中間：信託財產結算報告與 112、113、114 年按鈕 (改為 4:8 比例，使年份按鈕更靠近標題) */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center pt-1">
-                <div className="sm:col-span-5">
+                <div className="sm:col-span-4">
                   <h4 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900">
                     信託財產結算報告
                   </h4>
@@ -228,22 +228,24 @@ export default function Trust() {
                 </div>
               </div>
 
-              {/* 3. 下方：信託財產與收支計算表下載按鈕 */}
-              <div className="flex justify-center pt-1">
-                <a
-                  href="/信託財產目錄與收支計算表.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group/btn relative rounded-xl py-3 px-6 bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between gap-4 cursor-pointer overflow-hidden w-full sm:w-[220px]"
-                >
-                  <span className="font-serif-tc text-xs sm:text-sm font-bold text-center w-full">
-                    信託財產與收支計算表
-                  </span>
-                  <div className="shrink-0">
-                    <Download className="w-3.5 h-3.5 text-gold-600 group-hover/btn:text-white transition-colors" />
-                  </div>
-                  <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-white group-hover/btn:w-full transition-all duration-500 ease-out" />
-                </a>
+              {/* 3. 下方：信託財產與收支計算表下載按鈕（利用 sm:col-start-5 完美對齊上方 112 年按鈕左緣） */}
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center pt-1">
+                <div className="sm:col-start-5 sm:col-span-8">
+                  <a
+                    href="/信託財產目錄與收支計算表.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/btn relative rounded-xl py-3 px-6 bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between gap-4 cursor-pointer overflow-hidden w-full"
+                  >
+                    <span className="font-serif-tc text-xs sm:text-sm font-bold text-center w-full">
+                      信託財產與收支計算表
+                    </span>
+                    <div className="shrink-0">
+                      <Download className="w-3.5 h-3.5 text-gold-600 group-hover/btn:text-white transition-colors" />
+                    </div>
+                    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-white group-hover/btn:w-full transition-all duration-500 ease-out" />
+                  </a>
+                </div>
               </div>
 
             </div>
