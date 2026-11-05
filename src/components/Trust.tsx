@@ -230,7 +230,7 @@ export default function Trust() {
                   href="/信託財產目錄與收支計算表.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/btn relative rounded-xl py-3 px-6 bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between gap-4 cursor-pointer overflow-hidden w-full sm:w-[280px]"
+                  className="group/btn relative rounded-xl py-3 px-6 bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between gap-4 cursor-pointer overflow-hidden w-full sm:w-[220px]"
                 >
                   <span className="font-serif-tc text-xs sm:text-sm font-bold text-center w-full">
                     信託財產與收支計算表
