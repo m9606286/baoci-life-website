@@ -3,9 +3,6 @@ import { useReveal } from '@/hooks/useReveal';
 import { CheckCircle2 } from 'lucide-react';
 import familyImage from '/core.jpg';
 
-// 羅馬數字標記
-const romanNumerals = ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ'];
-
 // 上方 4 大核心保障
 const coreHighlights = [
   {
@@ -82,12 +79,9 @@ export default function PreneedConcept() {
                   className="group relative rounded-2xl p-6 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   <div>
-                    {/* 標題與前置羅馬數字：Hover 時同步轉為淺深金 */}
-                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-baseline gap-2">
-                      <span className="text-xl sm:text-2xl tracking-tight">
-                        {romanNumerals[idx]}.
-                      </span>
-                      <span>{item.title}</span>
+                    {/* 標題字體：Hover 時切換為淺深金 */}
+                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2">
+                      {item.title}
                     </h3>
 
                     {/* 內文字體 */}
