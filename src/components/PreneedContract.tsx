@@ -75,11 +75,11 @@ export default function PreneedConcept() {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-2xl px-4 py-5 sm:px-5 sm:py-6 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                  className="group relative rounded-2xl p-5 sm:p-6 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   <div>
-                    {/* 標題與勾勾：縮小左側卡片留白，讓勾勾靠左，並保持第一行頂部對齊 */}
-                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-start gap-1">
+                    {/* 標題與勾勾：修正頂部垂直對齊（items-start），確保勾勾永遠對齊第一行標題 */}
+                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-start gap-1.5">
                       <img 
                         src="/v.jpg" 
                         alt="勾勾" 
@@ -88,8 +88,8 @@ export default function PreneedConcept() {
                       <span>{item.title}</span>
                     </h3>
 
-                    {/* 內文字體：精準對齊標題的第一個字 */}
-                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed pl-5.5 sm:pl-6.5">
+                    {/* 內文字體：精準縮排，與標題第一個字對齊 */}
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-7">
                       {item.desc}
                     </p>
                   </div>
@@ -112,7 +112,7 @@ export default function PreneedConcept() {
             {additionalFeatures.map((feat, idx) => (
               <div 
                 key={idx} 
-                className="group/item flex items-center gap-1.5 p-3 sm:p-3.5 rounded-xl transition-all duration-300 -translate-y-0 hover:-translate-y-1 hover:bg-gold-50/60 cursor-pointer shadow-xs border border-transparent hover:border-gold-400/30"
+                className="group/item flex items-center gap-2 p-3.5 rounded-xl transition-all duration-300 -translate-y-0 hover:-translate-y-1 hover:bg-gold-50/60 cursor-pointer shadow-xs border border-transparent hover:border-gold-400/30"
               >
                 {/* 勾勾圖示 */}
                 <div className="shrink-0 flex items-center justify-center">
