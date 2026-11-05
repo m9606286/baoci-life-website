@@ -343,7 +343,7 @@ export default function Services() {
                 {/* 右側：文字內容資訊 */}
                 <div className="flex-1 flex flex-col justify-between h-full py-1">
                   <div>
-                    {/* STEP 01：預設黑色文字 (text-ink-900)，Hover 移入時變深金色 (group-hover:text-gold-600) */}
+                    {/* STEP 01 ~ STEP 12：預設黑色文字 (text-ink-900)，Hover 移入時變深金色 (group-hover:text-gold-600) */}
                     <div className="mb-1.5">
                       <span className="font-serif-tc text-[11px] sm:text-xs font-bold tracking-[0.25em] text-ink-900 group-hover:text-gold-600 transition-colors duration-300 inline-block">
                         STEP {step.number}
