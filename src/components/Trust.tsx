@@ -233,7 +233,7 @@ export default function Trust() {
                   className="group/btn relative rounded-xl py-3 px-6 bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between gap-4 cursor-pointer overflow-hidden w-full sm:w-[280px]"
                 >
                   <span className="font-serif-tc text-xs sm:text-sm font-bold text-center w-full">
-                    信託財產與收支計算表下載
+                    信託財產與收支計算表
                   </span>
                   <div className="shrink-0">
                     <Download className="w-3.5 h-3.5 text-gold-600 group-hover/btn:text-white transition-colors" />
