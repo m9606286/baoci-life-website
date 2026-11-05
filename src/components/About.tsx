@@ -1,9 +1,9 @@
 import { useReveal } from '@/hooks/useReveal';
-import { History, Eye } from 'lucide-react';
 
 const aboutSections = [
   {
-    icon: History,
+    isCustomImage: true,
+    imageSrc: '/time.jpg',
     title: '我們的故事',
     content: (
       <div className="space-y-3">
@@ -30,7 +30,8 @@ const aboutSections = [
     ),
   },
   {
-    icon: Eye,
+    isCustomImage: true,
+    imageSrc: '/eye.jpg',
     title: '我們的願景',
     content: (
       <p>
@@ -121,25 +122,14 @@ export default function About() {
                   className="relative rounded-2xl p-8 bg-white/80 backdrop-blur-sm shadow-sm border border-ivory-300/80 overflow-hidden group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-center gap-2.5 mb-4">
-                    {/* 自訂圖片（我們的使命）：進一步放大，縮短與標題距離，強化 Hover 明顯陰影 */}
-                    {section.isCustomImage ? (
-                      <div className="flex items-center justify-center shrink-0">
-                        <img 
-                          src={section.imageSrc} 
-                          alt={section.title} 
-                          className="h-9 sm:h-10 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_8px_12px_rgba(212,175,55,0.45)]" 
-                        />
-                      </div>
-                    ) : (
-                      (() => {
-                        const Icon = section.icon!;
-                        return (
-                          <div className="p-3 rounded-xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-colors duration-300">
-                            <Icon className="w-6 h-6" />
-                          </div>
-                        );
-                      })()
-                    )}
+                    {/* 自訂圖片：無外層陰影背景，放大至與標題靠近，Hover 時呈現明顯陰影與放大 */}
+                    <div className="flex items-center justify-center shrink-0">
+                      <img 
+                        src={section.imageSrc} 
+                        alt={section.title} 
+                        className="h-9 sm:h-10 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_8px_12px_rgba(212,175,55,0.45)]" 
+                      />
+                    </div>
 
                     {/* 標題：Hover 時切換為淺金色 */}
                     <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300">
