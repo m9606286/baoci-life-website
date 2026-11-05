@@ -1,6 +1,5 @@
 import { useReveal } from '@/hooks/useReveal';
 import { History, Eye } from 'lucide-react';
-import familyImage from '/core.jpg'; // 若有需要可對應調整
 
 const aboutSections = [
   {
@@ -21,7 +20,6 @@ const aboutSections = [
     ),
   },
   {
-    // 我們的使命改用自訂圖片 /heart.jpg
     isCustomImage: true,
     imageSrc: '/heart.jpg',
     title: '我們的使命',
@@ -123,13 +121,13 @@ export default function About() {
                   className="relative rounded-2xl p-8 bg-white/80 backdrop-blur-sm shadow-sm border border-ivory-300/80 overflow-hidden group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    {/* 判斷是使用自訂圖片還是 Lucide Icon */}
+                    {/* 自訂圖片（我們的使命）：無外層陰影背景，放大至與字體同級，Hover動態陰影 */}
                     {section.isCustomImage ? (
-                      <div className="w-12 h-12 p-2 rounded-xl bg-ivory-100 group-hover:bg-gold-500 transition-colors duration-300 flex items-center justify-center overflow-hidden shadow-sm">
+                      <div className="flex items-center justify-center shrink-0">
                         <img 
                           src={section.imageSrc} 
                           alt={section.title} 
-                          className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" 
+                          className="h-7 sm:h-8 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-md" 
                         />
                       </div>
                     ) : (
@@ -143,7 +141,8 @@ export default function About() {
                       })()
                     )}
 
-                    <h3 className="font-serif-tc text-2xl font-bold text-ink-900">
+                    {/* 標題：Hover 時切換為淺金色 */}
+                    <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300">
                       {section.title}
                     </h3>
                   </div>
