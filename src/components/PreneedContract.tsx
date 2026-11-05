@@ -1,6 +1,5 @@
 import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
-import { CheckCircle2 } from 'lucide-react';
 import familyImage from '/core.jpg';
 
 // 上方 4 大核心保障
@@ -79,9 +78,14 @@ export default function PreneedConcept() {
                   className="group relative rounded-2xl p-6 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   <div>
-                    {/* 標題字體：Hover 時切換為淺深金 */}
-                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2">
-                      {item.title}
+                    {/* 標題前方加入勾勾 (v.jpg)，移到時產生陰影與微放大 */}
+                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-center gap-2.5">
+                      <img 
+                        src="/v.jpg" 
+                        alt="勾勾" 
+                        className="h-5 sm:h-6 w-auto object-contain shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]"
+                      />
+                      <span>{item.title}</span>
                     </h3>
 
                     {/* 內文字體 */}
@@ -110,9 +114,13 @@ export default function PreneedConcept() {
                 key={idx} 
                 className="group/item flex items-center gap-3 p-3.5 rounded-xl transition-all duration-300 -translate-y-0 hover:-translate-y-1 hover:bg-gold-50/60 cursor-pointer shadow-xs border border-transparent hover:border-gold-400/30"
               >
-                {/* 勾勾圖示：移入時變為深金底白字 */}
-                <div className="w-7 h-7 rounded-lg bg-gold-100/70 text-gold-700 group-hover/item:bg-gold-600 group-hover/item:text-white flex items-center justify-center shrink-0 transition-colors duration-300 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4" />
+                {/* 換成自訂勾勾 (v.jpg)，移到時產生陰影與微放大 */}
+                <div className="w-7 h-7 flex items-center justify-center shrink-0">
+                  <img 
+                    src="/v.jpg" 
+                    alt="勾勾" 
+                    className="h-5 sm:h-6 w-auto object-contain transition-all duration-300 group-hover/item:scale-110 group-hover/item:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]"
+                  />
                 </div>
                 <span className="text-sm sm:text-base text-slate-700 font-medium group-hover/item:text-ink-950 transition-colors">
                   {feat}
