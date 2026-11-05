@@ -1,76 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReveal } from '@/hooks/useReveal';
-import {
-  HeartHandshake,
-  PhoneCall,
-  Truck,
-  CalendarDays,
-  Flower2,
-  Users,
-  Footprints,
-  Home,
-  Building2,
-  ArrowRight,
-} from 'lucide-react';
-
-// 自訂 SVG 圖示：莊嚴靈堂 Icon (設立靈堂 STEP 03)
-const ShrineIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M3 21h18" />
-    <path d="M5 21V7l7-4 7 4v14" />
-    <path d="M9 10h6" />
-    <path d="M10 14h4" />
-    <path d="M12 7v7" />
-  </svg>
-);
-
-// 自訂 SVG 圖示：素雅棺木 Icon（無十字） (入殮 STEP 04)
-const CoffinIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M8 2h8l4 6-4 14H8L4 8l4-6z" />
-  </svg>
-);
-
-// 自訂 SVG 圖示：骨罐 Icon (火化封罐 STEP 09 - 已完美修復右側對稱罐身線條)
-const UrnIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    {/* 頂部紐鈕 */}
-    <path d="M12 2v2" />
-    <path d="M9.5 4h5" />
-    {/* 罐蓋 */}
-    <path d="M6 7h12" />
-    {/* 罐身左右完整圓弧對稱線條 */}
-    <path d="M6 7c0 4 1.5 7 1.5 12h9c0-5 1.5-8 1.5-12" />
-    {/* 罐底底座線條 */}
-    <path d="M7.5 19h9" />
-    <path d="M9 22h6" />
-  </svg>
-);
+import { ArrowRight } from 'lucide-react';
 
 // 團隊成員資料：包含 6 位禮儀師 + 1 位禮儀顧問
 const teamMembers = [
@@ -126,12 +57,11 @@ const teamMembers = [
   },
 ];
 
-// 12 道禮儀服務流程資料
+// 12 道禮儀服務流程資料（已移除不需要的 icon 屬性）
 const processSteps = [
   {
     number: '01',
     title: '臨終關懷',
-    icon: PhoneCall,
     desc: '提供 24 小時即時諮詢與臨終指引，第一時間給予家屬溫暖支持與安心陪伴。',
     image: '/臨終關懷.jpg',
     fallbackImage: '/臨終關懷.png',
@@ -139,7 +69,6 @@ const processSteps = [
   {
     number: '02',
     title: '尊體接運',
-    icon: Truck,
     desc: '專車及專業接體人員協助接運逝者至指定殯儀館或接體地點，並完善冰存安置。',
     image: '/遺體接運.jpg',
     fallbackImage: '/遺體接運.png',
@@ -147,7 +76,6 @@ const processSteps = [
   {
     number: '03',
     title: '設立靈堂',
-    icon: ShrineIcon,
     desc: '協助設置安靈拜祭空間、豎靈儀式與牌位安排，提供家屬靜心追思與守靈場合。',
     image: '/設立靈堂.jpg',
     fallbackImage: '/設立靈堂.png',
@@ -155,7 +83,6 @@ const processSteps = [
   {
     number: '04',
     title: '入殮',
-    icon: CoffinIcon,
     desc: '由專業禮儀師引導進行尊榮入殮儀式，為逝者整理容顏、更衣並恭安至壽木中。',
     image: '/入殮.jpg',
     fallbackImage: '/入殮.png',
@@ -163,7 +90,6 @@ const processSteps = [
   {
     number: '05',
     title: '治喪協調',
-    icon: CalendarDays,
     desc: '與家屬溝通宗教信仰、奠禮流程、擇定吉日吉時及會場風格規劃。',
     image: '/治喪協調.jpg',
     fallbackImage: '/治喪協調.png',
@@ -171,7 +97,6 @@ const processSteps = [
   {
     number: '06',
     title: '奠禮準備',
-    icon: Flower2,
     desc: '印製訃聞通知親友、佈置典雅告別式會場、協調花藝、燈光音響與各項用品。',
     image: '/奠禮準備.jpg',
     fallbackImage: '/奠禮準備.png',
@@ -179,7 +104,6 @@ const processSteps = [
   {
     number: '07',
     title: '家公奠禮',
-    icon: Users,
     desc: '專業司儀與禮生引導進行家奠與公奠追思儀式，陪伴親友圓滿表達最後懷念。',
     image: '/家公奠禮.jpg',
     fallbackImage: '/家公奠禮.png',
@@ -187,7 +111,6 @@ const processSteps = [
   {
     number: '08',
     title: '發引',
-    icon: Footprints,
     desc: '奠禮結束後引導發引辭靈，由靈車護送靈柩前往火化場或安葬地點。',
     image: '/發引.jpg',
     fallbackImage: '/發引.png',
@@ -195,7 +118,6 @@ const processSteps = [
   {
     number: '09',
     title: '火化封罐',
-    icon: UrnIcon,
     desc: '陪同家屬至火化場進行火化儀式，並由禮儀師協助撿骨、迎靈與骨灰罐封罐。',
     image: '/火化封罐.jpg',
     fallbackImage: '/火化封罐.png',
@@ -203,7 +125,6 @@ const processSteps = [
   {
     number: '10',
     title: '返主除靈',
-    icon: Home,
     desc: '引導家屬迎請香火牌位返家安靈，並進行除靈與拜祭注意事項說明。',
     image: '/返主除靈.jpg',
     fallbackImage: '/返主除靈.png',
@@ -211,7 +132,6 @@ const processSteps = [
   {
     number: '11',
     title: '擇吉安奉',
-    icon: Building2,
     desc: '擇吉日良辰，舉行莊嚴安葬儀式，圓滿人生最後一程。',
     image: '/擇吉安奉.jpg',
     fallbackImage: '/擇吉安奉.png',
@@ -219,7 +139,6 @@ const processSteps = [
   {
     number: '12',
     title: '後續關懷',
-    icon: HeartHandshake,
     desc: '提供百日、對年、合爐及各項祭祀節日之提醒與諮詢，關懷陪伴永不間斷。',
     image: '/後續關懷.jpg',
     fallbackImage: '/後續關懷.png',
@@ -317,7 +236,6 @@ export default function Services() {
         {/* 12 大禮儀流程卡片 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {processSteps.map((step, idx) => {
-            const Icon = step.icon;
             return (
               <div
                 key={step.number}
@@ -343,20 +261,11 @@ export default function Services() {
                 {/* 右側：文字內容資訊 */}
                 <div className="flex-1 flex flex-col justify-between h-full py-1">
                   <div>
-                    {/* STEP 01 ~ STEP 12：預設黑色文字 (text-ink-900)，Hover 移入時變深金色 (group-hover:text-gold-600) */}
-                    <div className="mb-1.5">
-                      <span className="font-serif-tc text-[11px] sm:text-xs font-bold tracking-[0.25em] text-ink-900 group-hover:text-gold-600 transition-colors duration-300 inline-block">
-                        STEP {step.number}
-                      </span>
-                    </div>
-
-                    {/* 小圖示與步驟標題：標題文字加強 Hover 變深金色 (group-hover:text-gold-600) */}
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <div className="w-5 h-5 text-ink-900 group-hover:text-gold-600 transition-colors duration-300 flex items-center justify-center shrink-0">
-                        <Icon className="w-4 h-4 transition-colors duration-300" />
-                      </div>
-                      <h4 className="font-serif-tc text-lg font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300">
-                        {step.title}
+                    {/* 改為同一行顯示：STEP 01 臨終關懷，Hover 時同步變深金色 */}
+                    <div className="mb-2">
+                      <h4 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300">
+                        <span className="tracking-[0.15em] mr-2">STEP {step.number}</span>
+                        <span>{step.title}</span>
                       </h4>
                     </div>
 
