@@ -116,16 +116,16 @@ export default function Trust() {
             </div>
           </div>
 
-          {/* 右側：信託相關文件與查詢按鈕區塊 (7欄) */}
+          {/* 右側：整合為單一的高級精緻大方格 (7欄) */}
           <div className="lg:col-span-7 rounded-3xl p-8 sm:p-10 shadow-lg flex flex-col justify-between border border-gold-400/40 bg-gradient-to-br from-white/95 via-ivory-50/90 to-gold-100/40 relative overflow-hidden">
             
             {/* 內容主體 */}
-            <div className="relative z-10">
+            <div className="relative z-10 flex flex-col gap-6">
               
-              {/* 上半部：左側「保證信託」與圓形比例圖緊密並排，右側放置縮短的按鈕 */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-6">
+              {/* 1. 上半部：保證信託與圓形比例圖 + 兩個專屬按鈕 */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-6 border-b border-gold-300/40">
                 
-                {/* 左側：保證信託文字 + 圓形比例圖 */}
+                {/* 左側：保證信託文字 + 75% 圓形比例圖 */}
                 <div className="flex items-center gap-5">
                   <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950 leading-tight">
                     保證<br />信託
@@ -170,15 +170,15 @@ export default function Trust() {
                   </div>
                 </div>
 
-                {/* 右側：適度縮短寬度的兩個按鈕 */}
-                <div className="flex flex-col gap-3 w-full sm:w-[240px]">
+                {/* 右側：履約保障信託契約書與前往信託查詢系統按鈕 */}
+                <div className="flex flex-col gap-2.5 w-full sm:w-[240px]">
                   <a
                     href="/生前契約履約保障信託契約書.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-400 font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
+                    className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-400 font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
                   >
-                    <span className="font-serif-tc font-semibold text-center">履約保障信託契約書</span>
+                    <span className="font-serif-tc font-semibold">履約保障信託契約書</span>
                     <Download className="w-3.5 h-3.5 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
                   </a>
 
@@ -186,23 +186,16 @@ export default function Trust() {
                     href="https://www.ktb.com.tw/funeral/query"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-400 font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
+                    className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-800 hover:text-white border border-ivory-300 hover:border-gold-400 font-medium text-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group/btn"
                   >
-                    <span className="font-serif-tc font-semibold text-center">前往信託查詢系統</span>
+                    <span className="font-serif-tc font-semibold">前往信託查詢系統</span>
                     <ExternalLink className="w-3.5 h-3.5 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors" />
                   </a>
                 </div>
 
               </div>
-            </div>
 
-            {/* 分隔線 */}
-            <div className="w-full h-px bg-gold-300/40 my-3 relative z-10" />
-
-            {/* 下方區塊：緊湊收攏間距 */}
-            <div className="relative z-10 flex flex-col gap-3.5">
-              
-              {/* 第一行：左側「信託財產結算報告」，右側並排 112年、113年、114年 */}
+              {/* 2. 中間：信託財產結算報告（緊湊收攏間距） */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
                 <div className="sm:col-span-5">
                   <h4 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900">
@@ -228,8 +221,8 @@ export default function Trust() {
                 </div>
               </div>
 
-              {/* 第二行：將「信託財產與收支計算表下載按鈕」適度縮短寬度並置中或靠左 */}
-              <div className="flex justify-center">
+              {/* 3. 下方：信託財產與收支計算表下載按鈕（帶有下載圖示，適度縮短） */}
+              <div className="flex justify-center pt-1">
                 <a
                   href="/信託財產目錄與收支計算表.pdf"
                   target="_blank"
