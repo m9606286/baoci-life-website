@@ -209,7 +209,7 @@ export default function Trust() {
                   </h4>
                 </div>
 
-                <div className="sm:col-span-7 grid grid-cols-3 gap-2">
+                <div className="sm:col-span-8 grid grid-cols-3 gap-2">
                   {settlementReports.map((report, idx) => (
                     <a
                       key={idx}
