@@ -79,13 +79,15 @@ export default function PreneedConcept() {
                   className="group relative rounded-2xl p-6 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   <div>
-                    {/* 燙金數字徽章 */}
-                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-gold-100 via-ivory-50 to-gold-200 text-gold-700 font-serif-tc font-bold text-lg border border-gold-400/40 shadow-[inset_0_1px_2px_rgba(255,255,255,0.9),0_4px_10px_rgba(212,175,55,0.2)] group-hover:bg-gold-500 group-hover:text-white group-hover:border-gold-500 transition-all duration-300 mb-3">
-                      0{idx + 1}
+                    {/* 精緻大器的數字設計：移入時放大並轉為高雅深金，完美解決反白看不到的問題 */}
+                    <div className="mb-3">
+                      <span className="font-serif-tc text-3xl font-bold text-gold-600/80 group-hover:text-gold-600 group-hover:scale-110 inline-block transition-all duration-300 drop-shadow-xs">
+                        {idx + 1}
+                      </span>
                     </div>
 
-                    {/* 標題字體：Hover 時切換為淺金色 */}
-                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2">
+                    {/* 標題字體：Hover 時切換為深金色 */}
+                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-600 transition-colors duration-300 mb-2">
                       {item.title}
                     </h3>
 
@@ -115,8 +117,8 @@ export default function PreneedConcept() {
                 key={idx} 
                 className="group/item flex items-center gap-3 p-3.5 rounded-xl transition-all duration-300 -translate-y-0 hover:-translate-y-1 hover:bg-gold-50/60 cursor-pointer shadow-xs border border-transparent hover:border-gold-400/30"
               >
-                {/* 勾勾圖示：移入時變為淺金色底白字 */}
-                <div className="w-7 h-7 rounded-lg bg-gold-100/70 text-gold-700 group-hover/item:bg-gold-500 group-hover/item:text-white flex items-center justify-center shrink-0 transition-colors duration-300 shadow-sm">
+                {/* 勾勾圖示：移入時變為深金底白字 */}
+                <div className="w-7 h-7 rounded-lg bg-gold-100/70 text-gold-700 group-hover/item:bg-gold-600 group-hover/item:text-white flex items-center justify-center shrink-0 transition-colors duration-300 shadow-sm">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
                 <span className="text-sm sm:text-base text-slate-700 font-medium group-hover/item:text-ink-950 transition-colors">
