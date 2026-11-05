@@ -199,7 +199,7 @@ export default function Trust() {
 
               {/* 2. 中間：信託財產結算報告與 112、113、114 年按鈕 */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center pt-1">
-                <div className="sm:col-span-3">
+                <div className="sm:col-span-4">
                   <h4 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900">
                     信託財產結算報告
                   </h4>
