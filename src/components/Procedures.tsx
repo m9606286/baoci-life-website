@@ -214,8 +214,8 @@ export default function Procedures() {
           </div>
         </div>
 
-        {/* 選中項目的詳細文件內容卡片 */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
+        {/* 選中項目的詳細文件內容卡片 (已改為高級漸層背景) */}
+        <div className="border border-gold-400/40 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal bg-gradient-to-br from-white/95 via-ivory-50/90 to-gold-100/40 relative overflow-hidden">
           
           {/* 無條件於所有手續上方顯示 PROCEDURE.png 圖片 */}
           <div className="mb-8 overflow-hidden rounded-2xl border border-ivory-200 shadow-sm">
@@ -265,7 +265,7 @@ export default function Procedures() {
             {currentCategory.items.map((item: any, idx: number) => (
               <div
                 key={idx}
-                className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
+                className="group h-full flex items-center justify-between p-4 rounded-xl bg-white/80 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
               >
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-500 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
@@ -294,7 +294,7 @@ export default function Procedures() {
                 href="/寶慈客戶服務申請表.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm group/btn cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm group/btn cursor-pointer"
               >
                 <span>客戶服務申請表</span>
                 <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white transition-colors shrink-0" />
@@ -303,8 +303,8 @@ export default function Procedures() {
           )}
         </div>
 
-        {/* 注意事項 */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal">
+        {/* 注意事項 (已改為高級漸層背景) */}
+        <div className="border border-gold-400/40 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal bg-gradient-to-br from-white/95 via-ivory-50/90 to-gold-100/40 relative overflow-hidden">
           <div className="text-center mb-8">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               NOTICES
@@ -318,7 +318,7 @@ export default function Procedures() {
             {notices.map((notice, idx) => (
               <div
                 key={idx}
-                className="group flex flex-col sm:flex-row sm:items-center p-4 sm:p-5 rounded-2xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 sm:gap-6"
+                className="group flex flex-col sm:flex-row sm:items-center p-4 sm:p-5 rounded-2xl bg-white/80 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 sm:gap-6"
               >
                 <div className="flex items-center gap-3 shrink-0 sm:w-auto">
                   <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-500 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
