@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useReveal } from '@/hooks/useReveal';
-import { MapPin, Send, CheckCircle2, Building, Phone, Mail, FileEdit, ExternalLink, User, HelpCircle, MessageSquare } from 'lucide-react';
+import { MapPin, Send, CheckCircle2, Building, Phone, Mail, FileEdit, ExternalLink, User, HelpCircle, MessageSquare, Handshake } from 'lucide-react';
 
 const taiwanLocations = [
   '基隆市', '台北市', '新北市', '桃園市', '新竹市', '新竹縣',
@@ -26,7 +26,6 @@ const salesChannels = [
     mapUrl: 'https://www.google.com/maps/search/?api=1&query=臺北市松山區復興北路361巷14號1樓',
     phone: '(02) 2514-7758',
     phoneTel: '0225147758',
-    logo: '/logo1.png',
   },
 ];
 
@@ -151,7 +150,7 @@ export default function Contact() {
                   : 'text-slate-800 hover:text-gold-700 hover:bg-gold-50/60'
               }`}
             >
-              <Building className="w-4 h-4 pointer-events-none" />
+              <Handshake className="w-4 h-4 pointer-events-none" />
               <span className="pointer-events-none">銷售通路</span>
             </button>
 
@@ -170,7 +169,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* 總公司卡片 (修復 hover 邊緣裁切問題) */}
+        {/* 總公司卡片 (logo.png) */}
         {activeTab === 'headquarter' && (
           <div className="max-w-2xl mx-auto mb-12 transition-all duration-300">
             <div className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl">
@@ -221,7 +220,7 @@ export default function Contact() {
           </div>
         )}
 
-        {/* 銷售通路卡片 (修復 hover 邊緣裁切問題) */}
+        {/* 銷售通路卡片 (改用 Handshake 經銷合作圖示) */}
         {activeTab === 'channel' && (
           <div className="max-w-2xl mx-auto mb-12 space-y-5 transition-all duration-300">
             {salesChannels.map((channel, idx) => (
@@ -230,8 +229,8 @@ export default function Contact() {
                 className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl"
               >
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 p-1 flex items-center justify-center shrink-0">
-                    <img src={channel.logo} alt={channel.name} className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
+                  <div className="w-12 h-12 flex items-center justify-center shrink-0 text-gold-600 group-hover:text-gold-500 transition-colors">
+                    <Handshake className="w-9 h-9 transition-transform duration-300 group-hover:scale-105" />
                   </div>
                   <h3 className="font-serif-tc text-2xl font-bold text-ink-950">
                     {channel.name}
