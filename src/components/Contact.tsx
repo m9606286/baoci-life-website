@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useReveal } from '@/hooks/useReveal';
-import { MapPin, Send, CheckCircle2, Building2, Phone, Mail, Building, FileEdit, ExternalLink, User, HelpCircle, MessageSquare } from 'lucide-react';
+import { MapPin, Send, CheckCircle2, Building, Phone, Mail, FileEdit, ExternalLink, User, HelpCircle, MessageSquare } from 'lucide-react';
 
 const taiwanLocations = [
   '基隆市', '台北市', '新北市', '桃園市', '新竹市', '新竹縣',
@@ -26,6 +26,7 @@ const salesChannels = [
     mapUrl: 'https://www.google.com/maps/search/?api=1&query=臺北市松山區復興北路361巷14號1樓',
     phone: '(02) 2514-7758',
     phoneTel: '0225147758',
+    logo: '/logo1.png',
   },
 ];
 
@@ -125,7 +126,7 @@ export default function Contact() {
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
         </div>
 
-        {/* 頂部切換頁籤：改為 reveal-delay-1 與標題同步浮現 */}
+        {/* 頂部切換頁籤 */}
         <div className="flex justify-center mb-12 relative z-30 reveal reveal-delay-1">
           <div className="inline-flex rounded-2xl bg-white/90 p-1.5 border border-gold-400/40 shadow-lg backdrop-blur-md">
             <button
@@ -137,7 +138,7 @@ export default function Contact() {
                   : 'text-slate-800 hover:text-gold-700 hover:bg-gold-50/60'
               }`}
             >
-              <Building2 className="w-4 h-4 pointer-events-none" />
+              <Building className="w-4 h-4 pointer-events-none" />
               <span className="pointer-events-none">總公司</span>
             </button>
 
@@ -169,13 +170,13 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* 總公司卡片 */}
+        {/* 總公司卡片 (使用 logo.png) */}
         {activeTab === 'headquarter' && (
           <div className="max-w-2xl mx-auto mb-12 transition-all duration-300">
             <div className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl overflow-hidden">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-ivory-200 text-gold-600 group-hover:!bg-gold-500 group-hover:!text-white flex items-center justify-center transition-colors duration-300 shadow-sm shrink-0">
-                  <Building2 className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
+                <div className="w-12 h-12 rounded-2xl bg-white border border-gold-300/60 flex items-center justify-center shadow-xs shrink-0 overflow-hidden p-1.5">
+                  <img src="/logo.png" alt="寶慈生命事業" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 <h3 className="font-serif-tc text-2xl font-bold text-ink-950">
                   寶慈生命事業股份有限公司
@@ -220,7 +221,7 @@ export default function Contact() {
           </div>
         )}
 
-        {/* 銷售通路卡片 */}
+        {/* 銷售通路卡片 (使用 logo1.png) */}
         {activeTab === 'channel' && (
           <div className="max-w-2xl mx-auto mb-12 space-y-5 transition-all duration-300">
             {salesChannels.map((channel, idx) => (
@@ -229,8 +230,8 @@ export default function Contact() {
                 className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl overflow-hidden"
               >
                 <div className="flex items-center gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-ivory-200 text-gold-600 group-hover:!bg-gold-500 group-hover:!text-white flex items-center justify-center transition-colors duration-300 shadow-sm shrink-0">
-                    <Building className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-gold-300/60 flex items-center justify-center shadow-xs shrink-0 overflow-hidden p-1.5">
+                    <img src={channel.logo} alt={channel.name} className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" />
                   </div>
                   <h3 className="font-serif-tc text-2xl font-bold text-ink-950">
                     {channel.name}
