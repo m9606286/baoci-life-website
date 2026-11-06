@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useReveal } from '@/hooks/useReveal';
-import { MapPin, Send, CheckCircle2, Building, Phone, Mail, FileEdit, ExternalLink, User, HelpCircle, MessageSquare } from 'lucide-react';
+import { MapPin, Send, CheckCircle2, Building, Phone, Mail, FileEdit, ExternalLink, User, HelpCircle, MessageSquare, Handshake } from 'lucide-react';
 
 const taiwanLocations = [
   '基隆市', '台北市', '新北市', '桃園市', '新竹市', '新竹縣',
@@ -126,7 +126,7 @@ export default function Contact() {
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
         </div>
 
-        {/* 頂部切換頁籤 */}
+        {/* 頂部切換頁籤：銷售通路改為 Handshake 握手圖示 */}
         <div className="flex justify-center mb-12 relative z-30 reveal reveal-delay-1">
           <div className="inline-flex rounded-2xl bg-white/90 p-1.5 border border-gold-400/40 shadow-lg backdrop-blur-md">
             <button
@@ -151,7 +151,7 @@ export default function Contact() {
                   : 'text-slate-800 hover:text-gold-700 hover:bg-gold-50/60'
               }`}
             >
-              <Building className="w-4 h-4 pointer-events-none" />
+              <Handshake className="w-4 h-4 pointer-events-none" />
               <span className="pointer-events-none">銷售通路</span>
             </button>
 
