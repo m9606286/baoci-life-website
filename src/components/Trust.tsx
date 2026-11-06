@@ -56,11 +56,12 @@ export default function Trust() {
 
             {/* 內容區塊 */}
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-4 group/lefttitle">
+              <div className="flex items-center gap-3 mb-4 group/lefttitle cursor-pointer">
                 <div className="w-10 h-10 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/lefttitle:bg-gold-500 group-hover/lefttitle:border-gold-500 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <Landmark className="w-5 h-5 text-gold-600 group-hover/lefttitle:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-900">
+                {/* 嚴謹信託 專款專用：預設黑色，滑鼠移過去 (group-hover) 時變成淺深金色 */}
+                <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-900 group-hover/lefttitle:text-gold-600 transition-colors duration-300">
                   嚴謹信託 專款專用
                 </h3>
               </div>
@@ -135,33 +136,40 @@ export default function Trust() {
                   <div className="relative w-24 h-24 shrink-0 flex items-center justify-center filter drop-shadow-[0_4px_6px_rgba(212,175,55,0.3)]">
                     <style>{`
                       @keyframes ringProgress {
-                        0% { stroke-dasharray: 0, 264; }
-                        100% { stroke-dasharray: 198, 264; }
+                        0% { stroke-dasharray: 0, 251.2; }
+                        100% { stroke-dasharray: 188.4, 251.2; }
                       }
                       .animated-ring {
                         animation: ringProgress 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
                       }
                     `}</style>
                     <svg className="w-full h-full transform -rotate-90 overflow-visible" viewBox="0 0 100 100">
+                      <defs>
+                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#F3E5AB" />
+                          <stop offset="50%" stopColor="#D4AF37" />
+                          <stop offset="100%" stopColor="#996515" />
+                        </linearGradient>
+                      </defs>
                       <circle
                         cx="50"
                         cy="50"
-                        r="42"
-                        className="text-gold-200/60"
-                        strokeWidth="10"
+                        r="40"
+                        className="text-gold-200/50"
+                        strokeWidth="13"
                         stroke="currentColor"
                         fill="none"
                       />
                       <circle
                         cx="50"
                         cy="50"
-                        r="42"
-                        className="text-gold-600 animated-ring"
-                        strokeWidth="10"
+                        r="40"
+                        stroke="url(#goldGradient)"
+                        strokeWidth="13"
                         strokeLinecap="round"
-                        stroke="currentColor"
                         fill="none"
-                        strokeDasharray="264"
+                        strokeDasharray="251.2"
+                        className="animated-ring"
                       />
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
@@ -201,7 +209,7 @@ export default function Trust() {
 
               </div>
 
-              {/* 2. 中間：信託財產結算報告與 112、113、114 年按鈕 (改為 4:8 比例，使年份按鈕更靠近標題) */}
+              {/* 2. 中間：信託財產結算報告與 112、113、114 年按鈕 */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center pt-1">
                 <div className="sm:col-span-4">
                   <h4 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900">
@@ -228,7 +236,7 @@ export default function Trust() {
                 </div>
               </div>
 
-              {/* 3. 下方：信託財產與收支計算表下載按鈕（利用 sm:col-start-5 完美對齊上方 112 年按鈕左緣） */}
+              {/* 3. 下方：信託財產與收支計算表下載按鈕 */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center pt-1">
                 <div className="sm:col-start-5 sm:col-span-8">
                   <a
