@@ -1,3 +1,4 @@
+import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
 
 const aboutSections = [
@@ -11,7 +12,7 @@ const aboutSections = [
           寶慈生命事業深耕殯葬禮儀服務逾二十年，為合法經營之殯葬禮儀服務業者，經臺南市民政局核準發行生前契約，並於2026年5月正式由寶碩集團接續經營，源於創辦人對於禮儀服務的深刻理解和對家庭關懷的執著，我們見證了無數家庭在失去親人時的悲傷，也看到了專業禮儀服務如何能夠幫助人們度過這個困難的時期，因此決定讓可永續經營之集團接續，讓會員權益更有保障。
         </p>
         <p className="font-semibold text-ink-800 pt-1 border-t border-ivory-200/80">
-          從最初的小型禮儀社，到如今成為寶碩集團的一分子，我們始終堅持一個信念：
+          從最初的小型禮儀公司，到如今成為寶碩集團的一分子，我們始終堅持一個信念：
           <span className="block gold-text-gradient font-bold mt-1">
             每一個生命都值得被尊重，每一個家庭都應該得到最好的照顧。
           </span>
@@ -81,8 +82,8 @@ const milestones = [
   },
 ];
 
-const aboutImage =
-  'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80';
+// 改為存放於 public 目錄下的 story.png
+const aboutImage = '/story.png';
 
 export default function About() {
   const ref = useReveal<HTMLDivElement>();
@@ -94,7 +95,7 @@ export default function About() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch mb-24">
           
-          {/* 左側：圖片區塊 */}
+          {/* 左側：圖片區塊（已移除 75% 信託保障浮水印） */}
           <div className="lg:col-span-5 relative reveal flex flex-col h-full min-h-[550px] lg:min-h-[700px]">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group cursor-pointer border border-ivory-300/85">
               <img
@@ -103,13 +104,6 @@ export default function About() {
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent pointer-events-none" />
-            </div>
-            
-            {/* 左下角 75% 信託保障浮水印標籤 */}
-            <div className="absolute bottom-6 right-6 lg:-right-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 border border-white/60 z-25">
-              <p className="font-serif-tc text-3xl font-bold gold-text-gradient">75%</p>
-              <p className="text-xs font-semibold text-ink-700 mt-1">信託保障</p>
-              <p className="text-[10px] text-ink-500">專款專用 履約保障</p>
             </div>
           </div>
 
@@ -122,7 +116,7 @@ export default function About() {
                   className="relative rounded-2xl p-8 bg-white/80 backdrop-blur-sm shadow-sm border border-ivory-300/80 overflow-hidden group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-center gap-2.5 mb-4">
-                    {/* 自訂圖片：無外層陰影背景，放大至與標題靠近，Hover 時呈現明顯陰影與放大 */}
+                    {/* 自訂圖片：Hover 時呈現明顯陰影與放大 */}
                     <div className="flex items-center justify-center shrink-0">
                       <img 
                         src={section.imageSrc} 
