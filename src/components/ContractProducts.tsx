@@ -20,7 +20,7 @@ const contractProducts: ContractProduct[] = [
     bgImage: '/寶富契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
-      phone: '02-2514-7758',
+      phone: '(02)2514-7758',
     },
     pdfUrl: '/寶富生前契約書.pdf',
   },
@@ -30,7 +30,7 @@ const contractProducts: ContractProduct[] = [
     bgImage: '/寶暉契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
-      phone: '02-2514-7758',
+      phone: '(02)2514-7758',
     },
     pdfUrl: '/寶暉生前契約書.pdf',
   },
