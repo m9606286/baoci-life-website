@@ -29,7 +29,7 @@ export default function CoreValues() {
             <div className="relative w-48 h-48 rounded-full p-2 bg-gradient-to-br from-gold-300 via-gold-400 to-gold-600 shadow-2xl flex items-center justify-center">
               <div className="w-full h-full rounded-full bg-ivory-50 p-2 overflow-hidden flex items-center justify-center shadow-inner">
                 <img 
-                  src="/hand.png" 
+                  src="/core.png" 
                   alt="核心價值意象" 
                   className="w-full h-full object-cover rounded-full filter drop-shadow-md transition-transform duration-700 hover:scale-105"
                 />
