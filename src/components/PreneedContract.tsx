@@ -55,24 +55,17 @@ export default function PreneedConcept() {
         {/* 2. 左圖右文：4 大核心保障 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12 reveal reveal-delay-3">
           
-          {/* 左側照片（文字設計與對齊方式參考圖片） */}
+          {/* 左側照片 */}
           <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-xl border border-gold-400/30 min-h-[350px] lg:min-h-full group">
             <img
               src={familyImage}
               alt="溫暖陪伴"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            {/* 柔光遮罩 */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none" />
-            
-            {/* 左下角壓紋大字與小字 */}
-            <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
-              <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold tracking-wide drop-shadow-md mb-2">
-                用心守護，讓愛延續
-              </h3>
-              <p className="text-xs sm:text-sm text-ivory-100/90 leading-relaxed drop-shadow">
-                以專業與誠信為本，陪伴每個家庭走過人生重要時刻。
-              </p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-6 left-6 right-6 text-white">
+              <p className="font-serif-tc text-xl font-bold drop-shadow">預先安排，圓滿無遺憾</p>
+              <p className="text-xs text-ivory-100/90 mt-1 drop-shadow">以愛為出發，讓家人多一份安心。</p>
             </div>
           </div>
 
@@ -84,6 +77,7 @@ export default function PreneedConcept() {
                   key={idx}
                   className="group relative rounded-2xl p-5 sm:p-6 overflow-hidden hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                   style={{
+                    // 淡化漸層：改為幾乎近純白的極明亮自然感
                     background: 'linear-gradient(180deg, #ffffff 0%, #fdfcfb 70%, #faf6f0 100%)',
                     border: '1px solid rgba(212, 175, 55, 0.22)',
                     boxShadow: '0 8px 25px -5px rgba(212, 175, 55, 0.1), 0 3px 8px rgba(0, 0, 0, 0.03)',
@@ -103,7 +97,7 @@ export default function PreneedConcept() {
                       <span>{item.title}</span>
                     </h3>
 
-                    {/* 內文字體 */}
+                    {/* 內文字體放大對齊 */}
                     <p className="relative z-10 text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-7">
                       {item.desc}
                     </p>
@@ -122,6 +116,7 @@ export default function PreneedConcept() {
         <div 
           className="rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-300 reveal reveal-delay-4"
           style={{
+            // 淡化漸層背景
             background: 'linear-gradient(180deg, #ffffff 0%, #fdfcfb 70%, #faf6f0 100%)',
             border: '1px solid rgba(212, 175, 55, 0.22)',
             boxShadow: '0 8px 25px -5px rgba(212, 175, 55, 0.1), 0 3px 8px rgba(0, 0, 0, 0.03)',
