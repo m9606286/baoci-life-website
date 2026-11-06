@@ -10,7 +10,6 @@ const procedureCategories = [
     title: '新購手續',
     days: '15 天',
     desc: '購買生前契約。',
-    bgImage: '/PROCEDURE.png', // 設定新購手續的背景圖
     items: [
       { name: '客戶基本資料表', note: '未曾購買者' },
       { name: '契約書正本', note: '✓ 必備' },
@@ -216,94 +215,92 @@ export default function Procedures() {
         </div>
 
         {/* 選中項目的詳細文件內容卡片 */}
-        <div className={`border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal relative overflow-hidden ${
-          currentCategory.bgImage ? 'bg-cover bg-center' : 'bg-white'
-        }`}
-        style={currentCategory.bgImage ? { backgroundImage: `url(${currentCategory.bgImage})` } : undefined}
-        >
-          {/* 如果有背景圖，加上一層半透明的白色遮罩，確保文字清晰易讀 */}
-          {currentCategory.bgImage && (
-            <div className="absolute inset-0 bg-white/90 backdrop-blur-[1px] pointer-events-none" />
-          )}
-
-          {/* 卡片內容容器（需設定 relative 確保浮在遮罩上方） */}
-          <div className="relative z-10">
-            <div className="relative pb-6 mb-6 border-b border-ivory-200">
-              
-              {/* 強制置中對齊的標題與說明文字區塊 */}
-              <div className="text-center mx-auto">
-                <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
-                  {currentCategory.title}
-                </h3>
-                <p className="text-ink-600 text-sm mt-1">
-                  {currentCategory.desc}
-                </p>
-              </div>
-
-              {/* 工作天數絕對定位在右上角 */}
-              <div className="absolute top-0 right-0 hidden sm:inline-flex items-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300">
-                <Clock className="w-4 h-4 text-gold-600 shrink-0" />
-                <span className="text-sm font-medium text-ink-800 font-['Microsoft_JhengHei']">
-                  工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
-                </span>
-              </div>
-
-              {/* 手機版的工作天數顯示（置中排列於下方） */}
-              <div className="flex sm:hidden items-center justify-center gap-2 bg-ivory-100 px-4 py-2 rounded-xl border border-ivory-300 mt-4 mx-auto max-w-[160px]">
-                <Clock className="w-4 h-4 text-gold-600 shrink-0" />
-                <span className="text-xs font-medium text-ink-800 font-['Microsoft_JhengHei']">
-                  工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
-                </span>
-              </div>
-            </div>
-
-            <h4 className="font-serif-tc text-base font-bold text-ink-800 mb-6 flex items-center justify-start gap-2">
-              <FileText className="w-4 h-4 text-gold-600" />
-              <span>必備與檢附文件清單：</span>
-            </h4>
-
-            {/* 文件清單列表（維持靠左對齊） */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-              {currentCategory.items.map((item: any, idx: number) => (
-                <div
-                  key={idx}
-                  className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/80 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-500 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
-                      <CheckCircle2 className="w-5 h-5" />
-                    </div>
-                    <span className="text-sm sm:text-base font-medium text-ink-900 leading-snug text-left">{item.name}</span>
-                  </div>
-                  <div className="flex flex-col items-end shrink-0 text-right">
-                    <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
-                      {item.note}
-                    </span>
-                    {item.subNote && (
-                      <span className="text-xs px-2.5 py-1 mt-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
-                        {item.subNote}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* 下載按鈕（若為新購手續則隱藏） */}
-            {activeTab !== 'new' && (
-              <div className="mt-6 flex justify-start">
-                <a
-                  href="/寶慈客戶服務申請表.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm group/btn cursor-pointer"
-                >
-                  <span>客戶服務申請表</span>
-                  <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white transition-colors shrink-0" />
-                </a>
-              </div>
-            )}
+        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
+          
+          {/* 無條件於所有手續上方顯示 PROCEDURE.png 圖片 */}
+          <div className="mb-8 overflow-hidden rounded-2xl border border-ivory-200 shadow-sm">
+            <img 
+              src="/PROCEDURE.png" 
+              alt="手續辦理示意圖" 
+              className="w-full h-48 sm:h-64 md:h-72 object-cover"
+            />
           </div>
+
+          <div className="relative pb-6 mb-6 border-b border-ivory-200">
+            
+            {/* 強制置中對齊的標題與說明文字區塊 */}
+            <div className="text-center mx-auto">
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
+                {currentCategory.title}
+              </h3>
+              <p className="text-ink-600 text-sm mt-1">
+                {currentCategory.desc}
+              </p>
+            </div>
+
+            {/* 工作天數絕對定位在右上角 */}
+            <div className="absolute top-0 right-0 hidden sm:inline-flex items-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300">
+              <Clock className="w-4 h-4 text-gold-600 shrink-0" />
+              <span className="text-sm font-medium text-ink-800 font-['Microsoft_JhengHei']">
+                工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
+              </span>
+            </div>
+
+            {/* 手機版的工作天數顯示（置中排列於下方） */}
+            <div className="flex sm:hidden items-center justify-center gap-2 bg-ivory-100 px-4 py-2 rounded-xl border border-ivory-300 mt-4 mx-auto max-w-[160px]">
+              <Clock className="w-4 h-4 text-gold-600 shrink-0" />
+              <span className="text-xs font-medium text-ink-800 font-['Microsoft_JhengHei']">
+                工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
+              </span>
+            </div>
+          </div>
+
+          <h4 className="font-serif-tc text-base font-bold text-ink-800 mb-6 flex items-center justify-start gap-2">
+            <FileText className="w-4 h-4 text-gold-600" />
+            <span>必備與檢附文件清單：</span>
+          </h4>
+
+          {/* 文件清單列表（維持靠左對齊） */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            {currentCategory.items.map((item: any, idx: number) => (
+              <div
+                key={idx}
+                className="group h-full flex items-center justify-between p-4 rounded-xl bg-ivory-50/60 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-500 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <span className="text-sm sm:text-base font-medium text-ink-900 leading-snug text-left">{item.name}</span>
+                </div>
+                <div className="flex flex-col items-end shrink-0 text-right">
+                  <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
+                    {item.note}
+                  </span>
+                  {item.subNote && (
+                    <span className="text-xs px-2.5 py-1 mt-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
+                      {item.subNote}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* 下載按鈕（若為新購手續則隱藏） */}
+          {activeTab !== 'new' && (
+            <div className="mt-6 flex justify-start">
+              <a
+                href="/寶慈客戶服務申請表.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm group/btn cursor-pointer"
+              >
+                <span>客戶服務申請表</span>
+                <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white transition-colors shrink-0" />
+              </a>
+            </div>
+          )}
         </div>
 
         {/* 注意事項 */}
