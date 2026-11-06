@@ -221,7 +221,7 @@ export default function ContractProducts() {
           {/* 註解：「註：」替換為與內文相同的 CheckCircle2 勾勾圖示 */}
           <div className="flex items-center gap-1.5 text-base text-ink-800 font-medium mb-8 pl-1">
             <CheckCircle2 className="w-5 h-5 text-gold-600 shrink-0" />
-            <span>標準型及簡易型均提供骨罐及火化棺。</span>
+            <span>標準型及簡易型均提供骨罐及火化棺</span>
           </div>
 
           {/* 諮詢適合您的方案按鈕 */}
