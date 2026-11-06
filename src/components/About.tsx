@@ -9,7 +9,7 @@ const aboutSections = [
     content: (
       <div className="space-y-3">
         <p>
-          寶慈生命事業深耕殯葬禮儀服務逾二十年，為合法經營之殯葬禮儀服務業者，所發行之生前契約經臺南市政府民政局核准。2026年5月，正式由寶碩集團接續經營，藉由集團資源與永續經營的管理基礎，持續提升服務品質，強化會員權益保障。
+          寶慈生命事業深耕殯葬禮儀服務逾二十年，為合法經營之殯葬禮儀服務業者，所發行之生前契約經臺南市政府民政局核準。2026年5月，正式由寶碩集團接續經營，藉由集團資源與永續經營的管理基礎，持續提升服務品質，強化會員權益保障。
         </p>
         <p>
           自創立以來，寶慈始終秉持誠信經營與人本關懷的理念，深刻理解每個家庭在面對人生離別時的需求與不易，致力於提供專業、周全且值得信賴的殯葬禮儀服務。
@@ -106,8 +106,8 @@ export default function About() {
               {/* 漸層遮罩：下方襯托白色文字 */}
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/20 to-transparent pointer-events-none" />
 
-              {/* 左下角品牌精神文字壓紋（字體已進一步縮小與精細化） */}
-              <div className="absolute bottom-5 left-5 right-5 z-10 pointer-events-none space-y-1">
+              {/* 左下角品牌精神文字壓紋（文字修改、字級縮小、位置向上挪移至 bottom-10 sm:bottom-12） */}
+              <div className="absolute bottom-10 sm:bottom-12 left-6 right-6 z-10 pointer-events-none space-y-1.5">
                 <h4 className="text-white font-serif-tc text-base sm:text-lg lg:text-xl font-semibold tracking-wide leading-snug drop-shadow-md">
                   用心守護，讓愛延續
                 </h4>
