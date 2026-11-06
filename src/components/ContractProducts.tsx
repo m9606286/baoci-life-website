@@ -138,7 +138,7 @@ export default function ContractProducts() {
                   </a>
                 </div>
 
-                {/* 底部按鈕區 (改為透明底、hover 變色、靠左且縮短寬度) */}
+                {/* 底部按鈕區 (移除「下載」二字，透明底、hover 變色、靠左且縮短) */}
                 <div className="pt-2 w-full flex justify-start">
                   <a
                     href={product.pdfUrl}
@@ -146,7 +146,7 @@ export default function ContractProducts() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-transparent hover:bg-gold-500 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm"
                   >
-                    <span>下載 {product.typeTag}</span>
+                    <span>{product.typeTag}</span>
                     <Download className="w-4 h-4" />
                   </a>
                 </div>
