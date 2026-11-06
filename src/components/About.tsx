@@ -82,7 +82,7 @@ const milestones = [
   },
 ];
 
-// 改為存放於 public 目錄下的 story.png
+// 存放於 public 目錄下的 story.png
 const aboutImage = '/story.png';
 
 export default function About() {
@@ -93,9 +93,10 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gold-100/40 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch mb-24">
+        {/* 將 gap-12 lg:gap-16 改為 gap-6 lg:gap-8，縮短左右兩欄間距 */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-24">
           
-          {/* 左側：圖片區塊（已移除 75% 信託保障浮水印） */}
+          {/* 左側：圖片區塊 */}
           <div className="lg:col-span-5 relative reveal flex flex-col h-full min-h-[550px] lg:min-h-[700px]">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group cursor-pointer border border-ivory-300/85">
               <img
@@ -108,24 +109,22 @@ export default function About() {
           </div>
 
           {/* 右側：三個卡片區塊 (故事、使命、願景) */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+          <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
             {aboutSections.map((section, idx) => {
               return (
                 <div
                   key={idx}
-                  className="relative rounded-2xl p-8 bg-white/80 backdrop-blur-sm shadow-sm border border-ivory-300/80 overflow-hidden group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                  className="relative rounded-2xl p-7 bg-white/80 backdrop-blur-sm shadow-sm border border-ivory-300/80 overflow-hidden group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
-                  <div className="flex items-center gap-2.5 mb-4">
-                    {/* 自訂圖片：Hover 時呈現明顯陰影與放大 */}
+                  <div className="flex items-center gap-2.5 mb-3">
                     <div className="flex items-center justify-center shrink-0">
                       <img 
                         src={section.imageSrc} 
                         alt={section.title} 
-                        className="h-9 sm:h-10 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_8px_12px_rgba(212,175,55,0.45)]" 
+                        className="h-8 sm:h-9 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_8px_12px_rgba(212,175,55,0.45)]" 
                       />
                     </div>
 
-                    {/* 標題：Hover 時切換為淺金色 */}
                     <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300">
                       {section.title}
                     </h3>
@@ -134,7 +133,6 @@ export default function About() {
                     {section.content}
                   </div>
 
-                  {/* 卡片底部的金色指示線 */}
                   <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out" />
                 </div>
               );
@@ -164,15 +162,12 @@ export default function About() {
                 className="relative group/timeline cursor-pointer p-2 rounded-xl transition-all duration-300 hover:translate-x-1.5"
               >
                 
-                {/* 時間軸節點圓點 */}
                 <div className="absolute -left-[31px] sm:-left-[47px] top-3.5 w-4 h-4 rounded-full bg-white border-4 border-gold-500 shadow-md group-hover/timeline:scale-150 group-hover/timeline:border-gold-600 group-hover/timeline:shadow-gold-500/50 transition-all duration-300" />
 
-                {/* 年份標題 */}
                 <h4 className="font-serif-tc text-2xl font-bold text-gold-700 group-hover/timeline:text-gold-500 group-hover/timeline:scale-105 origin-left transition-all duration-300 mb-2 tracking-wide">
                   {item.year}
                 </h4>
 
-                {/* 歷程內文 */}
                 <div className="text-ink-700 text-sm sm:text-base leading-relaxed">
                   {item.text}
                 </div>
