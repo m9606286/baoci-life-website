@@ -157,7 +157,7 @@ export default function ContractProducts() {
           ))}
         </div>
 
-        {/* 獨立區塊：台南市民政局生前契約銷售及代銷商最新核准函 (維持原有的 hover 變色機制) */}
+        {/* 獨立區塊：台南市民政局生前契約銷售及代銷商最新核准函 */}
         <div className="max-w-5xl mx-auto mb-16 text-center">
           <a
             href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf"
@@ -218,9 +218,11 @@ export default function ContractProducts() {
             </table>
           </div>
 
-          <p className="text-base text-ink-800 font-medium mb-8 pl-1">
-            註：標準型及簡易型均提供骨罐及火化棺。
-          </p>
+          {/* 註解：「註：」替換為與內文相同的 CheckCircle2 勾勾圖示 */}
+          <div className="flex items-center gap-1.5 text-base text-ink-800 font-medium mb-8 pl-1">
+            <CheckCircle2 className="w-5 h-5 text-gold-600 shrink-0" />
+            <span>標準型及簡易型均提供骨罐及火化棺。</span>
+          </div>
 
           {/* 諮詢適合您的方案按鈕 */}
           <div className="text-center">
