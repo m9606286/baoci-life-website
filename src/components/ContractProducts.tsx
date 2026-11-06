@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Download, Building2, Phone, CheckCircle2, MinusCircle, FileText } from 'lucide-react';
+import { Download, Handshake, Phone, CheckCircle2, MinusCircle, FileText } from 'lucide-react';
 
 interface ContractProduct {
   id: string;
-  typeTag: '標準型禮儀服務' | '簡約型禮儀服務';
+  typeTag: string;
   bgImage: string; // 契約書封面背景路徑
   channel: {
     name: string;
@@ -16,21 +16,21 @@ interface ContractProduct {
 const contractProducts: ContractProduct[] = [
   {
     id: 'baofu',
-    typeTag: '標準型禮儀服務',
+    typeTag: '生前契約書－標準型',
     bgImage: '/寶富契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
-      phone: '02-2514-7758',
+      phone: '(02)2514-7758',
     },
     pdfUrl: '/寶富生前契約書.pdf',
   },
   {
     id: 'baohui',
-    typeTag: '簡約型禮儀服務',
+    typeTag: '生前契約書－簡約型',
     bgImage: '/寶暉契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
-      phone: '02-2514-7758',
+      phone: '(02)2514-7758',
     },
     pdfUrl: '/寶暉生前契約書.pdf',
   },
@@ -83,7 +83,7 @@ export default function ContractProducts() {
   return (
     <section id="products" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100/60 relative -mt-6 lg:-mt-10">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* 標題區 */}
         <div className="text-center mb-14">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -117,12 +117,14 @@ export default function ContractProducts() {
 
               {/* 下方資訊區塊 */}
               <div className="relative z-10 text-white space-y-4 flex flex-col items-start text-left">
-                
-                {/* 銷售通路與聯絡電話 */}
+
+                {/* 銷售通路與電話 */}
                 <div className="space-y-2 text-sm sm:text-base font-medium">
-                  <div className="flex items-center gap-1.5 text-white">
-                    <Building2 className="w-4 h-4 text-white shrink-0" />
-                    <span>銷售通路：{product.channel.name}</span>
+                  <div className="flex items-center gap-1.5 text-white hover:text-gold-300 transition-colors duration-200 cursor-pointer group/channel">
+                    <Handshake className="w-4 h-4 text-white group-hover/channel:text-gold-300 shrink-0 transition-colors duration-200" />
+                    <span className="group-hover/channel:text-gold-300 transition-colors duration-200">
+                      銷售通路：{product.channel.name}
+                    </span>
                   </div>
 
                   <a
@@ -131,24 +133,20 @@ export default function ContractProducts() {
                   >
                     <Phone className="w-4 h-4 text-white group-hover/phone:text-gold-300 shrink-0 transition-colors duration-200" />
                     <span className="font-mono group-hover/phone:underline underline-offset-4 font-['Microsoft_JhengHei']">
-                      聯絡電話：{product.channel.phone}
+                      電話：{product.channel.phone}
                     </span>
                   </a>
                 </div>
 
-                {/* 底部按鈕區 */}
-                <div className="pt-2 flex items-center gap-2.5 w-full flex-wrap">
-                  <span className="inline-flex items-center px-4 py-2.5 rounded-xl bg-transparent hover:bg-gold-500 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm cursor-default">
-                    {product.typeTag}
-                  </span>
-
+                {/* 底部按鈕區 (改為單一按鈕：下載該契約書 PDF) */}
+                <div className="pt-2 w-full">
                   <a
                     href={product.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-transparent hover:bg-gold-500 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm"
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gold-600/80 hover:bg-gold-500 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm"
                   >
-                    <span>生前契約書</span>
+                    <span>下載 {product.typeTag}</span>
                     <Download className="w-4 h-4" />
                   </a>
                 </div>
@@ -185,7 +183,7 @@ export default function ContractProducts() {
             <div className="gold-divider w-24 mx-auto mt-4" />
           </div>
 
-          {/* 表格內容（寶富內文已改為一般字重，無粗體） */}
+          {/* 表格內容 */}
           <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-4">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
