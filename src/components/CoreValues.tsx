@@ -1,6 +1,6 @@
 import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
-import { Heart, ShieldCheck, Gem, Sparkles } from 'lucide-react';
+import { Heart, Gem, Sparkles } from 'lucide-react';
 
 // 核心價值內容
 const coreValues = [
@@ -10,9 +10,10 @@ const coreValues = [
     description: '以同理心對待每一位客戶，尊重個人信念和家庭需求，提供溫暖而專業的服務。',
   },
   {
-    icon: ShieldCheck,
+    image: '/safe.png', // 改為使用 public 裡面的 safe.png[cite: 1]
     title: '專業保障',
     description: '擁有豐富與專業的行業經驗，確保應有之服務品質。',
+    isGoldTitle: true, // 標記字體變淺深金色[cite: 1]
   },
   {
     icon: Gem,
@@ -33,7 +34,7 @@ export default function CoreValues() {
   return (
     <section id="values" className="py-24 lg:py-32 bg-ivory-100">
       <div ref={ref} className="mx-auto max-w-8xl px-6">
-        {/* Header (英文字型、字距與大小已調整與 PROCEDURE GUIDE 完全一致) */}
+        {/* Header */}
         <div className="text-center mb-16">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
             CORE VALUES
@@ -51,17 +52,42 @@ export default function CoreValues() {
             return (
               <div
                 key={value.title}
-                className={`reveal reveal-delay-${idx + 1} group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:shadow-ink-900/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer`}
+                className={`reveal reveal-delay-${
+                  idx + 1
+                } group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:shadow-ink-900/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer`}
               >
-                {/* Icon */}
+                {/* Icon or Custom Image */}
                 <div className="relative mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm">
-                    <Icon className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" />
-                  </div>
+                  {value.image ? (
+                    /* 圖片呈現：加上 Drop Shadow 陰影與 hover 縮放效果[cite: 1] */
+                    <div className="w-14 h-14 flex items-center justify-center">
+                      <img
+                        src={value.image}
+                        alt={value.title}
+                        className="w-full h-full object-contain filter drop-shadow-md group-hover:drop-shadow-xl group-hover:scale-110 transition-all duration-300"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-14 h-14 rounded-2xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm">
+                      {Icon && (
+                        <Icon className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" />
+                      )}
+                    </div>
+                  )}
                 </div>
 
-                <h3 className="font-serif-tc text-xl text-ink-800 font-bold mb-3">{value.title}</h3>
-                <p className="text-ink-500 text-sm leading-relaxed">{value.description}</p>
+                {/* 標題：專業保障改為淺深金色 (text-gold-600)[cite: 1] */}
+                <h3
+                  className={`font-serif-tc text-xl font-bold mb-3 ${
+                    value.isGoldTitle ? 'text-gold-600' : 'text-ink-800'
+                  }`}
+                >
+                  {value.title}
+                </h3>
+
+                <p className="text-ink-500 text-sm leading-relaxed">
+                  {value.description}
+                </p>
 
                 {/* Bottom accent (底部金色指示線) */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
