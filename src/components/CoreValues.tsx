@@ -24,13 +24,13 @@ export default function CoreValues() {
         {/* 2x2 對稱佈局與中央核心意象圖案 */}
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-x-24 lg:gap-y-8 items-center reveal reveal-delay-3">
           
-          {/* 中央純圓形精緻圖案 (移除外框，僅保留圓形裁切) */}
+          {/* 中央精緻圓形意象圖案 (core-center.png) */}
           <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none items-center justify-center">
-            <div className="w-44 h-44 rounded-full overflow-hidden shadow-2xl border-2 border-gold-400/50 bg-ivory-50 flex items-center justify-center">
+            <div className="w-44 h-44 rounded-full overflow-hidden shadow-2xl transition-transform duration-700 hover:scale-105">
               <img 
-                src="/core.png" 
+                src="/core-center.png" 
                 alt="核心價值意象" 
-                className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                className="w-full h-full object-cover object-center"
               />
             </div>
           </div>
