@@ -216,6 +216,16 @@ export default function Procedures() {
 
         {/* 選中項目的詳細文件內容卡片 */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal">
+          
+          {/* 無條件於所有手續上方顯示 PROCEDURE.png 圖片 */}
+          <div className="mb-8 overflow-hidden rounded-2xl border border-ivory-200 shadow-sm">
+            <img 
+              src="/PROCEDURE.png" 
+              alt="手續辦理示意圖" 
+              className="w-full h-48 sm:h-64 md:h-72 object-cover"
+            />
+          </div>
+
           <div className="relative pb-6 mb-6 border-b border-ivory-200">
             
             {/* 強制置中對齊的標題與說明文字區塊 */}
