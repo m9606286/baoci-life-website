@@ -53,7 +53,6 @@ export default function CoreValues() {
                   idx + 1
                 } group relative rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer`}
                 style={{
-                  // 直接使用精準的高質感暖米色漸層與立體陰影，確保畫面不被其他樣式蓋過
                   background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
                   border: '1px solid rgba(212, 175, 55, 0.25)',
                   boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
@@ -72,17 +71,17 @@ export default function CoreValues() {
                 </div>
 
                 {/* 標題 */}
-                <h3 className="relative z-10 font-serif-tc text-xl text-ink-800 group-hover:text-gold-600 font-bold mb-3 transition-colors duration-300">
+                <h3 className="relative z-10 font-serif-tc text-xl sm:text-2xl text-ink-800 group-hover:text-gold-600 font-bold mb-3 transition-colors duration-300">
                   {value.title}
                 </h3>
 
-                {/* 描述 */}
-                <p className="relative z-10 text-ink-500 text-sm leading-relaxed">
+                {/* 描述：內文字放大 (text-base 16px) */}
+                <p className="relative z-10 text-ink-500 text-base leading-relaxed">
                   {value.description}
                 </p>
 
-                {/* Bottom accent (底部金色質感指示線) */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
+                {/* Bottom accent (底部金色指示線：改粗為 h-[4px]) */}
+                <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
               </div>
             );
           })}
