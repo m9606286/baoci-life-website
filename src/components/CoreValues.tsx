@@ -31,7 +31,7 @@ export default function CoreValues() {
 
   return (
     <section id="values" className="py-24 lg:py-32 bg-ivory-100">
-      <div ref={ref} className="mx-auto max-w-8xl px-6">
+      <div ref= {ref} className="mx-auto max-w-8xl px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
@@ -43,7 +43,7 @@ export default function CoreValues() {
           <div className="gold-divider w-60 mx-auto mt-6 reveal reveal-delay-2" />
         </div>
 
-        {/* Cards */}
+        {/* Cards：維持原本一排 4 列（grid-cols-4）與大小比例 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {coreValues.map((value, idx) => {
             return (
@@ -52,16 +52,18 @@ export default function CoreValues() {
                 className={`reveal reveal-delay-${
                   idx + 1
                 } group relative rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer
-                /* 質感漸層背景：純白漸變至柔軟米金暖色 */
-                bg-gradient-to-br from-white via-[#faf7f2] to-[#f4ebe1]
-                /* 質感金色外框與微光陰影 */
-                border border-gold-200/60 hover:border-gold-400/80
-                shadow-[0_4px_20px_rgba(212,175,55,0.08)] hover:shadow-[0_12px_30px_rgba(212,175,55,0.18)]`}
+                /* 符合圖中的高質感米金漸層背景（上方微亮、下方溫潤米金） */
+                bg-gradient-to-b from-white via-[#fcfbfa] to-[#f7f3ee]
+                /* 細緻的高級金色外框 */
+                border border-[#e6dcce] hover:border-gold-400/80
+                /* 參考圖片的柔和立體陰影效果 */
+                shadow-[0_10px_30px_-5px_rgba(212,175,55,0.12),0_4px_12px_rgba(0,0,0,0.03)]
+                hover:shadow-[0_20px_40px_-10px_rgba(212,175,55,0.22),0_8px_20px_rgba(0,0,0,0.06)]`}
               >
-                {/* Hover 時亮光漸層覆蓋 */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                {/* Hover 時增添的光澤高光層 */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/50 to-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                {/* Image Container */}
+                {/* Image Container (維持原本大小與位移) */}
                 <div className="relative mb-3 flex items-center justify-start h-16 z-10">
                   <img
                     src={value.image}
@@ -75,11 +77,12 @@ export default function CoreValues() {
                   {value.title}
                 </h3>
 
+                {/* 描述 */}
                 <p className="relative z-10 text-ink-500 text-sm leading-relaxed">
                   {value.description}
                 </p>
 
-                {/* Bottom accent (底部金色指示線) */}
+                {/* Bottom accent (底部質感金色漸層指示線) */}
                 <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
               </div>
             );
