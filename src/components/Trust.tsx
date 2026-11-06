@@ -60,8 +60,8 @@ export default function Trust() {
                 <div className="w-10 h-10 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/lefttitle:bg-gold-500 group-hover/lefttitle:border-gold-500 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <Landmark className="w-5 h-5 text-gold-600 group-hover/lefttitle:text-white transition-colors duration-300" />
                 </div>
-                {/* 嚴謹信託 專款專用：預設黑色，滑鼠移過去 (group-hover) 時變成淺深金色 */}
-                <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-900 group-hover/lefttitle:text-gold-600 transition-colors duration-300">
+                {/* 嚴謹信託 專款專用：滑鼠移過去時統一改為 text-gold-500 */}
+                <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-900 group-hover/lefttitle:text-gold-500 transition-colors duration-300">
                   嚴謹信託 專款專用
                 </h3>
               </div>
@@ -79,7 +79,7 @@ export default function Trust() {
                 <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/item1:bg-gold-500 group-hover/item1:border-gold-500 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <Shield className="w-5 h-5 text-gold-600 group-hover/item1:text-white transition-colors duration-300" />
                 </div>
-                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 group-hover/item1:text-gold-600 transition-colors duration-300">
+                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 group-hover/item1:text-gold-500 transition-colors duration-300">
                   保障信託管理
                 </span>
               </div>
@@ -89,7 +89,7 @@ export default function Trust() {
                 <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/35 group-hover/item2:bg-gold-500 group-hover/item2:border-gold-500 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <Eye className="w-5 h-5 text-gold-600 group-hover/item2:text-white transition-colors duration-300" />
                 </div>
-                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 group-hover/item2:text-gold-600 transition-colors duration-300">
+                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 group-hover/item2:text-gold-500 transition-colors duration-300">
                   信託透明公開
                 </span>
               </div>
@@ -99,7 +99,7 @@ export default function Trust() {
                 <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/30 group-hover/item3:bg-gold-500 group-hover/item3:border-gold-500 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <Scale className="w-5 h-5 text-gold-600 group-hover/item3:text-white transition-colors duration-300" />
                 </div>
-                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 group-hover/item3:text-gold-600 transition-colors duration-300">
+                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 group-hover/item3:text-gold-500 transition-colors duration-300">
                   法規遵循保障
                 </span>
               </div>
@@ -109,7 +109,7 @@ export default function Trust() {
                 <div className="w-9 h-9 rounded-xl bg-gold-400/15 border border-gold-400/30 group-hover/item4:bg-gold-500 group-hover/item4:border-gold-500 transition-colors duration-300 flex items-center justify-center shrink-0">
                   <HeartHandshake className="w-5 h-5 text-gold-600 group-hover/item4:text-white transition-colors duration-300" />
                 </div>
-                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 group-hover/item4:text-gold-600 transition-colors duration-300">
+                <span className="font-serif-tc text-lg sm:text-xl font-bold text-ink-900 group-hover/item4:text-gold-500 transition-colors duration-300">
                   履約完全保障
                 </span>
               </div>
