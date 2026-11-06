@@ -170,13 +170,13 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* 總公司卡片 (使用 logo.png，放大 1.5 倍、無外框、拉近距離) */}
+        {/* 總公司卡片 (修復 hover 邊緣裁切問題) */}
         {activeTab === 'headquarter' && (
           <div className="max-w-2xl mx-auto mb-12 transition-all duration-300">
-            <div className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl overflow-hidden">
+            <div className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-16 h-16 flex items-center justify-center shrink-0 overflow-hidden">
-                  <img src="/logo.png" alt="寶慈生命事業" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" />
+                <div className="w-16 h-16 p-1 flex items-center justify-center shrink-0">
+                  <img src="/logo.png" alt="寶慈生命事業" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
                 </div>
                 <h3 className="font-serif-tc text-2xl font-bold text-ink-950">
                   寶慈生命事業股份有限公司
@@ -221,17 +221,17 @@ export default function Contact() {
           </div>
         )}
 
-        {/* 銷售通路卡片 (使用 logo1.png，無外框、拉近距離) */}
+        {/* 銷售通路卡片 (修復 hover 邊緣裁切問題) */}
         {activeTab === 'channel' && (
           <div className="max-w-2xl mx-auto mb-12 space-y-5 transition-all duration-300">
             {salesChannels.map((channel, idx) => (
               <div
                 key={idx}
-                className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl overflow-hidden"
+                className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl"
               >
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 flex items-center justify-center shrink-0 overflow-hidden">
-                    <img src={channel.logo} alt={channel.name} className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110" />
+                  <div className="w-12 h-12 p-1 flex items-center justify-center shrink-0">
+                    <img src={channel.logo} alt={channel.name} className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
                   </div>
                   <h3 className="font-serif-tc text-2xl font-bold text-ink-950">
                     {channel.name}
