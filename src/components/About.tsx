@@ -107,10 +107,13 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/20 to-transparent pointer-events-none" />
 
               {/* 左下角品牌精神文字壓紋 */}
-              <div className="absolute bottom-6 left-6 right-6 z-10 pointer-events-none">
-                <h4 className="text-white font-serif-tc text-sm sm:text-base lg:text-lg font-bold tracking-wider leading-normal drop-shadow-md whitespace-nowrap">
-                  專業的禮儀服務，溫暖的人文關懷。
+              <div className="absolute bottom-6 left-6 right-6 z-10 pointer-events-none space-y-2">
+                <h4 className="text-white font-serif-tc text-xl sm:text-2xl lg:text-3xl font-bold tracking-wider leading-snug drop-shadow-md">
+                  用心守護，讓愛延續
                 </h4>
+                <p className="text-ivory-100 font-sans text-xs sm:text-sm lg:text-base font-normal tracking-wide leading-relaxed drop-shadow-md opacity-90">
+                  以專業與誠信為本，陪伴每個家庭走過人生重要時刻。
+                </p>
               </div>
             </div>
           </div>
