@@ -65,7 +65,7 @@ export default function PreneedConcept() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
             <div className="absolute bottom-6 left-6 right-6 text-white">
               <p className="font-serif-tc text-xl font-bold drop-shadow">預先安排，圓滿無遺憾</p>
-              <p className="text-xs text-ivory-100/90 mt-1 drop-shadow">給家人最深沉的愛與體貼</p>
+              <p className="text-xs text-ivory-100/90 mt-1 drop-shadow">以愛為出發，讓家人多一份安心。</p>
             </div>
           </div>
 
