@@ -62,7 +62,7 @@ export default function CoreValues() {
                     <img
                       src={value.image}
                       alt={value.title}
-                      className="h-14 sm:h-16 w-auto object-contain -ml-10 filter drop-shadow-md group-hover:drop-shadow-xl group-hover:scale-105 transition-all duration-300 origin-left"
+                      className="h-14 sm:h-16 w-auto object-contain -ml-9 filter drop-shadow-md group-hover:drop-shadow-xl group-hover:scale-105 transition-all duration-300 origin-left"
                     />
                   ) : (
                     <div className="w-14 h-14 rounded-2xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm">
