@@ -44,7 +44,7 @@ export default function CoreValues() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:gap-8 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {coreValues.map((value, idx) => {
             return (
               <div
@@ -58,10 +58,10 @@ export default function CoreValues() {
                 border border-gold-200/60 hover:border-gold-400/80
                 shadow-[0_4px_20px_rgba(212,175,55,0.08)] hover:shadow-[0_12px_30px_rgba(212,175,55,0.18)]`}
               >
-                {/* Hover 時亮光漸層覆蓋（提升質感微光） */}
+                {/* Hover 時亮光漸層覆蓋 */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                {/* Image Container (移到時僅微微放大，不位移) */}
+                {/* Image Container */}
                 <div className="relative mb-3 flex items-center justify-start h-16 z-10">
                   <img
                     src={value.image}
@@ -70,7 +70,7 @@ export default function CoreValues() {
                   />
                 </div>
 
-                {/* 標題：預設黑色/深色，Hover 時轉為淺深金色 */}
+                {/* 標題 */}
                 <h3 className="relative z-10 font-serif-tc text-xl text-ink-800 group-hover:text-gold-600 font-bold mb-3 transition-colors duration-300">
                   {value.title}
                 </h3>
