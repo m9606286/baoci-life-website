@@ -106,12 +106,12 @@ export default function About() {
               {/* 漸層遮罩：下方襯托白色文字 */}
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/20 to-transparent pointer-events-none" />
 
-              {/* 左下角品牌精神文字壓紋 */}
-              <div className="absolute bottom-6 left-6 right-6 z-10 pointer-events-none space-y-2">
-                <h4 className="text-white font-serif-tc text-xl sm:text-2xl lg:text-3xl font-bold tracking-wider leading-snug drop-shadow-md">
+              {/* 左下角品牌精神文字壓紋（字體已進一步縮小與精細化） */}
+              <div className="absolute bottom-5 left-5 right-5 z-10 pointer-events-none space-y-1">
+                <h4 className="text-white font-serif-tc text-base sm:text-lg lg:text-xl font-semibold tracking-wide leading-snug drop-shadow-md">
                   用心守護，讓愛延續
                 </h4>
-                <p className="text-ivory-100 font-sans text-xs sm:text-sm lg:text-base font-normal tracking-wide leading-relaxed drop-shadow-md opacity-90">
+                <p className="text-ivory-100/90 font-sans text-[11px] sm:text-xs lg:text-sm font-normal tracking-wide leading-relaxed drop-shadow-sm">
                   以專業與誠信為本，陪伴每個家庭走過人生重要時刻。
                 </p>
               </div>
