@@ -184,26 +184,24 @@ export default function Trust() {
                     href="/生前契約履約保障信託契約書.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer group/btn relative overflow-hidden"
+                    className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer group/btn relative"
                   >
                     <span className="font-serif-tc text-xs sm:text-sm font-bold text-center w-full">
                       履約保障信託契約書
                     </span>
                     <Download className="w-3.5 h-3.5 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors absolute right-3" />
-                    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-white group-hover/btn:w-full transition-all duration-500 ease-out" />
                   </a>
 
                   <a
                     href="https://www.ktb.com.tw/funeral/query"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer group/btn relative overflow-hidden"
+                    className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer group/btn relative"
                   >
                     <span className="font-serif-tc text-xs sm:text-sm font-bold text-center w-full">
                       前往信託查詢系統
                     </span>
                     <ExternalLink className="w-3.5 h-3.5 text-gold-600 group-hover/btn:text-white shrink-0 transition-colors absolute right-3" />
-                    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-white group-hover/btn:w-full transition-all duration-500 ease-out" />
                   </a>
                 </div>
 
@@ -224,13 +222,12 @@ export default function Trust() {
                       href={report.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/card relative rounded-xl py-2.5 px-2 bg-white/90 hover:bg-gold-500 border border-ivory-300 hover:border-gold-400 shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-center gap-1 cursor-pointer overflow-hidden text-center"
+                      className="group/card relative rounded-xl py-2.5 px-2 bg-white/90 hover:bg-gold-500 border border-ivory-300 hover:border-gold-400 shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-center gap-1 cursor-pointer text-center"
                     >
                       <span className="font-serif-tc text-xs sm:text-sm font-bold text-ink-900 group-hover/card:text-white transition-colors">
                         {report.year}
                       </span>
                       <Download className="w-3 h-3 text-gold-600 group-hover/card:text-white shrink-0 transition-colors" />
-                      <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-white group-hover/card:w-full transition-all duration-500 ease-out" />
                     </a>
                   ))}
                 </div>
@@ -243,7 +240,7 @@ export default function Trust() {
                     href="/信託財產目錄與收支計算表.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn relative rounded-xl py-3 px-6 bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between gap-4 cursor-pointer overflow-hidden w-full"
+                    className="group/btn relative rounded-xl py-3 px-6 bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between gap-4 cursor-pointer w-full"
                   >
                     <span className="font-serif-tc text-xs sm:text-sm font-bold text-center w-full">
                       信託財產與收支計算表
@@ -251,7 +248,6 @@ export default function Trust() {
                     <div className="shrink-0">
                       <Download className="w-3.5 h-3.5 text-gold-600 group-hover/btn:text-white transition-colors" />
                     </div>
-                    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-white group-hover/btn:w-full transition-all duration-500 ease-out" />
                   </a>
                 </div>
               </div>
