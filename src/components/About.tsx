@@ -95,7 +95,7 @@ export default function About() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-24">
           
-          {/* 左側：圖片區塊（品牌精神標語改為全白、單列、較小字體） */}
+          {/* 左側：圖片區塊 */}
           <div className="lg:col-span-5 relative reveal flex flex-col h-full min-h-[550px] lg:min-h-[700px]">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group cursor-pointer border border-ivory-300/85">
               <img
@@ -124,7 +124,12 @@ export default function About() {
               return (
                 <div
                   key={idx}
-                  className="relative rounded-2xl p-7 bg-white/80 backdrop-blur-sm shadow-sm border border-ivory-300/80 overflow-hidden group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                  className="relative rounded-2xl p-7 overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all duration-300"
+                  style={{
+                    background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
+                    border: '1px solid rgba(212, 175, 55, 0.25)',
+                    boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
+                  }}
                 >
                   <div className="flex items-center gap-2.5 mb-3">
                     <div className="flex items-center justify-center shrink-0">
@@ -152,7 +157,14 @@ export default function About() {
         </div>
 
         {/* 發展歷程 (Milestones) 區塊 */}
-        <div className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 lg:p-16 border border-ivory-300 shadow-xl relative overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
+        <div 
+          className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto rounded-3xl p-8 sm:p-12 lg:p-16 relative overflow-hidden transition-transform duration-300 hover:-translate-y-1"
+          style={{
+            background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
+            border: '1px solid rgba(212, 175, 55, 0.25)',
+            boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
+          }}
+        >
           
           <div className="text-center mb-14">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
