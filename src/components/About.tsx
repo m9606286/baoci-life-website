@@ -95,7 +95,7 @@ export default function About() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-24">
           
-          {/* 左側：圖片區塊（加入品牌精神標語壓紋） */}
+          {/* 左側：圖片區塊（品牌精神標語改為全白、單列、較小字體） */}
           <div className="lg:col-span-5 relative reveal flex flex-col h-full min-h-[550px] lg:min-h-[700px]">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group cursor-pointer border border-ivory-300/85">
               <img
@@ -103,17 +103,16 @@ export default function About() {
                 alt="溫暖陪伴與專業禮儀服務"
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               />
-              {/* 漸層遮罩：下方加深襯托白金文字 */}
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/25 to-transparent pointer-events-none" />
+              {/* 漸層遮罩：下方襯托白色文字 */}
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/20 to-transparent pointer-events-none" />
 
               {/* 左下角品牌精神文字壓紋 */}
-              <div className="absolute bottom-8 left-8 right-8 z-10 pointer-events-none">
-                <p className="text-gold-400 font-serif-tc text-xs tracking-[0.35em] uppercase mb-1.5 font-bold drop-shadow-xs">
+              <div className="absolute bottom-6 left-6 right-6 z-10 pointer-events-none">
+                <p className="text-white font-serif-tc text-[10px] sm:text-xs tracking-[0.35em] uppercase mb-1 font-semibold opacity-90 drop-shadow-xs">
                   BRAND SPIRIT
                 </p>
-                <h4 className="text-white font-serif-tc text-xl sm:text-2xl lg:text-3xl font-bold tracking-wide leading-snug drop-shadow-md">
-                  生命值得被尊崇<br />
-                  <span className="text-gold-300">託付終將被守護</span>
+                <h4 className="text-white font-serif-tc text-sm sm:text-base lg:text-lg font-bold tracking-wider leading-normal drop-shadow-md whitespace-nowrap">
+                  生命值得被尊崇，託付終將被守護
                 </h4>
               </div>
             </div>
