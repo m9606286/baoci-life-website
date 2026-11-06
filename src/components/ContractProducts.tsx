@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Download, Handshake, Phone, CheckCircle2, MinusCircle, FileText } from 'lucide-react';
+import { Download, Handshake, Phone, CheckCircle2, MinusCircle } from 'lucide-react';
 
 interface ContractProduct {
   id: string;
@@ -84,24 +84,24 @@ export default function ContractProducts() {
     <section id="products" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100/60 relative -mt-6 lg:-mt-10">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* 標題區 (將下方間距從 mb-14 縮小為 mb-10，讓質感線往上移) */}
-        <div className="text-center mb-10">
+        {/* 標題區 (讓質感線與字體更貼近) */}
+        <div className="text-center mb-6">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTRACT PRODUCTS
           </p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl text-ink-800 font-bold mt-2">
+          <h2 className="font-serif-tc text-3xl md:text-4xl text-ink-800 font-bold mt-1">
             契約商品
           </h2>
-          {/* 左右漸細的經典金色分隔線 */}
-          <div className="gold-divider w-32 mx-auto mt-5" />
+          {/* 左右漸細的經典金色分隔線 (縮小上下間距 mt-2，離字體更近) */}
+          <div className="gold-divider w-32 mx-auto mt-2" />
         </div>
 
-        {/* 商品格子區塊 */}
+        {/* 商品格子區塊 (卡片圖片加入外框質感線) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto mb-10">
           {contractProducts.map((product) => (
             <div
               key={product.id}
-              className="group relative rounded-2xl overflow-hidden shadow-lg border border-ivory-300 aspect-[3/4] flex flex-col justify-end p-6 sm:p-8 hover:shadow-2xl transition-all duration-500"
+              className="group relative rounded-2xl overflow-hidden shadow-lg border border-gold-400/30 hover:border-gold-400/70 aspect-[3/4] flex flex-col justify-end p-6 sm:p-8 hover:shadow-2xl transition-all duration-500"
             >
               {/* 背景圖片 */}
               <div className="absolute inset-0 overflow-hidden bg-ivory-200">
@@ -118,7 +118,7 @@ export default function ContractProducts() {
               {/* 下方資訊區塊 */}
               <div className="relative z-10 text-white space-y-4 flex flex-col items-start text-left">
 
-                {/* 銷售通路與電話 */}
+                {/* 銷售通路與電話 (電話移除底線) */}
                 <div className="space-y-2 text-sm sm:text-base font-medium">
                   <div className="flex items-center gap-1.5 text-white hover:text-gold-300 transition-colors duration-200 cursor-pointer group/channel">
                     <Handshake className="w-4 h-4 text-white group-hover/channel:text-gold-300 shrink-0 transition-colors duration-200" />
@@ -129,16 +129,16 @@ export default function ContractProducts() {
 
                   <a
                     href={`tel:${product.channel.phone}`}
-                    className="flex items-center gap-1.5 text-white hover:text-gold-300 transition-colors duration-200 group/phone"
+                    className="flex items-center gap-1.5 text-white hover:text-gold-300 transition-colors duration-200 group/phone no-underline"
                   >
                     <Phone className="w-4 h-4 text-white group-hover/phone:text-gold-300 shrink-0 transition-colors duration-200" />
-                    <span className="font-mono group-hover/phone:underline underline-offset-4 font-['Microsoft_JhengHei']">
+                    <span className="font-mono no-underline font-normal font-['Microsoft_JhengHei']">
                       電話：{product.channel.phone}
                     </span>
                   </a>
                 </div>
 
-                {/* 底部按鈕區 (移除「下載」二字，透明底、hover 變色、靠左且縮短) */}
+                {/* 底部按鈕區 */}
                 <div className="pt-2 w-full flex justify-start">
                   <a
                     href={product.pdfUrl}
@@ -157,7 +157,7 @@ export default function ContractProducts() {
           ))}
         </div>
 
-        {/* 獨立區塊：台南市民政局生前契約銷售及代銷商最新核准函 */}
+        {/* 獨立區塊：台南市民政局生前契約銷售及代銷商最新核准函 (小圖移除，下載改為淺深金色漸層感) */}
         <div className="max-w-5xl mx-auto mb-16 text-center">
           <a
             href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf"
@@ -165,22 +165,21 @@ export default function ContractProducts() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white font-medium text-sm sm:text-base transition-all duration-300 border border-gold-400/50 shadow-sm hover:shadow-md group"
           >
-            <FileText className="w-5 h-5 text-gold-600 group-hover:text-white transition-colors shrink-0" />
             <span>台南市民政局生前契約銷售及代銷商最新核准函</span>
-            <Download className="w-4 h-4 shrink-0" />
+            <Download className="w-4 h-4 shrink-0 text-gold-500 group-hover:text-gold-600 transition-colors" />
           </a>
         </div>
 
-        {/* 生前契約商品差異對照表 */}
+        {/* 生前契約商品差異對照表 (標題金色分隔線拉近距離 mt-2) */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-12 shadow-md max-w-5xl mx-auto">
           <div className="text-center mb-8 pt-2">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               PRODUCT COMPARISON
             </p>
-            <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
+            <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-1">
               生前契約主要商品差異
             </h3>
-            <div className="gold-divider w-60 mx-auto mt-4" />
+            <div className="gold-divider w-60 mx-auto mt-2" />
           </div>
 
           {/* 表格內容 */}
