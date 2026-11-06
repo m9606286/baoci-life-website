@@ -219,7 +219,7 @@ export default function ContractProducts() {
             </table>
           </div>
 
-          <p className="text-sm text-ink-800 font-medium mb-8 pl-1">
+          <p className="text-base text-ink-800 font-medium mb-8 pl-1">
             註：標準型及簡易型均提供骨罐及火化棺。
           </p>
 
