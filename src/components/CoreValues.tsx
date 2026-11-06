@@ -24,18 +24,14 @@ export default function CoreValues() {
         {/* 2x2 對稱佈局與中央核心意象圖案 */}
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-x-24 lg:gap-y-8 items-center reveal reveal-delay-3">
           
-          {/* 中央圓形關懷圖案 (大螢幕時置中重疊顯示) */}
+          {/* 中央純圓形精緻圖案 (移除外框，僅保留圓形裁切) */}
           <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none items-center justify-center">
-            <div className="relative w-48 h-48 rounded-full p-2 bg-gradient-to-br from-gold-300 via-gold-400 to-gold-600 shadow-2xl flex items-center justify-center">
-              <div className="w-full h-full rounded-full bg-ivory-50 p-2 overflow-hidden flex items-center justify-center shadow-inner">
-                <img 
-                  src="/core.png" 
-                  alt="核心價值意象" 
-                  className="w-full h-full object-cover rounded-full filter drop-shadow-md transition-transform duration-700 hover:scale-105"
-                />
-              </div>
-              {/* 外圍柔光金環 */}
-              <div className="absolute -inset-2 rounded-full border border-gold-400/40 animate-pulse pointer-events-none" />
+            <div className="w-44 h-44 rounded-full overflow-hidden shadow-2xl border-2 border-gold-400/50 bg-ivory-50 flex items-center justify-center">
+              <img 
+                src="/core.png" 
+                alt="核心價值意象" 
+                className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+              />
             </div>
           </div>
 
