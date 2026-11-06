@@ -180,7 +180,7 @@ export default function ContractProducts() {
             <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-800 mt-2">
               生前契約主要商品差異
             </h3>
-            <div className="gold-divider w-24 mx-auto mt-4" />
+            <div className="gold-divider w-60 mx-auto mt-4" />
           </div>
 
           {/* 表格內容 */}
@@ -219,7 +219,7 @@ export default function ContractProducts() {
             </table>
           </div>
 
-          <p className="text-sm text-ink-600 font-medium mb-8 pl-1">
+          <p className="text-sm text-ink-800 font-medium mb-8 pl-1">
             註：標準型及簡易型均提供骨罐及火化棺。
           </p>
 
