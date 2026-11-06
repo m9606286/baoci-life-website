@@ -108,11 +108,8 @@ export default function About() {
 
               {/* 左下角品牌精神文字壓紋 */}
               <div className="absolute bottom-6 left-6 right-6 z-10 pointer-events-none">
-                <p className="text-white font-serif-tc text-[10px] sm:text-xs tracking-[0.35em] uppercase mb-1 font-semibold opacity-90 drop-shadow-xs">
-                  BRAND SPIRIT
-                </p>
                 <h4 className="text-white font-serif-tc text-sm sm:text-base lg:text-lg font-bold tracking-wider leading-normal drop-shadow-md whitespace-nowrap">
-                  生命值得被尊崇，託付終將被守護
+                  專業的禮儀服務，溫暖的人文關懷。
                 </h4>
               </div>
             </div>
