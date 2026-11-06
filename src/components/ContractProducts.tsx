@@ -20,7 +20,7 @@ const contractProducts: ContractProduct[] = [
     bgImage: '/寶富契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
-      phone: '(02)2514-7758',
+      phone: '02-2514-7758',
     },
     pdfUrl: '/寶富生前契約書.pdf',
   },
@@ -30,7 +30,7 @@ const contractProducts: ContractProduct[] = [
     bgImage: '/寶暉契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
-      phone: '(02)2514-7758',
+      phone: '02-2514-7758',
     },
     pdfUrl: '/寶暉生前契約書.pdf',
   },
@@ -138,13 +138,13 @@ export default function ContractProducts() {
                   </a>
                 </div>
 
-                {/* 底部按鈕區 (改為單一按鈕：下載該契約書 PDF) */}
-                <div className="pt-2 w-full">
+                {/* 底部按鈕區 (改為透明底、hover 變色、靠左且縮短寬度) */}
+                <div className="pt-2 w-full flex justify-start">
                   <a
                     href={product.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gold-600/80 hover:bg-gold-500 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-transparent hover:bg-gold-500 text-white font-medium text-xs sm:text-sm transition-all duration-300 border border-gold-400/50 backdrop-blur-sm shadow-sm"
                   >
                     <span>下載 {product.typeTag}</span>
                     <Download className="w-4 h-4" />
