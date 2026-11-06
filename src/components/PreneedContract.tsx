@@ -75,11 +75,19 @@ export default function PreneedConcept() {
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-2xl p-5 sm:p-6 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                  className="group relative rounded-2xl p-5 sm:p-6 overflow-hidden hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
+                    border: '1px solid rgba(212, 175, 55, 0.25)',
+                    boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
+                  }}
                 >
+                  {/* Hover 微光 */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/60 to-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
                   <div>
-                    {/* 標題與勾勾：修正頂部垂直對齊（items-start），確保勾勾永遠對齊第一行標題 */}
-                    <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-start gap-1.5">
+                    {/* 標題與勾勾 */}
+                    <h3 className="relative z-10 font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-start gap-1.5">
                       <img 
                         src="/v.jpg" 
                         alt="勾勾" 
@@ -88,14 +96,14 @@ export default function PreneedConcept() {
                       <span>{item.title}</span>
                     </h3>
 
-                    {/* 內文字體：精準縮排，與標題第一個字對齊 */}
-                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-7">
+                    {/* 內文字體 */}
+                    <p className="relative z-10 text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-7">
                       {item.desc}
                     </p>
                   </div>
 
-                  {/* 卡片底部的金色指示線 */}
-                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out" />
+                  {/* 卡片底部的金色指示線 (改為 h-[4px]) */}
+                  <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
                 </div>
               );
             })}
@@ -104,7 +112,14 @@ export default function PreneedConcept() {
         </div>
 
         {/* 3. 底部優勢條列 */}
-        <div className="bg-white/70 backdrop-blur-sm border border-gold-400/30 rounded-3xl p-6 sm:p-8 shadow-lg reveal reveal-delay-4">
+        <div 
+          className="rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-300 reveal reveal-delay-4"
+          style={{
+            background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
+            border: '1px solid rgba(212, 175, 55, 0.25)',
+            boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
+          }}
+        >
           <h4 className="font-serif-tc text-xl font-bold text-ink-950 mb-6 text-center">
             生前契約更多權益與特點
           </h4>
