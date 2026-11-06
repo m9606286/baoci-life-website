@@ -9,13 +9,13 @@ const aboutSections = [
     content: (
       <div className="space-y-3">
         <p>
-          寶慈生命事業深耕殯葬禮儀服務逾二十年，為合法經營之殯葬禮儀服務業者，經臺南市民政局核準發行生前契約，並於2026年5月正式由寶碩集團接續經營，源於創辦人對於禮儀服務的深刻理解和對家庭關懷的執著，我們見證了無數家庭在失去親人時的悲傷，也看到了專業禮儀服務如何能夠幫助人們度過這個困難的時期，因此決定讓可永續經營之集團接續，讓會員權益更有保障。
+          寶慈生命事業深耕殯葬禮儀服務逾二十年，為合法經營之殯葬禮儀服務業者，所發行之生前契約經臺南市政府民政局核准。2026年5月，正式由寶碩集團接續經營，藉由集團資源與永續經營的管理基礎，持續提升服務品質，強化會員權益保障。
+        </p>
+        <p>
+          自創立以來，寶慈始終秉持誠信經營與人本關懷的理念，深刻理解每個家庭在面對人生離別時的需求與不易，致力於提供專業、周全且值得信賴的殯葬禮儀服務。
         </p>
         <p className="font-semibold text-ink-800 pt-1 border-t border-ivory-200/80">
-          從最初的小型禮儀公司，到如今成為寶碩集團的一分子，我們始終堅持一個信念：
-          <span className="block gold-text-gradient font-bold mt-1">
-            每一個生命都值得被尊重，每一個家庭都應該得到最好的照顧。
-          </span>
+          從專業服務的累積，到集團資源的整合，寶慈將持續以誠信為基礎、以專業為核心、以客戶權益為優先，履行每一份託付，守護每一份承諾。
         </p>
       </div>
     ),
@@ -93,7 +93,6 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gold-100/40 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
-        {/* 將 gap-12 lg:gap-16 改為 gap-6 lg:gap-8，縮短左右兩欄間距 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-24">
           
           {/* 左側：圖片區塊 */}
