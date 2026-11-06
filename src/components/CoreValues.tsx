@@ -44,17 +44,25 @@ export default function CoreValues() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:gap-8 gap-6">
           {coreValues.map((value, idx) => {
             return (
               <div
                 key={value.title}
                 className={`reveal reveal-delay-${
                   idx + 1
-                } group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:shadow-ink-900/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer`}
+                } group relative rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer
+                /* 質感漸層背景：純白漸變至柔軟米金暖色 */
+                bg-gradient-to-br from-white via-[#faf7f2] to-[#f4ebe1]
+                /* 質感金色外框與微光陰影 */
+                border border-gold-200/60 hover:border-gold-400/80
+                shadow-[0_4px_20px_rgba(212,175,55,0.08)] hover:shadow-[0_12px_30px_rgba(212,175,55,0.18)]`}
               >
+                {/* Hover 時亮光漸層覆蓋（提升質感微光） */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
                 {/* Image Container (移到時僅微微放大，不位移) */}
-                <div className="relative mb-3 flex items-center justify-start h-16">
+                <div className="relative mb-3 flex items-center justify-start h-16 z-10">
                   <img
                     src={value.image}
                     alt={value.title}
@@ -63,16 +71,16 @@ export default function CoreValues() {
                 </div>
 
                 {/* 標題：預設黑色/深色，Hover 時轉為淺深金色 */}
-                <h3 className="font-serif-tc text-xl text-ink-800 group-hover:text-gold-600 font-bold mb-3 transition-colors duration-300">
+                <h3 className="relative z-10 font-serif-tc text-xl text-ink-800 group-hover:text-gold-600 font-bold mb-3 transition-colors duration-300">
                   {value.title}
                 </h3>
 
-                <p className="text-ink-500 text-sm leading-relaxed">
+                <p className="relative z-10 text-ink-500 text-sm leading-relaxed">
                   {value.description}
                 </p>
 
                 {/* Bottom accent (底部金色指示線) */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
               </div>
             );
           })}
