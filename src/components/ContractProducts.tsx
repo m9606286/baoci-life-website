@@ -84,8 +84,8 @@ export default function ContractProducts() {
     <section id="products" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100/60 relative -mt-6 lg:-mt-10">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* 標題區 */}
-        <div className="text-center mb-14">
+        {/* 標題區 (將下方間距從 mb-14 縮小為 mb-10，讓質感線往上移) */}
+        <div className="text-center mb-10">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTRACT PRODUCTS
           </p>
@@ -93,7 +93,7 @@ export default function ContractProducts() {
             契約商品
           </h2>
           {/* 左右漸細的經典金色分隔線 */}
-          <div className="gold-divider w-32 mx-auto mt-6" />
+          <div className="gold-divider w-32 mx-auto mt-5" />
         </div>
 
         {/* 商品格子區塊 */}
