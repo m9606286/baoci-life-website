@@ -58,11 +58,11 @@ export default function CoreValues() {
                 {/* Icon / Image Container (縮短 mb-3 與齊左對齊) */}
                 <div className="relative mb-3 flex items-center justify-start h-16">
                   {value.image ? (
-                    /* -ml-5 消除 PNG 透明背景空間，使盾牌視覺邊緣精確齊左「專業保障」文字 */
+                    /* 消除 PNG 透明背景空間，使盾牌視覺邊緣精確齊左「專業保障」文字 */
                     <img
                       src={value.image}
                       alt={value.title}
-                      className="h-14 sm:h-16 w-auto object-contain -ml-5 filter drop-shadow-md group-hover:drop-shadow-xl group-hover:scale-105 transition-all duration-300 origin-left"
+                      className="h-14 sm:h-16 w-auto object-contain -ml-10 filter drop-shadow-md group-hover:drop-shadow-xl group-hover:scale-105 transition-all duration-300 origin-left"
                     />
                   ) : (
                     <div className="w-14 h-14 rounded-2xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm">
