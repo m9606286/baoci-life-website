@@ -28,7 +28,7 @@ export default function CoreValues() {
           <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none items-center justify-center">
             <div className="w-44 h-44 rounded-full overflow-hidden shadow-2xl transition-transform duration-700 hover:scale-105">
               <img 
-                src="/core-center.png" 
+                src="/core.png" 
                 alt="核心價值意象" 
                 className="w-full h-full object-cover object-center"
               />
