@@ -77,13 +77,14 @@ export default function PreneedConcept() {
                   key={idx}
                   className="group relative rounded-2xl p-5 sm:p-6 overflow-hidden hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                   style={{
-                    background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
-                    border: '1px solid rgba(212, 175, 55, 0.25)',
-                    boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
+                    // 淡化漸層：改為幾乎近純白的極明亮自然感
+                    background: 'linear-gradient(180deg, #ffffff 0%, #fdfcfb 70%, #faf6f0 100%)',
+                    border: '1px solid rgba(212, 175, 55, 0.22)',
+                    boxShadow: '0 8px 25px -5px rgba(212, 175, 55, 0.1), 0 3px 8px rgba(0, 0, 0, 0.03)',
                   }}
                 >
-                  {/* Hover 微光 */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/60 to-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  {/* Hover 時的清亮補光 */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                   <div>
                     {/* 標題與勾勾 */}
@@ -96,13 +97,13 @@ export default function PreneedConcept() {
                       <span>{item.title}</span>
                     </h3>
 
-                    {/* 內文字體 */}
+                    {/* 內文字體放大對齊 */}
                     <p className="relative z-10 text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-7">
                       {item.desc}
                     </p>
                   </div>
 
-                  {/* 卡片底部的金色指示線 (改為 h-[4px]) */}
+                  {/* 底部 4px 質感金色指示線 */}
                   <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
                 </div>
               );
@@ -111,13 +112,14 @@ export default function PreneedConcept() {
 
         </div>
 
-        {/* 3. 底部優勢條列 */}
+        {/* 3. 底部優勢條列大卡片 */}
         <div 
           className="rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-300 reveal reveal-delay-4"
           style={{
-            background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
-            border: '1px solid rgba(212, 175, 55, 0.25)',
-            boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
+            // 淡化漸層背景
+            background: 'linear-gradient(180deg, #ffffff 0%, #fdfcfb 70%, #faf6f0 100%)',
+            border: '1px solid rgba(212, 175, 55, 0.22)',
+            boxShadow: '0 8px 25px -5px rgba(212, 175, 55, 0.1), 0 3px 8px rgba(0, 0, 0, 0.03)',
           }}
         >
           <h4 className="font-serif-tc text-xl font-bold text-ink-950 mb-6 text-center">
@@ -127,9 +129,8 @@ export default function PreneedConcept() {
             {additionalFeatures.map((feat, idx) => (
               <div 
                 key={idx} 
-                className="group/item flex items-center gap-2 p-3.5 rounded-xl transition-all duration-300 -translate-y-0 hover:-translate-y-1 hover:bg-gold-50/60 cursor-pointer shadow-xs border border-transparent hover:border-gold-400/30"
+                className="group/item flex items-center gap-2 p-3.5 rounded-xl transition-all duration-300 -translate-y-0 hover:-translate-y-1 hover:bg-gold-50/50 cursor-pointer border border-transparent hover:border-gold-400/30"
               >
-                {/* 勾勾圖示 */}
                 <div className="shrink-0 flex items-center justify-center">
                   <img 
                     src="/v.jpg" 
