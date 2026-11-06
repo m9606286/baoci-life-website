@@ -84,7 +84,7 @@ export default function ContractProducts() {
     <section id="products" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100/60 relative -mt-6 lg:-mt-10">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* 標題區 (將下方間距從 mb-14 縮小為 mb-10，讓質感線往上移) */}
+        {/* 標題區 */}
         <div className="text-center mb-10">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTRACT PRODUCTS
@@ -101,7 +101,11 @@ export default function ContractProducts() {
           {contractProducts.map((product) => (
             <div
               key={product.id}
-              className="group relative rounded-2xl overflow-hidden shadow-lg border border-ivory-300 aspect-[3/4] flex flex-col justify-end p-6 sm:p-8 hover:shadow-2xl transition-all duration-500"
+              className="group relative rounded-2xl overflow-hidden aspect-[3/4] flex flex-col justify-end p-6 sm:p-8 transition-all duration-500 hover:-translate-y-1"
+              style={{
+                border: '1px solid rgba(212, 175, 55, 0.25)',
+                boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
+              }}
             >
               {/* 背景圖片 */}
               <div className="absolute inset-0 overflow-hidden bg-ivory-200">
@@ -138,7 +142,7 @@ export default function ContractProducts() {
                   </a>
                 </div>
 
-                {/* 底部按鈕區 (移除「下載」二字，透明底、hover 變色、靠左且縮短) */}
+                {/* 底部按鈕區 */}
                 <div className="pt-2 w-full flex justify-start">
                   <a
                     href={product.pdfUrl}
@@ -163,16 +167,28 @@ export default function ContractProducts() {
             href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white font-medium text-sm sm:text-base transition-all duration-300 border border-gold-400/50 shadow-sm hover:shadow-md group"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-ink-900 font-medium text-sm sm:text-base transition-all duration-300 group hover:-translate-y-1"
+            style={{
+              background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
+              border: '1px solid rgba(212, 175, 55, 0.25)',
+              boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
+            }}
           >
-            <FileText className="w-5 h-5 text-gold-600 group-hover:text-white transition-colors shrink-0" />
-            <span>台南市民政局生前契約銷售及代銷商最新核准函</span>
-            <Download className="w-4 h-4 shrink-0" />
+            <FileText className="w-5 h-5 text-gold-600 group-hover:text-gold-700 transition-colors shrink-0" />
+            <span className="group-hover:text-gold-700 transition-colors">台南市民政局生前契約銷售及代銷商最新核准函</span>
+            <Download className="w-4 h-4 shrink-0 text-gold-600 group-hover:text-gold-700 transition-colors" />
           </a>
         </div>
 
-        {/* 生前契約商品差異對照表 */}
-        <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-12 shadow-md max-w-5xl mx-auto">
+        {/* 生前契約商品差異對照表大框 */}
+        <div 
+          className="rounded-3xl p-6 sm:p-8 lg:p-12 max-w-5xl mx-auto relative overflow-hidden transition-all duration-300"
+          style={{
+            background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
+            border: '1px solid rgba(212, 175, 55, 0.25)',
+            boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
+          }}
+        >
           <div className="text-center mb-8 pt-2">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               PRODUCT COMPARISON
@@ -184,20 +200,20 @@ export default function ContractProducts() {
           </div>
 
           {/* 表格內容 */}
-          <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-4">
+          <div className="overflow-x-auto rounded-2xl border border-gold-300/40 shadow-sm mb-4">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
-                <tr className="bg-ivory-100 border-b border-ivory-200 text-ink-800 text-sm md:text-base font-serif-tc">
+                <tr className="bg-gradient-to-r from-gold-100/60 via-ivory-100 to-gold-50/50 border-b border-gold-300/40 text-ink-800 text-sm md:text-base font-serif-tc">
                   <th className="p-4 w-1/4 font-bold">比較項目</th>
-                  <th className="p-4 w-3/8 font-bold text-gold-700 bg-gold-50/50">寶富生前契約（標準型）</th>
+                  <th className="p-4 w-3/8 font-bold text-gold-700 bg-gold-100/30">寶富生前契約（標準型）</th>
                   <th className="p-4 w-3/8 font-bold text-ink-700">寶暉生前契約（簡易型）</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-ivory-200 text-sm md:text-base text-ink-700">
+              <tbody className="divide-y divide-gold-200/30 text-sm md:text-base text-ink-700">
                 {contractComparison.map((item, idx) => (
-                  <tr key={idx} className="hover:bg-gold-100/50 transition-colors">
-                    <td className="p-4 font-semibold text-ink-900 bg-ivory-50/30">{item.feature}</td>
-                    <td className="p-4 bg-gold-50/20 leading-relaxed text-ink-900">
+                  <tr key={idx} className="hover:bg-gold-50/60 transition-colors">
+                    <td className="p-4 font-semibold text-ink-900 bg-ivory-50/50">{item.feature}</td>
+                    <td className="p-4 bg-gold-50/30 leading-relaxed text-ink-900">
                       <div className="flex items-start gap-1.5">
                         <CheckCircle2 className="w-5 h-5 text-gold-600 shrink-0 mt-0.5" />
                         <span>{item.baofu}</span>
@@ -228,7 +244,10 @@ export default function ContractProducts() {
             <a
               href="/contact"
               onClick={handleConsultClick}
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white border border-gold-400/50 font-medium text-sm sm:text-base transition-all shadow-sm hover:shadow-md cursor-pointer"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-ink-900 hover:text-gold-700 border border-gold-400/50 font-medium text-sm sm:text-base transition-all shadow-sm hover:shadow-md cursor-pointer hover:-translate-y-0.5"
+              style={{
+                background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
+              }}
             >
               諮詢適合您的方案
             </a>
