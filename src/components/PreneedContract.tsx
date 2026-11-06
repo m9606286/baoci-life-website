@@ -55,15 +55,21 @@ export default function PreneedConcept() {
         {/* 2. 左圖右文：4 大核心保障 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12 reveal reveal-delay-3">
           
-          {/* 左側照片 */}
+          {/* 左側照片（套用極淡米金暖色濾鏡） */}
           <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-xl border border-gold-400/30 min-h-[350px] lg:min-h-full group">
             <img
               src={familyImage}
               alt="溫暖陪伴"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-6 left-6 right-6 text-white">
+            {/* 極淡米金暖色調濾鏡 (Ivory/Gold Tint Layer) */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-amber-900/30 via-gold-500/15 to-ivory-100/20 mix-blend-color pointer-events-none" />
+            <div className="absolute inset-0 bg-gold-400/10 mix-blend-soft-light pointer-events-none" />
+            
+            {/* 底部黑金深色漸層（襯托文字 readability） */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent pointer-events-none" />
+            
+            <div className="absolute bottom-6 left-6 right-6 text-white z-10">
               <p className="font-serif-tc text-xl font-bold drop-shadow">預先安排，圓滿無遺憾</p>
               <p className="text-xs text-ivory-100/90 mt-1 drop-shadow">以愛為出發，讓家人多一份安心。</p>
             </div>
@@ -78,7 +84,7 @@ export default function PreneedConcept() {
                   className="group relative rounded-2xl p-5 sm:p-6 bg-white/85 backdrop-blur-sm border border-gold-400/30 shadow-sm overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   <div>
-                    {/* 標題與勾勾：修正頂部垂直對齊（items-start），確保勾勾永遠對齊第一行標題 */}
+                    {/* 標題與勾勾 */}
                     <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-start gap-1.5">
                       <img 
                         src="/v.jpg" 
@@ -88,7 +94,7 @@ export default function PreneedConcept() {
                       <span>{item.title}</span>
                     </h3>
 
-                    {/* 內文字體：精準縮排，與標題第一個字對齊 */}
+                    {/* 內文字體：精準縮排 */}
                     <p className="text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-7">
                       {item.desc}
                     </p>
