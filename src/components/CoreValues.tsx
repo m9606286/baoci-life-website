@@ -10,7 +10,7 @@ const coreValues = [
     description: '以同理心對待每一位客戶，尊重個人信念和家庭需求，提供溫暖而專業的服務。',
   },
   {
-    image: '/safe.png', // 使用 public/safe.png[cite: 1]
+    image: '/safe.png', // 使用 public/safe.png
     title: '專業保障',
     description: '擁有豐富與專業的行業經驗，確保應有之服務品質。',
   },
@@ -55,14 +55,14 @@ export default function CoreValues() {
                   idx + 1
                 } group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:shadow-ink-900/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer`}
               >
-                {/* Icon / Image Container (縮小下方 mb-4 讓圖與文字更接近) */}
-                <div className="relative mb-4 flex items-center justify-start h-16">
+                {/* Icon / Image Container (縮短 mb-3 與齊左對齊) */}
+                <div className="relative mb-3 flex items-center justify-start h-16">
                   {value.image ? (
-                    /* 放大 3D 金色盾牌並加上立體陰影與 hover 效果[cite: 1, 2] */
+                    /* -ml-1.5 消除 PNG 透明背景空間，使盾牌視覺邊緣精確齊左「專業保障」文字 */
                     <img
                       src={value.image}
                       alt={value.title}
-                      className="h-16 w-auto object-contain filter drop-shadow-lg group-hover:drop-shadow-2xl group-hover:scale-110 transition-all duration-300"
+                      className="h-14 sm:h-16 w-auto object-contain -ml-1.5 filter drop-shadow-md group-hover:drop-shadow-xl group-hover:scale-105 transition-all duration-300 origin-left"
                     />
                   ) : (
                     <div className="w-14 h-14 rounded-2xl bg-ivory-100 text-gold-600 group-hover:bg-gold-500 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm">
@@ -73,7 +73,7 @@ export default function CoreValues() {
                   )}
                 </div>
 
-                {/* 標題：平時黑色/深色，Hover 時變淺深金色 (group-hover:text-gold-600)[cite: 1, 2] */}
+                {/* 標題：預設黑色/深色，Hover 時轉為淺深金色 */}
                 <h3 className="font-serif-tc text-xl text-ink-800 group-hover:text-gold-600 font-bold mb-3 transition-colors duration-300">
                   {value.title}
                 </h3>
