@@ -4,7 +4,7 @@ import { useReveal } from '@/hooks/useReveal';
 // 核心價值內容
 const coreValues = [
   {
-    image: '/heart.jpg', // 人文關懷圖片
+    image: '/love.png', // 人文關懷圖片
     title: '人文關懷',
     description: '以同理心對待每一位客戶，尊重個人信念和家庭需求，提供溫暖而專業的服務。',
   },
