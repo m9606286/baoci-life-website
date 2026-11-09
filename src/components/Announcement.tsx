@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link'; // 若使用 React Router，請替換為 import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Newspaper, ChevronRight, Calendar } from 'lucide-react';
 
 export interface NewsItem {
@@ -9,7 +9,7 @@ export interface NewsItem {
   title: string;
   summary: string;
   badgeColor?: string;
-  href?: string;
+  to?: string;
 }
 
 const announcements: NewsItem[] = [
@@ -20,7 +20,7 @@ const announcements: NewsItem[] = [
     title: '寶慈生命事業資本額順利完成增資至新臺幣 6,000 萬元',
     summary: '為持續深化服務品質、擴大營運規模並強化預付款履約保障能力，寶慈生命事業已正式完成資本額變更登記，實收資本額增資至新臺幣 6,000 萬元，展現企業穩健營運實力與長期承諾。',
     badgeColor: 'bg-gold-500 text-white',
-    href: '/news/news-2026-07',
+    to: '/news/news-2026-07',
   },
   {
     id: 'news-2026-04',
@@ -29,7 +29,7 @@ const announcements: NewsItem[] = [
     title: '寶慈生命事業正式加入寶碩財務科技集團，攜手打造尊榮生命服務',
     summary: '寶慈生命事業正式成為寶碩財務科技集團旗下子公司。透過導入上市集團嚴謹的法人治理規範與龐大資源支持，進一步提升客戶權益保障，並以兼具人文溫度與財務誠信的防護網提供安心生命服務。',
     badgeColor: 'bg-ink-800 text-gold-400 border border-gold-400/30',
-    href: '/news/news-2026-04',
+    to: '/news/news-2026-04',
   },
 ];
 
@@ -48,7 +48,7 @@ export default function Announcement() {
           </h2>
         </div>
         <Link 
-          href="/news" 
+          to="/news" 
           className="mt-4 md:mt-0 inline-flex items-center gap-1 text-gold-600 hover:text-gold-700 font-bold transition-colors group text-sm"
         >
           查看全部消息 
@@ -95,7 +95,7 @@ export default function Announcement() {
                 核准代銷：晨暉資產股份有限公司
               </span>
               <Link 
-                href={item.href || '/news'}
+                to={item.to || '/news'}
                 className="inline-flex items-center gap-1 text-gold-600 font-bold text-sm group-hover:translate-x-1 transition-transform"
               >
                 閱讀完整內容 <ChevronRight className="w-4 h-4" />
