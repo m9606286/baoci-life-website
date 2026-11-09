@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 
 export interface NewsItem {
   id: string | number;
-  dateTag: string; // 合併為「2026年7月 資本增資」
+  dateTag: string;
   title: string;
   summary: string;
   image?: string;
@@ -13,14 +13,14 @@ export interface NewsItem {
 const announcements: NewsItem[] = [
   {
     id: 'news-2026-08',
-    dateTag: '2026年8月 資本增資',
+    dateTag: '2026/8/13 資本增資',
     title: '寶慈生命事業資本額順利完成增資至新臺幣 6,000 萬元',
     summary: '為持續深化服務品質、擴大營運規模並強化預付款履約保障能力，寶慈生命事業已正式完成資本額變更登記，實收資本額增資至新臺幣 6,000 萬元，展現企業穩健營運實力與長期承諾。',
     to: '/news/news-2026-07',
   },
   {
     id: 'news-2026-04',
-    dateTag: '2026年4月 集團動態',
+    dateTag: '2026/4/1 集團動態',
     title: '寶慈生命事業正式加入寶碩集團(股票代號5210)，攜手打造尊榮生命服務',
     summary: '寶慈生命事業正式成為寶碩集團子公司。透過導入上市集團嚴謹的法人治理規範與龐大資源支持，進一步提升客戶權益保障，並以兼具人文溫度與財務誠信的防護網提供安心生命服務。',
     to: '/news/news-2026-04',
@@ -84,7 +84,7 @@ export default function Announcement() {
             className="snap-start shrink-0 w-[85vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
           >
             <div>
-              {/* 日期標籤：移到上面顯示「淺深金背景」 */}
+              {/* 日期標籤：淺深金背景 */}
               <div className="mb-4">
                 <span className="inline-flex items-center gap-1.5 font-serif-tc px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300 bg-slate-100 text-slate-800 border border-slate-200 group-hover:bg-gold-500 group-hover:text-ink-900 group-hover:border-gold-400 shadow-sm">
                   <Calendar className="w-3.5 h-3.5 text-gold-600 group-hover:text-ink-900" />
@@ -92,19 +92,19 @@ export default function Announcement() {
                 </span>
               </div>
 
-              {/* 標題 */}
+              {/* 標題：對齊如圖的字型與大小 */}
               <h3 className="font-serif-tc text-xl md:text-2xl font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300 leading-snug mb-4">
                 {item.title}
               </h3>
 
-              {/* 內文：跟「我們的故事」相同字型 */}
-              <p className="text-slate-700 text-base leading-relaxed font-['Microsoft_JhengHei'] line-clamp-4">
+              {/* 內文：完全對齊「我們的故事」字型與大小 (font-serif-tc text-slate-700 text-base md:text-lg leading-relaxed) */}
+              <p className="font-serif-tc text-slate-700 text-base md:text-lg leading-relaxed line-clamp-4">
                 {item.summary}
               </p>
             </div>
 
-            {/* 移到卡片上時，出現在方格「下面」的金色線條 */}
-            <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+            {/* 移到卡片上時，出現在方格「下面」稍微變細的金色線條 (h-1) */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
           </article>
         ))}
       </div>
