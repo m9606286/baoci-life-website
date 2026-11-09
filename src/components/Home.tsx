@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <div className="bg-ivory-100 min-h-screen text-ink-900 font-sans">
       
-      {/* 1. Hero 品牌主視覺區：移除頂部外距，完美貼齊全站頂部金色質感線 */}
-      <section id="top" className="group/hero relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden -mt-24 pt-24">
+      {/* 1. Hero 品牌主視覺區：高度完美扣除 Header 20 (5rem)，貼齊頂部金色質感線 */}
+      <section id="top" className="group/hero relative h-[calc(100vh-5rem)] min-h-[550px] max-h-[850px] overflow-hidden">
         {/* Background image with bright overlay and hover zoom */}
         <div className="absolute inset-0 overflow-hidden">
           <img
