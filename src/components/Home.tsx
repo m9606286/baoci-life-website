@@ -6,6 +6,8 @@ import CoreValues from '@/components/CoreValues';
 import Announcement from '@/components/Announcement';
 import heroImage from '/hero.png';
 import serve1Image from '/Serve1.png';
+import serve2Image from '/Serve2.png';
+import serve3Image from '/Serve3.png';
 
 export default function Home() {
   const revealResult = useReveal<HTMLDivElement>();
@@ -84,11 +86,6 @@ export default function Home() {
       {/* 2. 下方內容區塊 */}
       <div ref={ref} className="space-y-24 py-20">
 
-        {/* 最新消息 */}
-        <section className="max-w-7xl mx-auto px-6">
-          <Announcement />
-        </section>
-
         {/* 公司簡介區塊（COMPANY PROFILE） */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
@@ -106,7 +103,8 @@ export default function Home() {
               
               {/* 標籤與主標題組合為同一個 Hover 群組 */}
               <div className="group/profile-header cursor-pointer space-y-4">
-                <span className="inline-block px-4 py-1.5 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-xs font-bold tracking-wider uppercase transition-all duration-300 group-hover/profile-header:bg-gold-500 group-hover/profile-header:text-white group-hover/profile-header:border-gold-500">
+                {/* 字體放大 1.5 倍（text-base） */}
+                <span className="inline-block px-5 py-2 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-base font-bold tracking-wider uppercase transition-all duration-300 group-hover/profile-header:bg-gold-500 group-hover/profile-header:text-white group-hover/profile-header:border-gold-500">
                   合規經營．誠信至上
                 </span>
                 
@@ -115,8 +113,7 @@ export default function Home() {
                 </h3>
               </div>
 
-              {/* 內文字型已套用為最新消息同款 (font-serif-tc text-slate-700 text-sm md:text-base leading-relaxed) */}
-              <p className="font-serif-tc text-slate-700 text-sm md:text-base leading-relaxed">
+              <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed">
                 寶慈生命事業為政府合法立案之殯葬禮儀服務業者，並正式納入寶碩財務科技集團旗下經營。我們秉持人本關懷理念，結合上市集團嚴謹的財務與法人治理機制，提供透明收費與合規保障，守護每個家庭重要時刻的承諾。
               </p>
 
@@ -137,13 +134,14 @@ export default function Home() {
                   <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">政府立案核准</h4>
                   <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">民政局核准銷售文號</p>
                 </div>
+                {/* 字體大小同標題(text-sm md:text-base)，加上質感線，hover時字體反白與淺深金色背景 */}
                 <a 
                   href="/documents/台南市民政局生前契約銷售及代銷商最新核准函.pdf" 
                   download 
-                  className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-gold-700 group-hover:bg-white group-hover:text-gold-700 bg-gold-50 py-2 px-3 rounded-xl transition-all duration-300 mt-2 shadow-sm"
+                  className="inline-flex items-center justify-center gap-1.5 text-sm md:text-base font-bold text-gold-700 bg-gold-50 border border-gold-400/40 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm"
                 >
                   <span>核准函</span>
-                  <Download className="w-3.5 h-3.5" />
+                  <Download className="w-4 h-4" />
                 </a>
               </div>
 
@@ -154,12 +152,13 @@ export default function Home() {
                   <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">75% 依法信託</h4>
                   <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">京城銀行履約專戶</p>
                 </div>
+                {/* 字體大小同標題(text-sm md:text-base)，加上質感線，hover時字體反白與淺深金色背景 */}
                 <Link 
                   to="/trust" 
-                  className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-gold-700 group-hover:bg-white group-hover:text-gold-700 bg-gold-50 py-2 px-3 rounded-xl transition-all duration-300 mt-2 shadow-sm"
+                  className="inline-flex items-center justify-center gap-1.5 text-sm md:text-base font-bold text-gold-700 bg-gold-50 border border-gold-400/40 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm"
                 >
                   <span>了解更多</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
+                  <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>
 
@@ -180,70 +179,95 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* 生前契約規劃 */}
-            <div className="bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
-              <div>
-                <span className="px-3 py-1 rounded-full bg-gold-500 text-white text-xs font-bold mb-4 inline-block">
-                  PRE-NEED
-                </span>
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 mb-3">生前契約規劃</h3>
-                <p className="font-serif-tc text-slate-700 text-sm md:text-base leading-relaxed mb-6">
-                  提供寶富、寶暉等專業生前契約方案，讓您提前為未來妥善安排，減輕家屬負擔，讓愛與安心延續。
-                </p>
-              </div>
-              <Link to="/preneed" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
-                了解更多
-              </Link>
-            </div>
-
-            {/* 禮儀服務 */}
+            
+            {/* 生前契約規劃：去除 PRE-NEED，放入 Serve1.png，了解更多加 > */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
-                {/* 1. 精致圖示 */}
                 <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
                   <img 
                     src={serve1Image} 
+                    alt="生前契約規劃" 
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300 text-center mb-3">
+                  生前契約規劃
+                </h3>
+
+                <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed mb-6">
+                  提供寶富、寶暉等專業生前契約方案，讓您提前為未來妥善安排，減輕家屬負擔，讓愛與安心延續。
+                </p>
+              </div>
+              
+              <Link to="/preneed" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
+                <span>了解更多</span>
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* 禮儀服務：Serve2.png，了解更多加 > */}
+            <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
+              <div>
+                <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
+                  <img 
+                    src={serve2Image} 
                     alt="禮儀服務" 
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
-                {/* 2. 禮儀服務標題 */}
                 <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300 text-center mb-3">
                   禮儀服務
                 </h3>
 
-                {/* 3. 內文說明（已套用最新消息同款明體與大小） */}
-                <p className="font-serif-tc text-slate-700 text-sm md:text-base leading-relaxed mb-6">
+                <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed mb-6">
                   秉持專業、尊嚴與人本關懷，提供全方位的精緻奠禮流程規劃與溫馨陪伴服務。
                 </p>
               </div>
 
-              <Link to="/services" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
-                了解更多
+              <Link to="/services" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
+                <span>了解更多</span>
+                <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
 
-            {/* 手續服務 */}
-            <div className="bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
+            {/* 手續服務：去除 PROCEDURES，放入 Serve3.png，了解更多加 > */}
+            <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
-                <span className="px-3 py-1 rounded-full bg-gold-600 text-white text-xs font-bold mb-4 inline-block">
-                  PROCEDURES
-                </span>
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 mb-3">手續服務</h3>
-                <p className="font-serif-tc text-slate-700 text-sm md:text-base leading-relaxed mb-6">
+                <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
+                  <img 
+                    src={serve3Image} 
+                    alt="手續服務" 
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300 text-center mb-3">
+                  手續服務
+                </h3>
+
+                <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed mb-6">
                   包含新購、轉讓、繼承、履約、解約等各項申辦手續指引與專屬表單文件下載。
                 </p>
               </div>
-              <Link to="/procedures" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
-                了解更多
+
+              <Link to="/procedures" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
+                <span>了解更多</span>
+                <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
+
           </div>
         </section>
 
         {/* 核心價值區塊 */}
         <CoreValues />
+
+        {/* 最新消息：放置於核心價值之後 */}
+        <section className="max-w-7xl mx-auto px-6">
+          <Announcement />
+        </section>
 
         {/* 24小時諮詢專線橫幅 */}
         <section className="max-w-7xl mx-auto px-6">
@@ -251,7 +275,7 @@ export default function Home() {
             <h3 className="font-serif-tc text-2xl md:text-3xl font-bold mb-3 text-ink-900 group-hover:text-white transition-colors duration-300">
               需要即時禮儀諮詢或契約解答？
             </h3>
-            <p className="text-slate-600 text-sm md:text-base font-medium mb-8 group-hover:text-white/90 transition-colors duration-300">
+            <p className="font-sans text-slate-600 text-sm md:text-base font-medium mb-8 group-hover:text-white/90 transition-colors duration-300">
               寶慈生命事業提供 24 小時專人服務，隨時為您解答疑問與提供協助。
             </p>
             <a 
