@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { useReveal } from '@/hooks/useReveal';
 import CoreValues from '@/components/CoreValues';
 import Announcement from '@/components/Announcement';
@@ -21,6 +21,7 @@ export default function Home() {
       
       {/* 1. Hero 品牌主視覺區 */}
       <section className="relative min-h-[85vh] flex items-center justify-center bg-ink-900 text-white overflow-hidden">
+        {/* 背景大圖與漸層遮罩 */}
         <div className="absolute inset-0 z-0">
           <img 
             src="/hero-bg.jpg" 
@@ -45,13 +46,13 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link 
-              href="/products" 
+              to="/products" 
               className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-ink-900 font-bold rounded-full shadow-lg hover:shadow-gold-500/20 transition-all duration-300 flex items-center justify-center gap-2"
             >
               探索生前契約方案 <ChevronRight className="w-5 h-5" />
             </Link>
             <Link 
-              href="/trust" 
+              to="/trust" 
               className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 border border-gold-400/40 text-white font-medium rounded-full backdrop-blur-sm transition-all duration-300 flex items-center justify-center gap-2"
             >
               75% 信託公開專區 <ShieldCheck className="w-5 h-5 text-gold-400" />
@@ -62,12 +63,12 @@ export default function Home() {
 
       <div ref={ref} className="space-y-24 py-20">
 
-        {/* 2. 最新消息 */}
+        {/* 2. 最新消息區塊 (引用 Announcement 組件) */}
         <section className="max-w-7xl mx-auto px-6">
           <Announcement />
         </section>
 
-        {/* 3. 關於寶慈精華 */}
+        {/* 3. 關於寶慈精華區塊 (About Summary) */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="bg-gradient-to-br from-white via-ivory-50 to-gold-100/30 rounded-3xl p-8 md:p-12 border border-gold-400/40 shadow-xl flex flex-col md:flex-row items-center gap-10">
             <div className="w-full md:w-1/2 space-y-6">
@@ -81,7 +82,7 @@ export default function Home() {
                 寶慈生命事業具備主管機關合法立案證明與代銷許可。我們以圓滿生命為使命，透過透明的收費與嚴格的服務品質控管，讓每位家屬在面臨重大時刻時，都能擁有最貼心、專業的依靠。
               </p>
               <div className="pt-2">
-                <Link href="/about" className="inline-flex items-center gap-2 text-ink-900 font-bold hover:text-gold-600 transition-colors">
+                <Link to="/about" className="inline-flex items-center gap-2 text-ink-900 font-bold hover:text-gold-600 transition-colors">
                   了解更多關於寶慈經營理念 <ChevronRight className="w-5 h-5 text-gold-500" />
                 </Link>
               </div>
@@ -101,7 +102,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. 生前契約商品快速導覽 */}
+        {/* 4. 生前契約商品快速導覽 (Products Summary) */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -124,7 +125,7 @@ export default function Home() {
                   包含完整禮儀流程、大型花藝佈置與專屬禮儀顧問。專為追求完整尊榮奠禮規格之家庭規劃。
                 </p>
               </div>
-              <Link href="/products" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
+              <Link to="/products" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
                 查看完整商品細節與規格表
               </Link>
             </div>
@@ -139,14 +140,14 @@ export default function Home() {
                   精緻實用的簡約禮儀方案，提供透明清晰的基礎儀式項目，滿足極簡莊嚴的圓滿需求。
                 </p>
               </div>
-              <Link href="/products" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
+              <Link to="/products" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
                 查看完整商品細節與規格表
               </Link>
             </div>
           </div>
         </section>
 
-        {/* 5. 信託公開與手續指南入口 */}
+        {/* 5. 信託公開與手續指南快速入口 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-gradient-to-br from-ink-900 to-slate-800 text-white rounded-3xl p-8 md:p-10 shadow-xl flex flex-col justify-between">
@@ -157,7 +158,7 @@ export default function Home() {
                   依殯葬管理條例第51條，預收費用之 75% 已交付京城銀行信託管理。點擊查閱歷年財產報告與會計師簽證。
                 </p>
               </div>
-              <Link href="/trust" className="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300 font-bold">
+              <Link to="/trust" className="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300 font-bold">
                 進入信託公開與財報下載頁面 <ChevronRight className="w-5 h-5" />
               </Link>
             </div>
@@ -170,14 +171,14 @@ export default function Home() {
                   包含新購、轉讓、繼承、履約、解約等 7 大手續說明，提供完整表單下載與文件清單。
                 </p>
               </div>
-              <Link href="/procedures" className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-bold">
+              <Link to="/procedures" className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-bold">
                 查看 7 大申辦手續指南 <ChevronRight className="w-5 h-5" />
               </Link>
             </div>
           </div>
         </section>
 
-        {/* 6. 核心價值區塊 */}
+        {/* 6. 核心價值區塊 (引用 CoreValues 組件) */}
         <CoreValues />
 
         {/* 7. 24小時諮詢專線橫幅 */}
