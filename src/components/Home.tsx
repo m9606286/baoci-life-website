@@ -115,7 +115,8 @@ export default function Home() {
                 </h3>
               </div>
 
-              <p className="font-serif-tc text-slate-700 text-base md:text-lg leading-relaxed">
+              {/* 內文字型已套用為最新消息同款 (font-serif-tc text-slate-700 text-sm md:text-base leading-relaxed) */}
+              <p className="font-serif-tc text-slate-700 text-sm md:text-base leading-relaxed">
                 寶慈生命事業為政府合法立案之殯葬禮儀服務業者，並正式納入寶碩財務科技集團旗下經營。我們秉持人本關懷理念，結合上市集團嚴謹的財務與法人治理機制，提供透明收費與合規保障，守護每個家庭重要時刻的承諾。
               </p>
 
@@ -186,7 +187,7 @@ export default function Home() {
                   PRE-NEED
                 </span>
                 <h3 className="font-serif-tc text-2xl font-bold text-ink-900 mb-3">生前契約規劃</h3>
-                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+                <p className="font-serif-tc text-slate-700 text-sm md:text-base leading-relaxed mb-6">
                   提供寶富、寶暉等專業生前契約方案，讓您提前為未來妥善安排，減輕家屬負擔，讓愛與安心延續。
                 </p>
               </div>
@@ -195,10 +196,10 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 禮儀服務：圖片放標題上方，並放大10%至 h-[70px] */}
+            {/* 禮儀服務 */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
-                {/* 1. 精致圖示（放在禮儀服務標題上方，高度改為 70px） */}
+                {/* 1. 精致圖示 */}
                 <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
                   <img 
                     src={serve1Image} 
@@ -212,8 +213,8 @@ export default function Home() {
                   禮儀服務
                 </h3>
 
-                {/* 3. 內文說明 */}
-                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+                {/* 3. 內文說明（已套用最新消息同款明體與大小） */}
+                <p className="font-serif-tc text-slate-700 text-sm md:text-base leading-relaxed mb-6">
                   秉持專業、尊嚴與人本關懷，提供全方位的精緻奠禮流程規劃與溫馨陪伴服務。
                 </p>
               </div>
@@ -230,7 +231,7 @@ export default function Home() {
                   PROCEDURES
                 </span>
                 <h3 className="font-serif-tc text-2xl font-bold text-ink-900 mb-3">手續服務</h3>
-                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+                <p className="font-serif-tc text-slate-700 text-sm md:text-base leading-relaxed mb-6">
                   包含新購、轉讓、繼承、履約、解約等各項申辦手續指引與專屬表單文件下載。
                 </p>
               </div>
