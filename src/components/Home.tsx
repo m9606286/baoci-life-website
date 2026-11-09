@@ -1,16 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Phone, ChevronDown, Heart, ChevronRight, ShieldCheck, FileText, Award, Lock, PhoneCall } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import CoreValues from '@/components/CoreValues';
 import Announcement from '@/components/Announcement';
-import { 
-  ShieldCheck, 
-  FileText, 
-  Award, 
-  ChevronRight, 
-  PhoneCall, 
-  Lock 
-} from 'lucide-react';
+import heroImage from '/hero.png';
 
 export default function Home() {
   const revealResult = useReveal<HTMLDivElement>();
@@ -19,56 +13,91 @@ export default function Home() {
   return (
     <div className="bg-ivory-100 min-h-screen text-ink-900 font-sans">
       
-      {/* 1. Hero 品牌主視覺區 */}
-      <section className="relative min-h-[85vh] flex items-center justify-center bg-ink-900 text-white overflow-hidden">
-        {/* 背景大圖與漸層遮罩 */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/hero-bg.jpg" 
-            alt="寶慈生命事業" 
-            className="w-full h-full object-cover object-center opacity-40 scale-105 transition-transform duration-1000"
+      {/* 1. Hero 品牌主視覺區 (採用原本寫好的精緻 Hero 組件結構) */}
+      <section id="top" className="group/hero relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden">
+        {/* Background image with bright overlay and hover zoom */}
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src={heroImage}
+            alt="家人彼此陪伴"
+            className="w-full h-full object-cover animate-slow-zoom group-hover/hero:scale-105 transition-transform duration-1000 ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/60 to-transparent" />
+          {/* 降低遮罩深度，使圖片更明亮清晰 */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-20">
-          <p className="font-serif-tc text-gold-400 text-sm md:text-base tracking-[0.4em] uppercase font-bold mb-4">
-            BAOCI LIFE ENTERPRISE
-          </p>
-          <h1 className="font-serif-tc text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 tracking-wide">
-            秉持人本關懷使命<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-400 to-gold-200">
-              守護生命永恆尊嚴
-            </span>
-          </h1>
-          <p className="text-slate-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10 font-['Microsoft_JhengHei']">
-            持續深化客戶權益保障，落實誠信經營與服務品質，致力於提供安心、完善的生命服務，確保企業永續發展。
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link 
-              to="/products" 
-              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-ink-900 font-bold rounded-full shadow-lg hover:shadow-gold-500/20 transition-all duration-300 flex items-center justify-center gap-2"
+        {/* Content */}
+        <div className="relative h-full mx-auto max-w-8xl px-6 flex flex-col justify-center">
+          <div className="max-w-3xl">
+            {/* 愛心圖示與 Apex BaoCi-Life 改為純白 */}
+            <div className="flex items-center gap-3 mb-6 animate-fade-in" style={{ animationDelay: '0.2s', opacity: 0 }}>
+              <Heart className="w-5 h-5 text-white drop-shadow" />
+              <span className="text-white text-sm tracking-[0.3em] uppercase font-medium drop-shadow">Apex BaoCi-Life</span>
+            </div>
+
+            {/* 讓家人安心改為純白 */}
+            <h1
+              className="font-serif-tc text-4xl md:text-5xl lg:text-6xl text-white leading-[1.2] font-bold animate-fade-up drop-shadow-md"
+              style={{ animationDelay: '0.4s', opacity: 0 }}
             >
-              探索生前契約方案 <ChevronRight className="w-5 h-5" />
-            </Link>
-            <Link 
-              to="/trust" 
-              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 border border-gold-400/40 text-white font-medium rounded-full backdrop-blur-sm transition-all duration-300 flex items-center justify-center gap-2"
+              用愛心規劃
+              <span className="block text-white mt-2 drop-shadow">讓家人安心</span>
+            </h1>
+
+            <p
+              className="mt-8 text-lg md:text-xl text-ivory-100/95 leading-relaxed max-w-2xl animate-fade-up font-medium drop-shadow"
+              style={{ animationDelay: '0.7s', opacity: 0 }}
             >
-              75% 信託公開專區 <ShieldCheck className="w-5 h-5 text-gold-400" />
-            </Link>
+              幫助您提早規劃，讓生命的每一刻
+              <br />
+              都充滿尊嚴與意義。
+            </p>
+
+            <div
+              className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up"
+              style={{ animationDelay: '1s', opacity: 0 }}
+            >
+              {/* 瞭解生前契約 */}
+              <Link
+                to="/preneed"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
+              >
+                <span>瞭解生前契約</span>
+                <ChevronDown className="w-4 h-4 ml-2 text-white group-hover:translate-y-0.5 transition-transform" />
+              </Link>
+
+              {/* 聯絡我們 */}
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
+              >
+                <Phone className="w-4 h-4 mr-2 text-white group-hover:scale-110 transition-transform" />
+                <span>聯絡我們</span>
+              </Link>
+            </div>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in" style={{ animationDelay: '1.5s', opacity: 0 }}>
+          <span className="text-white/80 text-xs tracking-widest font-medium">SCROLL</span>
+          <div className="w-px h-12 bg-gradient-to-b from-white/80 to-transparent" />
+        </div>
+
+        {/* Bottom fade into next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory-100 to-transparent" />
       </section>
 
+      {/* 2. 下方各區塊內容 */}
       <div ref={ref} className="space-y-24 py-20">
 
-        {/* 2. 最新消息區塊 (引用 Announcement 組件) */}
+        {/* 最新消息 */}
         <section className="max-w-7xl mx-auto px-6">
           <Announcement />
         </section>
 
-        {/* 3. 關於寶慈精華區塊 (About Summary) */}
+        {/* 關於寶慈精華 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="bg-gradient-to-br from-white via-ivory-50 to-gold-100/30 rounded-3xl p-8 md:p-12 border border-gold-400/40 shadow-xl flex flex-col md:flex-row items-center gap-10">
             <div className="w-full md:w-1/2 space-y-6">
@@ -102,7 +131,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. 生前契約商品快速導覽 (Products Summary) */}
+        {/* 生前契約商品快速導覽 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -125,7 +154,7 @@ export default function Home() {
                   包含完整禮儀流程、大型花藝佈置與專屬禮儀顧問。專為追求完整尊榮奠禮規格之家庭規劃。
                 </p>
               </div>
-              <Link to="/products" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
+              <Link to="/preneed" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
                 查看完整商品細節與規格表
               </Link>
             </div>
@@ -140,14 +169,14 @@ export default function Home() {
                   精緻實用的簡約禮儀方案，提供透明清晰的基礎儀式項目，滿足極簡莊嚴的圓滿需求。
                 </p>
               </div>
-              <Link to="/products" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
+              <Link to="/preneed" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
                 查看完整商品細節與規格表
               </Link>
             </div>
           </div>
         </section>
 
-        {/* 5. 信託公開與手續指南快速入口 */}
+        {/* 信託公開與手續指南入口 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-gradient-to-br from-ink-900 to-slate-800 text-white rounded-3xl p-8 md:p-10 shadow-xl flex flex-col justify-between">
@@ -178,10 +207,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 6. 核心價值區塊 (引用 CoreValues 組件) */}
+        {/* 核心價值區塊 */}
         <CoreValues />
 
-        {/* 7. 24小時諮詢專線橫幅 */}
+        {/* 24小時諮詢專線橫幅 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-ink-900 rounded-3xl p-8 md:p-12 text-center shadow-xl">
             <h3 className="font-serif-tc text-2xl md:text-3xl font-bold mb-3">
