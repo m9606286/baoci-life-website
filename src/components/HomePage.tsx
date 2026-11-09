@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link'; // 若使用 React Router，請替換為 import { Link } from 'react-router-dom';
 import { useReveal } from '@/hooks/useReveal';
 import CoreValues from '@/components/CoreValues'; // 引用已寫好的 CoreValues.tsx
+import Announcement from '@/components/Announcement'; // 引用已寫好的 Announcement.tsx
 import { 
   ShieldCheck, 
   FileText, 
@@ -10,26 +11,6 @@ import {
   PhoneCall, 
   Lock 
 } from 'lucide-react';
-
-// 最新消息範例資料（修正為兩則企業集團重大動態）
-const latestNews = [
-  {
-    id: 1,
-    date: '2026.07.15',
-    category: '資本增資',
-    title: '寶慈生命事業資本額順利完成增資至新臺幣 6,000 萬元',
-    summary: '為持續深化服務品質並強化履約保障能力，寶慈生命事業正式完成資本額變更登記，增資至新臺幣 6,000 萬元，展現穩健營運實力。',
-    href: '/news/1',
-  },
-  {
-    id: 2,
-    date: '2026.04.01',
-    category: '集團動態',
-    title: '寶慈生命事業正式加入寶碩財務科技集團，攜手打造尊榮生命服務',
-    summary: '寶慈生命事業正式成為寶碩財務科技集團旗下子公司，導入上市集團資源與嚴謹治理規範，全面提升客戶權益保障。',
-    href: '/news/2',
-  },
-];
 
 export default function HomePage() {
   const revealResult = useReveal<HTMLDivElement>();
@@ -82,49 +63,9 @@ export default function HomePage() {
 
       <div ref={ref} className="space-y-24 py-20">
 
-        {/* 2. 最新消息 (兩則集團重點動態) */}
+        {/* 2. 最新消息 (直接引用 Announcement 組件) */}
         <section className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-gold-400/30 pb-6">
-            <div>
-              <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.3em] uppercase font-bold reveal">
-                NEWS & ANNOUNCEMENTS
-              </p>
-              <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2 reveal reveal-delay-1">
-                最新消息與公告
-              </h2>
-            </div>
-            <Link href="/news" className="mt-4 md:mt-0 text-gold-600 hover:text-gold-700 font-medium flex items-center gap-1 transition-colors">
-              查看全部消息 <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {latestNews.map((news, idx) => (
-              <Link 
-                key={news.id} 
-                href={news.href}
-                className={`reveal reveal-delay-${idx + 1} bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border border-gold-400/20 hover:border-gold-400/60 flex flex-col justify-between group`}
-              >
-                <div>
-                  <div className="flex items-center justify-between text-xs text-slate-500 mb-4">
-                    <span className="px-3 py-1 rounded-full bg-gold-400/15 text-gold-700 font-bold">
-                      {news.category}
-                    </span>
-                    <span className="font-mono text-slate-400">{news.date}</span>
-                  </div>
-                  <h3 className="font-serif-tc text-xl font-bold text-ink-900 group-hover:text-gold-600 transition-colors line-clamp-2 mb-3">
-                    {news.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm line-clamp-3 leading-relaxed font-['Microsoft_JhengHei']">
-                    {news.summary}
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-100 text-gold-600 text-sm font-bold flex items-center justify-end gap-1 group-hover:translate-x-1 transition-transform">
-                  閱讀詳情 <ChevronRight className="w-4 h-4" />
-                </div>
-              </Link>
-            ))}
-          </div>
+          <Announcement />
         </section>
 
         {/* 3. 關於寶慈精華 (About Summary) */}
