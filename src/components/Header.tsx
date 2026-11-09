@@ -5,7 +5,7 @@ import { useScrolled } from '@/hooks/useReveal';
 import BrandLogo from '@/components/BrandLogo';
 
 const navLinks = [
-  { label: '關於我們', en: 'ABOUT', path: '/' },
+  { label: '關於我們', en: 'ABOUT', path: '/about' },
   { label: '生前契約', en: 'CONTRACT', path: '/preneed' },
   { label: '禮儀服務', en: 'SERVICES', path: '/services' },
   { label: '信託公開', en: 'TRUST', path: '/trust' },
