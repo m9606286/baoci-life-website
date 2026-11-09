@@ -14,7 +14,7 @@ export default function Home() {
     <div className="bg-ivory-100 min-h-screen text-ink-900 font-sans">
       
       {/* 1. Hero 品牌主視覺區：加上 -mt-8 完美貼齊頂部金色質感線 */}
-      <section id="top" className="group/hero relative h-[calc(100vh-5rem)] min-h-[550px] max-h-[850px] overflow-hidden -mt-6">
+      <section id="top" className="group/hero relative h-[calc(100vh-5rem)] min-h-[550px] max-h-[850px] overflow-hidden -mt-2">
         {/* Background image with bright overlay and hover zoom */}
         <div className="absolute inset-0 overflow-hidden">
           <img
