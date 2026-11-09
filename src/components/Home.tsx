@@ -104,7 +104,7 @@ export default function Home() {
           <div className="bg-gradient-to-br from-white via-ivory-50 to-gold-100/30 rounded-3xl p-8 md:p-12 border border-gold-400/40 shadow-xl flex flex-col md:flex-row items-center gap-10">
             <div className="w-full md:w-1/2 space-y-6">
               
-              {/* 標籤與主標題組合為同一個 Hover 群組，滑鼠移入時同時觸發變色 */}
+              {/* 標籤與主標題組合為同一個 Hover 群組 */}
               <div className="group/profile-header cursor-pointer space-y-4">
                 <span className="inline-block px-4 py-1.5 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-xs font-bold tracking-wider uppercase transition-all duration-300 group-hover/profile-header:bg-gold-500 group-hover/profile-header:text-white group-hover/profile-header:border-gold-500">
                   合規經營．誠信至上
@@ -136,7 +136,6 @@ export default function Home() {
                   <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">政府立案核准</h4>
                   <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">民政局核准銷售文號</p>
                 </div>
-                {/* 文字改為核准函，下載圖示放右邊，卡片 hover 時同步變為淺深金色白字 */}
                 <a 
                   href="/documents/台南市民政局生前契約銷售及代銷商最新核准函.pdf" 
                   download 
@@ -154,7 +153,6 @@ export default function Home() {
                   <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">75% 依法信託</h4>
                   <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">京城銀行履約專戶</p>
                 </div>
-                {/* 了解更多按鈕，卡片 hover 時同步變為淺深金色白字 */}
                 <Link 
                   to="/trust" 
                   className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-gold-700 group-hover:bg-white group-hover:text-gold-700 bg-gold-50 py-2 px-3 rounded-xl transition-all duration-300 mt-2 shadow-sm"
@@ -197,24 +195,27 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 禮儀服務 */}
+            {/* 禮儀服務：圖片再縮小 50% 至 h-16 */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300 text-center mb-3">
+                {/* 1. 禮儀服務標題 */}
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300 text-center mb-2">
                   禮儀服務
                 </h3>
 
-                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                  秉持專業、尊嚴與人本關懷，提供全方位的精緻奠禮流程規劃與溫馨陪伴服務。
-                </p>
-                
-                <div className="w-full h-36 rounded-2xl overflow-hidden mb-4 flex items-center justify-center bg-ivory-50">
+                {/* 2. 精致小圖 (高改為 h-16，寬高更加精巧) */}
+                <div className="w-full h-16 rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
                   <img 
                     src={serve1Image} 
                     alt="禮儀服務" 
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
+
+                {/* 3. 內文說明 */}
+                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+                  秉持專業、尊嚴與人本關懷，提供全方位的精緻奠禮流程規劃與溫馨陪伴服務。
+                </p>
               </div>
 
               <Link to="/services" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
