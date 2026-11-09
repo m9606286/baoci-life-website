@@ -40,7 +40,7 @@ export default function App() {
 
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/" element={<AboutPage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/preneed" element={<PreneedPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/trust" element={<TrustPage />} />
