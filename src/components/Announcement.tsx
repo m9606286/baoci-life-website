@@ -82,21 +82,21 @@ export default function Announcement() {
             className="snap-start shrink-0 w-[85vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
           >
             <div>
-              {/* 日期標籤：大小同標題(text-xl md:text-2xl)，移到時背景與文字反白 */}
-              <div className="mb-6">
-                <span className="inline-flex items-center gap-2 font-serif-tc px-5 py-2 rounded-2xl text-xl md:text-2xl font-bold transition-all duration-300 bg-slate-100 text-ink-900 border border-slate-200 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600 shadow-sm">
-                  <Calendar className="w-5 h-5 text-gold-600 group-hover:text-white transition-colors" />
+              {/* 日期標籤：恢復為精緻小標籤尺寸 (text-xs md:text-sm)，移到時背景與文字反白 */}
+              <div className="mb-4">
+                <span className="inline-flex items-center gap-1.5 font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 bg-slate-100 text-slate-800 border border-slate-200 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600 shadow-sm">
+                  <Calendar className="w-3.5 h-3.5 text-gold-600 group-hover:text-white transition-colors" />
                   {item.dateTag}
                 </span>
               </div>
 
-              {/* 標題 */}
+              {/* 標題：對齊「關於我們」區塊的字型大小 */}
               <h3 className="font-serif-tc text-xl md:text-2xl font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300 leading-snug mb-4">
                 {item.title}
               </h3>
 
-              {/* 內文 */}
-              <p className="font-serif-tc text-slate-700 text-base md:text-lg leading-relaxed line-clamp-4">
+              {/* 內文：完全對齊「關於我們 / 我們的故事」的字型與行高 */}
+              <p className="font-serif-tc text-slate-700 text-sm md:text-base leading-relaxed line-clamp-4">
                 {item.summary}
               </p>
             </div>
