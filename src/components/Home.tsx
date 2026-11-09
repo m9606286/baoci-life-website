@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, ChevronDown, Heart, ChevronRight, ShieldCheck, FileText, Award, Lock, PhoneCall } from 'lucide-react';
+import { Phone, ChevronDown, Heart, ChevronRight, ShieldCheck, FileText, Award, Lock, PhoneCall, Download } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import CoreValues from '@/components/CoreValues';
 import Announcement from '@/components/Announcement';
@@ -13,30 +13,25 @@ export default function Home() {
   return (
     <div className="bg-ivory-100 min-h-screen text-ink-900 font-sans">
       
-      {/* 1. Hero 品牌主視覺區：高度自然展開，精確無縫對齊 Header 底部的金色質感線 */}
+      {/* 1. Hero 品牌主視覺區 */}
       <section id="top" className="group/hero relative h-[85vh] min-h-[550px] max-h-[850px] overflow-hidden">
-        {/* Background image with bright overlay and hover zoom */}
         <div className="absolute inset-0 overflow-hidden">
           <img
             src={heroImage}
             alt="家人彼此陪伴"
             className="w-full h-full object-cover animate-slow-zoom group-hover/hero:scale-105 transition-transform duration-1000 ease-out"
           />
-          {/* 降低遮罩深度，使圖片更明亮清晰 */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
         </div>
 
-        {/* Content */}
         <div className="relative h-full mx-auto max-w-8xl px-6 flex flex-col justify-center">
           <div className="max-w-3xl">
-            {/* 愛心圖示與 Apex BaoCi-Life */}
             <div className="flex items-center gap-3 mb-6 animate-fade-in" style={{ animationDelay: '0.2s', opacity: 0 }}>
               <Heart className="w-5 h-5 text-white drop-shadow" />
               <span className="text-white text-sm tracking-[0.3em] uppercase font-medium drop-shadow">Apex BaoCi-Life</span>
             </div>
 
-            {/* 主標題 */}
             <h1
               className="font-serif-tc text-4xl md:text-5xl lg:text-6xl text-white leading-[1.2] font-bold animate-fade-up drop-shadow-md"
               style={{ animationDelay: '0.4s', opacity: 0 }}
@@ -77,13 +72,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in" style={{ animationDelay: '1.5s', opacity: 0 }}>
           <span className="text-white/80 text-xs tracking-widest font-medium">SCROLL</span>
           <div className="w-px h-12 bg-gradient-to-b from-white/80 to-transparent" />
         </div>
 
-        {/* Bottom fade into next section */}
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory-100 to-transparent" />
       </section>
 
@@ -95,16 +88,26 @@ export default function Home() {
           <Announcement />
         </section>
 
-        {/* 關於寶慈精華 */}
+        {/* 關於寶慈：改為置中、英文標題與金色質感線 */}
         <section className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+              ABOUT BAOCI
+            </p>
+            <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
+              關於寶慈
+            </h2>
+            <div className="gold-divider w-32 mx-auto mt-4" />
+          </div>
+
           <div className="bg-gradient-to-br from-white via-ivory-50 to-gold-100/30 rounded-3xl p-8 md:p-12 border border-gold-400/40 shadow-xl flex flex-col md:flex-row items-center gap-10">
             <div className="w-full md:w-1/2 space-y-6">
               <span className="px-4 py-1.5 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-xs font-bold tracking-wider uppercase">
-                ABOUT BAOCI / 關於寶慈
+                合規經營、誠信至上
               </span>
-              <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 leading-snug">
-                合規經營、誠信至上<br />給家屬最堅實的安心依託
-              </h2>
+              <h3 className="font-serif-tc text-2xl md:text-3xl font-bold text-ink-900 leading-snug">
+                給家屬最堅實的安心依託
+              </h3>
               <p className="text-slate-700 text-base leading-relaxed font-['Microsoft_JhengHei']">
                 寶慈生命事業具備主管機關合法立案證明與代銷許可。我們以圓滿生命為使命，透過透明的收費與嚴格的服務品質控管，讓每位家屬在面臨重大時刻時，都能擁有最貼心、專業的依靠。
               </p>
@@ -114,92 +117,96 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center">
-                <Award className="w-10 h-10 text-gold-600 mx-auto mb-3" />
-                <h4 className="font-bold text-ink-900 mb-1">政府立案核准</h4>
-                <p className="text-xs text-slate-500">民政局核准銷售文號</p>
+            
+            <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between">
+                <div>
+                  <Award className="w-10 h-10 text-gold-600 mx-auto mb-3" />
+                  <h4 className="font-bold text-ink-900 mb-1">政府立案核准</h4>
+                  <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
+                </div>
+                <a 
+                  href="/documents/台南市民政局生前契約銷售及代銷商最新核准函.pdf" 
+                  download 
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-gold-700 hover:text-gold-900 bg-gold-50 hover:bg-gold-100 py-2 px-3 rounded-xl transition-colors mt-2"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  下載核准函 PDF
+                </a>
               </div>
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center">
-                <Lock className="w-10 h-10 text-gold-600 mx-auto mb-3" />
-                <h4 className="font-bold text-ink-900 mb-1">75% 依法信託</h4>
-                <p className="text-xs text-slate-500">京城銀行履約專戶</p>
+
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between">
+                <div>
+                  <Lock className="w-10 h-10 text-gold-600 mx-auto mb-3" />
+                  <h4 className="font-bold text-ink-900 mb-1">75% 依法信託</h4>
+                  <p className="text-xs text-slate-500 mb-4">京城銀行履約專戶</p>
+                </div>
+                <Link 
+                  to="/trust" 
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-gold-700 hover:text-gold-900 bg-gold-50 hover:bg-gold-100 py-2 px-3 rounded-xl transition-colors mt-2"
+                >
+                  了解更多 <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 生前契約商品快速導覽 */}
+        {/* 我們的服務：包含生前契約規劃、禮儀服務、手續服務 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-              PRENEED CONTRACT
+              OUR SERVICES
             </p>
             <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
-              生前契約商品簡介
+              我們的服務
             </h2>
             <div className="gold-divider w-32 mx-auto mt-4" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
                 <span className="px-3 py-1 rounded-full bg-gold-500 text-white text-xs font-bold mb-4 inline-block">
-                  尊榮規格
+                  PRE-NEED
                 </span>
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 mb-3">寶富生前契約</h3>
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 mb-3">生前契約規劃</h3>
                 <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-                  包含完整禮儀流程、大型花藝佈置與專屬禮儀顧問。專為追求完整尊榮奠禮規格之家庭規劃。
+                  提供寶富、寶暉等專業生前契約方案，讓您提前為未來妥善安排，減輕家屬負擔，讓愛與安心延續。
                 </p>
               </div>
               <Link to="/preneed" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
-                查看完整商品細節與規格表
+                了解更多
               </Link>
             </div>
 
             <div className="bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
                 <span className="px-3 py-1 rounded-full bg-slate-700 text-white text-xs font-bold mb-4 inline-block">
-                  精緻簡約
+                  RITUAL
                 </span>
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 mb-3">寶暉生前契約</h3>
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 mb-3">禮儀服務</h3>
                 <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-                  精緻實用的簡約禮儀方案，提供透明清晰的基礎儀式項目，滿足極簡莊嚴的圓滿需求。
+                  秉持專業、尊嚴與人本關懷，提供全方位的精緻奠禮流程規劃與溫馨陪伴服務。
                 </p>
               </div>
-              <Link to="/preneed" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
-                查看完整商品細節與規格表
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* 信託公開與手續指南入口 */}
-        <section className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-ink-900 to-slate-800 text-white rounded-3xl p-8 md:p-10 shadow-xl flex flex-col justify-between">
-              <div>
-                <ShieldCheck className="w-12 h-12 text-gold-400 mb-6" />
-                <h3 className="font-serif-tc text-2xl font-bold mb-4">75% 預付款信託公開專區</h3>
-                <p className="text-slate-300 text-sm leading-relaxed mb-6 font-['Microsoft_JhengHei']">
-                  依殯葬管理條例第51條，預收費用之 75% 已交付京城銀行信託管理。點擊查閱歷年財產報告與會計師簽證。
-                </p>
-              </div>
-              <Link to="/trust" className="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300 font-bold">
-                進入信託公開與財報下載頁面 <ChevronRight className="w-5 h-5" />
+              <Link to="/services" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
+                了解更多
               </Link>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 md:p-10 border border-gold-400/40 shadow-xl flex flex-col justify-between">
+            <div className="bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
-                <FileText className="w-12 h-12 text-gold-600 mb-6" />
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 mb-4">申辦手續與表單下載</h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-6 font-['Microsoft_JhengHei']">
-                  包含新購、轉讓、繼承、履約、解約等 7 大手續說明，提供完整表單下載與文件清單。
+                <span className="px-3 py-1 rounded-full bg-gold-600 text-white text-xs font-bold mb-4 inline-block">
+                  PROCEDURES
+                </span>
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 mb-3">手續服務</h3>
+                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+                  包含新購、轉讓、繼承、履約、解約等各項申辦手續指引與專屬表單文件下載。
                 </p>
               </div>
-              <Link to="/procedures" className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-bold">
-                查看 7 大申辦手續指南 <ChevronRight className="w-5 h-5" />
+              <Link to="/procedures" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
+                了解更多
               </Link>
             </div>
           </div>
@@ -208,20 +215,20 @@ export default function Home() {
         {/* 核心價值區塊 */}
         <CoreValues />
 
-        {/* 24小時諮詢專線橫幅 */}
+        {/* 24小時諮詢專線橫幅：改為淺色背景，移到出現淺深金色字體反白 */}
         <section className="max-w-7xl mx-auto px-6">
-          <div className="bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-ink-900 rounded-3xl p-8 md:p-12 text-center shadow-xl">
-            <h3 className="font-serif-tc text-2xl md:text-3xl font-bold mb-3">
+          <div className="group relative bg-gradient-to-br from-white via-ivory-50 to-gold-100/40 rounded-3xl p-8 md:p-12 text-center border border-gold-400/40 shadow-xl overflow-hidden transition-all duration-500 hover:bg-gold-600">
+            <h3 className="font-serif-tc text-2xl md:text-3xl font-bold mb-3 text-ink-900 group-hover:text-white transition-colors duration-300">
               需要即時禮儀諮詢或契約解答？
             </h3>
-            <p className="text-ink-900/80 text-sm md:text-base font-medium mb-6">
+            <p className="text-slate-600 text-sm md:text-base font-medium mb-8 group-hover:text-white/90 transition-colors duration-300">
               寶慈生命事業提供 24 小時專人服務，隨時為您解答疑問與提供協助。
             </p>
             <a 
               href="tel:0800600603" 
-              className="inline-flex items-center gap-3 px-8 py-4 bg-ink-900 text-gold-400 hover:bg-ink-800 font-bold rounded-full text-xl shadow-lg transition-transform hover:scale-105"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-ink-900 text-gold-400 group-hover:bg-white group-hover:text-gold-700 font-bold rounded-full text-xl shadow-lg transition-transform hover:scale-105"
             >
-              <PhoneCall className="w-6 h-6 text-gold-400 animate-pulse" />
+              <PhoneCall className="w-6 h-6 animate-pulse" />
               24H 免費服務專線：0800-600-603
             </a>
           </div>
