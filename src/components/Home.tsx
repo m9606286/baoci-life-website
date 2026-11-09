@@ -214,7 +214,7 @@ export default function Home() {
 
                 {/* 3. 內文說明 */}
                 <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-                  秉持專業、尊嚴與人本關懷，提供全方位的精緻奠禮流程規劃與溫馨陪伴服務。
+                  1秉持專業、尊嚴與人本關懷，提供全方位的精緻奠禮流程規劃與溫馨陪伴服務。
                 </p>
               </div>
 
