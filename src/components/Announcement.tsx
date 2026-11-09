@@ -12,7 +12,7 @@ export interface NewsItem {
 
 const announcements: NewsItem[] = [
   {
-    id: 'news-2026-07',
+    id: 'news-2026-08',
     dateTag: '2026年8月 資本增資',
     title: '寶慈生命事業資本額順利完成增資至新臺幣 6,000 萬元',
     summary: '為持續深化服務品質、擴大營運規模並強化預付款履約保障能力，寶慈生命事業已正式完成資本額變更登記，實收資本額增資至新臺幣 6,000 萬元，展現企業穩健營運實力與長期承諾。',
