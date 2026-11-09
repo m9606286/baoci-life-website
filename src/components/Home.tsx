@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, ChevronDown, Heart, ChevronRight, ShieldCheck, FileText, Award, Lock, PhoneCall, Download } from 'lucide-react';
+import { Phone, ChevronDown, Heart, ChevronRight, Award, Lock, PhoneCall, Download } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import CoreValues from '@/components/CoreValues';
 import Announcement from '@/components/Announcement';
@@ -88,14 +88,14 @@ export default function Home() {
           <Announcement />
         </section>
 
-        {/* 關於寶慈：改為置中、英文標題與金色質感線 */}
+        {/* 品牌簡介區塊（已替換名稱與內文） */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-              ABOUT BAOCI
+              ABOUT BAOCI-LIFE
             </p>
             <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
-              關於寶慈
+              品牌簡介
             </h2>
             <div className="gold-divider w-32 mx-auto mt-4" />
           </div>
@@ -103,17 +103,17 @@ export default function Home() {
           <div className="bg-gradient-to-br from-white via-ivory-50 to-gold-100/30 rounded-3xl p-8 md:p-12 border border-gold-400/40 shadow-xl flex flex-col md:flex-row items-center gap-10">
             <div className="w-full md:w-1/2 space-y-6">
               <span className="px-4 py-1.5 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-xs font-bold tracking-wider uppercase">
-                合規經營、誠信至上
+                合規經營．誠信至上
               </span>
               <h3 className="font-serif-tc text-2xl md:text-3xl font-bold text-ink-900 leading-snug">
-                給家屬最堅實的安心依託
+                專業與合規保障<br />給家人最堅實的安心依託
               </h3>
               <p className="text-slate-700 text-base leading-relaxed font-['Microsoft_JhengHei']">
-                寶慈生命事業具備主管機關合法立案證明與代銷許可。我們以圓滿生命為使命，透過透明的收費與嚴格的服務品質控管，讓每位家屬在面臨重大時刻時，都能擁有最貼心、專業的依靠。
+                寶慈生命事業為政府合法立案之殯葬禮儀服務業者，並正式納入寶碩財務科技集團旗下經營。我們秉持人本關懷理念，結合上市集團嚴謹的財務與法人治理機制，提供透明收費與合規保障，守護每個家庭重要時刻的承諾。
               </p>
               <div className="pt-2">
                 <Link to="/about" className="inline-flex items-center gap-2 text-ink-900 font-bold hover:text-gold-600 transition-colors">
-                  了解更多關於寶慈經營理念 <ChevronRight className="w-5 h-5 text-gold-500" />
+                  了解更多關於寶慈經營理念與故事 <ChevronRight className="w-5 h-5 text-gold-500" />
                 </Link>
               </div>
             </div>
@@ -152,7 +152,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 我們的服務：包含生前契約規劃、禮儀服務、手續服務 */}
+        {/* 我們的服務 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -215,7 +215,7 @@ export default function Home() {
         {/* 核心價值區塊 */}
         <CoreValues />
 
-        {/* 24小時諮詢專線橫幅：改為淺色背景，移到出現淺深金色字體反白 */}
+        {/* 24小時諮詢專線橫幅 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="group relative bg-gradient-to-br from-white via-ivory-50 to-gold-100/40 rounded-3xl p-8 md:p-12 text-center border border-gold-400/40 shadow-xl overflow-hidden transition-all duration-500 hover:bg-gold-600">
             <h3 className="font-serif-tc text-2xl md:text-3xl font-bold mb-3 text-ink-900 group-hover:text-white transition-colors duration-300">
