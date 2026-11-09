@@ -4,7 +4,7 @@ import React from 'react';
 import About from '../components/About';
 //import CoreValues from '../components/CoreValues';
 
-export default function HomePage() {
+export default function AboutPage() {
   return (
     <div>
       <About />     
