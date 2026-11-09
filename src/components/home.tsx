@@ -1,8 +1,8 @@
 import React from 'react';
-import Link from 'next/link'; // 若使用 React Router，請替換為 import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useReveal } from '@/hooks/useReveal';
-import CoreValues from '@/components/CoreValues'; // 引用已寫好的 CoreValues.tsx
-import Announcement from '@/components/Announcement'; // 引用已寫好的 Announcement.tsx
+import CoreValues from '@/components/CoreValues';
+import Announcement from '@/components/Announcement';
 import { 
   ShieldCheck, 
   FileText, 
@@ -12,7 +12,7 @@ import {
   Lock 
 } from 'lucide-react';
 
-export default function HomePage() {
+export default function Home() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
@@ -21,7 +21,6 @@ export default function HomePage() {
       
       {/* 1. Hero 品牌主視覺區 */}
       <section className="relative min-h-[85vh] flex items-center justify-center bg-ink-900 text-white overflow-hidden">
-        {/* 背景大圖與漸層遮罩 */}
         <div className="absolute inset-0 z-0">
           <img 
             src="/hero-bg.jpg" 
@@ -63,12 +62,12 @@ export default function HomePage() {
 
       <div ref={ref} className="space-y-24 py-20">
 
-        {/* 2. 最新消息 (直接引用 Announcement 組件) */}
+        {/* 2. 最新消息 */}
         <section className="max-w-7xl mx-auto px-6">
           <Announcement />
         </section>
 
-        {/* 3. 關於寶慈精華 (About Summary) */}
+        {/* 3. 關於寶慈精華 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="bg-gradient-to-br from-white via-ivory-50 to-gold-100/30 rounded-3xl p-8 md:p-12 border border-gold-400/40 shadow-xl flex flex-col md:flex-row items-center gap-10">
             <div className="w-full md:w-1/2 space-y-6">
@@ -102,7 +101,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. 生前契約商品快速導覽 (Products Summary) */}
+        {/* 4. 生前契約商品快速導覽 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -178,7 +177,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 6. 直接引入已完成的 CoreValues 組件 */}
+        {/* 6. 核心價值區塊 */}
         <CoreValues />
 
         {/* 7. 24小時諮詢專線橫幅 */}
