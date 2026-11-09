@@ -1,168 +1,109 @@
-//重要公告
-import { useState } from 'react';
-import { useReveal } from '@/hooks/useReveal';
-import { Megaphone, ChevronRight, X } from 'lucide-react';
-import { announcement } from '@/data/content';
+import React from 'react';
+import Link from 'next/link'; // 若使用 React Router，請替換為 import { Link } from 'react-router-dom';
+import { Newspaper, ChevronRight, Calendar } from 'lucide-react';
+
+export interface NewsItem {
+  id: string | number;
+  date: string;
+  category: string;
+  title: string;
+  summary: string;
+  badgeColor?: string;
+  href?: string;
+}
+
+const announcements: NewsItem[] = [
+  {
+    id: 'news-2026-07',
+    date: '2026年7月',
+    category: '資本增資',
+    title: '寶慈生命事業資本額順利完成增資至新臺幣 6,000 萬元',
+    summary: '為持續深化服務品質、擴大營運規模並強化預付款履約保障能力，寶慈生命事業已正式完成資本額變更登記，實收資本額增資至新臺幣 6,000 萬元，展現企業穩健營運實力與長期承諾。',
+    badgeColor: 'bg-gold-500 text-white',
+    href: '/news/news-2026-07',
+  },
+  {
+    id: 'news-2026-04',
+    date: '2026年4月',
+    category: '集團動態',
+    title: '寶慈生命事業正式加入寶碩財務科技集團，攜手打造尊榮生命服務',
+    summary: '寶慈生命事業正式成為寶碩財務科技集團旗下子公司。透過導入上市集團嚴謹的法人治理規範與龐大資源支持，進一步提升客戶權益保障，並以兼具人文溫度與財務誠信的防護網提供安心生命服務。',
+    badgeColor: 'bg-ink-800 text-gold-400 border border-gold-400/30',
+    href: '/news/news-2026-04',
+  },
+];
 
 export default function Announcement() {
-  const ref = useReveal<HTMLDivElement>();
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <>
-      <section className="py-12 lg:py-16 bg-ivory-100">
-        <div ref={ref} className="mx-auto max-w-8xl px-6">
-          <div
-            onClick={() => setIsOpen(true)}
-            className="reveal relative bg-gradient-to-r from-ivory-50 via-ivory-100 to-amber-50/40 rounded-2xl p-6 lg:p-8 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gold-400/30 cursor-pointer group"
+    <div className="w-full">
+      {/* 區塊標題與「查看全部」 */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-gold-400/30 pb-6">
+        <div>
+          <div className="flex items-center gap-2 text-gold-600 text-xs sm:text-sm tracking-[0.3em] uppercase font-bold mb-1">
+            <Newspaper className="w-4 h-4 text-gold-500" />
+            <span>NEWS & ANNOUNCEMENTS</span>
+          </div>
+          <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-1">
+            最新消息與公告
+          </h2>
+        </div>
+        <Link 
+          href="/news" 
+          className="mt-4 md:mt-0 inline-flex items-center gap-1 text-gold-600 hover:text-gold-700 font-bold transition-colors group text-sm"
+        >
+          查看全部消息 
+          <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </Link>
+      </div>
+
+      {/* 消息卡片網格 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {announcements.map((item) => (
+          <article
+            key={item.id}
+            className="group relative bg-white rounded-3xl p-8 border border-gold-400/25 shadow-md hover:shadow-2xl hover:border-gold-400/60 transition-all duration-300 flex flex-col justify-between overflow-hidden"
           >
-            {/* 質感金色光澤裝飾 */}
-            <div className="absolute top-0 right-0 w-80 h-full opacity-30 pointer-events-none">
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage:
-                    'radial-gradient(circle at 80% 50%, rgba(212, 167, 73, 0.25) 0%, transparent 65%)',
-                }}
-              />
-            </div>
+            {/* 裝飾頂條 */}
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
-            <div className="relative flex items-center justify-between gap-4 lg:gap-6">
-              <div className="flex items-center gap-4 lg:gap-6">
-                {/* 喇叭圖示 */}
-                <div className="flex-shrink-0 w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-gold-400/15 border border-gold-400/40 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-sm">
-                  <Megaphone className="w-7 h-7 lg:w-8 lg:h-8 text-gold-600" />
-                </div>
-                <div>
-                  {/* 重要公告字體放大 */}
-                  <p className="text-gold-600 text-sm lg:text-base font-bold tracking-[0.25em] uppercase mb-1.5">
-                    重要公告
-                  </p>
-                  <p className="font-serif-tc text-base lg:text-xl text-ink-900 leading-relaxed font-bold">
-                    {announcement}
-                  </p>
-                </div>
+            <div>
+              {/* 分類標籤與日期 */}
+              <div className="flex items-center justify-between text-xs mb-4">
+                <span className={`px-3.5 py-1 rounded-full font-bold shadow-sm ${item.badgeColor}`}>
+                  {item.category}
+                </span>
+                <span className="flex items-center gap-1.5 text-slate-500 font-medium">
+                  <Calendar className="w-3.5 h-3.5 text-gold-500" />
+                  {item.date}
+                </span>
               </div>
 
-              {/* 右側詳細內容提示按鈕：移上去時文字（及箭頭）顯示為白色 */}
-              <div className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-gold-400/10 border border-gold-400/30 text-sm font-semibold text-gold-700 group-hover:bg-gold-400 group-hover:text-white transition-all duration-300 shrink-0">
-                <span>詳細內容</span>
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              {/* 標題 */}
+              <h3 className="font-serif-tc text-xl md:text-2xl font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300 leading-snug mb-3">
+                {item.title}
+              </h3>
 
-      {/* 詳細公告彈窗 Modal */}
-      {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
-          <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[85vh] sm:max-h-[90vh] flex flex-col my-auto border border-gold-400/20">
-            
-            {/* 彈窗頂部 */}
-            <div className="sticky top-0 z-10 flex justify-between items-center px-5 py-3.5 sm:px-6 sm:py-4 border-b border-ivory-200 bg-white/95 backdrop-blur-md">
-              <span className="text-xs font-semibold text-gold-600 tracking-wider">寶慈生命事業 公告</span>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
-                aria-label="關閉公告"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* 彈窗內文 */}
-            <div className="p-4 sm:p-6 md:p-8 overflow-y-auto space-y-5 sm:space-y-6 text-slate-700 scrollbar-thin scrollbar-thumb-gold-400/30">
-              <div className="text-center pb-3 border-b border-gold-300/60">
-                <h2 className="font-serif-tc text-xl sm:text-2xl md:text-3xl font-bold text-gold-600 tracking-wide">
-                  更名暨權益保障公告
-                </h2>
-              </div>
-
-              <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm md:text-base leading-relaxed">
-                <p>感謝各位會員長期以來對本公司的支持與愛護。</p>
-                <p>
-                  為整合集團資源並提升核心服務品質，本公司經主管機關核準，已正式更名為
-                  <strong className="text-slate-900 font-bold block sm:inline mt-1 sm:mt-0">「寶慈生命事業股份有限公司」</strong>
-                  （原名：永慈事業股份有限公司）。
-                </p>
-                <p>
-                  本公司現為寶碩集團旗下之全資子公司。在強大集團資源與專業團隊的挹注下，我們將秉持更嚴謹、溫暖的態度，為您提供最優質的生命禮儀規劃與服務。
-                </p>
-              </div>
-
-              {/* 會員權益承諾 */}
-              <div className="bg-amber-50/80 p-4 sm:p-5 rounded-xl border border-amber-200/80 space-y-3">
-                <h3 className="font-serif-tc text-sm sm:text-base md:text-lg font-bold text-slate-900">
-                  針對所有原「永慈事業」之既有會員，本公司在此鄭重承諾：
-                </h3>
-                <ul className="space-y-2 text-xs sm:text-sm text-slate-800">
-                  <li className="flex items-start gap-2">
-                    <span className="text-gold-600 font-bold mt-0.5">✓</span>
-                    <div>
-                      <strong>會員權益完全承接：</strong>
-                      <p className="text-[11px] sm:text-xs md:text-sm text-slate-600">您的會員身分及所有權益不受任何影響。</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-gold-600 font-bold mt-0.5">✓</span>
-                    <div>
-                      <strong>契約效力持續維持：</strong>
-                      <p className="text-[11px] sm:text-xs md:text-sm text-slate-600">雙方原簽署之契約內容、服務項目與保障條款均全數維持不變，本公司將依法持續履行後續所有履約責任。</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-              <p className="text-center text-gold-600 font-medium text-xs sm:text-sm md:text-base py-1">
-                寶慈生命事業將持續守護您的託付，讓每一份對家人的愛與安心都能圓滿延續。
+              {/* 摘要 */}
+              <p className="text-slate-600 text-sm leading-relaxed font-['Microsoft_JhengHei'] line-clamp-3 mb-6">
+                {item.summary}
               </p>
-
-              {/* 聯絡方式卡片 */}
-              <div className="bg-stone-100 p-4 sm:p-5 rounded-xl space-y-3">
-                <h4 className="font-serif-tc text-sm sm:text-base font-bold text-slate-900">聯絡方式</h4>
-                <p className="text-xs sm:text-sm text-slate-600">
-                  若您對本次更名或契約權益有任何疑問，歡迎致電本公司，我們將有專人為您詳細說明。
-                </p>
-                
-                <div className="text-xs sm:text-sm space-y-1.5 pt-3 border-t border-stone-200">
-                  <p><strong>客服專線：</strong></p>
-                  <ul className="pl-4 list-disc text-slate-700 space-y-0.5">
-                    <li>寶慈總部：06-267 8859</li>
-                    <li>天勤（台中）：04-2322 0208</li>
-                    <li>晨暉（台北）：02-2514 7755</li>
-                  </ul>
-                  <div className="pt-2">
-                    <p><strong>24小時服務電話：</strong></p>
-                    <p className="text-sm sm:text-base font-bold text-gold-600">0800-600-603</p>
-                    <p className="text-[11px] text-slate-500">（與之前相同，沒有變更）</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 署名與核准字號 */}
-              <div className="text-center pt-2 space-y-1 pb-2">
-                <p className="text-xs font-semibold text-slate-500">特此公告</p>
-                <p className="font-serif-tc text-base sm:text-lg font-bold text-slate-900">寶慈生命事業股份有限公司</p>
-                <p className="text-xs text-slate-500">（原永慈事業股份有限公司）</p>
-                <p className="text-xs font-serif-tc italic text-slate-400 pt-1">敬啟</p>
-                <div className="pt-3 border-t border-slate-100">
-                  <p className="text-[10px] sm:text-[11px] text-slate-400">台南市政府民政局-核准變更名稱及負責人(受文者寶慈)</p>
-                </div>
-              </div>
-
-              {/* 手機版底部關閉按鈕 */}
-              <button
-                onClick={() => setIsOpen(false)}
-                className="w-full py-2.5 rounded-xl bg-gold-400 hover:bg-gold-500 text-ink-950 font-bold text-sm transition-colors shadow-md mt-2"
-              >
-                我已瞭解
-              </button>
-
             </div>
-          </div>
-        </div>
-      )}
-    </>
+
+            {/* 底部按鈕 */}
+            <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span className="text-xs text-slate-400">
+                核准代銷：晨暉資產股份有限公司
+              </span>
+              <Link 
+                href={item.href || '/news'}
+                className="inline-flex items-center gap-1 text-gold-600 font-bold text-sm group-hover:translate-x-1 transition-transform"
+              >
+                閱讀完整內容 <ChevronRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
   );
 }
