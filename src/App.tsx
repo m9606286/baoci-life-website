@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 
 // 載入頁面 (Pages)
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import PreneedPage from './pages/PreneedPage';
 import ServicesPage from './pages/ServicesPage';
 import TrustPage from './pages/TrustPage';
@@ -39,6 +40,7 @@ export default function App() {
 
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<AboutPage />} />
             <Route path="/preneed" element={<PreneedPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/trust" element={<TrustPage />} />
