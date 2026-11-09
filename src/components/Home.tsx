@@ -5,6 +5,7 @@ import { useReveal } from '@/hooks/useReveal';
 import CoreValues from '@/components/CoreValues';
 import Announcement from '@/components/Announcement';
 import heroImage from '/hero.png';
+import serve1Image from '/Serve1.png';
 
 export default function Home() {
   const revealResult = useReveal<HTMLDivElement>();
@@ -102,16 +103,20 @@ export default function Home() {
 
           <div className="bg-gradient-to-br from-white via-ivory-50 to-gold-100/30 rounded-3xl p-8 md:p-12 border border-gold-400/40 shadow-xl flex flex-col md:flex-row items-center gap-10">
             <div className="w-full md:w-1/2 space-y-6">
-              <span className="px-4 py-1.5 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-xs font-bold tracking-wider uppercase">
+              {/* 移到會變淺深金色背景與白字 */}
+              <span className="inline-block px-4 py-1.5 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-xs font-bold tracking-wider uppercase transition-all duration-300 hover:bg-gold-500 hover:text-white hover:border-gold-500 cursor-pointer">
                 合規經營．誠信至上
               </span>
-              <h3 className="font-serif-tc text-2xl md:text-3xl font-bold text-ink-900 leading-snug">
+              
+              {/* 移到會變淺深金色文字 */}
+              <h3 className="font-serif-tc text-2xl md:text-3xl font-bold text-ink-900 leading-snug cursor-pointer transition-colors duration-300 hover:text-gold-600">
                 專業與合規保障<br />給家人最堅實的安心依託
               </h3>
-              {/* 內文字型已套用為「為持續深化服務品質」同款明體與大小 */}
+
               <p className="font-serif-tc text-slate-700 text-base md:text-lg leading-relaxed">
                 寶慈生命事業為政府合法立案之殯葬禮儀服務業者，並正式納入寶碩財務科技集團旗下經營。我們秉持人本關懷理念，結合上市集團嚴謹的財務與法人治理機制，提供透明收費與合規保障，守護每個家庭重要時刻的承諾。
               </p>
+
               <div className="pt-2">
                 <Link to="/about" className="inline-flex items-center gap-2 text-ink-900 font-bold hover:text-gold-600 transition-colors">
                   了解更多關於寶慈經營理念與故事 <ChevronRight className="w-5 h-5 text-gold-500" />
@@ -119,7 +124,7 @@ export default function Home() {
               </div>
             </div>
             
-            {/* 卡片區域：移到會變淺深金色背景並反白文字 */}
+            {/* 卡片區域 */}
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* 政府立案核准卡片 */}
               <div className="group bg-white hover:bg-gold-500 p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300">
@@ -128,13 +133,14 @@ export default function Home() {
                   <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">政府立案核准</h4>
                   <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">民政局核准銷售文號</p>
                 </div>
+                {/* 改為核准函下載，使用下載圖示 */}
                 <a 
                   href="/documents/台南市民政局生前契約銷售及代銷商最新核准函.pdf" 
                   download 
                   className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-gold-700 group-hover:text-gold-900 bg-gold-50 group-hover:bg-white py-2 px-3 rounded-xl transition-colors mt-2"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  下載核准函 PDF
+                  核准函下載
                 </a>
               </div>
 
@@ -184,20 +190,29 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
+            {/* 禮儀服務卡片：去除 RITUAL、標題置中移到變淺深金色，下方加入 Serve1.png */}
+            <Link 
+              to="/services"
+              className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between text-center cursor-pointer"
+            >
               <div>
-                <span className="px-3 py-1 rounded-full bg-slate-700 text-white text-xs font-bold mb-4 inline-block">
-                  RITUAL
-                </span>
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 mb-3">禮儀服務</h3>
-                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-                  秉持專業、尊嚴與人本關懷，提供全方位的精緻奠禮流程規劃與溫馨陪伴服務。
-                </p>
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300 mb-6">
+                  禮儀服務
+                </h3>
+                
+                <div className="w-full h-56 rounded-2xl overflow-hidden mb-6 flex items-center justify-center bg-ivory-50">
+                  <img 
+                    src={serve1Image} 
+                    alt="禮儀服務" 
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
               </div>
-              <Link to="/services" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
+
+              <span className="w-full py-3 bg-ivory-100 group-hover:bg-gold-500 group-hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center block">
                 了解更多
-              </Link>
-            </div>
+              </span>
+            </Link>
 
             <div className="bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
