@@ -195,22 +195,22 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 禮儀服務：圖片再縮小 50% 至 h-16 */}
+            {/* 禮儀服務：圖片放標題上方，並放大10%至 h-[70px] */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
-                {/* 1. 禮儀服務標題 */}
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300 text-center mb-2">
-                  禮儀服務
-                </h3>
-
-                {/* 2. 精致小圖 (高改為 h-16，寬高更加精巧) */}
-                <div className="w-full h-16 rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
+                {/* 1. 精致圖示（放在禮儀服務標題上方，高度改為 70px） */}
+                <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
                   <img 
                     src={serve1Image} 
                     alt="禮儀服務" 
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
+
+                {/* 2. 禮儀服務標題 */}
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300 text-center mb-3">
+                  禮儀服務
+                </h3>
 
                 {/* 3. 內文說明 */}
                 <p className="text-slate-600 text-sm mb-6 leading-relaxed">
