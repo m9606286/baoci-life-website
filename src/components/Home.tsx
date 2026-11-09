@@ -88,14 +88,14 @@ export default function Home() {
           <Announcement />
         </section>
 
-        {/* 品牌簡介區塊（已替換名稱與內文） */}
+        {/* 公司簡介區塊（COMPANY PROFILE） */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-              ABOUT BAOCI-LIFE
+              COMPANY PROFILE
             </p>
             <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
-              品牌簡介
+              公司簡介
             </h2>
             <div className="gold-divider w-32 mx-auto mt-4" />
           </div>
@@ -108,7 +108,8 @@ export default function Home() {
               <h3 className="font-serif-tc text-2xl md:text-3xl font-bold text-ink-900 leading-snug">
                 專業與合規保障<br />給家人最堅實的安心依託
               </h3>
-              <p className="text-slate-700 text-base leading-relaxed font-['Microsoft_JhengHei']">
+              {/* 內文字型已套用為「為持續深化服務品質」同款明體與大小 */}
+              <p className="font-serif-tc text-slate-700 text-base md:text-lg leading-relaxed">
                 寶慈生命事業為政府合法立案之殯葬禮儀服務業者，並正式納入寶碩財務科技集團旗下經營。我們秉持人本關懷理念，結合上市集團嚴謹的財務與法人治理機制，提供透明收費與合規保障，守護每個家庭重要時刻的承諾。
               </p>
               <div className="pt-2">
@@ -118,32 +119,35 @@ export default function Home() {
               </div>
             </div>
             
+            {/* 卡片區域：移到會變淺深金色背景並反白文字 */}
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between">
+              {/* 政府立案核准卡片 */}
+              <div className="group bg-white hover:bg-gold-500 p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300">
                 <div>
-                  <Award className="w-10 h-10 text-gold-600 mx-auto mb-3" />
-                  <h4 className="font-bold text-ink-900 mb-1">政府立案核准</h4>
-                  <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
+                  <Award className="w-10 h-10 text-gold-600 group-hover:text-white mx-auto mb-3 transition-colors duration-300" />
+                  <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">政府立案核准</h4>
+                  <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">民政局核准銷售文號</p>
                 </div>
                 <a 
                   href="/documents/台南市民政局生前契約銷售及代銷商最新核准函.pdf" 
                   download 
-                  className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-gold-700 hover:text-gold-900 bg-gold-50 hover:bg-gold-100 py-2 px-3 rounded-xl transition-colors mt-2"
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-gold-700 group-hover:text-gold-900 bg-gold-50 group-hover:bg-white py-2 px-3 rounded-xl transition-colors mt-2"
                 >
                   <Download className="w-3.5 h-3.5" />
                   下載核准函 PDF
                 </a>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between">
+              {/* 75% 依法信託卡片 */}
+              <div className="group bg-white hover:bg-gold-500 p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300">
                 <div>
-                  <Lock className="w-10 h-10 text-gold-600 mx-auto mb-3" />
-                  <h4 className="font-bold text-ink-900 mb-1">75% 依法信託</h4>
-                  <p className="text-xs text-slate-500 mb-4">京城銀行履約專戶</p>
+                  <Lock className="w-10 h-10 text-gold-600 group-hover:text-white mx-auto mb-3 transition-colors duration-300" />
+                  <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">75% 依法信託</h4>
+                  <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">京城銀行履約專戶</p>
                 </div>
                 <Link 
                   to="/trust" 
-                  className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-gold-700 hover:text-gold-900 bg-gold-50 hover:bg-gold-100 py-2 px-3 rounded-xl transition-colors mt-2"
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-gold-700 group-hover:text-gold-900 bg-gold-50 group-hover:bg-white py-2 px-3 rounded-xl transition-colors mt-2"
                 >
                   了解更多 <ChevronRight className="w-3.5 h-3.5" />
                 </Link>
