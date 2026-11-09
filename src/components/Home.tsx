@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <div className="bg-ivory-100 min-h-screen text-ink-900 font-sans">
       
-      {/* 1. Hero 品牌主視覺區 (採用原本寫好的精緻 Hero 組件結構) */}
-      <section id="top" className="group/hero relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden">
+      {/* 1. Hero 品牌主視覺區：移除頂部外距，完美貼齊全站頂部金色質感線 */}
+      <section id="top" className="group/hero relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden -mt-24 pt-24">
         {/* Background image with bright overlay and hover zoom */}
         <div className="absolute inset-0 overflow-hidden">
           <img
@@ -30,13 +30,13 @@ export default function Home() {
         {/* Content */}
         <div className="relative h-full mx-auto max-w-8xl px-6 flex flex-col justify-center">
           <div className="max-w-3xl">
-            {/* 愛心圖示與 Apex BaoCi-Life 改為純白 */}
+            {/* 愛心圖示與 Apex BaoCi-Life */}
             <div className="flex items-center gap-3 mb-6 animate-fade-in" style={{ animationDelay: '0.2s', opacity: 0 }}>
               <Heart className="w-5 h-5 text-white drop-shadow" />
               <span className="text-white text-sm tracking-[0.3em] uppercase font-medium drop-shadow">Apex BaoCi-Life</span>
             </div>
 
-            {/* 讓家人安心改為純白 */}
+            {/* 主標題 */}
             <h1
               className="font-serif-tc text-4xl md:text-5xl lg:text-6xl text-white leading-[1.2] font-bold animate-fade-up drop-shadow-md"
               style={{ animationDelay: '0.4s', opacity: 0 }}
@@ -58,7 +58,6 @@ export default function Home() {
               className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up"
               style={{ animationDelay: '1s', opacity: 0 }}
             >
-              {/* 瞭解生前契約 */}
               <Link
                 to="/preneed"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
@@ -67,7 +66,6 @@ export default function Home() {
                 <ChevronDown className="w-4 h-4 ml-2 text-white group-hover:translate-y-0.5 transition-transform" />
               </Link>
 
-              {/* 聯絡我們 */}
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
@@ -89,7 +87,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory-100 to-transparent" />
       </section>
 
-      {/* 2. 下方各區塊內容 */}
+      {/* 2. 下方內容區塊 */}
       <div ref={ref} className="space-y-24 py-20">
 
         {/* 最新消息 */}
@@ -135,7 +133,7 @@ export default function Home() {
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-              CONTRACT PRODUCTS
+              PRENEED CONTRACT
             </p>
             <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
               生前契約商品簡介
