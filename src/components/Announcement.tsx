@@ -15,7 +15,7 @@ const announcements: NewsItem[] = [
     id: 'news-2026-08',
     dateTag: '2026/8/13 資本增資',
     title: '寶慈生命事業資本額順利完成增資至新臺幣 6,000 萬元',
-    summary: '為持續深化服務品質、擴大營運規模並強化預付款履約保障能力，寶慈生命事業已正式完成資本額變更登記，實收資本額增資至新臺幣 6,000 萬元，展現企業穩健營運實力與長期承諾。',
+    summary: '寶慈生命事業深耕殯葬禮儀服務逾二十年，為合法經營之殯葬禮儀服務業者，所發行之生前契約經臺南市政府民政局核准。為持續深化服務品質、擴大營運規模並強化預付款履約保障能力，實收資本額順利增資至新臺幣 6,000 萬元，展現企業穩健營運實力與長期承諾。',
     to: '/news/news-2026-07',
   },
   {
@@ -30,7 +30,6 @@ const announcements: NewsItem[] = [
 export default function Announcement() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // 左右滾動邏輯
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
       const scrollAmount = scrollContainerRef.current.clientWidth * 0.8;
@@ -51,14 +50,13 @@ export default function Announcement() {
         <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
           最新消息
         </h2>
-        {/* 同「什麼是生前契約」的質感線 */}
         <div className="gold-divider w-32 mx-auto mt-4" />
       </div>
 
-      {/* 左右切換按鈕（點擊平滑滾動） */}
+      {/* 左右切換按鈕 */}
       <button
         onClick={() => scroll('left')}
-        className="absolute left-[-20px] top-[60%] -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-ink-900/80 text-gold-400 hover:bg-gold-500 hover:text-ink-900 border border-gold-400/40 backdrop-blur-md flex items-center justify-center transition-all opacity-0 group-hover/announcement:opacity-100 shadow-xl"
+        className="absolute left-[-20px] top-[60%] -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-slate-800 text-gold-400 hover:bg-gold-500 hover:text-ink-900 border border-gold-400/40 backdrop-blur-md flex items-center justify-center transition-all opacity-0 group-hover/announcement:opacity-100 shadow-xl"
         aria-label="上一則消息"
       >
         <ChevronLeft className="w-6 h-6" />
@@ -66,7 +64,7 @@ export default function Announcement() {
 
       <button
         onClick={() => scroll('right')}
-        className="absolute right-[-20px] top-[60%] -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-ink-900/80 text-gold-400 hover:bg-gold-500 hover:text-ink-900 border border-gold-400/40 backdrop-blur-md flex items-center justify-center transition-all opacity-0 group-hover/announcement:opacity-100 shadow-xl"
+        className="absolute right-[-20px] top-[60%] -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-slate-800 text-gold-400 hover:bg-gold-500 hover:text-ink-900 border border-gold-400/40 backdrop-blur-md flex items-center justify-center transition-all opacity-0 group-hover/announcement:opacity-100 shadow-xl"
         aria-label="下一則消息"
       >
         <ChevronRight className="w-6 h-6" />
@@ -84,26 +82,26 @@ export default function Announcement() {
             className="snap-start shrink-0 w-[85vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
           >
             <div>
-              {/* 日期標籤：淺深金背景 */}
-              <div className="mb-4">
-                <span className="inline-flex items-center gap-1.5 font-serif-tc px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300 bg-slate-100 text-slate-800 border border-slate-200 group-hover:bg-gold-500 group-hover:text-ink-900 group-hover:border-gold-400 shadow-sm">
-                  <Calendar className="w-3.5 h-3.5 text-gold-600 group-hover:text-ink-900" />
+              {/* 日期標籤：大小同標題(text-xl md:text-2xl)，移到時背景與文字反白 */}
+              <div className="mb-6">
+                <span className="inline-flex items-center gap-2 font-serif-tc px-5 py-2 rounded-2xl text-xl md:text-2xl font-bold transition-all duration-300 bg-slate-100 text-ink-900 border border-slate-200 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600 shadow-sm">
+                  <Calendar className="w-5 h-5 text-gold-600 group-hover:text-white transition-colors" />
                   {item.dateTag}
                 </span>
               </div>
 
-              {/* 標題：對齊如圖的字型與大小 */}
+              {/* 標題 */}
               <h3 className="font-serif-tc text-xl md:text-2xl font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300 leading-snug mb-4">
                 {item.title}
               </h3>
 
-              {/* 內文：完全對齊「我們的故事」字型與大小 (font-serif-tc text-slate-700 text-base md:text-lg leading-relaxed) */}
+              {/* 內文 */}
               <p className="font-serif-tc text-slate-700 text-base md:text-lg leading-relaxed line-clamp-4">
                 {item.summary}
               </p>
             </div>
 
-            {/* 移到卡片上時，出現在方格「下面」稍微變細的金色線條 (h-1) */}
+            {/* 移到卡片上時出現的細金色線條 */}
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
           </article>
         ))}
