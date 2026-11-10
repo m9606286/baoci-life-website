@@ -83,12 +83,12 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory-100 to-transparent" />
       </section>
 
-      {/* 2. 下方內容區塊（縮小全區塊間距至 space-y-10 py-10） */}
-      <div ref={ref} className="space-y-10 py-10">
+      {/* 2. 下方內容區塊 */}
+      <div ref={ref} className="py-8">
 
         {/* 公司簡介區塊（COMPANY PROFILE） */}
-        <section className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
+        <section className="max-w-7xl mx-auto px-6 mb-12">
+          <div className="text-center mb-8">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               COMPANY PROFILE
             </p>
@@ -160,8 +160,8 @@ export default function Home() {
         </section>
 
         {/* 我們的服務 */}
-        <section className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
+        <section className="max-w-7xl mx-auto px-6 mb-6">
+          <div className="text-center mb-8">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               OUR SERVICES
             </p>
@@ -249,18 +249,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 核心價值區塊 */}
-        <section className="max-w-7xl mx-auto px-6">
+        {/* 核心價值區塊：透過 -mt-16 強制大幅向上拉近與「我們的服務」距離 */}
+        <section className="max-w-7xl mx-auto px-6 -mt-16">
           <CoreValues />
         </section>
 
-        {/* 最新消息 */}
-        <section className="max-w-7xl mx-auto px-6">
+        {/* 最新消息：透過 -mt-16 強制大幅向上拉近與「核心價值」距離 */}
+        <section className="max-w-7xl mx-auto px-6 -mt-16">
           <Announcement />
         </section>
 
-        {/* 聯絡寶慈 */}
-        <section className="max-w-4xl mx-auto px-6 text-center py-4">
+        {/* 聯絡寶慈：透過 mt-6 緊湊銜接最新消息 */}
+        <section className="max-w-4xl mx-auto px-6 text-center mt-6 py-4">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTACT US
           </p>
