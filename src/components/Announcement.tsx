@@ -32,6 +32,7 @@ export default function Announcement() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
+      // 取得容器寬度，精準捲動一整張卡片的距離（含 gap）
       const containerWidth = scrollContainerRef.current.clientWidth;
       scrollContainerRef.current.scrollBy({
         left: direction === 'left' ? -containerWidth : containerWidth,
@@ -53,7 +54,7 @@ export default function Announcement() {
         <div className="gold-divider w-32 mx-auto mt-4" />
       </div>
 
-      {/* 左右切換箭頭 (已無黑圈圈) */}
+      {/* 左右切換按鈕：已移除黑圈圈背景，保留純箭頭與優雅 Hover 效果 */}
       <button
         onClick={() => scroll('left')}
         className="absolute left-[-10px] sm:left-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125"
@@ -67,10 +68,10 @@ export default function Announcement() {
         className="absolute right-[-10px] sm:right-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125"
         aria-label="下一則消息"
       >
-        <ChevronRight className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
+        <ChevronRight className="w-6 h-6 md:w-10 md:h-10 drop-shadow-md" />
       </button>
 
-      {/* 橫向滑動卡片容器 (點擊或滑動精準對齊下一張整張卡片) */}
+      {/* 橫向滑動卡片容器：支援手機單張自動對齊 */}
       <div
         ref={scrollContainerRef}
         className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-1"
@@ -79,18 +80,18 @@ export default function Announcement() {
         {announcements.map((item) => (
           <article
             key={item.id}
-            className="snap-center shrink-0 w-[88vw] sm:w-[450px] md:w-[500px] group relative bg-white hover:bg-gradient-to-br hover:from-amber-50/80 hover:via-yellow-50/40 hover:to-amber-100/60 rounded-3xl p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
+            className="snap-center shrink-0 w-[88vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
           >
             <div>
-              {/* 日期標籤：採用與右圖一致的淺深金色漸層背景，字體白色 */}
+              {/* 日期標籤：預設為淡質感漸層背景，移到（hover）時變淺深金色漸層 */}
               <div className="mb-4">
-                <span className="inline-flex items-center gap-1.5 font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold shadow-sm bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 text-white border border-amber-400/50">
-                  <Calendar className="w-3.5 h-3.5 text-white/90" />
+                <span className="inline-flex items-center gap-1.5 font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-500 shadow-sm bg-gradient-to-r from-amber-50/90 via-stone-50 to-yellow-50/80 text-amber-900 border border-amber-200/60 group-hover:from-amber-600 group-hover:via-yellow-600 group-hover:to-amber-700 group-hover:text-white group-hover:border-gold-400/50 group-hover:shadow-md">
+                  <Calendar className="w-3.5 h-3.5 text-amber-700 group-hover:text-white/90 transition-colors duration-300" />
                   {item.dateTag}
                 </span>
               </div>
 
-              {/* 卡片標題：未移到時為黑色 (text-ink-900)，移到時才變為淺深金色 */}
+              {/* 卡片標題：預設黑色（text-ink-900），移到（hover）時轉為淺深金色（text-amber-700） */}
               <h3 className="font-serif-tc text-lg md:text-xl font-bold text-ink-900 group-hover:text-amber-700 transition-colors duration-300 leading-snug mb-4">
                 {item.title}
               </h3>
