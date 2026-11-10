@@ -250,12 +250,12 @@ export default function Home() {
         </section>
 
         {/* 我們的核心價值 */}
-        <section className="max-w-7xl mx-auto px-6">
+        <section className="max-w-7xl mx-auto px-6 -mt-10">
           <CoreValues />
         </section>
 
         {/* 最新消息 */}
-        <section className="max-w-7xl mx-auto px-6">
+        <section className="max-w-7xl mx-auto px-6 -mt-10">
           <Announcement />
         </section>
 
