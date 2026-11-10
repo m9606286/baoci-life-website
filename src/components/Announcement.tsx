@@ -82,15 +82,15 @@ export default function Announcement() {
             className="snap-center shrink-0 w-[88vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
           >
             <div>
-              {/* 日期標籤：滑鼠移入卡片時(group-hover)，背景變為統一的 #C69233 */}
+              {/* 日期標籤：加入 group-hover:bg-none 以順利顯示 #C69233 純色背景 */}
               <div className="mb-4">
-                <span className="inline-flex items-center gap-1.5 font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-500 shadow-sm bg-gradient-to-r from-amber-50/90 via-stone-50 to-yellow-50/80 text-amber-900 border border-amber-200/60 group-hover:bg-[#C69233] group-hover:text-white group-hover:border-[#C69233] group-hover:shadow-md">
+                <span className="inline-flex items-center gap-1.5 font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-500 shadow-sm bg-gradient-to-r from-amber-50/90 via-stone-50 to-yellow-50/80 text-amber-900 border border-amber-200/60 group-hover:bg-none group-hover:bg-[#C69233] group-hover:text-white group-hover:border-[#C69233] group-hover:shadow-md">
                   <Calendar className="w-3.5 h-3.5 text-amber-700 group-hover:text-white transition-colors duration-300" />
                   {item.dateTag}
                 </span>
               </div>
 
-              {/* 卡片標題：滑鼠移入卡片時(group-hover)同樣轉為 #C69233，與日期標籤背景呼應 */}
+              {/* 卡片標題 */}
               <h3 className="font-serif-tc text-lg md:text-xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 leading-snug mb-4">
                 {item.title}
               </h3>
