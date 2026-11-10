@@ -82,9 +82,9 @@ export default function Announcement() {
             className="snap-center shrink-0 w-[88vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
           >
             <div>
-              {/* 日期標籤：已去除小圖示，滑鼠移入時背景轉為 #C69233 */}
+              {/* 日期標籤：未移入時字體改為黑色 (text-ink-900)，移入時轉為白字 + 深金背景 */}
               <div className="mb-4">
-                <span className="inline-flex items-center font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-500 shadow-sm bg-gradient-to-r from-amber-50/90 via-stone-50 to-yellow-50/80 text-amber-900 border border-amber-200/60 group-hover:bg-none group-hover:bg-[#C69233] group-hover:text-white group-hover:border-[#C69233] group-hover:shadow-md">
+                <span className="inline-flex items-center font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-500 shadow-sm bg-gradient-to-r from-amber-50/90 via-stone-50 to-yellow-50/80 text-ink-900 border border-amber-200/60 group-hover:bg-none group-hover:bg-[#C69233] group-hover:text-white group-hover:border-[#C69233] group-hover:shadow-md">
                   {item.dateTag}
                 </span>
               </div>
