@@ -32,7 +32,6 @@ export default function Announcement() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
-      // 取得容器寬度，精準捲動一整張卡片的距離（含 gap）
       const containerWidth = scrollContainerRef.current.clientWidth;
       scrollContainerRef.current.scrollBy({
         left: direction === 'left' ? -containerWidth : containerWidth,
@@ -54,7 +53,7 @@ export default function Announcement() {
         <div className="gold-divider w-32 mx-auto mt-4" />
       </div>
 
-      {/* 左右切換按鈕：已移除黑圈圈背景，保留純箭頭與優雅 Hover 效果 */}
+      {/* 左右切換按鈕：無黑圈圈，純箭頭 */}
       <button
         onClick={() => scroll('left')}
         className="absolute left-[-10px] sm:left-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125"
@@ -68,10 +67,10 @@ export default function Announcement() {
         className="absolute right-[-10px] sm:right-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125"
         aria-label="下一則消息"
       >
-        <ChevronRight className="w-6 h-6 md:w-10 md:h-10 drop-shadow-md" />
+        <ChevronRight className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
       </button>
 
-      {/* 橫向滑動卡片容器：支援手機單張自動對齊 */}
+      {/* 橫向滑動卡片容器：精準單張對齊 */}
       <div
         ref={scrollContainerRef}
         className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-1"
@@ -83,7 +82,7 @@ export default function Announcement() {
             className="snap-center shrink-0 w-[88vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
           >
             <div>
-              {/* 日期標籤：滑鼠移入卡片時(group-hover)，背景變為圖片中的質感金色 (#C69233)，文字變白 */}
+              {/* 日期標籤：滑鼠移入卡片時(group-hover)，背景變為質感金色 (#C69233)，文字變白 */}
               <div className="mb-4">
                 <span className="inline-flex items-center gap-1.5 font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-500 shadow-sm bg-gradient-to-r from-amber-50/90 via-stone-50 to-yellow-50/80 text-amber-900 border border-amber-200/60 group-hover:bg-[#C69233] group-hover:text-white group-hover:border-[#C69233] group-hover:shadow-md">
                   <Calendar className="w-3.5 h-3.5 text-amber-700 group-hover:text-white/90 transition-colors duration-300" />
@@ -91,7 +90,7 @@ export default function Announcement() {
                 </span>
               </div>
 
-              {/* 卡片標題：預設黑色（text-ink-900），滑鼠移入卡片時(group-hover)轉為圖片中的質感金色（text-[#C69233]） */}
+              {/* 卡片標題：預設黑色（text-ink-900），滑鼠移入卡片時(group-hover)轉為質感金色（text-[#C69233]） */}
               <h3 className="font-serif-tc text-lg md:text-xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 leading-snug mb-4">
                 {item.title}
               </h3>
