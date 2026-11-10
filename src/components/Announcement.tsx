@@ -86,13 +86,13 @@ export default function Announcement() {
               {/* 日期標籤：預設為淡質感漸層背景，移到（hover）時變淺深金色漸層 */}
               <div className="mb-4">
                 <span className="inline-flex items-center gap-1.5 font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-500 shadow-sm bg-gradient-to-r from-amber-50/90 via-stone-50 to-yellow-50/80 text-amber-900 border border-amber-200/60 group-hover:from-amber-600 group-hover:via-yellow-600 group-hover:to-amber-700 group-hover:text-white group-hover:border-gold-400/50 group-hover:shadow-md">
-                  <Calendar className="w-3.5 h-3.5 text-amber-700 group-hover:text-white/90 transition-colors duration-300" />
+                  <Calendar className="w-3.5 h-3.5  group-hover:text-white/90 transition-colors duration-300" />
                   {item.dateTag}
                 </span>
               </div>
 
-              {/* 卡片標題：預設黑色（text-ink-900），移到（hover）時轉為淺深金色（text-amber-700） */}
-              <h3 className="font-serif-tc text-lg md:text-xl font-bold text-ink-900 group-hover:text-amber-700 transition-colors duration-300 leading-snug mb-4">
+              {/* 卡片標題：預設黑色（text-ink-900），移到（hover）時轉為淺深金色（text-gold-700） */}
+              <h3 className="font-serif-tc text-lg md:text-xl font-bold text-ink-900 group-hover:text-gold-700 transition-colors duration-300 leading-snug mb-4">
                 {item.title}
               </h3>
 
