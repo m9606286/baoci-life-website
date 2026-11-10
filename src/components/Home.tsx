@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, ChevronDown, Heart, ChevronRight, Award, Lock, PhoneCall, Download } from 'lucide-react';
+import { Phone, ChevronDown, Heart, ChevronRight, Award, Lock, Download } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import CoreValues from '@/components/CoreValues';
 import Announcement from '@/components/Announcement';
@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       {/* 2. 下方內容區塊 */}
-      <div ref={ref} className="space-y-24 py-20">
+      <div ref={ref} className="space-y-16 py-16">
 
         {/* 公司簡介區塊（COMPANY PROFILE） */}
         <section className="max-w-7xl mx-auto px-6">
@@ -101,7 +101,6 @@ export default function Home() {
           <div className="bg-gradient-to-br from-white via-ivory-50 to-gold-100/30 rounded-3xl p-8 md:p-12 border border-gold-400/40 shadow-xl flex flex-col md:flex-row items-center gap-10">
             <div className="w-full md:w-1/2 space-y-6">
               
-              {/* 標籤與主標題組合為同一個 Hover 群組 */}
               <div className="group/profile-header cursor-pointer space-y-4">
                 <span className="inline-block px-5 py-2 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-base font-bold tracking-wider uppercase transition-all duration-300 group-hover/profile-header:bg-gold-500 group-hover/profile-header:text-white group-hover/profile-header:border-gold-500">
                   合規經營．誠信至上
@@ -123,10 +122,8 @@ export default function Home() {
               </div>
             </div>
             
-            {/* 卡片區域 */}
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* 政府立案核准卡片 */}
               <div className="group bg-white hover:bg-gold-500 p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300">
                 <div>
                   <Award className="w-10 h-10 text-gold-600 group-hover:text-white mx-auto mb-3 transition-colors duration-300" />
@@ -143,7 +140,6 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* 75% 依法信託卡片 */}
               <div className="group bg-white hover:bg-gold-500 p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300">
                 <div>
                   <Lock className="w-10 h-10 text-gold-600 group-hover:text-white mx-auto mb-3 transition-colors duration-300" />
@@ -176,8 +172,6 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* 生前契約規劃：使用 Serve1.png */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
                 <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
@@ -203,7 +197,6 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 禮儀服務：使用 Serve2.png */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
                 <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
@@ -229,7 +222,6 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 手續服務：使用 Serve3.png */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
                 <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
@@ -254,35 +246,37 @@ export default function Home() {
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
-
           </div>
         </section>
 
         {/* 核心價值區塊 */}
         <CoreValues />
 
-        {/* 最新消息：放置於核心價值之後 */}
-        <section className="max-w-7xl mx-auto px-6">
+        {/* 最新消息：緊鄰核心價值下方 */}
+        <section className="max-w-7xl mx-auto px-6 -mt-8">
           <Announcement />
         </section>
 
-        {/* 24小時諮詢專線橫幅 */}
-        <section className="max-w-7xl mx-auto px-6">
-          <div className="group relative bg-gradient-to-br from-white via-ivory-50 to-gold-100/40 rounded-3xl p-8 md:p-12 text-center border border-gold-400/40 shadow-xl overflow-hidden transition-all duration-500 hover:bg-gold-600">
-            <h3 className="font-serif-tc text-2xl md:text-3xl font-bold mb-3 text-ink-900 group-hover:text-white transition-colors duration-300">
-              需要即時禮儀諮詢或契約解答？
-            </h3>
-            <p className="font-sans text-slate-600 text-sm md:text-base font-medium mb-8 group-hover:text-white/90 transition-colors duration-300">
-              寶慈生命事業提供 24 小時專人服務，隨時為您解答疑問與提供協助。
-            </p>
-            <a 
-              href="tel:0800600603" 
-              className="inline-flex items-center gap-3 px-8 py-4 bg-ink-900 text-gold-400 group-hover:bg-white group-hover:text-gold-700 font-bold rounded-full text-xl shadow-lg transition-transform hover:scale-105"
-            >
-              <PhoneCall className="w-6 h-6 animate-pulse" />
-              24H 免費服務專線：0800-600-603
-            </a>
-          </div>
+        {/* 聯絡寶慈（包含 CONTACT US 標籤與質感線） */}
+        <section className="max-w-4xl mx-auto px-6 text-center py-10">
+          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+            CONTACT US
+          </p>
+          <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
+            聯絡寶慈
+          </h2>
+          <div className="gold-divider w-32 mx-auto mt-4 mb-8" />
+
+          <p className="font-sans text-slate-700 text-base md:text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
+            寶慈秉持尊重生命、關懷家人的初心，以真誠、溫暖與專業的服務，陪伴家人走過人生重要的告別時刻，讓逝者獲得尊嚴與安息，讓愛與思念得以延續，實踐「讓逝者安息，讓生者安心」的承諾。
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-9 py-4 bg-gold-600 hover:bg-gold-700 text-white font-bold rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+          >
+            <span>聯絡我們</span>
+            <ChevronRight className="w-5 h-5" />
+          </Link>
         </section>
 
       </div>
