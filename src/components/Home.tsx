@@ -83,12 +83,12 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory-100 to-transparent" />
       </section>
 
-      {/* 2. 下方內容區塊 */}
-      <div ref={ref} className="space-y-16 py-16">
+      {/* 2. 下方內容區塊（縮小全區塊間距至 space-y-10 py-10） */}
+      <div ref={ref} className="space-y-10 py-10">
 
         {/* 公司簡介區塊（COMPANY PROFILE） */}
         <section className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               COMPANY PROFILE
             </p>
@@ -112,7 +112,7 @@ export default function Home() {
               </div>
 
               <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed">
-                寶慈生命事業為政府合法立案之殯葬禮儀服務業者，並正式納入寶碩財務科技集團旗下經營。我們秉持人本關懷理念，結合上市集團嚴謹的財務與法人治理機制，提供透明收費與合規保障，守護每個家庭重要時刻的承諾。
+                寶慈生命事業為政府合法立案之殯葬禮儀服務業者，並正式納入寶碩集團旗下經營。我們秉持人本關懷理念，結合上櫃集團嚴謹的財務與法人治理機制，提供透明收費與合規保障，守護每個家庭重要時刻的承諾。
               </p>
 
               <div className="pt-2">
@@ -161,7 +161,7 @@ export default function Home() {
 
         {/* 我們的服務 */}
         <section className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               OUR SERVICES
             </p>
@@ -187,7 +187,7 @@ export default function Home() {
                 </h3>
 
                 <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed mb-6">
-                  提供寶富、寶暉等專業生前契約方案，讓您提前為未來妥善安排，減輕家屬負擔，讓愛與安心延續。
+                  提供完善的生前契約規劃服務，讓您提前安排人生重要事宜，減輕家人未來的負擔，將愛與關懷化為長久的安心。
                 </p>
               </div>
               
@@ -212,7 +212,7 @@ export default function Home() {
                 </h3>
 
                 <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed mb-6">
-                  秉持專業、尊嚴與人本關懷，提供全方位的精緻奠禮流程規劃與溫馨陪伴服務。
+                  秉持專業、尊嚴與人本關懷，提供全方位的精緻禮儀流程規劃與溫馨陪伴服務。
                 </p>
               </div>
 
@@ -237,7 +237,7 @@ export default function Home() {
                 </h3>
 
                 <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed mb-6">
-                  包含新購、轉讓、繼承、履約、解約等各項申辦手續指引與專屬表單文件下載。
+                  提供完善的申辦流程指引，讓各項服務辦理更加清楚、便利。
                 </p>
               </div>
 
@@ -250,25 +250,27 @@ export default function Home() {
         </section>
 
         {/* 核心價值區塊 */}
-        <CoreValues />
+        <section className="max-w-7xl mx-auto px-6">
+          <CoreValues />
+        </section>
 
-        {/* 最新消息：緊鄰核心價值下方 */}
-        <section className="max-w-7xl mx-auto px-6 -mt-8">
+        {/* 最新消息 */}
+        <section className="max-w-7xl mx-auto px-6">
           <Announcement />
         </section>
 
-        {/* 聯絡寶慈（包含 CONTACT US 標籤與質感線） */}
-        <section className="max-w-4xl mx-auto px-6 text-center py-10">
+        {/* 聯絡寶慈 */}
+        <section className="max-w-4xl mx-auto px-6 text-center py-4">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTACT US
           </p>
           <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
             聯絡寶慈
           </h2>
-          <div className="gold-divider w-32 mx-auto mt-4 mb-8" />
+          <div className="gold-divider w-32 mx-auto mt-4 mb-6" />
 
-          <p className="font-sans text-slate-700 text-base md:text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
-            寶慈秉持尊重生命、關懷家人的初心，以真誠、溫暖與專業的服務，陪伴家人走過人生重要的告別時刻，讓逝者獲得尊嚴與安息，讓愛與思念得以延續，實踐「讓逝者安息，讓生者安心」的承諾。
+          <p className="font-sans text-slate-700 text-base md:text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
+            寶慈秉持尊重生命、關懷家人的初心，以真誠、溫暖與專業的服務，陪伴家人走過人生重要的告別時刻，讓逝者獲得尊嚴與安息，讓愛與思念得以延續，實踐讓逝者安息，讓生者安心的承諾。
           </p>
           <Link
             to="/contact"
