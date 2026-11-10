@@ -30,7 +30,7 @@ export default function CoreValues() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   return (
-    <section id="values" className="py-4 lg:py-32 bg-ivory-100">
+    <section id="values" className="py-4 bg-ivory-100">
       <div ref={ref} className="mx-auto max-w-8xl px-6">
         {/* Header */}
         <div className="text-center mb-16">
