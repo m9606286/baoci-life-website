@@ -1,47 +1,49 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Newspaper } from 'lucide-react';
+import React, { useRef } from 'react';
+import { ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 
-interface NewsItem {
-  id: number;
-  date: string;
-  category: string;
+export interface NewsItem {
+  id: string | number;
+  dateTag: string;
   title: string;
-  content: string;
+  summary: string;
+  image?: string;
+  to?: string;
 }
 
-const newsData: NewsItem[] = [
+const announcements: NewsItem[] = [
   {
-    id: 1,
-    date: '2026/8/13',
-    category: '公司公告',
-    title: '資本增資',
-    content: '寶慈生命事業資本額順利完成增資至新臺幣 6,000 萬元，持續深化服務品質與履約保障能力。',
+    id: 'news-2026-08',
+    dateTag: '2026/8/13 資本增資',
+    title: '寶慈生命事業資本額順利完成增資至新臺幣 6,000 萬元',
+    summary: '為持續深化服務品質、擴大營運規模並強化預付款履約保障能力，實收資本額由原新臺幣 3,000 萬元順利增資至新臺幣 6,000 萬元，展現企業穩健營運實力與長期承諾。',
+    to: '/news/news-2026-07',
   },
   {
-    id: 2,
-    date: '2026/05/20',
-    category: '品牌動態',
-    title: '集團資源深化合作',
-    content: '正式納入寶碩財務科技集團旗下，結合上市集團嚴謹之財務與法人治理機制，全面提升服務品質與信託保障。',
+    id: 'news-2026-04',
+    dateTag: '2026/4/1 集團動態',
+    title: '寶慈生命事業正式加入寶碩集團(股票代號5210)，攜手打造尊榮生命服務',
+    summary: '寶慈生命事業正式成為寶碩集團子公司。透過導入上市集團嚴謹的法人治理規範與龐大資源支持，進一步提升客戶權益保障，並以兼具人文溫度與財務誠信的防護網提供安心生命服務。',
+    to: '/news/news-2026-04',
   },
 ];
 
 export default function Announcement() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const nextNews = () => {
-    setCurrentIndex((prev) => (prev + 1) % newsData.length);
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = scrollContainerRef.current.clientWidth * 0.8;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
   };
-
-  const prevNews = () => {
-    setCurrentIndex((prev) => (prev - 1 + newsData.length) % newsData.length);
-  };
-
-  const current = newsData[currentIndex];
 
   return (
-    <div className="w-full">
-      <div className="text-center mb-10">
+    <div className="w-full relative group/announcement">
+      {/* 標題區塊：置中 + 質感線 */}
+      <div className="text-center mb-12">
         <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
           LATEST NEWS
         </p>
@@ -51,66 +53,58 @@ export default function Announcement() {
         <div className="gold-divider w-32 mx-auto mt-4" />
       </div>
 
-      <div className="max-w-4xl mx-auto">
-        {/* 卡片移到時切換為淺深金色 bg-gold-500/10 或 hover:bg-gold-100/60 */}
-        <div className="group bg-gold-400/15 border border-gold-400/30 hover:bg-gold-500/10 hover:border-gold-500 rounded-3xl p-8 md:p-10 shadow-md relative transition-all duration-300">
-          
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gold-400/30">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-700">
-                <Newspaper className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="inline-block px-3 py-1 rounded-full bg-gold-400/20 border border-gold-400/40 text-gold-800 text-xs font-bold uppercase tracking-wider mb-1">
-                  {current.category}
+      {/* 左右切換按鈕 */}
+      <button
+        onClick={() => scroll('left')}
+        className="absolute left-[-20px] top-[60%] -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-slate-800 text-gold-400 hover:bg-gold-500 hover:text-ink-900 border border-gold-400/40 backdrop-blur-md flex items-center justify-center transition-all opacity-0 group-hover/announcement:opacity-100 shadow-xl"
+        aria-label="上一則消息"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+
+      <button
+        onClick={() => scroll('right')}
+        className="absolute right-[-20px] top-[60%] -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-slate-800 text-gold-400 hover:bg-gold-500 hover:text-ink-900 border border-gold-400/40 backdrop-blur-md flex items-center justify-center transition-all opacity-0 group-hover/announcement:opacity-100 shadow-xl"
+        aria-label="下一則消息"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+
+      {/* 橫向滑動卡片容器 */}
+      <div
+        ref={scrollContainerRef}
+        className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-1"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {announcements.map((item) => (
+          <article
+            key={item.id}
+            className="snap-start shrink-0 w-[85vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
+          >
+            <div>
+              {/* 日期標籤 */}
+              <div className="mb-4">
+                <span className="inline-flex items-center gap-1.5 font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 bg-slate-100 text-slate-800 border border-slate-200 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600 shadow-sm">
+                  <Calendar className="w-3.5 h-3.5 text-gold-600 group-hover:text-white transition-colors" />
+                  {item.dateTag}
                 </span>
-                <span className="text-sm text-slate-600 font-medium block">
-                  {current.date}
-                </span>
               </div>
+
+              {/* 卡片標題維持高質感明體 (font-serif-tc) */}
+              <h3 className="font-serif-tc text-lg md:text-xl font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300 leading-snug mb-4">
+                {item.title}
+              </h3>
+
+              {/* 卡片內文改為與「關於我們」相同的標準字型、text-ink-700 與舒適行高 */}
+              <p className="text-ink-700 text-sm md:text-base leading-relaxed line-clamp-4">
+                {item.summary}
+              </p>
             </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={prevNews}
-                className="p-2 rounded-full border border-gold-400/40 text-gold-800 hover:bg-gold-500 hover:text-white hover:border-gold-500 transition-colors"
-                aria-label="Previous news"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={nextNews}
-                className="p-2 rounded-full border border-gold-400/40 text-gold-800 hover:bg-gold-500 hover:text-white hover:border-gold-500 transition-colors"
-                aria-label="Next news"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-
-          <div className="pt-6">
-            <h3 className="font-serif-tc text-xl md:text-2xl font-bold text-ink-900 mb-4 group-hover:text-gold-600 transition-colors">
-              {current.title}
-            </h3>
-            <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed">
-              {current.content}
-            </p>
-          </div>
-
-          <div className="mt-8 flex justify-center gap-2">
-            {newsData.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'w-8 bg-gold-600' : 'w-2 bg-gold-300'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-
-        </div>
+            {/* 移到卡片上時出現的細金色線條 */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+          </article>
+        ))}
       </div>
     </div>
   );
