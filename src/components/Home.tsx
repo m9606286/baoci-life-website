@@ -103,7 +103,6 @@ export default function Home() {
               
               {/* 標籤與主標題組合為同一個 Hover 群組 */}
               <div className="group/profile-header cursor-pointer space-y-4">
-                {/* 字體放大 1.5 倍（text-base） */}
                 <span className="inline-block px-5 py-2 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-base font-bold tracking-wider uppercase transition-all duration-300 group-hover/profile-header:bg-gold-500 group-hover/profile-header:text-white group-hover/profile-header:border-gold-500">
                   合規經營．誠信至上
                 </span>
@@ -134,7 +133,6 @@ export default function Home() {
                   <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">政府立案核准</h4>
                   <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">民政局核准銷售文號</p>
                 </div>
-                {/* 字體大小同標題(text-sm md:text-base)，加上質感線，hover時字體反白與淺深金色背景 */}
                 <a 
                   href="/documents/台南市民政局生前契約銷售及代銷商最新核准函.pdf" 
                   download 
@@ -152,7 +150,6 @@ export default function Home() {
                   <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">75% 依法信託</h4>
                   <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">京城銀行履約專戶</p>
                 </div>
-                {/* 字體大小同標題(text-sm md:text-base)，加上質感線，hover時字體反白與淺深金色背景 */}
                 <Link 
                   to="/trust" 
                   className="inline-flex items-center justify-center gap-1.5 text-sm md:text-base font-bold text-gold-700 bg-gold-50 border border-gold-400/40 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm"
@@ -180,7 +177,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            {/* 生前契約規劃：去除 PRE-NEED，放入 Serve1.png，了解更多加 > */}
+            {/* 生前契約規劃：使用 Serve1.png */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
                 <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
@@ -206,7 +203,7 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 禮儀服務：Serve2.png，了解更多加 > */}
+            {/* 禮儀服務：使用 Serve2.png */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
                 <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
@@ -232,7 +229,7 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 手續服務：去除 PROCEDURES，放入 Serve3.png，了解更多加 > */}
+            {/* 手續服務：使用 Serve3.png */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
                 <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
