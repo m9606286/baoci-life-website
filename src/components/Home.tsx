@@ -84,11 +84,11 @@ export default function Home() {
       </section>
 
       {/* 2. 下方內容區塊 */}
-      <div ref={ref} className="py-8">
+      <div ref={ref} className="space-y-12 py-12">
 
-        {/* 公司簡介區塊（COMPANY PROFILE） */}
-        <section className="max-w-7xl mx-auto px-6 mb-12">
-          <div className="text-center mb-8">
+        {/* 公司簡介區塊 */}
+        <section className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-10">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               COMPANY PROFILE
             </p>
@@ -124,31 +124,33 @@ export default function Home() {
             
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              <div className="group bg-white hover:bg-gold-500 p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300">
+              {/* 政府立案核准卡片：優化白底 + 金邊浮起質感 */}
+              <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
-                  <Award className="w-10 h-10 text-gold-600 group-hover:text-white mx-auto mb-3 transition-colors duration-300" />
-                  <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">政府立案核准</h4>
-                  <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">民政局核准銷售文號</p>
+                  <Award className="w-10 h-10 text-gold-600 group-hover:scale-105 mx-auto mb-3 transition-transform duration-300" />
+                  <h4 className="font-bold text-ink-900 mb-1">政府立案核准</h4>
+                  <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
                 </div>
                 <a 
                   href="/documents/台南市民政局生前契約銷售及代銷商最新核准函.pdf" 
                   download 
-                  className="inline-flex items-center justify-center gap-1.5 text-sm md:text-base font-bold text-gold-700 bg-gold-50 border border-gold-400/40 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm"
+                  className="inline-flex items-center justify-center gap-1.5 text-sm md:text-base font-bold text-gold-700 bg-gold-50 border border-gold-400/40 hover:bg-gold-600 hover:text-white hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm"
                 >
                   <span>核准函</span>
                   <Download className="w-4 h-4" />
                 </a>
               </div>
 
-              <div className="group bg-white hover:bg-gold-500 p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300">
+              {/* 75% 依法信託卡片：優化白底 + 金邊浮起質感 */}
+              <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
-                  <Lock className="w-10 h-10 text-gold-600 group-hover:text-white mx-auto mb-3 transition-colors duration-300" />
-                  <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">75% 依法信託</h4>
-                  <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">京城銀行履約專戶</p>
+                  <Lock className="w-10 h-10 text-gold-600 group-hover:scale-105 mx-auto mb-3 transition-transform duration-300" />
+                  <h4 className="font-bold text-ink-900 mb-1">75% 依法信託</h4>
+                  <p className="text-xs text-slate-500 mb-4">京城銀行履約專戶</p>
                 </div>
                 <Link 
                   to="/trust" 
-                  className="inline-flex items-center justify-center gap-1.5 text-sm md:text-base font-bold text-gold-700 bg-gold-50 border border-gold-400/40 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm"
+                  className="inline-flex items-center justify-center gap-1.5 text-sm md:text-base font-bold text-gold-700 bg-gold-50 border border-gold-400/40 hover:bg-gold-600 hover:text-white hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm"
                 >
                   <span>了解更多</span>
                   <ChevronRight className="w-4 h-4" />
@@ -160,8 +162,8 @@ export default function Home() {
         </section>
 
         {/* 我們的服務 */}
-        <section className="max-w-7xl mx-auto px-6 mb-6">
-          <div className="text-center mb-8">
+        <section className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-10">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               OUR SERVICES
             </p>
@@ -249,18 +251,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 核心價值區塊：透過 -mt-16 強制大幅向上拉近與「我們的服務」距離 */}
-        <section className="max-w-7xl mx-auto px-6 -mt-16">
+        {/* 我們的核心價值 */}
+        <section className="max-w-7xl mx-auto px-6">
           <CoreValues />
         </section>
 
-        {/* 最新消息：透過 -mt-16 強制大幅向上拉近與「核心價值」距離 */}
-        <section className="max-w-7xl mx-auto px-6 -mt-16">
+        {/* 最新消息 */}
+        <section className="max-w-7xl mx-auto px-6">
           <Announcement />
         </section>
 
-        {/* 聯絡寶慈：透過 mt-6 緊湊銜接最新消息 */}
-        <section className="max-w-4xl mx-auto px-6 text-center mt-6 py-4">
+        {/* 聯絡寶慈 */}
+        <section className="max-w-4xl mx-auto px-6 text-center py-2">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTACT US
           </p>
