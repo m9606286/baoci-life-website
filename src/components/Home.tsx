@@ -83,10 +83,10 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory-100 to-transparent" />
       </section>
 
-      {/* 2. 下方內容區塊 */}
+      {/* 2. 下方內容區塊（統一微調間距） */}
       <div ref={ref} className="space-y-12 py-12">
 
-        {/* 公司簡介區塊 */}
+        {/* 公司簡介 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -124,33 +124,31 @@ export default function Home() {
             
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* 政府立案核准卡片：優化白底 + 金邊浮起質感 */}
-              <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
+              <div className="group bg-white hover:bg-gold-500 p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300">
                 <div>
-                  <Award className="w-10 h-10 text-gold-600 group-hover:scale-105 mx-auto mb-3 transition-transform duration-300" />
-                  <h4 className="font-bold text-ink-900 mb-1">政府立案核准</h4>
-                  <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
+                  <Award className="w-10 h-10 text-gold-600 group-hover:text-white mx-auto mb-3 transition-colors duration-300" />
+                  <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">政府立案核准</h4>
+                  <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">民政局核准銷售文號</p>
                 </div>
                 <a 
                   href="/documents/台南市民政局生前契約銷售及代銷商最新核准函.pdf" 
                   download 
-                  className="inline-flex items-center justify-center gap-1.5 text-sm md:text-base font-bold text-gold-700 bg-gold-50 border border-gold-400/40 hover:bg-gold-600 hover:text-white hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm"
+                  className="inline-flex items-center justify-center gap-1.5 text-sm md:text-base font-bold text-gold-700 bg-gold-50 border border-gold-400/40 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm"
                 >
                   <span>核准函</span>
                   <Download className="w-4 h-4" />
                 </a>
               </div>
 
-              {/* 75% 依法信託卡片：優化白底 + 金邊浮起質感 */}
-              <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
+              <div className="group bg-white hover:bg-gold-500 p-6 rounded-2xl shadow-sm border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300">
                 <div>
-                  <Lock className="w-10 h-10 text-gold-600 group-hover:scale-105 mx-auto mb-3 transition-transform duration-300" />
-                  <h4 className="font-bold text-ink-900 mb-1">75% 依法信託</h4>
-                  <p className="text-xs text-slate-500 mb-4">京城銀行履約專戶</p>
+                  <Lock className="w-10 h-10 text-gold-600 group-hover:text-white mx-auto mb-3 transition-colors duration-300" />
+                  <h4 className="font-bold text-ink-900 group-hover:text-white mb-1 transition-colors duration-300">75% 依法信託</h4>
+                  <p className="text-xs text-slate-500 group-hover:text-white/80 mb-4 transition-colors duration-300">京城銀行履約專戶</p>
                 </div>
                 <Link 
                   to="/trust" 
-                  className="inline-flex items-center justify-center gap-1.5 text-sm md:text-base font-bold text-gold-700 bg-gold-50 border border-gold-400/40 hover:bg-gold-600 hover:text-white hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm"
+                  className="inline-flex items-center justify-center gap-1.5 text-sm md:text-base font-bold text-gold-700 bg-gold-50 border border-gold-400/40 group-hover:bg-gold-600 group-hover:text-white group-hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm"
                 >
                   <span>了解更多</span>
                   <ChevronRight className="w-4 h-4" />
