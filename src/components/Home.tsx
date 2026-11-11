@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, ChevronDown, Heart, ChevronRight, Award, Lock, Download } from 'lucide-react';
+import { Phone, ChevronDown, Heart, ChevronRight, Award, Download } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import CoreValues from '@/components/CoreValues';
 import Announcement from '@/components/Announcement';
@@ -8,6 +8,74 @@ import heroImage from '/hero.png';
 import serve1Image from '/Serve1.png';
 import serve2Image from '/Serve2.png';
 import serve3Image from '/Serve3.png';
+
+// 75% 圓形進度圖表組件 (具備 0%~75% 動態動畫)
+function TrustCircleProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let startTimestamp: number | null = null;
+    const duration = 1500; // 動畫持續 1.5 秒
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progressRatio = Math.min((timestamp - startTimestamp) / duration, 1);
+      // Ease-out 動畫曲線
+      const easeOutProgress = 1 - Math.pow(1 - progressRatio, 3);
+      setProgress(Math.floor(easeOutProgress * 75));
+
+      if (progressRatio < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
+  }, []);
+
+  // 計算 SVG stroke-dasharray (圓周長 2 * π * r = 2 * 3.14159 * 36 ≈ 226.19)
+  const circumference = 226.19;
+  const strokeDashoffset = circumference - (circumference * (progress / 100));
+
+  return (
+    <div className="relative w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 80 80">
+        {/* 背景淺色圓環 */}
+        <circle
+          cx="40"
+          cy="40"
+          r="36"
+          className="stroke-amber-100/60"
+          strokeWidth="7"
+          fill="transparent"
+        />
+        {/* 動態金色進度圓環 (淺深金色) */}
+        <circle
+          cx="40"
+          cy="40"
+          r="36"
+          stroke="url(#goldGradient)"
+          strokeWidth="7"
+          strokeDasharray={circumference}
+          strokeDashoffset={strokeDashoffset}
+          strokeLinecap="round"
+          fill="transparent"
+          className="transition-all duration-75 ease-out"
+        />
+        <defs>
+          <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#D4A348" />
+            <stop offset="50%" stopColor="#C69233" />
+            <stop offset="100%" stopColor="#9C6F1E" />
+          </linearGradient>
+        </defs>
+      </svg>
+      {/* 依動畫遞增的 0~75% 文字 */}
+      <span className="absolute font-serif-tc text-sm font-bold text-ink-900 tracking-tight">
+        {progress}%
+      </span>
+    </div>
+  );
+}
 
 export default function Home() {
   const revealResult = useReveal<HTMLDivElement>();
@@ -102,11 +170,11 @@ export default function Home() {
             <div className="w-full md:w-1/2 space-y-6">
               
               <div className="group/profile-header cursor-pointer space-y-4">
-                <span className="inline-block px-5 py-2 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-base font-bold tracking-wider uppercase transition-all duration-300 group-hover/profile-header:bg-gold-500 group-hover/profile-header:text-white group-hover/profile-header:border-gold-500">
+                <span className="inline-block px-5 py-2 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-base font-bold tracking-wider uppercase transition-all duration-300 group-hover/profile-header:bg-[#C69233] group-hover/profile-header:text-white group-hover/profile-header:border-[#C69233]">
                   合規經營．誠信至上
                 </span>
                 
-                <h3 className="font-serif-tc text-2xl md:text-3xl font-bold text-ink-900 leading-snug transition-colors duration-300 group-hover/profile-header:text-gold-600">
+                <h3 className="font-serif-tc text-2xl md:text-3xl font-bold text-ink-900 leading-snug transition-colors duration-300 group-hover/profile-header:text-[#C69233]">
                   專業與合規保障<br />給家人最堅實的安心依託
                 </h3>
               </div>
@@ -116,41 +184,42 @@ export default function Home() {
               </p>
 
               <div className="pt-2">
-                <Link to="/about" className="inline-flex items-center gap-2 text-ink-900 font-bold hover:text-gold-600 transition-colors">
-                  了解更多關於寶慈經營理念與故事 <ChevronRight className="w-5 h-5 text-gold-500" />
+                <Link to="/about" className="inline-flex items-center gap-2 text-ink-900 font-bold hover:text-[#C69233] transition-colors group/more">
+                  <span>了解更多關於寶慈經營理念與故事</span>
+                  <ChevronRight className="w-5 h-5 text-[#C69233] group-hover/more:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
             
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* 政府立案核准卡片：核准函按鈕字體縮小至 text-xs sm:text-sm，移到變淺深金色 */}
+              {/* 政府立案核准卡片：小圖改為淺深金色，核准函按鈕 hover 變色改為 #C69233 */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
-                  <Award className="w-10 h-10 text-gold-600 group-hover:scale-105 mx-auto mb-3 transition-transform duration-300" />
+                  <Award className="w-10 h-10 text-[#C69233] group-hover:scale-105 mx-auto mb-3 transition-transform duration-300" />
                   <h4 className="font-bold text-ink-900 mb-1">政府立案核准</h4>
                   <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
                 </div>
                 <a 
                   href="/documents/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf" 
                   download 
-                  className="inline-flex items-center justify-center gap-1.5 font-bold text-black bg-gold-50 border border-gold-400/40 hover:bg-gold-600 hover:text-white hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm text-xs sm:text-sm"
+                  className="inline-flex items-center justify-center gap-1.5 font-bold text-black bg-gold-50 border border-gold-400/40 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm text-xs sm:text-sm"
                 >
                   <span>核准函</span>
                   <Download className="w-4 h-4" />
                 </a>
               </div>
 
-              {/* 75% 依法信託卡片：了解更多按鈕同步縮小字體與視覺對齊 */}
+              {/* 75% 依法信託卡片：小圖改為圓形比例圖 (0~75% 動畫)，了解更多按鈕 hover 變色改為 #C69233 */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
-                  <Lock className="w-10 h-10 text-gold-600 group-hover:scale-105 mx-auto mb-3 transition-transform duration-300" />
+                  <TrustCircleProgress />
                   <h4 className="font-bold text-ink-900 mb-1">75% 依法信託</h4>
                   <p className="text-xs text-slate-500 mb-4">京城銀行履約專戶</p>
                 </div>
                 <Link 
                   to="/trust" 
-                  className="inline-flex items-center justify-center gap-1.5 font-bold text-black bg-gold-50 border border-gold-400/40 hover:bg-gold-600 hover:text-white hover:border-gold-600 py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm text-xs sm:text-sm"
+                  className="inline-flex items-center justify-center gap-1.5 font-bold text-black bg-gold-50 border border-gold-400/40 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm text-xs sm:text-sm"
                 >
                   <span>了解更多</span>
                   <ChevronRight className="w-4 h-4" />
@@ -184,7 +253,7 @@ export default function Home() {
                   />
                 </div>
 
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300 text-center mb-3">
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 text-center mb-3">
                   生前契約規劃
                 </h3>
 
@@ -193,7 +262,7 @@ export default function Home() {
                 </p>
               </div>
               
-              <Link to="/preneed" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
+              <Link to="/preneed" className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
                 <span>了解更多</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
@@ -209,7 +278,7 @@ export default function Home() {
                   />
                 </div>
 
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300 text-center mb-3">
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 text-center mb-3">
                   禮儀服務
                 </h3>
 
@@ -218,7 +287,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <Link to="/services" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
+              <Link to="/services" className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
                 <span>了解更多</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
@@ -234,7 +303,7 @@ export default function Home() {
                   />
                 </div>
 
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300 text-center mb-3">
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 text-center mb-3">
                   手續服務
                 </h3>
 
@@ -243,7 +312,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <Link to="/procedures" className="w-full py-3 bg-ivory-100 hover:bg-gold-500 hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
+              <Link to="/procedures" className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
                 <span>了解更多</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
@@ -261,7 +330,7 @@ export default function Home() {
           <Announcement />
         </section>
 
-        {/* 聯絡寶慈：聯絡我們按鈕未移到為淡色 (bg-gold-100 text-gold-800)，移到為淺深金色 (hover:bg-gold-600 hover:text-white) */}
+        {/* 聯絡寶慈 */}
         <section className="max-w-4xl mx-auto px-6 text-center py-2">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTACT US
@@ -276,14 +345,6 @@ export default function Home() {
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-9 py-4 bg-gold-100 text-gold-800 border border-gold-300 hover:bg-gold-600 hover:text-white hover:border-gold-600 font-bold rounded-full text-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-9 py-4 bg-gold-100 text-gold-800 border border-gold-300 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] font-bold rounded-full text-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
           >
             <span>聯絡我們</span>
-            <ChevronRight className="w-5 h-5" />
-          </Link>
-        </section>
-
-      </div>
-    </div>
-  );
-}
