@@ -94,7 +94,7 @@ export default function About() {
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         
-        {/* 標題區塊：對齊指定範例的字型、結構與上下位置 */}
+        {/* 標題區塊：字型顏色與質感完全對齊範例圖 */}
         <div className="text-center mb-16">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.4em] uppercase font-bold reveal">
             ABOUT US
@@ -103,7 +103,7 @@ export default function About() {
             關於我們
           </h2>
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 mb-4 reveal reveal-delay-2" />
-          <p className="text-ink-600 font-sans text-sm md:text-base reveal reveal-delay-2.5 font-medium tracking-wide">
+          <p className="text-ink-800 font-sans text-base sm:text-lg md:text-xl reveal reveal-delay-2.5 max-w-3xl mx-auto leading-relaxed tracking-wide font-normal">
             以專業與誠信為本，守護每一份信任與託付
           </p>
         </div>
