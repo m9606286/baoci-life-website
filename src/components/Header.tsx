@@ -74,10 +74,10 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Phone CTA (desktop) - 背景改為 #585c63 灰色 */}
+          {/* Phone CTA (desktop) - 外框質感線調整為更細緻清晰 */}
           <a
             href="tel:0800-600-603"
-            className="hidden lg:flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#585c63] text-ivory-50 border-2 border-gold-400/80 ring-2 ring-gold-400/40 hover:border-gold-300 hover:ring-gold-300/60 hover:bg-gold-600 transition-all hover:shadow-xl group shrink-0"
+            className="hidden lg:flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#585c63] text-ivory-50 border border-gold-400/60 ring-1 ring-gold-400/25 hover:border-gold-300 hover:ring-gold-300/40 hover:bg-gold-600 transition-all hover:shadow-xl group shrink-0"
           >
             <div className="p-2 rounded-full bg-gold-400/20 text-gold-300 group-hover:bg-white group-hover:text-gold-600 transition-colors">
               <Phone className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -120,7 +120,7 @@ export default function Header() {
             ))}
             <a
               href="tel:0800-600-603"
-              className="mt-4 flex items-center justify-center gap-3 py-3 rounded-full bg-[#585c63] text-ivory-50 border-2 border-gold-400/80 ring-2 ring-gold-400/40 hover:bg-gold-600 transition-colors"
+              className="mt-4 flex items-center justify-center gap-3 py-3 rounded-full bg-[#585c63] text-ivory-50 border border-gold-400/60 ring-1 ring-gold-400/25 hover:bg-gold-600 transition-colors"
             >
               <Phone className="w-4 h-4 text-gold-300" />
               <div className="flex flex-col items-start">
