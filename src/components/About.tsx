@@ -89,7 +89,7 @@ export default function About() {
   const ref = useReveal<HTMLDivElement>();
 
   return (
-    <section id="about" className="pt-16 pb-24 lg:pt-24 lg:pb-32 bg-gradient-to-b from-ivory-100 to-ivory-200 relative overflow-hidden">
+    <section id="about" className="pt-8 pb-12 lg:pt-12 lg:pb-16 bg-gradient-to-b from-ivory-100 to-ivory-200 relative overflow-hidden">
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gold-100/40 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
