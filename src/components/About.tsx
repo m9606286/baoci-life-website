@@ -94,18 +94,18 @@ export default function About() {
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         
-        {/* 標題區塊：加入精緻引導小字 */}
+        {/* 標題區塊：對齊指定範例的字型、結構與上下位置 */}
         <div className="text-center mb-16">
-          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
+          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.4em] uppercase font-bold reveal">
             ABOUT US
           </p>
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
             關於我們
           </h2>
-          <p className="text-ink-600 font-sans text-sm md:text-base mt-2.5 reveal reveal-delay-1.5 font-medium tracking-wide">
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 mb-4 reveal reveal-delay-2" />
+          <p className="text-ink-600 font-sans text-sm md:text-base reveal reveal-delay-2.5 font-medium tracking-wide">
             以專業與誠信為本，守護每一份信任與託付
           </p>
-          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-24">
