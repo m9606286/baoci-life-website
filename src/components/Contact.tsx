@@ -18,7 +18,7 @@ const serviceOptions = [
   '意見反映'
 ];
 
-// 銷售通路據點列表 (晨暉資產)
+// 銷售通路據點列表 (晨暉資產、天勤文創)
 const salesChannels = [
   {
     name: '晨暉資產股份有限公司',
@@ -27,6 +27,14 @@ const salesChannels = [
     phone: '(02) 2514-7758',
     phoneTel: '0225147758',
     logo: '/logo1.png',
+  },
+  {
+    name: '天勤文創股份有限公司',
+    address: '台中市北區學士路257號14樓',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=台中市北區學士路257號14樓',
+    phone: '(04) 2322-0208',
+    phoneTel: '0423220208',
+    logo: '/logo3.png',
   },
 ];
 
@@ -221,7 +229,7 @@ export default function Contact() {
           </div>
         )}
 
-        {/* 銷售通路卡片 (使用 logo1.png) */}
+        {/* 銷售通路卡片 (包含晨暉資產與天勤文創) */}
         {activeTab === 'channel' && (
           <div className="max-w-2xl mx-auto mb-12 space-y-5 transition-all duration-300">
             {salesChannels.map((channel, idx) => (
