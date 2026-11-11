@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, ChevronDown, Heart, ChevronRight, Award, Download } from 'lucide-react';
+import { Phone, ChevronDown, Heart, ChevronRight, Award, Eye } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import CoreValues from '@/components/CoreValues';
 import Announcement from '@/components/Announcement';
@@ -213,7 +213,7 @@ export default function Home() {
             
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* 政府立案核准卡片 */}
+              {/* 政府立案核准卡片 (改為點擊在新分頁檢視 PDF) */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
@@ -223,12 +223,13 @@ export default function Home() {
                   <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
                 </div>
                 <a 
-                  href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf" 
-                  download 
+                  href="/documents/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`${btnStyle} mt-2`}
                 >
                   <span>核准函</span>
-                  <Download className="w-4 h-4 transition-transform group-hover/btn:scale-110" />
+                  <Eye className="w-4 h-4 transition-transform group-hover/btn:scale-110" />
                 </a>
               </div>
 
