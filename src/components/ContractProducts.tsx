@@ -16,7 +16,7 @@ interface ContractProduct {
 const contractProducts: ContractProduct[] = [
   {
     id: 'baofu',
-    typeTag: '生前契約書－標準型',
+    typeTag: '寶富生前契約－標準型',
     bgImage: '/寶富契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
@@ -26,13 +26,33 @@ const contractProducts: ContractProduct[] = [
   },
   {
     id: 'baohui',
-    typeTag: '生前契約書－簡約型',
+    typeTag: '寶暉生前契約－簡約型',
     bgImage: '/寶暉契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
       phone: '(02)2514-7758',
     },
     pdfUrl: '/寶暉生前契約書.pdf',
+  },
+  {
+    id: 'fuyi',
+    typeTag: '福益生前契約－標準型',
+    bgImage: '/福益契約書封面.png', // 請確保 public 目錄下有此圖片，或視需要替換
+    channel: {
+      name: '天勤文創',
+      phone: '(02)2514-7758', // 請依實際需求調整電話
+    },
+    pdfUrl: '/福益生前契約書.pdf', // 請確保 public 目錄下有此 PDF 檔案
+  },
+  {
+    id: 'puyu',
+    typeTag: '璞瑜生前契約－簡易型',
+    bgImage: '/璞瑜契約書封面.png', // 請確保 public 目錄下有此圖片，或視需要替換
+    channel: {
+      name: '天勤文創',
+      phone: '(02)2514-7758', // 請依實際需求調整電話
+    },
+    pdfUrl: '/璞瑜生前契約書.pdf', // 請確保 public 目錄下有此 PDF 檔案
   },
 ];
 
@@ -84,7 +104,7 @@ export default function ContractProducts() {
     <section id="products" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100/60 relative -mt-6 lg:-mt-10">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* 標題區 (質感線與標題維持適中距離 mt-4) */}
+        {/* 標題區 */}
         <div className="text-center mb-10">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTRACT PRODUCTS
@@ -92,11 +112,10 @@ export default function ContractProducts() {
           <h2 className="font-serif-tc text-3xl md:text-4xl text-ink-800 font-bold mt-2">
             契約商品
           </h2>
-          {/* 左右漸細的經典金色分隔線 */}
           <div className="gold-divider w-32 mx-auto mt-4" />
         </div>
 
-        {/* 商品格子區塊 (圖片外框質感線) */}
+        {/* 商品格子區塊 (自動支援 2x2 響應式排版) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto mb-10">
           {contractProducts.map((product) => (
             <div
@@ -118,7 +137,7 @@ export default function ContractProducts() {
               {/* 下方資訊區塊 */}
               <div className="relative z-10 text-white space-y-4 flex flex-col items-start text-left">
 
-                {/* 銷售通路與電話 (電話移除底線) */}
+                {/* 銷售通路與電話 */}
                 <div className="space-y-2 text-sm sm:text-base font-medium">
                   <div className="flex items-center gap-1.5 text-white hover:text-gold-300 transition-colors duration-200 cursor-pointer group/channel">
                     <Handshake className="w-4 h-4 text-white group-hover/channel:text-gold-300 shrink-0 transition-colors duration-200" />
@@ -160,7 +179,7 @@ export default function ContractProducts() {
         {/* 獨立區塊：台南市民政局生前契約銷售及代銷商最新核准函 */}
         <div className="max-w-5xl mx-auto mb-16 text-center">
           <a
-            href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf"
+            href="/%E5%8F%B0%E5%8D%97%E5%B8%82%E6%B0%91%E6%94%BF%E5%B1%80%E7%94%9F%E5%89%8d%E5%A5%91%E7%B4%84%E9%8A%B7%E5%94%AE%E5%8F%8A%E4%BB%A3%E9%8A%B7%E5%95%86%E6%9C%80%E6%96%B0%E6%A0%B8%E6%BA%96%E5%87%BD1150903.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white font-medium text-sm sm:text-base transition-all duration-300 border border-gold-400/50 shadow-sm hover:shadow-md group"
@@ -188,8 +207,8 @@ export default function ContractProducts() {
               <thead>
                 <tr className="bg-ivory-100 border-b border-ivory-200 text-ink-800 text-sm md:text-base font-serif-tc">
                   <th className="p-4 w-1/4 font-bold">比較項目</th>
-                  <th className="p-4 w-3/8 font-bold text-gold-700 bg-gold-50/50">寶富生前契約（標準型）</th>
-                  <th className="p-4 w-3/8 font-bold text-ink-700">寶暉生前契約（簡易型）</th>
+                  <th className="p-4 w-3/8 font-bold text-gold-700 bg-gold-50/50">標準型生前契約 (寶富/福益)</th>
+                  <th className="p-4 w-3/8 font-bold text-ink-700">簡易型生前契約 (寶暉/璞瑜)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-ivory-200 text-sm md:text-base text-ink-700">
@@ -218,7 +237,7 @@ export default function ContractProducts() {
             </table>
           </div>
 
-          {/* 註解：「註：」替換為與內文相同的 CheckCircle2 勾勾圖示 */}
+          {/* 註解 */}
           <div className="flex items-center gap-1.5 text-base text-ink-800 font-medium mb-8 pl-1">
             <CheckCircle2 className="w-5 h-5 text-gold-600 shrink-0" />
             <span>標準型及簡易型均提供骨罐及火化棺</span>
