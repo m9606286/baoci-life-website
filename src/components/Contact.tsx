@@ -121,7 +121,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative -mt-6 lg:-mt-10 overflow-hidden">
-      <div ref={ref} className="max-w-4xl mx-auto px-6 relative z-10">
+      <div ref={ref} className="max-w-5xl mx-auto px-6 relative z-10">
         
         {/* 標題區：CONTACT US */}
         <div className="text-center mb-10">
@@ -229,43 +229,45 @@ export default function Contact() {
           </div>
         )}
 
-        {/* 銷售通路卡片 (包含晨暉資產與天勤文創) */}
+        {/* 銷售通路卡片 (並列排版 + Hover 淺深金色漸層) */}
         {activeTab === 'channel' && (
-          <div className="max-w-2xl mx-auto mb-12 space-y-5 transition-all duration-300">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 transition-all duration-300">
             {salesChannels.map((channel, idx) => (
               <div
                 key={idx}
-                className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl"
+                className="group relative bg-white/95 hover:bg-gradient-to-br hover:from-white hover:via-gold-50/40 hover:to-gold-100/60 rounded-3xl p-6 sm:p-8 border border-gold-400/35 hover:border-gold-500 shadow-xl transition-all duration-300 hover:shadow-2xl flex flex-col justify-between"
               >
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 p-1 flex items-center justify-center shrink-0">
-                    <img src={channel.logo} alt={channel.name} className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
-                  </div>
-                  <h3 className="font-serif-tc text-2xl font-bold text-ink-950">
-                    {channel.name}
-                  </h3>
-                </div>
-
-                <div className="space-y-4 text-sm sm:text-base text-slate-700 font-normal">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
-                    <a
-                      href={channel.mapUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-gold-700 transition-colors inline-flex items-center gap-1.5"
-                    >
-                      <span>地址：</span>
-                      <span>{channel.address}</span>
-                      <ExternalLink className="w-3.5 h-3.5 opacity-70" />
-                    </a>
+                <div>
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-12 h-12 p-1 flex items-center justify-center shrink-0">
+                      <img src={channel.logo} alt={channel.name} className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
+                    </div>
+                    <h3 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-950 leading-snug">
+                      {channel.name}
+                    </h3>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-5 h-5 shrink-0 text-gold-600" />
-                    <a href={`tel:${channel.phoneTel}`} className="hover:text-gold-700 transition-colors">
-                      電話：<span>{channel.phone}</span>
-                    </a>
+                  <div className="space-y-4 text-sm sm:text-base text-slate-700 font-normal">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
+                      <a
+                        href={channel.mapUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gold-700 transition-colors inline-flex items-center gap-1.5 leading-relaxed"
+                      >
+                        <span>地址：</span>
+                        <span>{channel.address}</span>
+                        <ExternalLink className="w-3.5 h-3.5 opacity-70 shrink-0" />
+                      </a>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <Phone className="w-5 h-5 shrink-0 text-gold-600" />
+                      <a href={`tel:${channel.phoneTel}`} className="hover:text-gold-700 transition-colors">
+                        電話：<span>{channel.phone}</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
