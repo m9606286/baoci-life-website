@@ -9,7 +9,7 @@ import serve1Image from '/Serve1.png';
 import serve2Image from '/Serve2.png';
 import serve3Image from '/Serve3.png';
 
-// 75% 圓形進度圖表組件 (具備 0%~75% 動態動畫)
+// 75% 圓形進度圖表組件 (加粗線條、具備 0%~75% 動態動畫)
 function TrustCircleProgress() {
   const [progress, setProgress] = useState(0);
 
@@ -32,8 +32,9 @@ function TrustCircleProgress() {
     requestAnimationFrame(step);
   }, []);
 
-  // 計算 SVG stroke-dasharray (圓周長 2 * π * r = 2 * 3.14159 * 36 ≈ 226.19)
-  const circumference = 226.19;
+  // 計算 SVG stroke-dasharray (半徑 r = 32，圓周長 2 * π * r ≈ 201.06)
+  const radius = 32;
+  const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (circumference * (progress / 100));
 
   return (
@@ -43,18 +44,18 @@ function TrustCircleProgress() {
         <circle
           cx="40"
           cy="40"
-          r="36"
+          r={radius}
           className="stroke-amber-100/60"
-          strokeWidth="7"
+          strokeWidth="10"
           fill="transparent"
         />
-        {/* 動態金色進度圓環 (淺深金色) */}
+        {/* 動態金色進度圓環 (淺深金色，線條加粗) */}
         <circle
           cx="40"
           cy="40"
-          r="36"
+          r={radius}
           stroke="url(#goldGradient)"
-          strokeWidth="7"
+          strokeWidth="10"
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
@@ -193,10 +194,12 @@ export default function Home() {
             
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* 政府立案核准卡片：小圖改為淺深金色，核准函按鈕 hover 變色改為 #C69233 */}
+              {/* 政府立案核准卡片：固定 w-16 h-16 外框確保與右側高度一致 */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
-                  <Award className="w-10 h-10 text-[#C69233] group-hover:scale-105 mx-auto mb-3 transition-transform duration-300" />
+                  <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                    <Award className="w-10 h-10 text-[#C69233] group-hover:scale-105 transition-transform duration-300" />
+                  </div>
                   <h4 className="font-bold text-ink-900 mb-1">政府立案核准</h4>
                   <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
                 </div>
@@ -210,7 +213,7 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* 75% 依法信託卡片：小圖改為圓形比例圖 (0~75% 動畫)，了解更多按鈕 hover 變色改為 #C69233 */}
+              {/* 75% 依法信託卡片：使用線條加粗且帶動畫的圓形進度圖 */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <TrustCircleProgress />
