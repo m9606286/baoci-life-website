@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, ChevronDown, Heart, ChevronRight, Award, Download } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
@@ -9,34 +9,53 @@ import serve1Image from '/Serve1.png';
 import serve2Image from '/Serve2.png';
 import serve3Image from '/Serve3.png';
 
-// 75% 圓形進度圖表組件 (加粗線條、0%~75% 動態平滑動畫)
+// 75% 圓形進度圖表組件 (滾動到該區塊時才觸發 0%~75% 動態平滑動畫)
 function TrustCircleProgress() {
   const [progress, setProgress] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let startTimestamp: number | null = null;
-    const duration = 1500;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // 當元件進入視窗範圍且尚未執行過動畫時觸發
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          let startTimestamp: number | null = null;
+          const duration = 1500;
 
-    const step = (timestamp: number) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progressRatio = Math.min((timestamp - startTimestamp) / duration, 1);
-      const easeOutProgress = 1 - Math.pow(1 - progressRatio, 3);
-      setProgress(Math.floor(easeOutProgress * 75));
+          const step = (timestamp: number) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progressRatio = Math.min((timestamp - startTimestamp) / duration, 1);
+            const easeOutProgress = 1 - Math.pow(1 - progressRatio, 3);
+            setProgress(Math.floor(easeOutProgress * 75));
 
-      if (progressRatio < 1) {
-        requestAnimationFrame(step);
-      }
+            if (progressRatio < 1) {
+              requestAnimationFrame(step);
+            }
+          };
+
+          requestAnimationFrame(step);
+        }
+      },
+      { threshold: 0.3 } // 當元素露出 30% 時觸發
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
     };
-
-    requestAnimationFrame(step);
-  }, []);
+  }, [hasAnimated]);
 
   const radius = 32;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (circumference * (progress / 100));
 
   return (
-    <div className="relative w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+    <div ref={containerRef} className="relative w-16 h-16 mx-auto mb-3 flex items-center justify-center">
       <svg className="w-full h-full transform -rotate-90" viewBox="0 0 80 80">
         <circle
           cx="40"
@@ -230,6 +249,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+
         {/* 我們的服務 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
