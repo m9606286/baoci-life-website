@@ -151,7 +151,7 @@ export default function Home() {
       </section>
 
       {/* 2. 下方內容區塊 */}
-      <div ref={ref} className="space-y-12 py-12">
+      <div ref={ref} className="space-y-16 py-16">
 
         {/* 公司簡介 */}
         <section className="max-w-7xl mx-auto px-6">
