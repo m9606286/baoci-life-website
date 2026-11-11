@@ -28,7 +28,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#343a40] text-white border-t border-gold-400/40 transition-colors duration-300">
+    <footer className="bg-[#585c63] text-white border-t border-gold-400/40 transition-colors duration-300">
       {/* Main */}
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -38,11 +38,11 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-5">
               <BrandLogo variant="footer" />
             </div>
-            <p className="text-sm leading-relaxed mb-4 text-slate-200 font-normal">
+            <p className="text-sm leading-relaxed mb-4 text-slate-100 font-normal">
               專業的禮儀服務，溫暖的人文關懷。
             </p>
-            {/* 統編：字色改為 text-slate-200，字型為微軟正黑體 */}
-            <p className="text-sm text-slate-200 font-['Microsoft_JhengHei']">
+            {/* 統一編號 */}
+            <p className="text-sm text-slate-100 font-['Microsoft_JhengHei']">
               統一編號：{companyInfo.taxId}
             </p>
           </div>
@@ -60,7 +60,7 @@ export default function Footer() {
                     <a
                       href={link.path}
                       onClick={(e) => handleNavClick(e, link.path)}
-                      className="text-sm text-slate-100 hover:text-gold-400 font-normal transition-colors inline-block cursor-pointer"
+                      className="text-sm text-slate-100 hover:text-gold-300 font-normal transition-colors inline-block cursor-pointer"
                     >
                       {link.label}
                     </a>
@@ -74,7 +74,7 @@ export default function Footer() {
                     <a
                       href={link.path}
                       onClick={(e) => handleNavClick(e, link.path)}
-                      className="text-sm text-slate-100 hover:text-gold-400 font-normal transition-colors inline-block cursor-pointer"
+                      className="text-sm text-slate-100 hover:text-gold-300 font-normal transition-colors inline-block cursor-pointer"
                     >
                       {link.label}
                     </a>
@@ -91,30 +91,30 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3.5 text-sm text-white">
               <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <a href="tel:062678859" className="hover:text-gold-400 transition-colors font-['Microsoft_JhengHei']">
+                <Phone className="w-4 h-4 text-gold-300 flex-shrink-0" />
+                <a href="tel:062678859" className="hover:text-gold-300 transition-colors font-['Microsoft_JhengHei']">
                   電話：(06) 2678859
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <a href="tel:0800600603" className="hover:text-gold-400 transition-colors font-['Microsoft_JhengHei']">
+                <Phone className="w-4 h-4 text-gold-300 flex-shrink-0" />
+                <a href="tel:0800600603" className="hover:text-gold-300 transition-colors font-['Microsoft_JhengHei']">
                   24 小時服務專線：0800-600-603
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <a href="mailto:service@apexbaoci.com.tw" className="hover:text-gold-400 transition-colors">
+                <Mail className="w-4 h-4 text-gold-300 flex-shrink-0" />
+                <a href="mailto:service@apexbaoci.com.tw" className="hover:text-gold-300 transition-colors">
                   Email：service@apexbaoci.com.tw
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-gold-300 flex-shrink-0 mt-0.5" />
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=台北市內湖區新湖二路329號5樓"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gold-400 transition-colors inline-flex items-center gap-1.5"
+                  className="hover:text-gold-300 transition-colors inline-flex items-center gap-1.5"
                 >
                   <span>地址：台北市內湖區新湖二路329號5樓</span>
                   <ExternalLink className="w-3.5 h-3.5 opacity-70" />
@@ -127,7 +127,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-slate-600/40 bg-[#2d3135]">
+      <div className="border-t border-gold-400/30 bg-[#585c63]">
         <div className="mx-auto max-w-6xl px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-slate-100 font-normal">
             © 2026 寶慈生命事業股份有限公司 · 版權所有
@@ -135,10 +135,10 @@ export default function Footer() {
           <a
             href="/"
             onClick={(e) => handleNavClick(e, '/')}
-            className="flex items-center gap-2 text-sm text-slate-200 hover:text-gold-400 transition-colors font-medium group cursor-pointer"
+            className="flex items-center gap-2 text-sm text-slate-100 hover:text-gold-300 transition-colors font-medium group cursor-pointer"
           >
             <span>回到頂部</span>
-            <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform text-gold-400" />
+            <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform text-gold-300" />
           </a>
         </div>
       </div>
