@@ -43,7 +43,7 @@ export default function Announcement() {
   return (
     <div className="w-full relative group/announcement px-2 sm:px-6">
       {/* 標題區塊：置中 + 質感線 */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-8">
         <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
           LATEST NEWS
         </p>
