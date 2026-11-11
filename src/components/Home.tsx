@@ -194,11 +194,11 @@ export default function Home() {
             
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* 政府立案核准卡片：固定 w-16 h-16 外框確保與右側高度一致 */}
+              {/* 政府立案核准卡片：將 Award 圖示尺寸放大為 w-12 h-12，與右側圓形圖大小一致 */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-                    <Award className="w-10 h-10 text-[#C69233] group-hover:scale-105 transition-transform duration-300" />
+                    <Award className="w-12 h-12 text-[#C69233] group-hover:scale-105 transition-transform duration-300" />
                   </div>
                   <h4 className="font-bold text-ink-900 mb-1">政府立案核准</h4>
                   <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
@@ -213,7 +213,7 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* 75% 依法信託卡片：使用線條加粗且帶動畫的圓形進度圖 */}
+              {/* 75% 依法信託卡片：圓形比例圖 */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <TrustCircleProgress />
