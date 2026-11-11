@@ -94,7 +94,7 @@ export default function About() {
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         
-        {/* 標題區塊：字級縮小並調淺字色，對齊生前契約頁面的柔和質感 */}
+        {/* 標題區塊：字級調小一階，呈現細緻柔和的視覺比例 */}
         <div className="text-center mb-16">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.4em] uppercase font-bold reveal">
             ABOUT US
@@ -103,7 +103,7 @@ export default function About() {
             關於我們
           </h2>
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 mb-4 reveal reveal-delay-2" />
-          <p className="text-ink-600 font-sans text-sm sm:text-base md:text-lg reveal reveal-delay-2.5 max-w-3xl mx-auto leading-relaxed font-normal">
+          <p className="text-ink-600 font-sans text-xs sm:text-sm md:text-base reveal reveal-delay-2.5 max-w-3xl mx-auto leading-relaxed font-normal">
             以專業與誠信為本，守護每一份信任與託付
           </p>
         </div>
