@@ -16,7 +16,7 @@ interface ContractProduct {
 const contractProducts: ContractProduct[] = [
   {
     id: 'baofu',
-    typeTag: '寶富生前契約－標準型',
+    typeTag: '生前契約書－標準型',
     bgImage: '/寶富契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
@@ -26,7 +26,7 @@ const contractProducts: ContractProduct[] = [
   },
   {
     id: 'baohui',
-    typeTag: '寶暉生前契約－簡約型',
+    typeTag: '生前契約書－簡約型',
     bgImage: '/寶暉契約書封面.png',
     channel: {
       name: '晨暉資產股份有限公司',
@@ -36,20 +36,20 @@ const contractProducts: ContractProduct[] = [
   },
   {
     id: 'fuyi',
-    typeTag: '福益生前契約－標準型',
+    typeTag: '生前契約書－標準型',
     bgImage: '/福益契約書封面.png', // 請確保 public 目錄下有此圖片，或視需要替換
     channel: {
-      name: '天勤文創',
+      name: '天勤文創股份有限公司',
       phone: '(02)2514-7758', // 請依實際需求調整電話
     },
     pdfUrl: '/福益生前契約書.pdf', // 請確保 public 目錄下有此 PDF 檔案
   },
   {
     id: 'puyu',
-    typeTag: '璞瑜生前契約－簡易型',
+    typeTag: '生前契約書－簡約型',
     bgImage: '/璞瑜契約書封面.png', // 請確保 public 目錄下有此圖片，或視需要替換
     channel: {
-      name: '天勤文創',
+      name: '天勤文創股份有限公司',
       phone: '(02)2514-7758', // 請依實際需求調整電話
     },
     pdfUrl: '/璞瑜生前契約書.pdf', // 請確保 public 目錄下有此 PDF 檔案
