@@ -9,7 +9,7 @@ import serve1Image from '/Serve1.png';
 import serve2Image from '/Serve2.png';
 import serve3Image from '/Serve3.png';
 
-// 75% 圓形進度圖表組件 (加粗線條、具備 0%~75% 動態動畫)
+// 75% 圓形進度圖表組件 (加粗線條、0%~75% 動態平滑動畫)
 function TrustCircleProgress() {
   const [progress, setProgress] = useState(0);
 
@@ -76,6 +76,9 @@ function TrustCircleProgress() {
 export default function Home() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
+
+  // 精品通用按鈕樣式 (未移到：明體字型、淡象牙背景、質感邊框、純黑字體；移到：經典淺深金色)
+  const btnStyle = "group/btn inline-flex items-center justify-center gap-2 font-serif-tc font-bold tracking-wider text-ink-900 bg-ivory-100 border border-gold-400/35 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-5 rounded-full transition-all duration-300 shadow-sm hover:shadow-md text-xs sm:text-sm";
 
   return (
     <div className="bg-ivory-100 min-h-screen text-ink-900 font-sans">
@@ -189,7 +192,7 @@ export default function Home() {
             
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* 政府立案核准卡片：背景與我們的服務一致 (bg-ivory-100)，未移到字體為黑色 */}
+              {/* 政府立案核准卡片 */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
@@ -201,14 +204,14 @@ export default function Home() {
                 <a 
                   href="/documents/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf" 
                   download 
-                  className="inline-flex items-center justify-center gap-1.5 font-bold text-ink-900 bg-ivory-100 border border-gold-400/30 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm text-xs sm:text-sm"
+                  className={`${btnStyle} mt-2`}
                 >
                   <span>核准函</span>
-                  <Download className="w-4 h-4 text-ink-900 group-hover/btn:text-white" />
+                  <Download className="w-4 h-4 transition-transform group-hover/btn:scale-110" />
                 </a>
               </div>
 
-              {/* 75% 依法信託卡片：背景與我們的服務一致 (bg-ivory-100)，未移到字體為黑色 */}
+              {/* 75% 依法信託卡片 */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <TrustCircleProgress />
@@ -217,10 +220,10 @@ export default function Home() {
                 </div>
                 <Link 
                   to="/trust" 
-                  className="inline-flex items-center justify-center gap-1.5 font-bold text-ink-900 bg-ivory-100 border border-gold-400/30 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm text-xs sm:text-sm"
+                  className={`${btnStyle} mt-2`}
                 >
                   <span>了解更多</span>
-                  <ChevronRight className="w-4 h-4 text-ink-900 group-hover/btn:text-white" />
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </Link>
               </div>
 
@@ -261,13 +264,12 @@ export default function Home() {
                 </p>
               </div>
               
-              {/* 了解更多按鈕：未移到文字為黑色 (text-ink-900)，含質感細線 border-t */}
               <Link 
                 to="/preneed" 
-                className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-ink-900 font-bold rounded-xl transition-all duration-300 text-center inline-flex items-center justify-center gap-1 border-t border-gold-400/20 shadow-sm relative overflow-hidden"
+                className={`${btnStyle} w-full py-3.5`}
               >
                 <span>了解更多</span>
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
               </Link>
             </div>
 
@@ -293,10 +295,10 @@ export default function Home() {
 
               <Link 
                 to="/services" 
-                className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-ink-900 font-bold rounded-xl transition-all duration-300 text-center inline-flex items-center justify-center gap-1 border-t border-gold-400/20 shadow-sm relative overflow-hidden"
+                className={`${btnStyle} w-full py-3.5`}
               >
                 <span>了解更多</span>
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
               </Link>
             </div>
 
@@ -322,10 +324,10 @@ export default function Home() {
 
               <Link 
                 to="/procedures" 
-                className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-ink-900 font-bold rounded-xl transition-all duration-300 text-center inline-flex items-center justify-center gap-1 border-t border-gold-400/20 shadow-sm relative overflow-hidden"
+                className={`${btnStyle} w-full py-3.5`}
               >
                 <span>了解更多</span>
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
               </Link>
             </div>
           </div>
@@ -356,10 +358,10 @@ export default function Home() {
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-9 py-4 bg-ivory-100 text-ink-900 border border-gold-300 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] font-bold rounded-full text-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+            className={`${btnStyle} px-9 py-4 rounded-full text-lg shadow-md hover:shadow-xl transform hover:-translate-y-0.5`}
           >
             <span>聯絡我們</span>
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
           </Link>
         </section>
 
