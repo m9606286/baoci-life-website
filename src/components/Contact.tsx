@@ -178,15 +178,15 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* 總公司卡片 (使用 logo.png) */}
+        {/* 總公司卡片 (使用 logo.png，名稱 Hover 淺深金色 + 底部質感線) */}
         {activeTab === 'headquarter' && (
           <div className="max-w-2xl mx-auto mb-12 transition-all duration-300">
-            <div className="group relative bg-white/95 rounded-3xl p-7 sm:p-9 border border-gold-400/35 shadow-xl transition-all duration-300 hover:shadow-2xl">
+            <div className="group relative bg-white rounded-3xl p-7 sm:p-9 border border-gold-400/35 hover:border-gold-500 shadow-xl transition-all duration-300 hover:shadow-2xl overflow-hidden">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-16 h-16 p-1 flex items-center justify-center shrink-0">
                   <img src="/logo.png" alt="寶慈生命事業" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
                 </div>
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-950">
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-950 group-hover:bg-gradient-to-r group-hover:from-amber-600 group-hover:via-amber-500 group-hover:to-amber-700 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                   寶慈生命事業股份有限公司
                 </h3>
               </div>
@@ -225,24 +225,27 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
+
+              {/* 底部 4px 質感金色指示線 (Hover 浮現) */}
+              <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
             </div>
           </div>
         )}
 
-        {/* 銷售通路卡片 (並列排版 + Hover 淺深金色漸層) */}
+        {/* 銷售通路卡片 (並列排版 + 名稱 Hover 變淺深金色 + 底部質感線) */}
         {activeTab === 'channel' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 transition-all duration-300">
             {salesChannels.map((channel, idx) => (
               <div
                 key={idx}
-                className="group relative bg-white/95 hover:bg-gradient-to-br hover:from-white hover:via-gold-50/40 hover:to-gold-100/60 rounded-3xl p-6 sm:p-8 border border-gold-400/35 hover:border-gold-500 shadow-xl transition-all duration-300 hover:shadow-2xl flex flex-col justify-between"
+                className="group relative bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/35 hover:border-gold-500 shadow-xl transition-all duration-300 hover:shadow-2xl flex flex-col justify-between overflow-hidden"
               >
                 <div>
                   <div className="flex items-center gap-3 mb-5">
                     <div className="w-12 h-12 p-1 flex items-center justify-center shrink-0">
                       <img src={channel.logo} alt={channel.name} className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
                     </div>
-                    <h3 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-950 leading-snug">
+                    <h3 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-950 group-hover:bg-gradient-to-r group-hover:from-amber-600 group-hover:via-amber-500 group-hover:to-amber-700 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 leading-snug">
                       {channel.name}
                     </h3>
                   </div>
@@ -270,6 +273,9 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
+
+                {/* 底部 4px 質感金色指示線 (Hover 浮現) */}
+                <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
               </div>
             ))}
           </div>
