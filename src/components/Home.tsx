@@ -213,7 +213,7 @@ export default function Home() {
             
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* 政府立案核准卡片 (改為直接開新分頁預覽 PDF，並搭配 ExternalLink 圖示代表外開檢視) */}
+              {/* 政府立案核准卡片 (使用 URL 編碼網址，點擊在新分頁開啟預覽 PDF 且標題不亂碼) */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
@@ -223,7 +223,7 @@ export default function Home() {
                   <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
                 </div>
                 <a 
-                  href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf" 
+                  href="/%E5%8F%B0%E5%8D%97%E5%B8%82%E6%B0%91%E6%94%BF%E5%B1%80%E7%94%9F%E5%89%8d%E5%A5%91%E7%B4%84%E9%8A%B7%E5%94%AE%E5%8F%8A%E4%BB%A3%E9%8A%B7%E5%95%86%E6%9C%80%E6%96%B0%E6%A0%B8%E6%BA%96%E5%87%BD1150903.pdf" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${btnStyle} mt-2`}
