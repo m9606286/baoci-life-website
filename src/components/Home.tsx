@@ -15,12 +15,11 @@ function TrustCircleProgress() {
 
   useEffect(() => {
     let startTimestamp: number | null = null;
-    const duration = 1500; // 動畫持續 1.5 秒
+    const duration = 1500;
 
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progressRatio = Math.min((timestamp - startTimestamp) / duration, 1);
-      // Ease-out 動畫曲線
       const easeOutProgress = 1 - Math.pow(1 - progressRatio, 3);
       setProgress(Math.floor(easeOutProgress * 75));
 
@@ -32,7 +31,6 @@ function TrustCircleProgress() {
     requestAnimationFrame(step);
   }, []);
 
-  // 計算 SVG stroke-dasharray (半徑 r = 32，圓周長 2 * π * r ≈ 201.06)
   const radius = 32;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (circumference * (progress / 100));
@@ -40,7 +38,6 @@ function TrustCircleProgress() {
   return (
     <div className="relative w-16 h-16 mx-auto mb-3 flex items-center justify-center">
       <svg className="w-full h-full transform -rotate-90" viewBox="0 0 80 80">
-        {/* 背景淺色圓環 */}
         <circle
           cx="40"
           cy="40"
@@ -49,7 +46,6 @@ function TrustCircleProgress() {
           strokeWidth="10"
           fill="transparent"
         />
-        {/* 動態金色進度圓環 (淺深金色，線條加粗) */}
         <circle
           cx="40"
           cy="40"
@@ -70,7 +66,6 @@ function TrustCircleProgress() {
           </linearGradient>
         </defs>
       </svg>
-      {/* 依動畫遞增的 0~75% 文字 */}
       <span className="absolute font-serif-tc text-sm font-bold text-ink-900 tracking-tight">
         {progress}%
       </span>
@@ -194,7 +189,7 @@ export default function Home() {
             
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* 政府立案核准卡片：將 Award 圖示尺寸放大為 w-12 h-12，與右側圓形圖大小一致 */}
+              {/* 政府立案核准卡片：背景與我們的服務一致 (bg-ivory-100)，未移到字體為黑色 */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
@@ -206,14 +201,14 @@ export default function Home() {
                 <a 
                   href="/documents/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf" 
                   download 
-                  className="inline-flex items-center justify-center gap-1.5 font-bold text-black bg-gold-50 border border-gold-400/40 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm text-xs sm:text-sm"
+                  className="inline-flex items-center justify-center gap-1.5 font-bold text-ink-900 bg-ivory-100 border border-gold-400/30 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm text-xs sm:text-sm"
                 >
                   <span>核准函</span>
-                  <Download className="w-4 h-4" />
+                  <Download className="w-4 h-4 text-ink-900 group-hover/btn:text-white" />
                 </a>
               </div>
 
-              {/* 75% 依法信託卡片：圓形比例圖 */}
+              {/* 75% 依法信託卡片：背景與我們的服務一致 (bg-ivory-100)，未移到字體為黑色 */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <TrustCircleProgress />
@@ -222,10 +217,10 @@ export default function Home() {
                 </div>
                 <Link 
                   to="/trust" 
-                  className="inline-flex items-center justify-center gap-1.5 font-bold text-black bg-gold-50 border border-gold-400/40 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm text-xs sm:text-sm"
+                  className="inline-flex items-center justify-center gap-1.5 font-bold text-ink-900 bg-ivory-100 border border-gold-400/30 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-4 rounded-xl transition-all duration-300 mt-2 shadow-sm text-xs sm:text-sm"
                 >
                   <span>了解更多</span>
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-4 h-4 text-ink-900 group-hover/btn:text-white" />
                 </Link>
               </div>
 
@@ -246,6 +241,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* 生前契約規劃 */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
                 <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
@@ -265,12 +261,17 @@ export default function Home() {
                 </p>
               </div>
               
-              <Link to="/preneed" className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
+              {/* 了解更多按鈕：未移到文字為黑色 (text-ink-900)，含質感細線 border-t */}
+              <Link 
+                to="/preneed" 
+                className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-ink-900 font-bold rounded-xl transition-all duration-300 text-center inline-flex items-center justify-center gap-1 border-t border-gold-400/20 shadow-sm relative overflow-hidden"
+              >
                 <span>了解更多</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
 
+            {/* 禮儀服務 */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
                 <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
@@ -290,12 +291,16 @@ export default function Home() {
                 </p>
               </div>
 
-              <Link to="/services" className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
+              <Link 
+                to="/services" 
+                className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-ink-900 font-bold rounded-xl transition-all duration-300 text-center inline-flex items-center justify-center gap-1 border-t border-gold-400/20 shadow-sm relative overflow-hidden"
+              >
                 <span>了解更多</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
 
+            {/* 手續服務 */}
             <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
               <div>
                 <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
@@ -315,7 +320,10 @@ export default function Home() {
                 </p>
               </div>
 
-              <Link to="/procedures" className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-gold-700 font-bold rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
+              <Link 
+                to="/procedures" 
+                className="w-full py-3 bg-ivory-100 hover:bg-[#C69233] hover:text-white text-ink-900 font-bold rounded-xl transition-all duration-300 text-center inline-flex items-center justify-center gap-1 border-t border-gold-400/20 shadow-sm relative overflow-hidden"
+              >
                 <span>了解更多</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
@@ -348,7 +356,7 @@ export default function Home() {
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-9 py-4 bg-gold-100 text-gold-800 border border-gold-300 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] font-bold rounded-full text-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-9 py-4 bg-ivory-100 text-ink-900 border border-gold-300 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] font-bold rounded-full text-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
           >
             <span>聯絡我們</span>
             <ChevronRight className="w-5 h-5" />
