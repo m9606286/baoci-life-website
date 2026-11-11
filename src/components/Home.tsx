@@ -99,8 +99,7 @@ export default function Home() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
-  // 統一按鈕風格：石墨灰底色、金邊框與光暈、Hover 時轉為高質感金色
-  const btnStyle = "group/btn inline-flex items-center justify-center gap-2 font-serif-tc font-bold tracking-wider text-white bg-[#585c63] border border-gold-400/60 ring-1 ring-gold-400/25 hover:bg-gold-600 hover:border-gold-300 hover:ring-gold-300/40 py-2.5 px-5 rounded-full transition-all duration-300 shadow-sm hover:shadow-md text-xs sm:text-sm";
+  const btnStyle = "group/btn inline-flex items-center justify-center gap-2 font-serif-tc font-bold tracking-wider text-ink-900 bg-ivory-100 border border-gold-400/35 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-5 rounded-full transition-all duration-300 shadow-sm hover:shadow-md text-xs sm:text-sm";
 
   return (
     <div className="bg-ivory-100 min-h-screen text-ink-900 font-sans">
@@ -191,11 +190,11 @@ export default function Home() {
             <div className="w-full md:w-1/2 space-y-6">
               
               <div className="group/profile-header cursor-pointer space-y-4">
-                <span className="inline-block px-5 py-2 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-base font-bold tracking-wider uppercase transition-all duration-300 group-hover/profile-header:bg-gold-600 group-hover/profile-header:text-white group-hover/profile-header:border-gold-600">
+                <span className="inline-block px-5 py-2 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-base font-bold tracking-wider uppercase transition-all duration-300 group-hover/profile-header:bg-[#C69233] group-hover/profile-header:text-white group-hover/profile-header:border-[#C69233]">
                   合規經營．誠信至上
                 </span>
                 
-                <h3 className="font-serif-tc text-2xl md:text-3xl font-bold text-ink-900 leading-snug transition-colors duration-300 group-hover/profile-header:text-gold-600">
+                <h3 className="font-serif-tc text-2xl md:text-3xl font-bold text-ink-900 leading-snug transition-colors duration-300 group-hover/profile-header:text-[#C69233]">
                   專業與合規保障<br />給家人最堅實的安心依託
                 </h3>
               </div>
@@ -205,20 +204,20 @@ export default function Home() {
               </p>
 
               <div className="pt-2">
-                <Link to="/about" className="inline-flex items-center gap-2 text-ink-900 font-bold hover:text-gold-600 transition-colors group/more">
+                <Link to="/about" className="inline-flex items-center gap-2 text-ink-900 font-bold hover:text-[#C69233] transition-colors group/more">
                   <span>了解更多關於寶慈經營理念與故事</span>
-                  <ChevronRight className="w-5 h-5 text-gold-600 group-hover/more:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-5 h-5 text-[#C69233] group-hover/more:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
             
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* 政府立案核准卡片 */}
+              {/* 政府立案核准卡片 (改為直接開新分頁預覽 PDF，並搭配 ExternalLink 圖示代表外開檢視) */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-                    <Award className="w-12 h-12 text-gold-600 group-hover:scale-105 transition-transform duration-300" />
+                    <Award className="w-12 h-12 text-[#C69233] group-hover:scale-105 transition-transform duration-300" />
                   </div>
                   <h4 className="font-bold text-ink-900 mb-1">政府立案核准</h4>
                   <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
@@ -278,7 +277,7 @@ export default function Home() {
                   />
                 </div>
 
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300 text-center mb-3">
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 text-center mb-3">
                   生前契約規劃
                 </h3>
 
@@ -307,7 +306,7 @@ export default function Home() {
                   />
                 </div>
 
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300 text-center mb-3">
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 text-center mb-3">
                   禮儀服務
                 </h3>
 
@@ -336,7 +335,7 @@ export default function Home() {
                   />
                 </div>
 
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300 text-center mb-3">
+                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 text-center mb-3">
                   手續服務
                 </h3>
 
