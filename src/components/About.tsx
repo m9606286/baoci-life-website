@@ -93,6 +93,18 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gold-100/40 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
+        
+        {/* 最上方加入：關於我們 (英文副標 + 質感線) */}
+        <div className="text-center mb-16">
+          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
+            ABOUT US
+          </p>
+          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
+            關於我們
+          </h2>
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-24">
           
           {/* 左側：圖片區塊 */}
@@ -106,7 +118,7 @@ export default function About() {
               {/* 漸層遮罩：下方襯托白色文字 */}
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/20 to-transparent pointer-events-none" />
 
-              {/* 左下角品牌精神文字壓紋（文字修改、字級縮小、位置向上挪移至 bottom-10 sm:bottom-12） */}
+              {/* 左下角品牌精神文字壓紋 */}
               <div className="absolute bottom-10 sm:bottom-12 left-6 right-6 z-10 pointer-events-none space-y-1.5">
                 <h4 className="text-white font-serif-tc text-base sm:text-lg lg:text-xl font-semibold tracking-wide leading-snug drop-shadow-md">
                   用心守護，讓愛延續
