@@ -348,3 +348,11 @@ export default function Home() {
             className="inline-flex items-center gap-2 px-9 py-4 bg-gold-100 text-gold-800 border border-gold-300 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] font-bold rounded-full text-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
           >
             <span>聯絡我們</span>
+            <ChevronRight className="w-5 h-5" />
+          </Link>
+        </section>
+
+      </div>
+    </div>
+  );
+}
