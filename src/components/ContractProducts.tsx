@@ -37,22 +37,22 @@ const contractProducts: ContractProduct[] = [
   {
     id: 'fuyi',
     typeTag: '生前契約書－標準型',
-    bgImage: '/福益契約書封面.png', // 請確保 public 目錄下有此圖片，或視需要替換
+    bgImage: '/福益契約書封面.png',
     channel: {
       name: '天勤文創股份有限公司',
-      phone: '(02)2514-7758', // 請依實際需求調整電話
+      phone: '(02)2514-7758',
     },
-    pdfUrl: '/福益生前契約書.pdf', // 請確保 public 目錄下有此 PDF 檔案
+    pdfUrl: '/福益生前契約書.pdf',
   },
   {
     id: 'puyu',
     typeTag: '生前契約書－簡約型',
-    bgImage: '/璞瑜契約書封面.png', // 請確保 public 目錄下有此圖片，或視需要替換
+    bgImage: '/璞瑜契約書封面.png',
     channel: {
       name: '天勤文創股份有限公司',
-      phone: '(02)2514-7758', // 請依實際需求調整電話
+      phone: '(02)2514-7758',
     },
-    pdfUrl: '/璞瑜生前契約書.pdf', // 請確保 public 目錄下有此 PDF 檔案
+    pdfUrl: '/璞瑜生前契約書.pdf',
   },
 ];
 
@@ -116,7 +116,7 @@ export default function ContractProducts() {
         </div>
 
         {/* 商品格子區塊 (自動支援 2x2 響應式排版) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto mb-16">
           {contractProducts.map((product) => (
             <div
               key={product.id}
@@ -174,19 +174,6 @@ export default function ContractProducts() {
 
             </div>
           ))}
-        </div>
-
-        {/* 獨立區塊：台南市民政局生前契約銷售及代銷商最新核准函 */}
-        <div className="max-w-5xl mx-auto mb-16 text-center">
-          <a
-            href="/%E5%8F%B0%E5%8D%97%E5%B8%82%E6%B0%91%E6%94%BF%E5%B1%80%E7%94%9F%E5%89%8d%E5%A5%91%E7%B4%84%E9%8A%B7%E5%94%AE%E5%8F%8A%E4%BB%A3%E9%8A%B7%E5%95%86%E6%9C%80%E6%96%B0%E6%A0%B8%E6%BA%96%E5%87%BD1150903.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white font-medium text-sm sm:text-base transition-all duration-300 border border-gold-400/50 shadow-sm hover:shadow-md group"
-          >
-            <span>台南市民政局生前契約銷售及代銷商最新核准函</span>
-            <Download className="w-4 h-4 shrink-0 text-gold-500 group-hover:text-white transition-colors" />
-          </a>
         </div>
 
         {/* 生前契約商品差異對照表 */}
