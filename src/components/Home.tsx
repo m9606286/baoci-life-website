@@ -230,9 +230,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-
+        {/* 透過直接插入獨立的空白間距區塊（例如 h-12 或 h-16），絕對能確實往下推開 */}
+        <div className="h-12 md:h-16" />
         {/* 我們的服務 */}
-        <section className="max-w-7xl mx-auto mt-24 px-6">
+        <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               OUR SERVICES
