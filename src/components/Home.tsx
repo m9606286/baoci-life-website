@@ -223,7 +223,7 @@ export default function Home() {
                   <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
                 </div>
                 <a 
-                  href="/documents/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf" 
+                  href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf" 
                   download 
                   className={`${btnStyle} mt-2`}
                 >
