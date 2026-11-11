@@ -232,12 +232,12 @@ export default function Home() {
         </section>
 
         {/* 我們的服務 */}
-        <section className="max-w-7xl mx-auto px-10">
+        <section className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-10">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               OUR SERVICES
             </p>
-            <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
+            <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-8">
               我們的服務
             </h2>
             <div className="gold-divider w-32 mx-auto mt-4" />
