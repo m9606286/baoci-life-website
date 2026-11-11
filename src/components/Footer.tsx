@@ -28,7 +28,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#1e2022] text-white border-t border-gold-400/40 transition-colors duration-300">
+    <footer className="bg-[#343a40] text-white border-t border-gold-400/40 transition-colors duration-300">
       {/* Main */}
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -127,7 +127,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-slate-700/50 bg-[#1e2022]">
+      <div className="border-t border-slate-600/40 bg-[#2d3135]">
         <div className="mx-auto max-w-6xl px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-slate-100 font-normal">
             © 2026 寶慈生命事業股份有限公司 · 版權所有
