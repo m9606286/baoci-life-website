@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
-import { ShieldCheck, TrendingUp, PiggyBank, Maximize2, X, Check, HeartHandshake } from 'lucide-react';
 import familyImage from '/core.jpg';
-import funeralCostImg from '/台灣平均喪葬費用.jpg';
-import planningBenefitsImg from '/規劃的好處.jpg';
-import preneedVsInsuranceImg from '/生前契約.jpg';
 
-// 4 點實用優勢列表
+// 上方 4 大核心保障
+const coreHighlights = [
+  {
+    title: '提前規劃，讓愛更周全',
+    desc: '預先規劃禮儀服務與相關事宜，為未來多一份從容，讓家人在面對離別時能安心陪伴、從容道別。',
+  },
+  {
+    title: '享受預約優惠價，鎖定價格抗通膨',
+    desc: '喪葬費用隨通膨逐年增加，生前契約用現在的價格鎖定未來必定發生的支出，理性省下龐大開銷。',
+  },
+  {
+    title: '給親愛的家人留愛不留負擔',
+    desc: '如同儲蓄與保險般的資產配置，提早準備好自己想要的安排，避免將未來的財務與精神壓力留給家人。',
+  },
+  {
+    title: '保證 75% 信託，永續經營有保障',
+    desc: '依法將 75% 款項交付京城銀行信託專戶管理；身為寶碩集團 (股票代號5210) 子公司，落實永續服務承諾。',
+  },
+];
+
+// 下方 4 點實用優勢列表
 const additionalFeatures = [
   '獲得透明公開的服務規格與價格保障',
   '提供彈性優惠的付款方案，減輕分期壓力',
@@ -17,7 +33,6 @@ const additionalFeatures = [
 export default function PreneedConcept() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
-  const [activeModalImage, setActiveModalImage] = useState<{ src: string; title: string } | null>(null);
 
   return (
     <section className="pt-2 pb-16 lg:pt-4 lg:pb-24 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
@@ -33,173 +48,75 @@ export default function PreneedConcept() {
           </h2>
           <div className="w-60 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
           <p className="mt-4 text-slate-600 text-sm sm:text-base max-w-2xl mx-auto reveal reveal-delay-3">
-            給家人最後的一道保障，也是為自己預先記錄並落實身後事安排的尊榮選擇。
+            生前契約是給家人最後的一道保障，也是為自己預先記錄並落實身後事安排的尊榮選擇。
           </p>
         </div>
 
-        {/* 2. 主視覺：溫馨陪伴 + 核心價值 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16 reveal reveal-delay-3">
-          <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-xl border border-gold-400/30 h-[320px] lg:h-[380px] group">
+        {/* 2. 左圖右文：4 大核心保障 */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12 reveal reveal-delay-3">
+          
+          {/* 左側照片 */}
+          <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-xl border border-gold-400/30 min-h-[350px] lg:min-h-full group">
             <img
               src={familyImage}
               alt="溫暖陪伴"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
             <div className="absolute bottom-6 left-6 right-6 text-white">
               <p className="font-serif-tc text-xl font-bold drop-shadow">預先安排，圓滿無遺憾</p>
-              <p className="text-sm text-ivory-100/90 mt-1 drop-shadow">以愛為出發，讓家人多一份安心與陪伴。</p>
+              <p className="text-sm text-ivory-100/90 mt-1 drop-shadow">以愛為出發，讓家人多一份安心。</p>
             </div>
           </div>
 
-          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/30 shadow-lg space-y-4">
-            <h3 className="font-serif-tc text-2xl font-bold text-ink-950 border-b border-gold-200 pb-3 flex items-center gap-2">
-              <HeartHandshake className="w-6 h-6 text-gold-600" />
-              <span>給家人最堅實的承諾</span>
-            </h3>
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-              生前契約是一種提早規劃身後事的尊榮服務方案。透由公開透明的契約內容與費用，將愛與關懷提早安排好，避免將未來的財務負擔與精神壓力留給最愛的家人。
-            </p>
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="p-3 bg-ivory-50 rounded-xl border border-gold-200/60">
-                <span className="block font-bold text-gold-700 text-sm">75% 依法信託</span>
-                <span className="text-xs text-slate-500">京城銀行專戶履約保證</span>
-              </div>
-              <div className="p-3 bg-ivory-50 rounded-xl border border-gold-200/60">
-                <span className="block font-bold text-gold-700 text-sm">上市櫃集團背景</span>
-                <span className="text-xs text-slate-500">寶碩集團 (5210) 永續經營</span>
-              </div>
-            </div>
-          </div>
-        </div>
+          {/* 右側：4 大核心保障卡片 */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {coreHighlights.map((item, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className="group relative rounded-2xl p-5 sm:p-6 overflow-hidden hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                  style={{
+                    // 淡化漸層：改為幾乎近純白的極明亮自然感
+                    background: 'linear-gradient(180deg, #ffffff 0%, #fdfcfb 70%, #faf6f0 100%)',
+                    border: '1px solid rgba(212, 175, 55, 0.22)',
+                    boxShadow: '0 8px 25px -5px rgba(212, 175, 55, 0.1), 0 3px 8px rgba(0, 0, 0, 0.03)',
+                  }}
+                >
+                  {/* Hover 時的清亮補光 */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-        {/* 3. 三大核心訴求 (美化網頁原生卡片 + 圖表檢視功能) */}
-        <div className="space-y-12 mb-16 reveal reveal-delay-4">
-          
-          {/* 第一單元：生前契約 VS 保險 */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/30 shadow-lg">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gold-100 pb-4 mb-6">
-              <div>
-                <span className="text-xs font-bold text-gold-600 uppercase tracking-widest">CHAPTER 01</span>
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-950 mt-1">一定會發生的事情，先做好準備</h3>
-                <p className="text-xs sm:text-sm text-slate-500 mt-1">生前契約 VS 保險，保障滿額理賠真正留給所愛的家人</p>
-              </div>
-              <button
-                onClick={() => setActiveModalImage({ src: preneedVsInsuranceImg, title: '生前契約 VS 保險' })}
-                className="self-start md:self-auto inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-ivory-100 border border-gold-400/40 text-gold-700 hover:bg-[#C69233] hover:text-white transition-all text-xs font-bold shrink-0 shadow-sm"
-              >
-                <Maximize2 className="w-3.5 h-3.5" />
-                <span>對比圖表</span>
-              </button>
-            </div>
+                  <div>
+                    {/* 標題與勾勾 */}
+                    <h3 className="relative z-10 font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-start gap-1.5">
+                      <img 
+                        src="/v.jpg" 
+                        alt="勾勾" 
+                        className="h-5 sm:h-6 w-auto object-contain shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]"
+                      />
+                      <span>{item.title}</span>
+                    </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gradient-to-br from-gold-50/60 to-white p-5 rounded-2xl border border-gold-300/60 shadow-sm">
-                <div className="flex items-center gap-2 mb-3">
-                  <ShieldCheck className="w-5 h-5 text-gold-600" />
-                  <h4 className="font-serif-tc font-bold text-ink-950 text-lg">生前契約（為確定做準備）</h4>
+                    {/* 內文字體放大對齊 */}
+                    <p className="relative z-10 text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-7">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  {/* 底部 4px 質感金色指示線 */}
+                  <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
                 </div>
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-gold-600" /> <strong>不分老少</strong>：不受年齡與健康狀況限制</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-gold-600" /> <strong>自由轉讓</strong>：持有人可指定家人使用</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-gold-600" /> <strong>確定服務</strong>：提供具體金額之完整喪葬服務</li>
-                </ul>
-              </div>
-
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="w-2 h-2 rounded-full bg-slate-400" />
-                  <h4 className="font-serif-tc font-bold text-slate-800 text-lg">人壽保險（為不確定做準備）</h4>
-                </div>
-                <ul className="space-y-2 text-sm text-slate-600">
-                  <li>• <strong>投保限制</strong>：需視身體狀況與年齡核保</li>
-                  <li>• <strong>不可轉讓</strong>：僅限被保險人本人使用</li>
-                  <li>• <strong>金錢理賠</strong>：僅給付現金理賠金，留待遺屬處理</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* 第二單元：台灣平均喪葬費用 */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/30 shadow-lg">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gold-100 pb-4 mb-6">
-              <div>
-                <span className="text-xs font-bold text-gold-600 uppercase tracking-widest">CHAPTER 02</span>
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-950 mt-1">享受預約優惠價，鎖定價格抗通膨</h3>
-                <p className="text-xs sm:text-sm text-slate-500 mt-1">台灣平均一場喪葬費用約 35 萬元，隨通膨逐年增加</p>
-              </div>
-              <button
-                onClick={() => setActiveModalImage({ src: funeralCostImg, title: '台灣平均喪葬費用數據' })}
-                className="self-start md:self-auto inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-ivory-100 border border-gold-400/40 text-gold-700 hover:bg-[#C69233] hover:text-white transition-all text-xs font-bold shrink-0 shadow-sm"
-              >
-                <Maximize2 className="w-3.5 h-3.5" />
-                <span>全台數據圖</span>
-              </button>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-              <div className="p-4 bg-ivory-50 rounded-2xl border border-gold-200/50">
-                <span className="text-xs text-slate-500 block">北部地區</span>
-                <span className="font-serif-tc font-bold text-ink-950 text-xl block mt-1">$399,580</span>
-              </div>
-              <div className="p-4 bg-ivory-50 rounded-2xl border border-gold-200/50">
-                <span className="text-xs text-slate-500 block">中部地區</span>
-                <span className="font-serif-tc font-bold text-ink-950 text-xl block mt-1">$371,526</span>
-              </div>
-              <div className="p-4 bg-ivory-50 rounded-2xl border border-gold-200/50">
-                <span className="text-xs text-slate-500 block">南部地區</span>
-                <span className="font-serif-tc font-bold text-ink-950 text-xl block mt-1">$359,169</span>
-              </div>
-              <div className="p-4 bg-ivory-50 rounded-2xl border border-gold-200/50">
-                <span className="text-xs text-slate-500 block">東部地區</span>
-                <span className="font-serif-tc font-bold text-ink-950 text-xl block mt-1">$225,192</span>
-              </div>
-            </div>
-            <p className="text-right text-[11px] text-slate-400 mt-3">* 數據來源：內政部主計處 (費用未包含塔位與土葬支出)</p>
-          </div>
-
-          {/* 第三單元：給家人留愛不留債 */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/30 shadow-lg">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gold-100 pb-4 mb-6">
-              <div>
-                <span className="text-xs font-bold text-gold-600 uppercase tracking-widest">CHAPTER 03</span>
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-950 mt-1">給親愛的家人留愛不留債</h3>
-                <p className="text-xs sm:text-sm text-slate-500 mt-1">提早做好資產配置與規劃，避免留給家人財務負擔</p>
-              </div>
-              <button
-                onClick={() => setActiveModalImage({ src: planningBenefitsImg, title: '現在規劃的好處與通膨曲線' })}
-                className="self-start md:self-auto inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-ivory-100 border border-gold-400/40 text-gold-700 hover:bg-[#C69233] hover:text-white transition-all text-xs font-bold shrink-0 shadow-sm"
-              >
-                <Maximize2 className="w-3.5 h-3.5" />
-                <span>通膨曲線圖</span>
-              </button>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="p-4 bg-gradient-to-br from-amber-500 to-amber-600 text-white rounded-2xl text-center shadow-md">
-                <PiggyBank className="w-6 h-6 mx-auto mb-2 opacity-90" />
-                <h4 className="font-bold text-base">省錢 ‧ 省事 ‧ 省麻煩</h4>
-                <p className="text-xs opacity-80 mt-1">現在預約價格最理想</p>
-              </div>
-              <div className="p-4 bg-gradient-to-br from-amber-600 to-amber-700 text-white rounded-2xl text-center shadow-md">
-                <TrendingUp className="w-6 h-6 mx-auto mb-2 opacity-90" />
-                <h4 className="font-bold text-base">鎖定價格 ‧ 抗通膨</h4>
-                <p className="text-xs opacity-80 mt-1">不受每年 5% 通膨影響</p>
-              </div>
-              <div className="p-4 bg-gradient-to-br from-amber-700 to-amber-800 text-white rounded-2xl text-center shadow-md">
-                <ShieldCheck className="w-6 h-6 mx-auto mb-2 opacity-90" />
-                <h4 className="font-bold text-base">自主選擇理想方式</h4>
-                <p className="text-xs opacity-80 mt-1">依自己心意尊榮安排</p>
-              </div>
-            </div>
+              );
+            })}
           </div>
 
         </div>
 
-        {/* 4. 底部 4 點實用優勢 */}
+        {/* 3. 底部優勢條列大卡片 */}
         <div 
           className="rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-300 reveal reveal-delay-4"
           style={{
+            // 淡化漸層背景
             background: 'linear-gradient(180deg, #ffffff 0%, #fdfcfb 70%, #faf6f0 100%)',
             border: '1px solid rgba(212, 175, 55, 0.22)',
             boxShadow: '0 8px 25px -5px rgba(212, 175, 55, 0.1), 0 3px 8px rgba(0, 0, 0, 0.03)',
@@ -230,39 +147,6 @@ export default function PreneedConcept() {
         </div>
 
       </div>
-
-      {/* 點擊放大查看圖片 Modal */}
-      {activeModalImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
-          onClick={() => setActiveModalImage(null)}
-        >
-          <div 
-            className="bg-white rounded-3xl p-4 sm:p-6 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between mb-4 border-b pb-3">
-              <h3 className="font-serif-tc text-lg sm:text-xl font-bold text-ink-950">
-                {activeModalImage.title}
-              </h3>
-              <button 
-                onClick={() => setActiveModalImage(null)}
-                className="p-1 rounded-full hover:bg-slate-100 transition-colors text-slate-500"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-slate-200">
-              <img 
-                src={activeModalImage.src} 
-                alt={activeModalImage.title} 
-                className="w-full h-auto object-contain"
-              />
-            </div>
-          </div>
-        </div>
-      )}
-
     </section>
   );
 }
