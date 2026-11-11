@@ -40,7 +40,7 @@ const contractProducts: ContractProduct[] = [
     bgImage: '/福益契約書封面.png',
     channel: {
       name: '天勤文創股份有限公司',
-      phone: '(02)2514-7758',
+      phone: '(04)2322-0208',
     },
     pdfUrl: '/福益生前契約書.pdf',
   },
@@ -50,7 +50,7 @@ const contractProducts: ContractProduct[] = [
     bgImage: '/璞瑜契約書封面.png',
     channel: {
       name: '天勤文創股份有限公司',
-      phone: '(02)2514-7758',
+      phone: '(04)2322-0208',
     },
     pdfUrl: '/璞瑜生前契約書.pdf',
   },
