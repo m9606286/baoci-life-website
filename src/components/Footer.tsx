@@ -129,7 +129,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-gold-400/30 bg-[#585c63]">
         <div className="mx-auto max-w-6xl px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-slate-100 font-normal">
+          <p className="text-sm text-slate-100 hover:text-gold-300 transition-colors font-normal cursor-pointer">
             © 2026 寶慈生命事業股份有限公司 · 版權所有
           </p>
           <a
