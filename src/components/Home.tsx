@@ -9,7 +9,7 @@ import serve1Image from '/Serve1.png';
 import serve2Image from '/Serve2.png';
 import serve3Image from '/Serve3.png';
 
-// 75% 圓形進度圖表組件 (滾動到該區塊時才觸發 0%~75% 動態平滑動畫)
+// 75% 圓形進度圖表組件 (數字固定 75%，僅線條滾動到該區塊時跑動、加粗且更具立體感)
 function TrustCircleProgress() {
   const [progress, setProgress] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -18,7 +18,6 @@ function TrustCircleProgress() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // 當元件進入視窗範圍且尚未執行過動畫時觸發
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
           let startTimestamp: number | null = null;
@@ -38,7 +37,7 @@ function TrustCircleProgress() {
           requestAnimationFrame(step);
         }
       },
-      { threshold: 0.3 } // 當元素露出 30% 時觸發
+      { threshold: 0.3 }
     );
 
     if (containerRef.current) {
@@ -50,43 +49,47 @@ function TrustCircleProgress() {
     };
   }, [hasAnimated]);
 
-  const radius = 32;
+  const radius = 30;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (circumference * (progress / 100));
 
   return (
     <div ref={containerRef} className="relative w-16 h-16 mx-auto mb-3 flex items-center justify-center">
       <svg className="w-full h-full transform -rotate-90" viewBox="0 0 80 80">
+        {/* 背景底圈 */}
         <circle
           cx="40"
           cy="40"
           r={radius}
-          className="stroke-amber-100/60"
-          strokeWidth="10"
+          className="stroke-amber-200/50"
+          strokeWidth="12"
           fill="transparent"
         />
+        {/* 動態立體金屬進度線條 */}
         <circle
           cx="40"
           cy="40"
           r={radius}
-          stroke="url(#goldGradient)"
-          strokeWidth="10"
+          stroke="url(#goldGradient3D)"
+          strokeWidth="12"
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
           fill="transparent"
-          className="transition-all duration-75 ease-out"
+          className="transition-all duration-75 ease-out drop-shadow-sm"
         />
         <defs>
-          <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#D4A348" />
-            <stop offset="50%" stopColor="#C69233" />
-            <stop offset="100%" stopColor="#9C6F1E" />
+          <linearGradient id="goldGradient3D" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#E6C56D" />
+            <stop offset="40%" stopColor="#C69233" />
+            <stop offset="80%" stopColor="#A6721C" />
+            <stop offset="100%" stopColor="#7A5212" />
           </linearGradient>
         </defs>
       </svg>
+      {/* 數字固定顯示 75% 不變 */}
       <span className="absolute font-serif-tc text-sm font-bold text-ink-900 tracking-tight">
-        {progress}%
+        75%
       </span>
     </div>
   );
@@ -96,7 +99,6 @@ export default function Home() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
-  // 精品通用按鈕樣式 (未移到：明體字型、淡象牙背景、質感邊框、純黑字體；移到：經典淺深金色)
   const btnStyle = "group/btn inline-flex items-center justify-center gap-2 font-serif-tc font-bold tracking-wider text-ink-900 bg-ivory-100 border border-gold-400/35 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-5 rounded-full transition-all duration-300 shadow-sm hover:shadow-md text-xs sm:text-sm";
 
   return (
