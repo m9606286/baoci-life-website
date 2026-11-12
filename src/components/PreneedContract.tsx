@@ -402,7 +402,7 @@ export default function PreneedConcept() {
             </h3>
             <div className="w-72 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
             <p className="text-slate-600 font-sans text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed pt-2">
-              生前契約預先安排身後事與相關費用，避免臨時規劃造成額外支出，相較於壽險，更能確保服務妥善執行，減輕家人負擔。
+              生前契約預先安排身後事與相關費用，避免臨時規劃造成額外支出，相較於保險更能確保服務妥善執行，減輕家人負擔。
             </p>
           </div>
 
