@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Lock, UserCheck, ShieldCheck, RefreshCw, Award, FileText, FileCheck, DollarSign, Users, UserX } from 'lucide-react';
+import { Sparkles, Lock, UserCheck, ShieldCheck, RefreshCw, Award, FileCheck, DollarSign, Users, UserX, HeartHandshake } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import familyImage from '/core.jpg';
 
@@ -409,14 +409,14 @@ export default function PreneedConcept() {
           {/* 左右對比雙大卡片容器 */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             
-            {/* 左側：生前契約卡片 (紙本合約圖標 FileText) */}
+            {/* 左側：生前契約卡片 (使用 HeartHandshake 雙手捧心愛心圖標) */}
             <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
               
               <div className="mb-6 pb-4 border-b border-gold-400/20">
                 <div className="flex items-baseline gap-3">
                   <div className="flex items-center gap-2 shrink-0">
                     <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner">
-                      <FileText className="w-6 h-6 text-[#A6721C]" />
+                      <HeartHandshake className="w-6 h-6 text-[#A6721C]" />
                     </div>
                     <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">生前契約</h4>
                   </div>
@@ -463,7 +463,7 @@ export default function PreneedConcept() {
 
             </div>
 
-            {/* 右側：保險卡片 (專屬保障圖標 ShieldCheck) */}
+            {/* 右側：保險卡片 (使用 ShieldCheck 盾牌保障圖標) */}
             <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
               
               <div className="mb-6 pb-4 border-b border-gold-400/20">
