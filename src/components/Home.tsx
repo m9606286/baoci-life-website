@@ -360,12 +360,12 @@ export default function Home() {
           <CoreValues />
         </section>
 
-        {/* 最新消息 */}
-        <section className="max-w-7xl mx-auto px-6 -mt-10">
+        {/* 最新消息 (移到上面維持原色不變色) */}
+        <section className="max-w-7xl mx-auto px-6 -mt-10 [&_h2]:!text-ink-900 [&_h3]:!text-ink-900 [&_h4]:!text-ink-900 [&_.group:hover_h3]:!text-ink-900 [&_.group:hover_h4]:!text-ink-900">
           <Announcement />
         </section>
 
-        {/* 聯絡寶慈 */}
+        {/* 聯絡寶慈 (字體大小與核准函按鈕一致) */}
         <section className="max-w-4xl mx-auto px-6 text-center py-2">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTACT US
@@ -380,10 +380,10 @@ export default function Home() {
           </p>
           <Link
             to="/contact"
-            className={`${btnStyle} px-9 py-4 rounded-full text-lg shadow-md hover:shadow-xl transform hover:-translate-y-0.5`}
+            className={`${btnStyle} px-8 py-3 shadow-md hover:shadow-xl transform hover:-translate-y-0.5`}
           >
             <span>聯絡我們</span>
-            <ChevronRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
+            <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
           </Link>
         </section>
 
