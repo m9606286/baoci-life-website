@@ -46,7 +46,7 @@ const preneedItems = [
   { title: '確定金額的喪葬服務', desc: '預約現價鎖定，免受未來通膨影響', icon: FileCheck },
 ];
 
-// 保險 4 大互動項目 (第二個「不可指定使用」改為鎖的小圖)
+// 保險 4 大互動項目
 const insuranceItems = [
   { title: '投保限制', desc: '受年齡、健康狀況與體況核保規定限制', icon: Lock },
   { title: '不可指定使用', desc: '被保險人於投保時即固定，無法隨意變更使用對象', icon: Lock },
@@ -61,9 +61,8 @@ export default function PreneedConcept() {
   const [activeIndex, setActiveIndex] = useState<number>(1);
   const [years, setYears] = useState<number>(5); // 預設為 5 年後，最多 80 年
 
-  // 生前契約與保險互動卡片選中狀態 (保險初始不預設選中任何一項，設為 null)
-  const [activePreneedIdx, setActivePreneedIdx] = useState<number | null>(0);
-  const [activeInsIdx, setActiveInsIdx] = useState<number | null>(null);
+  // 生前契約與保險同步展開狀態（預設展開第一項）
+  const [activeIdx, setActiveIdx] = useState<number | null>(0);
 
   // SVG 座標基準常數
   const startX = 135;
@@ -390,7 +389,7 @@ export default function PreneedConcept() {
           </div>
         </div>
 
-        {/* 4. 生前契約與保險差異 */}
+        {/* 4. 生前契約與保險差異 (左右同步展開互動、無 VS、無副標下方線條) */}
         <div className="max-w-5xl mx-auto py-6 relative overflow-hidden">
           
           {/* 區塊標題 */}
@@ -407,14 +406,14 @@ export default function PreneedConcept() {
             </p>
           </div>
 
-          {/* 左右對比雙大卡片容器 (含中間手寫風格 vs) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative">
+          {/* 左右對比雙大卡片容器 */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             
             {/* 左側：生前契約卡片 */}
-            <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group hover:-translate-y-1 transition-all duration-300">
+            <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
               
               <div className="mb-6">
-                {/* 標題與副標並排 */}
+                {/* 標題與「為了 確定 的事情做準備」並排 */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
@@ -426,20 +425,18 @@ export default function PreneedConcept() {
                     為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">確定</span> 的事情做準備
                   </p>
                 </div>
-                {/* 質感線放在副標下方：左邊深右邊淺 */}
-                <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
               </div>
 
-              {/* 四個互動式條列項目 (無右側短線、字級加大) */}
+              {/* 四個同步互動式條列項目 */}
               <div className="space-y-3.5">
                 {preneedItems.map((item, idx) => {
                   const ItemIcon = item.icon;
-                  const isSelected = activePreneedIdx === idx;
+                  const isSelected = activeIdx === idx;
                   return (
                     <div 
                       key={idx} 
-                      onClick={() => setActivePreneedIdx(idx)}
-                      onMouseEnter={() => setActivePreneedIdx(idx)}
+                      onClick={() => setActiveIdx(idx)}
+                      onMouseEnter={() => setActiveIdx(idx)}
                       className={`rounded-xl p-4 text-ink-950 flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none border ${
                         isSelected 
                           ? 'scale-[1.02] ring-2 ring-gold-500 shadow-md bg-gradient-to-r from-[#fff9ef] to-[#f4ebd9]' 
@@ -465,16 +462,11 @@ export default function PreneedConcept() {
 
             </div>
 
-            {/* 中間手寫風格 vs (桌面版絕對置中懸浮) */}
-            <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-20 font-serif font-italic text-3xl font-bold text-[#A6721C] items-center justify-center tracking-wider select-none drop-shadow-sm" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
-              vs
-            </div>
-
             {/* 右側：保險卡片 */}
-            <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group hover:-translate-y-1 transition-all duration-300">
+            <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
               
               <div className="mb-6">
-                {/* 標題與副標並排 */}
+                {/* 標題與「為了 不確定 的風險做準備」並排 */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
@@ -486,20 +478,18 @@ export default function PreneedConcept() {
                     為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">不確定</span> 的風險做準備
                   </p>
                 </div>
-                {/* 質感線放在副標下方：左邊深右邊淺 */}
-                <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
               </div>
 
-              {/* 四個互動式條列項目 (無右側短線、字級加大) */}
+              {/* 四個同步互動式條列項目 */}
               <div className="space-y-3.5">
                 {insuranceItems.map((item, idx) => {
                   const ItemIcon = item.icon;
-                  const isSelected = activeInsIdx === idx;
+                  const isSelected = activeIdx === idx;
                   return (
                     <div 
                       key={idx} 
-                      onClick={() => setActiveInsIdx(idx)}
-                      onMouseEnter={() => setActiveInsIdx(idx)}
+                      onClick={() => setActiveIdx(idx)}
+                      onMouseEnter={() => setActiveIdx(idx)}
                       className={`rounded-xl p-4 text-ink-950 flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none border ${
                         isSelected 
                           ? 'scale-[1.02] ring-2 ring-gold-500 shadow-md bg-gradient-to-r from-[#fff9ef] to-[#f4ebd9]' 
