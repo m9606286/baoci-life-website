@@ -40,17 +40,17 @@ const benefitBubbles = [
 
 // 生前契約 4 大互動項目
 const preneedItems = [
-  { title: '不分老少', desc: '全齡皆可預先規劃，不受年齡與體況限制', icon: Users },
-  { title: '可指定使用', desc: '契約可指定使用對象（不限本人或家人），彈性便利', icon: RefreshCw },
-  { title: '專業服務', desc: '由政府立案合法禮儀團隊全程執行', icon: Award },
-  { title: '確定金額的喪葬服務', desc: '預約現價鎖定，免受未來通膨影響', icon: FileCheck },
+  { title: '不分老少', desc: '不受年齡與體況限制，皆可預先規劃', icon: Users },
+  { title: '可指定使用', desc: '可指定使用對象（不限本人或家人），彈性便利', icon: RefreshCw },
+  { title: '專業服務', desc: '由專業禮儀團隊全程執行', icon: Award },
+  { title: '確定金額的喪葬服務', desc: '預約價格鎖定，免受未來通膨影響', icon: FileCheck },
 ];
 
 // 保險 4 大互動項目
 const insuranceItems = [
   { title: '投保限制', desc: '受年齡、健康狀況與體況核保規定限制', icon: Lock },
   { title: '不可指定使用', desc: '被保險人於投保時即固定，無法隨意變更', icon: Lock },
-  { title: '金錢理賠', desc: '以保險金給付為主，非直接提供實體服務', icon: DollarSign },
+  { title: '金錢理賠', desc: '以保險金給付為主，非直接提供實質服務', icon: DollarSign },
   { title: '遺屬的生活費用', desc: '提供身故後家庭經濟的資金補貼', icon: Users },
 ];
 
