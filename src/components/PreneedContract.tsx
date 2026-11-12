@@ -3,7 +3,7 @@ import { PiggyBank, Lock, UserCheck } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import familyImage from '/core.jpg';
 
-// 右側 3 大核心保障（接在「預先安排，圓滿無遺憾」照片右側）
+// 右側 3 大核心保障
 const coreHighlights = [
   {
     title: '提前規劃，讓愛更周全',
@@ -19,7 +19,7 @@ const coreHighlights = [
   },
 ];
 
-// 互動式「現在規劃的好處」三張對話框卡片資料
+// 「現在規劃的好處」三張卡片資料（改為單一沉穩立體金棕色調，符合網站風格）
 const benefitBubbles = [
   {
     id: 0,
@@ -27,11 +27,10 @@ const benefitBubbles = [
     yearLabel: '現在即刻規劃',
     icon: PiggyBank,
     lines: ['省錢', '省事', '省麻煩'],
-    bgGradient: 'from-[#d96b38] to-[#c45827]', // 暖橘棕（呼應原圖左側）
-    accentColor: '#d96b38',
     detailTitle: '115年｜趁早預約享優惠，一次解決身後煩憂',
     detailDesc: '現在用最實惠的預約價格完成規劃，免去日後家人臨時奔波比價與籌措資金的慌亂。',
     inflationNote: '基準期費用：價格最親民',
+    factor: '1.00 倍',
   },
   {
     id: 1,
@@ -39,11 +38,10 @@ const benefitBubbles = [
     yearLabel: '20年後趨勢',
     icon: Lock,
     lines: ['鎖定價格', '抗通膨'],
-    bgGradient: 'from-[#9e7b56] to-[#856442]', // 典雅金棕（呼應原圖中間）
-    accentColor: '#9e7b56',
-    detailTitle: '135年｜20年後物價翻倍，寶慈契約依然不加價',
-    detailDesc: '若以平均每年 5% 通膨計算，20 年後市場殯葬費用已大幅攀升，生前契約為您穩穩鎖住當初的價格。',
-    inflationNote: '市場費用預估成長約 2.65 倍',
+    detailTitle: '135年｜20年後物價增長，寶慈契約依然不加價',
+    detailDesc: '以近三年平均約 2% 通膨計算，20 年後市場殯葬費用約成長至 1.49 倍，生前契約為您穩穩鎖住現價。',
+    inflationNote: '市場費用預估成長約 1.49 倍',
+    factor: '1.49 倍',
   },
   {
     id: 2,
@@ -51,11 +49,10 @@ const benefitBubbles = [
     yearLabel: '40年後趨勢',
     icon: UserCheck,
     lines: ['自己選擇想要', '的方式'],
-    bgGradient: 'from-[#c7645e] to-[#b04f49]', // 溫潤磚紅（呼應原圖右側）
-    accentColor: '#c7645e',
-    detailTitle: '155年｜自主決定人生謝幕儀式，尊嚴且安心',
-    detailDesc: '不受未來高昂物價限制，依然能依照自己生前選定的禮儀規格與宗教儀式執行，圓滿無遺憾。',
-    inflationNote: '長期抗通膨效益顯著擴大',
+    detailTitle: '155年｜40年後長遠保障，自主決定謝幕儀式',
+    detailDesc: '以近三年平均約 2% 通膨計算，40 年後市場費用約成長至 2.21 倍，長遠抗通膨效益更為顯著。',
+    inflationNote: '市場費用預估成長約 2.21 倍',
+    factor: '2.21 倍',
   },
 ];
 
@@ -63,7 +60,6 @@ export default function PreneedConcept() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
-  // 目前選中的階段 (0: 115年, 1: 135年, 2: 155年)
   const [activeIndex, setActiveIndex] = useState<number>(1);
 
   return (
@@ -84,10 +80,9 @@ export default function PreneedConcept() {
           </p>
         </div>
 
-        {/* 2. 左圖右文：左側「預先安排，圓滿無遺憾」 + 右側 3 個核心方格 */}
+        {/* 2. 左圖右文：左側照片 + 右側 3 個核心方格 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-14 reveal reveal-delay-3">
           
-          {/* 左側照片 */}
           <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-xl border border-gold-400/30 min-h-[380px] lg:min-h-full group">
             <img
               src={familyImage}
@@ -101,7 +96,6 @@ export default function PreneedConcept() {
             </div>
           </div>
 
-          {/* 右側：3 大核心保障卡片 */}
           <div className="lg:col-span-7 flex flex-col justify-between gap-5">
             {coreHighlights.map((item, idx) => {
               return (
@@ -139,50 +133,42 @@ export default function PreneedConcept() {
 
         </div>
 
-        {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨（仿原圖結構互動資訊圖表） */}
+        {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨（精簡化、單一立體色調、尺寸放小） */}
         <div 
-          className="rounded-3xl p-6 sm:p-10 lg:p-12 relative overflow-hidden transition-all duration-300 reveal reveal-delay-4"
+          className="max-w-5xl mx-auto rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-300 reveal reveal-delay-4"
           style={{
             background: 'linear-gradient(180deg, #ffffff 0%, #fdfcfb 70%, #faf6f0 100%)',
             border: '1px solid rgba(212, 175, 55, 0.25)',
             boxShadow: '0 8px 25px -5px rgba(212, 175, 55, 0.12), 0 3px 10px rgba(0, 0, 0, 0.03)',
           }}
         >
-          {/* 區塊標題與副標 */}
-          <div className="mb-8 sm:mb-10">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gold-400/25 pb-5">
-              <div>
-                <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950 flex items-center gap-2">
-                  <img 
-                    src="/v.jpg" 
-                    alt="勾勾" 
-                    className="h-6 w-auto object-contain shrink-0" 
-                  />
-                  <span>享受預約優惠價，鎖定價格抗通膨</span>
-                </h3>
-                <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
-                  喪葬費用隨通膨逐年增加，生前契約用現在的價格鎖定未來必定發生的支出，理性省下龐大開銷。
-                </p>
-              </div>
-              <span className="text-xs font-medium text-gold-700 bg-gold-100/60 px-3.5 py-1.5 rounded-full self-start md:self-auto shrink-0">
-                點擊下方卡片或年份查看抗通膨效益
-              </span>
-            </div>
+          {/* 區塊標題：上方英文、下方質感線、完全置中、無勾勾 */}
+          <div className="text-center mb-8 space-y-2">
+            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+              PRENEED BENEFIT
+            </p>
+            <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">
+              享受預約優惠價，鎖定價格抗通膨
+            </h3>
+            <div className="w-48 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
+            <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto pt-1 leading-relaxed">
+              喪葬費用隨通膨逐年增加，生前契約用現在的價格鎖定未來必定發生的支出，理性省下龐大開銷。
+            </p>
           </div>
 
-          {/* 資訊圖表主體：對齊「現在規劃的好處」排版 */}
-          <div className="bg-ivory-100/70 rounded-2xl p-5 sm:p-8 border border-gold-400/20">
+          {/* 資訊圖表主體：符合網站方格的精緻尺寸 */}
+          <div className="bg-ivory-100/70 rounded-2xl p-4 sm:p-6 border border-gold-400/20">
             
-            {/* 圖表左上標題（呼應原圖「現在規劃的好處」與底線） */}
-            <div className="mb-8">
-              <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-[#4a3625] inline-block">
+            {/* 圖表左上小標題 */}
+            <div className="mb-6">
+              <h4 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-900 inline-block">
                 現在規劃的好處
               </h4>
-              <div className="w-56 sm:w-64 h-[3px] bg-gradient-to-r from-[#d96b38] via-gold-500 to-transparent rounded-full mt-2" />
+              <div className="w-40 h-[2.5px] bg-gradient-to-r from-[#A6721C] via-gold-400 to-transparent rounded-full mt-1.5" />
             </div>
 
-            {/* 上排：三個對話框式核心卡片 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:px-10 mb-6">
+            {/* 上排：三個對話框式核心卡片（改用網站一致的沉穩金棕單一立體色調） */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               {benefitBubbles.map((item, idx) => {
                 const IconComp = item.icon;
                 const isSelected = activeIndex === idx;
@@ -191,157 +177,146 @@ export default function PreneedConcept() {
                     key={item.id}
                     onClick={() => setActiveIndex(idx)}
                     onMouseEnter={() => setActiveIndex(idx)}
-                    className={`relative rounded-2xl p-5 sm:p-6 text-white bg-gradient-to-br ${item.bgGradient} cursor-pointer transition-all duration-300 select-none ${
+                    className={`relative rounded-xl p-4 text-white cursor-pointer transition-all duration-300 select-none ${
                       isSelected
-                        ? 'scale-[1.03] shadow-xl ring-4 ring-gold-400/40 -translate-y-1'
-                        : 'opacity-90 hover:opacity-100 hover:-translate-y-0.5 shadow-md'
+                        ? 'shadow-lg ring-2 ring-gold-500 -translate-y-1'
+                        : 'opacity-90 hover:opacity-100 shadow-sm'
                     }`}
+                    style={{
+                      background: 'linear-gradient(135deg, #A6721C 0%, #7A5212 100%)',
+                    }}
                   >
-                    <div className="flex items-center gap-4">
-                      {/* 左側白色圓形圖示 */}
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white flex items-center justify-center shrink-0 shadow-inner">
-                        <IconComp className="w-7 h-7 sm:w-8 sm:h-8" style={{ color: item.accentColor }} />
+                    <div className="flex items-center gap-3">
+                      <div className="w-11 h-11 rounded-full bg-white/15 flex items-center justify-center shrink-0 border border-white/20">
+                        <IconComp className="w-5 h-5 text-ivory-100" />
                       </div>
-                      {/* 右側大字標題 */}
-                      <div className="font-serif-tc font-bold text-lg sm:text-xl leading-snug tracking-wide">
+                      <div className="font-serif-tc font-bold text-base sm:text-lg leading-snug text-ivory-50">
                         {item.lines.map((line, lIdx) => (
                           <div key={lIdx}>{line}</div>
                         ))}
                       </div>
                     </div>
-
-                    {/* 對話框下方尖角三角形（呼應原圖造型） */}
-                    <div
-                      className="hidden md:block absolute -bottom-2.5 left-10 w-5 h-5 rotate-45"
-                      style={{ backgroundColor: item.accentColor }}
-                    />
                   </div>
                 );
               })}
             </div>
 
-            {/* 下排：SVG 雙線抗通膨趨勢座標圖（完整重現原圖視覺並加入互動節點） */}
+            {/* 下排：SVG 雙線抗通膨趨勢座標圖（近三年平均 2% 複利計算） */}
             <div className="w-full overflow-x-auto pt-2">
-              <div className="min-w-[640px]">
-                <svg viewBox="0 0 860 310" className="w-full h-auto overflow-visible">
+              <div className="min-w-[600px]">
+                <svg viewBox="0 0 820 280" className="w-full h-auto overflow-visible">
                   <defs>
-                    {/* 紅色虛線箭頭 */}
-                    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="7" refY="3.5" orient="auto">
-                      <polygon points="0 0, 9 3.5, 0 7" fill="#d96b38" />
+                    <marker id="arrowGold" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+                      <polygon points="0 0, 8 3, 0 6" fill="#A6721C" />
                     </marker>
-                    {/* 深棕實線箭頭 */}
-                    <marker id="arrowBrown" markerWidth="10" markerHeight="10" refX="7" refY="3.5" orient="auto">
-                      <polygon points="0 0, 9 3.5, 0 7" fill="#5c4228" />
+                    <marker id="arrowDark" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+                      <polygon points="0 0, 8 3, 0 6" fill="#43474d" />
                     </marker>
-                    {/* 省下差額漸層填充 */}
                     <linearGradient id="savedAreaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#d96b38" stopOpacity="0.04" />
-                      <stop offset="50%" stopColor="#d96b38" stopOpacity="0.11" />
-                      <stop offset="100%" stopColor="#d96b38" stopOpacity="0.20" />
+                      <stop offset="0%" stopColor="#A6721C" stopOpacity="0.05" />
+                      <stop offset="100%" stopColor="#A6721C" stopOpacity="0.18" />
                     </linearGradient>
                   </defs>
 
-                  {/* 垂直輔助虛線：對應 115年、135年、155年 */}
+                  {/* 垂直輔助虛線 */}
                   {[
-                    { x: 145, idx: 0 },
-                    { x: 385, idx: 1 },
-                    { x: 645, idx: 2 },
+                    { x: 135, idx: 0 },
+                    { x: 375, idx: 1 },
+                    { x: 625, idx: 2 },
                   ].map((col) => (
                     <line
                       key={col.idx}
                       x1={col.x}
                       y1={10}
                       x2={col.x}
-                      y2={255}
-                      stroke={activeIndex === col.idx ? '#c69233' : '#d6c3ad'}
-                      strokeWidth={activeIndex === col.idx ? '2' : '1.5'}
-                      strokeDasharray="4 4"
+                      y2={230}
+                      stroke={activeIndex === col.idx ? '#C69233' : '#d8cbbe'}
+                      strokeWidth={activeIndex === col.idx ? '2' : '1'}
+                      strokeDasharray="3 3"
                     />
                   ))}
 
-                  {/* 兩條線之間的「通膨差額」高亮區域 */}
+                  {/* 差額填充區 */}
                   <polygon
-                    points="145,168 815,82 815,212 145,212"
+                    points="135,155 775,95 775,195 135,195"
                     fill="url(#savedAreaGrad)"
                   />
 
-                  {/* Y 軸垂直主軸線 */}
+                  {/* 縱軸 (Y軸) */}
                   <line
-                    x1="145"
-                    y1="255"
-                    x2="145"
-                    y2="25"
-                    stroke="#5c4228"
-                    strokeWidth="2.5"
-                    markerEnd="url(#arrowBrown)"
+                    x1="135"
+                    y1="230"
+                    x2="135"
+                    y2="20"
+                    stroke="#43474d"
+                    strokeWidth="2"
+                    markerEnd="url(#arrowDark)"
                   />
 
-                  {/* X 軸水平時間軸線 */}
+                  {/* 橫軸 (X軸) */}
                   <line
-                    x1="145"
-                    y1="255"
-                    x2="835"
-                    y2="255"
-                    stroke="#5c4228"
-                    strokeWidth="2.5"
-                    markerEnd="url(#arrowBrown)"
+                    x1="135"
+                    y1="230"
+                    x2="795"
+                    y2="230"
+                    stroke="#43474d"
+                    strokeWidth="2"
+                    markerEnd="url(#arrowDark)"
                   />
 
-                  {/* 左側標籤文字：殯葬費用 & 寶慈商品 */}
-                  <text x="128" y="172" textAnchor="end" className="font-serif-tc font-bold fill-[#d96b38] text-[16px]">
+                  {/* 軸標籤 */}
+                  <text x="122" y="155" textAnchor="end" className="font-serif-tc font-bold fill-[#A6721C] text-[14px]">
                     殯葬費用
                   </text>
-                  <text x="128" y="217" textAnchor="end" className="font-serif-tc font-bold fill-[#5c4228] text-[16px]">
-                    寶慈商品
+                  <text x="122" y="200" textAnchor="end" className="font-serif-tc font-bold fill-[#43474d] text-[14px]">
+                    預購生前契約
                   </text>
 
-                  {/* 上方斜線：通貨膨脹費用趨勢（虛線） */}
+                  {/* 上方斜線：通貨膨脹費用趨勢 (約2%) */}
                   <line
-                    x1="145"
-                    y1="168"
-                    x2="815"
-                    y2="82"
-                    stroke="#d96b38"
-                    strokeWidth="3.5"
-                    strokeDasharray="10 7"
-                    markerEnd="url(#arrowOrange)"
+                    x1="135"
+                    y1="155"
+                    x2="775"
+                    y2="95"
+                    stroke="#A6721C"
+                    strokeWidth="3"
+                    strokeDasharray="8 6"
+                    markerEnd="url(#arrowGold)"
                   />
-
-                  {/* 斜線上方的說明文字（沿著斜線角度微傾） */}
                   <text
-                    x="485"
+                    x="455"
                     y="112"
                     textAnchor="middle"
-                    transform="rotate(-7.3, 485, 112)"
-                    className="font-serif-tc font-bold fill-[#d96b38] text-[15px] tracking-wide"
+                    transform="rotate(-5.2, 455, 112)"
+                    className="font-serif-tc font-semibold fill-[#A6721C] text-[13px] tracking-wide"
                   >
-                    因為通貨膨脹（平均每年5%），殯葬費用將隨時間而增加
+                    因物價與服務成本上漲（近三年平均約2%），殯葬費用將隨時間增加
                   </text>
 
-                  {/* 下方水平線：寶慈商品鎖定價格（實線） */}
+                  {/* 下方水平線：預購生前契約鎖定價格 */}
                   <line
-                    x1="145"
-                    y1="212"
-                    x2="815"
-                    y2="212"
-                    stroke="#5c4228"
-                    strokeWidth="3"
-                    markerEnd="url(#arrowBrown)"
+                    x1="135"
+                    y1="195"
+                    x2="775"
+                    y2="195"
+                    stroke="#43474d"
+                    strokeWidth="2.5"
+                    markerEnd="url(#arrowDark)"
                   />
                   <text
-                    x="485"
-                    y="198"
+                    x="455"
+                    y="185"
                     textAnchor="middle"
-                    className="font-serif-tc font-bold fill-[#4a3625] text-[16px] tracking-widest"
+                    className="font-serif-tc font-bold fill-[#43474d] text-[14px] tracking-widest"
                   >
                     鎖定價格
                   </text>
 
-                  {/* 互動式時間節點（115年、135年、155年） */}
+                  {/* 互動節點 */}
                   {[
-                    { x: 145, topY: 168, year: '115年', idx: 0 },
-                    { x: 385, topY: 137, year: '135年', idx: 1 },
-                    { x: 645, topY: 104, year: '155年', idx: 2 },
+                    { x: 135, topY: 155, year: '115年', idx: 0 },
+                    { x: 375, topY: 134, year: '135年', idx: 1 },
+                    { x: 625, topY: 111, year: '155年', idx: 2 },
                   ].map((node) => {
                     const isSelected = activeIndex === node.idx;
                     return (
@@ -350,55 +325,46 @@ export default function PreneedConcept() {
                         onClick={() => setActiveIndex(node.idx)}
                         className="cursor-pointer"
                       >
-                        {/* 差額垂直連接線（選中時顯示） */}
                         {isSelected && (
                           <line
                             x1={node.x}
                             y1={node.topY}
                             x2={node.x}
-                            y2={212}
-                            stroke="#d96b38"
-                            strokeWidth="2.5"
+                            y2={195}
+                            stroke="#A6721C"
+                            strokeWidth="2"
                           />
                         )}
-
-                        {/* 通膨曲線上的圓點 */}
                         <circle
                           cx={node.x}
                           cy={node.topY}
-                          r={isSelected ? 7 : 5}
+                          r={isSelected ? 6 : 4.5}
                           fill="#ffffff"
-                          stroke="#d96b38"
-                          strokeWidth="3"
+                          stroke="#A6721C"
+                          strokeWidth="2.5"
                         />
-
-                        {/* 鎖定價格線上的圓點 */}
                         <circle
                           cx={node.x}
-                          cy={212}
-                          r={isSelected ? 7 : 5}
+                          cy={195}
+                          r={isSelected ? 6 : 4.5}
                           fill="#ffffff"
-                          stroke="#5c4228"
-                          strokeWidth="3"
+                          stroke="#43474d"
+                          strokeWidth="2.5"
                         />
-
-                        {/* X 軸上的圓圈節點 */}
                         <circle
                           cx={node.x}
-                          cy={255}
-                          r={isSelected ? 9 : 7}
+                          cy={230}
+                          r={isSelected ? 8 : 6}
                           fill="#ffffff"
-                          stroke={isSelected ? '#d96b38' : '#856442'}
-                          strokeWidth="3.5"
+                          stroke={isSelected ? '#A6721C' : '#856442'}
+                          strokeWidth="3"
                         />
-
-                        {/* 年份文字 */}
                         <text
                           x={node.x}
-                          y={288}
+                          y={258}
                           textAnchor="middle"
-                          className={`font-serif-tc font-bold text-[18px] transition-colors ${
-                            isSelected ? 'fill-[#d96b38]' : 'fill-[#4a3625]'
+                          className={`font-serif-tc font-bold text-[15px] transition-colors ${
+                            isSelected ? 'fill-[#A6721C]' : 'fill-[#43474d]'
                           }`}
                         >
                           {node.year}
@@ -410,24 +376,21 @@ export default function PreneedConcept() {
               </div>
             </div>
 
-            {/* 底部動態解說卡片：隨目前選中的年份即時更新說明 */}
-            <div className="mt-4 bg-white rounded-xl p-4 sm:p-5 border border-gold-400/30 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all duration-300">
-              <div className="space-y-1">
+            {/* 底部動態解說卡片 */}
+            <div className="mt-4 bg-white rounded-xl p-3.5 sm:p-4 border border-gold-400/30 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+              <div className="space-y-0.5">
                 <div className="flex items-center gap-2">
-                  <span
-                    className="inline-block w-2.5 h-2.5 rounded-full"
-                    style={{ backgroundColor: benefitBubbles[activeIndex].accentColor }}
-                  />
-                  <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">
+                  <span className="inline-block w-2 h-2 rounded-full bg-[#A6721C]" />
+                  <h5 className="font-serif-tc font-bold text-sm sm:text-base text-ink-950">
                     {benefitBubbles[activeIndex].detailTitle}
                   </h5>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-600 pl-4.5">
+                <p className="text-xs text-slate-600 pl-4">
                   {benefitBubbles[activeIndex].detailDesc}
                 </p>
               </div>
-              <div className="shrink-0 sm:text-right pl-4.5 sm:pl-0">
-                <span className="inline-block px-3.5 py-1.5 rounded-lg bg-ivory-100 border border-gold-400/30 font-serif-tc text-xs sm:text-sm font-bold text-[#856442]">
+              <div className="shrink-0 sm:text-right pl-4 sm:pl-0">
+                <span className="inline-block px-3 py-1 rounded-lg bg-ivory-100 border border-gold-400/30 font-serif-tc text-xs font-bold text-[#7A5212]">
                   {benefitBubbles[activeIndex].inflationNote}
                 </span>
               </div>
