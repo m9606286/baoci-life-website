@@ -43,7 +43,7 @@ export default function PreneedConcept() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   const [activeIndex, setActiveIndex] = useState<number>(1);
-  const [years, setYears] = useState<number>(1); // 預設 1 年後，最多 80 年
+  const [years, setYears] = useState<number>(29); // 預設 29 年，最多 80 年
 
   // 以近三年平均 2% 複利計算成長百分比
   const growthPercent = Math.round((Math.pow(1 + 0.02, years) - 1) * 100);
@@ -150,14 +150,15 @@ export default function PreneedConcept() {
             </p>
           </div>
 
-          {/* 資訊圖表主體：無外框設計 */}
+          {/* 資訊圖表主體 */}
           <div className="p-2 sm:p-4">
             
-            {/* 提示文字移至圖表右上方 */}
-            <div className="mb-3 flex justify-end">
-              <span className="text-xs text-slate-500 bg-white/80 px-3 py-1.5 rounded-lg border border-gold-400/30 shadow-sm">
-                💡 可直接點擊橫軸來調整預估年數（最高 80 年）
-              </span>
+            {/* 圖表左上小標題與還原的「現在規劃的好處」 */}
+            <div className="mb-6">
+              <h4 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-900 inline-block">
+                現在規劃的好處
+              </h4>
+              <div className="w-40 h-[2.5px] bg-gradient-to-r from-[#A6721C] via-gold-400 to-transparent rounded-full mt-1.5" />
             </div>
 
             {/* 上排：三個對話框式核心卡片 */}
@@ -192,8 +193,8 @@ export default function PreneedConcept() {
               })}
             </div>
 
-            {/* 下排：SVG 雙線抗通膨趨勢座標圖（無虛線、軸線與預購契約同粗、灰線） */}
-            <div className="w-full overflow-x-auto pt-2 bg-white/60 rounded-2xl p-4 border border-gold-400/20 shadow-sm">
+            {/* 下排：SVG 雙線抗通膨趨勢座標圖 */}
+            <div className="w-full overflow-x-auto pt-2 bg-white/60 rounded-2xl p-4 border border-gold-400/20 shadow-sm relative">
               <div className="min-w-[620px]">
                 <svg
                   viewBox="0 0 820 280"
@@ -213,23 +214,23 @@ export default function PreneedConcept() {
                     fill="url(#savedAreaGrad)"
                   />
 
-                  {/* 縱軸 (Y軸) - 粗細與預購生前契約相同 (2.5) */}
+                  {/* 縱軸 (Y軸) - 黑色 */}
                   <line
                     x1="135"
                     y1="230"
                     x2="135"
                     y2="20"
-                    stroke="#585c63"
+                    stroke="#000000"
                     strokeWidth="2.5"
                   />
 
-                  {/* 橫軸 (X軸) - 粗細與預購生前契約相同 (2.5) */}
+                  {/* 橫軸 (X軸) - 黑色 */}
                   <line
                     x1="135"
                     y1="230"
                     x2="795"
                     y2="230"
-                    stroke="#585c63"
+                    stroke="#000000"
                     strokeWidth="2.5"
                   />
 
@@ -241,7 +242,7 @@ export default function PreneedConcept() {
                     預購生前契約
                   </text>
 
-                  {/* 上方斜線：通貨膨脹費用趨勢 */}
+                  {/* 上方斜線：通貨膨脹費用趨勢 (無括號) */}
                   <line
                     x1="135"
                     y1="155"
@@ -257,10 +258,10 @@ export default function PreneedConcept() {
                     transform="rotate(-5.2, 455, 112)"
                     className="font-serif-tc font-semibold fill-[#A6721C] text-[13px] tracking-wide"
                   >
-                    因物價與服務成本上漲（近三年平均約2%），殯葬費用將隨時間增加
+                    因物價與服務成本上漲，殯葬費用將隨時間增加
                   </text>
 
-                  {/* 下方水平線：預購生前契約鎖定價格 (灰色，粗細 2.5) */}
+                  {/* 下方水平線：預購生前契約鎖定價格 */}
                   <line
                     x1="135"
                     y1="195"
@@ -278,7 +279,7 @@ export default function PreneedConcept() {
                     鎖定價格
                   </text>
 
-                  {/* 動態點擊連動節點 */}
+                  {/* 動態點擊連動節點（圈圈與幾年後改為黑色，圈圈大小同鎖定價格的圈圈） */}
                   <g>
                     <line
                       x1={currentSvgX}
@@ -307,29 +308,36 @@ export default function PreneedConcept() {
                     <circle
                       cx={currentSvgX}
                       cy={230}
-                      r={9}
+                      r={7}
                       fill="#ffffff"
-                      stroke="#A6721C"
-                      strokeWidth="3.5"
+                      stroke="#000000"
+                      strokeWidth="3"
                     />
                     <text
                       x={currentSvgX}
                       y={258}
                       textAnchor="middle"
-                      className="font-serif-tc font-bold fill-[#A6721C] text-[16px]"
+                      className="font-serif-tc font-bold fill-[#000000] text-[15px]"
                     >
                       {years} 年後
                     </text>
                   </g>
                 </svg>
-              </div>
-            </div>
 
-            {/* 底部直接顯示：預估 1 年後市場費用成長約 2% */}
-            <div className="mt-4 bg-white rounded-xl p-3.5 sm:p-4 border border-gold-400/30 shadow-sm text-center">
-              <p className="font-serif-tc text-sm sm:text-base font-bold text-ink-950">
-                預估 <span className="text-gold-700">{years}</span> 年後市場費用成長約 <span className="text-gold-700">{growthPercent}%</span>
-              </p>
+                {/* 提示：可直接點擊橫軸來調整預估年數（最高 80 年）移至圖表右上方 */}
+                <div className="absolute top-3 right-4 pointer-events-none">
+                  <span className="text-[11px] sm:text-xs text-slate-500 bg-white/90 px-3 py-1.5 rounded-lg border border-gold-400/30 shadow-sm">
+                    💡 可直接點擊橫軸來調整預估年數（最高 80 年）
+                  </span>
+                </div>
+
+                {/* 數據說明移至圖表右下方 */}
+                <div className="absolute bottom-3 right-4 pointer-events-none bg-white/95 px-3 py-1.5 rounded-lg border border-gold-400/30 shadow-sm">
+                  <p className="font-serif-tc text-xs sm:text-sm font-bold text-ink-950">
+                    {years} 年後通膨成長約 <span className="text-gold-700">{growthPercent}%</span> (依近3年平均約2%預估)
+                  </p>
+                </div>
+              </div>
             </div>
 
           </div>
