@@ -213,7 +213,7 @@ export default function Home() {
             
             <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* 政府立案核准卡片 (改為直接開新分頁預覽 PDF，並搭配 ExternalLink 圖示代表外開檢視) */}
+              {/* 政府立案核准卡片 */}
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
@@ -360,12 +360,12 @@ export default function Home() {
           <CoreValues />
         </section>
 
-        {/* 最新消息 (移到上面維持原色不變色) */}
-        <section className="max-w-7xl mx-auto px-6 -mt-10 [&_h2]:!text-ink-900 [&_h3]:!text-ink-900 [&_h4]:!text-ink-900 [&_.group:hover_h3]:!text-ink-900 [&_.group:hover_h4]:!text-ink-900">
+        {/* 最新消息：卡片完全不改，僅讓左右切換箭頭按鈕移入時保持原色不變橘、微微放大 */}
+        <section className="max-w-7xl mx-auto px-6 -mt-10 [&_button:hover]:!text-inherit [&_button:hover_svg]:!text-inherit [&_button:hover]:scale-125 [&_button]:transition-transform [&_button]:duration-200">
           <Announcement />
         </section>
 
-        {/* 聯絡寶慈 (字體大小與核准函按鈕一致) */}
+        {/* 聯絡寶慈 */}
         <section className="max-w-4xl mx-auto px-6 text-center py-2">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTACT US
@@ -380,10 +380,10 @@ export default function Home() {
           </p>
           <Link
             to="/contact"
-            className={`${btnStyle} px-8 py-3 shadow-md hover:shadow-xl transform hover:-translate-y-0.5`}
+            className="group/btn inline-flex items-center justify-center gap-2 font-serif-tc font-bold tracking-wider text-ink-900 bg-ivory-100 border border-gold-400/35 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] px-10 py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-0.5 text-base sm:text-lg"
           >
             <span>聯絡我們</span>
-            <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+            <ChevronRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
           </Link>
         </section>
 
