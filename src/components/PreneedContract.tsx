@@ -295,7 +295,7 @@ export default function PreneedConcept() {
                   transform="rotate(-11.5, 485, 116)"
                   className="font-serif-tc font-semibold fill-[#A6721C] text-[13px] tracking-wide"
                 >
-                  因物價與服務成本上漲，殯葬費用將隨時間增加
+                  因物價與服務成本上漲,殯葬費用將隨時間增加
                 </text>
 
                 <line
@@ -390,10 +390,10 @@ export default function PreneedConcept() {
           </div>
         </div>
 
-        {/* 4. 生前契約與保險差異 (質感線恢復原版網頁風格) */}
+        {/* 4. 生前契約與保險差異 (左側對齊方格、標題與副標並排、淺金質感漸層色方格、手寫風 VS) */}
         <div className="max-w-5xl mx-auto py-6 relative overflow-hidden">
           
-          {/* 區塊標題：上方英文、下方網頁原版質感線、置中 */}
+          {/* 區塊標題 */}
           <div className="text-center mb-12 space-y-2.5">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               PRENEED VS INSURANCE
@@ -407,26 +407,30 @@ export default function PreneedConcept() {
             </p>
           </div>
 
-          {/* 左右對比雙大卡片容器 (含中間 VS 圓形徽章) */}
+          {/* 左右對比雙大卡片容器 (含中間手寫風格 VS) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative">
             
             {/* 左側：生前契約卡片 */}
             <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group hover:-translate-y-1 transition-all duration-300">
               
-              <div className="text-center mb-6 pb-5 border-b border-gold-400/20">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <div className="w-12 h-12 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
-                    <ShieldCheck className="w-6 h-6 text-[#C69233]" />
+              <div className="mb-6 pb-5 border-b border-gold-400/20">
+                {/* 標題與「為了 確定 的事情做準備」並排，整體左側對齊方格 */}
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
+                      <ShieldCheck className="w-6 h-6 text-[#C69233]" />
+                    </div>
+                    <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">生前契約</h4>
                   </div>
-                  <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">生前契約</h4>
+                  <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold sm:text-right">
+                    為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">確定</span> 的事情做準備
+                  </p>
                 </div>
-                <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold mt-1.5">
-                  為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">確定</span> 的事情做準備
-                </p>
-                <div className="w-48 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
+                {/* 質感線：左邊深右邊淺 */}
+                <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
               </div>
 
-              {/* 四個互動式條列項目 */}
+              {/* 四個互動式條列項目 (改為淺金質感漸層色調 + 質感線) */}
               <div className="space-y-3.5">
                 {preneedItems.map((item, idx) => {
                   const ItemIcon = item.icon;
@@ -436,20 +440,25 @@ export default function PreneedConcept() {
                       key={idx} 
                       onClick={() => setActivePreneedIdx(idx)}
                       onMouseEnter={() => setActivePreneedIdx(idx)}
-                      className={`rounded-xl p-3.5 sm:p-4 text-white flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none ${
-                        isSelected ? 'scale-[1.02] ring-2 ring-white shadow-md' : 'opacity-90 hover:opacity-100'
+                      className={`rounded-xl p-4 text-ink-950 flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none border ${
+                        isSelected 
+                          ? 'scale-[1.02] ring-2 ring-gold-500 shadow-md bg-gradient-to-r from-[#fff9ef] to-[#f4ebd9]' 
+                          : 'opacity-95 hover:opacity-100 bg-gradient-to-r from-[#fdfbf7] to-[#f2e7d5]'
                       }`}
                       style={{
-                        background: 'linear-gradient(135deg, #c45827 0%, #a84218 100%)',
+                        borderColor: 'rgba(212, 175, 55, 0.45)',
                       }}
                     >
-                      <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
-                        <ItemIcon className="w-5 h-5 text-white" />
+                      <div className="w-9 h-9 rounded-lg bg-gold-200/60 border border-gold-400/40 flex items-center justify-center shrink-0">
+                        <ItemIcon className="w-5 h-5 text-gold-700" />
                       </div>
                       <div className="flex-1">
-                        <h5 className="font-serif-tc font-bold text-base sm:text-lg">{item.title}</h5>
+                        <div className="flex items-center justify-between">
+                          <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
+                          <div className="w-16 h-px bg-gradient-to-r from-gold-400/50 to-transparent" />
+                        </div>
                         {isSelected && (
-                          <p className="text-xs text-ivory-100/95 mt-0.5 animate-fadeIn">{item.desc}</p>
+                          <p className="text-xs text-slate-600 mt-1 animate-fadeIn leading-relaxed">{item.desc}</p>
                         )}
                       </div>
                     </div>
@@ -459,28 +468,32 @@ export default function PreneedConcept() {
 
             </div>
 
-            {/* 中間 VS 圓形徽章 (桌面版絕對置中懸浮) */}
-            <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-20 w-16 h-16 rounded-full bg-gradient-to-br from-[#A6721C] to-[#7A5212] text-white font-serif-tc font-bold text-xl items-center justify-center shadow-xl border-4 border-ivory-100 tracking-wider">
-              VS
+            {/* 中間手寫風格 VS (桌面版絕對置中懸浮，無圓圈) */}
+            <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-20 font-serif font-italic text-3xl font-bold text-[#A6721C] items-center justify-center tracking-wider select-none drop-shadow-sm" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
+              vs
             </div>
 
             {/* 右側：保險卡片 */}
             <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group hover:-translate-y-1 transition-all duration-300">
               
-              <div className="text-center mb-6 pb-5 border-b border-gold-400/20">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <div className="w-12 h-12 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
-                    <FileText className="w-6 h-6 text-[#A6721C]" />
+              <div className="mb-6 pb-5 border-b border-gold-400/20">
+                {/* 標題與「為了 不確定 的風險做準備」並排，整體左側對齊方格 */}
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
+                      <FileText className="w-6 h-6 text-[#A6721C]" />
+                    </div>
+                    <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">保險</h4>
                   </div>
-                  <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">保險</h4>
+                  <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold sm:text-right">
+                    為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">不確定</span> 的風險做準備
+                  </p>
                 </div>
-                <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold mt-1.5">
-                  為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">不確定</span> 的風險做準備
-                </p>
-                <div className="w-48 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
+                {/* 質感線：左邊深右邊淺 */}
+                <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
               </div>
 
-              {/* 四個互動式條列項目 */}
+              {/* 四個互動式條列項目 (改為淺金質感漸層色調 + 質感線) */}
               <div className="space-y-3.5">
                 {insuranceItems.map((item, idx) => {
                   const ItemIcon = item.icon;
@@ -490,20 +503,25 @@ export default function PreneedConcept() {
                       key={idx} 
                       onClick={() => setActiveInsIdx(idx)}
                       onMouseEnter={() => setActiveInsIdx(idx)}
-                      className={`rounded-xl p-3.5 sm:p-4 text-white flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none ${
-                        isSelected ? 'scale-[1.02] ring-2 ring-white shadow-md' : 'opacity-90 hover:opacity-100'
+                      className={`rounded-xl p-4 text-ink-950 flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none border ${
+                        isSelected 
+                          ? 'scale-[1.02] ring-2 ring-gold-500 shadow-md bg-gradient-to-r from-[#fff9ef] to-[#f4ebd9]' 
+                          : 'opacity-95 hover:opacity-100 bg-gradient-to-r from-[#fdfbf7] to-[#f2e7d5]'
                       }`}
                       style={{
-                        background: 'linear-gradient(135deg, #856442 0%, #63472b 100%)',
+                        borderColor: 'rgba(212, 175, 55, 0.45)',
                       }}
                     >
-                      <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
-                        <ItemIcon className="w-5 h-5 text-white" />
+                      <div className="w-9 h-9 rounded-lg bg-gold-200/60 border border-gold-400/40 flex items-center justify-center shrink-0">
+                        <ItemIcon className="w-5 h-5 text-gold-700" />
                       </div>
                       <div className="flex-1">
-                        <h5 className="font-serif-tc font-bold text-base sm:text-lg">{item.title}</h5>
+                        <div className="flex items-center justify-between">
+                          <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
+                          <div className="w-16 h-px bg-gradient-to-r from-gold-400/50 to-transparent" />
+                        </div>
                         {isSelected && (
-                          <p className="text-xs text-ivory-100/95 mt-0.5 animate-fadeIn">{item.desc}</p>
+                          <p className="text-xs text-slate-600 mt-1 animate-fadeIn leading-relaxed">{item.desc}</p>
                         )}
                       </div>
                     </div>
