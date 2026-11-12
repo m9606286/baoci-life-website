@@ -22,6 +22,22 @@ export default function Trust() {
     },
   ];
 
+  // 112, 113, 114 年財務報表清單
+  const financialStatements = [
+    {
+      year: '112年',
+      url: '/112年財務報表.pdf',
+    },
+    {
+      year: '113年',
+      url: '/113年財務報表.pdf',
+    },
+    {
+      year: '114年',
+      url: '/114年財務報表.pdf',
+    },
+  ];
+
   return (
     <section id="trust" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
       <div ref={ref} className="max-w-7xl mx-auto px-6 relative">
@@ -233,7 +249,33 @@ export default function Trust() {
                 </div>
               </div>
 
-              {/* 3. 下方：信託財產與收支計算表下載按鈕 */}
+              {/* 3. 新增：財務報表與 112、113、114 年按鈕 */}
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center pt-1">
+                <div className="sm:col-span-4">
+                  <h4 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900">
+                    財務報表
+                  </h4>
+                </div>
+
+                <div className="sm:col-span-8 grid grid-cols-3 gap-2">
+                  {financialStatements.map((statement, idx) => (
+                    <a
+                      key={idx}
+                      href={statement.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/card relative rounded-xl py-2.5 px-2 bg-white/90 hover:bg-gold-500 border border-ivory-300 hover:border-gold-400 shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-center gap-1 cursor-pointer text-center"
+                    >
+                      <span className="font-serif-tc text-xs sm:text-sm font-bold text-ink-900 group-hover/card:text-white transition-colors">
+                        {statement.year}
+                      </span>
+                      <Download className="w-3 h-3 text-gold-600 group-hover/card:text-white shrink-0 transition-colors" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* 4. 下方：信託財產與收支計算表下載按鈕 */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center pt-1">
                 <div className="sm:col-start-5 sm:col-span-8">
                   <a
