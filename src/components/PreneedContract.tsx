@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PiggyBank, Lock, UserCheck, Calculator } from 'lucide-react';
+import { Sparkles, Lock, UserCheck, CheckCircle2 } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import familyImage from '/core.jpg';
 
@@ -19,16 +19,15 @@ const coreHighlights = [
   },
 ];
 
-// 「現在規劃的好處」三張卡片資料（改為淺色系、背景透出淺深金色）
+// 三張核心好處卡片
 const benefitBubbles = [
   {
     id: 0,
     title: '省錢 省事 省麻煩',
-    icon: PiggyBank,
+    icon: Sparkles,
     detailTitle: '趁早預約享優惠，一次解決身後煩憂',
     detailDesc: '現在用最實惠的預約價格完成規劃，免去日後家人臨時奔波比價與籌措資金的慌亂。',
     inflationNote: '現在預約，價格最親民',
-    factor: 1.00,
   },
   {
     id: 1,
@@ -37,7 +36,6 @@ const benefitBubbles = [
     detailTitle: '物價增長，預購合約穩穩鎖住現價',
     detailDesc: '以近三年平均約 2% 通膨計算，未來市場殯葬費用將隨時間增長，生前契約為您提前把關。',
     inflationNote: '鎖定現價，免受通膨影響',
-    factor: 1.49,
   },
   {
     id: 2,
@@ -46,7 +44,6 @@ const benefitBubbles = [
     detailTitle: '長遠保障，自主決定謝幕儀式',
     detailDesc: '不受未來高昂物價與變動影響，依然能依照自己生前選定的禮儀規格與宗教儀式執行，圓滿無遺憾。',
     inflationNote: '長遠抗通膨效益顯著',
-    factor: 2.21,
   },
 ];
 
@@ -55,11 +52,23 @@ export default function PreneedConcept() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   const [activeIndex, setActiveIndex] = useState<number>(1);
-  const [years, setYears] = useState<number>(20); // 動態年份滑桿 (預設20年，最長175年)
+  const [years, setYears] = useState<number>(1); // 預設 1 年後，最多 80 年
 
-  // 以近三年平均 2% 複利計算成長倍數
-  const currentFactor = Number(Math.pow(1 + 0.02, years).toFixed(2));
-  const currentSvgX = Math.min(135 + (years / 175) * 640, 775);
+  // 以近三年平均 2% 複利計算成長百分比
+  const growthPercent = Math.round((Math.pow(1 + 0.02, years) - 1) * 100);
+  const currentSvgX = Math.min(135 + (years / 80) * 640, 775);
+
+  // 點擊或拖曳橫軸互動
+  const handleSvgClick = (e: React.MouseEvent<SVGSVGElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    // 換算成 viewBox 坐標系的 x (寬度 820)
+    const svgX = (clickX / rect.width) * 820;
+    if (svgX >= 135 && svgX <= 775) {
+      const calculatedYears = Math.round(((svgX - 135) / 640) * 80);
+      setYears(Math.max(1, Math.min(80, calculatedYears)));
+    }
+  };
 
   return (
     <section className="pt-2 pb-16 lg:pt-4 lg:pb-24 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
@@ -132,7 +141,7 @@ export default function PreneedConcept() {
 
         </div>
 
-        {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨（去除外框、調整淺色立體金背景、質感線放大1.5倍） */}
+        {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 */}
         <div className="max-w-5xl mx-auto py-4 relative overflow-hidden transition-all duration-300">
           
           {/* 區塊標題：上方英文、下方質感線(放大1.5倍)、置中、無勾勾 */}
@@ -143,12 +152,12 @@ export default function PreneedConcept() {
             <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">
               享受預約優惠價，鎖定價格抗通膨
             </h3>
-            {/* 質感線放大 1.5 倍 (原本 w-48 改為 w-72) */}
+            {/* 質感線放大 1.5 倍 */}
             <div className="w-72 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
             
-            {/* 說明文字放大字級，對齊生前契約尊榮選擇的視覺份量 */}
-            <p className="text-base sm:text-lg text-slate-700 max-w-3xl mx-auto pt-2 leading-relaxed font-serif-tc">
-              <strong className="text-ink-950 font-bold">現在買就是現在的價格，以後會隨通膨漲價</strong>，喪葬費用隨通膨逐年增加，生前契約用現在的價格鎖定未來必定發生的支出，理性省下龐大開銷。
+            {/* 原來的說明文字，字型同生前契約尊榮選擇 */}
+            <p className="text-slate-600 font-sans text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed font-normal pt-2">
+              喪葬費用隨通膨逐年增加，生前契約用現在的價格鎖定未來必定發生的支出，理性省下龐大開銷。
             </p>
           </div>
 
@@ -164,23 +173,12 @@ export default function PreneedConcept() {
                 <div className="w-40 h-[2.5px] bg-gradient-to-r from-[#A6721C] via-gold-400 to-transparent rounded-full mt-1.5" />
               </div>
 
-              {/* 動態滑桿控制項 (最長到 175 年) */}
-              <div className="flex items-center gap-3 bg-white/80 px-4 py-2 rounded-xl border border-gold-400/30 shadow-sm">
-                <Calculator className="w-4 h-4 text-gold-600 shrink-0" />
-                <span className="text-xs text-slate-600 whitespace-nowrap">預估年數：<strong className="text-ink-950">{years} 年</strong></span>
-                <input
-                  type="range"
-                  min={1}
-                  max={175}
-                  step={1}
-                  value={years}
-                  onChange={(e) => setYears(Number(e.target.value))}
-                  className="w-32 sm:w-40 accent-[#A6721C] cursor-pointer h-1.5 bg-ivory-200 rounded-lg"
-                />
+              <div className="text-xs text-slate-500 bg-white/80 px-3 py-1.5 rounded-lg border border-gold-400/30 shadow-sm">
+                💡 提示：可直接點擊下方圖表橫軸來調整預估年數（最高 80 年）
               </div>
             </div>
 
-            {/* 上排：三個對話框式核心卡片（改為淺色系、背景透出淺深金色） */}
+            {/* 上排：三個對話框式核心卡片（淺色系、背景透出淺深金色） */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               {benefitBubbles.map((item, idx) => {
                 const IconComp = item.icon;
@@ -212,18 +210,15 @@ export default function PreneedConcept() {
               })}
             </div>
 
-            {/* 下排：SVG 雙線抗通膨趨勢座標圖（支援滑桿連動與 175 年計算） */}
+            {/* 下排：SVG 雙線抗通膨趨勢座標圖（支援直接點擊橫軸連動，軸線為黑色，無箭頭） */}
             <div className="w-full overflow-x-auto pt-2 bg-white/60 rounded-2xl p-4 border border-gold-400/20 shadow-sm">
               <div className="min-w-[620px]">
-                <svg viewBox="0 0 820 280" className="w-full h-auto overflow-visible">
+                <svg
+                  viewBox="0 0 820 280"
+                  className="w-full h-auto overflow-visible cursor-pointer"
+                  onClick={handleSvgClick}
+                >
                   <defs>
-                    <marker id="arrowGold" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
-                      <polygon points="0 0, 8 3, 0 6" fill="#A6721C" />
-                    </marker>
-                    {/* 改為墨灰色箭頭，與橫軸及預購生前契約線條顏色一致 */}
-                    <marker id="arrowDark" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
-                      <polygon points="0 0, 8 3, 0 6" fill="#585c63" />
-                    </marker>
                     <linearGradient id="savedAreaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                       <stop offset="0%" stopColor="#A6721C" stopOpacity="0.05" />
                       <stop offset="100%" stopColor="#A6721C" stopOpacity="0.18" />
@@ -247,37 +242,35 @@ export default function PreneedConcept() {
                     fill="url(#savedAreaGrad)"
                   />
 
-                  {/* 縱軸 (Y軸) */}
+                  {/* 縱軸 (Y軸) - 改為黑色，無箭頭 */}
                   <line
                     x1="135"
                     y1="230"
                     x2="135"
                     y2="20"
-                    stroke="#585c63"
+                    stroke="#000000"
                     strokeWidth="2"
-                    markerEnd="url(#arrowDark)"
                   />
 
-                  {/* 橫軸 (X軸) */}
+                  {/* 橫軸 (X軸) - 改為黑色，無箭頭 */}
                   <line
                     x1="135"
                     y1="230"
                     x2="795"
                     y2="230"
-                    stroke="#585c63"
+                    stroke="#000000"
                     strokeWidth="2"
-                    markerEnd="url(#arrowDark)"
                   />
 
                   {/* 軸標籤 */}
                   <text x="122" y="155" textAnchor="end" className="font-serif-tc font-bold fill-[#A6721C] text-[14px]">
                     殯葬費用
                   </text>
-                  <text x="122" y="200" textAnchor="end" className="font-serif-tc font-bold fill-[#585c63] text-[14px]">
+                  <text x="122" y="200" textAnchor="end" className="font-serif-tc font-bold fill-[#000000] text-[14px]">
                     預購生前契約
                   </text>
 
-                  {/* 上方斜線：通貨膨脹費用趨勢 (約2%) */}
+                  {/* 上方斜線：通貨膨脹費用趨勢 (實體線，無箭頭) */}
                   <line
                     x1="135"
                     y1="155"
@@ -285,8 +278,6 @@ export default function PreneedConcept() {
                     y2="95"
                     stroke="#A6721C"
                     strokeWidth="3"
-                    strokeDasharray="8 6"
-                    markerEnd="url(#arrowGold)"
                   />
                   <text
                     x="455"
@@ -298,26 +289,25 @@ export default function PreneedConcept() {
                     因物價與服務成本上漲（近三年平均約2%），殯葬費用將隨時間增加
                   </text>
 
-                  {/* 下方水平線：預購生前契約鎖定價格 (改為與橫軸一致的 #585c63 墨灰色) */}
+                  {/* 下方水平線：預購生前契約鎖定價格 (實體線，無箭頭) */}
                   <line
                     x1="135"
                     y1="195"
                     x2="775"
                     y2="195"
-                    stroke="#585c63"
+                    stroke="#000000"
                     strokeWidth="2.5"
-                    markerEnd="url(#arrowDark)"
                   />
                   <text
                     x="455"
                     y="185"
                     textAnchor="middle"
-                    className="font-serif-tc font-bold fill-[#585c63] text-[14px] tracking-widest"
+                    className="font-serif-tc font-bold fill-[#000000] text-[14px] tracking-widest"
                   >
                     鎖定價格
                   </text>
 
-                  {/* 動態滑桿即時連動節點 */}
+                  {/* 動態點擊/拖曳連動節點 */}
                   <g>
                     <line
                       x1={currentSvgX}
@@ -340,7 +330,7 @@ export default function PreneedConcept() {
                       cy={195}
                       r={7}
                       fill="#ffffff"
-                      stroke="#585c63"
+                      stroke="#000000"
                       strokeWidth="3"
                     />
                     <circle
@@ -364,7 +354,7 @@ export default function PreneedConcept() {
               </div>
             </div>
 
-            {/* 底部動態解說卡片 */}
+            {/* 底部動態解說卡片（直接顯示如：預估 1 年後市場費用成長約2%） */}
             <div className="mt-4 bg-white rounded-xl p-3.5 sm:p-4 border border-gold-400/30 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
               <div className="space-y-0.5">
                 <div className="flex items-center gap-2">
@@ -375,7 +365,7 @@ export default function PreneedConcept() {
                 </div>
                 <p className="text-xs text-slate-600 pl-4">
                   {benefitBubbles[activeIndex].detailDesc} 
-                  <span className="text-gold-700 font-semibold ml-1">（預估 {years} 年後市場費用約成長至 {currentFactor} 倍）</span>
+                  <span className="text-gold-700 font-semibold ml-1">（預估 {years} 年後市場費用成長約 {growthPercent}%）</span>
                 </p>
               </div>
               <div className="shrink-0 sm:text-right pl-4 sm:pl-0">
