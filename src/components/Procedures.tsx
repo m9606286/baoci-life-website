@@ -1,524 +1,351 @@
 import React, { useState } from 'react';
-import { Sparkles, Lock, UserCheck, RefreshCw, Award, FileCheck, DollarSign, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useReveal } from '@/hooks/useReveal';
-import familyImage from '/core.jpg';
+import { FileText, Download, CheckCircle2, Clock } from 'lucide-react';
 
-// 右側 3 大核心保障
-const coreHighlights = [
+// 手續服務項目清單與對應內容
+const procedureCategories = [
   {
-    title: '提前規劃，讓愛更周全',
-    desc: '預先規劃禮儀服務與相關事宜，為未來多一份從容，讓家人在面對離別時能安心陪伴、從容道別。',
+    id: 'new',
+    title: '新購手續',
+    days: '15 天',
+    desc: '購買生前契約。',
+    items: [
+      { name: '客戶基本資料表', note: '未曾購買者' },
+      { name: '契約書正本', note: '✓ 必備' },
+      { name: '繳款證明', note: '✓ 必備' },
+      { name: 'ACH 自動扣款申請單', note: '分期件必填' },
+    ],
   },
   {
-    title: '給親愛的家人留愛不留負擔',
-    desc: '如同儲蓄與保險般的資產配置，提早準備好自己想要的安排，避免將未來的財務與精神壓力留給家人。',
+    id: 'transfer',
+    title: '轉讓手續',
+    days: '15 天',
+    desc: '契約權利轉讓予他人。',
+    items: [
+      { name: '契約書正本', note: '✓ 必備' },
+      { name: '客戶服務申請表', note: '✓ 必備' },
+      { name: '填寫客戶服務申請表之讓渡申請', note: '✓ 必填' },
+      { name: '出讓人雙證件及印章', note: '✓ 必備' },
+      { name: '受讓人雙證件及印章', note: '✓ 必備' },
+      { name: '繳款證明', note: '手續費 1,000 元' },
+      { 
+        name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', 
+        note: '若有受託需檢附' 
+      },
+    ],
   },
   {
-    title: '保證 75% 信託，永續經營有保障',
-    desc: '依法將 75% 款項交付京城銀行信託專戶管理；身為寶碩集團 (股票代號5210) 子公司，落實永續服務承諾。',
+    id: 'inheritance',
+    title: '繼承手續',
+    days: '7 天',
+    desc: '原契約持有人身故後，辦理繼承變更。',
+    items: [
+      { name: '契約書正本', note: '✓ 必備' },
+      { name: '客戶服務申請表', note: '✓ 必備' },
+      { name: '客戶服務申請表之【附件三】繼承殯葬商品所有權切結書', note: '✓ 必備' },
+      { name: '填寫客戶服務申請表之讓渡申請', note: '✓ 必填' },
+      { name: '繼承人雙證件及印章', note: '✓ 必備' },
+      { name: 'ACH 自動扣款申請單', note: '若繼續分期需檢附' },
+      { name: '死亡證明或除戶證明', note: '✓ 必備' },
+      { name: '3 個月內現戶現況全戶戶籍謄本', note: '✓ 必備 (非法定繼承人另須檢附可證明繼承資格之文件)' },
+    ],
+  },
+  {
+    id: 'fulfillment',
+    title: '履約手續',
+    days: '依約辦理',
+    desc: '生前契約執行禮儀服務。',
+    items: [
+      { name: '契約書正本', note: '✓ 必備' },
+      { name: '持有人雙證件及印章', note: '✓ 必備' },
+      { name: '繳款證明', note: '契約剩餘價款與更添款項' },
+      { name: '指定使用申請書 (契約書中附件)', note: '✓ 必備' },
+      { name: '遺體接運切結書 (契約書中附件)', note: '✓ 必備' },
+      { name: '死亡證明或除戶證明', note: '✓ 必備' },
+      { name: '火化許可', note: '✓ 必備' },
+      { name: '殯儀服務完成確認書 (契約書中附件)', note: '✓ 必備' },
+      { 
+        name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', 
+        note: '若有受託需檢附' 
+      },
+    ],
+  },
+  {
+    id: 'termination',
+    title: '解約手續',
+    days: '15 天',
+    desc: '辦理契約解約退款。',
+    items: [
+      { name: '契約書正本', note: '✓ 必備' },
+      { name: '客戶服務申請表', note: '✓ 必備' },
+      { name: '填寫客戶服務申請表之【附件四】生前殯葬服務契約解約申請書', note: '✓ 必填' },
+      { name: '持有人雙證件及印章', note: '✓ 必備' },
+      { 
+        name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', 
+        note: '若有受託需檢附' 
+      },
+    ],
+  },
+  {
+    id: 'reinstatement',
+    title: '緩繳復效手續',
+    days: '依約辦理',
+    desc: '申請緩繳後辦理契約復效。',
+    items: [
+      { name: '契約書正本', note: '✓ 必備' },
+      { name: '客戶服務申請表', note: '✓ 必備' },
+      { name: '填寫客戶服務申請表之緩繳復效申請', note: '✓ 必填' },
+      { name: '持有人雙證件及印章', note: '✓ 必備' },
+      { name: '繳款證明', note: '滯納金與復效首期款項' },
+      { name: 'ACH 自動扣款申請單', note: '✓ 必填' },
+      { 
+        name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', 
+        note: '若有受託需檢附' 
+      },
+    ],
+  },
+  {
+    id: 'customer_update',
+    title: '客資變更手續',
+    days: '7 天',
+    desc: '變更聯絡地址、電話、姓名或遺失補發等。',
+    items: [
+      { name: '客戶基本資料表', note: '✓ 必備' },
+      { name: '客戶服務申請表', note: '✓ 必備' },
+      { name: '契約書正本', note: '辦理更名時需檢附' },
+      { name: '客戶服務申請表之【附件二】遺失切結書(補發申請書)', note: '辦理遺失補發時需檢附' },
+      { name: '持有人雙證件及印章', note: '✓ 必備' },
+      { name: '3 個月內現戶現況全戶戶籍謄本', note: '辦理更名須出具' },
+      { 
+        name: '填寫客戶服務申請表之【附件一】委託書及委託人身分證明文件', 
+        note: '若有受託需檢附',
+        subNote: '遺失補發不可委託' 
+      },
+    ],
   },
 ];
 
-// 三張核心好處卡片
-const benefitBubbles = [
+const notices = [
   {
-    id: 0,
-    title: '省錢 省事 省麻煩',
-    icon: Sparkles,
+    title: '喪葬證明申請',
+    desc: '履約服務完成後如有申請證明之需要，可提出申請喪葬證明。',
   },
   {
-    id: 1,
-    title: '鎖定價格 抗通膨',
-    icon: Lock,
+    title: '委託代辦規範',
+    desc: '新購與遺失補發手續，須由本人親辦；繼承手續須由全體繼承人共同辦理，不得委託代理人代辦。其餘項目如委由代理人辦理，須檢附授權委託書正本及委託人、受託人雙方有效身分證件。',
   },
   {
-    id: 2,
-    title: '選擇自己想要的方式',
-    icon: UserCheck,
+    title: '手續費與分期',
+    desc: '轉讓手續需繳納手續費新台幣 1,000 元整；轉讓件與履約件不適用分期付款。',
   },
 ];
 
-// 生前契約 4 大互動項目
-const preneedItems = [
-  { title: '不分老少', desc: '全齡皆可預先規劃，不受年齡與體況限制', icon: Users },
-  { title: '可指定使用', desc: '契約可指定使用對象（不限本人或家人），彈性便利', icon: RefreshCw },
-  { title: '專業服務', desc: '由政府立案合法禮儀團隊全程執行', icon: Award },
-  { title: '確定金額的喪葬服務', desc: '預約現價鎖定，免受未來通膨影響', icon: FileCheck },
-];
-
-// 保險 4 大互動項目
-const insuranceItems = [
-  { title: '投保限制', desc: '受年齡、健康狀況與體況核保規定限制', icon: Lock },
-  { title: '不可指定使用', desc: '被保險人於投保時即固定，無法隨意變更使用對象', icon: Lock },
-  { title: '金錢理賠', desc: '以保險金給付為主，非直接提供實物服務', icon: DollarSign },
-  { title: '遺屬的生活費用', desc: '提供家庭經濟支柱身故後的資金補貼', icon: Users },
-];
-
-export default function PreneedConcept() {
+export default function Procedures() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
+  const navigate = useNavigate();
 
-  const [activeIndex, setActiveIndex] = useState<number>(1);
-  const [years, setYears] = useState<number>(5); // 預設為 5 年後，最多 80 年
+  const [activeTab, setActiveTab] = useState(procedureCategories[0].id);
 
-  // 生前契約與保險同步展開狀態
-  const [activeIdx, setActiveIdx] = useState<number | null>(0);
+  const currentCategory = procedureCategories.find((cat) => cat.id === activeTab) || procedureCategories[0];
 
-  // SVG 座標基準常數
-  const startX = 135;
-  const endX = 805;
-  const chartWidth = endX - startX; // 670
-  const baseLineY = 190; 
-  const maxGrowthHeight = 155; 
-  const maxMultiplier = Math.pow(1.02, 80) - 1; 
-
-  const getInflationY = (t: number) => {
-    const multiplier = Math.pow(1.02, t) - 1;
-    return baseLineY - (multiplier / maxMultiplier) * maxGrowthHeight;
-  };
-
-  const generateCurvePoints = (maxYear: number) => {
-    const points: string[] = [];
-    for (let t = 0; t <= maxYear; t++) {
-      const x = startX + (t / 80) * chartWidth;
-      const y = getInflationY(t);
-      points.push(`${x.toFixed(1)},${y.toFixed(1)}`);
-    }
-    return points;
-  };
-
-  const fullCurvePoints = generateCurvePoints(80);
-  const fullCurvePath = `M ${fullCurvePoints.join(' L ')}`;
-
-  const growthPercent = Math.round((Math.pow(1.02, years) - 1) * 100);
-  const currentSvgX = startX + (years / 80) * chartWidth;
-  const currentCurveY = getInflationY(years);
-
-  const activeCurvePoints = generateCurvePoints(years);
-  const savedAreaPolygon = `${startX},${baseLineY} ${activeCurvePoints.join(' ')} ${currentSvgX.toFixed(1)},${baseLineY}`;
-
-  const handleSvgClick = (e: React.MouseEvent<SVGSVGElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const svgX = (clickX / rect.width) * 880;
-    if (svgX >= startX && svgX <= endX) {
-      const calculatedYears = Math.round(((svgX - startX) / chartWidth) * 80);
-      setYears(Math.max(1, Math.min(80, calculatedYears)));
-    }
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    navigate('/contact');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <section className="pt-2 pb-16 lg:pt-4 lg:pb-24 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
-      <div ref={ref} className="max-w-6xl mx-auto px-6 relative">
+    <section id="procedures" className="pt-10 pb-16 lg:pt-14 lg:pb-24 bg-ivory-100 relative overflow-hidden">
+      <div ref={ref} className="mx-auto max-w-5xl px-6 relative">
         
-        {/* 1. 頁頭標題 */}
+        {/* 標題區 */}
         <div className="text-center mb-12">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
-            PRENEED CONTRACT
+            PROCEDURE GUIDE
           </p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
-            什麼是生前契約？
-          </h2>
-          <div className="w-60 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
-          <p className="mt-4 text-slate-600 text-sm sm:text-base max-w-2xl mx-auto reveal reveal-delay-3">
-            生前契約是給家人最後的一道保障，也是為自己預先記錄並落實身後事安排的尊榮選擇。
+          <h1 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-800 mt-2 reveal reveal-delay-1">
+            手續服務指南
+          </h1>
+          <div className="gold-divider w-60 mx-auto mt-4 reveal reveal-delay-2" />
+          <p className="text-ink-500 text-sm sm:text-base mt-4 max-w-2xl mx-auto reveal reveal-delay-3">
+            請於下方選擇您欲辦理的手續項目，即可快速查詢所需檢附的文件資料與所需工作天數。
           </p>
         </div>
 
-        {/* 2. 左圖右文：左側照片 + 右側 3 個核心方格 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-14 reveal reveal-delay-3">
-          
-          <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-xl border border-gold-400/30 min-h-[380px] lg:min-h-full group">
-            <img
-              src={familyImage}
-              alt="溫暖陪伴"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
-            <div className="absolute bottom-6 left-6 right-6 text-white">
-              <p className="font-serif-tc text-xl font-bold drop-shadow">預先安排，圓滿無遺憾</p>
-              <p className="text-sm text-ivory-100/90 mt-1 drop-shadow">以愛為出發，讓家人多一份安心。</p>
-            </div>
+        {/* 下拉選單與標籤切換列 */}
+        <div className="mb-10 reveal">
+          <div className="block md:hidden mb-4">
+            <label htmlFor="procedure-select" className="block text-sm font-medium text-ink-700 mb-2 text-center">
+              選擇申辦項目：
+            </label>
+            <select
+              id="procedure-select"
+              value={activeTab}
+              onChange={(e) => setActiveTab(e.target.value)}
+              className="w-full bg-white border border-ivory-300 rounded-xl px-4 py-3 text-ink-900 text-base font-medium focus:outline-none focus:ring-2 focus:ring-gold-500 shadow-sm font-['Microsoft_JhengHei'] text-center"
+            >
+              {procedureCategories.map((cat) => (
+                <option key={cat.id} value={cat.id}>
+                  {cat.title}（工作天：{cat.days}）
+                </option>
+              ))}
+            </select>
           </div>
 
-          <div className="lg:col-span-7 flex flex-col justify-between gap-5">
-            {coreHighlights.map((item, idx) => {
+          <div className="hidden md:flex flex-wrap justify-center gap-2.5">
+            {procedureCategories.map((cat) => {
+              const isActive = activeTab === cat.id;
               return (
-                <div
-                  key={idx}
-                  className="group relative rounded-2xl p-5 sm:p-6 overflow-hidden hover:-translate-y-1 transition-all duration-300 flex-1 flex flex-col justify-center cursor-pointer"
-                  style={{
-                    background: 'linear-gradient(180deg, #ffffff 0%, #fdfcfb 70%, #faf6f0 100%)',
-                    border: '1px solid rgba(212, 175, 55, 0.22)',
-                    boxShadow: '0 8px 25px -5px rgba(212, 175, 55, 0.1), 0 3px 8px rgba(0, 0, 0, 0.03)',
-                  }}
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveTab(cat.id)}
+                  className={`px-5 py-3 rounded-xl font-serif-tc text-sm font-bold transition-all duration-300 cursor-pointer shadow-sm flex items-center justify-center gap-2 ${
+                    isActive
+                      ? 'bg-gold-500 text-white shadow-md scale-105'
+                      : 'bg-white/80 hover:bg-ivory-200 text-ink-700 border border-ivory-300'
+                  }`}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                  <div>
-                    <h3 className="relative z-10 font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-start gap-1.5">
-                      <img 
-                        src="/v.jpg" 
-                        alt="勾勾" 
-                        className="h-5 sm:h-6 w-auto object-contain shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]" 
-                      />
-                      <span>{item.title}</span>
-                    </h3>
-
-                    <p className="relative z-10 text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-7">
-                      {item.desc}
-                    </p>
-                  </div>
-
-                  <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
-                </div>
+                  <span>{cat.title}</span>
+                </button>
               );
             })}
           </div>
-
         </div>
 
-        {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 */}
-        <div className="max-w-6xl mx-auto py-4 relative overflow-hidden transition-all duration-300 mb-20">
+        {/* 選中項目的詳細文件內容卡片 (已改為高級漸層背景) */}
+        <div className="border border-gold-400/40 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-12 reveal bg-gradient-to-br from-white/95 via-ivory-50/90 to-gold-100/40 relative overflow-hidden">
           
-          {/* 區塊標題 */}
-          <div className="text-center mb-8 space-y-2.5">
-            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-              PRENEED BENEFIT
-            </p>
-            <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">
-              享受預約優惠價，鎖定價格抗通膨
-            </h3>
-            <div className="w-72 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
-            
-            <p className="text-slate-600 font-sans text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed font-normal pt-2">
-              喪葬費用隨通膨逐年增加，生前契約用現在的價格鎖定未來必定發生的支出，理性省下龐大開銷。
-            </p>
+          {/* 無條件於所有手續上方顯示 PROCEDURE.png 圖片 */}
+          <div className="mb-8 overflow-hidden rounded-2xl border border-ivory-200 shadow-sm">
+            <img 
+              src="/PROCEDURE.png" 
+              alt="手續辦理示意圖" 
+              className="w-full h-48 sm:h-64 md:h-72 object-cover"
+            />
           </div>
 
-          {/* 資訊圖表大卡片 */}
-          <div className="w-full overflow-x-auto bg-white/70 rounded-2xl p-5 sm:p-8 border border-gold-400/25 shadow-sm">
+          <div className="relative pb-6 mb-6 border-b border-ivory-200">
             
-            <div className="mb-8 flex flex-col lg:flex-row lg:items-center gap-5">
-              <div className="shrink-0">
-                <h4 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-900 whitespace-nowrap">
-                  現在規劃的好處
-                </h4>
-                <div className="w-full h-[2.5px] bg-gradient-to-r from-[#A6721C] via-gold-400 to-transparent rounded-full mt-1.5" />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 flex-1">
-                {benefitBubbles.map((item, idx) => {
-                  const IconComp = item.icon;
-                  const isSelected = activeIndex === idx;
-                  return (
-                    <div
-                      key={item.id}
-                      onClick={() => setActiveIndex(idx)}
-                      onMouseEnter={() => setActiveIndex(idx)}
-                      className={`relative rounded-xl px-4 py-3.5 cursor-pointer transition-all duration-300 select-none border flex items-center gap-3 ${
-                        isSelected
-                          ? 'shadow-md ring-2 ring-gold-400/60 -translate-y-0.5 bg-gradient-to-br from-white via-[#fcf8f0] to-[#f4ebd9]'
-                          : 'shadow-sm opacity-90 hover:opacity-100 bg-gradient-to-br from-white via-[#faf6ed] to-[#f0e4d0]'
-                      }`}
-                      style={{
-                        borderColor: 'rgba(212, 175, 55, 0.4)',
-                      }}
-                    >
-                      <div className="w-10 h-10 rounded-full bg-gold-100/80 flex items-center justify-center shrink-0 border border-gold-400/40">
-                        <IconComp className="w-5 h-5 text-gold-700" />
-                      </div>
-                      <div className="font-serif-tc font-bold text-sm sm:text-base leading-snug text-ink-950">
-                        {item.title}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+            {/* 強制置中對齊的標題與說明文字區塊 */}
+            <div className="text-center mx-auto">
+              <h3 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900">
+                {currentCategory.title}
+              </h3>
+              <p className="text-ink-600 text-sm mt-1">
+                {currentCategory.desc}
+              </p>
             </div>
 
-            {/* 下方 SVG 圖表 */}
-            <div className="min-w-[660px]">
-              <svg
-                viewBox="0 0 880 305"
-                className="w-full h-auto overflow-visible cursor-pointer"
-                onClick={handleSvgClick}
+            {/* 工作天數絕對定位在右上角 */}
+            <div className="absolute top-0 right-0 hidden sm:inline-flex items-center gap-2 bg-ivory-100 px-4 py-2.5 rounded-2xl border border-ivory-300">
+              <Clock className="w-4 h-4 text-gold-600 shrink-0" />
+              <span className="text-sm font-medium text-ink-800 font-['Microsoft_JhengHei']">
+                工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
+              </span>
+            </div>
+
+            {/* 手機版的工作天數顯示（置中排列於下方） */}
+            <div className="flex sm:hidden items-center justify-center gap-2 bg-ivory-100 px-4 py-2 rounded-xl border border-ivory-300 mt-4 mx-auto max-w-[160px]">
+              <Clock className="w-4 h-4 text-gold-600 shrink-0" />
+              <span className="text-xs font-medium text-ink-800 font-['Microsoft_JhengHei']">
+                工作天數：<strong className="text-gold-700">{currentCategory.days}</strong>
+              </span>
+            </div>
+          </div>
+
+          <h4 className="font-serif-tc text-base font-bold text-ink-800 mb-6 flex items-center justify-start gap-2">
+            <FileText className="w-4 h-4 text-gold-600" />
+            <span>必備與檢附文件清單：</span>
+          </h4>
+
+          {/* 文件清單列表（維持靠左對齊） */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            {currentCategory.items.map((item: any, idx: number) => (
+              <div
+                key={idx}
+                className="group h-full flex items-center justify-between p-4 rounded-xl bg-white/80 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3"
               >
-                <defs>
-                  <linearGradient id="savedAreaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#A6721C" stopOpacity="0.06" />
-                    <stop offset="100%" stopColor="#A6721C" stopOpacity="0.22" />
-                  </linearGradient>
-                </defs>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-500 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <span className="text-sm sm:text-base font-medium text-ink-900 leading-snug text-left">{item.name}</span>
+                </div>
+                <div className="flex flex-col items-end shrink-0 text-right">
+                  <span className="text-xs px-2.5 py-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
+                    {item.note}
+                  </span>
+                  {item.subNote && (
+                    <span className="text-xs px-2.5 py-1 mt-1 rounded-md bg-gold-100 text-gold-900 font-medium shadow-sm whitespace-normal max-w-[180px] leading-snug">
+                      {item.subNote}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
 
-                <polygon
-                  points={savedAreaPolygon}
-                  fill="url(#savedAreaGrad)"
-                />
-
-                <line
-                  x1={startX}
-                  y1="225"
-                  x2={startX}
-                  y2="15"
-                  stroke="#000000"
-                  strokeWidth="2.5"
-                />
-
-                <line
-                  x1={startX}
-                  y1="225"
-                  x2="845"
-                  y2="225"
-                  stroke="#000000"
-                  strokeWidth="2.5"
-                />
-
-                <text x="122" y="178" textAnchor="end" className="font-serif-tc font-bold fill-[#A6721C] text-[14px]">
-                  殯葬費用
-                </text>
-                <text x="122" y="198" textAnchor="end" className="font-serif-tc font-bold fill-[#585c63] text-[14px]">
-                  預購生前契約
-                </text>
-
-                <path
-                  d={fullCurvePath}
-                  fill="none"
-                  stroke="#A6721C"
-                  strokeWidth="3"
-                />
-                <text
-                  x="485"
-                  y="116"
-                  textAnchor="middle"
-                  transform="rotate(-11.5, 485, 116)"
-                  className="font-serif-tc font-semibold fill-[#A6721C] text-[13px] tracking-wide"
-                >
-                  因物價與服務成本上漲，殯葬費用將隨時間增加
-                </text>
-
-                <line
-                  x1={startX}
-                  y1={baseLineY}
-                  x2={endX}
-                  y2={baseLineY}
-                  stroke="#585c63"
-                  strokeWidth="2.5"
-                />
-                <text
-                  x="470"
-                  y="212"
-                  textAnchor="middle"
-                  className="font-serif-tc font-bold fill-[#585c63] text-[14px] tracking-widest"
-                >
-                  鎖定價格
-                </text>
-
-                <circle
-                  cx={startX}
-                  cy={baseLineY}
-                  r={5}
-                  fill="#A6721C"
-                />
-
-                <g>
-                  <line
-                    x1={currentSvgX}
-                    y1={currentCurveY}
-                    x2={currentSvgX}
-                    y2={baseLineY}
-                    stroke="#A6721C"
-                    strokeWidth="2"
-                  />
-                  <circle
-                    cx={currentSvgX}
-                    cy={currentCurveY}
-                    r={7}
-                    fill="#ffffff"
-                    stroke="#A6721C"
-                    strokeWidth="3"
-                  />
-                  <circle
-                    cx={currentSvgX}
-                    cy={baseLineY}
-                    r={7}
-                    fill="#ffffff"
-                    stroke="#585c63"
-                    strokeWidth="3"
-                  />
-                  <circle
-                    cx={currentSvgX}
-                    cy="225"
-                    r={7}
-                    fill="#ffffff"
-                    stroke="#000000"
-                    strokeWidth="3"
-                  />
-                  <text
-                    x={currentSvgX}
-                    y={254}
-                    textAnchor="middle"
-                    className="font-serif-tc font-bold fill-[#000000] text-[15px]"
-                  >
-                    {years} 年後
-                  </text>
-                </g>
-
-                <text
-                  x={startX}
-                  y="286"
-                  textAnchor="start"
-                  className="font-sans text-[13px] fill-slate-600 font-medium"
-                >
-                  💡 可直接點擊橫軸來調整預估年數
-                </text>
-
-                <text
-                  x="845"
-                  y="286"
-                  textAnchor="end"
-                  className="font-serif-tc text-[14px] font-bold fill-ink-950"
-                >
-                  {years} 年後通膨成長約{' '}
-                  <tspan className="fill-[#A6721C]">{growthPercent}%</tspan>{' '}
-                  (依近3年平均約2%預估)
-                </text>
-              </svg>
+          {/* 下載按鈕（若為新購手續則隱藏） */}
+          {activeTab !== 'new' && (
+            <div className="mt-6 flex justify-start">
+              <a
+                href="/寶慈客戶服務申請表.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 text-sm sm:text-base font-medium transition-all duration-300 shadow-sm group/btn cursor-pointer"
+              >
+                <span>客戶服務申請表</span>
+                <Download className="w-4 h-4 text-gold-600 group-hover/btn:text-white transition-colors shrink-0" />
+              </a>
             </div>
+          )}
+        </div>
 
+        {/* 注意事項 (已改為高級漸層背景) */}
+        <div className="border border-gold-400/40 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-lg mb-16 reveal bg-gradient-to-br from-white/95 via-ivory-50/90 to-gold-100/40 relative overflow-hidden">
+          <div className="text-center mb-8">
+            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+              NOTICES
+            </p>
+            <h4 className="font-serif-tc text-2xl lg:text-3xl font-bold text-ink-900 mt-2">
+              注意事項
+            </h4>
+            <div className="gold-divider w-24 mx-auto mt-3" />
+          </div>
+          <div className="grid grid-cols-1 gap-4">
+            {notices.map((notice, idx) => (
+              <div
+                key={idx}
+                className="group flex flex-col sm:flex-row sm:items-center p-4 sm:p-5 rounded-2xl bg-white/80 border border-ivory-200 hover:border-gold-500 shadow-sm transition-all duration-300 gap-3 sm:gap-6"
+              >
+                <div className="flex items-center gap-3 shrink-0 sm:w-auto">
+                  <div className="w-8 h-8 rounded-full bg-ivory-100 group-hover:bg-gold-500 text-gold-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-sm">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <h5 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900 whitespace-nowrap">
+                    {notice.title}
+                  </h5>
+                </div>
+                <p className="text-sm sm:text-base text-ink-600 leading-relaxed text-left font-['Microsoft_JhengHei'] flex-1">
+                  {notice.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* 4. 生前契約與保險差異 */}
-        <div className="max-w-5xl mx-auto py-6 relative overflow-hidden">
-          
-          {/* 區塊標題 */}
-          <div className="text-center mb-12 space-y-2.5">
-            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-              PRENEED VS INSURANCE
-            </p>
-            <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">
-              生前契約與保險差異
-            </h3>
-            <div className="w-72 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
-            <p className="text-slate-600 font-sans text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed pt-2">
-              生前契約預先安排身後事與相關費用，避免臨時規劃造成額外支出，相較於壽險，更能確保服務妥善執行，減輕家人負擔。
-            </p>
-          </div>
-
-          {/* 左右對比雙大卡片容器 */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            
-            {/* 左側：生前契約卡片 */}
-            <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
-              
-              <div className="mb-6 pb-4 border-b border-gold-400/20">
-                <div className="flex items-baseline gap-3">
-                  <div className="flex items-center gap-2 shrink-0">
-                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner overflow-hidden p-2">
-                      <img src="/Preneed.png" alt="生前契約" className="w-full h-full object-contain" />
-                    </div>
-                    <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">生前契約</h4>
-                  </div>
-                  <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold">
-                    為了 確定 的事情做準備
-                  </p>
-                </div>
-                {/* 質感線：左深右淺 */}
-                <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
-              </div>
-
-              {/* 四個同步互動式條列項目 */}
-              <div className="space-y-3.5">
-                {preneedItems.map((item, idx) => {
-                  const ItemIcon = item.icon;
-                  const isSelected = activeIdx === idx;
-                  return (
-                    <div 
-                      key={idx} 
-                      onClick={() => setActiveIdx(idx)}
-                      onMouseEnter={() => setActiveIdx(idx)}
-                      className={`rounded-xl p-4 text-ink-950 flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none border ${
-                        isSelected 
-                          ? 'scale-[1.02] ring-2 ring-gold-500 shadow-md bg-gradient-to-r from-[#fff9ef] to-[#f4ebd9]' 
-                          : 'opacity-95 hover:opacity-100 bg-gradient-to-r from-[#fdfbf7] to-[#f2e7d5]'
-                      }`}
-                      style={{
-                        borderColor: 'rgba(212, 175, 55, 0.45)',
-                      }}
-                    >
-                      <div className="w-9 h-9 rounded-lg bg-gold-200/60 border border-gold-400/40 flex items-center justify-center shrink-0">
-                        <ItemIcon className="w-5 h-5 text-gold-700" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
-                        {isSelected && (
-                          <p className="text-sm sm:text-base text-slate-700 mt-1.5 animate-fadeIn leading-relaxed font-normal">{item.desc}</p>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-            </div>
-
-            {/* 右側：保險卡片 */}
-            <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
-              
-              <div className="mb-6 pb-4 border-b border-gold-400/20">
-                <div className="flex items-baseline gap-3">
-                  <div className="flex items-center gap-2 shrink-0">
-                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner overflow-hidden p-2">
-                      <img src="/Preneed.png" alt="保險" className="w-full h-full object-contain" />
-                    </div>
-                    <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">保險</h4>
-                  </div>
-                  <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold">
-                    為了 不確定 的風險做準備
-                  </p>
-                </div>
-                {/* 質感線：左深右淺 */}
-                <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
-              </div>
-
-              {/* 四個同步互動式條列項目 */}
-              <div className="space-y-3.5">
-                {insuranceItems.map((item, idx) => {
-                  const ItemIcon = item.icon;
-                  const isSelected = activeIdx === idx;
-                  return (
-                    <div 
-                      key={idx} 
-                      onClick={() => setActiveIdx(idx)}
-                      onMouseEnter={() => setActiveIdx(idx)}
-                      className={`rounded-xl p-4 text-ink-950 flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none border ${
-                        isSelected 
-                          ? 'scale-[1.02] ring-2 ring-gold-500 shadow-md bg-gradient-to-r from-[#fff9ef] to-[#f4ebd9]' 
-                          : 'opacity-95 hover:opacity-100 bg-gradient-to-r from-[#fdfbf7] to-[#f2e7d5]'
-                      }`}
-                      style={{
-                        borderColor: 'rgba(212, 175, 55, 0.45)',
-                      }}
-                    >
-                      <div className="w-9 h-9 rounded-lg bg-gold-200/60 border border-gold-400/40 flex items-center justify-center shrink-0">
-                        <ItemIcon className="w-5 h-5 text-gold-700" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
-                        {isSelected && (
-                          <p className="text-sm sm:text-base text-slate-700 mt-1.5 animate-fadeIn leading-relaxed font-normal">{item.desc}</p>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-            </div>
-
-          </div>
-
+        {/* 底部諮詢引導 */}
+        <div className="text-center reveal">
+          <p className="text-ink-600 text-sm mb-4">手續申辦上有任何疑問，或需要專人協助核對文件嗎？</p>
+          <a
+            href="/contact"
+            onClick={handleContactClick}
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-ivory-100 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-500 font-medium text-sm sm:text-base transition-all duration-300 shadow-sm cursor-pointer"
+          >
+            聯絡我們與專人諮詢
+          </a>
         </div>
 
       </div>
