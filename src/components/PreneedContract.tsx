@@ -61,7 +61,7 @@ export default function PreneedConcept() {
   const [activeIndex, setActiveIndex] = useState<number>(1);
   const [years, setYears] = useState<number>(5); // 預設為 5 年後，最多 80 年
 
-  // 生前契約與保險同步展開狀態（預設展開第一項）
+  // 生前契約與保險同步展開狀態
   const [activeIdx, setActiveIdx] = useState<number | null>(0);
 
   // SVG 座標基準常數
@@ -389,7 +389,7 @@ export default function PreneedConcept() {
           </div>
         </div>
 
-        {/* 4. 生前契約與保險差異 (左右同步展開互動、無 VS、無副標下方線條) */}
+        {/* 4. 生前契約與保險差異 */}
         <div className="max-w-5xl mx-auto py-6 relative overflow-hidden">
           
           {/* 區塊標題 */}
@@ -412,19 +412,20 @@ export default function PreneedConcept() {
             {/* 左側：生前契約卡片 */}
             <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
               
-              <div className="mb-6">
-                {/* 標題與「為了 確定 的事情做準備」並排 */}
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
+              <div className="mb-6 pb-4 border-b border-gold-400/20">
+                <div className="flex items-baseline gap-3">
+                  <div className="flex items-center gap-2 shrink-0">
+                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner">
                       <ShieldCheck className="w-6 h-6 text-[#C69233]" />
                     </div>
                     <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">生前契約</h4>
                   </div>
-                  <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold sm:text-right">
-                    為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">確定</span> 的事情做準備
+                  <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold">
+                    為了 確定 的事情做準備
                   </p>
                 </div>
+                {/* 質感線：左深右淺 */}
+                <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
               </div>
 
               {/* 四個同步互動式條列項目 */}
@@ -465,19 +466,20 @@ export default function PreneedConcept() {
             {/* 右側：保險卡片 */}
             <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
               
-              <div className="mb-6">
-                {/* 標題與「為了 不確定 的風險做準備」並排 */}
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
+              <div className="mb-6 pb-4 border-b border-gold-400/20">
+                <div className="flex items-baseline gap-3">
+                  <div className="flex items-center gap-2 shrink-0">
+                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner">
                       <FileText className="w-6 h-6 text-[#A6721C]" />
                     </div>
                     <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">保險</h4>
                   </div>
-                  <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold sm:text-right">
-                    為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">不確定</span> 的風險做準備
+                  <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold">
+                    為了 不確定 的風險做準備
                   </p>
                 </div>
+                {/* 質感線：左深右淺 */}
+                <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
               </div>
 
               {/* 四個同步互動式條列項目 */}
