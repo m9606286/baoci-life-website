@@ -46,10 +46,10 @@ const preneedItems = [
   { title: '確定金額的喪葬服務', desc: '預約現價鎖定，免受未來通膨影響', icon: FileCheck },
 ];
 
-// 保險 4 大互動項目
+// 保險 4 大互動項目 (第二個「不可指定使用」改為鎖的小圖)
 const insuranceItems = [
   { title: '投保限制', desc: '受年齡、健康狀況與體況核保規定限制', icon: Lock },
-  { title: '不可指定使用', desc: '被保險人於投保時即固定，無法隨意變更使用對象', icon: FileText },
+  { title: '不可指定使用', desc: '被保險人於投保時即固定，無法隨意變更使用對象', icon: Lock },
   { title: '金錢理賠', desc: '以保險金給付為主，非直接提供實物服務', icon: DollarSign },
   { title: '遺屬的生活費用', desc: '提供家庭經濟支柱身故後的資金補貼', icon: Users },
 ];
@@ -61,9 +61,9 @@ export default function PreneedConcept() {
   const [activeIndex, setActiveIndex] = useState<number>(1);
   const [years, setYears] = useState<number>(5); // 預設為 5 年後，最多 80 年
 
-  // 生前契約與保險互動卡片選中狀態
-  const [activePreneedIdx, setActivePreneedIdx] = useState<number>(0);
-  const [activeInsIdx, setActiveInsIdx] = useState<number>(0);
+  // 生前契約與保險互動卡片選中狀態 (保險初始不預設選中任何一項，設為 null)
+  const [activePreneedIdx, setActivePreneedIdx] = useState<number | null>(0);
+  const [activeInsIdx, setActiveInsIdx] = useState<number | null>(null);
 
   // SVG 座標基準常數
   const startX = 135;
@@ -295,7 +295,7 @@ export default function PreneedConcept() {
                   transform="rotate(-11.5, 485, 116)"
                   className="font-serif-tc font-semibold fill-[#A6721C] text-[13px] tracking-wide"
                 >
-                  因物價與服務成本上漲,殯葬費用將隨時間增加
+                  因物價與服務成本上漲，殯葬費用將隨時間增加
                 </text>
 
                 <line
@@ -390,7 +390,7 @@ export default function PreneedConcept() {
           </div>
         </div>
 
-        {/* 4. 生前契約與保險差異 (左側對齊方格、標題與副標並排、淺金質感漸層色方格、手寫風 VS) */}
+        {/* 4. 生前契約與保險差異 */}
         <div className="max-w-5xl mx-auto py-6 relative overflow-hidden">
           
           {/* 區塊標題 */}
@@ -407,14 +407,14 @@ export default function PreneedConcept() {
             </p>
           </div>
 
-          {/* 左右對比雙大卡片容器 (含中間手寫風格 VS) */}
+          {/* 左右對比雙大卡片容器 (含中間手寫風格 vs) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative">
             
             {/* 左側：生前契約卡片 */}
             <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group hover:-translate-y-1 transition-all duration-300">
               
-              <div className="mb-6 pb-5 border-b border-gold-400/20">
-                {/* 標題與「為了 確定 的事情做準備」並排，整體左側對齊方格 */}
+              <div className="mb-6">
+                {/* 標題與副標並排 */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
@@ -426,11 +426,11 @@ export default function PreneedConcept() {
                     為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">確定</span> 的事情做準備
                   </p>
                 </div>
-                {/* 質感線：左邊深右邊淺 */}
+                {/* 質感線放在副標下方：左邊深右邊淺 */}
                 <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
               </div>
 
-              {/* 四個互動式條列項目 (改為淺金質感漸層色調 + 質感線) */}
+              {/* 四個互動式條列項目 (無右側短線、字級加大) */}
               <div className="space-y-3.5">
                 {preneedItems.map((item, idx) => {
                   const ItemIcon = item.icon;
@@ -453,12 +453,9 @@ export default function PreneedConcept() {
                         <ItemIcon className="w-5 h-5 text-gold-700" />
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-center justify-between">
-                          <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
-                          <div className="w-16 h-px bg-gradient-to-r from-gold-400/50 to-transparent" />
-                        </div>
+                        <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
                         {isSelected && (
-                          <p className="text-xs text-slate-600 mt-1 animate-fadeIn leading-relaxed">{item.desc}</p>
+                          <p className="text-sm sm:text-base text-slate-700 mt-1.5 animate-fadeIn leading-relaxed font-normal">{item.desc}</p>
                         )}
                       </div>
                     </div>
@@ -468,7 +465,7 @@ export default function PreneedConcept() {
 
             </div>
 
-            {/* 中間手寫風格 VS (桌面版絕對置中懸浮，無圓圈) */}
+            {/* 中間手寫風格 vs (桌面版絕對置中懸浮) */}
             <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-20 font-serif font-italic text-3xl font-bold text-[#A6721C] items-center justify-center tracking-wider select-none drop-shadow-sm" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
               vs
             </div>
@@ -476,8 +473,8 @@ export default function PreneedConcept() {
             {/* 右側：保險卡片 */}
             <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group hover:-translate-y-1 transition-all duration-300">
               
-              <div className="mb-6 pb-5 border-b border-gold-400/20">
-                {/* 標題與「為了 不確定 的風險做準備」並排，整體左側對齊方格 */}
+              <div className="mb-6">
+                {/* 標題與副標並排 */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
@@ -489,11 +486,11 @@ export default function PreneedConcept() {
                     為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">不確定</span> 的風險做準備
                   </p>
                 </div>
-                {/* 質感線：左邊深右邊淺 */}
+                {/* 質感線放在副標下方：左邊深右邊淺 */}
                 <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
               </div>
 
-              {/* 四個互動式條列項目 (改為淺金質感漸層色調 + 質感線) */}
+              {/* 四個互動式條列項目 (無右側短線、字級加大) */}
               <div className="space-y-3.5">
                 {insuranceItems.map((item, idx) => {
                   const ItemIcon = item.icon;
@@ -516,12 +513,9 @@ export default function PreneedConcept() {
                         <ItemIcon className="w-5 h-5 text-gold-700" />
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-center justify-between">
-                          <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
-                          <div className="w-16 h-px bg-gradient-to-r from-gold-400/50 to-transparent" />
-                        </div>
+                        <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
                         {isSelected && (
-                          <p className="text-xs text-slate-600 mt-1 animate-fadeIn leading-relaxed">{item.desc}</p>
+                          <p className="text-sm sm:text-base text-slate-700 mt-1.5 animate-fadeIn leading-relaxed font-normal">{item.desc}</p>
                         )}
                       </div>
                     </div>
