@@ -237,3 +237,54 @@ export default function PreneedConcept() {
                     <div className="flex items-center gap-2">
                       <span className="w-3 h-3 rounded-full bg-gold-500" />
                       <span className="font-bold text-sm sm:text-base text-ink-950">現在預約生前契約（鎖定價格）</span>
+                    </div>
+                    <span className="font-serif-tc text-lg sm:text-xl font-bold text-gold-600">
+                      {basePrice} 萬元
+                    </span>
+                  </div>
+                  <div className="w-full h-9 bg-ivory-100 rounded-xl overflow-hidden p-1 border border-gold-400/25">
+                    <div
+                      className="h-full rounded-lg bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 flex items-center justify-end pr-3 transition-all duration-500 ease-out shadow-sm"
+                      style={{ width: `${Math.min((basePrice / maxChartValue) * 100, 100)}%` }}
+                    >
+                      <span className="text-[11px] font-bold text-white tracking-wider">價格凍結</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bar 2: 未來無規劃臨時辦理預估費用 */}
+                <div className="space-y-2">
+                  <div className="flex justify-between items-end">
+                    <div className="flex items-center gap-2">
+                      <span className="w-3 h-3 rounded-full bg-[#585c63]" />
+                      <span className="font-bold text-sm sm:text-base text-slate-700">{years} 年後無規劃臨時辦理（含通膨）</span>
+                    </div>
+                    <span className="font-serif-tc text-lg sm:text-xl font-bold text-slate-700">
+                      約 {futurePrice} 萬元
+                    </span>
+                  </div>
+                  <div className="w-full h-9 bg-ivory-100 rounded-xl overflow-hidden p-1 border border-slate-200">
+                    <div
+                      className="h-full rounded-lg bg-gradient-to-r from-slate-500 to-[#585c63] flex items-center justify-end pr-3 transition-all duration-500 ease-out"
+                      style={{ width: `${Math.min((futurePrice / maxChartValue) * 100, 100)}%` }}
+                    >
+                      <span className="text-[11px] font-medium text-ivory-100">+{savedAmount}萬 通膨增加</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* 圖表底部說明註記 */}
+              <div className="mt-6 pt-3 border-t border-ivory-200 text-[11px] sm:text-xs text-slate-400">
+                ※ 圖表數值僅供通膨趨勢參考，實際契約方案與費用依個人選擇之禮儀規格為準。
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
