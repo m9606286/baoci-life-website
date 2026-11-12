@@ -333,7 +333,7 @@ export default function PreneedConcept() {
                   <circle
                     cx={currentSvgX}
                     cy={currentCurveY}
-                    r={7}
+                    r={3}
                     fill="#ffffff"
                     stroke="#A6721C"
                     strokeWidth="3"
@@ -341,7 +341,7 @@ export default function PreneedConcept() {
                   <circle
                     cx={currentSvgX}
                     cy={baseLineY}
-                    r={7}
+                    r={3}
                     fill="#ffffff"
                     stroke="#585c63"
                     strokeWidth="3"
@@ -349,7 +349,7 @@ export default function PreneedConcept() {
                   <circle
                     cx={currentSvgX}
                     cy="225"
-                    r={7}
+                    r={3}
                     fill="#ffffff"
                     stroke="#000000"
                     strokeWidth="3"
