@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Lock, UserCheck, ShieldCheck, RefreshCw, Award, FileText, FileCheck, DollarSign, Users } from 'lucide-react';
+import { Sparkles, Lock, UserCheck, RefreshCw, Award, FileCheck, DollarSign, Users } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import familyImage from '/core.jpg';
 
@@ -415,8 +415,8 @@ export default function PreneedConcept() {
               <div className="mb-6 pb-4 border-b border-gold-400/20">
                 <div className="flex items-baseline gap-3">
                   <div className="flex items-center gap-2 shrink-0">
-                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner">
-                      <ShieldCheck className="w-6 h-6 text-[#C69233]" />
+                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner overflow-hidden p-2">
+                      <img src="/Preneed.png" alt="生前契約" className="w-full h-full object-contain" />
                     </div>
                     <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">生前契約</h4>
                   </div>
@@ -469,8 +469,8 @@ export default function PreneedConcept() {
               <div className="mb-6 pb-4 border-b border-gold-400/20">
                 <div className="flex items-baseline gap-3">
                   <div className="flex items-center gap-2 shrink-0">
-                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner">
-                      <FileText className="w-6 h-6 text-[#A6721C]" />
+                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner overflow-hidden p-2">
+                      <img src="/Preneed.png" alt="保險" className="w-full h-full object-contain" />
                     </div>
                     <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">保險</h4>
                   </div>
