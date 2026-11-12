@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Lock, UserCheck, ArrowRight } from 'lucide-react';
+import { Sparkles, Lock, UserCheck } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import familyImage from '/core.jpg';
 
@@ -33,7 +33,7 @@ const benefitBubbles = [
   },
   {
     id: 2,
-    title: '自己選擇想要的方式',
+    title: '選擇自己想要的方式',
     icon: UserCheck,
   },
 ];
@@ -149,20 +149,16 @@ export default function PreneedConcept() {
             </p>
           </div>
 
-          {/* 資訊圖表主體 */}
-          <div className="p-2 sm:p-4">
+          {/* 資訊圖表大卡片：把「現在規劃的好處」整列放在縱軸上方、同一個方格內 */}
+          <div className="w-full overflow-x-auto bg-white/70 rounded-2xl p-5 sm:p-8 border border-gold-400/25 shadow-sm">
             
-            {/* 「現在規劃的好處」＋ 淺深金色向右箭頭 ＋ 三張卡片全部同一排並排 */}
-            <div className="mb-6 flex flex-col lg:flex-row lg:items-center gap-4">
-              <div className="flex items-center gap-3 shrink-0">
-                <div>
-                  <h4 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-900 whitespace-nowrap">
-                    現在規劃的好處
-                  </h4>
-                  <div className="w-full h-[2.5px] bg-gradient-to-r from-[#A6721C] via-gold-400 to-transparent rounded-full mt-1.5" />
-                </div>
-                {/* 淺深金色向右箭頭 */}
-                <ArrowRight className="w-6 h-6 text-[#A6721C] shrink-0 hidden lg:block" />
+            {/* 頂部橫列：「現在規劃的好處」（無右邊箭頭）＋ 三張核心卡片並排 */}
+            <div className="mb-8 flex flex-col lg:flex-row lg:items-center gap-5">
+              <div className="shrink-0">
+                <h4 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-900 whitespace-nowrap">
+                  現在規劃的好處
+                </h4>
+                <div className="w-full h-[2.5px] bg-gradient-to-r from-[#A6721C] via-gold-400 to-transparent rounded-full mt-1.5" />
               </div>
 
               {/* 三張卡片並排 */}
@@ -196,151 +192,157 @@ export default function PreneedConcept() {
               </div>
             </div>
 
-            {/* 下排：SVG 雙線抗通膨趨勢座標圖（拉大底部留白，讓右下角數據與橫軸保持充足距離） */}
-            <div className="w-full overflow-x-auto bg-white/60 rounded-2xl p-4 sm:p-6 pb-14 sm:pb-16 border border-gold-400/20 shadow-sm relative">
-              <div className="min-w-[660px]">
-                <svg
-                  viewBox="0 0 880 290"
-                  className="w-full h-auto overflow-visible cursor-pointer"
-                  onClick={handleSvgClick}
+            {/* 下方 SVG 雙線抗通膨趨勢座標圖 */}
+            <div className="min-w-[660px]">
+              <svg
+                viewBox="0 0 880 305"
+                className="w-full h-auto overflow-visible cursor-pointer"
+                onClick={handleSvgClick}
+              >
+                <defs>
+                  <linearGradient id="savedAreaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#A6721C" stopOpacity="0.05" />
+                    <stop offset="100%" stopColor="#A6721C" stopOpacity="0.18" />
+                  </linearGradient>
+                </defs>
+
+                {/* 動態差額填充區 */}
+                <polygon
+                  points={`135,145 ${currentSvgX},${145 - (currentSvgX - 135) * 0.088} 805,85 805,190 135,190`}
+                  fill="url(#savedAreaGrad)"
+                />
+
+                {/* 縱軸 (Y軸) - 黑色 */}
+                <line
+                  x1="135"
+                  y1="225"
+                  x2="135"
+                  y2="15"
+                  stroke="#000000"
+                  strokeWidth="2.5"
+                />
+
+                {/* 橫軸 (X軸) - 黑色 */}
+                <line
+                  x1="135"
+                  y1="225"
+                  x2="845"
+                  y2="225"
+                  stroke="#000000"
+                  strokeWidth="2.5"
+                />
+
+                {/* 軸標籤 */}
+                <text x="122" y="145" textAnchor="end" className="font-serif-tc font-bold fill-[#A6721C] text-[14px]">
+                  殯葬費用
+                </text>
+                <text x="122" y="195" textAnchor="end" className="font-serif-tc font-bold fill-[#585c63] text-[14px]">
+                  預購生前契約
+                </text>
+
+                {/* 上方斜線：通貨膨脹費用趨勢 */}
+                <line
+                  x1="135"
+                  y1="145"
+                  x2="805"
+                  y2="85"
+                  stroke="#A6721C"
+                  strokeWidth="3"
+                />
+                <text
+                  x="470"
+                  y="102"
+                  textAnchor="middle"
+                  transform="rotate(-5.0, 470, 102)"
+                  className="font-serif-tc font-semibold fill-[#A6721C] text-[13px] tracking-wide"
                 >
-                  <defs>
-                    <linearGradient id="savedAreaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#A6721C" stopOpacity="0.05" />
-                      <stop offset="100%" stopColor="#A6721C" stopOpacity="0.18" />
-                    </linearGradient>
-                  </defs>
+                  因物價與服務成本上漲，殯葬費用將隨時間增加
+                </text>
 
-                  {/* 動態差額填充區 */}
-                  <polygon
-                    points={`135,155 ${currentSvgX},${155 - (currentSvgX - 135) * 0.088} 805,95 805,200 135,200`}
-                    fill="url(#savedAreaGrad)"
-                  />
+                {/* 下方水平線：預購生前契約鎖定價格 */}
+                <line
+                  x1="135"
+                  y1="190"
+                  x2="805"
+                  y2="190"
+                  stroke="#585c63"
+                  strokeWidth="2.5"
+                />
+                <text
+                  x="470"
+                  y="180"
+                  textAnchor="middle"
+                  className="font-serif-tc font-bold fill-[#585c63] text-[14px] tracking-widest"
+                >
+                  鎖定價格
+                </text>
 
-                  {/* 縱軸 (Y軸) - 黑色 */}
+                {/* 動態點擊連動節點 */}
+                <g>
                   <line
-                    x1="135"
-                    y1="235"
-                    x2="135"
-                    y2="15"
-                    stroke="#000000"
-                    strokeWidth="2.5"
+                    x1={currentSvgX}
+                    y1={145 - (currentSvgX - 135) * 0.088}
+                    x2={currentSvgX}
+                    y2={190}
+                    stroke="#A6721C"
+                    strokeWidth="2"
                   />
-
-                  {/* 橫軸 (X軸) - 黑色 */}
-                  <line
-                    x1="135"
-                    y1="235"
-                    x2="845"
-                    y2="235"
-                    stroke="#000000"
-                    strokeWidth="2.5"
-                  />
-
-                  {/* 軸標籤 */}
-                  <text x="122" y="155" textAnchor="end" className="font-serif-tc font-bold fill-[#A6721C] text-[14px]">
-                    殯葬費用
-                  </text>
-                  <text x="122" y="205" textAnchor="end" className="font-serif-tc font-bold fill-[#585c63] text-[14px]">
-                    預購生前契約
-                  </text>
-
-                  {/* 上方斜線：通貨膨脹費用趨勢 */}
-                  <line
-                    x1="135"
-                    y1="155"
-                    x2="805"
-                    y2="95"
+                  <circle
+                    cx={currentSvgX}
+                    cy={145 - (currentSvgX - 135) * 0.088}
+                    r={7}
+                    fill="#ffffff"
                     stroke="#A6721C"
                     strokeWidth="3"
                   />
-                  <text
-                    x="470"
-                    y="112"
-                    textAnchor="middle"
-                    transform="rotate(-5.0, 470, 112)"
-                    className="font-serif-tc font-semibold fill-[#A6721C] text-[13px] tracking-wide"
-                  >
-                    因物價與服務成本上漲，殯葬費用將隨時間增加
-                  </text>
-
-                  {/* 下方水平線：預購生前契約鎖定價格 */}
-                  <line
-                    x1="135"
-                    y1="200"
-                    x2="805"
-                    y2="200"
+                  <circle
+                    cx={currentSvgX}
+                    cy={190}
+                    r={7}
+                    fill="#ffffff"
                     stroke="#585c63"
-                    strokeWidth="2.5"
+                    strokeWidth="3"
+                  />
+                  <circle
+                    cx={currentSvgX}
+                    cy={225}
+                    r={7}
+                    fill="#ffffff"
+                    stroke="#000000"
+                    strokeWidth="3"
                   />
                   <text
-                    x="470"
-                    y="190"
+                    x={currentSvgX}
+                    y={254}
                     textAnchor="middle"
-                    className="font-serif-tc font-bold fill-[#585c63] text-[14px] tracking-widest"
+                    className="font-serif-tc font-bold fill-[#000000] text-[15px]"
                   >
-                    鎖定價格
+                    {years} 年後
                   </text>
+                </g>
 
-                  {/* 動態點擊連動節點 */}
-                  <g>
-                    <line
-                      x1={currentSvgX}
-                      y1={155 - (currentSvgX - 135) * 0.088}
-                      x2={currentSvgX}
-                      y2={200}
-                      stroke="#A6721C"
-                      strokeWidth="2"
-                    />
-                    <circle
-                      cx={currentSvgX}
-                      cy={155 - (currentSvgX - 135) * 0.088}
-                      r={7}
-                      fill="#ffffff"
-                      stroke="#A6721C"
-                      strokeWidth="3"
-                    />
-                    <circle
-                      cx={currentSvgX}
-                      cy={200}
-                      r={7}
-                      fill="#ffffff"
-                      stroke="#585c63"
-                      strokeWidth="3"
-                    />
-                    <circle
-                      cx={currentSvgX}
-                      cy={235}
-                      r={7}
-                      fill="#ffffff"
-                      stroke="#000000"
-                      strokeWidth="3"
-                    />
-                    <text
-                      x={currentSvgX}
-                      y={266}
-                      textAnchor="middle"
-                      className="font-serif-tc font-bold fill-[#000000] text-[15px]"
-                    >
-                      {years} 年後
-                    </text>
-                  </g>
-                </svg>
+                {/* 左下方（橫縱軸 0 點下方）：提示文字 */}
+                <text
+                  x="135"
+                  y="286"
+                  textAnchor="start"
+                  className="font-sans text-[13px] fill-slate-600 font-medium"
+                >
+                  💡 可直接點擊橫軸來調整預估年數
+                </text>
 
-                {/* 右上角提示：無方格，直接字體顯示 */}
-                <div className="absolute top-4 right-5 pointer-events-none">
-                  <span className="text-xs sm:text-sm text-slate-600 font-medium">
-                    💡 可直接點擊橫軸來調整預估年數
-                  </span>
-                </div>
-
-                {/* 右下方數據說明：與橫軸保持充足間距 */}
-                <div className="absolute bottom-3.5 right-5 pointer-events-none bg-white/95 px-3.5 py-1.5 rounded-lg border border-gold-400/30 shadow-sm">
-                  <p className="font-serif-tc text-xs sm:text-sm font-bold text-ink-950">
-                    {years} 年後通膨成長約 <span className="text-gold-700">{growthPercent}%</span> (依近3年平均約2%預估)
-                  </p>
-                </div>
-              </div>
+                {/* 右下方（與左側提示文字水平平行並列，且貼近橫軸）：通膨數據說明 */}
+                <text
+                  x="845"
+                  y="286"
+                  textAnchor="end"
+                  className="font-serif-tc text-[14px] font-bold fill-ink-950"
+                >
+                  {years} 年後通膨成長約{' '}
+                  <tspan className="fill-[#A6721C]">{growthPercent}%</tspan>{' '}
+                  (依近3年平均約2%預估)
+                </text>
+              </svg>
             </div>
 
           </div>
