@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Lock, UserCheck, ShieldCheck, RefreshCw, Award, FileText, FileCheck, DollarSign, Users } from 'lucide-react';
+import { Sparkles, Lock, UserCheck, ShieldCheck, RefreshCw, Award, FileText, FileCheck, DollarSign, Users, UserX } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import familyImage from '/core.jpg';
 
@@ -49,7 +49,7 @@ const preneedItems = [
 // 保險 4 大互動項目
 const insuranceItems = [
   { title: '投保限制', desc: '受年齡、健康狀況與體況核保規定限制', icon: Lock },
-  { title: '不可指定使用', desc: '被保險人於投保時即固定，無法隨意變更', icon: Lock },
+  { title: '不可指定使用', desc: '被保險人於投保時即固定，無法隨意變更', icon: UserX },
   { title: '金錢理賠', desc: '以保險金給付為主，非直接提供實質服務', icon: DollarSign },
   { title: '遺屬的生活費用', desc: '提供身故後家庭經濟的資金補貼', icon: Users },
 ];
@@ -178,8 +178,8 @@ export default function PreneedConcept() {
 
         </div>
 
-        {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 (縮減底部邊距 mb-6) */}
-        <div className="max-w-6xl mx-auto py-8 relative overflow-hidden transition-all duration-300 mb-6">
+        {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 */}
+        <div className="max-w-6xl mx-auto py-8 relative overflow-hidden transition-all duration-300 mb-16">
           
           {/* 區塊標題 */}
           <div className="text-center mb-8 space-y-2.5">
@@ -389,8 +389,8 @@ export default function PreneedConcept() {
           </div>
         </div>
 
-        {/* 4. 生前契約與保險差異 (加入負邊距 -mt-12，讓整個區塊明顯往上提並貼近上方圖表) */}
-        <div className="max-w-5xl mx-auto -mt-12 py-2 relative overflow-hidden">
+        {/* 4. 生前契約與保險差異 */}
+        <div className="max-w-5xl mx-auto py-6 relative overflow-hidden">
           
           {/* 區塊標題 */}
           <div className="text-center mb-12 space-y-2.5">
