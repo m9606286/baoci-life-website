@@ -179,7 +179,7 @@ export default function PreneedConcept() {
         </div>
 
         {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 */}
-        <div className="max-w-6xl mx-auto py-4 relative overflow-hidden transition-all duration-300 mb-20">
+        <div className="max-w-6xl mx-auto py-6 relative overflow-hidden transition-all duration-300 mb-20">
           
           {/* 區塊標題 */}
           <div className="text-center mb-8 space-y-2.5">
