@@ -43,19 +43,52 @@ export default function PreneedConcept() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   const [activeIndex, setActiveIndex] = useState<number>(1);
-  const [years, setYears] = useState<number>(66); // 預設 66 年，最多 80 年
+  const [years, setYears] = useState<number>(5); // 預設為 5 年後，最多 80 年
 
-  // 以近三年平均 2% 複利計算成長百分比
-  const growthPercent = Math.round((Math.pow(1 + 0.02, years) - 1) * 100);
-  const currentSvgX = Math.min(135 + (years / 80) * 670, 805);
+  // SVG 座標基準常數
+  const startX = 135;
+  const endX = 805;
+  const chartWidth = endX - startX; // 670
+  const baseLineY = 190; // 起點相同：預購生前契約與殯葬費用皆從 y=190 出發
+  const maxGrowthHeight = 155; // 80 年時往上攀升的最大高度 (190 - 155 = 35)
+  const maxMultiplier = Math.pow(1.02, 80) - 1; // 80年總複利增幅約 3.8754
+
+  // 依據年份 t 計算真實複利曲線上的 Y 座標
+  const getInflationY = (t: number) => {
+    const multiplier = Math.pow(1.02, t) - 1;
+    return baseLineY - (multiplier / maxMultiplier) * maxGrowthHeight;
+  };
+
+  // 產生真實複利指數曲線的路徑 (每 1 年取一個點平滑連接)
+  const generateCurvePoints = (maxYear: number) => {
+    const points: string[] = [];
+    for (let t = 0; t <= maxYear; t++) {
+      const x = startX + (t / 80) * chartWidth;
+      const y = getInflationY(t);
+      points.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+    }
+    return points;
+  };
+
+  const fullCurvePoints = generateCurvePoints(80);
+  const fullCurvePath = `M ${fullCurvePoints.join(' L ')}`;
+
+  // 計算當前選中年份的座標與成長百分比
+  const growthPercent = Math.round((Math.pow(1.02, years) - 1) * 100);
+  const currentSvgX = startX + (years / 80) * chartWidth;
+  const currentCurveY = getInflationY(years);
+
+  // 動態差額填充區（從起點到目前選中年份的曲線下方陰影）
+  const activeCurvePoints = generateCurvePoints(years);
+  const savedAreaPolygon = `${startX},${baseLineY} ${activeCurvePoints.join(' ')} ${currentSvgX.toFixed(1)},${baseLineY}`;
 
   // 點擊橫軸互動
   const handleSvgClick = (e: React.MouseEvent<SVGSVGElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const svgX = (clickX / rect.width) * 880;
-    if (svgX >= 135 && svgX <= 805) {
-      const calculatedYears = Math.round(((svgX - 135) / 670) * 80);
+    if (svgX >= startX && svgX <= endX) {
+      const calculatedYears = Math.round(((svgX - startX) / chartWidth) * 80);
       setYears(Math.max(1, Math.min(80, calculatedYears)));
     }
   };
@@ -149,10 +182,10 @@ export default function PreneedConcept() {
             </p>
           </div>
 
-          {/* 資訊圖表大卡片：把「現在規劃的好處」整列放在縱軸上方、同一個方格內 */}
+          {/* 資訊圖表大卡片 */}
           <div className="w-full overflow-x-auto bg-white/70 rounded-2xl p-5 sm:p-8 border border-gold-400/25 shadow-sm">
             
-            {/* 頂部橫列：「現在規劃的好處」（無右邊箭頭）＋ 三張核心卡片並排 */}
+            {/* 頂部橫列：「現在規劃的好處」＋ 三張核心卡片並排 */}
             <div className="mb-8 flex flex-col lg:flex-row lg:items-center gap-5">
               <div className="shrink-0">
                 <h4 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-900 whitespace-nowrap">
@@ -161,7 +194,6 @@ export default function PreneedConcept() {
                 <div className="w-full h-[2.5px] bg-gradient-to-r from-[#A6721C] via-gold-400 to-transparent rounded-full mt-1.5" />
               </div>
 
-              {/* 三張卡片並排 */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 flex-1">
                 {benefitBubbles.map((item, idx) => {
                   const IconComp = item.icon;
@@ -192,7 +224,7 @@ export default function PreneedConcept() {
               </div>
             </div>
 
-            {/* 下方 SVG 雙線抗通膨趨勢座標圖 */}
+            {/* 下方 SVG 雙線抗通膨趨勢座標圖（同一起點 + 真實 2% 複利指數曲線） */}
             <div className="min-w-[660px]">
               <svg
                 viewBox="0 0 880 305"
@@ -201,22 +233,22 @@ export default function PreneedConcept() {
               >
                 <defs>
                   <linearGradient id="savedAreaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#A6721C" stopOpacity="0.05" />
-                    <stop offset="100%" stopColor="#A6721C" stopOpacity="0.18" />
+                    <stop offset="0%" stopColor="#A6721C" stopOpacity="0.06" />
+                    <stop offset="100%" stopColor="#A6721C" stopOpacity="0.22" />
                   </linearGradient>
                 </defs>
 
-                {/* 動態差額填充區 */}
+                {/* 動態差額填充區（隨真實複利曲線擴張） */}
                 <polygon
-                  points={`135,145 ${currentSvgX},${145 - (currentSvgX - 135) * 0.088} 805,85 805,190 135,190`}
+                  points={savedAreaPolygon}
                   fill="url(#savedAreaGrad)"
                 />
 
                 {/* 縱軸 (Y軸) - 黑色 */}
                 <line
-                  x1="135"
+                  x1={startX}
                   y1="225"
-                  x2="135"
+                  x2={startX}
                   y2="15"
                   stroke="#000000"
                   strokeWidth="2.5"
@@ -224,7 +256,7 @@ export default function PreneedConcept() {
 
                 {/* 橫軸 (X軸) - 黑色 */}
                 <line
-                  x1="135"
+                  x1={startX}
                   y1="225"
                   x2="845"
                   y2="225"
@@ -232,64 +264,70 @@ export default function PreneedConcept() {
                   strokeWidth="2.5"
                 />
 
-                {/* 軸標籤 */}
-                <text x="122" y="145" textAnchor="end" className="font-serif-tc font-bold fill-[#A6721C] text-[14px]">
+                {/* 左側標籤（同一起點 y=190） */}
+                <text x="122" y="178" textAnchor="end" className="font-serif-tc font-bold fill-[#A6721C] text-[14px]">
                   殯葬費用
                 </text>
-                <text x="122" y="195" textAnchor="end" className="font-serif-tc font-bold fill-[#585c63] text-[14px]">
+                <text x="122" y="198" textAnchor="end" className="font-serif-tc font-bold fill-[#585c63] text-[14px]">
                   預購生前契約
                 </text>
 
-                {/* 上方斜線：通貨膨脹費用趨勢 */}
-                <line
-                  x1="135"
-                  y1="145"
-                  x2="805"
-                  y2="85"
+                {/* 上方指數曲線：真實逐年 2% 複利通膨趨勢 */}
+                <path
+                  d={fullCurvePath}
+                  fill="none"
                   stroke="#A6721C"
                   strokeWidth="3"
                 />
                 <text
-                  x="470"
-                  y="102"
+                  x="485"
+                  y="116"
                   textAnchor="middle"
-                  transform="rotate(-5.0, 470, 102)"
+                  transform="rotate(-11.5, 485, 116)"
                   className="font-serif-tc font-semibold fill-[#A6721C] text-[13px] tracking-wide"
                 >
                   因物價與服務成本上漲，殯葬費用將隨時間增加
                 </text>
 
-                {/* 下方水平線：預購生前契約鎖定價格 */}
+                {/* 下方水平線：預購生前契約鎖定價格（從同一起點 y=190 水平延伸） */}
                 <line
-                  x1="135"
-                  y1="190"
-                  x2="805"
-                  y2="190"
+                  x1={startX}
+                  y1={baseLineY}
+                  x2={endX}
+                  y2={baseLineY}
                   stroke="#585c63"
                   strokeWidth="2.5"
                 />
                 <text
                   x="470"
-                  y="180"
+                  y="212"
                   textAnchor="middle"
                   className="font-serif-tc font-bold fill-[#585c63] text-[14px] tracking-widest"
                 >
                   鎖定價格
                 </text>
 
+                {/* 起點圓點（標示兩者從同一起點出發） */}
+                <circle
+                  cx={startX}
+                  cy={baseLineY}
+                  r={5}
+                  fill="#A6721C"
+                />
+
                 {/* 動態點擊連動節點 */}
                 <g>
                   <line
                     x1={currentSvgX}
-                    y1={145 - (currentSvgX - 135) * 0.088}
+                    y1={currentCurveY}
                     x2={currentSvgX}
-                    y2={190}
+                    y2={baseLineY}
                     stroke="#A6721C"
                     strokeWidth="2"
                   />
                   <circle
                     cx={currentSvgX}
-                    cy={145 - (currentSvgX - 135) * 0.088}
+                    cy={currentCurveY}
                     r={7}
                     fill="#ffffff"
                     stroke="#A6721C"
@@ -297,7 +335,7 @@ export default function PreneedConcept() {
                   />
                   <circle
                     cx={currentSvgX}
-                    cy={190}
+                    cy={baseLineY}
                     r={7}
                     fill="#ffffff"
                     stroke="#585c63"
@@ -305,7 +343,7 @@ export default function PreneedConcept() {
                   />
                   <circle
                     cx={currentSvgX}
-                    cy={225}
+                    cy="225"
                     r={7}
                     fill="#ffffff"
                     stroke="#000000"
@@ -323,7 +361,7 @@ export default function PreneedConcept() {
 
                 {/* 左下方（橫縱軸 0 點下方）：提示文字 */}
                 <text
-                  x="135"
+                  x={startX}
                   y="286"
                   textAnchor="start"
                   className="font-sans text-[13px] fill-slate-600 font-medium"
@@ -331,7 +369,7 @@ export default function PreneedConcept() {
                   💡 可直接點擊橫軸來調整預估年數
                 </text>
 
-                {/* 右下方（與左側提示文字水平平行並列，且貼近橫軸）：通膨數據說明 */}
+                {/* 右下方（與左側提示文字水平平行並列）：通膨數據說明 */}
                 <text
                   x="845"
                   y="286"
