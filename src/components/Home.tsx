@@ -177,7 +177,7 @@ export default function Home() {
         {/* 公司簡介 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
-            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+            <p className="font-serif-tc text-gold-400 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               COMPANY PROFILE
             </p>
             <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
@@ -256,7 +256,7 @@ export default function Home() {
         {/* 我們的服務 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
-            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+            <p className="font-serif-tc text-gold-400 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               OUR SERVICES
             </p>
             <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
@@ -367,7 +367,7 @@ export default function Home() {
 
         {/* 聯絡寶慈 */}
         <section className="max-w-4xl mx-auto px-6 text-center py-2">
-          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+          <p className="font-serif-tc text-gold-400 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTACT US
           </p>
           <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
