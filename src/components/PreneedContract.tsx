@@ -370,7 +370,7 @@ export default function PreneedConcept() {
                   textAnchor="start"
                   className="font-sans text-[13px] fill-slate-600 font-medium"
                 >
-                  💡 可直接點擊橫軸來調整預估年數
+                  💡 可直接點擊橫軸來調整年數
                 </text>
 
                 <text
@@ -381,7 +381,7 @@ export default function PreneedConcept() {
                 >
                   {years} 年後通膨成長約{' '}
                   <tspan className="fill-[#A6721C]">{growthPercent}%</tspan>{' '}
-                  (依近3年平均約2%預估)
+                  (依近3年平均通膨約2%預估)
                 </text>
               </svg>
             </div>
