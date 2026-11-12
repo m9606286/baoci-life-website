@@ -38,6 +38,22 @@ const benefitBubbles = [
   },
 ];
 
+// 生前契約 4 大互動項目
+const preneedItems = [
+  { title: '不分老少', desc: '全齡皆可預先規劃，不受年齡與體況限制', icon: Users },
+  { title: '可指定使用', desc: '契約可指定使用對象（不限本人或家人），彈性便利', icon: RefreshCw },
+  { title: '專業服務', desc: '由政府立案合法禮儀團隊全程執行', icon: Award },
+  { title: '確定金額的喪葬服務', desc: '預約現價鎖定，免受未來通膨影響', icon: FileCheck },
+];
+
+// 保險 4 大互動項目
+const insuranceItems = [
+  { title: '投保限制', desc: '受年齡、健康狀況與體況核保規定限制', icon: Lock },
+  { title: '不可指定使用', desc: '被保險人於投保時即固定，無法隨意變更使用對象', icon: FileText },
+  { title: '金錢理賠', desc: '以保險金給付為主，非直接提供實物服務', icon: DollarSign },
+  { title: '遺屬的生活費用', desc: '提供家庭經濟支柱身故後的資金補貼', icon: Users },
+];
+
 export default function PreneedConcept() {
   const revealResult = useReveal<HTMLDivElement>();
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
@@ -45,21 +61,23 @@ export default function PreneedConcept() {
   const [activeIndex, setActiveIndex] = useState<number>(1);
   const [years, setYears] = useState<number>(5); // 預設為 5 年後，最多 80 年
 
+  // 生前契約與保險互動卡片選中狀態
+  const [activePreneedIdx, setActivePreneedIdx] = useState<number>(0);
+  const [activeInsIdx, setActiveInsIdx] = useState<number>(0);
+
   // SVG 座標基準常數
   const startX = 135;
   const endX = 805;
   const chartWidth = endX - startX; // 670
-  const baseLineY = 190; // 起點相同：預購生前契約與殯葬費用皆從 y=190 出發
-  const maxGrowthHeight = 155; // 80 年時往上攀升的最大高度 (190 - 155 = 35)
-  const maxMultiplier = Math.pow(1.02, 80) - 1; // 80年總複利增幅約 3.8754
+  const baseLineY = 190; 
+  const maxGrowthHeight = 155; 
+  const maxMultiplier = Math.pow(1.02, 80) - 1; 
 
-  // 依據年份 t 計算真實複利曲線上的 Y 座標
   const getInflationY = (t: number) => {
     const multiplier = Math.pow(1.02, t) - 1;
     return baseLineY - (multiplier / maxMultiplier) * maxGrowthHeight;
   };
 
-  // 產生真實複利指數曲線的路徑
   const generateCurvePoints = (maxYear: number) => {
     const points: string[] = [];
     for (let t = 0; t <= maxYear; t++) {
@@ -73,16 +91,13 @@ export default function PreneedConcept() {
   const fullCurvePoints = generateCurvePoints(80);
   const fullCurvePath = `M ${fullCurvePoints.join(' L ')}`;
 
-  // 計算當前選中年份的座標與成長百分比
   const growthPercent = Math.round((Math.pow(1.02, years) - 1) * 100);
   const currentSvgX = startX + (years / 80) * chartWidth;
   const currentCurveY = getInflationY(years);
 
-  // 動態差額填充區
   const activeCurvePoints = generateCurvePoints(years);
   const savedAreaPolygon = `${startX},${baseLineY} ${activeCurvePoints.join(' ')} ${currentSvgX.toFixed(1)},${baseLineY}`;
 
-  // 點擊橫軸互動
   const handleSvgClick = (e: React.MouseEvent<SVGSVGElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
@@ -185,7 +200,6 @@ export default function PreneedConcept() {
           {/* 資訊圖表大卡片 */}
           <div className="w-full overflow-x-auto bg-white/70 rounded-2xl p-5 sm:p-8 border border-gold-400/25 shadow-sm">
             
-            {/* 頂部橫列：「現在規劃的好處」＋ 三張核心卡片並排 */}
             <div className="mb-8 flex flex-col lg:flex-row lg:items-center gap-5">
               <div className="shrink-0">
                 <h4 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-900 whitespace-nowrap">
@@ -224,7 +238,7 @@ export default function PreneedConcept() {
               </div>
             </div>
 
-            {/* 下方 SVG 雙線抗通膨趨勢座標圖 */}
+            {/* 下方 SVG 圖表 */}
             <div className="min-w-[660px]">
               <svg
                 viewBox="0 0 880 305"
@@ -376,10 +390,10 @@ export default function PreneedConcept() {
           </div>
         </div>
 
-        {/* 4. 生前契約與保險差異 */}
+        {/* 4. 生前契約與保險差異 (質感線恢復原版網頁風格) */}
         <div className="max-w-5xl mx-auto py-6 relative overflow-hidden">
           
-          {/* 區塊標題：上方英文、下方質感線、置中 */}
+          {/* 區塊標題：上方英文、下方網頁原版質感線、置中 */}
           <div className="text-center mb-12 space-y-2.5">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               PRENEED VS INSURANCE
@@ -388,8 +402,8 @@ export default function PreneedConcept() {
               生前契約與保險差異
             </h3>
             <div className="w-72 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
-            <p className="text-slate-600 font-sans text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed pt-1">
-              兩者相輔相成，生前契約專注於身後事的圓滿執行，保險則提供財務資金的風險轉嫁。
+            <p className="text-slate-600 font-sans text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed pt-2">
+              生前契約預先安排身後事與相關費用，避免臨時規劃造成額外支出，相較於壽險，更能確保服務妥善執行，減輕家人負擔。
             </p>
           </div>
 
@@ -400,28 +414,31 @@ export default function PreneedConcept() {
             <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group hover:-translate-y-1 transition-all duration-300">
               
               <div className="text-center mb-6 pb-5 border-b border-gold-400/20">
-                <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner">
-                  <ShieldCheck className="w-7 h-7 text-[#C69233]" />
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <div className="w-12 h-12 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
+                    <ShieldCheck className="w-6 h-6 text-[#C69233]" />
+                  </div>
+                  <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">生前契約</h4>
                 </div>
-                <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">生前契約</h4>
                 <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold mt-1.5">
                   為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">確定</span> 的事情做準備
                 </p>
+                <div className="w-48 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
               </div>
 
-              {/* 四個條列項目 */}
+              {/* 四個互動式條列項目 */}
               <div className="space-y-3.5">
-                {[
-                  { title: '不分老少', desc: '全齡皆可預先規劃，不受年齡限制', icon: Users },
-                  { title: '可指定使用', desc: '契約可指定使用對象（不限本人或家人），彈性便利', icon: RefreshCw },
-                  { title: '專業服務', desc: '由政府立案合法禮儀團隊全程執行', icon: Award },
-                  { title: '確定金額的喪葬服務', desc: '預約現價鎖定，免受未來通膨影響', icon: FileCheck },
-                ].map((item, idx) => {
+                {preneedItems.map((item, idx) => {
                   const ItemIcon = item.icon;
+                  const isSelected = activePreneedIdx === idx;
                   return (
                     <div 
                       key={idx} 
-                      className="rounded-xl p-3.5 sm:p-4 text-white flex items-center gap-3.5 shadow-sm transition-all duration-300 hover:scale-[1.02]"
+                      onClick={() => setActivePreneedIdx(idx)}
+                      onMouseEnter={() => setActivePreneedIdx(idx)}
+                      className={`rounded-xl p-3.5 sm:p-4 text-white flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none ${
+                        isSelected ? 'scale-[1.02] ring-2 ring-white shadow-md' : 'opacity-90 hover:opacity-100'
+                      }`}
                       style={{
                         background: 'linear-gradient(135deg, #c45827 0%, #a84218 100%)',
                       }}
@@ -429,9 +446,11 @@ export default function PreneedConcept() {
                       <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
                         <ItemIcon className="w-5 h-5 text-white" />
                       </div>
-                      <div>
+                      <div className="flex-1">
                         <h5 className="font-serif-tc font-bold text-base sm:text-lg">{item.title}</h5>
-                        <p className="text-xs text-ivory-100/90">{item.desc}</p>
+                        {isSelected && (
+                          <p className="text-xs text-ivory-100/95 mt-0.5 animate-fadeIn">{item.desc}</p>
+                        )}
                       </div>
                     </div>
                   );
@@ -449,28 +468,31 @@ export default function PreneedConcept() {
             <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group hover:-translate-y-1 transition-all duration-300">
               
               <div className="text-center mb-6 pb-5 border-b border-gold-400/20">
-                <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner">
-                  <FileText className="w-7 h-7 text-[#A6721C]" />
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <div className="w-12 h-12 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner shrink-0">
+                    <FileText className="w-6 h-6 text-[#A6721C]" />
+                  </div>
+                  <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">保險</h4>
                 </div>
-                <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">保險</h4>
                 <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold mt-1.5">
                   為了 <span className="underline decoration-gold-400 decoration-2 underline-offset-4">不確定</span> 的風險做準備
                 </p>
+                <div className="w-48 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
               </div>
 
-              {/* 四個條列項目 */}
+              {/* 四個互動式條列項目 */}
               <div className="space-y-3.5">
-                {[
-                  { title: '投保限制', desc: '受年齡、健康狀況與體況核保規定', icon: Lock },
-                  { title: '不可指定使用', desc: '被保險人於投保時即固定，無法隨意變更被保險人', icon: FileText },
-                  { title: '金錢理賠', desc: '以保險金給付為主，非直接提供實物服務', icon: DollarSign },
-                  { title: '遺屬的生活費用', desc: '提供家庭經濟支柱身故後的資金補貼', icon: Users },
-                ].map((item, idx) => {
+                {insuranceItems.map((item, idx) => {
                   const ItemIcon = item.icon;
+                  const isSelected = activeInsIdx === idx;
                   return (
                     <div 
                       key={idx} 
-                      className="rounded-xl p-3.5 sm:p-4 text-white flex items-center gap-3.5 shadow-sm transition-all duration-300 hover:scale-[1.02]"
+                      onClick={() => setActiveInsIdx(idx)}
+                      onMouseEnter={() => setActiveInsIdx(idx)}
+                      className={`rounded-xl p-3.5 sm:p-4 text-white flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none ${
+                        isSelected ? 'scale-[1.02] ring-2 ring-white shadow-md' : 'opacity-90 hover:opacity-100'
+                      }`}
                       style={{
                         background: 'linear-gradient(135deg, #856442 0%, #63472b 100%)',
                       }}
@@ -478,9 +500,11 @@ export default function PreneedConcept() {
                       <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
                         <ItemIcon className="w-5 h-5 text-white" />
                       </div>
-                      <div>
+                      <div className="flex-1">
                         <h5 className="font-serif-tc font-bold text-base sm:text-lg">{item.title}</h5>
-                        <p className="text-xs text-ivory-100/90">{item.desc}</p>
+                        {isSelected && (
+                          <p className="text-xs text-ivory-100/95 mt-0.5 animate-fadeIn">{item.desc}</p>
+                        )}
                       </div>
                     </div>
                   );
