@@ -49,9 +49,9 @@ const preneedItems = [
 // 保險 4 大互動項目
 const insuranceItems = [
   { title: '投保限制', desc: '受年齡、健康狀況與體況核保規定限制', icon: Lock },
-  { title: '不可指定使用', desc: '被保險人於投保時即固定，無法隨意變更使用對象', icon: Lock },
-  { title: '金錢理賠', desc: '以保險金給付為主，非直接提供實物服務', icon: DollarSign },
-  { title: '遺屬的生活費用', desc: '提供家庭經濟支柱身故後的資金補貼', icon: Users },
+  { title: '不可指定使用', desc: '被保險人於投保時即固定，無法隨意變更', icon: Lock },
+  { title: '金錢理賠', desc: '以保險金給付為主，非直接提供實體服務', icon: DollarSign },
+  { title: '遺屬的生活費用', desc: '提供身故後家庭經濟的資金補貼', icon: Users },
 ];
 
 export default function PreneedConcept() {
@@ -59,7 +59,7 @@ export default function PreneedConcept() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   const [activeIndex, setActiveIndex] = useState<number>(1);
-  const [years, setYears] = useState<number>(5); // 預設為 5 年後，最多 80 年
+  const [years, setYears] = useState<number>(20); // 預設為 5 年後，最多 80 年
 
   // 生前契約與保險同步展開狀態
   const [activeIdx, setActiveIdx] = useState<number | null>(0);
@@ -390,7 +390,7 @@ export default function PreneedConcept() {
         </div>
 
         {/* 4. 生前契約與保險差異 */}
-        <div className="max-w-5xl mx-auto py-6 relative overflow-hidden">
+        <div className="max-w-5xl mx-auto py-4 relative overflow-hidden">
           
           {/* 區塊標題 */}
           <div className="text-center mb-12 space-y-2.5">
