@@ -59,7 +59,7 @@ export default function PreneedConcept() {
   const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
 
   const [activeIndex, setActiveIndex] = useState<number>(1);
-  const [years, setYears] = useState<number>(20); // 預設為 5 年後，最多 80 年
+  const [years, setYears] = useState<number>(20); // 預設為 20 年後，最多 80 年
 
   // 生前契約與保險同步展開狀態
   const [activeIdx, setActiveIdx] = useState<number | null>(0);
@@ -178,8 +178,8 @@ export default function PreneedConcept() {
 
         </div>
 
-        {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 */}
-        <div className="max-w-6xl mx-auto py-8 relative overflow-hidden transition-all duration-300 mb-20">
+        {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 (縮減底部邊距 mb-6) */}
+        <div className="max-w-6xl mx-auto py-8 relative overflow-hidden transition-all duration-300 mb-6">
           
           {/* 區塊標題 */}
           <div className="text-center mb-8 space-y-2.5">
@@ -389,8 +389,8 @@ export default function PreneedConcept() {
           </div>
         </div>
 
-        {/* 4. 生前契約與保險差異 */}
-        <div className="max-w-5xl mx-auto py-2 relative overflow-hidden">
+        {/* 4. 生前契約與保險差異 (加入負邊距 -mt-12，讓整個區塊明顯往上提並貼近上方圖表) */}
+        <div className="max-w-5xl mx-auto -mt-12 py-2 relative overflow-hidden">
           
           {/* 區塊標題 */}
           <div className="text-center mb-12 space-y-2.5">
