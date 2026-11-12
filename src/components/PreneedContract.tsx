@@ -390,7 +390,7 @@ export default function PreneedConcept() {
         </div>
 
         {/* 4. 生前契約與保險差異 */}
-        <div className="max-w-5xl mx-auto py-4 relative overflow-hidden">
+        <div className="max-w-5xl mx-auto py-2 relative overflow-hidden">
           
           {/* 區塊標題 */}
           <div className="text-center mb-12 space-y-2.5">
