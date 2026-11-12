@@ -49,7 +49,7 @@ export default function PreneedConcept() {
   const growthPercent = Math.round((Math.pow(1 + 0.02, years) - 1) * 100);
   const currentSvgX = Math.min(135 + (years / 80) * 670, 805);
 
-  // 點擊或拖曳橫軸互動
+  // 點擊橫軸互動
   const handleSvgClick = (e: React.MouseEvent<SVGSVGElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
@@ -132,9 +132,9 @@ export default function PreneedConcept() {
         </div>
 
         {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 */}
-        <div className="max-w-5xl mx-auto py-4 relative overflow-hidden transition-all duration-300">
+        <div className="max-w-6xl mx-auto py-4 relative overflow-hidden transition-all duration-300">
           
-          {/* 區塊標題：上方英文、下方質感線(放大1.5倍)、置中、無勾勾 */}
+          {/* 區塊標題 */}
           <div className="text-center mb-8 space-y-2.5">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               PRENEED BENEFIT
@@ -142,7 +142,6 @@ export default function PreneedConcept() {
             <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">
               享受預約優惠價，鎖定價格抗通膨
             </h3>
-            {/* 質感線放大 1.5 倍 */}
             <div className="w-72 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
             
             <p className="text-slate-600 font-sans text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed font-normal pt-2">
@@ -153,75 +152,55 @@ export default function PreneedConcept() {
           {/* 資訊圖表主體 */}
           <div className="p-2 sm:p-4">
             
-            {/* 「現在規劃的好處」與第一張卡片（省錢省事省麻煩）並排，中間帶有向右箭頭 */}
-            <div className="mb-6 flex flex-wrap items-center gap-4">
-              <div>
-                <h4 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-900 inline-block">
-                  現在規劃的好處
-                </h4>
-                <div className="w-40 h-[2.5px] bg-gradient-to-r from-[#A6721C] via-gold-400 to-transparent rounded-full mt-1.5" />
+            {/* 「現在規劃的好處」＋ 淺深金色向右箭頭 ＋ 三張卡片全部同一排並排 */}
+            <div className="mb-6 flex flex-col lg:flex-row lg:items-center gap-4">
+              <div className="flex items-center gap-3 shrink-0">
+                <div>
+                  <h4 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-900 whitespace-nowrap">
+                    現在規劃的好處
+                  </h4>
+                  <div className="w-full h-[2.5px] bg-gradient-to-r from-[#A6721C] via-gold-400 to-transparent rounded-full mt-1.5" />
+                </div>
+                {/* 淺深金色向右箭頭 */}
+                <ArrowRight className="w-6 h-6 text-[#A6721C] shrink-0 hidden lg:block" />
               </div>
 
-              <ArrowRight className="w-6 h-6 text-gold-600 shrink-0 hidden sm:block" />
-
-              {/* 第一張卡片直接並排呈現 */}
-              <div
-                onClick={() => setActiveIndex(0)}
-                onMouseEnter={() => setActiveIndex(0)}
-                className={`relative rounded-xl px-5 py-3 cursor-pointer transition-all duration-300 select-none border inline-flex items-center gap-3 ${
-                  activeIndex === 0
-                    ? 'shadow-md ring-2 ring-gold-400/60 -translate-y-0.5 bg-gradient-to-br from-white via-[#fcf8f0] to-[#f4ebd9]'
-                    : 'shadow-sm opacity-90 hover:opacity-100 bg-gradient-to-br from-white via-[#faf6ed] to-[#f0e4d0]'
-                }`}
-                style={{ borderColor: 'rgba(212, 175, 55, 0.4)' }}
-              >
-                <div className="w-9 h-9 rounded-full bg-gold-100/80 flex items-center justify-center shrink-0 border border-gold-400/40">
-                  <Sparkles className="w-4 h-4 text-gold-700" />
-                </div>
-                <div className="font-serif-tc font-bold text-base text-ink-950">
-                  省錢 省事 省麻煩
-                </div>
-              </div>
-            </div>
-
-            {/* 下方其餘兩張卡片（鎖定價格、自己選擇想要的方式） */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              {benefitBubbles.slice(1).map((item, idx) => {
-                const realIdx = idx + 1;
-                const IconComp = item.icon;
-                const isSelected = activeIndex === realIdx;
-                return (
-                  <div
-                    key={item.id}
-                    onClick={() => setActiveIndex(realIdx)}
-                    onMouseEnter={() => setActiveIndex(realIdx)}
-                    className={`relative rounded-xl p-4 cursor-pointer transition-all duration-300 select-none border ${
-                      isSelected
-                        ? 'shadow-md ring-2 ring-gold-400/60 -translate-y-1 bg-gradient-to-br from-white via-[#fcf8f0] to-[#f4ebd9]'
-                        : 'shadow-sm opacity-90 hover:opacity-100 bg-gradient-to-br from-white via-[#faf6ed] to-[#f0e4d0]'
-                    }`}
-                    style={{
-                      borderColor: 'rgba(212, 175, 55, 0.4)',
-                    }}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-full bg-gold-100/80 flex items-center justify-center shrink-0 border border-gold-400/40">
+              {/* 三張卡片並排 */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 flex-1">
+                {benefitBubbles.map((item, idx) => {
+                  const IconComp = item.icon;
+                  const isSelected = activeIndex === idx;
+                  return (
+                    <div
+                      key={item.id}
+                      onClick={() => setActiveIndex(idx)}
+                      onMouseEnter={() => setActiveIndex(idx)}
+                      className={`relative rounded-xl px-4 py-3.5 cursor-pointer transition-all duration-300 select-none border flex items-center gap-3 ${
+                        isSelected
+                          ? 'shadow-md ring-2 ring-gold-400/60 -translate-y-0.5 bg-gradient-to-br from-white via-[#fcf8f0] to-[#f4ebd9]'
+                          : 'shadow-sm opacity-90 hover:opacity-100 bg-gradient-to-br from-white via-[#faf6ed] to-[#f0e4d0]'
+                      }`}
+                      style={{
+                        borderColor: 'rgba(212, 175, 55, 0.4)',
+                      }}
+                    >
+                      <div className="w-10 h-10 rounded-full bg-gold-100/80 flex items-center justify-center shrink-0 border border-gold-400/40">
                         <IconComp className="w-5 h-5 text-gold-700" />
                       </div>
-                      <div className="font-serif-tc font-bold text-base sm:text-lg leading-snug text-ink-950">
+                      <div className="font-serif-tc font-bold text-sm sm:text-base leading-snug text-ink-950">
                         {item.title}
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
 
-            {/* 下排：SVG 雙線抗通膨趨勢座標圖（上下拉寬、右側邊距加大防遮擋） */}
-            <div className="w-full overflow-x-auto pt-2 bg-white/60 rounded-2xl p-4 border border-gold-400/20 shadow-sm relative">
+            {/* 下排：SVG 雙線抗通膨趨勢座標圖（拉大底部留白，讓右下角數據與橫軸保持充足距離） */}
+            <div className="w-full overflow-x-auto bg-white/60 rounded-2xl p-4 sm:p-6 pb-14 sm:pb-16 border border-gold-400/20 shadow-sm relative">
               <div className="min-w-[660px]">
                 <svg
-                  viewBox="0 0 880 310"
+                  viewBox="0 0 880 290"
                   className="w-full h-auto overflow-visible cursor-pointer"
                   onClick={handleSvgClick}
                 >
@@ -234,16 +213,16 @@ export default function PreneedConcept() {
 
                   {/* 動態差額填充區 */}
                   <polygon
-                    points={`135,165 ${currentSvgX},${165 - (currentSvgX - 135) * 0.088} 805,105 805,210 135,210`}
+                    points={`135,155 ${currentSvgX},${155 - (currentSvgX - 135) * 0.088} 805,95 805,200 135,200`}
                     fill="url(#savedAreaGrad)"
                   />
 
                   {/* 縱軸 (Y軸) - 黑色 */}
                   <line
                     x1="135"
-                    y1="245"
+                    y1="235"
                     x2="135"
-                    y2="20"
+                    y2="15"
                     stroke="#000000"
                     strokeWidth="2.5"
                   />
@@ -251,35 +230,35 @@ export default function PreneedConcept() {
                   {/* 橫軸 (X軸) - 黑色 */}
                   <line
                     x1="135"
-                    y1="245"
+                    y1="235"
                     x2="845"
-                    y2="245"
+                    y2="235"
                     stroke="#000000"
                     strokeWidth="2.5"
                   />
 
                   {/* 軸標籤 */}
-                  <text x="122" y="165" textAnchor="end" className="font-serif-tc font-bold fill-[#A6721C] text-[14px]">
+                  <text x="122" y="155" textAnchor="end" className="font-serif-tc font-bold fill-[#A6721C] text-[14px]">
                     殯葬費用
                   </text>
-                  <text x="122" y="215" textAnchor="end" className="font-serif-tc font-bold fill-[#585c63] text-[14px]">
+                  <text x="122" y="205" textAnchor="end" className="font-serif-tc font-bold fill-[#585c63] text-[14px]">
                     預購生前契約
                   </text>
 
                   {/* 上方斜線：通貨膨脹費用趨勢 */}
                   <line
                     x1="135"
-                    y1="165"
+                    y1="155"
                     x2="805"
-                    y2="105"
+                    y2="95"
                     stroke="#A6721C"
                     strokeWidth="3"
                   />
                   <text
                     x="470"
-                    y="122"
+                    y="112"
                     textAnchor="middle"
-                    transform="rotate(-5.0, 470, 122)"
+                    transform="rotate(-5.0, 470, 112)"
                     className="font-serif-tc font-semibold fill-[#A6721C] text-[13px] tracking-wide"
                   >
                     因物價與服務成本上漲，殯葬費用將隨時間增加
@@ -288,15 +267,15 @@ export default function PreneedConcept() {
                   {/* 下方水平線：預購生前契約鎖定價格 */}
                   <line
                     x1="135"
-                    y1="210"
+                    y1="200"
                     x2="805"
-                    y2="210"
+                    y2="200"
                     stroke="#585c63"
                     strokeWidth="2.5"
                   />
                   <text
                     x="470"
-                    y="200"
+                    y="190"
                     textAnchor="middle"
                     className="font-serif-tc font-bold fill-[#585c63] text-[14px] tracking-widest"
                   >
@@ -307,15 +286,15 @@ export default function PreneedConcept() {
                   <g>
                     <line
                       x1={currentSvgX}
-                      y1={165 - (currentSvgX - 135) * 0.088}
+                      y1={155 - (currentSvgX - 135) * 0.088}
                       x2={currentSvgX}
-                      y2={210}
+                      y2={200}
                       stroke="#A6721C"
                       strokeWidth="2"
                     />
                     <circle
                       cx={currentSvgX}
-                      cy={165 - (currentSvgX - 135) * 0.088}
+                      cy={155 - (currentSvgX - 135) * 0.088}
                       r={7}
                       fill="#ffffff"
                       stroke="#A6721C"
@@ -323,7 +302,7 @@ export default function PreneedConcept() {
                     />
                     <circle
                       cx={currentSvgX}
-                      cy={210}
+                      cy={200}
                       r={7}
                       fill="#ffffff"
                       stroke="#585c63"
@@ -331,7 +310,7 @@ export default function PreneedConcept() {
                     />
                     <circle
                       cx={currentSvgX}
-                      cy={245}
+                      cy={235}
                       r={7}
                       fill="#ffffff"
                       stroke="#000000"
@@ -339,7 +318,7 @@ export default function PreneedConcept() {
                     />
                     <text
                       x={currentSvgX}
-                      y={278}
+                      y={266}
                       textAnchor="middle"
                       className="font-serif-tc font-bold fill-[#000000] text-[15px]"
                     >
@@ -348,15 +327,15 @@ export default function PreneedConcept() {
                   </g>
                 </svg>
 
-                {/* 右上角提示（無外框，字體微調大一點點） */}
-                <div className="absolute top-3 right-4 pointer-events-none">
-                  <span className="text-xs sm:text-sm text-slate-600 bg-white/95 px-3 py-1 rounded-md shadow-sm font-medium">
+                {/* 右上角提示：無方格，直接字體顯示 */}
+                <div className="absolute top-4 right-5 pointer-events-none">
+                  <span className="text-xs sm:text-sm text-slate-600 font-medium">
                     💡 可直接點擊橫軸來調整預估年數
                   </span>
                 </div>
 
-                {/* 右下方數據說明 */}
-                <div className="absolute bottom-4 right-4 pointer-events-none bg-white/95 px-3.5 py-1.5 rounded-lg border border-gold-400/30 shadow-sm">
+                {/* 右下方數據說明：與橫軸保持充足間距 */}
+                <div className="absolute bottom-3.5 right-5 pointer-events-none bg-white/95 px-3.5 py-1.5 rounded-lg border border-gold-400/30 shadow-sm">
                   <p className="font-serif-tc text-xs sm:text-sm font-bold text-ink-950">
                     {years} 年後通膨成長約 <span className="text-gold-700">{growthPercent}%</span> (依近3年平均約2%預估)
                   </p>
