@@ -27,8 +27,24 @@ const navLinks: NavItem[] = [
       { label: '發展歷程', path: '/about', hash: 'about-history' },
     ],
   },
-  { label: '生前契約', en: 'CONTRACT', path: '/preneed' },
-  { label: '禮儀服務', en: 'SERVICES', path: '/services' },
+  {
+    label: '生前契約',
+    en: 'CONTRACT',
+    path: '/preneed',
+    subLinks: [
+      { label: '什麼是生前契約', path: '/preneed', hash: 'contract-intro' },
+      { label: '契約商品', path: '/preneed', hash: 'contract-products' },
+    ],
+  },
+  {
+    label: '禮儀服務',
+    en: 'SERVICES',
+    path: '/services',
+    subLinks: [
+      { label: '禮儀服務團隊', path: '/services', hash: 'services-team' },
+      { label: '12 大禮儀服務流程', path: '/services', hash: 'services-process' },
+    ],
+  },
   { label: '信託公開', en: 'TRUST', path: '/trust' },
   { label: '手續服務', en: 'PROCEDURES', path: '/procedures' },
   { label: '聯絡我們', en: 'CONTACT', path: '/contact' },
@@ -128,7 +144,7 @@ export default function Header() {
                 {/* 第二層下拉選單 (桌面版 Hover 展開) */}
                 {link.subLinks && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible translate-y-1 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 transition-all duration-200 z-50">
-                    <div className="w-44 rounded-2xl bg-ivory-50/98 backdrop-blur-md border border-gold-400/35 shadow-[0_12px_30px_rgba(12,15,20,0.12)] py-2 overflow-hidden">
+                    <div className="w-48 rounded-2xl bg-ivory-50/98 backdrop-blur-md border border-gold-400/35 shadow-[0_12px_30px_rgba(12,15,20,0.12)] py-2 overflow-hidden">
                       {link.subLinks.map((sub) => (
                         <a
                           key={sub.label}
