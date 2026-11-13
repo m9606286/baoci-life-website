@@ -200,8 +200,8 @@ export default function PreneedConcept() {
           </div>
         </div>
 
-        {/* 2. 契約商品 (對應 id="contract-products") */}
-        <div id="contract-products" className="scroll-mt-28 pt-6">
+        {/* 2. 契約商品 (已移除 id="contract-products") */}
+        <div className="pt-6">
           
           {/* 區塊大標題：契約商品 */}
           <div className="text-center mb-10">
@@ -217,7 +217,7 @@ export default function PreneedConcept() {
           {/* 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 */}
           <div className="max-w-6xl mx-auto py-8 relative overflow-hidden transition-all duration-300 mb-16">
             
-            {/* 子標題說明 */}
+            {/* 區塊標題 */}
             <div className="text-center mb-8 space-y-2.5">
               <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
                 PRENEED BENEFIT
