@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react';
 // 團隊成員資料：包含 6 位禮儀師 + 1 位禮儀顧問
 const teamMembers = [
   // --- 禮儀師 ---
-   {
+  {
     name: '王室悰',
     title: '禮儀總監',
     image: '/王室悰.png',
