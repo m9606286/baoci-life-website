@@ -102,8 +102,8 @@ export default function Announcement() {
                 {item.title}
               </h3>
 
-              {/* 卡片內文 */}
-              <p className="text-ink-700 text-sm sm:text-base md:text-lg leading-relaxed">
+              {/* 卡片內文（已微調縮小字體） */}
+              <p className="text-ink-700 text-xs sm:text-sm md:text-base leading-relaxed">
                 {item.summary}
               </p>
             </div>
