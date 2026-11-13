@@ -6,26 +6,11 @@ import { ArrowRight } from 'lucide-react';
 // 團隊成員資料：包含 6 位禮儀師 + 1 位禮儀顧問
 const teamMembers = [
   // --- 禮儀師 ---
-  {
-    name: '張晉旗',
-    title: '禮儀師',
-    image: '/張晉旗.png',
-    fallbackImage: '/張晉旗.jpg',
-    certId: '1040071129',
-  },
-  {
-    name: '謝淑娟',
-    title: '禮儀師',
-    image: '/謝淑娟.png',
-    fallbackImage: '/謝淑娟.jpg',
-    certId: '1040033800',
-  },
-  {
-    name: '曾志忠',
-    title: '禮儀師',
-    image: '/曾志忠.png',
-    fallbackImage: '/曾志忠.jpg',
-    certId: '1040073107',
+   {
+    name: '王室悰',
+    title: '禮儀總監',
+    image: '/王室悰.png',
+    fallbackImage: '/王室悰.jpg',
   },
   {
     name: '王立中',
@@ -35,6 +20,20 @@ const teamMembers = [
     certId: '1050068290',
   },
   {
+    name: '林柏宏',
+    title: '禮儀師',
+    image: '/林柏宏.png',
+    fallbackImage: '/林柏宏.png',
+    certId: '1050079874',
+  },
+  {
+    name: '張晉旗',
+    title: '禮儀師',
+    image: '/張晉旗.png',
+    fallbackImage: '/張晉旗.jpg',
+    certId: '1040071129',
+  },
+  {
     name: '杜美慧',
     title: '禮儀師',
     image: '/杜美慧.png',
@@ -42,20 +41,20 @@ const teamMembers = [
     certId: '1090053809',
   },
   {
-    name: '林柏宏',
+    name: '曾志忠',
     title: '禮儀師',
-    image: '/林柏宏.png',
-    fallbackImage: '/林柏宏.png',
-    certId: '1050079874',
+    image: '/曾志忠.png',
+    fallbackImage: '/曾志忠.jpg',
+    certId: '1040073107',
   },
-  // --- 禮儀顧問 --- 
   {
-    name: '王室悰',
-    title: '禮儀顧問',
-    image: '/王室悰.png',
-    fallbackImage: '/王室悰.jpg',
+    name: '謝淑娟',
+    title: '禮儀師',
+    image: '/謝淑娟.png',
+    fallbackImage: '/謝淑娟.jpg',
+    certId: '1040033800',
   },
-];
+ ];
 
 // 12 道禮儀服務流程資料（已移除不需要的 icon 屬性）
 const processSteps = [
