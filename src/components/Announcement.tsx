@@ -42,35 +42,25 @@ export default function Announcement() {
 
   return (
     <div className="w-full relative group/announcement px-2 sm:px-6">
-      {/* 標題區塊：使用 Grid 確保「最新消息」主標題絕對置中不偏移，右側放置提示文字 */}
-      <div className="mb-6">
-        <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold text-center">
+      {/* 標題區塊：置中，大字位置絕對不動，提示文字以絕對定位貼在右側 */}
+      <div className="text-center mb-6 relative">
+        <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
           LATEST NEWS
         </p>
-
-        <div className="grid grid-cols-[1fr_auto_100px] sm:grid-cols-[1fr_auto_150px] items-end mt-2">
-          {/* 左側留白（與右側寬度對稱，確保主標題完美置中） */}
-          <div className="hidden sm:block"></div>
-
-          {/* 中間主標題：位置絕對固定在正中央 */}
-          <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 text-center col-span-3 sm:col-span-1">
+        <div className="relative mt-2 inline-block">
+          <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900">
             最新消息
           </h2>
-
-          {/* 右側提示小字：固定在右邊 */}
-          <div className="hidden sm:flex justify-end pb-1">
-            <span className="text-xs text-stone-400 tracking-wider font-serif-tc whitespace-nowrap">
-              (可左右滑動)
-            </span>
-          </div>
-        </div>
-
-        {/* 手機版專用的右側提示（如果不想在手機顯示可拿掉，目前讓它在標題右下方微調或保持簡潔） */}
-        <div className="text-center sm:hidden mt-1">
-          <span className="text-[11px] text-stone-400 tracking-wider font-serif-tc">
-            (可左右滑動)
+          {/* 提示小字貼在右側，在手機上自動隱藏或往下掉避免擁擠，桌機/平板顯示 */}
+          <span className="hidden sm:inline-block absolute left-full top-1/2 -translate-y-1/2 ml-4 text-xs text-stone-400 tracking-wider font-serif-tc whitespace-nowrap">
+            ( 可左右滑動 )
           </span>
         </div>
+        
+        {/* 手機版專用的小字提示（置於下方避免跑版） */}
+        <p className="sm:hidden text-xs text-stone-400 mt-1 tracking-wider font-serif-tc">
+          ( 可左右滑動 )
+        </p>
 
         <div className="gold-divider w-32 mx-auto mt-4" />
       </div>
