@@ -110,38 +110,38 @@ export default function Header() {
                 <NavLink
                   to={link.path}
                   className={({ isActive }) =>
-                    `group relative px-3.5 py-2 flex flex-col items-center text-ink-900 hover:text-gold-600 transition-colors ${
-                      isActive ? 'text-gold-600 font-bold' : ''
+                    `group relative px-3.5 py-2 flex flex-col items-center text-ink-900 hover:text-[#C69233] transition-colors ${
+                      isActive ? 'text-[#C69233] font-bold' : ''
                     }`
                   }
                 >
                   {({ isActive }) => (
                     <>
-                      {/* 英文小標題：加深字重與對比，提升首頁清晰度 */}
-                      <span className="font-serif-tc text-[11px] tracking-[0.25em] text-gold-700 group-hover:text-gold-600 transition-colors font-bold uppercase">
+                      {/* 英文小標題 */}
+                      <span className="font-serif-tc text-[11px] tracking-[0.25em] text-gold-700 group-hover:text-[#C69233] transition-colors font-bold uppercase">
                         {link.en}
                       </span>
                       {/* 中文標題 + 若有子選單則加上小箭頭提示 */}
                       <span className="font-serif-tc text-sm sm:text-base font-bold tracking-wide mt-0.5 inline-flex items-center gap-1">
                         <span>{link.label}</span>
                         {link.subLinks && (
-                          <ChevronDown className="w-3.5 h-3.5 text-gold-600 transition-transform duration-300 group-hover/nav:rotate-180" />
+                          <ChevronDown className="w-3.5 h-3.5 text-gold-600 group-hover:text-[#C69233] transition-transform duration-300 group-hover/nav:rotate-180" />
                         )}
                       </span>
                     </>
                   )}
                 </NavLink>
 
-                {/* 第二層下拉選單 (桌面版 Hover 展開) */}
+                {/* 第二層下拉選單 (桌面版 Hover 展開)：背景改為不透明淺中灰色 bg-[#e8e6e1]，移入文字改為 #C69233 */}
                 {link.subLinks && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible translate-y-1 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 transition-all duration-200 z-50">
-                    <div className="w-48 rounded-2xl bg-ivory-50/98 backdrop-blur-md border border-gold-400/35 shadow-[0_12px_30px_rgba(12,15,20,0.12)] py-2 overflow-hidden">
+                    <div className="w-48 rounded-2xl bg-[#e8e6e1] border border-gold-400/35 shadow-[0_12px_30px_rgba(12,15,20,0.12)] py-2 overflow-hidden">
                       {link.subLinks.map((sub) => (
                         <a
                           key={sub.label}
                           href={sub.hash ? `${sub.path}#${sub.hash}` : sub.path}
                           onClick={(e) => handleSubLinkClick(e, sub)}
-                          className="block px-5 py-2.5 text-center font-serif-tc text-sm font-bold text-ink-900 hover:text-white hover:bg-gold-600 transition-colors"
+                          className="block px-5 py-2.5 text-center font-serif-tc text-sm font-bold text-ink-900 hover:text-[#C69233] hover:bg-gold-400/10 transition-colors"
                         >
                           {sub.label}
                         </a>
@@ -196,7 +196,7 @@ export default function Header() {
                       onClick={() => setMenuOpen(false)}
                       className="flex-1 flex items-center justify-between group pr-2"
                     >
-                      <span className="font-serif-tc text-ink-900 text-base font-bold group-hover:text-gold-600 transition-colors">
+                      <span className="font-serif-tc text-ink-900 text-base font-bold group-hover:text-[#C69233] transition-colors">
                         {link.label}
                       </span>
                       <span className="font-serif-tc text-[11px] tracking-widest text-gold-700 font-bold uppercase">
@@ -223,13 +223,13 @@ export default function Header() {
 
                   {/* 手機版第二層子項目 */}
                   {link.subLinks && isSubOpen && (
-                    <div className="pb-3 pl-4 space-y-1.5">
+                    <div className="pb-3 pl-4 space-y-1.5 bg-[#e8e6e1]/50 rounded-xl p-2 mt-1">
                       {link.subLinks.map((sub) => (
                         <a
                           key={sub.label}
                           href={sub.hash ? `${sub.path}#${sub.hash}` : sub.path}
                           onClick={(e) => handleSubLinkClick(e, sub)}
-                          className="block py-2 px-3 rounded-lg font-serif-tc text-sm font-semibold text-ink-900 hover:text-white hover:bg-gold-600 transition-colors"
+                          className="block py-2 px-3 rounded-lg font-serif-tc text-sm font-semibold text-ink-900 hover:text-[#C69233] hover:bg-gold-400/10 transition-colors"
                         >
                           {sub.label}
                         </a>
