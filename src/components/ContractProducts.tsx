@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Download, Handshake, Phone, CheckCircle2, MinusCircle } from 'lucide-react';
 
@@ -93,15 +93,35 @@ const contractComparison = [
 export default function ContractProducts() {
   const navigate = useNavigate();
 
+  // 頁面載入或 Hash 改變時，瞬間跳轉對應區塊（配合上方導覽列高度偏移）
+  useEffect(() => {
+    const { hash } = window.location;
+    if (hash) {
+      const id = hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          const headerOffset = 100; // 預留 Header 高度
+          const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - headerOffset,
+            behavior: 'instant' as ScrollBehavior,
+          });
+        }, 50);
+      }
+    }
+  }, []);
+
   // 點擊後切換至聯絡我們頁面並置頂
   const handleConsultClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     navigate('/contact');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   return (
-    <section id="products" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100/60 relative -mt-6 lg:-mt-10">
+    // 加上 id="contract-products" 與 scroll-mt-28 讓錨點瞬間跳轉時完美對齊
+    <section id="contract-products" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100/60 relative -mt-6 lg:-mt-10 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* 標題區 */}
