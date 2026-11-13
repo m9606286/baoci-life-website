@@ -79,7 +79,7 @@ export default function Announcement() {
         {announcements.map((item) => (
           <article
             key={item.id}
-            className="snap-center shrink-0 w-[85vw] sm:w-[450px] md:w-[500px] min-h-[320px] sm:min-h-[350px] group relative bg-white rounded-3xl p-6 sm:p-9 border border-gold-400/30 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer mx-auto"
+            className="snap-center shrink-0 w-[80vw] sm:w-[450px] md:w-[500px] min-h-[320px] sm:min-h-[350px] group relative bg-white rounded-3xl p-6 sm:p-9 border border-gold-400/30 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer mx-auto"
           >
             <div>
               {/* 日期標籤 */}
