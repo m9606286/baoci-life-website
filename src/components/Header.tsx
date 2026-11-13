@@ -88,7 +88,7 @@ export default function Header() {
       className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'bg-ivory-50/95 backdrop-blur-md shadow-[0_2px_20px_rgba(12,15,20,0.08)]'
-          : 'bg-ivory-50/80 backdrop-blur-sm'
+          : 'bg-ivory-50/90 backdrop-blur-md shadow-sm'
       }`}
     >
       <div className="mx-auto max-w-8xl px-6">
@@ -110,33 +110,25 @@ export default function Header() {
                 <NavLink
                   to={link.path}
                   className={({ isActive }) =>
-                    `group relative px-3.5 py-2 flex flex-col items-center text-ink-700 hover:text-gold-600 transition-colors ${
-                      isActive ? 'text-gold-600 font-semibold' : ''
+                    `group relative px-3.5 py-2 flex flex-col items-center text-ink-900 hover:text-gold-600 transition-colors ${
+                      isActive ? 'text-gold-600 font-bold' : ''
                     }`
                   }
                 >
                   {({ isActive }) => (
                     <>
-                      {/* 英文小標題 */}
-                      <span className="font-serif-tc text-[11px] tracking-[0.25em] text-gold-600 group-hover:text-gold-600 transition-colors font-bold uppercase">
+                      {/* 英文小標題：加深字重與對比，提升首頁清晰度 */}
+                      <span className="font-serif-tc text-[11px] tracking-[0.25em] text-gold-700 group-hover:text-gold-600 transition-colors font-bold uppercase">
                         {link.en}
                       </span>
                       {/* 中文標題 + 若有子選單則加上小箭頭提示 */}
                       <span className="font-serif-tc text-sm sm:text-base font-bold tracking-wide mt-0.5 inline-flex items-center gap-1">
                         <span>{link.label}</span>
                         {link.subLinks && (
-                          <ChevronDown className="w-3.5 h-3.5 text-gold-600/80 transition-transform duration-300 group-hover/nav:rotate-180" />
+                          <ChevronDown className="w-3.5 h-3.5 text-gold-600 transition-transform duration-300 group-hover/nav:rotate-180" />
                         )}
                       </span>
-
-                      {/* 金色底線 */}
-                      <span
-                        className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 bg-gold-500 transition-all duration-300 ${
-                          isActive
-                            ? 'w-3/4 opacity-100'
-                            : 'w-0 opacity-0 group-hover/nav:w-3/4 group-hover/nav:opacity-100'
-                        }`}
-                      />
+                      {/* 註解：已移除原本的下方金色橫線程式碼 */}
                     </>
                   )}
                 </NavLink>
@@ -150,7 +142,7 @@ export default function Header() {
                           key={sub.label}
                           href={sub.hash ? `${sub.path}#${sub.hash}` : sub.path}
                           onClick={(e) => handleSubLinkClick(e, sub)}
-                          className="block px-5 py-2.5 text-center font-serif-tc text-sm font-bold text-ink-800 hover:text-[#C69233] hover:bg-gold-400/10 transition-colors"
+                          className="block px-5 py-2.5 text-center font-serif-tc text-sm font-bold text-ink-900 hover:text-[#C69233] hover:bg-gold-400/10 transition-colors"
                         >
                           {sub.label}
                         </a>
@@ -183,7 +175,7 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 text-ink-700 cursor-pointer"
+            className="lg:hidden p-2 text-ink-900 cursor-pointer"
             aria-label="開啟選單"
           >
             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -205,10 +197,10 @@ export default function Header() {
                       onClick={() => setMenuOpen(false)}
                       className="flex-1 flex items-center justify-between group pr-2"
                     >
-                      <span className="font-serif-tc text-ink-800 text-base font-bold group-hover:text-gold-600 transition-colors">
+                      <span className="font-serif-tc text-ink-900 text-base font-bold group-hover:text-gold-600 transition-colors">
                         {link.label}
                       </span>
-                      <span className="font-serif-tc text-[11px] tracking-widest text-gold-600 font-bold uppercase">
+                      <span className="font-serif-tc text-[11px] tracking-widest text-gold-700 font-bold uppercase">
                         {link.en}
                       </span>
                     </Link>
@@ -238,7 +230,7 @@ export default function Header() {
                           key={sub.label}
                           href={sub.hash ? `${sub.path}#${sub.hash}` : sub.path}
                           onClick={(e) => handleSubLinkClick(e, sub)}
-                          className="block py-2 px-3 rounded-lg font-serif-tc text-sm font-semibold text-ink-700 hover:text-[#C69233] hover:bg-gold-400/10 transition-colors"
+                          className="block py-2 px-3 rounded-lg font-serif-tc text-sm font-semibold text-ink-900 hover:text-[#C69233] hover:bg-gold-400/10 transition-colors"
                         >
                           {sub.label}
                         </a>
