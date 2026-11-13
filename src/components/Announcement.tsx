@@ -33,10 +33,9 @@ export default function Announcement() {
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      // 取得第一張卡片
       const firstCard = container.querySelector('article');
       if (firstCard) {
-        // 卡片寬度加上 CSS gap (間距為 24px，對應 Tailwind 的 gap-6)
+        // 卡片寬度加上 CSS gap (間距為 24px，對應 gap-6)
         const cardWidth = firstCard.clientWidth + 24;
         container.scrollBy({
           left: direction === 'left' ? -cardWidth : cardWidth,
@@ -47,7 +46,7 @@ export default function Announcement() {
   };
 
   return (
-    <div className="w-full relative group/announcement px-2 sm:px-6">
+    <div className="w-full relative group/announcement px-4 sm:px-6">
       {/* 標題區塊：置中 + 質感線 */}
       <div className="text-center mb-4">
         <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -59,10 +58,10 @@ export default function Announcement() {
         <div className="gold-divider w-32 mx-auto mt-4" />
       </div>
 
-      {/* 左右切換按鈕：無黑圈圈，純箭頭 */}
+      {/* 左右切換按鈕：手機與桌機皆顯示，不隱藏 */}
       <button
         onClick={() => scroll('left')}
-        className="absolute left-[-10px] sm:left-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125 hidden sm:block"
+        className="absolute left-0 sm:left-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-80 sm:opacity-0 sm:group-hover/announcement:opacity-100 hover:scale-125"
         aria-label="上一則消息"
       >
         <ChevronLeft className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
@@ -70,22 +69,22 @@ export default function Announcement() {
 
       <button
         onClick={() => scroll('right')}
-        className="absolute right-[-10px] sm:right-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125 hidden sm:block"
+        className="absolute right-0 sm:right-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-80 sm:opacity-0 sm:group-hover/announcement:opacity-100 hover:scale-125"
         aria-label="下一則消息"
       >
         <ChevronRight className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
       </button>
 
-      {/* 橫向滑動卡片容器：精準單張對齊 */}
+      {/* 橫向滑動卡片容器：增加左右 padding 避免方格被切掉 */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-2"
+        className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-4"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {announcements.map((item) => (
           <article
             key={item.id}
-            className="snap-center shrink-0 w-[92vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
+            className="snap-center shrink-0 w-[84vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer mx-auto"
           >
             <div>
               {/* 日期標籤 */}
