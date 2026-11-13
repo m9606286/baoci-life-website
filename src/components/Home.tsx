@@ -1,392 +1,114 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { Phone, ChevronDown, Heart, ChevronRight, Award, ExternalLink } from 'lucide-react';
-import { useReveal } from '@/hooks/useReveal';
-import CoreValues from '@/components/CoreValues';
-import Announcement from '@/components/Announcement';
-import heroImage from '/hero.png';
-import serve1Image from '/Serve1.png';
-import serve2Image from '/Serve2.png';
-import serve3Image from '/Serve3.png';
+import React, { useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-// 75% 圓形進度圖表組件 (數字固定 75%，僅線條滾動到該區塊時跑動、加粗且更具立體感)
-function TrustCircleProgress() {
-  const [progress, setProgress] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          let startTimestamp: number | null = null;
-          const duration = 1500;
-
-          const step = (timestamp: number) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progressRatio = Math.min((timestamp - startTimestamp) / duration, 1);
-            const easeOutProgress = 1 - Math.pow(1 - progressRatio, 3);
-            setProgress(Math.floor(easeOutProgress * 75));
-
-            if (progressRatio < 1) {
-              requestAnimationFrame(step);
-            }
-          };
-
-          requestAnimationFrame(step);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [hasAnimated]);
-
-  const radius = 30;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (circumference * (progress / 100));
-
-  return (
-    <div ref={containerRef} className="relative w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 80 80">
-        {/* 背景底圈 */}
-        <circle
-          cx="40"
-          cy="40"
-          r={radius}
-          className="stroke-amber-200/50"
-          strokeWidth="12"
-          fill="transparent"
-        />
-        {/* 動態立體金屬進度線條 */}
-        <circle
-          cx="40"
-          cy="40"
-          r={radius}
-          stroke="url(#goldGradient3D)"
-          strokeWidth="12"
-          strokeDasharray={circumference}
-          strokeDashoffset={strokeDashoffset}
-          strokeLinecap="round"
-          fill="transparent"
-          className="transition-all duration-75 ease-out drop-shadow-sm"
-        />
-        <defs>
-          <linearGradient id="goldGradient3D" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#E6C56D" />
-            <stop offset="40%" stopColor="#C69233" />
-            <stop offset="80%" stopColor="#A6721C" />
-            <stop offset="100%" stopColor="#7A5212" />
-          </linearGradient>
-        </defs>
-      </svg>
-      {/* 數字固定顯示 75% 不變 */}
-      <span className="absolute font-serif-tc text-sm font-bold text-ink-900 tracking-tight">
-        75%
-      </span>
-    </div>
-  );
+export interface NewsItem {
+  id: string | number;
+  dateTag: string;
+  title: string;
+  summary: string;
+  image?: string;
+  to?: string;
 }
 
-export default function Home() {
-  const revealResult = useReveal<HTMLDivElement>();
-  const ref = Array.isArray(revealResult) ? revealResult[0] : revealResult;
+const announcements: NewsItem[] = [
+  {
+    id: 'news-2026-08',
+    dateTag: '2026/8/13 資本增資',
+    title: '寶慈生命事業資本額順利完成增資至新臺幣 6,000 萬元',
+    summary: '為持續深化服務品質、擴大營運規模並強化預付款履約保障能力，實收資本額由原新臺幣 3,000 萬元順利增資至新臺幣 6,000 萬元，展現企業穩健營運實力與長期承諾。',
+    to: '/news/news-2026-07',
+  },
+  {
+    id: 'news-2026-04',
+    dateTag: '2026/4/1 公司動態',
+    title: '寶慈生命事業正式加入寶碩集團(股票代號5210)，攜手打造尊榮生命服務',
+    summary: '寶慈生命事業正式成為寶碩集團子公司。透過導入公開發行公司嚴謹的法人治理規範與龐大資源支持，進一步提升客戶權益保障，並以兼具人文溫度與財務誠信的防護網提供安心生命服務。',
+    to: '/news/news-2026-04',
+  },
+];
 
-  const btnStyle = "group/btn inline-flex items-center justify-center gap-2 font-serif-tc font-bold tracking-wider text-ink-900 bg-ivory-100 border border-gold-400/35 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] py-2.5 px-5 rounded-full transition-all duration-300 shadow-sm hover:shadow-md text-xs sm:text-sm";
+export default function Announcement() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const firstCard = container.querySelector('article');
+      if (firstCard) {
+        // 卡片寬度加上 CSS gap (間距為 24px，對應 gap-6)
+        const cardWidth = firstCard.clientWidth + 24;
+        container.scrollBy({
+          left: direction === 'left' ? -cardWidth : cardWidth,
+          behavior: 'smooth',
+        });
+      }
+    }
+  };
 
   return (
-    <div className="bg-ivory-100 min-h-screen text-ink-900 font-sans">
-      
-      {/* 1. Hero 品牌主視覺區 */}
-      <section id="top" className="group/hero relative h-[85vh] min-h-[550px] max-h-[850px] overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            src={heroImage}
-            alt="家人彼此陪伴"
-            className="w-full h-full object-cover animate-slow-zoom group-hover/hero:scale-105 transition-transform duration-1000 ease-out"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
-        </div>
+    <div className="w-full relative group/announcement px-4 sm:px-6">
+      {/* 標題區塊：置中 + 質感線 */}
+      <div className="text-center mb-4">
+        <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+          LATEST NEWS
+        </p>
+        <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
+          最新消息
+        </h2>
+        <div className="gold-divider w-32 mx-auto mt-4" />
+      </div>
 
-        <div className="relative h-full mx-auto max-w-8xl px-6 flex flex-col justify-center">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6 animate-fade-in" style={{ animationDelay: '0.2s', opacity: 0 }}>
-              <Heart className="w-5 h-5 text-white drop-shadow" />
-              <span className="text-white text-sm tracking-[0.3em] uppercase font-medium drop-shadow">Apex BaoCi-Life</span>
-            </div>
+      {/* 左右切換按鈕：手機與桌機皆顯示，不隱藏 */}
+      <button
+        onClick={() => scroll('left')}
+        className="absolute left-0 sm:left-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-80 sm:opacity-0 sm:group-hover/announcement:opacity-100 hover:scale-125"
+        aria-label="上一則消息"
+      >
+        <ChevronLeft className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
+      </button>
 
-            <h1
-              className="font-serif-tc text-4xl md:text-5xl lg:text-6xl text-white leading-[1.2] font-bold animate-fade-up drop-shadow-md"
-              style={{ animationDelay: '0.4s', opacity: 0 }}
-            >
-              用愛心規劃
-              <span className="block text-white mt-2 drop-shadow">讓家人安心</span>
-            </h1>
+      <button
+        onClick={() => scroll('right')}
+        className="absolute right-0 sm:right-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-80 sm:opacity-0 sm:group-hover/announcement:opacity-100 hover:scale-125"
+        aria-label="下一則消息"
+      >
+        <ChevronRight className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
+      </button>
 
-            <p
-              className="mt-8 text-lg md:text-xl text-ivory-100/95 leading-relaxed max-w-2xl animate-fade-up font-medium drop-shadow"
-              style={{ animationDelay: '0.7s', opacity: 0 }}
-            >
-              幫助您提早規劃，讓生命的每一刻
-              <br />
-              都充滿尊嚴與意義。
-            </p>
-
-            <div
-              className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up"
-              style={{ animationDelay: '1s', opacity: 0 }}
-            >
-              <Link
-                to="/preneed"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
-              >
-                <span>瞭解生前契約</span>
-                <ChevronDown className="w-4 h-4 ml-2 text-white group-hover:translate-y-0.5 transition-transform" />
-              </Link>
-
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
-              >
-                <Phone className="w-4 h-4 mr-2 text-white group-hover:scale-110 transition-transform" />
-                <span>聯絡我們</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in" style={{ animationDelay: '1.5s', opacity: 0 }}>
-          <span className="text-white/80 text-xs tracking-widest font-medium">SCROLL</span>
-          <div className="w-px h-12 bg-gradient-to-b from-white/80 to-transparent" />
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory-100 to-transparent" />
-      </section>
-
-      {/* 2. 下方內容區塊 */}
-      <div ref={ref} className="space-y-20 py-20">
-
-        {/* 公司簡介 */}
-        <section className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-              COMPANY PROFILE
-            </p>
-            <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
-              公司簡介
-            </h2>
-            <div className="gold-divider w-32 mx-auto mt-4" />
-          </div>
-
-          <div className="bg-gradient-to-br from-white via-ivory-50 to-gold-100/30 rounded-3xl p-8 md:p-12 border border-gold-400/40 shadow-xl flex flex-col md:flex-row items-center gap-10">
-            <div className="w-full md:w-1/2 space-y-6">
-              
-              <div className="group/profile-header cursor-pointer space-y-4">
-                <span className="inline-block px-5 py-2 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-700 text-base font-bold tracking-wider uppercase transition-all duration-300 group-hover/profile-header:bg-[#C69233] group-hover/profile-header:text-white group-hover/profile-header:border-[#C69233]">
-                  合規經營．誠信至上
-                </span>
-                
-                <h3 className="font-serif-tc text-2xl md:text-3xl font-bold text-ink-900 leading-snug transition-colors duration-300 group-hover/profile-header:text-[#C69233]">
-                  專業與合規保障<br />給家人最堅實的安心依託
-                </h3>
-              </div>
-
-              <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed">
-                寶慈生命事業(前身為永慈生命事業)為政府合法立案之殯葬禮儀服務業者，並正式納入寶碩集團旗下經營。我們秉持人本關懷理念，結合公開發行公司嚴謹的財務與法人治理機制，提供透明收費與合規保障，守護每個家庭重要時刻的承諾。
-              </p>
-
-              <div className="pt-2">
-                <Link to="/about" className="inline-flex items-center gap-2 text-ink-900 font-bold hover:text-[#C69233] transition-colors group/more">
-                  <span>了解更多關於寶慈經營理念與故事</span>
-                  <ChevronRight className="w-5 h-5 text-[#C69233] group-hover/more:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
-            
-            <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              
-              {/* 政府立案核准卡片 */}
-              <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
-                <div>
-                  <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-                    <Award className="w-12 h-12 text-[#C69233] group-hover:scale-105 transition-transform duration-300" />
-                  </div>
-                  <h4 className="font-bold text-ink-900 mb-1">政府立案核准</h4>
-                  <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
-                </div>
-                <a 
-                  href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${btnStyle} mt-2`}
-                >
-                  <span>核准函</span>
-                  <ExternalLink className="w-4 h-4 transition-transform group-hover/btn:scale-110" />
-                </a>
-              </div>
-
-              {/* 75% 依法信託卡片 */}
-              <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
-                <div>
-                  <TrustCircleProgress />
-                  <h4 className="font-bold text-ink-900 mb-1">75% 依法信託</h4>
-                  <p className="text-xs text-slate-500 mb-4">京城銀行履約專戶</p>
-                </div>
-                <Link 
-                  to="/trust" 
-                  className={`${btnStyle} mt-2`}
-                >
-                  <span>了解更多</span>
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                </Link>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* 我們的服務 */}
-        <section className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-              OUR SERVICES
-            </p>
-            <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
-              我們的服務
-            </h2>
-            <div className="gold-divider w-32 mx-auto mt-4" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* 生前契約規劃 */}
-            <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
-              <div>
-                <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
-                  <img 
-                    src={serve1Image} 
-                    alt="生前契約規劃" 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 text-center mb-3">
-                  生前契約規劃
-                </h3>
-
-                <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed mb-6">
-                  提供完善的生前契約規劃服務，讓您提前安排人生重要事宜，減輕家人未來的負擔，將愛與關懷化為長久的安心。
-                </p>
-              </div>
-              
-              <Link 
-                to="/preneed" 
-                className={`${btnStyle} w-full py-3.5`}
-              >
-                <span>了解更多</span>
-                <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-              </Link>
-            </div>
-
-            {/* 禮儀服務 */}
-            <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
-              <div>
-                <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
-                  <img 
-                    src={serve2Image} 
-                    alt="禮儀服務" 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 text-center mb-3">
-                  禮儀服務
-                </h3>
-
-                <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed mb-6">
-                  秉持專業、尊嚴與人本關懷，提供全方位的精緻禮儀流程規劃與溫馨陪伴服務。
-                </p>
-              </div>
-
-              <Link 
-                to="/services" 
-                className={`${btnStyle} w-full py-3.5`}
-              >
-                <span>了解更多</span>
-                <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-              </Link>
-            </div>
-
-            {/* 手續服務 */}
-            <div className="group bg-white rounded-3xl p-8 border border-gold-400/30 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between">
-              <div>
-                <div className="w-full h-[70px] rounded-xl overflow-hidden mb-3 flex items-center justify-center bg-transparent">
-                  <img 
-                    src={serve3Image} 
-                    alt="手續服務" 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 text-center mb-3">
-                  手續服務
-                </h3>
-
-                <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed mb-6">
-                  提供完善的申辦流程指引，讓各項服務辦理更加清楚、便利。
-                </p>
-              </div>
-
-              <Link 
-                to="/procedures" 
-                className={`${btnStyle} w-full py-3.5`}
-              >
-                <span>了解更多</span>
-                <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* 我們的核心價值 */}
-        <section className="max-w-7xl mx-auto px-6 -mt-10">
-          <CoreValues />
-        </section>
-
-        {/* 最新消息：卡片完全不改，僅讓左右切換箭頭按鈕移入時保持原色不變橘、微微放大 */}
-        <section className="max-w-7xl mx-auto px-6 -mt-10 [&_button:hover]:!text-inherit [&_button:hover_svg]:!text-inherit [&_button:hover]:scale-125 [&_button]:transition-transform [&_button]:duration-200">
-          <Announcement />
-        </section>
-
-        {/* 聯絡寶慈 */}
-        <section className="max-w-4xl mx-auto px-6 text-center py-2">
-          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-            CONTACT US
-          </p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
-            聯絡寶慈
-          </h2>
-          <div className="gold-divider w-32 mx-auto mt-4 mb-6" />
-
-          <p className="font-sans text-slate-700 text-base md:text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
-            寶慈秉持尊重生命、關懷家人的初心，以真誠、溫暖與專業的服務，陪伴家人走過人生重要的告別時刻，讓逝者獲得尊嚴與安息，讓愛與思念得以延續，實踐讓逝者安息，讓生者安心的承諾。
-          </p>
-          <Link
-            to="/contact"
-            className="group/btn inline-flex items-center justify-center gap-2 font-serif-tc font-bold tracking-wider text-ink-900 bg-ivory-100 border border-gold-400/35 hover:bg-[#C69233] hover:text-white hover:border-[#C69233] px-10 py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-0.5 text-base sm:text-lg"
+      {/* 橫向滑動卡片容器：增加左右 padding 避免方格被切掉 */}
+      <div
+        ref={scrollContainerRef}
+        className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-4"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {announcements.map((item) => (
+          <article
+            key={item.id}
+            className="snap-center shrink-0 w-[84vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer mx-auto"
           >
-            <span>聯絡我們</span>
-            <ChevronRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
-          </Link>
-        </section>
+            <div>
+              {/* 日期標籤 */}
+              <div className="mb-4">
+                <span className="inline-flex items-center font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-500 shadow-sm bg-gradient-to-r from-amber-50/90 via-stone-50 to-yellow-50/80 text-ink-900 border border-amber-200/60 group-hover:bg-none group-hover:bg-[#C69233] group-hover:text-white group-hover:border-[#C69233] group-hover:shadow-md">
+                  {item.dateTag}
+                </span>
+              </div>
 
+              {/* 卡片標題 */}
+              <h3 className="font-serif-tc text-lg md:text-xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 leading-snug mb-3">
+                {item.title}
+              </h3>
+
+              {/* 卡片內文 */}
+              <p className="text-ink-700 text-sm md:text-base leading-relaxed">
+                {item.summary}
+              </p>
+            </div>
+
+            {/* 底部 hover 細金線 */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+          </article>
+        ))}
       </div>
     </div>
   );
