@@ -53,7 +53,7 @@ export default function Announcement() {
           </h2>
           {/* 提示小字貼在右側，在手機上自動隱藏或往下掉避免擁擠，桌機/平板顯示 */}
           <span className="hidden sm:inline-block absolute left-full top-1/2 -translate-y-1/2 ml-4 text-xs text-stone-400 tracking-wider font-serif-tc whitespace-nowrap">
-            ( 可左右滑動 )
+            ( 可左右移動 )
           </span>
         </div>
         
