@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useReveal } from '@/hooks/useReveal';
 
 const aboutSections = [
   {
     isCustomImage: true,
     imageSrc: '/time.jpg',
-    title: '我們的故事',
+    title: '寶慈的故事',
     content: (
       <div className="space-y-3">
         <p>
@@ -23,7 +23,7 @@ const aboutSections = [
   {
     isCustomImage: true,
     imageSrc: '/heart.jpg',
-    title: '我們的使命',
+    title: '寶慈的使命',
     content: (
       <p>
         提供專業、溫暖與尊重的禮儀服務，是我們始終堅持的使命。透過生前契約的預先規劃，讓個人意願得以被尊重，也讓家人在面對離別時，能夠減少徬徨與壓力，以從容的心情陪伴摯愛走完人生最後一程。
@@ -33,7 +33,7 @@ const aboutSections = [
   {
     isCustomImage: true,
     imageSrc: '/eye.jpg',
-    title: '我們的願景',
+    title: '寶慈的願景',
     content: (
       <p>
         我們以成為台灣最受信任的禮儀服務品牌為願景，持續推動生前契約理念，結合人文關懷與專業服務，為每一個家庭提供值得信賴且具尊嚴的生命紀念服務。
@@ -88,19 +88,38 @@ const aboutImage = '/story.png';
 export default function About() {
   const ref = useReveal<HTMLDivElement>();
 
+  // 頁面載入或 Hash 改變時，瞬間跳轉對應區塊（配合上方導覽列高度偏移）
+  useEffect(() => {
+    const { hash } = window.location;
+    if (hash) {
+      const id = hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          const headerOffset = 100; // 預留 Header 高度
+          const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - headerOffset,
+            behavior: 'instant' as ScrollBehavior,
+          });
+        }, 50);
+      }
+    }
+  }, []);
+
   return (
     <section id="about" className="pt-10 pb-14 lg:pt-14 lg:pb-18 bg-gradient-to-b from-ivory-100 to-ivory-200 relative overflow-hidden">
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gold-100/40 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         
-        {/* 標題區塊：字級調小一階，呈現細緻柔和的視覺比例 */}
-        <div className="text-center mb-16">
+        {/* 標題區塊：加上 id="about-intro" 對應第一層子選單「關於寶慈」 */}
+        <div id="about-intro" className="text-center mb-16 scroll-mt-28">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.4em] uppercase font-bold reveal">
             ABOUT US
           </p>
           <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
-            關於我們
+            關於寶慈
           </h2>
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 mb-4 reveal reveal-delay-2" />
           <p className="text-ink-500 font-sans text-xs sm:text-sm md:text-base reveal reveal-delay-2.5 max-w-3xl mx-auto leading-relaxed font-normal">
@@ -169,9 +188,10 @@ export default function About() {
 
         </div>
 
-        {/* 發展歷程 (Milestones) 區塊 */}
+        {/* 發展歷程 (Milestones) 區塊：加上 id="about-history" 對應第二層子選單「發展歷程」 */}
         <div 
-          className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto rounded-3xl p-8 sm:p-12 lg:p-16 relative overflow-hidden transition-transform duration-300 hover:-translate-y-1"
+          id="about-history"
+          className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto rounded-3xl p-8 sm:p-12 lg:p-16 relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 scroll-mt-28"
           style={{
             background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
             border: '1px solid rgba(212, 175, 55, 0.25)',
