@@ -41,7 +41,7 @@ export default function Announcement() {
   };
 
   return (
-    <div className="w-full relative group/announcement px-4 sm:px-6">
+    <div className="w-full relative group/announcement px-4 sm:px-2">
       {/* 標題區塊：置中 + 質感線 */}
       <div className="text-center mb-4">
         <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
