@@ -42,17 +42,32 @@ export default function Announcement() {
 
   return (
     <div className="w-full relative group/announcement px-2 sm:px-6">
-      {/* 標題區塊：置中，利用 flex 讓「最新消息」與提示文字強制在同一行右側 */}
-      <div className="text-center mb-6">
-        <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+      {/* 標題區塊：使用 Grid 確保「最新消息」主標題絕對置中不偏移，右側放置提示文字 */}
+      <div className="mb-6">
+        <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold text-center">
           LATEST NEWS
         </p>
-        
-        <div className="inline-flex items-baseline justify-center gap-2 sm:gap-3 mt-2">
-          <h2 className="font-serif-tc text-2xl sm:text-3xl md:text-4xl font-bold text-ink-900 whitespace-nowrap">
+
+        <div className="grid grid-cols-[1fr_auto_100px] sm:grid-cols-[1fr_auto_150px] items-end mt-2">
+          {/* 左側留白（與右側寬度對稱，確保主標題完美置中） */}
+          <div className="hidden sm:block"></div>
+
+          {/* 中間主標題：位置絕對固定在正中央 */}
+          <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 text-center col-span-3 sm:col-span-1">
             最新消息
           </h2>
-          <span className="text-[11px] sm:text-xs text-stone-400 tracking-wider font-serif-tc whitespace-nowrap">
+
+          {/* 右側提示小字：固定在右邊 */}
+          <div className="hidden sm:flex justify-end pb-1">
+            <span className="text-xs text-stone-400 tracking-wider font-serif-tc whitespace-nowrap">
+              (可左右滑動)
+            </span>
+          </div>
+        </div>
+
+        {/* 手機版專用的右側提示（如果不想在手機顯示可拿掉，目前讓它在標題右下方微調或保持簡潔） */}
+        <div className="text-center sm:hidden mt-1">
+          <span className="text-[11px] text-stone-400 tracking-wider font-serif-tc">
             (可左右滑動)
           </span>
         </div>
