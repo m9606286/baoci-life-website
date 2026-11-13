@@ -64,7 +64,7 @@ export default function PreneedConcept() {
   // 生前契約與保險同步展開狀態
   const [activeIdx, setActiveIdx] = useState<number | null>(0);
 
-  // 頁面載入或 Hash 改變時，精準定錨至對應區塊（支援 services-process）
+  // 頁面載入或 Hash 改變時，精準定錨至對應區塊
   useEffect(() => {
     const { hash } = window.location;
     if (hash) {
@@ -200,6 +200,9 @@ export default function PreneedConcept() {
           </div>
         </div>
 
+        {/* 2. 契約商品內容區塊 (已移除 id) */}
+        <div className="pt-6">
+          
           {/* 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 */}
           <div className="max-w-6xl mx-auto py-8 relative overflow-hidden transition-all duration-300 mb-16">
             
