@@ -132,10 +132,10 @@ export default function Header() {
                   )}
                 </NavLink>
 
-                {/* 第二層下拉選單 (桌面版 Hover 展開)：背景改為不透明淺中灰色 bg-[#e8e6e1]，移入文字改為 #C69233 */}
+                {/* 第二層下拉選單 (桌面版 Hover 展開)：改為 80% 透明淺中灰色 bg-[#e8e6e1]/80，無邊框 */}
                 {link.subLinks && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible translate-y-1 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 transition-all duration-200 z-50">
-                    <div className="w-48 rounded-2xl bg-[#e8e6e1] border border-gold-400/35 shadow-[0_12px_30px_rgba(12,15,20,0.12)] py-2 overflow-hidden">
+                    <div className="w-48 rounded-2xl bg-[#e8e6e1]/80 backdrop-blur-md shadow-[0_12px_30px_rgba(12,15,20,0.12)] py-2 overflow-hidden">
                       {link.subLinks.map((sub) => (
                         <a
                           key={sub.label}
@@ -223,7 +223,7 @@ export default function Header() {
 
                   {/* 手機版第二層子項目 */}
                   {link.subLinks && isSubOpen && (
-                    <div className="pb-3 pl-4 space-y-1.5 bg-[#e8e6e1]/50 rounded-xl p-2 mt-1">
+                    <div className="pb-3 pl-4 space-y-1.5 bg-[#e8e6e1]/80 rounded-xl p-2 mt-1">
                       {link.subLinks.map((sub) => (
                         <a
                           key={sub.label}
