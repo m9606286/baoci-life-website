@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sparkles, Lock, UserCheck, ShieldCheck, RefreshCw, Award, FileCheck, DollarSign, Users, UserX, HeartHandshake } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import familyImage from '/core.jpg';
@@ -64,6 +64,25 @@ export default function PreneedConcept() {
   // 生前契約與保險同步展開狀態
   const [activeIdx, setActiveIdx] = useState<number | null>(0);
 
+  // 頁面載入或 Hash 改變時，瞬間跳轉對應區塊（配合上方導覽列高度偏移）
+  useEffect(() => {
+    const { hash } = window.location;
+    if (hash) {
+      const id = hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          const headerOffset = 100; // 預留 Header 高度
+          const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - headerOffset,
+            behavior: 'instant' as ScrollBehavior,
+          });
+        }, 50);
+      }
+    }
+  }, []);
+
   // SVG 座標基準常數
   const startX = 135;
   const endX = 805;
@@ -111,414 +130,416 @@ export default function PreneedConcept() {
     <section className="pt-2 pb-16 lg:pt-4 lg:pb-24 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
       <div ref={ref} className="max-w-6xl mx-auto px-6 relative">
         
-        {/* 1. 頁頭標題 */}
-        <div className="text-center mb-12">
-          <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
-            PRENEED CONTRACT
-          </p>
-          <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
-            什麼是生前契約？
-          </h2>
-          <div className="w-60 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
-          <p className="mt-4 text-slate-600 text-sm sm:text-base max-w-2xl mx-auto reveal reveal-delay-3">
-            生前契約是給家人最後的一道保障，也是為自己預先記錄並落實身後事安排的尊榮選擇。
-          </p>
-        </div>
-
-        {/* 2. 左圖右文：左側照片 + 右側 3 個核心方格 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-14 reveal reveal-delay-3">
-          
-          <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-xl border border-gold-400/30 min-h-[380px] lg:min-h-full group">
-            <img
-              src={familyImage}
-              alt="溫暖陪伴"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
-            <div className="absolute bottom-6 left-6 right-6 text-white">
-              <p className="font-serif-tc text-xl font-bold drop-shadow">預先安排，圓滿無遺憾</p>
-              <p className="text-sm text-ivory-100/90 mt-1 drop-shadow">以愛為出發，讓家人多一份安心。</p>
-            </div>
-          </div>
-
-          <div className="lg:col-span-7 flex flex-col justify-between gap-5">
-            {coreHighlights.map((item, idx) => {
-              return (
-                <div
-                  key={idx}
-                  className="group relative rounded-2xl p-5 sm:p-6 overflow-hidden hover:-translate-y-1 transition-all duration-300 flex-1 flex flex-col justify-center cursor-pointer"
-                  style={{
-                    background: 'linear-gradient(180deg, #ffffff 0%, #fdfcfb 70%, #faf6f0 100%)',
-                    border: '1px solid rgba(212, 175, 55, 0.22)',
-                    boxShadow: '0 8px 25px -5px rgba(212, 175, 55, 0.1), 0 3px 8px rgba(0, 0, 0, 0.03)',
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                  <div>
-                    <h3 className="relative z-10 font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-start gap-1.5">
-                      <img 
-                        src="/v.jpg" 
-                        alt="勾勾" 
-                        className="h-5 sm:h-6 w-auto object-contain shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]" 
-                      />
-                      <span>{item.title}</span>
-                    </h3>
-
-                    <p className="relative z-10 text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-7">
-                      {item.desc}
-                    </p>
-                  </div>
-
-                  <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
-
-        {/* 3. 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 */}
-        <div className="max-w-6xl mx-auto py-8 relative overflow-hidden transition-all duration-300 mb-16">
-          
-          {/* 區塊標題 */}
-          <div className="text-center mb-8 space-y-2.5">
-            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-              PRENEED BENEFIT
+        {/* 1. 什麼是生前契約 (對應 id="contract-intro") */}
+        <div id="contract-intro" className="scroll-mt-28">
+          {/* 頁頭標題 */}
+          <div className="text-center mb-12">
+            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
+              PRENEED CONTRACT
             </p>
-            <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">
-              享受預約優惠價，鎖定價格抗通膨
-            </h3>
-            <div className="w-72 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
-            
-            <p className="text-slate-600 font-sans text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed font-normal pt-2">
-              喪葬費用隨通膨逐年增加，生前契約用現在的價格鎖定未來必定發生的支出，理性省下龐大開銷。
+            <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2 reveal reveal-delay-1">
+              什麼是生前契約？
+            </h2>
+            <div className="w-60 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 reveal reveal-delay-2" />
+            <p className="mt-4 text-slate-600 text-sm sm:text-base max-w-2xl mx-auto reveal reveal-delay-3">
+              生前契約是給家人最後的一道保障，也是為自己預先記錄並落實身後事安排的尊榮選擇。
             </p>
           </div>
 
-          {/* 資訊圖表大卡片 */}
-          <div className="w-full overflow-x-auto bg-white/70 rounded-2xl p-5 sm:p-8 border border-gold-400/25 shadow-sm">
+          {/* 左圖右文：左側照片 + 右側 3 個核心方格 */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-14 reveal reveal-delay-3">
             
-            <div className="mb-8 flex flex-col lg:flex-row lg:items-center gap-5">
-              <div className="shrink-0">
-                <h4 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-900 whitespace-nowrap">
-                  現在規劃的好處
-                </h4>
-                <div className="w-full h-[2.5px] bg-gradient-to-r from-[#A6721C] via-gold-400 to-transparent rounded-full mt-1.5" />
+            <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-xl border border-gold-400/30 min-h-[380px] lg:min-h-full group">
+              <img
+                src={familyImage}
+                alt="溫暖陪伴"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <p className="font-serif-tc text-xl font-bold drop-shadow">預先安排，圓滿無遺憾</p>
+                <p className="text-sm text-ivory-100/90 mt-1 drop-shadow">以愛為出發，讓家人多一份安心。</p>
               </div>
+            </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 flex-1">
-                {benefitBubbles.map((item, idx) => {
-                  const IconComp = item.icon;
-                  const isSelected = activeIndex === idx;
-                  return (
-                    <div
-                      key={item.id}
-                      onClick={() => setActiveIndex(idx)}
-                      onMouseEnter={() => setActiveIndex(idx)}
-                      className={`relative rounded-xl px-4 py-3.5 cursor-pointer transition-all duration-300 select-none border flex items-center gap-3 ${
-                        isSelected
-                          ? 'shadow-md ring-2 ring-gold-400/60 -translate-y-0.5 bg-gradient-to-br from-white via-[#fcf8f0] to-[#f4ebd9]'
-                          : 'shadow-sm opacity-90 hover:opacity-100 bg-gradient-to-br from-white via-[#faf6ed] to-[#f0e4d0]'
-                      }`}
-                      style={{
-                        borderColor: 'rgba(212, 175, 55, 0.4)',
-                      }}
-                    >
-                      <div className="w-10 h-10 rounded-full bg-gold-100/80 flex items-center justify-center shrink-0 border border-gold-400/40">
-                        <IconComp className="w-5 h-5 text-gold-700" />
-                      </div>
-                      <div className="font-serif-tc font-bold text-sm sm:text-base leading-snug text-ink-950">
-                        {item.title}
-                      </div>
+            <div className="lg:col-span-7 flex flex-col justify-between gap-5">
+              {coreHighlights.map((item, idx) => {
+                return (
+                  <div
+                    key={idx}
+                    className="group relative rounded-2xl p-5 sm:p-6 overflow-hidden hover:-translate-y-1 transition-all duration-300 flex-1 flex flex-col justify-center cursor-pointer"
+                    style={{
+                      background: 'linear-gradient(180deg, #ffffff 0%, #fdfcfb 70%, #faf6f0 100%)',
+                      border: '1px solid rgba(212, 175, 55, 0.22)',
+                      boxShadow: '0 8px 25px -5px rgba(212, 175, 55, 0.1), 0 3px 8px rgba(0, 0, 0, 0.03)',
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                    <div>
+                      <h3 className="relative z-10 font-serif-tc text-lg sm:text-xl font-bold text-ink-950 group-hover:text-gold-500 transition-colors duration-300 mb-2 flex items-start gap-1.5">
+                        <img 
+                          src="/v.jpg" 
+                          alt="勾勾" 
+                          className="h-5 sm:h-6 w-auto object-contain shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_4px_8px_rgba(212,175,55,0.45)]" 
+                        />
+                        <span>{item.title}</span>
+                      </h3>
+
+                      <p className="relative z-10 text-sm sm:text-base text-slate-600 leading-relaxed pl-6 sm:pl-7">
+                        {item.desc}
+                      </p>
                     </div>
-                  );
-                })}
-              </div>
+
+                    <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
+                  </div>
+                );
+              })}
             </div>
 
-            {/* 下方 SVG 圖表 */}
-            <div className="min-w-[660px]">
-              <svg
-                viewBox="0 0 880 305"
-                className="w-full h-auto overflow-visible cursor-pointer"
-                onClick={handleSvgClick}
-              >
-                <defs>
-                  <linearGradient id="savedAreaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#A6721C" stopOpacity="0.06" />
-                    <stop offset="100%" stopColor="#A6721C" stopOpacity="0.22" />
-                  </linearGradient>
-                </defs>
+          </div>
+        </div>
 
-                <polygon
-                  points={savedAreaPolygon}
-                  fill="url(#savedAreaGrad)"
-                />
+        {/* 2. 契約商品 (對應 id="contract-products") */}
+        <div id="contract-products" className="scroll-mt-28 pt-6">
+          {/* 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 */}
+          <div className="max-w-6xl mx-auto py-8 relative overflow-hidden transition-all duration-300 mb-16">
+            
+            {/* 區塊標題 */}
+            <div className="text-center mb-8 space-y-2.5">
+              <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+                PRENEED BENEFIT
+              </p>
+              <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">
+                享受預約優惠價，鎖定價格抗通膨
+              </h3>
+              <div className="w-72 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
+              
+              <p className="text-slate-600 font-sans text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed font-normal pt-2">
+                喪葬費用隨通膨逐年增加，生前契約用現在的價格鎖定未來必定發生的支出，理性省下龐大開銷。
+              </p>
+            </div>
 
-                <line
-                  x1={startX}
-                  y1="225"
-                  x2={startX}
-                  y2="15"
-                  stroke="#000000"
-                  strokeWidth="2.5"
-                />
+            {/* 資訊圖表大卡片 */}
+            <div className="w-full overflow-x-auto bg-white/70 rounded-2xl p-5 sm:p-8 border border-gold-400/25 shadow-sm">
+              
+              <div className="mb-8 flex flex-col lg:flex-row lg:items-center gap-5">
+                <div className="shrink-0">
+                  <h4 className="font-serif-tc text-xl sm:text-2xl font-bold text-ink-900 whitespace-nowrap">
+                    現在規劃的好處
+                  </h4>
+                  <div className="w-full h-[2.5px] bg-gradient-to-r from-[#A6721C] via-gold-400 to-transparent rounded-full mt-1.5" />
+                </div>
 
-                <line
-                  x1={startX}
-                  y1="225"
-                  x2="845"
-                  y2="225"
-                  stroke="#000000"
-                  strokeWidth="2.5"
-                />
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 flex-1">
+                  {benefitBubbles.map((item, idx) => {
+                    const IconComp = item.icon;
+                    const isSelected = activeIndex === idx;
+                    return (
+                      <div
+                        key={item.id}
+                        onClick={() => setActiveIndex(idx)}
+                        onMouseEnter={() => setActiveIndex(idx)}
+                        className={`relative rounded-xl px-4 py-3.5 cursor-pointer transition-all duration-300 select-none border flex items-center gap-3 ${
+                          isSelected
+                            ? 'shadow-md ring-2 ring-gold-400/60 -translate-y-0.5 bg-gradient-to-br from-white via-[#fcf8f0] to-[#f4ebd9]'
+                            : 'shadow-sm opacity-90 hover:opacity-100 bg-gradient-to-br from-white via-[#faf6ed] to-[#f0e4d0]'
+                        }`}
+                        style={{
+                          borderColor: 'rgba(212, 175, 55, 0.4)',
+                        }}
+                      >
+                        <div className="w-10 h-10 rounded-full bg-gold-100/80 flex items-center justify-center shrink-0 border border-gold-400/40">
+                          <IconComp className="w-5 h-5 text-gold-700" />
+                        </div>
+                        <div className="font-serif-tc font-bold text-sm sm:text-base leading-snug text-ink-950">
+                          {item.title}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
 
-                <text x="122" y="178" textAnchor="end" className="font-serif-tc font-bold fill-[#A6721C] text-[14px]">
-                  殯葬費用
-                </text>
-                <text x="122" y="198" textAnchor="end" className="font-serif-tc font-bold fill-[#585c63] text-[14px]">
-                  預購生前契約
-                </text>
-
-                <path
-                  d={fullCurvePath}
-                  fill="none"
-                  stroke="#A6721C"
-                  strokeWidth="3"
-                />
-                <text
-                  x="485"
-                  y="116"
-                  textAnchor="middle"
-                  transform="rotate(-11.5, 485, 116)"
-                  className="font-serif-tc font-semibold fill-[#A6721C] text-[13px] tracking-wide"
+              {/* 下方 SVG 圖表 */}
+              <div className="min-w-[660px]">
+                <svg
+                  viewBox="0 0 880 305"
+                  className="w-full h-auto overflow-visible cursor-pointer"
+                  onClick={handleSvgClick}
                 >
-                  因物價與服務成本上漲，殯葬費用將隨時間增加
-                </text>
+                  <defs>
+                    <linearGradient id="savedAreaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#A6721C" stopOpacity="0.06" />
+                      <stop offset="100%" stopColor="#A6721C" stopOpacity="0.22" />
+                    </linearGradient>
+                  </defs>
 
-                <line
-                  x1={startX}
-                  y1={baseLineY}
-                  x2={endX}
-                  y2={baseLineY}
-                  stroke="#585c63"
-                  strokeWidth="2.5"
-                />
-                <text
-                  x="470"
-                  y="212"
-                  textAnchor="middle"
-                  className="font-serif-tc font-bold fill-[#585c63] text-[14px] tracking-widest"
-                >
-                  鎖定價格
-                </text>
+                  <polygon
+                    points={savedAreaPolygon}
+                    fill="url(#savedAreaGrad)"
+                  />
 
-                <circle
-                  cx={startX}
-                  cy={baseLineY}
-                  r={5}
-                  fill="#A6721C"
-                />
-
-                <g>
                   <line
-                    x1={currentSvgX}
-                    y1={currentCurveY}
-                    x2={currentSvgX}
-                    y2={baseLineY}
-                    stroke="#A6721C"
-                    strokeWidth="2"
-                  />
-                  <circle
-                    cx={currentSvgX}
-                    cy={currentCurveY}
-                    r={3}
-                    fill="#ffffff"
-                    stroke="#A6721C"
-                    strokeWidth="3"
-                  />
-                  <circle
-                    cx={currentSvgX}
-                    cy={baseLineY}
-                    r={3}
-                    fill="#ffffff"
-                    stroke="#585c63"
-                    strokeWidth="3"
-                  />
-                  <circle
-                    cx={currentSvgX}
-                    cy="225"
-                    r={3}
-                    fill="#ffffff"
+                    x1={startX}
+                    y1="225"
+                    x2={startX}
+                    y2="15"
                     stroke="#000000"
+                    strokeWidth="2.5"
+                  />
+
+                  <line
+                    x1={startX}
+                    y1="225"
+                    x2="845"
+                    y2="225"
+                    stroke="#000000"
+                    strokeWidth="2.5"
+                  />
+
+                  <text x="122" y="178" textAnchor="end" className="font-serif-tc font-bold fill-[#A6721C] text-[14px]">
+                    殯葬費用
+                  </text>
+                  <text x="122" y="198" textAnchor="end" className="font-serif-tc font-bold fill-[#585c63] text-[14px]">
+                    預購生前契約
+                  </text>
+
+                  <path
+                    d={fullCurvePath}
+                    fill="none"
+                    stroke="#A6721C"
                     strokeWidth="3"
                   />
                   <text
-                    x={currentSvgX}
-                    y={254}
+                    x="485"
+                    y="116"
                     textAnchor="middle"
-                    className="font-serif-tc font-bold fill-[#000000] text-[15px]"
+                    transform="rotate(-11.5, 485, 116)"
+                    className="font-serif-tc font-semibold fill-[#A6721C] text-[13px] tracking-wide"
                   >
-                    {years} 年後
+                    因物價與服務成本上漲，殯葬費用將隨時間增加
                   </text>
-                </g>
 
-                <text
-                  x={startX}
-                  y="286"
-                  textAnchor="start"
-                  className="font-sans text-[13px] fill-slate-600 font-medium"
-                >
-                  💡 可直接點擊橫軸來調整年數
-                </text>
+                  <line
+                    x1={startX}
+                    y1={baseLineY}
+                    x2={endX}
+                    y2={baseLineY}
+                    stroke="#585c63"
+                    strokeWidth="2.5"
+                  />
+                  <text
+                    x="470"
+                    y="212"
+                    textAnchor="middle"
+                    className="font-serif-tc font-bold fill-[#585c63] text-[14px] tracking-widest"
+                  >
+                    鎖定價格
+                  </text>
 
-                <text
-                  x="845"
-                  y="286"
-                  textAnchor="end"
-                  className="font-serif-tc text-[14px] font-bold fill-ink-950"
-                >
-                  {years} 年後通膨成長約{' '}
-                  <tspan className="fill-[#A6721C]">{growthPercent}%</tspan>{' '}
-                  (依近3年平均通膨約2%預估)
-                </text>
-              </svg>
+                  <circle
+                    cx={startX}
+                    cy={baseLineY}
+                    r={5}
+                    fill="#A6721C"
+                  />
+
+                  <g>
+                    <line
+                      x1={currentSvgX}
+                      y1={currentCurveY}
+                      x2={currentSvgX}
+                      y2={baseLineY}
+                      stroke="#A6721C"
+                      strokeWidth="2"
+                    />
+                    <circle
+                      cx={currentSvgX}
+                      cy={currentCurveY}
+                      r={3}
+                      fill="#ffffff"
+                      stroke="#A6721C"
+                      strokeWidth="3"
+                    />
+                    <circle
+                      cx={currentSvgX}
+                      cy={baseLineY}
+                      r={3}
+                      fill="#ffffff"
+                      stroke="#585c63"
+                      strokeWidth="3"
+                    />
+                    <circle
+                      cx={currentSvgX}
+                      cy="225"
+                      r={3}
+                      fill="#ffffff"
+                      stroke="#000000"
+                      strokeWidth="3"
+                    />
+                    <text
+                      x={currentSvgX}
+                      y={254}
+                      textAnchor="middle"
+                      className="font-serif-tc font-bold fill-[#000000] text-[15px]"
+                    >
+                      {years} 年後
+                    </text>
+                  </g>
+
+                  <text
+                    x={startX}
+                    y="286"
+                    textAnchor="start"
+                    className="font-sans text-[13px] fill-slate-600 font-medium"
+                  >
+                    💡 可直接點擊橫軸來調整年數
+                  </text>
+
+                  <text
+                    x="845"
+                    y="286"
+                    textAnchor="end"
+                    className="font-serif-tc text-[14px] font-bold fill-ink-950"
+                  >
+                    {years} 年後通膨成長約{' '}
+                    <tspan className="fill-[#A6721C]">{growthPercent}%</tspan>{' '}
+                    (依近3年平均通膨約2%預估)
+                  </text>
+                </svg>
+              </div>
+
             </div>
-
-          </div>
-        </div>
-
-        {/* 4. 生前契約與保險差異 */}
-        <div className="max-w-5xl mx-auto py-6 relative overflow-hidden">
-          
-          {/* 區塊標題 */}
-          <div className="text-center mb-12 space-y-2.5">
-            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-              PRENEED VS INSURANCE
-            </p>
-            <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">
-              生前契約與保險差異
-            </h3>
-            <div className="w-72 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
-            <p className="text-slate-600 font-sans text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed pt-2">
-              生前契約預先安排身後事與相關費用，避免臨時規劃造成額外支出，相較於保險更能確保服務妥善執行，減輕家人負擔。
-            </p>
           </div>
 
-          {/* 左右對比雙大卡片容器 */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          {/* 生前契約與保險差異 */}
+          <div className="max-w-5xl mx-auto py-6 relative overflow-hidden">
             
-            {/* 左側：生前契約卡片 (使用 HeartHandshake 雙手捧心愛心圖標) */}
-            <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
-              
-              <div className="mb-6 pb-4 border-b border-gold-400/20">
-                <div className="flex items-baseline gap-3">
-                  <div className="flex items-center gap-2 shrink-0">
-                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner">
-                      <HeartHandshake className="w-6 h-6 text-[#A6721C]" />
-                    </div>
-                    <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">生前契約</h4>
-                  </div>
-                  <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold">
-                    為了 確定 的事情做準備
-                  </p>
-                </div>
-                {/* 質感線：左深右淺 */}
-                <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
-              </div>
-
-              {/* 四個同步互動式條列項目 */}
-              <div className="space-y-3.5">
-                {preneedItems.map((item, idx) => {
-                  const ItemIcon = item.icon;
-                  const isSelected = activeIdx === idx;
-                  return (
-                    <div 
-                      key={idx} 
-                      onClick={() => setActiveIdx(idx)}
-                      onMouseEnter={() => setActiveIdx(idx)}
-                      className={`rounded-xl p-4 text-ink-950 flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none border ${
-                        isSelected 
-                          ? 'scale-[1.02] ring-2 ring-gold-500 shadow-md bg-gradient-to-r from-[#fff9ef] to-[#f4ebd9]' 
-                          : 'opacity-95 hover:opacity-100 bg-gradient-to-r from-[#fdfbf7] to-[#f2e7d5]'
-                      }`}
-                      style={{
-                        borderColor: 'rgba(212, 175, 55, 0.45)',
-                      }}
-                    >
-                      <div className="w-9 h-9 rounded-lg bg-gold-200/60 border border-gold-400/40 flex items-center justify-center shrink-0">
-                        <ItemIcon className="w-5 h-5 text-gold-700" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
-                        {isSelected && (
-                          <p className="text-sm sm:text-base text-slate-700 mt-1.5 animate-fadeIn leading-relaxed font-normal">{item.desc}</p>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
+            {/* 區塊標題 */}
+            <div className="text-center mb-12 space-y-2.5">
+              <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
+                PRENEED VS INSURANCE
+              </p>
+              <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">
+                生前契約與保險差異
+              </h3>
+              <div className="w-72 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-3" />
+              <p className="text-slate-600 font-sans text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed pt-2">
+                生前契約預先安排身後事與相關費用，避免臨時規劃造成額外支出，相較於保險更能確保服務妥善執行，減輕家人負擔。
+              </p>
             </div>
 
-            {/* 右側：保險卡片 (使用 ShieldCheck 盾牌保障圖標) */}
-            <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
+            {/* 左右對比雙大卡片容器 */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               
-              <div className="mb-6 pb-4 border-b border-gold-400/20">
-                <div className="flex items-baseline gap-3">
-                  <div className="flex items-center gap-2 shrink-0">
-                    <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner">
-                      <ShieldCheck className="w-6 h-6 text-[#C69233]" />
+              {/* 左側：生前契約卡片 */}
+              <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
+                
+                <div className="mb-6 pb-4 border-b border-gold-400/20">
+                  <div className="flex items-baseline gap-3">
+                    <div className="flex items-center gap-2 shrink-0">
+                      <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner">
+                        <HeartHandshake className="w-6 h-6 text-[#A6721C]" />
+                      </div>
+                      <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">生前契約</h4>
                     </div>
-                    <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">保險</h4>
+                    <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold">
+                      為了 確定 的事情做準備
+                    </p>
                   </div>
-                  <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold">
-                    為了 不確定 的風險做準備
-                  </p>
+                  <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
                 </div>
-                {/* 質感線：左深右淺 */}
-                <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
+
+                <div className="space-y-3.5">
+                  {preneedItems.map((item, idx) => {
+                    const ItemIcon = item.icon;
+                    const isSelected = activeIdx === idx;
+                    return (
+                      <div 
+                        key={idx} 
+                        onClick={() => setActiveIdx(idx)}
+                        onMouseEnter={() => setActiveIdx(idx)}
+                        className={`rounded-xl p-4 text-ink-950 flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none border ${
+                          isSelected 
+                            ? 'scale-[1.02] ring-2 ring-gold-500 shadow-md bg-gradient-to-r from-[#fff9ef] to-[#f4ebd9]' 
+                            : 'opacity-95 hover:opacity-100 bg-gradient-to-r from-[#fdfbf7] to-[#f2e7d5]'
+                        }`}
+                        style={{
+                          borderColor: 'rgba(212, 175, 55, 0.45)',
+                        }}
+                      >
+                        <div className="w-9 h-9 rounded-lg bg-gold-200/60 border border-gold-400/40 flex items-center justify-center shrink-0">
+                          <ItemIcon className="w-5 h-5 text-gold-700" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
+                          {isSelected && (
+                            <p className="text-sm sm:text-base text-slate-700 mt-1.5 animate-fadeIn leading-relaxed font-normal">{item.desc}</p>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
               </div>
 
-              {/* 四個同步互動式條列項目 */}
-              <div className="space-y-3.5">
-                {insuranceItems.map((item, idx) => {
-                  const ItemIcon = item.icon;
-                  const isSelected = activeIdx === idx;
-                  return (
-                    <div 
-                      key={idx} 
-                      onClick={() => setActiveIdx(idx)}
-                      onMouseEnter={() => setActiveIdx(idx)}
-                      className={`rounded-xl p-4 text-ink-950 flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none border ${
-                        isSelected 
-                          ? 'scale-[1.02] ring-2 ring-gold-500 shadow-md bg-gradient-to-r from-[#fff9ef] to-[#f4ebd9]' 
-                          : 'opacity-95 hover:opacity-100 bg-gradient-to-r from-[#fdfbf7] to-[#f2e7d5]'
-                      }`}
-                      style={{
-                        borderColor: 'rgba(212, 175, 55, 0.45)',
-                      }}
-                    >
-                      <div className="w-9 h-9 rounded-lg bg-gold-200/60 border border-gold-400/40 flex items-center justify-center shrink-0">
-                        <ItemIcon className="w-5 h-5 text-gold-700" />
+              {/* 右側：保險卡片 */}
+              <div className="lg:col-span-6 bg-gradient-to-b from-white via-[#fcfbfa] to-[#f5efe6] rounded-3xl p-6 sm:p-8 border border-gold-400/35 shadow-lg relative group transition-all duration-300">
+                
+                <div className="mb-6 pb-4 border-b border-gold-400/20">
+                  <div className="flex items-baseline gap-3">
+                    <div className="flex items-center gap-2 shrink-0">
+                      <div className="w-11 h-11 rounded-full bg-gold-100/80 border border-gold-400/40 flex items-center justify-center shadow-inner">
+                        <ShieldCheck className="w-6 h-6 text-[#C69233]" />
                       </div>
-                      <div className="flex-1">
-                        <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
-                        {isSelected && (
-                          <p className="text-sm sm:text-base text-slate-700 mt-1.5 animate-fadeIn leading-relaxed font-normal">{item.desc}</p>
-                        )}
-                      </div>
+                      <h4 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950">保險</h4>
                     </div>
-                  );
-                })}
+                    <p className="font-serif-tc text-sm sm:text-base text-gold-700 font-semibold">
+                      為了 不確定 的風險做準備
+                    </p>
+                  </div>
+                  <div className="w-full h-1 bg-gradient-to-r from-[#A6721C] via-gold-300 to-transparent mt-3.5 rounded-full" />
+                </div>
+
+                <div className="space-y-3.5">
+                  {insuranceItems.map((item, idx) => {
+                    const ItemIcon = item.icon;
+                    const isSelected = activeIdx === idx;
+                    return (
+                      <div 
+                        key={idx} 
+                        onClick={() => setActiveIdx(idx)}
+                        onMouseEnter={() => setActiveIdx(idx)}
+                        className={`rounded-xl p-4 text-ink-950 flex items-center gap-3.5 shadow-sm transition-all duration-300 cursor-pointer select-none border ${
+                          isSelected 
+                            ? 'scale-[1.02] ring-2 ring-gold-500 shadow-md bg-gradient-to-r from-[#fff9ef] to-[#f4ebd9]' 
+                            : 'opacity-95 hover:opacity-100 bg-gradient-to-r from-[#fdfbf7] to-[#f2e7d5]'
+                        }`}
+                        style={{
+                          borderColor: 'rgba(212, 175, 55, 0.45)',
+                        }}
+                      >
+                        <div className="w-9 h-9 rounded-lg bg-gold-200/60 border border-gold-400/40 flex items-center justify-center shrink-0">
+                          <ItemIcon className="w-5 h-5 text-gold-700" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-serif-tc font-bold text-base sm:text-lg text-ink-950">{item.title}</h5>
+                          {isSelected && (
+                            <p className="text-sm sm:text-base text-slate-700 mt-1.5 animate-fadeIn leading-relaxed font-normal">{item.desc}</p>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
               </div>
 
             </div>
 
           </div>
-
         </div>
 
       </div>
