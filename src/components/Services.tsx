@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReveal } from '@/hooks/useReveal';
 import { ArrowRight } from 'lucide-react';
@@ -55,9 +55,9 @@ const teamMembers = [
     fallbackImage: '/謝淑娟.jpg',
     certId: '1040033800',
   },
- ];
+];
 
-// 12 道禮儀服務流程資料（已移除不需要的 icon 屬性）
+// 12 道禮儀服務流程資料
 const processSteps = [
   {
     number: '01',
@@ -149,20 +149,40 @@ export default function Services() {
   const ref = useReveal<HTMLDivElement>();
   const navigate = useNavigate();
 
+  // 頁面載入或 Hash 改變時，瞬間跳轉對應區塊
+  useEffect(() => {
+    const { hash } = window.location;
+    if (hash) {
+      const id = hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          const headerOffset = 100;
+          const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - headerOffset,
+            behavior: 'instant' as ScrollBehavior,
+          });
+        }, 50);
+      }
+    }
+  }, []);
+
   // 點擊後直接跳轉至「聯絡我們」頁面並滾動至頂部
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     navigate('/contact');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   return (
-    <section id="services" className="pt--2 pb-16 lg:pt-0 lg:pb-24 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
+    <section className="pt-2 pb-16 lg:pt-0 lg:pb-24 bg-ivory-100 relative overflow-hidden -mt-6 lg:-mt-10">
       <div className="absolute top-1/3 right-0 w-96 h-96 rounded-full bg-gold-100/30 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
-        {/* 區塊一：禮儀服務團隊 */}
-        <div className="text-center mb-16 pt-4">
+        
+        {/* 區塊一：禮儀服務團隊 (對應 id="services-team") */}
+        <div id="services-team" className="text-center mb-16 pt-4 scroll-mt-28">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
             PROFESSIONAL TEAM
           </p>
@@ -199,12 +219,12 @@ export default function Services() {
                 />
               </div>
 
-              {/* 姓名與職稱：預設黑色，Hover 移入時變為深金色 */}
+              {/* 姓名與職稱 */}
               <h4 className="font-serif-tc text-lg font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300 mb-2">
                 {member.name} <span className="text-ink-900 group-hover:text-gold-600 font-semibold text-sm transition-colors duration-300"> {member.title}</span>
               </h4>
 
-              {/* 禮儀師證號標籤：背景象牙白 (bg-ivory-100)，預設黑色文字，Hover 移入時文字變為深金色 */}
+              {/* 禮儀師證號標籤 */}
               {member.certId && (
                 <div className="px-3.5 py-1.5 rounded-full bg-ivory-100 border border-gold-300/60 text-ink-900 text-sm font-medium transition-colors duration-300">
                   <span className="group-hover:text-gold-600 transition-colors duration-300">
@@ -219,8 +239,8 @@ export default function Services() {
         {/* 分隔線 */}
         <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent my-16 reveal" />
 
-        {/* 區塊二：12 大禮儀服務流程圖 */}
-        <div className="text-center mb-16">
+        {/* 區塊二：12 大禮儀服務流程 (對應 id="services-process") */}
+        <div id="services-process" className="text-center mb-16 scroll-mt-28">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
             SERVICE PROCESS
           </p>
@@ -261,7 +281,6 @@ export default function Services() {
                 {/* 右側：文字內容資訊 */}
                 <div className="flex-1 flex flex-col justify-between h-full py-1">
                   <div>
-                    {/* 改為同一行顯示：STEP 01 臨終關懷，Hover 時同步變深金色 */}
                     <div className="mb-2">
                       <h4 className="font-serif-tc text-base sm:text-lg font-bold text-ink-900 group-hover:text-gold-600 transition-colors duration-300">
                         <span className="tracking-[0.15em] mr-2">STEP {step.number}</span>
@@ -269,13 +288,11 @@ export default function Services() {
                       </h4>
                     </div>
 
-                    {/* 步驟描述 */}
                     <p className="text-ink-600 text-xs sm:text-sm leading-relaxed">
                       {step.desc}
                     </p>
                   </div>
 
-                  {/* 卡片底線亮起效果 */}
                   <div className="mt-3 w-full h-0.5 bg-ivory-200 group-hover:bg-gold-400 transition-colors duration-300 rounded-full" />
                 </div>
               </div>
@@ -283,7 +300,7 @@ export default function Services() {
           })}
         </div>
 
-        {/* 底部按鈕：透過 navigate 導向 /contact 聯絡我們頁面 */}
+        {/* 底部按鈕 */}
         <div className="text-center pt-4 reveal">
           <a
             href="/contact"
