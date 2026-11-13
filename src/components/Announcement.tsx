@@ -41,7 +41,7 @@ export default function Announcement() {
   };
 
   return (
-    <div className="w-full relative group/announcement px-3 sm:px-6">
+    <div className="w-full relative group/announcement px-4 sm:px-6">
       {/* 標題區塊：置中 + 質感線 */}
       <div className="text-center mb-4">
         <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -53,7 +53,7 @@ export default function Announcement() {
         <div className="gold-divider w-32 mx-auto mt-4" />
       </div>
 
-      {/* 左右切換按鈕：無黑圈圈，純箭頭 */}
+      {/* 左右切換按鈕：桌機版顯示 */}
       <button
         onClick={() => scroll('left')}
         className="absolute left-[-5px] sm:left-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125 hidden md:block"
@@ -70,16 +70,16 @@ export default function Announcement() {
         <ChevronRight className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
       </button>
 
-      {/* 橫向滑動卡片容器：增加左右內距與 padding 確保手機上左右兩側邊框完整不被切掉 */}
+      {/* 橫向滑動卡片容器：手機版寬度 100% 貼齊並置中 */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-4 sm:px-2"
+        className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-2 sm:px-2"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {announcements.map((item) => (
           <article
             key={item.id}
-            className="snap-center shrink-0 w-[84vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/30 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer mx-auto"
+            className="snap-center shrink-0 w-[calc(100vw-3rem)] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/30 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer mx-auto"
           >
             <div>
               {/* 日期標籤 */}
