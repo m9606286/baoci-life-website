@@ -1,11 +1,32 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Phone, Menu, X } from 'lucide-react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 import { useScrolled } from '@/hooks/useReveal';
 import BrandLogo from '@/components/BrandLogo';
 
-const navLinks = [
-  { label: '關於我們', en: 'ABOUT', path: '/about' },
+interface SubLink {
+  label: string;
+  path: string;
+  hash?: string;
+}
+
+interface NavItem {
+  label: string;
+  en: string;
+  path: string;
+  subLinks?: SubLink[];
+}
+
+const navLinks: NavItem[] = [
+  {
+    label: '關於寶慈',
+    en: 'ABOUT',
+    path: '/about',
+    subLinks: [
+      { label: '關於寶慈', path: '/about', hash: 'about-intro' },
+      { label: '發展歷程', path: '/about', hash: 'about-history' },
+    ],
+  },
   { label: '生前契約', en: 'CONTRACT', path: '/preneed' },
   { label: '禮儀服務', en: 'SERVICES', path: '/services' },
   { label: '信託公開', en: 'TRUST', path: '/trust' },
@@ -16,6 +37,35 @@ const navLinks = [
 export default function Header() {
   const scrolled = useScrolled(60);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openMobileSub, setOpenMobileSub] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  // 點擊子選單：切換頁面並瞬間跳轉到目標區塊（不使用平滑位移）
+  const handleSubLinkClick = (e: React.MouseEvent, sub: SubLink) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    setOpenMobileSub(null);
+
+    const targetUrl = sub.hash ? `${sub.path}#${sub.hash}` : sub.path;
+    navigate(targetUrl);
+
+    // 確保在頁面渲染完成後瞬間定位到該 ID
+    setTimeout(() => {
+      if (sub.hash) {
+        const el = document.getElementById(sub.hash);
+        if (el) {
+          const headerOffset = 100; // 預留頂部導覽列高度，避免標題被遮住
+          const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - headerOffset,
+            behavior: 'instant' as ScrollBehavior,
+          });
+          return;
+        }
+      }
+      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    }, 50);
+  };
 
   return (
     <header
@@ -40,41 +90,63 @@ export default function Header() {
           {/* Desktop nav (同步採用 font-serif-tc 襯線體) */}
           <nav className="hidden lg:flex items-center gap-1.5 font-medium">
             {navLinks.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                className={({ isActive }) =>
-                  `group relative px-3.5 py-2 flex flex-col items-center text-ink-700 hover:text-gold-600 transition-colors ${
-                    isActive ? 'text-gold-600 font-semibold' : ''
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {/* 英文小標題：使用 font-serif-tc 襯線體 */}
-                    <span className="font-serif-tc text-[11px] tracking-[0.25em] text-gold-600 group-hover:text-gold-600 transition-colors font-bold uppercase">
-                      {link.en}
-                    </span>
-                    {/* 中文標題：使用 font-serif-tc 襯線體 */}
-                    <span className="font-serif-tc text-sm sm:text-base font-bold tracking-wide mt-0.5">
-                      {link.label}
-                    </span>
-                    
-                    {/* 金色底線 */}
-                    <span
-                      className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 bg-gold-500 transition-all duration-300 ${
-                        isActive
-                          ? 'w-3/4 opacity-100'
-                          : 'w-0 opacity-0 group-hover:w-3/4 group-hover:opacity-100'
-                      }`}
-                    />
-                  </>
+              <div key={link.path} className="relative group/nav">
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    `group relative px-3.5 py-2 flex flex-col items-center text-ink-700 hover:text-gold-600 transition-colors ${
+                      isActive ? 'text-gold-600 font-semibold' : ''
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      {/* 英文小標題 */}
+                      <span className="font-serif-tc text-[11px] tracking-[0.25em] text-gold-600 group-hover:text-gold-600 transition-colors font-bold uppercase">
+                        {link.en}
+                      </span>
+                      {/* 中文標題 + 若有子選單則加上小箭頭提示 */}
+                      <span className="font-serif-tc text-sm sm:text-base font-bold tracking-wide mt-0.5 inline-flex items-center gap-1">
+                        <span>{link.label}</span>
+                        {link.subLinks && (
+                          <ChevronDown className="w-3.5 h-3.5 text-gold-600/80 transition-transform duration-300 group-hover/nav:rotate-180" />
+                        )}
+                      </span>
+
+                      {/* 金色底線 */}
+                      <span
+                        className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 bg-gold-500 transition-all duration-300 ${
+                          isActive
+                            ? 'w-3/4 opacity-100'
+                            : 'w-0 opacity-0 group-hover/nav:w-3/4 group-hover/nav:opacity-100'
+                        }`}
+                      />
+                    </>
+                  )}
+                </NavLink>
+
+                {/* 第二層下拉選單 (桌面版 Hover 展開) */}
+                {link.subLinks && (
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible translate-y-1 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 transition-all duration-200 z-50">
+                    <div className="w-44 rounded-2xl bg-ivory-50/98 backdrop-blur-md border border-gold-400/35 shadow-[0_12px_30px_rgba(12,15,20,0.12)] py-2 overflow-hidden">
+                      {link.subLinks.map((sub) => (
+                        <a
+                          key={sub.label}
+                          href={sub.hash ? `${sub.path}#${sub.hash}` : sub.path}
+                          onClick={(e) => handleSubLinkClick(e, sub)}
+                          className="block px-5 py-2.5 text-center font-serif-tc text-sm font-bold text-ink-800 hover:text-[#C69233] hover:bg-gold-400/10 transition-colors"
+                        >
+                          {sub.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 )}
-              </NavLink>
+              </div>
             ))}
           </nav>
 
-          {/* Phone CTA (desktop) - 外框質感線調整為更細緻清晰 */}
+          {/* Phone CTA (desktop) */}
           <a
             href="tel:0800-600-603"
             className="hidden lg:flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#585c63] text-ivory-50 border border-gold-400/60 ring-1 ring-gold-400/25 hover:border-gold-300 hover:ring-gold-300/40 hover:bg-gold-600 transition-all hover:shadow-xl group shrink-0"
@@ -107,17 +179,60 @@ export default function Header() {
       {menuOpen && (
         <div className="lg:hidden bg-ivory-50 border-t border-ivory-300 animate-fade-in font-medium">
           <nav className="flex flex-col px-6 py-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setMenuOpen(false)}
-                className="py-3 border-b border-ivory-200 flex items-center justify-between group"
-              >
-                <span className="font-serif-tc text-ink-800 text-base font-bold group-hover:text-gold-600 transition-colors">{link.label}</span>
-                <span className="font-serif-tc text-[11px] tracking-widest text-gold-600 font-bold uppercase">{link.en}</span>
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isSubOpen = openMobileSub === link.path;
+              return (
+                <div key={link.path} className="border-b border-ivory-200">
+                  <div className="py-3 flex items-center justify-between">
+                    <Link
+                      to={link.path}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex-1 flex items-center justify-between group pr-2"
+                    >
+                      <span className="font-serif-tc text-ink-800 text-base font-bold group-hover:text-gold-600 transition-colors">
+                        {link.label}
+                      </span>
+                      <span className="font-serif-tc text-[11px] tracking-widest text-gold-600 font-bold uppercase">
+                        {link.en}
+                      </span>
+                    </Link>
+
+                    {/* 手機版子選單展開按鈕 */}
+                    {link.subLinks && (
+                      <button
+                        type="button"
+                        onClick={() => setOpenMobileSub(isSubOpen ? null : link.path)}
+                        className="p-1.5 text-gold-600 hover:bg-gold-400/10 rounded-lg transition-colors"
+                        aria-label={`展開${link.label}子選單`}
+                      >
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            isSubOpen ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* 手機版第二層子項目 */}
+                  {link.subLinks && isSubOpen && (
+                    <div className="pb-3 pl-4 space-y-1.5">
+                      {link.subLinks.map((sub) => (
+                        <a
+                          key={sub.label}
+                          href={sub.hash ? `${sub.path}#${sub.hash}` : sub.path}
+                          onClick={(e) => handleSubLinkClick(e, sub)}
+                          className="block py-2 px-3 rounded-lg font-serif-tc text-sm font-semibold text-ink-700 hover:text-[#C69233] hover:bg-gold-400/10 transition-colors"
+                        >
+                          {sub.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
             <a
               href="tel:0800-600-603"
               className="mt-4 flex items-center justify-center gap-3 py-3 rounded-full bg-[#585c63] text-ivory-50 border border-gold-400/60 ring-1 ring-gold-400/25 hover:bg-gold-600 transition-colors"
