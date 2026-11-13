@@ -42,25 +42,20 @@ export default function Announcement() {
 
   return (
     <div className="w-full relative group/announcement px-2 sm:px-6">
-      {/* 標題區塊：置中，大字位置絕對不動，提示文字以絕對定位貼在右側 */}
-      <div className="text-center mb-6 relative">
+      {/* 標題區塊：置中，利用 flex 讓「最新消息」與提示文字強制在同一行右側 */}
+      <div className="text-center mb-6">
         <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
           LATEST NEWS
         </p>
-        <div className="relative mt-2 inline-block">
-          <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900">
+        
+        <div className="inline-flex items-baseline justify-center gap-2 sm:gap-3 mt-2">
+          <h2 className="font-serif-tc text-2xl sm:text-3xl md:text-4xl font-bold text-ink-900 whitespace-nowrap">
             最新消息
           </h2>
-          {/* 提示小字貼在右側，在手機上自動隱藏或往下掉避免擁擠，桌機/平板顯示 */}
-          <span className="hidden sm:inline-block absolute left-full top-1/2 -translate-y-1/2 ml-4 text-xs text-stone-400 tracking-wider font-serif-tc whitespace-nowrap">
-            ( 可左右滑動 )
+          <span className="text-[11px] sm:text-xs text-stone-400 tracking-wider font-serif-tc whitespace-nowrap">
+            (可左右滑動)
           </span>
         </div>
-        
-        {/* 手機版專用的小字提示（置於下方避免跑版） */}
-        <p className="sm:hidden text-xs text-stone-400 mt-1 tracking-wider font-serif-tc">
-          ( 可左右滑動 )
-        </p>
 
         <div className="gold-divider w-32 mx-auto mt-4" />
       </div>
