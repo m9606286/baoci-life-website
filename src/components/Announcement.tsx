@@ -95,7 +95,7 @@ export default function Announcement() {
               </h3>
 
               {/* 卡片內文 */}
-              <p className="text-ink-700 text-xs sm:text-sm md:text-base leading-relaxed">
+              <p className="text-ink-700 text-sm sm:text-base md:text-lg leading-relaxed">
                 {item.summary}
               </p>
             </div>
