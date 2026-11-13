@@ -224,6 +224,13 @@ export default function Services() {
                 {member.name} <span className="text-ink-900 group-hover:text-gold-600 font-semibold text-sm transition-colors duration-300"> {member.title}</span>
               </h4>
 
+              {/* 描述文字（若該成員有填寫 description 則顯示） */}
+              {member.description && (
+                <p className="text-ink-600 text-xs sm:text-sm leading-relaxed mb-3">
+                  {member.description}
+                </p>
+              )}
+
               {/* 禮儀師證號標籤 */}
               {member.certId && (
                 <div className="px-3.5 py-1.5 rounded-full bg-ivory-100 border border-gold-300/60 text-ink-900 text-sm font-medium transition-colors duration-300">
