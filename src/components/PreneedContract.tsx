@@ -200,20 +200,6 @@ export default function PreneedConcept() {
           </div>
         </div>
 
-        {/* 2. 契約商品 (已移除 id="contract-products") */}
-        <div className="pt-6">
-          
-          {/* 區塊大標題：契約商品 */}
-          <div className="text-center mb-10">
-            <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
-              CONTRACT PRODUCTS
-            </p>
-            <h2 className="font-serif-tc text-3xl md:text-4xl lg:text-5xl font-bold text-ink-950 mt-2">
-              契約商品
-            </h2>
-            <div className="w-60 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4" />
-          </div>
-
           {/* 下方獨立區塊：享受預約優惠價，鎖定價格抗通膨 */}
           <div className="max-w-6xl mx-auto py-8 relative overflow-hidden transition-all duration-300 mb-16">
             
