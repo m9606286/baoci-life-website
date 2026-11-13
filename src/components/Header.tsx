@@ -128,7 +128,6 @@ export default function Header() {
                           <ChevronDown className="w-3.5 h-3.5 text-gold-600 transition-transform duration-300 group-hover/nav:rotate-180" />
                         )}
                       </span>
-                      {/* 註解：已移除原本的下方金色橫線程式碼 */}
                     </>
                   )}
                 </NavLink>
@@ -142,7 +141,7 @@ export default function Header() {
                           key={sub.label}
                           href={sub.hash ? `${sub.path}#${sub.hash}` : sub.path}
                           onClick={(e) => handleSubLinkClick(e, sub)}
-                          className="block px-5 py-2.5 text-center font-serif-tc text-sm font-bold text-ink-900 hover:text-[#C69233] hover:bg-gold-400/10 transition-colors"
+                          className="block px-5 py-2.5 text-center font-serif-tc text-sm font-bold text-ink-900 hover:text-white hover:bg-gold-600 transition-colors"
                         >
                           {sub.label}
                         </a>
@@ -230,7 +229,7 @@ export default function Header() {
                           key={sub.label}
                           href={sub.hash ? `${sub.path}#${sub.hash}` : sub.path}
                           onClick={(e) => handleSubLinkClick(e, sub)}
-                          className="block py-2 px-3 rounded-lg font-serif-tc text-sm font-semibold text-ink-900 hover:text-[#C69233] hover:bg-gold-400/10 transition-colors"
+                          className="block py-2 px-3 rounded-lg font-serif-tc text-sm font-semibold text-ink-900 hover:text-white hover:bg-gold-600 transition-colors"
                         >
                           {sub.label}
                         </a>
