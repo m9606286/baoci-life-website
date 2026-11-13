@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { ArrowLeftRight } from 'lucide-react';
+import { ArrowLeftRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export interface NewsItem {
   id: string | number;
@@ -30,8 +30,23 @@ const announcements: NewsItem[] = [
 export default function Announcement() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  // 供電腦版點擊箭頭按鈕平滑滾動
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const firstCard = container.querySelector('article');
+      if (firstCard) {
+        const cardWidth = firstCard.clientWidth + 24;
+        container.scrollBy({
+          left: direction === 'left' ? -cardWidth : cardWidth,
+          behavior: 'smooth',
+        });
+      }
+    }
+  };
+
   return (
-    <div className="w-full relative px-4 sm:px-6">
+    <div className="w-full relative group/announcement px-4 sm:px-10">
       {/* 標題區塊：置中 + 質感線 */}
       <div className="text-center mb-4">
         <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -43,13 +58,30 @@ export default function Announcement() {
         <div className="gold-divider w-32 mx-auto mt-4" />
       </div>
 
-      {/* 滑動提示標籤（讓使用者知道可以左右滑動查看更多） */}
+      {/* 滑動提示標籤 */}
       <div className="flex items-center justify-center gap-1.5 text-xs sm:text-sm text-gold-700 mb-4 font-serif-tc tracking-wider">
         <ArrowLeftRight className="w-4 h-4 animate-pulse text-gold-600" />
         <span>左右滑動查看更多消息</span>
       </div>
 
-      {/* 橫向滑動卡片容器 */}
+      {/* 電腦版左右切換按鈕：平常隱藏，滑鼠移入區塊時才會浮現在最外側，絕不遮擋卡片邊框 */}
+      <button
+        onClick={() => scroll('left')}
+        className="hidden sm:flex absolute left-2 top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125 bg-white/80 rounded-full shadow-md"
+        aria-label="上一則消息"
+      >
+        <ChevronLeft className="w-8 h-8" />
+      </button>
+
+      <button
+        onClick={() => scroll('right')}
+        className="hidden sm:flex absolute right-2 top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125 bg-white/80 rounded-full shadow-md"
+        aria-label="下一則消息"
+      >
+        <ChevronRight className="w-8 h-8" />
+      </button>
+
+      {/* 橫向滑動卡片容器（同時支援手機觸控與電腦滑鼠拖曳/滾動） */}
       <div
         ref={scrollContainerRef}
         className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-3"
