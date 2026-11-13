@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { ArrowLeftRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export interface NewsItem {
   id: string | number;
@@ -30,23 +30,18 @@ const announcements: NewsItem[] = [
 export default function Announcement() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // 供電腦版點擊箭頭按鈕平滑滾動
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const firstCard = container.querySelector('article');
-      if (firstCard) {
-        const cardWidth = firstCard.clientWidth + 24;
-        container.scrollBy({
-          left: direction === 'left' ? -cardWidth : cardWidth,
-          behavior: 'smooth',
-        });
-      }
+      const containerWidth = scrollContainerRef.current.clientWidth;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -containerWidth : containerWidth,
+        behavior: 'smooth',
+      });
     }
   };
 
   return (
-    <div className="w-full relative group/announcement px-4 sm:px-10">
+    <div className="w-full relative group/announcement px-2 sm:px-6">
       {/* 標題區塊：置中 + 質感線 */}
       <div className="text-center mb-4">
         <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -58,42 +53,36 @@ export default function Announcement() {
         <div className="gold-divider w-32 mx-auto mt-4" />
       </div>
 
-      {/* 滑動提示標籤 */}
-      <div className="flex items-center justify-center gap-1.5 text-xs sm:text-sm text-gold-700 mb-4 font-serif-tc tracking-wider">
-        <ArrowLeftRight className="w-4 h-4 animate-pulse text-gold-600" />
-        <span>左右滑動查看更多消息</span>
-      </div>
-
-      {/* 電腦版左右切換按鈕：平常隱藏，滑鼠移入區塊時才會浮現在最外側，絕不遮擋卡片邊框 */}
+      {/* 左右切換按鈕：無黑圈圈，純箭頭 */}
       <button
         onClick={() => scroll('left')}
-        className="hidden sm:flex absolute left-2 top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125 bg-white/80 rounded-full shadow-md"
+        className="absolute left-[-10px] sm:left-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125"
         aria-label="上一則消息"
       >
-        <ChevronLeft className="w-8 h-8" />
+        <ChevronLeft className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
       </button>
 
       <button
         onClick={() => scroll('right')}
-        className="hidden sm:flex absolute right-2 top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125 bg-white/80 rounded-full shadow-md"
+        className="absolute right-[-10px] sm:right-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125"
         aria-label="下一則消息"
       >
-        <ChevronRight className="w-8 h-8" />
+        <ChevronRight className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
       </button>
 
-      {/* 橫向滑動卡片容器（同時支援手機觸控與電腦滑鼠拖曳/滾動） */}
+      {/* 橫向滑動卡片容器：精準單張對齊 */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-3"
+        className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-1"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {announcements.map((item) => (
           <article
             key={item.id}
-            className="snap-center shrink-0 w-[88vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/30 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer mx-auto"
+            className="snap-center shrink-0 w-[88vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-8 border border-gold-400/25 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
           >
             <div>
-              {/* 日期標籤 */}
+              {/* 日期標籤：未移入時字體改為黑色 (text-ink-900)，移入時轉為白字 + 深金背景 */}
               <div className="mb-4">
                 <span className="inline-flex items-center font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-500 shadow-sm bg-gradient-to-r from-amber-50/90 via-stone-50 to-yellow-50/80 text-ink-900 border border-amber-200/60 group-hover:bg-none group-hover:bg-[#C69233] group-hover:text-white group-hover:border-[#C69233] group-hover:shadow-md">
                   {item.dateTag}
@@ -101,12 +90,12 @@ export default function Announcement() {
               </div>
 
               {/* 卡片標題 */}
-              <h3 className="font-serif-tc text-lg md:text-xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 leading-snug mb-3">
+              <h3 className="font-serif-tc text-lg md:text-xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 leading-snug mb-4">
                 {item.title}
               </h3>
 
               {/* 卡片內文 */}
-              <p className="text-ink-700 text-sm md:text-base leading-relaxed">
+              <p className="text-ink-700 text-sm md:text-base leading-relaxed line-clamp-4">
                 {item.summary}
               </p>
             </div>
