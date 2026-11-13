@@ -41,7 +41,7 @@ export default function Announcement() {
   };
 
   return (
-    <div className="w-full relative group/announcement px-2 sm:px-6">
+    <div className="w-full relative group/announcement px-3 sm:px-6">
       {/* 標題區塊：置中 + 質感線 */}
       <div className="text-center mb-4">
         <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -56,7 +56,7 @@ export default function Announcement() {
       {/* 左右切換按鈕：無黑圈圈，純箭頭 */}
       <button
         onClick={() => scroll('left')}
-        className="absolute left-[-10px] sm:left-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125"
+        className="absolute left-[-5px] sm:left-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125 hidden md:block"
         aria-label="上一則消息"
       >
         <ChevronLeft className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
@@ -64,38 +64,38 @@ export default function Announcement() {
 
       <button
         onClick={() => scroll('right')}
-        className="absolute right-[-10px] sm:right-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125"
+        className="absolute right-[-5px] sm:right-[-15px] top-[60%] -translate-y-1/2 z-20 p-2 text-slate-400 hover:text-amber-600 transition-all duration-300 opacity-0 group-hover/announcement:opacity-100 hover:scale-125 hidden md:block"
         aria-label="下一則消息"
       >
         <ChevronRight className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
       </button>
 
-      {/* 橫向滑動卡片容器：精準單張對齊 */}
+      {/* 橫向滑動卡片容器：增加左右內距與 padding 確保手機上左右兩側邊框完整不被切掉 */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-1"
+        className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-4 sm:px-2"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {announcements.map((item) => (
           <article
             key={item.id}
-            className="snap-center shrink-0 w-[88vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-8 border border-gold-400/25 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer"
+            className="snap-center shrink-0 w-[84vw] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/30 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer mx-auto"
           >
             <div>
-              {/* 日期標籤：未移入時字體改為黑色 (text-ink-900)，移入時轉為白字 + 深金背景 */}
+              {/* 日期標籤 */}
               <div className="mb-4">
-                <span className="inline-flex items-center font-serif-tc px-4 py-1.5 rounded-full text-xs md:text-sm font-bold transition-all duration-500 shadow-sm bg-gradient-to-r from-amber-50/90 via-stone-50 to-yellow-50/80 text-ink-900 border border-amber-200/60 group-hover:bg-none group-hover:bg-[#C69233] group-hover:text-white group-hover:border-[#C69233] group-hover:shadow-md">
+                <span className="inline-flex items-center font-serif-tc px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-500 shadow-sm bg-gradient-to-r from-amber-50/90 via-stone-50 to-yellow-50/80 text-ink-900 border border-amber-200/60 group-hover:bg-none group-hover:bg-[#C69233] group-hover:text-white group-hover:border-[#C69233] group-hover:shadow-md">
                   {item.dateTag}
                 </span>
               </div>
 
               {/* 卡片標題 */}
-              <h3 className="font-serif-tc text-lg md:text-xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 leading-snug mb-4">
+              <h3 className="font-serif-tc text-base sm:text-lg md:text-xl font-bold text-ink-900 group-hover:text-[#C69233] transition-colors duration-300 leading-snug mb-3">
                 {item.title}
               </h3>
 
               {/* 卡片內文 */}
-              <p className="text-ink-700 text-sm md:text-base leading-relaxed line-clamp-4">
+              <p className="text-ink-700 text-xs sm:text-sm md:text-base leading-relaxed line-clamp-4">
                 {item.summary}
               </p>
             </div>
