@@ -42,7 +42,7 @@ export default function Announcement() {
 
   return (
     <div className="w-full relative group/announcement px-2 sm:px-6">
-      {/* 標題區塊：保留手機版可左右滑動提示，移除桌機版提示 */}
+      {/* 標題區塊 */}
       <div className="text-center mb-6 relative">
         <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
           LATEST NEWS
@@ -53,12 +53,12 @@ export default function Announcement() {
           </h2>
         </div>
         
-        {/* 手機版專用的小字提示（置於下方） */}
-        <p className="sm:hidden text-xs text-stone-400 mt-1 tracking-wider font-serif-tc">
+        <div className="gold-divider w-32 mx-auto mt-4" />
+
+        {/* 手機版專用的小字提示（改置於質感金線下方） */}
+        <p className="sm:hidden text-xs text-stone-400 mt-2 tracking-wider font-serif-tc">
           ( 可左右滑動 )
         </p>
-
-        <div className="gold-divider w-32 mx-auto mt-4" />
       </div>
 
       {/* 左右切換按鈕：桌機版顯示 */}
