@@ -70,16 +70,16 @@ export default function Announcement() {
         <ChevronRight className="w-8 h-8 md:w-10 md:h-10 drop-shadow-md" />
       </button>
 
-      {/* 橫向滑動卡片容器：手機版寬度 100% 貼齊並置中 */}
+      {/* 橫向滑動卡片容器 */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-2 sm:px-2"
+        className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 px-3 sm:px-2"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {announcements.map((item) => (
           <article
             key={item.id}
-            className="snap-center shrink-0 w-[calc(100vw-3rem)] sm:w-[450px] md:w-[500px] group relative bg-white rounded-3xl p-6 sm:p-8 border border-gold-400/30 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer mx-auto"
+            className="snap-center shrink-0 w-[88vw] sm:w-[450px] md:w-[500px] min-h-[320px] sm:min-h-[350px] group relative bg-white rounded-3xl p-7 sm:p-9 border border-gold-400/30 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer mx-auto"
           >
             <div>
               {/* 日期標籤 */}
@@ -95,7 +95,7 @@ export default function Announcement() {
               </h3>
 
               {/* 卡片內文 */}
-              <p className="text-ink-700 text-xs sm:text-sm md:text-base leading-relaxed line-clamp-4">
+              <p className="text-ink-700 text-xs sm:text-sm md:text-base leading-relaxed">
                 {item.summary}
               </p>
             </div>
