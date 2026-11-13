@@ -42,18 +42,20 @@ export default function Announcement() {
 
   return (
     <div className="w-full relative group/announcement px-2 sm:px-6">
-      {/* 標題區塊：置中 + 質感線 + 可左右滑動小字 */}
+      {/* 標題區塊：置中 + 質感線 + 右側可左右滑動提示 */}
       <div className="text-center mb-6">
         <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
           LATEST NEWS
         </p>
-        <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900 mt-2">
-          最新消息
-        </h2>
+        <div className="flex items-baseline justify-center gap-2 mt-2">
+          <h2 className="font-serif-tc text-3xl md:text-4xl font-bold text-ink-900">
+            最新消息
+          </h2>
+          <span className="text-xs sm:text-sm text-stone-400 tracking-wider font-serif-tc">
+            ( 可左右滑動 )
+          </span>
+        </div>
         <div className="gold-divider w-32 mx-auto mt-4" />
-        <p className="text-xs text-stone-400 mt-2 tracking-widest font-serif-tc">
-          ( 可左右滑動 )
-        </p>
       </div>
 
       {/* 左右切換按鈕：桌機版顯示 */}
