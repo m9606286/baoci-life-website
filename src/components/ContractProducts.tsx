@@ -5,7 +5,7 @@ import { Download, Handshake, Phone, CheckCircle2, MinusCircle } from 'lucide-re
 interface ContractProduct {
   id: string;
   typeTag: string;
-  bgImage: string; // 契約書封面背景路徑
+  bgImage: string;
   channel: {
     name: string;
     phone: string;
@@ -18,82 +18,44 @@ const contractProducts: ContractProduct[] = [
     id: 'baofu',
     typeTag: '生前契約書－標準型',
     bgImage: '/寶富契約書封面.png',
-    channel: {
-      name: '晨暉資產股份有限公司',
-      phone: '(02)2514-7758',
-    },
+    channel: { name: '晨暉資產股份有限公司', phone: '(02)2514-7758' },
     pdfUrl: '/寶富生前契約書.pdf',
   },
   {
     id: 'baohui',
     typeTag: '生前契約書－簡約型',
     bgImage: '/寶暉契約書封面.png',
-    channel: {
-      name: '晨暉資產股份有限公司',
-      phone: '(02)2514-7758',
-    },
+    channel: { name: '晨暉資產股份有限公司', phone: '(02)2514-7758' },
     pdfUrl: '/寶暉生前契約書.pdf',
   },
   {
     id: 'fuyi',
     typeTag: '生前契約書－標準型',
     bgImage: '/福益契約書封面.png',
-    channel: {
-      name: '天勤文創股份有限公司',
-      phone: '(04)2322-0208',
-    },
+    channel: { name: '天勤文創股份有限公司', phone: '(04)2322-0208' },
     pdfUrl: '/福益生前契約書.pdf',
   },
   {
     id: 'puyu',
     typeTag: '生前契約書－簡約型',
     bgImage: '/璞瑜契約書封面.png',
-    channel: {
-      name: '天勤文創股份有限公司',
-      phone: '(04)2322-0208',
-    },
+    channel: { name: '天勤文創股份有限公司', phone: '(04)2322-0208' },
     pdfUrl: '/璞瑜生前契約書.pdf',
   },
 ];
 
-// 生前契約商品差異對照表資料
 const contractComparison = [
-  {
-    feature: '訃聞形式',
-    baofu: '紙本雙折訃聞 100 份 (西式加贈程序表 100 份)',
-    baohui: '電子訃聞 (圖檔)',
-  },
-  {
-    feature: '法事',
-    baofu: '包含頭七、滿七（俗家法事各1人）',
-    baohui: '無',
-  },
-  {
-    feature: '家公奠禮與儀式',
-    baofu: '包含家公奠禮，中式含司儀1人、禮生2人、俗家法事3人及5人國樂現場伴奏',
-    baohui: '無家公奠禮規格，僅配置基本服務人員與誦經居士/神職人員，無司儀、禮生及國樂',
-  },
-  {
-    feature: '場地與花藝佈置',
-    baofu: '大型鮮花主花台、外牌、燈光音響、走道花及羅馬柱等完整會場佈置',
-    baohui: '僅提供基本拜祭供品、桌花與收賻處擺設',
-  },
-  {
-    feature: '答禮毛巾',
-    baofu: '50 條',
-    baohui: '未提供',
-  },
-  {
-    feature: '孝服借用數量',
-    baofu: '20 件以內',
-    baohui: '10 件以內',
-  },
+  { feature: '訃聞形式', baofu: '紙本雙折訃聞 100 份 (西式加贈程序表 100 份)', baohui: '電子訃聞 (圖檔)' },
+  { feature: '法事', baofu: '包含頭七、滿七（俗家法事各1人）', baohui: '無' },
+  { feature: '家公奠禮與儀式', baofu: '包含家公奠禮，中式含司儀1人、禮生2人、俗家法事3人及5人國樂現場伴奏', baohui: '無家公奠禮規格，僅配置基本服務人員與誦經居士/神職人員，無司儀、禮生及國樂' },
+  { feature: '場地與花藝佈置', baofu: '大型鮮花主花台、外牌、燈光音響、走道花及羅馬柱等完整會場佈置', baohui: '僅提供基本拜祭供品、桌花與收賻處擺設' },
+  { feature: '答禮毛巾', baofu: '50 條', baohui: '未提供' },
+  { feature: '孝服借用數量', baofu: '20 件以內', baohui: '10 件以內' },
 ];
 
 export default function ContractProducts() {
   const navigate = useNavigate();
 
-  // 頁面載入或 Hash 改變時，瞬間跳轉對應區塊（配合上方導覽列高度偏移）
   useEffect(() => {
     const { hash } = window.location;
     if (hash) {
@@ -101,7 +63,7 @@ export default function ContractProducts() {
       const el = document.getElementById(id);
       if (el) {
         setTimeout(() => {
-          const headerOffset = 100; // 預留 Header 高度
+          const headerOffset = 100;
           const elementPosition = el.getBoundingClientRect().top + window.scrollY;
           window.scrollTo({
             top: elementPosition - headerOffset,
@@ -112,7 +74,6 @@ export default function ContractProducts() {
     }
   }, []);
 
-  // 點擊後切換至聯絡我們頁面並置頂
   const handleConsultClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     navigate('/contact');
@@ -120,11 +81,9 @@ export default function ContractProducts() {
   };
 
   return (
-    // 加上 id="contract-products" 與 scroll-mt-28 讓錨點瞬間跳轉時完美對齊
+    // 精準對應 Header 的 hash: 'contract-products'
     <section id="contract-products" className="pt-2 pb-24 lg:pt-4 lg:pb-32 bg-ivory-100/60 relative -mt-6 lg:-mt-10 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-6">
-
-        {/* 標題區 */}
         <div className="text-center mb-10">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
             CONTRACT PRODUCTS
@@ -135,14 +94,12 @@ export default function ContractProducts() {
           <div className="gold-divider w-32 mx-auto mt-4" />
         </div>
 
-        {/* 商品格子區塊 (自動支援 2x2 響應式排版) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto mb-16">
           {contractProducts.map((product) => (
             <div
               key={product.id}
               className="group relative rounded-2xl overflow-hidden shadow-lg border border-gold-400/30 hover:border-gold-400/70 aspect-[3/4] flex flex-col justify-end p-6 sm:p-8 hover:shadow-2xl transition-all duration-500"
             >
-              {/* 背景圖片 */}
               <div className="absolute inset-0 overflow-hidden bg-ivory-200">
                 <img
                   src={product.bgImage}
@@ -150,34 +107,20 @@ export default function ContractProducts() {
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
                 />
               </div>
+              <div className="absolute inset-0 bg-gradient-to-b from-ink-950/10 via-transparent to-ink-950/90 pointer-events-none" />
 
-              {/* 漸層遮罩 */}
-              <div className="absolute inset-0 bg-gradient-to-b from-ink-950/10 via-transparent to-ink-950/90 pointer-events-none transition-opacity duration-500 group-hover:opacity-95" />
-
-              {/* 下方資訊區塊 */}
               <div className="relative z-10 text-white space-y-4 flex flex-col items-start text-left">
-
-                {/* 銷售通路與電話 */}
                 <div className="space-y-2 text-sm sm:text-base font-medium">
-                  <div className="flex items-center gap-1.5 text-white hover:text-gold-300 transition-colors duration-200 cursor-pointer group/channel">
-                    <Handshake className="w-4 h-4 text-white group-hover/channel:text-gold-300 shrink-0 transition-colors duration-200" />
-                    <span className="group-hover/channel:text-gold-300 transition-colors duration-200">
-                      銷售通路：{product.channel.name}
-                    </span>
+                  <div className="flex items-center gap-1.5 text-white">
+                    <Handshake className="w-4 h-4 shrink-0" />
+                    <span>銷售通路：{product.channel.name}</span>
                   </div>
-
-                  <a
-                    href={`tel:${product.channel.phone}`}
-                    className="flex items-center gap-1.5 text-white hover:text-gold-300 transition-colors duration-200 group/phone no-underline"
-                  >
-                    <Phone className="w-4 h-4 text-white group-hover/phone:text-gold-300 shrink-0 transition-colors duration-200" />
-                    <span className="font-mono no-underline font-normal font-['Microsoft_JhengHei']">
-                      電話：{product.channel.phone}
-                    </span>
+                  <a href={`tel:${product.channel.phone}`} className="flex items-center gap-1.5 text-white no-underline">
+                    <Phone className="w-4 h-4 shrink-0" />
+                    <span className="font-mono font-normal">電話：{product.channel.phone}</span>
                   </a>
                 </div>
 
-                {/* 底部按鈕區 */}
                 <div className="pt-2 w-full flex justify-start">
                   <a
                     href={product.pdfUrl}
@@ -189,14 +132,11 @@ export default function ContractProducts() {
                     <Download className="w-4 h-4" />
                   </a>
                 </div>
-
               </div>
-
             </div>
           ))}
         </div>
 
-        {/* 生前契約商品差異對照表 */}
         <div className="bg-white border border-ivory-200 rounded-3xl p-6 sm:p-8 lg:p-12 shadow-md max-w-5xl mx-auto">
           <div className="text-center mb-8 pt-2">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
@@ -208,7 +148,6 @@ export default function ContractProducts() {
             <div className="gold-divider w-60 mx-auto mt-4" />
           </div>
 
-          {/* 表格內容 */}
           <div className="overflow-x-auto rounded-2xl border border-ivory-200 shadow-sm mb-4">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
@@ -244,13 +183,11 @@ export default function ContractProducts() {
             </table>
           </div>
 
-          {/* 註解 */}
           <div className="flex items-center gap-1.5 text-base text-ink-800 font-medium mb-8 pl-1">
             <CheckCircle2 className="w-5 h-5 text-gold-600 shrink-0" />
             <span>標準型及簡易型均提供骨罐及火化棺</span>
           </div>
 
-          {/* 諮詢適合您的方案按鈕 */}
           <div className="text-center">
             <a
               href="/contact"
@@ -261,7 +198,6 @@ export default function ContractProducts() {
             </a>
           </div>
         </div>
-
       </div>
     </section>
   );
