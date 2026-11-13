@@ -103,7 +103,7 @@ export default function Header() {
             <BrandLogo />
           </Link>
 
-          {/* Desktop nav (同步採用 font-serif-tc 襯線體) */}
+          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-1.5 font-medium">
             {navLinks.map((link) => (
               <div key={link.path} className="relative group/nav">
@@ -132,7 +132,7 @@ export default function Header() {
                   )}
                 </NavLink>
 
-                {/* 第二層下拉選單 (桌面版 Hover 展開)：改為 90% 透明淺中灰色 bg-[#e8e6e1]/90，無邊框 */}
+                {/* 第二層下拉選單 (桌面版 Hover 展開)：90% 透明淺中灰色背景 bg-[#e8e6e1]/90，無邊框，移入項目字體變白、背景變金色 */}
                 {link.subLinks && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible translate-y-1 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 transition-all duration-200 z-50">
                     <div className="w-48 rounded-2xl bg-[#e8e6e1]/90 backdrop-blur-md shadow-[0_12px_30px_rgba(12,15,20,0.12)] py-2 overflow-hidden">
