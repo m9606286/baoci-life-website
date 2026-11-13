@@ -10,7 +10,8 @@ const teamMembers = [
     name: '王室悰',
     title: '禮儀總監',
     image: '/王室悰.png',
-    fallbackImage: '/王室悰.jpg',
+    fallbackImage: '/王室悰.png',
+    description: '擁有十多年禮儀服務經驗，具備專業服務規劃與管理能力，以細心、同理心與專業態度，確保每場禮儀服務皆能圓滿周全。',
   },
   {
     name: '王立中',
