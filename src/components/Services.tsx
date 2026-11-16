@@ -69,14 +69,14 @@ const processSteps = [
   {
     number: '02',
     title: '尊體接運',
-    desc: '專車及專業接體人員協助接運逝者至指定殯儀館或接體地點，並完善冰存安置。',
+    desc: '專車及專業接體人員協助接運逝者至指定殯儀館，並完善冰存安置。',
     image: '/遺體接運.jpg',
     fallbackImage: '/遺體接運.png',
   },
   {
     number: '03',
     title: '設立靈堂',
-    desc: '協助設置安靈拜祭空間、豎靈儀式與牌位安排，提供家屬靜心追思與守靈場合。',
+    desc: '協助設置安靈祭拜空間、豎靈儀式與牌位安排，提供家屬靜心追思與守靈場合。',
     image: '/設立靈堂.jpg',
     fallbackImage: '/設立靈堂.png',
   },
@@ -90,7 +90,7 @@ const processSteps = [
   {
     number: '05',
     title: '治喪協調',
-    desc: '與家屬溝通宗教信仰、奠禮流程、擇定吉日吉時及會場風格規劃。',
+    desc: '與家屬溝通宗教信仰、奠禮流程、擇定吉日吉時與會場風格規劃。',
     image: '/治喪協調.jpg',
     fallbackImage: '/治喪協調.png',
   },
@@ -125,7 +125,7 @@ const processSteps = [
   {
     number: '10',
     title: '返主除靈',
-    desc: '引導家屬迎請香火牌位返家安靈，並進行除靈與拜祭注意事項說明。',
+    desc: '引導家屬迎請香火牌位返家安靈，並進行除靈與祭拜注意事項說明。',
     image: '/返主除靈.jpg',
     fallbackImage: '/返主除靈.png',
   },
