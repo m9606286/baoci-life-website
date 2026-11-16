@@ -88,7 +88,7 @@ const aboutImage = '/story.png';
 export default function About() {
   const ref = useReveal<HTMLDivElement>();
 
-  // 頁面載入或 Hash 改變時，瞬間跳轉對應區塊（配合上方導覽列高度偏移，已調降為 80）
+  // 頁面載入或 Hash 改變時，瞬間跳轉對應區塊（配合上方導覽列高度偏移）
   useEffect(() => {
     const { hash } = window.location;
     if (hash) {
@@ -96,7 +96,7 @@ export default function About() {
       const el = document.getElementById(id);
       if (el) {
         setTimeout(() => {
-          const headerOffset = 80; // 調整預留 Header 高度
+          const headerOffset = 100; // 預留 Header 高度
           const elementPosition = el.getBoundingClientRect().top + window.scrollY;
           window.scrollTo({
             top: elementPosition - headerOffset,
@@ -108,13 +108,13 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="pt-6 pb-14 lg:pt-8 lg:pb-18 bg-gradient-to-b from-ivory-100 to-ivory-200 relative overflow-hidden">
+    <section id="about" className="pt-10 pb-14 lg:pt-14 lg:pb-18 bg-gradient-to-b from-ivory-100 to-ivory-200 relative overflow-hidden">
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gold-100/40 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         
         {/* 標題區塊：加上 id="about-intro" 對應第一層子選單「關於寶慈」 */}
-        <div id="about-intro" className="text-center mb-16 scroll-mt-20">
+        <div id="about-intro" className="text-center mb-16 scroll-mt-28">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.4em] uppercase font-bold reveal">
             ABOUT US
           </p>
@@ -152,44 +152,46 @@ export default function About() {
 
           {/* 右側：三個卡片區塊 (故事、使命、願景) */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
-            {aboutSections.map((section, idx) => (
-              <div
-                key={idx}
-                className="relative rounded-2xl p-7 overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all duration-300"
-                style={{
-                  background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
-                  border: '1px solid rgba(212, 175, 55, 0.25)',
-                  boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
-                }}
-              >
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className="flex items-center justify-center shrink-0">
-                    <img 
-                      src={section.imageSrc} 
-                      alt={section.title} 
-                      className="h-8 sm:h-9 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_8px_12px_rgba(212,175,55,0.45)]" 
-                    />
+            {aboutSections.map((section, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className="relative rounded-2xl p-7 overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all duration-300"
+                  style={{
+                    background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
+                    border: '1px solid rgba(212, 175, 55, 0.25)',
+                    boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
+                  }}
+                >
+                  <div className="flex items-center gap-2.5 mb-3">
+                    <div className="flex items-center justify-center shrink-0">
+                      <img 
+                        src={section.imageSrc} 
+                        alt={section.title} 
+                        className="h-8 sm:h-9 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_8px_12px_rgba(212,175,55,0.45)]" 
+                      />
+                    </div>
+
+                    <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300">
+                      {section.title}
+                    </h3>
+                  </div>
+                  <div className="text-ink-700 leading-relaxed text-base">
+                    {section.content}
                   </div>
 
-                  <h3 className="font-serif-tc text-2xl font-bold text-ink-900 group-hover:text-gold-500 transition-colors duration-300">
-                    {section.title}
-                  </h3>
+                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out" />
                 </div>
-                <div className="text-ink-700 leading-relaxed text-base">
-                  {section.content}
-                </div>
-
-                <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out" />
-              </div>
-            ))}
+              );
+            })}
           </div>
 
         </div>
 
-        {/* 發展歷程 (Milestones) 區塊 */}
+        {/* 發展歷程 (Milestones) 區塊：加上 id="about-history" 對應第二層子選單「發展歷程」 */}
         <div 
           id="about-history"
-          className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto rounded-3xl p-8 sm:p-12 lg:p-16 relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 scroll-mt-20"
+          className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto rounded-3xl p-8 sm:p-12 lg:p-16 relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 scroll-mt-28"
           style={{
             background: 'linear-gradient(135deg, #ffffff 0%, #fcfbfa 50%, #f4ede1 100%)',
             border: '1px solid rgba(212, 175, 55, 0.25)',
@@ -214,6 +216,7 @@ export default function About() {
                 key={index} 
                 className="relative group/timeline cursor-pointer p-2 rounded-xl transition-all duration-300 hover:translate-x-1.5"
               >
+                
                 <div className="absolute -left-[31px] sm:-left-[47px] top-3.5 w-4 h-4 rounded-full bg-white border-4 border-gold-500 shadow-md group-hover/timeline:scale-150 group-hover/timeline:border-gold-600 group-hover/timeline:shadow-gold-500/50 transition-all duration-300" />
 
                 <h4 className="font-serif-tc text-2xl font-bold text-gold-700 group-hover/timeline:text-gold-500 group-hover/timeline:scale-105 origin-left transition-all duration-300 mb-2 tracking-wide">
