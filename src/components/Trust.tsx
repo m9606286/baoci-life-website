@@ -145,7 +145,7 @@ export default function Trust() {
                 {/* 左側：保證信託文字 + 75% 圓形比例圖 */}
                 <div className="flex items-center gap-5">
                   <h3 className="font-serif-tc text-2xl sm:text-3xl font-bold text-ink-950 leading-tight">
-                    保證<br />信託
+                    信託<br />保證
                   </h3>
 
                   {/* 75% 圓形比例圖 */}
