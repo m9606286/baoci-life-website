@@ -34,7 +34,7 @@ const salesChannels = [
     mapUrl: 'https://www.google.com/maps/search/?api=1&query=台中市北區學士路257號14樓',
     phone: '(04) 2322-0208',
     phoneTel: '0423220208',
-    logo: '/logo3.png',
+    logo: '/logo2.png',
   },
 ];
 
