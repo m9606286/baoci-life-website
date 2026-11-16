@@ -376,7 +376,7 @@ export default function Home() {
           <div className="gold-divider w-32 mx-auto mt-4 mb-6" />
 
           <p className="font-sans text-slate-700 text-base md:text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
-            寶慈生命事業秉持尊重生命、關懷家人的初心，以真誠、溫暖與專業的服務，陪伴家人走過人生重要的告別時刻，讓逝者獲得尊嚴與安息，讓愛與思念得以延續，實踐讓逝者安息，讓生者安心的承諾。
+            寶慈秉持尊重生命、關懷家人的初心，以真誠、溫暖與專業的服務，陪伴家人走過人生重要的告別時刻，讓逝者獲得尊嚴與安息，讓愛與思念得以延續，實踐讓逝者安息，讓生者安心的承諾。
           </p>
           <Link
             to="/contact"
