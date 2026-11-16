@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Phone, MapPin, Mail, ArrowUp, ExternalLink } from 'lucide-react';
-import { companyInfo } from '@/data/content';
 import BrandLogo from '@/components/BrandLogo';
 
 const quickLinks = [
@@ -41,9 +40,9 @@ export default function Footer() {
             <p className="text-sm leading-relaxed mb-4 text-slate-100 font-normal">
               專業的禮儀服務，溫暖的人文關懷。
             </p>
-            {/* 統一編號 */}
+            {/* 統一編號直接寫入 */}
             <p className="text-sm text-slate-100 font-['Microsoft_JhengHei']">
-              統一編號：{companyInfo.taxId}
+              統一編號：13024413
             </p>
           </div>
 
