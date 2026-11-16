@@ -153,8 +153,8 @@ export default function ContractProducts() {
               <thead>
                 <tr className="bg-ivory-100 border-b border-ivory-200 text-ink-800 text-sm md:text-base font-serif-tc">
                   <th className="p-4 w-1/4 font-bold">比較項目</th>
-                  <th className="p-4 w-3/8 font-bold text-gold-700 bg-gold-50/50">標準型生前契約 (寶富/福益)</th>
-                  <th className="p-4 w-3/8 font-bold text-ink-700">簡約生前契約 (寶暉/璞瑜)</th>
+                  <th className="p-4 w-3/8 font-bold text-gold-700 bg-gold-50/50">寶富/福益生前契約－標準型</th>
+                  <th className="p-4 w-3/8 font-bold text-ink-700">寶暉/璞瑜生前契約－簡約型</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-ivory-200 text-sm md:text-base text-ink-700">
