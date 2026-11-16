@@ -185,7 +185,7 @@ export default function ContractProducts() {
 
           <div className="flex items-center gap-1.5 text-base text-ink-800 font-medium mb-8 pl-1">
             <CheckCircle2 className="w-5 h-5 text-gold-600 shrink-0" />
-            <span>標準型及簡易型均提供骨罐及火化棺</span>
+            <span>標準型及簡約型均提供骨罐及火化棺</span>
           </div>
 
           <div className="text-center">
