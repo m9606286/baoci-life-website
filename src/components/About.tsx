@@ -104,7 +104,7 @@ export default function About() {
           </h2>
           <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4 mb-4 reveal reveal-delay-2" />
           <p className="text-ink-500 font-sans text-xs sm:text-sm md:text-base reveal reveal-delay-2.5 max-w-3xl mx-auto leading-relaxed font-normal">
-            以專業與誠信為本，守護每一份信任與託付
+            以專業與誠信為本，守護每一份信任與託付。
           </p>
         </div>
 
