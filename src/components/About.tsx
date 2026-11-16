@@ -114,7 +114,7 @@ export default function About() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         
         {/* 標題區塊：加上 id="about-intro" 對應第一層子選單「關於寶慈」 */}
-        <div id="about-intro" className="text-center mb-10 scroll-mt-28">
+        <div id="about-intro" className="text-center mb-12 scroll-mt-28">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.4em] uppercase font-bold reveal">
             ABOUT US
           </p>
