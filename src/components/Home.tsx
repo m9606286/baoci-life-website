@@ -148,7 +148,7 @@ export default function Home() {
                 to="/preneed"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/60 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm group shadow-sm"
               >
-                <span>瞭解生前契約</span>
+                <span>了解生前契約</span>
                 <ChevronDown className="w-4 h-4 ml-2 text-white group-hover:translate-y-0.5 transition-transform" />
               </Link>
 
