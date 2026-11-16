@@ -92,7 +92,7 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-gold-300 flex-shrink-0" />
                 <a href="tel:062678859" className="hover:text-gold-300 transition-colors font-['Microsoft_JhengHei']">
-                  電話：(06) 2678859
+                  電話：(06) 267-8859
                 </a>
               </li>
               <li className="flex items-center gap-3">
