@@ -22,8 +22,8 @@ const serviceOptions = [
 const salesChannels = [
   {
     name: '晨暉資產股份有限公司',
-    address: '臺北市松山區復興北路361巷14號1樓',
-    mapUrl: 'https://www.google.com/maps/search/?api=1&query=臺北市松山區復興北路361巷14號1樓',
+    address: '台北市松山區復興北路361巷14號1樓',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=台北市松山區復興北路361巷14號1樓',
     phone: '(02) 2514-7758',
     phoneTel: '0225147758',
     logo: '/logo1.png',
