@@ -196,7 +196,7 @@ export default function Contact() {
                   <Phone className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
                   <div className="flex flex-wrap gap-x-6 gap-y-1">
                     <a href="tel:062678859" className="hover:text-gold-700 transition-colors">
-                      電話：<span>(06) 2678859</span>
+                      電話：<span>(06) 267-8859</span>
                     </a>
                     <a href="tel:0800600603" className="hover:text-gold-700 transition-colors">
                       24 小時服務專線：<span>0800-600-603</span>
