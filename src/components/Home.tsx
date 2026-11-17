@@ -190,7 +190,7 @@ export default function Home() {
             <div className="w-full md:w-1/2 space-y-6">
               
               <div className="group/profile-header cursor-pointer space-y-4">
-                <span className="inline-block px-5 py-2 rounded-full bg-gold-400/15 border border-gold-400/30 font-serif-tc text-base sm:text-lg md:text-xl font-bold text-ink-900 group-hover:text-[#C69233] transition-all duration-300 leading-snug mb-3">
+                <span className="inline-block px-5 py-2 rounded-full bg-gold-50/80 border border-gold-400/40 font-serif-tc text-base sm:text-lg md:text-xl font-bold text-ink-900 group-hover:text-[#C69233] transition-all duration-300 leading-snug mb-3">
                   合規經營．誠信至上
                 </span>
                 
