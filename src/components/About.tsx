@@ -1,4 +1,4 @@
-import React from 'reac';
+import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
 
 const aboutSections = [
@@ -74,7 +74,7 @@ const milestones = [
   },
   {
     year: '2026年',
-    text: (
+    text: 
       <>
         <ApexLink />加入後，進一步擴充資本額至新台幣6,000萬元，秉持人本關懷的服務使命，持續深化客戶權益保障，落實誠信經營與服務品質，致力於提供安心、完善的生命服務，並以穩健經營為基礎，確保企業永續發展。
       </>
