@@ -9,10 +9,10 @@ const aboutSections = [
     content: (
       <div className="space-y-3">
         <p>
-          寶慈深耕殯葬禮儀服務逾二十年，為合法經營之殯葬禮儀服務業者，所發行之生前契約經台南市政府民政局核准。2026年4月，正式由寶碩集團接續經營，藉由集團資源與永續經營的管理基礎，持續提升服務品質，強化會員權益保障。
+          寶慈深耕殯葬禮儀服務逾二十年，為合法經營之殯葬禮儀服務業者，所發行之生前契約經台南市政府民政局核准。2026年4月，正式由寶碩集團接手經營，將持續以專業與誠信為基礎，延續人文關懷與服務品質。
         </p>
         <p>
-          自創立以來，寶慈始終秉持誠信經營與人本關懷的理念，深刻理解每個家庭在面對人生離別時的需求與不易，致力於提供專業、周全且值得信賴的殯葬禮儀服務。
+          自創立以來，寶慈始終秉持誠信經營與人本關懷的理念，深刻理解每個家庭在面對人生離別時的需求與不易，致力於提供專業、周全且值得信賴的禮儀服務。
         </p>
         <p className="font-semibold text-ink-800 pt-1 border-t border-ivory-200/80">
           從專業服務的累積，到集團資源的整合，寶慈將持續以誠信為基礎、以專業為核心、以客戶權益為優先，履行每一份託付，守護每一份承諾。
@@ -26,7 +26,7 @@ const aboutSections = [
     title: '寶慈的使命',
     content: (
       <p>
-        寶慈提供專業、溫暖與尊重的禮儀服務，是我們始終堅持的使命。透過生前契約的預先規劃，讓個人意願得以被尊重，也讓家人在面對離別時，能夠減少徬徨與壓力，以從容的心情陪伴摯愛走完人生最後一程。
+        寶慈提供專業、溫暖與尊重的禮儀服務，是我們始終堅持的使命。透過生前契約的預先規劃，讓個人意願得以被尊重，也讓家人在面對離別時，能夠更安心、更從容地完成生命最後的告別安排。
       </p>
     ),
   },
@@ -36,7 +36,7 @@ const aboutSections = [
     title: '寶慈的願景',
     content: (
       <p>
-        寶慈以成為台灣最受信任的禮儀服務品牌為願景，持續推動生前契約理念，結合人文關懷與專業服務，為每一個家庭提供值得信賴且具尊嚴的生命紀念服務。
+        寶慈以成為台灣最受信任的禮儀服務品牌為願景，持續推動生前契約理念，結合人文關懷與專業服務，為每一個家庭提供值得信賴且具尊嚴的生命告別與陪伴體驗。
       </p>
     ),
   },
@@ -58,7 +58,7 @@ const ApexLink = () => (
 const milestones = [
   {
     year: '2002年',
-    text: '公司正式成立後，投入傳統禮儀服務領域。創業初期逐步累積服務經驗，為後續企業發展奠定極固基礎。',
+    text: '公司正式成立後，投入傳統禮儀服務領域。創業初期逐步累積服務經驗，為後續企業發展奠定堅實基礎。',
   },
   {
     year: '2014年',
@@ -66,17 +66,17 @@ const milestones = [
   },
   {
     year: '2016年',
-    text: '經台南市政府民政局核準（南市民生字第1050157780號函），正式取得販售「生前殯葬服務契約」的合法資格。為嚴格保障客戶權益，公司依殯葬管理條例規定，將生前契約款項依法交付「京城銀行」辦理信託專戶管理，確保資金安全透明，落實對每一位家屬安心承諾。',
+    text: '經台南市政府民政局核準（南市民生字第1050157780號函），正式取得販售「生前殯葬服務契約」的合法資格。為嚴格保障客戶權益，公司依殯葬相關法令與制度要求，持續完善服務流程與契約內容。',
   },
   {
     year: '2025年',
-    text: '本公司迎來經營團隊與經營團隊重組，內部積極推動行政系統整合與流程優化，以持續提供專業且可靠之生前契約與生命禮儀服務。',
+    text: '本公司迎來經營團隊與經營模式重組，內部積極推動行政系統整合與流程優化，以持續提供專業且可靠之生前契約與生命禮儀服務。',
   },
   {
     year: '2026年',
-    text: 
+    text: (
       <>
-        <ApexLink />加入後，進一步擴充資本額至新台幣6,000萬元，秉持人本關懷的服務使命，持續深化客戶權益保障，落實誠信經營與服務品質，致力於提供安心、完善的生命服務，並以穩健經營為基礎，確保企業永續發展。
+        <ApexLink />加入後，進一步擴充資本額至新台幣6,000萬元，秉持人本關懷的服務使命，持續深化客戶權益保障，落實誠信經營與服務品質，致力於提供更完善的生命禮儀與契約保障服務。
       </>
     ),
   },
@@ -93,7 +93,6 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gold-100/40 blur-3xl pointer-events-none" />
 
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
-        
         {/* 標題區塊：加上 id="about-intro" 對應第一層子選單「關於寶慈」 */}
         <div id="about-intro" className="text-center mb-12 scroll-mt-28">
           <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.4em] uppercase font-bold reveal">
@@ -109,7 +108,6 @@ export default function About() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-24">
-          
           {/* 左側：圖片區塊 */}
           <div className="lg:col-span-5 relative reveal flex flex-col h-full min-h-[550px] lg:min-h-[700px]">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group cursor-pointer border border-ivory-300/85">
@@ -145,10 +143,10 @@ export default function About() {
               >
                 <div className="flex items-center gap-2.5 mb-3">
                   <div className="flex items-center justify-center shrink-0">
-                    <img 
-                      src={section.imageSrc} 
-                      alt={section.title} 
-                      className="h-8 sm:h-9 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_8px_12px_rgba(212,175,55,0.45)]" 
+                    <img
+                      src={section.imageSrc}
+                      alt={section.title}
+                      className="h-8 sm:h-9 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_8px_12px_rgba(212,175,55,0.45)]"
                     />
                   </div>
 
@@ -156,19 +154,16 @@ export default function About() {
                     {section.title}
                   </h3>
                 </div>
-                <div className="text-ink-700 leading-relaxed text-base">
-                  {section.content}
-                </div>
+                <div className="text-ink-700 leading-relaxed text-base">{section.content}</div>
 
                 <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-300 group-hover:w-full transition-all duration-500 ease-out" />
               </div>
             ))}
           </div>
-
         </div>
 
         {/* 發展歷程 (Milestones) 區塊：加上 id="about-history" 對應第二層子選單「發展歷程」 */}
-        <div 
+        <div
           id="about-history"
           className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto rounded-3xl p-8 sm:p-12 lg:p-16 relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 scroll-mt-28"
           style={{
@@ -177,7 +172,6 @@ export default function About() {
             boxShadow: '0 10px 30px -5px rgba(212, 175, 55, 0.15), 0 4px 12px rgba(0, 0, 0, 0.04)',
           }}
         >
-          
           <div className="text-center mb-14">
             <p className="font-serif-tc text-gold-600 text-xs sm:text-sm tracking-[0.35em] uppercase font-bold reveal">
               MILESTONES
@@ -191,25 +185,21 @@ export default function About() {
           {/* 時間軸列表 */}
           <div className="relative border-l-2 border-gold-400/50 ml-4 sm:ml-8 space-y-12 pl-6 sm:pl-10">
             {milestones.map((item, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="relative group/timeline cursor-pointer p-2 rounded-xl transition-all duration-300 hover:translate-x-1.5"
               >
-                <div className="absolute -left-[31px] sm:-left-[47px] top-3.5 w-4 h-4 rounded-full bg-white border-4 border-gold-500 shadow-md group-hover/timeline:scale-150 group-hover/timeline:border-gold-600 group-hover/timeline:shadow-gold-500/50 transition-all duration-300" />
+                <div className="absolute -left-[31px] sm:-left-[47px] top-3.5 w-4 h-4 rounded-full bg-white border-4 border-gold-500 shadow-md group-hover/timeline:scale-150 group-hover/timeline:border-gold-400" />
 
                 <h4 className="font-serif-tc text-2xl font-bold text-gold-700 group-hover/timeline:text-gold-500 group-hover/timeline:scale-105 origin-left transition-all duration-300 mb-2 tracking-wide">
                   {item.year}
                 </h4>
 
-                <div className="text-ink-700 text-sm sm:text-base leading-relaxed">
-                  {item.text}
-                </div>
+                <div className="text-ink-700 text-sm sm:text-base leading-relaxed">{item.text}</div>
               </div>
             ))}
           </div>
-
         </div>
-
       </div>
     </section>
   );
