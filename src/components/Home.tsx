@@ -253,6 +253,16 @@ export default function Home() {
           </div>
         </section>
 
+        {/* 我們的核心價值 */}
+        <section className="max-w-7xl mx-auto px-6 -mt-10">
+          <CoreValues />
+        </section>
+
+        {/* 最新消息 */}
+        <section className="max-w-7xl mx-auto px-6 -mt-10 [&_button:hover]:!text-inherit [&_button:hover_svg]:!text-inherit [&_button:hover]:scale-125 [&_button]:transition-transform [&_button]:duration-200">
+          <Announcement />
+        </section>
+
         {/* 我們的服務 */}
         <section className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
@@ -354,16 +364,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* 我們的核心價值 */}
-        <section className="max-w-7xl mx-auto px-6 -mt-10">
-          <CoreValues />
-        </section>
-
-        {/* 最新消息：卡片完全不改，僅讓左右切換箭頭按鈕移入時保持原色不變橘、微微放大 */}
-        <section className="max-w-7xl mx-auto px-6 -mt-10 [&_button:hover]:!text-inherit [&_button:hover_svg]:!text-inherit [&_button:hover]:scale-125 [&_button]:transition-transform [&_button]:duration-200">
-          <Announcement />
-        </section>
+        
 
         {/* 聯絡寶慈 */}
         <section className="max-w-4xl mx-auto px-6 text-center py-2">
