@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'reac';
 import { useReveal } from '@/hooks/useReveal';
 
 const aboutSections = [
