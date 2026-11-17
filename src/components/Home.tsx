@@ -190,7 +190,7 @@ export default function Home() {
             <div className="w-full md:w-1/2 space-y-6">
               
               <div className="group/profile-header cursor-pointer space-y-4">
-                <span className="animate-shimmer-badge inline-block px-6 py-2.5 rounded-full bg-gold-100 border border-gold-400/50 shadow-sm font-serif-tc text-base sm:text-lg md:text-xl font-bold text-ink-900 group-hover:text-[#C69233] transition-all duration-300 leading-snug mb-3">
+                <span className="animate-shimmer-badge inline-block px-6 py-2.5 rounded-full bg-gold-500 border border-gold-400/50 shadow-sm font-serif-tc text-base sm:text-lg md:text-xl font-bold text-ink-900 group-hover:text-[#C69233] transition-all duration-300 leading-snug mb-3">
                   合規經營．誠信至上
                 </span>
                 
