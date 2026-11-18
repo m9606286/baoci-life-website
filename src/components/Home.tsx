@@ -229,7 +229,7 @@ export default function Home() {
                   className={`${btnStyle} mt-2`}
                 >
                   <span>核准函</span>
-                  <Download className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                  <Download className="w-4 h-4 transition-transform group-hover/btn:scale-110" />
                 </a>
               </div>
 
