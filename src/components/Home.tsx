@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, ChevronDown, Heart, ChevronRight, Award, ExternalLink } from 'lucide-react';
+import { Phone, ChevronDown, Heart, ChevronRight, Download, ExternalLink } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import CoreValues from '@/components/CoreValues';
 import Announcement from '@/components/Announcement';
@@ -217,13 +217,14 @@ export default function Home() {
               <div className="group bg-white hover:border-gold-400 p-6 rounded-2xl shadow-sm hover:shadow-md border border-gold-400/20 text-center flex flex-col justify-between transition-all duration-300 hover:-translate-y-0.5">
                 <div>
                   <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-                    <Award className="w-12 h-12 text-[#C69233] group-hover:scale-105 transition-transform duration-300" />
+                    <Download className="w-12 h-12 text-[#C69233] group-hover:scale-105 transition-transform duration-300" />
                   </div>
                   <h4 className="font-bold text-ink-900 mb-1">政府立案核准</h4>
                   <p className="text-xs text-slate-500 mb-4">民政局核准銷售文號</p>
                 </div>
                 <a 
-                  href="/台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf" 
+                  href="/approval-document.pdf" 
+                  download="台南市民政局生前契約銷售及代銷商最新核准函1150903.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${btnStyle} mt-2`}
