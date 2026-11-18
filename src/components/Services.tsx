@@ -97,7 +97,7 @@ const processSteps = [
   {
     number: '06',
     title: '奠禮準備',
-    desc: '印製訃聞通知親友、佈置典雅告別式會場、協調花藝、燈光音響與各項用品。',
+    desc: '製作訃聞通知親友、佈置典雅告別式會場、協調花藝、燈光音響與各項用品。',
     image: '/奠禮準備.jpg',
     fallbackImage: '/奠禮準備.png',
   },
