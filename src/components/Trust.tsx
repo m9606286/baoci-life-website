@@ -209,7 +209,7 @@ export default function Trust() {
                   </a>
 
                   <a
-                    href="https://www.ktb.com.tw/funeral/query"
+                    href="https://customer.ktb.com.tw/new/personal/agreement"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/90 hover:bg-gold-500 text-ink-900 hover:text-white border border-ivory-300 hover:border-gold-400 transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer group/btn relative"
