@@ -178,51 +178,73 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* 總公司卡片 (使用 logo.png，名稱 Hover 變為質感金 #c69233 + 底部質感線) */}
+        {/* 總公司卡片 (左側聯絡資訊 + 右側 LINE QR Code) */}
         {activeTab === 'headquarter' && (
-          <div className="max-w-2xl mx-auto mb-12 transition-all duration-300">
+          <div className="max-w-3xl mx-auto mb-12 transition-all duration-300">
             <div className="group relative bg-white rounded-3xl p-7 sm:p-9 border border-gold-400/35 hover:border-gold-500 shadow-xl transition-all duration-300 hover:shadow-2xl overflow-hidden">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-16 h-16 p-1 flex items-center justify-center shrink-0">
-                  <img src="/logo.png" alt="寶慈生命事業" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
-                </div>
-                <h3 className="font-serif-tc text-2xl font-bold text-ink-950 group-hover:text-[#c69233] transition-colors duration-300">
-                  寶慈生命事業股份有限公司
-                </h3>
-              </div>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+                {/* 左側：公司名稱與聯絡資訊 */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-16 h-16 p-1 flex items-center justify-center shrink-0">
+                      <img src="/logo.png" alt="寶慈生命事業" className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
+                    </div>
+                    <h3 className="font-serif-tc text-2xl font-bold text-ink-950 group-hover:text-[#c69233] transition-colors duration-300">
+                      寶慈生命事業股份有限公司
+                    </h3>
+                  </div>
 
-              <div className="space-y-4 text-sm sm:text-base text-slate-700 font-normal">
-                <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
-                  <div className="flex flex-wrap gap-x-6 gap-y-1">
-                    <a href="tel:062678859" className="hover:text-gold-700 transition-colors">
-                      電話：<span>(06) 267-8859</span>
-                    </a>
-                    <a href="tel:0800600603" className="hover:text-gold-700 transition-colors">
-                      24 小時服務專線：<span>0800-600-603</span>
-                    </a>
+                  <div className="space-y-4 text-sm sm:text-base text-slate-700 font-normal">
+                    <div className="flex items-start gap-3">
+                      <Phone className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
+                      <div className="flex flex-wrap gap-x-6 gap-y-1">
+                        <a href="tel:062678859" className="hover:text-gold-700 transition-colors">
+                          電話：<span>(06) 267-8859</span>
+                        </a>
+                        <a href="tel:0800600603" className="hover:text-gold-700 transition-colors">
+                          24 小時服務專線：<span>0800-600-603</span>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
+                      <a
+                        href="https://www.google.com/maps/search/?api=1&query=台北市內湖區新湖二路329號5樓"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gold-700 transition-colors inline-flex items-center gap-1.5"
+                      >
+                        <span>地址：</span>
+                        <span>台北市內湖區新湖二路329號5樓</span>
+                        <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+                      </a>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <Mail className="w-5 h-5 shrink-0 text-gold-600" />
+                      <a href="mailto:service@apexbaoci.com.tw" className="hover:text-gold-700 transition-colors">
+                        Email：<span>service@apexbaoci.com.tw</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 mt-0.5 shrink-0 text-gold-600" />
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=台北市內湖區新湖二路329號5樓"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-gold-700 transition-colors inline-flex items-center gap-1.5"
-                  >
-                    <span>地址：</span>
-                    <span>台北市內湖區新湖二路329號5樓</span>
-                    <ExternalLink className="w-3.5 h-3.5 opacity-70" />
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 shrink-0 text-gold-600" />
-                  <a href="mailto:service@apexbaoci.com.tw" className="hover:text-gold-700 transition-colors">
-                    Email：<span>service@apexbaoci.com.tw</span>
-                  </a>
+                {/* 右側：LINE QR Code */}
+                <div className="shrink-0 flex flex-col items-center justify-center md:pl-8 md:border-l border-gold-400/25 pt-6 md:pt-0 border-t md:border-t-0">
+                  <div className="w-36 h-36 sm:w-40 sm:h-40 p-2.5 bg-ivory-100 rounded-2xl border border-gold-400/40 shadow-inner flex items-center justify-center">
+                    <img
+                      src="/line.png"
+                      alt="寶慈生命事業 LINE 官方帳號 QR Code"
+                      className="w-full h-full object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <p className="mt-3 text-sm font-serif-tc font-bold text-ink-900">
+                    加入官方 LINE 諮詢
+                  </p>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    掃描 QR Code 立即聯繫
+                  </p>
                 </div>
               </div>
 
