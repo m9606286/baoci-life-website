@@ -240,10 +240,7 @@ export default function Contact() {
                     />
                   </div>
                   <p className="mt-3 text-sm font-serif-tc font-bold text-ink-900">
-                    加入官方 LINE 諮詢
-                  </p>
-                  <p className="text-xs text-slate-500 mt-0.5">
-                    掃描 QR Code 立即聯繫
+                    掃描 QR Code，加入官方 LINE
                   </p>
                 </div>
               </div>
